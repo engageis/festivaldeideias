@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-describe Configuration do
-  
+describe Site do
+
   it "should be valid from factory" do
-    o = Factory(:configuration)
+    o = Factory(:site)
     o.should be_valid
   end
   
   it "should have a name" do
-    o = Factory.build(:configuration, :name => nil)
+    o = Factory.build(:category, :name => nil)
     o.should_not be_valid
   end
   
