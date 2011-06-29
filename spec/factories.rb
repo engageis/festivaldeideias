@@ -7,9 +7,14 @@ end
 Factory.sequence :uid do |n|
   "#{n}"
 end
+Factory.define :template do |f|
+  f.name { Factory.next(:name) }
+  f.description 'bar'
+end
 Factory.define :site do |f|
   f.name { Factory.next(:name) }
   f.host { Factory.next(:name) }
+  f.association :template, :factory => :template
 end
 Factory.define :user do |f|
   f.provider "twitter"
@@ -39,6 +44,7 @@ Factory.define :idea do |f|
   f.association :site, :factory => :site
   f.association :user, :factory => :user
   f.association :category, :factory => :category
+  f.association :template, :factory => :template
   f.title 'Foo'
   f.headline 'Bar'
 end

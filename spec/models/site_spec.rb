@@ -7,6 +7,11 @@ describe Site do
     o.should be_valid
   end
   
+  it "should have a template" do
+    o = Factory.build(:site, :template => nil)
+    o.should_not be_valid
+  end
+  
   it "should have a name" do
     o = Factory.build(:site, :name => nil)
     o.should_not be_valid

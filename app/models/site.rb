@@ -1,8 +1,9 @@
 class Site < ActiveRecord::Base
   
-  validates_presence_of :name, :host
-  validates_uniqueness_of :name, :host
+  belongs_to :template
   has_many :users
+  validates_presence_of :name, :host, :template
+  validates_uniqueness_of :name, :host
 
   def self.auth_gateway
     where(:auth_gateway => true).first

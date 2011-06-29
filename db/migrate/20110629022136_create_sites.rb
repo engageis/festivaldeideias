@@ -7,11 +7,13 @@ class CreateSites < ActiveRecord::Migration
       t.text :host, :null => false
       t.text :port
       t.boolean :auth_gateway, :null => false, :default => false
+      t.references :template, :null => false
       t.timestamps
     end
     constrain :sites do |t|
       t.name :not_blank => true, :unique => true
       t.host :not_blank => true, :unique => true
+      t.template_id :reference => {:templates => :id}
     end
   end
 

@@ -7,6 +7,7 @@ class CreateIdeas < ActiveRecord::Migration
       t.integer :parent_id
       t.references :user, :null => false
       t.references :category, :null => false
+      t.references :template, :null => false
       t.text :title, :null => false
       t.text :headline, :null => false
       t.timestamps
@@ -17,6 +18,7 @@ class CreateIdeas < ActiveRecord::Migration
       t.site_id :reference => {:sites => :id}
       t.user_id :reference => {:users => :id}
       t.category_id :reference => {:categories => :id}
+      t.template_id :reference => {:templates => :id}
       t.parent_id :reference => {:ideas => :id}
     end
   end

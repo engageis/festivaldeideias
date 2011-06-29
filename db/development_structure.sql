@@ -137,6 +137,7 @@ CREATE TABLE ideas (
     parent_id integer,
     user_id integer NOT NULL,
     category_id integer NOT NULL,
+    template_id integer NOT NULL,
     title text NOT NULL,
     headline text NOT NULL,
     created_at timestamp without time zone,
@@ -225,6 +226,7 @@ CREATE TABLE sites (
     host text NOT NULL,
     port text,
     auth_gateway boolean DEFAULT false NOT NULL,
+    template_id integer NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     CONSTRAINT sites_host_not_blank CHECK ((length(btrim(host)) > 0)),
@@ -249,6 +251,40 @@ CREATE SEQUENCE sites_id_seq
 --
 
 ALTER SEQUENCE sites_id_seq OWNED BY sites.id;
+
+
+--
+-- Name: templates; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE templates (
+    id integer NOT NULL,
+    name text NOT NULL,
+    description text,
+    stylesheets text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    CONSTRAINT templates_name_not_blank CHECK ((length(btrim(name)) > 0))
+);
+
+
+--
+-- Name: templates_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE templates_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: templates_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE templates_id_seq OWNED BY templates.id;
 
 
 --
@@ -342,6 +378,13 @@ ALTER TABLE sites ALTER COLUMN id SET DEFAULT nextval('sites_id_seq'::regclass);
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE templates ALTER COLUMN id SET DEFAULT nextval('templates_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
@@ -367,6 +410,14 @@ ALTER TABLE ONLY categories
 
 ALTER TABLE ONLY comments
     ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: configurations_name_unique; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY configurations
+    ADD CONSTRAINT configurations_name_unique UNIQUE (name);
 
 
 --
@@ -423,6 +474,22 @@ ALTER TABLE ONLY sites
 
 ALTER TABLE ONLY sites
     ADD CONSTRAINT sites_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: templates_name_unique; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY templates
+    ADD CONSTRAINT templates_name_unique UNIQUE (name);
+
+
+--
+-- Name: templates_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY templates
+    ADD CONSTRAINT templates_pkey PRIMARY KEY (id);
 
 
 --
@@ -538,11 +605,27 @@ ALTER TABLE ONLY ideas
 
 
 --
+-- Name: ideas_template_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY ideas
+    ADD CONSTRAINT ideas_template_id_reference FOREIGN KEY (template_id) REFERENCES templates(id);
+
+
+--
 -- Name: ideas_user_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY ideas
     ADD CONSTRAINT ideas_user_id_reference FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
+-- Name: sites_template_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sites
+    ADD CONSTRAINT sites_template_id_reference FOREIGN KEY (template_id) REFERENCES templates(id);
 
 
 --
@@ -564,6 +647,8 @@ ALTER TABLE ONLY users
 --
 -- PostgreSQL database dump complete
 --
+
+INSERT INTO schema_migrations (version) VALUES ('20110629020513');
 
 INSERT INTO schema_migrations (version) VALUES ('20110629022136');
 

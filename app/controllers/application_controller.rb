@@ -48,7 +48,11 @@ class ApplicationController < ActionController::Base
     site_host = request.host.gsub "www.", ""
     @current_site = Site.find_by_host site_host
     @current_site = Site.find_by_host("localhost") unless @current_site
-    @current_site = Site.create :name => "Localhost", :host => "localhost", :port => "3000", :auth_gateway => true unless @current_site
+    unless @current_site
+      site_template = Template.first
+      site_template = Template.create(:name => "Template") unless site_template
+      @current_site = Site.create(:template => site_template, :name => "Localhost", :host => "localhost", :port => "3000", :auth_gateway => true)
+    end
     @current_site
   end
 

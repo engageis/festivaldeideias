@@ -22,6 +22,11 @@ describe Idea do
     o.should_not be_valid
   end
   
+  it "should have a template" do
+    o = Factory.build(:idea, :template => nil)
+    o.should_not be_valid
+  end
+  
   it "should have a title" do
     o = Factory.build(:idea, :title => nil)
     o.should_not be_valid
