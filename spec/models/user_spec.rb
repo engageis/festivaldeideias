@@ -26,7 +26,7 @@ describe User do
     Set.new(o.secondary_users).should == Set.new([secondary, another_user])
   end
   
-  it "even if we already have a user with the same email it should not be automatically associated with the first user" do
+  it "even if we already have a user with the same email it should NOT be automatically associated with the first user" do
     o = Factory(:user)
     secondary = Factory(:user, :email => o.email)
     secondary.primary_user_id.should == nil
@@ -41,6 +41,11 @@ describe User do
   
   it "should have an uid" do
     o = Factory.build(:user, :uid => nil)
+    o.should_not be_valid
+  end
+  
+  it "should have a site" do
+    o = Factory.build(:user, :site => nil)
     o.should_not be_valid
   end
   
