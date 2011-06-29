@@ -16,6 +16,7 @@ gem "auto_html", '>= 1.3.5'
 gem "acts_as_commentable"
 gem 'routing-filter'
 gem 'http_accept_language'
+gem "autotest", "~> 4.4.6"
 
 group :test, :development do
   gem 'capybara', "~> 1.0.0"
