@@ -35,3 +35,10 @@ Factory.define :configuration do |f|
   f.name 'Foo'
   f.value 'Bar'
 end
+Factory.define :idea do |f|
+  f.association :site, :factory => :site
+  f.association :user, :factory => :user
+  f.association :category, :factory => :category
+  f.title 'Foo'
+  f.headline 'Bar'
+end
