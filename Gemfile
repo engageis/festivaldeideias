@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.3'
+gem 'rake', '0.8.7'
 
 gem 'pg'
 gem 'unicorn'
@@ -17,11 +18,11 @@ gem 'routing-filter'
 gem 'http_accept_language'
 
 group :test, :development do
-  gem 'capybara', ">= 0.4.0"
+  gem 'capybara', "~> 1.0.0"
   gem 'launchy'
   gem 'database_cleaner'
-  gem 'steak', "~> 1.1.0"
-  gem 'rspec-rails', "~> 2.0.1"
+  gem 'steak', "~> 2.0.0"
+  gem 'rspec-rails', "~> 2.6.1"
   gem 'rcov'
   gem 'factory_girl_rails'
 end
