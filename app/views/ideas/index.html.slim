@@ -1,0 +1,10 @@
+- if current_user
+  | Usuário logado: 
+  = current_user.name
+- else
+  | Nenhum usuário logado. 
+  br
+  = form_tag(pre_auth_path) do
+    = hidden_field_tag 'provider', 'google'
+    = hidden_field_tag 'return_to', '/en'
+    = submit_tag "Login"
