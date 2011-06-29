@@ -12,6 +12,7 @@ class CreateCategories < ActiveRecord::Migration
       t.name :not_blank => true
       t.badge :not_blank => true
       t[:site_id, :name].all :unique => true
+      t.site_id :reference => {:sites => :id}
     end
   end
 

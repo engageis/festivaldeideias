@@ -9,6 +9,9 @@ gem 'compass'
 gem 'validation_reflection'
 gem 'inherited_resources', '>= 1.1.2'
 gem 'maxim-sexy_pg_constraints'
+gem 'spectator-validates_email', :require => 'validates_email'
+gem "auto_html", '>= 1.3.5'
+gem "acts_as_commentable"
 
 group :test, :development do
   gem 'capybara', ">= 0.4.0"
