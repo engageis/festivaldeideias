@@ -168,6 +168,42 @@ ALTER SEQUENCE ideas_id_seq OWNED BY ideas.id;
 
 
 --
+-- Name: links; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE links (
+    id integer NOT NULL,
+    site_id integer NOT NULL,
+    name text NOT NULL,
+    title text,
+    href text NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    CONSTRAINT links_href_not_blank CHECK ((length(btrim(href)) > 0)),
+    CONSTRAINT links_name_not_blank CHECK ((length(btrim(name)) > 0))
+);
+
+
+--
+-- Name: links_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE links_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: links_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE links_id_seq OWNED BY links.id;
+
+
+--
 -- Name: oauth_providers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -364,6 +400,13 @@ ALTER TABLE ideas ALTER COLUMN id SET DEFAULT nextval('ideas_id_seq'::regclass);
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE links ALTER COLUMN id SET DEFAULT nextval('links_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE oauth_providers ALTER COLUMN id SET DEFAULT nextval('oauth_providers_id_seq'::regclass);
 
 
@@ -434,6 +477,14 @@ ALTER TABLE ONLY configurations
 
 ALTER TABLE ONLY ideas
     ADD CONSTRAINT ideas_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: links_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY links
+    ADD CONSTRAINT links_pkey PRIMARY KEY (id);
 
 
 --
@@ -621,6 +672,14 @@ ALTER TABLE ONLY ideas
 
 
 --
+-- Name: links_site_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY links
+    ADD CONSTRAINT links_site_id_reference FOREIGN KEY (site_id) REFERENCES sites(id);
+
+
+--
 -- Name: sites_template_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -663,3 +722,5 @@ INSERT INTO schema_migrations (version) VALUES ('20110629032222');
 INSERT INTO schema_migrations (version) VALUES ('20110629032532');
 
 INSERT INTO schema_migrations (version) VALUES ('20110629032948');
+
+INSERT INTO schema_migrations (version) VALUES ('20110629215600');

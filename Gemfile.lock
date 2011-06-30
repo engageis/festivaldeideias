@@ -263,4 +263,3 @@ DEPENDENCIES
   spectator-validates_email
   steak (~> 2.0.0)
   unicorn
-  validation_reflection

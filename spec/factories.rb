@@ -29,6 +29,11 @@ Factory.define :category do |f|
   f.name { Factory.next(:name) }
   f.badge 'foo.gif'
 end
+Factory.define :link do |f|
+  f.association :site, :factory => :site
+  f.name 'foo'
+  f.href '/bar'
+end
 Factory.define :oauth_provider do |f|
   f.name 'GitHub'
   f.strategy 'GitHub'

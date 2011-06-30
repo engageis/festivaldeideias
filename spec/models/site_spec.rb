@@ -40,6 +40,12 @@ describe Site do
     o.users.should == [u]
   end
   
+  it "should have links" do
+    o = Factory(:site)
+    l = Factory(:link, :site => o)
+    o.links.should == [l]
+  end
+  
   it "should have a global auth_gateway" do
     gateway = Factory(:site, :auth_gateway => true)
     o = Factory(:site)

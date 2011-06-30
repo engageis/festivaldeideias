@@ -2,6 +2,7 @@ class Site < ActiveRecord::Base
   
   belongs_to :template
   has_many :users
+  has_many :links
   validates_presence_of :name, :host, :template
   validates_uniqueness_of :name, :host
 

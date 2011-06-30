@@ -1,1 +1,10 @@
-= yield
+! doctype html
+html
+  head= render 'layouts/head'
+  body
+    #header
+      .wrapper= render 'layouts/header'
+    #middle
+      .wrapper= yield
+    #footer
+      .wrapper= render 'layouts/footer'
