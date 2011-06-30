@@ -17,6 +17,7 @@ gem "acts_as_commentable"
 gem 'routing-filter'
 gem 'http_accept_language'
 gem "autotest", "~> 4.4.6"
+gem 'activeadmin'
 
 group :test, :development do
   gem 'capybara', "~> 1.0.0"
