@@ -20,12 +20,10 @@ var LoginView = Backbone.View.extend({
   submit: function(event) {
     event.preventDefault()
     link = $(event.currentTarget)
-    console.log(link)
     if(link.hasClass('disabled'))
       return
     this.$('a.provider').addClass('disabled')
     this.$('#provider').val(link.attr('href'))
-    console.log(this.$('#provider').val())
     this.$('form').submit()
   },
   
