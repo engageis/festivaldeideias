@@ -12,6 +12,7 @@ Ramify::Application.routes.draw do
   match "/auth/:provider/callback" => "sessions#create"
   match "/auth/failure" => "sessions#failure"
   match "/logout" => "sessions#destroy", :as => :logout
+  match "/admin/logout" => "sessions#destroy", :as => :logout
 
   resources :ideas
   
