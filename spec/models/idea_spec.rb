@@ -51,4 +51,10 @@ describe Idea do
     o.should_not be_valid
   end
   
+  it "should have a parent object, if it has a parent_id" do
+    parent = Factory(:idea)
+    o = Factory(:idea, :parent => parent)
+    o.parent.should == parent
+  end
+  
 end
