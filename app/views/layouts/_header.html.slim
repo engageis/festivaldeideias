@@ -1,8 +1,6 @@
 = link_to :root do
   h1= current_site.name
-.login
-  a href='#'
-    | Fazer login
-  | ou
-  a href='/'
-    | Criar uma conta
+  
+= render 'layouts/user' if current_user
+= render 'layouts/login'
+= render 'layouts/menu'

@@ -66,7 +66,7 @@ class SessionsController < ApplicationController
   end
 
   def fake_create
-    raise "Forbiden" unless Rails.env == "test"
+    return render :status => :forbidden unless Rails.env == "test"
     user = Factory(:user, :uid => 'fake_login')
     session[:user_id] = user.id
     flash[:success] = t('sessions.post_auth.success', :name => user.display_name)

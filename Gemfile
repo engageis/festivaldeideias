@@ -28,4 +28,5 @@ group :test, :development do
   gem 'rspec-rails', "~> 2.6.1"
   gem 'rcov'
   gem 'factory_girl_rails'
+  gem "jasmine"
 end

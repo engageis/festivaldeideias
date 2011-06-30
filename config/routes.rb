@@ -13,6 +13,9 @@ Ramify::Application.routes.draw do
   match "/auth/failure" => "sessions#failure"
   match "/logout" => "sessions#destroy", :as => :logout
   match "/admin/logout" => "sessions#destroy", :as => :logout
+  if Rails.env == "test"
+    match "/fake_login" => "sessions#fake_create", :as => :fake_login
+  end
 
   resources :ideas
   

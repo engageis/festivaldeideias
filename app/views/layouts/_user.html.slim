@@ -1,0 +1,8 @@
+#user
+  = link_to '#' do
+    = image_tag current_user.display_image
+    = truncate current_user.display_name, :length => 24
+    = image_tag 'dropdown.png', :class => 'dropdown'
+  .menu.hide
+    ul
+      li= link_to t('.logout'), logout_path

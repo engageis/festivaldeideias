@@ -1,0 +1,6 @@
+#menu
+  - unless current_user
+    ul
+      li= link_to t('.login'), '#', :class => 'login'
+      li= t('or')
+      li= link_to t('.signup'), '#', :class => 'login'

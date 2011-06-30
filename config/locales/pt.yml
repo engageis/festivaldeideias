@@ -1,3 +1,15 @@
 pt:
+  or: ou
   user:
     no_name: Sem nome
+  layouts:
+    login:
+      title: Entre através de sua rede social favorita
+      remember_me: Lembre-se de mim e mantenha-me conectado.
+      description_html: Nós <strong>nunca</strong> iremos saber sua senha ou qualquer outro dado sigiloso de sua conta na rede social escolhida. Só teremos acesso a informações básicas, como nome, foto e email.
+      tips_html: <strong>Lembre-se com qual rede você se cadastrou</strong>. É com ela que você sempre irá acessar sua conta.
+    menu:
+      login: Fazer login
+      signup: Criar uma conta
+    user:
+      logout: Sair
