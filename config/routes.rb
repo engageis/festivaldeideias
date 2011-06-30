@@ -1,11 +1,9 @@
 Ramify::Application.routes.draw do
 
-  ActiveAdmin.routes(self)
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
-
   filter :locale
   
+  ActiveAdmin.routes(self)
+
   root :to => "ideas#index"
 
   post "/pre_auth" => "sessions#pre_auth", :as => :pre_auth
