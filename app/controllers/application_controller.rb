@@ -19,12 +19,15 @@ class ApplicationController < ActionController::Base
     return if params[:locale]
     new_locale = current_user.locale if current_user
     new_locale = session[:locale] if session[:locale]
-    unless new_locale
-      new_locale = request.compatible_language_from(I18n.available_locales.map(&:to_s))
-      new_locale = I18n.default_locale.to_s unless new_locale
-      flash[:locale] = t('notify_locale', :locale => new_locale)
-    end
-    return redirect_to replace_locale(new_locale)
+    #unless new_locale
+    #  new_locale = request.compatible_language_from(I18n.available_locales.map(&:to_s))
+    #  new_locale = I18n.default_locale.to_s unless new_locale
+    #  flash[:locale] = t('notify_locale', :locale => new_locale)
+    #end
+    #return redirect_to replace_locale(new_locale)
+    
+    # TODO change back to original settings when we have multiple locales
+    return redirect_to replace_locale('pt')
   end
   
   def replace_locale(new_locale)
