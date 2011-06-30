@@ -12,4 +12,5 @@ pt:
       login: Fazer login
       signup: Criar uma conta
     user:
+      admin: Painel administrativo
       logout: Sair
