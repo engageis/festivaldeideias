@@ -326,6 +326,16 @@ ALTER SEQUENCE sites_id_seq OWNED BY sites.id;
 
 
 --
+-- Name: sites_users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE sites_users (
+    site_id integer,
+    user_id integer
+);
+
+
+--
 -- Name: templates; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -660,6 +670,13 @@ CREATE INDEX index_comments_on_user_id ON comments USING btree (user_id);
 
 
 --
+-- Name: index_sites_users_on_site_id_and_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_sites_users_on_site_id_and_user_id ON sites_users USING btree (site_id, user_id);
+
+
+--
 -- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -760,6 +777,22 @@ ALTER TABLE ONLY sites
 
 
 --
+-- Name: sites_users_site_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sites_users
+    ADD CONSTRAINT sites_users_site_id_reference FOREIGN KEY (site_id) REFERENCES sites(id);
+
+
+--
+-- Name: sites_users_user_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sites_users
+    ADD CONSTRAINT sites_users_user_id_reference FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
 -- Name: users_primary_user_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -800,3 +833,5 @@ INSERT INTO schema_migrations (version) VALUES ('20110629150703');
 INSERT INTO schema_migrations (version) VALUES ('20110629150704');
 
 INSERT INTO schema_migrations (version) VALUES ('20110629215600');
+
+INSERT INTO schema_migrations (version) VALUES ('20110630020631');
