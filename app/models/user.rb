@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :secondary_users, :class_name => 'User', :foreign_key => :primary_user_id
   belongs_to :site
+  has_and_belongs_to_many :sites, :join_table => 'admins_sites'
   belongs_to :primary, :class_name => 'User', :foreign_key => :primary_user_id
   scope :primary, :conditions => ["primary_user_id IS NULL"]
 

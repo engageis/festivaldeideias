@@ -1,6 +1,9 @@
 - if current_user
   | Usuário logado: 
   = current_user.name
+  = link_to 'Sair', logout_path
+  - if current_user.admin
+    = link_to 'Painel Administrativo', admin_dashboard_path
 - else
   | Nenhum usuário logado. 
   br

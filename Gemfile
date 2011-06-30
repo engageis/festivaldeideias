@@ -1,4 +1,5 @@
 source 'http://rubygems.org'
+source 'http://gems.github.com'
 
 gem 'rails', '3.0.3'
 gem 'rake', '0.8.7'
@@ -17,6 +18,7 @@ gem 'routing-filter'
 gem 'http_accept_language'
 gem "autotest", "~> 4.4.6"
 gem 'activeadmin'
+gem 'cancan'
 
 group :test, :development do
   gem 'capybara', "~> 1.0.0"
