@@ -2,7 +2,7 @@
   | Usuário logado: 
   = current_user.name
   = link_to 'Sair', logout_path
-  - if current_user.admin
+  - if can? :manage, current_site
     = link_to 'Painel Administrativo', admin_dashboard_path
 - else
   | Nenhum usuário logado. 
