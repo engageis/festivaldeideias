@@ -139,7 +139,7 @@ describe User do
     o = Factory(:user, :name => nil, :nickname => "Nickname")
     o.display_name.should == "Nickname"
     o = Factory(:user, :name => nil, :nickname => nil)
-    o.display_name.should == "No name"
+    o.display_name.should == "Sem nome"
   end
   
   it "should have a display_image that shows the user's image or user.png when email is null" do
