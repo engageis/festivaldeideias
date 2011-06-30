@@ -12,6 +12,14 @@ site_template = Template.create! :name => "Idéia", :description => "Modelo simp
 
 site = Site.create! :name => "Festival de Idéias · Centro Ruth Cardoso", :host => "localhost", :port => "3000", :auth_gateway => true, :template => site_template
 
+site.links.create :name => "Sobre o Festival de Idéias", :href => '#'
+site.links.create :name => "Sobre os temas", :href => '#'
+site.links.create :name => "Regulamento", :href => '#'
+site.links.create :name => "Premiação", :href => '#'
+site.links.create :name => "Blog", :href => '#'
+site.links.create :name => "Vídeos", :href => '#'
+site.links.create :name => "Contato", :href => '#'
+
 # TODO create a badge for each category with carrier wave
 category_1 = Category.create! :site => site, :name => "Mobilidade urbana", :badge => "badge.png"
 category_2 = Category.create! :site => site, :name => "Segurança comunitária", :badge => "badge.png"
