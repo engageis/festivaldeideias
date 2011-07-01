@@ -8,10 +8,12 @@ feature 'Login', %q{
 
   scenario "I open the login page but then I cancel" do
     click_login
-    find("#login").visible?.should be_true
+    find("#login .overlay").visible?.should be_true
+    find("#login .popup").visible?.should be_true
     click_link 'X'
     current_path.should == homepage
-    find("#login").visible?.should be_false
+    find("#login .overlay").visible?.should be_false
+    find("#login .popup").visible?.should be_false
   end
 
   scenario "I'm new to the site and I want to signup with a supported provider" do

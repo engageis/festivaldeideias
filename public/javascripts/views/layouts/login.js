@@ -13,7 +13,6 @@ var LoginView = Backbone.View.extend({
 
   render: function() {
     this.$('#return_to').val(location.href)
-    this.el.show()
     this.$('.overlay').show()
     this.$('.popup').fadeIn()
     return this
@@ -34,7 +33,6 @@ var LoginView = Backbone.View.extend({
     this.$('#return_to').val(null)
     this.$('.overlay').hide()
     this.$('.popup').hide()
-    this.el.hide()
   }
 
 })

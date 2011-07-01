@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   belongs_to :site
   has_and_belongs_to_many :sites
   belongs_to :primary, :class_name => 'User', :foreign_key => :primary_user_id
+
   scope :primary, :conditions => ["primary_user_id IS NULL"]
 
   def to_param

@@ -5,8 +5,8 @@ module HelperMethods
     return @current_site = Site.first if Site.first
     unless @current_site
       site_template = Template.first
-      site_template = Template.create(:name => "Template") unless site_template
-      @current_site = Site.create(:template => site_template, :name => "Localhost", :host => "localhost", :port => "3000", :auth_gateway => true)
+      site_template = Template.create!(:name => "Template") unless site_template
+      @current_site = Site.create!(:template => site_template, :name => "Localhost", :host => "localhost", :port => "3000", :auth_gateway => true)
     end
     @current_site
   end
@@ -18,7 +18,8 @@ module HelperMethods
   end
   def click_login
     visit homepage
-    find("#login").visible?.should_not be_true
+    find("#login .overlay").visible?.should be_false
+    find("#login .popup").visible?.should be_false
     page.should have_no_css('#user')
     click_link 'Fazer login'
   end

@@ -20,7 +20,6 @@ gem "autotest", "~> 4.4.6"
 gem 'activeadmin'
 gem 'cancan'
 gem "mustache"
-gem 'accessible_attributes'
 gem 'kaminari'
 gem "meta_search"
 

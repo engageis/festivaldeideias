@@ -2,8 +2,6 @@ class Idea < ActiveRecord::Base
   
   include Rails.application.routes.url_helpers
   
-  attr_accessible :title
-  
   belongs_to :site
   belongs_to :user
   belongs_to :category
@@ -12,7 +10,7 @@ class Idea < ActiveRecord::Base
   
   validates_presence_of :site, :user, :category, :template, :title, :headline
   validates_length_of :headline, :maximum => 140
-  
+
   scope :featured, where(:featured => true).order('"order"')
   scope :not_featured, where(:featured => false).order("created_at DESC")
   scope :popular, order("likes DESC")
