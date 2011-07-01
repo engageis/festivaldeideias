@@ -269,6 +269,7 @@ DEPENDENCIES
   kaminari
   launchy
   maxim-sexy_pg_constraints
+  meta_search
   mustache
   omniauth
   pg
