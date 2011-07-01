@@ -4,5 +4,4 @@
   = render :partial => 'idea', :collection => collection
   .more
     hr
-    / TODO change to explore path
-    = link_to t(".#{quick}.more"), '#'
+    = link_to t(".#{quick}.more"), "#{explore_path}##{quick}"
