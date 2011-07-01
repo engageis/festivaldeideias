@@ -46,6 +46,9 @@ pt:
     idea:
       by: por %{user}
       link: Conheça e contribua
+    idea_template:
+      by: por %{user}
+      link: Conheça e contribua
     explore:
       title: Conheça as ideias do festival
       subtitle: Encontre as ideias que você acha que pode melhorar e contribua!

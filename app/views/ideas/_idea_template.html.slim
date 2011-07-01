@@ -1,2 +1,16 @@
 script type="text/template" id="idea_template"
-  | ALOOOOU
+  .idea
+    |{{#attributes}}
+    |{{#category}}
+    img src="{{badge}}"
+    |{{/category}}
+    h1
+      a href='{{url}}'
+        |{{title}}
+    |{{#user}}
+    .user= t('.by', :user => "{{name}}")
+    |{{/user}}
+    .headline
+      |{{headline}}
+    = link_to t('.link'), '{{url}}'
+    |{{/attributes}}

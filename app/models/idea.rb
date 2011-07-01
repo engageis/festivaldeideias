@@ -1,5 +1,7 @@
 class Idea < ActiveRecord::Base
   
+  include Rails.application.routes.url_helpers
+  
   attr_accessible :title
   
   belongs_to :site
@@ -24,7 +26,9 @@ class Idea < ActiveRecord::Base
       :id => id,
       :title => title,
       :headline => headline,
-      :user => user
+      :category => category,
+      :user => user,
+      :url => idea_path(self)
     }
   end
   
