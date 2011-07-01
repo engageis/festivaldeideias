@@ -27,7 +27,7 @@ end
 Factory.define :category do |f|
   f.association :site, :factory => :site
   f.name { Factory.next(:name) }
-  f.badge 'foo.gif'
+  f.badge File.open("#{Rails.root.to_s}/lib/fixtures/badge.gif")
 end
 Factory.define :link do |f|
   f.association :site, :factory => :site

@@ -21,9 +21,10 @@ site.links.create :name => "Vídeos", :href => '#'
 site.links.create :name => "Contato", :href => '#'
 
 # TODO create a badge for each category with carrier wave
-category_1 = Category.create! :site => site, :name => "Mobilidade urbana", :badge => "badge.png"
-category_2 = Category.create! :site => site, :name => "Segurança comunitária", :badge => "badge.png"
-category_3 = Category.create! :site => site, :name => "Catástrofes naturais", :badge => "badge.png"
+badge_path = "#{Rails.root.to_s}/lib/fixtures/badge.gif"
+category_1 = Category.create! :site => site, :name => "Mobilidade urbana", :badge => badge_path
+category_2 = Category.create! :site => site, :name => "Segurança comunitária", :badge => badge_path
+category_3 = Category.create! :site => site, :name => "Catástrofes naturais", :badge => badge_path
 
 user = User.create! :site => site, :provider => 'fake', :uid => 'foo_bar', :name => "Foo Bar"
 user_2 = User.create! :site => site, :provider => 'fake', :uid => 'bar_foo', :name => "Bar Foo"
