@@ -40,3 +40,6 @@ pt:
         title: Ideias recentes
         subtitle: Conheça as ideias mais novas que surgiram por aqui!
         more: Conheça mais ideias recentes
+    idea:
+      by: por %{user}
+      link: Conheça e contribua

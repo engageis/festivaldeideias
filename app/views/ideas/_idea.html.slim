@@ -1,0 +1,7 @@
+.idea
+  / TODO load badge from carrier_wave
+  = image_tag idea.category.badge
+  h1= link_to idea.title, idea_path(idea)
+  .user= t('.by', :user => idea.user.name)
+  .headline= idea.headline
+  = link_to t('.link'), idea_path(idea)
