@@ -8,11 +8,11 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-site_template = Template.create! :name => "Idéia", :description => "Modelo simples para a colaboração na evolução de uma idéia."
+site_template = Template.create! :name => "Ideia", :description => "Modelo simples para a colaboração na evolução de uma ideia."
 
-site = Site.create! :name => "Festival de Idéias · Centro Ruth Cardoso", :host => "localhost", :port => "3000", :auth_gateway => true, :template => site_template
+site = Site.create! :name => "Festival de Ideias · Centro Ruth Cardoso", :host => "localhost", :port => "3000", :auth_gateway => true, :template => site_template
 
-site.links.create :name => "Sobre o Festival de Idéias", :href => '#'
+site.links.create :name => "Sobre o Festival de Ideias", :href => '#'
 site.links.create :name => "Sobre os temas", :href => '#'
 site.links.create :name => "Regulamento", :href => '#'
 site.links.create :name => "Premiação", :href => '#'
@@ -28,12 +28,23 @@ category_3 = Category.create! :site => site, :name => "Catástrofes naturais", :
 user = User.create! :site => site, :provider => 'fake', :uid => 'foo_bar', :name => "Foo Bar"
 user_2 = User.create! :site => site, :provider => 'fake', :uid => 'bar_foo', :name => "Bar Foo"
 
-idea_1 = Idea.create! :site => site, :user => user, :category => category_1, :template => site.template, :title => "Circuito de webcams entre vizinhos", :headline => "Criar um sistema de monitoramento dos espaços públicos através de webcams que cada morador pode instalar."
-idea_2 = Idea.create! :site => site, :user => user_2, :category => category_2, :template => site.template, :title => "Circuito de webcams entre vizinhos", :headline => "Criar um sistema de monitoramento dos espaços públicos através de webcams que cada morador pode instalar."
-idea_3 = Idea.create! :site => site, :user => user, :category => category_3, :template => site.template, :title => "Circuito de webcams entre vizinhos", :headline => "Criar um sistema de monitoramento dos espaços públicos através de webcams que cada morador pode instalar."
+idea_1 = Idea.create! :site => site, :user => user, :category => category_1, :template => site.template, :title => "Circuito de webcams entre vizinhos", :headline => "Criar um sistema de monitoramento dos espaços públicos através de webcams que cada morador pode instalar.", :featured => true, :recommended => true
+idea_2 = Idea.create! :site => site, :user => user_2, :category => category_2, :template => site.template, :title => "Circuito de webcams entre vizinhos", :headline => "Criar um sistema de monitoramento dos espaços públicos através de webcams que cada morador pode instalar.", :featured => true, :recommended => true
+idea_3 = Idea.create! :site => site, :user => user, :category => category_3, :template => site.template, :title => "Circuito de webcams entre vizinhos", :headline => "Criar um sistema de monitoramento dos espaços públicos através de webcams que cada morador pode instalar.", :featured => true, :recommended => true
+idea_4 = Idea.create! :site => site, :user => user, :category => category_2, :template => site.template, :title => "Circuito de webcams entre vizinhos", :headline => "Criar um sistema de monitoramento dos espaços públicos através de webcams que cada morador pode instalar.", :featured => true, :recommended => true
 
-Idea.create! :parent => idea_1, :site => site, :user => user_2, :category => category_1, :template => site.template, :title => "Circuito de webcams entre vizinhos", :headline => "Criar um sistema de monitoramento dos espaços públicos através de webcams que cada morador pode instalar."
+Idea.create! :parent => idea_1, :site => site, :user => user_2, :category => category_1, :template => site.template, :title => "Circuito de webcams entre vizinhos", :headline => "Criar um sistema de monitoramento dos espaços públicos através de webcams que cada morador pode instalar.", :likes => 10
 
-Idea.create! :parent => idea_2, :site => site, :user => user, :category => category_2, :template => site.template, :title => "Circuito de webcams entre vizinhos", :headline => "Criar um sistema de monitoramento dos espaços públicos através de webcams que cada morador pode instalar."
+Idea.create! :parent => idea_2, :site => site, :user => user, :category => category_2, :template => site.template, :title => "Circuito de webcams entre vizinhos", :headline => "Criar um sistema de monitoramento dos espaços públicos através de webcams que cada morador pode instalar.", :likes => 9
 
-Idea.create! :parent => idea_3, :site => site, :user => user_2, :category => category_3, :template => site.template, :title => "Circuito de webcams entre vizinhos", :headline => "Criar um sistema de monitoramento dos espaços públicos através de webcams que cada morador pode instalar."
+Idea.create! :parent => idea_3, :site => site, :user => user_2, :category => category_3, :template => site.template, :title => "Circuito de webcams entre vizinhos", :headline => "Criar um sistema de monitoramento dos espaços públicos através de webcams que cada morador pode instalar.", :likes => 8
+
+Idea.create! :parent => idea_4, :site => site, :user => user_2, :category => category_2, :template => site.template, :title => "Circuito de webcams entre vizinhos", :headline => "Criar um sistema de monitoramento dos espaços públicos através de webcams que cada morador pode instalar.", :likes => 7
+
+Idea.create! :parent => idea_1, :site => site, :user => user_2, :category => category_1, :template => site.template, :title => "Circuito de webcams entre vizinhos", :headline => "Criar um sistema de monitoramento dos espaços públicos através de webcams que cada morador pode instalar.", :likes => 6
+
+Idea.create! :parent => idea_2, :site => site, :user => user, :category => category_2, :template => site.template, :title => "Circuito de webcams entre vizinhos", :headline => "Criar um sistema de monitoramento dos espaços públicos através de webcams que cada morador pode instalar.", :likes => 5
+
+Idea.create! :parent => idea_3, :site => site, :user => user_2, :category => category_3, :template => site.template, :title => "Circuito de webcams entre vizinhos", :headline => "Criar um sistema de monitoramento dos espaços públicos através de webcams que cada morador pode instalar.", :likes => 4
+
+Idea.create! :parent => idea_4, :site => site, :user => user_2, :category => category_2, :template => site.template, :title => "Circuito de webcams entre vizinhos", :headline => "Criar um sistema de monitoramento dos espaços públicos através de webcams que cada morador pode instalar.", :likes => 3

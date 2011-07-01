@@ -13,7 +13,9 @@ var LoginView = Backbone.View.extend({
 
   render: function() {
     this.$('#return_to').val(location.href)
-    this.el.fadeIn()
+    this.el.show()
+    this.$('.overlay').show()
+    this.$('.popup').fadeIn()
     return this
   },
   
@@ -27,8 +29,11 @@ var LoginView = Backbone.View.extend({
     this.$('form').submit()
   },
   
-  close: function() {
+  close: function(event) {
+    event.preventDefault()
     this.$('#return_to').val(null)
+    this.$('.overlay').hide()
+    this.$('.popup').hide()
     this.el.hide()
   }
 

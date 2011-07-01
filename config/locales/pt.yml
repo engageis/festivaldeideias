@@ -14,3 +14,29 @@ pt:
     user:
       admin: Painel administrativo
       logout: Sair
+  ideas:
+    index:
+      title: Coloque suas ideias pra fora e construa junto com todo mundo incríveis inovações para o desenvolvimento social!
+      bullets:
+        first: Encontre uma ideia que você acha que pode melhorar
+        second: Crie sua própria versão e trabalhe até ficar satisfeito
+        third: Devolva a ideia para a comunidade melhorar ainda mais
+      text_html: <p>As melhores ideias serão selecionadas para o Festival de Ideias, que ocorrerá nos dias 20 e 21 de setembro, na Cinemateca SP.</p><p>Participando, você poderá ser escolhido para os times que vão para o festival e concorrer a prêmios incríveis!<p></p><p>Além, é claro, de ajudar a criar um mundo melhor :)</p>
+      video_html: <iframe width="560" height="349" src="http://www.youtube.com/embed/Gx7lvQWCheM" frameborder="0" allowfullscreen></iframe>
+      subtitle: Conheça algumas ideias e participe!
+      create:
+        html: Tem uma ideia que não está aqui? %{link}
+        link: Crie sua ideia
+    list:
+      recommended:
+        title: Nossa seleção
+        subtitle: Conheça as ideias selecionadas por nossa equipe, que está participando dirariamente do que acontece na comunidade.
+        more: Conheça mais ideias recomendadas
+      popular:
+        title: Ideias mais populares
+        subtitle: Conheça as ideias que mais pessoas curtiram e espalharam por aí.
+        more: Conheça mais ideias populares
+      recent:
+        title: Ideias recentes
+        subtitle: Conheça as ideias mais novas que surgiram por aqui!
+        more: Conheça mais ideias recentes

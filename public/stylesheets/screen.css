@@ -68,3 +68,22 @@ footer, header, hgroup, menu, nav, section {
 #login {
   display: none;
 }
+
+/* line 8, ../../app/stylesheets/screen.sass */
+.overlay {
+  background-color: #333333;
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 400;
+  display: none;
+}
+
+/* line 19, ../../app/stylesheets/screen.sass */
+.popup {
+  z-index: 500;
+  display: none;
+}

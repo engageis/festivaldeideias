@@ -1,0 +1,12 @@
+h1= t('.title')
+ol
+  li= t('.bullets.first')
+  li= t('.bullets.second')
+  li= t('.bullets.third')
+.text= t('.text_html')
+.video= t('.video_html')
+h2= t('.subtitle')
+.create= t('.create.html', :link => link_to(t('.create.link'), new_idea_path))
+= render :partial => 'list', :locals => {:quick => "recommended", :collection => @featured} unless @featured.empty?
+= render :partial => 'list', :locals => {:quick => "popular", :collection => @popular} unless @popular.empty?
+= render :partial => 'list', :locals => {:quick => "recent", :collection => @recent} unless @recent.empty?

@@ -10,6 +10,10 @@ class CreateIdeas < ActiveRecord::Migration
       t.references :template, :null => false
       t.text :title, :null => false
       t.text :headline, :null => false
+      t.boolean :featured, :null => false, :default => false
+      t.boolean :recommended, :null => false, :default => false
+      t.integer :likes, :null => false, :default => 0
+      t.integer :order
       t.timestamps
     end
     constrain :ideas do |t|

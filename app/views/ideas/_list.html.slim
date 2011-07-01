@@ -1,0 +1,7 @@
+.ideas
+  h1= t(".#{quick}.title")
+  h2= t(".#{quick}.subtitle")
+  = render :partial => 'idea', :collection => collection
+  .more
+    hr
+    = link_to t(".#{quick}.more"), '#'
