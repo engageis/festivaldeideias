@@ -7,6 +7,8 @@ class Category < ActiveRecord::Base
 
   scope :with_ideas, where("id IN (SELECT DISTINCT category_id FROM ideas)")
 
+  mount_uploader :badge, BadgeUploader
+
   def as_json(options={})
     {
       :id => id,

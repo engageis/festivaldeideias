@@ -22,6 +22,7 @@ gem 'cancan'
 gem "mustache"
 gem 'kaminari'
 gem "meta_search"
+gem 'carrierwave'
 
 group :test, :development do
   gem 'capybara', "~> 1.0.0"
