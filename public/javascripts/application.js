@@ -1,7 +1,7 @@
-function Application(){
+function Application(locale){
   
-  this.menuView = new MenuView(),
+  this.locale = locale
+  this.menuView = new MenuView()
   this.loginView = new LoginView()
   
 }
-var app = new Application()

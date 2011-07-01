@@ -21,12 +21,15 @@ pt:
         first: Encontre uma ideia que você acha que pode melhorar
         second: Crie sua própria versão e trabalhe até ficar satisfeito
         third: Devolva a ideia para a comunidade melhorar ainda mais
-      text_html: <p>As melhores ideias serão selecionadas para o Festival de Ideias, que ocorrerá nos dias 20 e 21 de setembro, na Cinemateca SP.</p><p>Participando, você poderá ser escolhido para os times que vão para o festival e concorrer a prêmios incríveis!<p></p><p>Além, é claro, de ajudar a criar um mundo melhor :)</p>
+      text_html: <p>As melhores ideias serão selecionadas para o Festival de Ideias, que ocorrerá nos dias 20 e 21 de setembro, na Cinemateca SP.</p><p>Contribuindo, você poderá ser escolhido para os times que vão para o festival e concorrer a prêmios incríveis!<p></p><p>Além, é claro, de ajudar a criar um mundo melhor :)</p>
       video_html: <iframe width="560" height="349" src="http://www.youtube.com/embed/Gx7lvQWCheM" frameborder="0" allowfullscreen></iframe>
-      subtitle: Conheça algumas ideias e participe!
+      subtitle: Conheça algumas ideias e contribua!
       create:
         html: Tem uma ideia que não está aqui? %{link}
         link: Crie sua ideia
+      explore:
+        html: Temos um total de %{count} idéias. Que tal explorar todas elas %{link}?
+        link: clicando aqui
     list:
       recommended:
         title: Nossa seleção
@@ -43,3 +46,12 @@ pt:
     idea:
       by: por %{user}
       link: Conheça e contribua
+    explore:
+      title: Conheça as ideias do festival
+      subtitle: Encontre as ideias que você acha que pode melhorar e contribua!
+      quick: Busca rápida
+      recommended: Recomendadas
+      popular: Populares
+      recent: Recentes
+      categories: Categorias
+      empty: Nenhuma idéia encontrada

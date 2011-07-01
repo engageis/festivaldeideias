@@ -1,0 +1,37 @@
+#explore
+  h1= t('.title')
+  h2= t('.subtitle')
+  .menu
+    h3= t('.quick')
+    ul
+      li
+        a href='#recommended'
+          = t('.recommended')
+      li
+        a href='#popular'
+          = t('.popular')
+      li
+        a href='#recent'
+          = t('.recent')
+    h3= t('.categories')
+    ul
+      - @categories.each do |category|
+        li
+          a href="##{category.name.parameterize}" data-id=category.id
+            = category.name
+  .results
+    .empty= t('.empty')
+    .items
+    .loading= image_tag "loading.gif"
+= render 'idea_template'
+= render 'shared/application_js'
+= javascript_include_tag 'models/paginated_collection'
+= javascript_include_tag 'models/idea'
+= javascript_include_tag 'views/paginated_view'
+= javascript_include_tag 'views/model_view'
+= javascript_include_tag 'views/idea'
+= javascript_include_tag 'views/explore'
+= javascript_include_tag 'controllers/explore'
+javascript:
+  var exploreController = new ExploreController
+  Backbone.history.start()

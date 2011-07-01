@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   
+  include ActionView::Helpers::TextHelper
+
   validates_presence_of :provider, :uid, :site
   validates_uniqueness_of :uid, :scope => :provider
   validates_length_of :bio, :maximum => 140
@@ -46,20 +48,21 @@ class User < ActiveRecord::Base
     name || nickname || I18n.t('user.no_name')
   end
   
-  def short_name
-    truncate display_name, :length => 26
-  end
-  
-  def medium_name
-    truncate display_name, :length => 42
-  end
-  
   def display_image
     gravatar_url || image_url || '/images/user.png'
   end
   
   def remember_me_hash
     Digest::MD5.new.update("#{self.provider}###{self.uid}").to_s
+  end
+  
+  def as_json(options={})
+    {
+      :id => id,
+      :email => email,
+      :name => display_name,
+      :image => display_image
+    }
   end
   
   protected

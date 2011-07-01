@@ -5,6 +5,7 @@ class Site < ActiveRecord::Base
   has_and_belongs_to_many :admins, :class_name => 'User'
   has_many :links
   has_many :ideas
+  has_many :categories
   validates_presence_of :name, :host, :template
   validates_uniqueness_of :name, :host
 

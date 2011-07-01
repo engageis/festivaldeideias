@@ -87,3 +87,13 @@ footer, header, hgroup, menu, nav, section {
   z-index: 500;
   display: none;
 }
+
+/* line 23, ../../app/stylesheets/screen.sass */
+.loading img {
+  display: none;
+}
+
+/* line 26, ../../app/stylesheets/screen.sass */
+.empty {
+  display: none;
+}

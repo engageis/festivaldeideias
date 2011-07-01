@@ -19,6 +19,10 @@ gem 'http_accept_language'
 gem "autotest", "~> 4.4.6"
 gem 'activeadmin'
 gem 'cancan'
+gem "mustache"
+gem 'accessible_attributes'
+gem 'kaminari'
+gem "meta_search"
 
 group :test, :development do
   gem 'capybara', "~> 1.0.0"

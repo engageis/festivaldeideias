@@ -13,10 +13,17 @@ Ramify::Application.routes.draw do
   match "/auth/failure" => "sessions#failure"
   match "/logout" => "sessions#destroy", :as => :logout
   match "/admin/logout" => "sessions#destroy", :as => :logout
+
+  match "/explore" => "ideas#explore", :as => :explore
+  
   if Rails.env == "test"
     match "/fake_login" => "sessions#fake_create", :as => :fake_login
   end
 
-  resources :ideas
+  resources :ideas, :only => [:index, :new, :create, :show] do
+    collection do
+      get 'explore'
+    end
+  end
   
 end
