@@ -9,6 +9,7 @@ var ExploreController = Backbone.Controller.extend({
   },
 
   recommended: function() {
+    this.selectItem("recommended")
     this.view = new ExploreView({
       collection: new Ideas({
         search: {recommended_equals: true}
@@ -17,6 +18,7 @@ var ExploreController = Backbone.Controller.extend({
   },
   
   popular: function() {
+    this.selectItem("popular")
     this.view = new ExploreView({
       collection: new Ideas({
         search: {meta_sort: "likes.desc"}
@@ -25,6 +27,7 @@ var ExploreController = Backbone.Controller.extend({
   },
   
   recent: function() {
+    this.selectItem("recent")
     this.view = new ExploreView({
       collection: new Ideas({
         search: {meta_sort: "created_at.desc"}
@@ -32,21 +35,21 @@ var ExploreController = Backbone.Controller.extend({
     })
   },
   
-  quick: function(type) {
-    this.view = new ExploreView({
-      collection: new Ideas({
-        search: {category_id_equals: 1}
-      })
-    })
-  },
-
   category: function(name) {
-    var id = $('#explore a[href=#' + name + ']').attr('data-id')
+    this.selectItem(name)
+    var id = this.selectedItem.attr('data-id')
     this.view = new ExploreView({
       collection: new Ideas({
         search: {category_id_equals: id}
       })
     })
+  },
+  
+  selectItem: function(name) {
+    this.selectedItem = $('#explore a[href=#' + name + ']')
+    $('#explore .selected').removeClass('selected')
+    console.log(this.selectedItem)
+    this.selectedItem.parent().addClass('selected')
   }
 
 })

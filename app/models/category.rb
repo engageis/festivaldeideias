@@ -13,7 +13,7 @@ class Category < ActiveRecord::Base
     {
       :id => id,
       :name => name,
-      :badge => badge
+      :badge => badge.url
     }
   end
   

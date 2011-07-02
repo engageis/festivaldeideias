@@ -46,8 +46,8 @@ pt:
       by: por %{user}
       link: Conheça e contribua
     explore:
-      title: Conheça as ideias do festival
-      subtitle: Encontre as ideias que você acha que pode melhorar e contribua!
+      title: Conheça as ideias do Festival
+      subtitle: Encontre as ideias que você gostaria de aprimorar e contribua!
       quick: Busca rápida
       recommended: Recomendadas
       popular: Populares
