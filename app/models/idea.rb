@@ -19,6 +19,10 @@ class Idea < ActiveRecord::Base
   scope :recommended, where(:recommended => true).order("created_at DESC")
   scope :recent, order("created_at DESC")
   
+  def to_param
+    "#{self.id}-#{self.title.parameterize}"
+  end
+
   def as_json(options={})
     {
       :id => id,
