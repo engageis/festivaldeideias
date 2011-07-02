@@ -217,6 +217,7 @@ CREATE TABLE links (
     name text NOT NULL,
     title text,
     href text NOT NULL,
+    header boolean DEFAULT false NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     CONSTRAINT links_href_not_blank CHECK ((length(btrim(href)) > 0)),

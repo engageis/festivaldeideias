@@ -22,7 +22,7 @@ feature 'Login', %q{
     page.should_not have_link('Github')
 
     fake_login
-    page.should have_css('#user')
+    page.should have_css('#user_menu')
     page.should have_link(current_user.name)
   end
 
