@@ -12,6 +12,7 @@ pt:
       login: Fazer login
       signup: Criar uma conta
     user_menu:
+      my_profile: Meu perfil
       admin: Painel administrativo
       logout: Sair
   ideas:

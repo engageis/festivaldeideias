@@ -26,4 +26,6 @@ Ramify::Application.routes.draw do
     end
   end
   
+  resources :users, :only => [:show]
+  
 end

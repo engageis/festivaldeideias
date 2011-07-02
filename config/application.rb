@@ -13,7 +13,7 @@ module Ramify
     config.filter_parameters += [:password, :password_confirmation]
     config.time_zone = 'Brasilia' 
     config.generators do |g|
-      g.template_engine :haml
+      g.template_engine :slim
       g.test_framework :rspec, :fixture => false, :views => false
     end
     ActiveRecord::Base.include_root_in_json = false
