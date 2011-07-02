@@ -12,10 +12,10 @@ site_template = Template.create! :name => "Ideia", :description => "Modelo simpl
 
 site = Site.create! :name => "Festival de Ideias · Centro Ruth Cardoso", :host => "localhost", :port => "3000", :auth_gateway => true, :template => site_template
 
-site.links.create :name => "Sobre o Festival de Ideias", :href => '#'
-site.links.create :name => "Sobre os temas", :href => '#'
-site.links.create :name => "Regulamento", :href => '#'
-site.links.create :name => "Premiação", :href => '#'
+site.links.create :name => "Sobre o Festival", :href => '#', :header => true
+site.links.create :name => "Sobre os temas", :href => '#', :header => true
+site.links.create :name => "Regulamento", :href => '#', :header => true
+site.links.create :name => "Premiação", :href => '#', :header => true
 site.links.create :name => "Blog", :href => '#'
 site.links.create :name => "Vídeos", :href => '#'
 site.links.create :name => "Contato", :href => '#'

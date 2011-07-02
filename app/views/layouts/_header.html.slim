@@ -1,6 +1,7 @@
 = link_to :root do
   h1= current_site.name
   
-= render 'layouts/user' if current_user
 = render 'layouts/login'
-= render 'layouts/menu'
+= render 'layouts/login_menu'
+= render 'layouts/user_menu' if current_user
+= render 'layouts/header_menu'

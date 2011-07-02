@@ -7,6 +7,7 @@ class CreateLinks < ActiveRecord::Migration
       t.text :name, :null => false
       t.text :title
       t.text :href, :null => false
+      t.boolean :header, :null => false, :default => false
       t.timestamps
     end
     constrain :links do |t|

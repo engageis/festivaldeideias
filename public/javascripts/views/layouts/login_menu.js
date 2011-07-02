@@ -1,6 +1,6 @@
-var MenuView = Backbone.View.extend({
+var LoginMenuView = Backbone.View.extend({
 
-  el: $('#menu'),
+  el: $('#login_menu'),
 
   events: {
     "click .login": "showLogin"

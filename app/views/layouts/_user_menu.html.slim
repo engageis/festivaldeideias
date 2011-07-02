@@ -1,9 +1,9 @@
-#user
+#user_menu
   = link_to '#' do
     = image_tag current_user.display_image
     = truncate current_user.display_name, :length => 24
     = image_tag 'dropdown.png', :class => 'dropdown'
-  .menu.hide
+  .menu
     ul
       - if can? :manage, current_site
         li= link_to t('.admin'), admin_dashboard_path, :target => :_blank

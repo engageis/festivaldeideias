@@ -1,0 +1,4 @@
+#header_menu
+  ul
+    - current_site.links.header.each do |link|
+      li= link_to link.name, link.href, :title => (link.title or link.name), :target => :_blank

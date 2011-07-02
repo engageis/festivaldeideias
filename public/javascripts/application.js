@@ -1,7 +1,7 @@
 function Application(locale){
   
   this.locale = locale
-  this.menuView = new MenuView()
+  this.loginMenuView = new LoginMenuView()
   this.loginView = new LoginView()
   
 }

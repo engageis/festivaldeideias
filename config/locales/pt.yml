@@ -8,40 +8,36 @@ pt:
       remember_me: Lembre-se de mim e mantenha-me conectado.
       description_html: Nós <strong>nunca</strong> iremos saber sua senha ou qualquer outro dado sigiloso de sua conta na rede social escolhida. Só teremos acesso a informações básicas, como nome, foto e email.
       tips_html: <strong>Lembre-se com qual rede você se cadastrou</strong>. É com ela que você sempre irá acessar sua conta.
-    menu:
+    login_menu:
       login: Fazer login
       signup: Criar uma conta
-    user:
+    user_menu:
       admin: Painel administrativo
       logout: Sair
   ideas:
     index:
-      title: Coloque suas ideias pra fora e construa junto com todo mundo incríveis inovações para o desenvolvimento social!
+      title: Exponha suas ideias e venha junto construir inovações incríveis para o desenvolvimento social!
       bullets:
-        first: Encontre uma ideia que você acha que pode melhorar
+        first: Encontre uma ideia que você gostaria de aprimorar
         second: Crie sua própria versão e trabalhe até ficar satisfeito
-        third: Devolva a ideia para a comunidade melhorar ainda mais
-      text_html: <p>As melhores ideias serão selecionadas para o Festival de Ideias, que ocorrerá nos dias 20 e 21 de setembro, na Cinemateca SP.</p><p>Contribuindo, você poderá ser escolhido para os times que vão para o festival e concorrer a prêmios incríveis!<p></p><p>Além, é claro, de ajudar a criar um mundo melhor :)</p>
+        third: Devolva a ideia para a comunidade aprimorar ainda mais
+      text_html: <p>As melhores ideias serão selecionadas para o <strong>Festival de Ideias</strong>, que ocorrerá nos dias <strong>20 e 21 de setembro</strong>, na <strong>Cinemateca SP</strong>.</p><p>Contribuindo, você poderá ser escolhido para um dos times que irão ao festival e concorrer a <strong>prêmios incríveis</strong>, além, é claro, de ajudar a criar um mundo melhor :)</p>
       video_html: <iframe width="560" height="349" src="http://www.youtube.com/embed/Gx7lvQWCheM" frameborder="0" allowfullscreen></iframe>
-      subtitle: Conheça algumas ideias e contribua!
-      create:
-        html: Tem uma ideia que não está aqui? %{link}
-        link: Crie sua ideia
+      discover: Conheça algumas ideias e contribua!
+      didnt_find: Tem uma ideia que não está aqui?
+      start: Inicie uma ideia
       explore:
         html: Temos um total de %{count} idéias. Que tal explorar todas elas %{link}?
         link: clicando aqui
     list:
       recommended:
         title: Nossa seleção
-        subtitle: Conheça as ideias selecionadas por nossa equipe, que está participando dirariamente do que acontece na comunidade.
         more: Conheça mais ideias recomendadas
       popular:
         title: Ideias mais populares
-        subtitle: Conheça as ideias que mais pessoas curtiram e espalharam por aí.
         more: Conheça mais ideias populares
       recent:
         title: Ideias recentes
-        subtitle: Conheça as ideias mais novas que surgiram por aqui!
         more: Conheça mais ideias recentes
     idea:
       by: por %{user}

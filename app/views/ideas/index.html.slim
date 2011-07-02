@@ -5,10 +5,12 @@ ol
   li= t('.bullets.third')
 .text= t('.text_html')
 .video= t('.video_html')
-h2= t('.subtitle')
-.create= t('.create.html', :link => link_to(t('.create.link'), new_idea_path))
+h2= t('.discover')
+.start= link_to(t('.start'), new_idea_path)
 = render :partial => 'list', :locals => {:quick => "recommended", :collection => @featured} unless @featured.empty?
 = render :partial => 'list', :locals => {:quick => "popular", :collection => @popular} unless @popular.empty?
 = render :partial => 'list', :locals => {:quick => "recent", :collection => @recent} unless @recent.empty?
 .explore= t('.explore.html', :count => @count, :link => link_to(t('.explore.link'), explore_path))
+h2= t('.didnt_find')
+.start= link_to(t('.start'), new_idea_path)
 = render 'shared/application_js'
