@@ -1,5 +1,5 @@
 #user_menu
-  = link_to '#' do
+  a.user href="#"
     = image_tag current_user.display_image
     = truncate current_user.display_name, :length => 24
     = image_tag 'dropdown.png', :class => 'dropdown'
