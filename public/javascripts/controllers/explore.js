@@ -12,7 +12,10 @@ var ExploreController = Backbone.Controller.extend({
     this.selectItem("recommended")
     this.view = new ExploreView({
       collection: new Ideas({
-        search: {recommended_equals: true}
+        search: {
+          recommended_equals: true,
+          meta_sort: "created_at.desc"
+        }
       })
     })
   },
@@ -21,7 +24,9 @@ var ExploreController = Backbone.Controller.extend({
     this.selectItem("popular")
     this.view = new ExploreView({
       collection: new Ideas({
-        search: {meta_sort: "likes.desc"}
+        search: {
+          meta_sort: "likes.desc"
+        }
       })
     })
   },
@@ -30,7 +35,9 @@ var ExploreController = Backbone.Controller.extend({
     this.selectItem("recent")
     this.view = new ExploreView({
       collection: new Ideas({
-        search: {meta_sort: "created_at.desc"}
+        search: {
+          meta_sort: "created_at.desc"
+        }
       })
     })
   },
@@ -40,7 +47,10 @@ var ExploreController = Backbone.Controller.extend({
     var id = this.selectedItem.attr('data-id')
     this.view = new ExploreView({
       collection: new Ideas({
-        search: {category_id_equals: id}
+        search: {
+          category_id_equals: id,
+          meta_sort: "created_at.desc"
+        }
       })
     })
   },
