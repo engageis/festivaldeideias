@@ -23,6 +23,7 @@ gem "mustache"
 gem 'kaminari'
 gem "meta_search"
 gem 'carrierwave'
+gem 'rest-client'
 
 group :test, :development do
   gem 'capybara', "~> 1.0.0"

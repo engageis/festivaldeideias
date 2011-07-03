@@ -274,6 +274,7 @@ DEPENDENCIES
   rails (= 3.0.3)
   rake (= 0.8.7)
   rcov
+  rest-client
   routing-filter
   rspec-rails (~> 2.6.1)
   slim

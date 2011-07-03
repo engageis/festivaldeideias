@@ -8,6 +8,7 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Ramify
   class Application < Rails::Application
+    config.autoload_paths += %W(#{config.root}/lib)
     config.active_record.schema_format = :sql
     config.encoding = "utf-8"
     config.filter_parameters += [:password, :password_confirmation]
