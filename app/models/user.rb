@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   validates_length_of :bio, :maximum => 140
   validates :email, :email => true, :allow_nil => true, :allow_blank => true
   has_many :comments
+  has_many :ideas
   has_many :secondary_users, :class_name => 'User', :foreign_key => :primary_user_id
   belongs_to :site
   has_and_belongs_to_many :sites

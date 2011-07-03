@@ -7,11 +7,29 @@ class Ability
     if user.admin?
       can :manage, :all
     elsif user.sites.size > 0
+
       can :manage, Site do |site|
         user.sites.include?(site)
       end
+      cannot :create, Site
+
+      can :manage, Category do |category|
+        user.sites.include? category.site
+      end
+
+      can :manage, Idea do |idea|
+        user.sites.include?(idea.site)
+      end
+
+      can :manage, User do |u|
+        user.sites.include?(u.site)
+      end
+
     else
       can :read, :all
+
+      can :manage, User, :id => user.id
+      can :manage, Idea, :user_id => user.id
     end
 
     #
