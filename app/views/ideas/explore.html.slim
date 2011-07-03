@@ -25,12 +25,13 @@
     .loading= image_tag "loading.gif"
 = render 'idea_template'
 = render 'shared/application_js'
-= javascript_include_tag 'models/paginated_collection'
+= javascript_include_tag 'collections/paginated'
 = javascript_include_tag 'models/idea'
-= javascript_include_tag 'views/paginated_view'
-= javascript_include_tag 'views/model_view'
-= javascript_include_tag 'views/idea'
-= javascript_include_tag 'views/explore'
+= javascript_include_tag 'collections/ideas'
+= javascript_include_tag 'views/paginated'
+= javascript_include_tag 'views/model'
+= javascript_include_tag 'views/ideas/idea'
+= javascript_include_tag 'views/ideas/explore'
 = javascript_include_tag 'controllers/explore'
 javascript:
   var exploreController = new ExploreController

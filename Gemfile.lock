@@ -222,6 +222,9 @@ GEM
       ffi (>= 1.0.7)
       json_pure
       rubyzip
+    simple_form (1.4.2)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     slim (0.9.4)
       temple (~> 0.3.0)
       tilt (~> 1.2)
@@ -277,6 +280,7 @@ DEPENDENCIES
   rest-client
   routing-filter
   rspec-rails (~> 2.6.1)
+  simple_form
   slim
   spectator-validates_email
   steak (~> 2.0.0)

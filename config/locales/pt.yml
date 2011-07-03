@@ -1,8 +1,27 @@
 pt:
+  activerecord:
+      models:
+        idea: Ideia
+      attributes:
+        idea:
+          title: Título
+          headline: Resumo
+          category: Categoria
+  helpers:
+    submit:
+      idea:
+        create: "Criar minha ideia"
   or: ou
   user:
     no_name: Sem nome
   layouts:
+    new_idea:
+      title: Inicie sua ideia para o desenvolvimento social
+      accept:
+        title: Ao cadastrar minha ideia eu entendo que
+        license_html: Ela será licenciada em <a href="http://creativecommons.org/licenses/by/3.0/br/" target="_blank">Creative Commons Atribuição 3.0 (CC BY 3.0)</a>
+        share: Qualquer pessoa poderá compartilhar minha ideia
+        copy: Qualquer pessoa poderá copiar e modificar minha idéia
     login:
       title: Entre através de sua rede social favorita
       remember_me: Lembre-se de mim e mantenha-me conectado.
@@ -23,10 +42,10 @@ pt:
         second: Crie sua própria versão e trabalhe até ficar satisfeito
         third: Devolva a ideia para a comunidade aprimorar ainda mais
       text_html: <p>As melhores ideias serão selecionadas para o <strong>Festival de Ideias</strong>, que ocorrerá nos dias <strong>20 e 21 de setembro</strong>, na <strong>Cinemateca SP</strong>.</p><p>Contribuindo, você poderá ser escolhido para um dos times que irão ao festival e concorrer a <strong>prêmios incríveis</strong>, além, é claro, de ajudar a criar um mundo melhor :)</p>
-      video_html: <iframe width="560" height="349" src="http://www.youtube.com/embed/Gx7lvQWCheM" frameborder="0" allowfullscreen></iframe>
+      video_html: <iframe src="http://player.vimeo.com/video/6428069?color=ffffff" width="400" height="225" frameborder="0"></iframe>
       discover: Conheça algumas ideias e contribua!
       didnt_find: Tem uma ideia que não está aqui?
-      start: Inicie uma ideia
+      new_idea: Inicie uma ideia
       explore:
         html: Temos um total de %{count} idéias. Que tal explorar todas elas %{link}?
         link: clicando aqui
@@ -55,3 +74,8 @@ pt:
       recent: Recentes
       categories: Categorias
       empty: Nenhuma idéia encontrada
+  simple_form:
+        labels:
+          idea:
+            title: Qual o título da sua ideia?
+            headline: Uma breve descrição da sua ideia...

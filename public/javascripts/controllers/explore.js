@@ -48,7 +48,6 @@ var ExploreController = Backbone.Controller.extend({
   selectItem: function(name) {
     this.selectedItem = $('#explore a[href=#' + name + ']')
     $('#explore .selected').removeClass('selected')
-    console.log(this.selectedItem)
     this.selectedItem.parent().addClass('selected')
   }
 

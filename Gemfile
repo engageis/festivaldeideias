@@ -24,6 +24,7 @@ gem 'kaminari'
 gem "meta_search"
 gem 'carrierwave'
 gem 'rest-client'
+gem "simple_form"
 
 group :test, :development do
   gem 'capybara', "~> 1.0.0"

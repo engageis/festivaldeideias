@@ -2,7 +2,7 @@ class IdeasController < ApplicationController
 
   inherit_resources
 
-  actions :index, :show, :new, :create
+  actions :index, :show, :create
   respond_to :html
   respond_to :json, :only => [:index]
   
@@ -10,8 +10,8 @@ class IdeasController < ApplicationController
     index! do |format|
       format.html do
         @featured = current_site.ideas.featured.limit(4).all
-        @popular = current_site.ideas.not_featured.popular_home.all
-        @recent = current_site.ideas.not_featured.not_popular_home.recent.limit(4).all
+        @popular = current_site.ideas.not_featured.popular.limit(4).all
+        @recent = current_site.ideas.not_featured.recent.limit(4).all
         @count = current_site.ideas.count
       end
       format.json do
@@ -19,6 +19,15 @@ class IdeasController < ApplicationController
         render :json => @ideas.to_json
       end
     end
+  end
+  
+  def create
+    return unless require_login
+    @idea = Idea.new(params[:idea])
+    @idea.site = current_site
+    @idea.user = current_user
+    @idea.template = current_site.template
+    create!
   end
   
   def explore

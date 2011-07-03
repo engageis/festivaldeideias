@@ -12,11 +12,9 @@ class Idea < ActiveRecord::Base
   validates_length_of :headline, :maximum => 140
 
   scope :featured, where(:featured => true).order('"order"')
-  scope :not_featured, where(:featured => false).order("created_at DESC")
-  scope :popular, order("likes DESC")
-  scope :popular_home, order("likes DESC").limit(4)
-  scope :not_popular_home, order("likes DESC").offset(4)
+  scope :not_featured, where(:featured => false)
   scope :recommended, where(:recommended => true).order("created_at DESC")
+  scope :popular, order("likes DESC")
   scope :recent, order("created_at DESC")
 
   before_save :set_was_new_record

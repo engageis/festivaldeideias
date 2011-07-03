@@ -1,4 +1,4 @@
-var LoginView = Backbone.View.extend({
+var LoginView = PopupView.extend({
 
   el: $('#login'),
 
@@ -7,15 +7,12 @@ var LoginView = Backbone.View.extend({
     "click .close": "close"
   },
 
-  initialize: function() {
-    _.bindAll(this, "render")
-  },
-
-  render: function() {
+  beforeRender: function() {
     this.$('#return_to').val(location.href)
-    this.$('.overlay').show()
-    this.$('.popup').fadeIn()
-    return this
+  },
+  
+  beforeClose: function() {
+    this.$('#return_to').val(null)
   },
   
   submit: function(event) {
@@ -26,13 +23,6 @@ var LoginView = Backbone.View.extend({
     this.$('a.provider').addClass('disabled')
     this.$('#provider').val(link.attr('href'))
     this.$('form').submit()
-  },
-  
-  close: function(event) {
-    event.preventDefault()
-    this.$('#return_to').val(null)
-    this.$('.overlay').hide()
-    this.$('.popup').hide()
   }
-
+  
 })

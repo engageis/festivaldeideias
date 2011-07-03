@@ -20,7 +20,7 @@ Ramify::Application.routes.draw do
     match "/fake_login" => "sessions#fake_create", :as => :fake_login
   end
 
-  resources :ideas, :only => [:index, :new, :create, :show] do
+  resources :ideas, :only => [:index, :create, :show] do
     collection do
       get 'explore'
     end

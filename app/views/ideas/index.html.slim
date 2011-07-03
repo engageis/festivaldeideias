@@ -6,11 +6,14 @@ ol
 .text= t('.text_html')
 .video= t('.video_html')
 h2= t('.discover')
-.start= link_to(t('.start'), new_idea_path)
+.new_idea= link_to t('.new_idea'), '#'
 = render :partial => 'list', :locals => {:quick => "recommended", :collection => @featured} unless @featured.empty?
 = render :partial => 'list', :locals => {:quick => "popular", :collection => @popular} unless @popular.empty?
 = render :partial => 'list', :locals => {:quick => "recent", :collection => @recent} unless @recent.empty?
 .explore= t('.explore.html', :count => @count, :link => link_to(t('.explore.link'), explore_path))
 h2= t('.didnt_find')
-.start= link_to(t('.start'), new_idea_path)
+.new_idea= link_to t('.new_idea'), '#'
 = render 'shared/application_js'
+= javascript_include_tag 'views/ideas/index'
+javascript:
+  var indexView = new IndexView()
