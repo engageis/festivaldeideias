@@ -10,8 +10,8 @@ module HelperMethods
     end
     @current_site
   end
-  def fake_login
-    visit fake_login_path
+  def fake_login(params = '')
+    visit fake_login_path + '?' + params
   end
   def current_user
     User.find_by_uid 'fake_login'
