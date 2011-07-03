@@ -60,11 +60,11 @@ class Idea < ActiveRecord::Base
   
   def document
     @document ||= {}
-    @document.merge! "id" => self.id, "title" => self.title, "headline" => self.headline
+    @document.merge! "id" => self.id, "user_id" => self.user_id, "title" => self.title, "headline" => self.headline
   end
   
   def document=(new_document)
-    @document = new_document.merge "id" => self.id, "title" => self.title, "headline" => self.headline
+    @document = new_document.merge "id" => self.id, "user_id" => self.user_id, "title" => self.title, "headline" => self.headline
   end
   
   def to_param
