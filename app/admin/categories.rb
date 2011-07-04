@@ -1,5 +1,4 @@
 ActiveAdmin.register Category do
-  controller.authorize_resource
 
   index do
     column :name do |category|

@@ -16,6 +16,7 @@ class Ability
       can :manage, Category do |category|
         user.sites.include? category.site
       end
+      cannot :manage, Category
 
       can :manage, Idea do |idea|
         user.sites.include?(idea.site)

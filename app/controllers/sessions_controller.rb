@@ -69,6 +69,7 @@ class SessionsController < ApplicationController
     return render :status => :forbidden unless Rails.env == "test"
     user = Factory(:user, :uid => 'fake_login')
     user.admin = true if params[:root_admin] == 'true'
+    user.sites << Site.find(params[:site]) if params[:site]
     user.save
     session[:user_id] = user.id
     flash[:success] = t('sessions.post_auth.success', :name => user.display_name)
