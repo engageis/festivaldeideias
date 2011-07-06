@@ -67,18 +67,6 @@ class Idea < ActiveRecord::Base
     @document = new_document.merge "id" => self.id, "user_id" => self.user_id, "title" => self.title, "headline" => self.headline
   end
   
-  def description
-    document["description"]
-  end
-  
-  def have
-    document["have"]
-  end
-  
-  def need
-    document["need"]
-  end
-  
   def to_param
     "#{self.id}-#{self.title.parameterize}"
   end

@@ -13,21 +13,25 @@
         a href="#description"
           = t('.menu.description')
       li
-        a href="#description"
+        a href="#have"
           = t('.menu.have')
       li
-        a href="#description"
+        a href="#need"
           = t('.menu.need')
   .content
     .description
-      .text= @idea.description
+      .text= @idea.document["description"]
       .placeholder= t('.placeholders.description')
+      .comments
+        = render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#description" }
     .have
-      .text= @idea.have
+      .text= @idea.document["have"]
       .placeholder= t('.placeholders.have')
+      .comments
+        = render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#have" }
     .need
-      .text= @idea.need
+      .text= @idea.document["need"]
       .placeholder= t('.placeholders.need')
-    .comments
-      = render :partial => 'layouts/comments'
+      .comments
+        = render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#need" }
 = render 'shared/application_js'
