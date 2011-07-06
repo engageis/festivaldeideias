@@ -5,6 +5,8 @@ meta name='description' content='TODO some nice and short text'
 meta charset='utf-8'
 meta name="robots" content="index, follow"
 meta name="author" content="Softa"
+meta name="og:site_name" content="#{current_site.name}"
+meta name="og:url" content="#{request.url}"
 = yield :meta_tags
 = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
 = stylesheet_link_tag 'print.css', :media => 'print'
