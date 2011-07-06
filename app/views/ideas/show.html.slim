@@ -8,9 +8,24 @@
       h1= t('.headline')
       p= @idea.headline
   .menu
-    .description= @idea.description
-    .have= @idea.have
-    .need= @idea.need
-    .versions
+    ul
+      li
+        a href="#description"
+          = t('.menu.description')
+      li
+        a href="#description"
+          = t('.menu.have')
+      li
+        a href="#description"
+          = t('.menu.need')
+  .content
+    .description
+      .text= @idea.description
+      .placeholder= t('.placeholders.description')
+    .have
+      .text= @idea.have
+      .placeholder= t('.placeholders.have')
+    .need
+      .text= @idea.need
+      .placeholder= t('.placeholders.need')
 = render 'shared/application_js'
-  

@@ -86,6 +86,14 @@ pt:
       user_html: Uma ideia de %{link}
       parent_html: Baseada na ideia de %{link}
       headline: Em poucas palavras...
+      menu:
+        description: O que é essa ideia
+        have: O que já temos
+        need: O que precisamos
+      placeholders:
+        description: Explique aqui a sua ideia. Quanto mais detalhes você der, mais as pessoas vão poder contribuir com sua ideia. Mas ao mesmo tempo seja breve ;) ninguém gosta de ler textos gigantes que não vão direto ao ponto.
+        have: Explique aqui o que você ou o seu grupo já possuem das coisas que são necessárias para botar sua ideia em prática. Você pode fazer uma lista e ir alterando à medida que recebe contribuições ;)
+        need: Explique aqui o que você ou o seu grupo precisam para fazer a sua ideia acontecer. Deste modo, as pessoas que acreditam na sua ideia irão saber como podem contribuir ;)
   simple_form:
         labels:
           idea:
