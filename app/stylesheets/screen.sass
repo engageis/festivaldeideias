@@ -3,6 +3,10 @@
 @import compass/utilities
 @import compass/css3
 
+@mixin estrutura
+  float: left
+  width: 100%
+
 body#site
   .overlay
     background-color: #333
@@ -51,3 +55,66 @@ body#site
 
   #user_menu .menu
     display: none
+.wrapper
+  :width 962px
+  :margin 0 auto
+
+h1
+  :width 100%
+  :float left
+  :text-align center
+  :font
+    :size 35px
+    :weight bold
+    :family Calibri
+  :line-height 120%
+h2
+h3
+
+
+ul
+  :list-style none
+
+.logo
+  :width 299px
+  :height 0
+  :padding-top 133px
+  :overflow hidden
+  :background url(/images/logo.png) no-repeat top center
+
+#header
+  @include estrutura
+  #login_menu
+    :float right
+    ul
+      :float right
+      :list-style none
+      li
+        :float left
+        :margin 0 8px
+        a
+  #header_menu
+    :float right
+    ul
+      :float right
+      li
+        :float left
+        :margin 0 14px
+        &:first-child
+          :margin-left 0
+        &:last-child
+          :margin-right 0
+        a
+          :color white
+          :padding 2px 18px
+          :background #64c5a7
+          :text-decoration none
+  #social
+    :float right
+    :clear right
+
+#content
+  @include estrutura
+
+#footer
+  @include estrutura

@@ -1,4 +1,4 @@
-/* line 7, ../../app/stylesheets/screen.sass */
+/* line 11, ../../app/stylesheets/screen.sass */
 body#site .overlay {
   background-color: #333333;
   background: rgba(0, 0, 0, 0.8);
@@ -10,13 +10,13 @@ body#site .overlay {
   z-index: 400;
   display: none;
 }
-/* line 18, ../../app/stylesheets/screen.sass */
+/* line 22, ../../app/stylesheets/screen.sass */
 body#site .popup {
   z-index: 500;
   display: none;
   background-color: white;
 }
-/* line 24, ../../app/stylesheets/screen.sass */
+/* line 28, ../../app/stylesheets/screen.sass */
 body#site #flash {
   display: none;
   z-index: 500;
@@ -31,11 +31,11 @@ body#site #flash {
   color: white;
   text-shadow: black 1px 1px 1px;
 }
-/* line 34, ../../app/stylesheets/screen.sass */
+/* line 38, ../../app/stylesheets/screen.sass */
 body#site #flash .wrapper {
   padding: 20px;
 }
-/* line 36, ../../app/stylesheets/screen.sass */
+/* line 40, ../../app/stylesheets/screen.sass */
 body#site #flash .success.wrapper, body#site #flash .notice.wrapper {
   background-color: #44a546;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
@@ -45,7 +45,7 @@ body#site #flash .success.wrapper, body#site #flash .notice.wrapper {
   background-image: -ms-linear-gradient(top, #51c252, #49b249, #44a546);
   background-image: linear-gradient(top, #51c252, #49b249, #44a546);
 }
-/* line 39, ../../app/stylesheets/screen.sass */
+/* line 43, ../../app/stylesheets/screen.sass */
 body#site #flash .failure.wrapper, body#site #flash .error.wrapper {
   background-color: #aa3333;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #cc3333), color-stop(50%, #bb3333), color-stop(100%, #aa3333));
@@ -55,7 +55,7 @@ body#site #flash .failure.wrapper, body#site #flash .error.wrapper {
   background-image: -ms-linear-gradient(top, #cc3333, #bb3333, #aa3333);
   background-image: linear-gradient(top, #cc3333, #bb3333, #aa3333);
 }
-/* line 42, ../../app/stylesheets/screen.sass */
+/* line 46, ../../app/stylesheets/screen.sass */
 body#site #flash .locale.wrapper {
   background-color: #0084b9;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0da1c3), color-stop(50%, #0591bc), color-stop(100%, #0084b9));
@@ -65,15 +65,111 @@ body#site #flash .locale.wrapper {
   background-image: -ms-linear-gradient(top, #0da1c3, #0591bc, #0084b9);
   background-image: linear-gradient(top, #0da1c3, #0591bc, #0084b9);
 }
-/* line 46, ../../app/stylesheets/screen.sass */
+/* line 50, ../../app/stylesheets/screen.sass */
 body#site .loading img {
   display: none;
 }
-/* line 49, ../../app/stylesheets/screen.sass */
+/* line 53, ../../app/stylesheets/screen.sass */
 body#site .empty {
   display: none;
 }
-/* line 52, ../../app/stylesheets/screen.sass */
+/* line 56, ../../app/stylesheets/screen.sass */
 body#site #user_menu .menu {
   display: none;
+}
+
+/* line 58, ../../app/stylesheets/screen.sass */
+.wrapper {
+  width: 962px;
+  margin: 0 auto;
+}
+
+/* line 62, ../../app/stylesheets/screen.sass */
+h1 {
+  width: 100%;
+  float: left;
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold;
+  font-family: Calibri;
+  line-height: 120%;
+}
+
+/* line 75, ../../app/stylesheets/screen.sass */
+ul {
+  list-style: none;
+}
+
+/* line 78, ../../app/stylesheets/screen.sass */
+.logo {
+  width: 299px;
+  height: 0;
+  padding-top: 133px;
+  overflow: hidden;
+  background: url(/images/logo.png) no-repeat top center;
+}
+
+/* line 85, ../../app/stylesheets/screen.sass */
+#header {
+  float: left;
+  width: 100%;
+}
+/* line 87, ../../app/stylesheets/screen.sass */
+#header #login_menu {
+  float: right;
+}
+/* line 89, ../../app/stylesheets/screen.sass */
+#header #login_menu ul {
+  float: right;
+  list-style: none;
+}
+/* line 92, ../../app/stylesheets/screen.sass */
+#header #login_menu ul li {
+  float: left;
+  margin: 0 8px;
+}
+/* line 96, ../../app/stylesheets/screen.sass */
+#header #header_menu {
+  float: right;
+}
+/* line 98, ../../app/stylesheets/screen.sass */
+#header #header_menu ul {
+  float: right;
+}
+/* line 100, ../../app/stylesheets/screen.sass */
+#header #header_menu ul li {
+  float: left;
+  margin: 0 14px;
+}
+/* line 103, ../../app/stylesheets/screen.sass */
+#header #header_menu ul li:first-child {
+  margin-left: 0;
+}
+/* line 105, ../../app/stylesheets/screen.sass */
+#header #header_menu ul li:last-child {
+  margin-right: 0;
+}
+/* line 107, ../../app/stylesheets/screen.sass */
+#header #header_menu ul li a {
+  color: white;
+  padding: 2px 18px;
+  background: #64c5a7;
+  text-decoration: none;
+}
+/* line 112, ../../app/stylesheets/screen.sass */
+#header #social {
+  float: right;
+  clear: right;
+}
+
+/* line 116, ../../app/stylesheets/screen.sass */
+#content {
+  float: left;
+  width: 100%;
+}
+
+/* line 119, ../../app/stylesheets/screen.sass */
+#footer {
+  float: left;
+  width: 100%;
 }
