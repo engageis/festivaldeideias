@@ -1,11 +1,11 @@
 #idea
   .header
     h1= @idea.title
+    .category= image_tag @idea.category.badge.url
     .user= t('.user_html', :link => link_to(@idea.user.name, user_path(@idea.user)))
     - if @idea.parent
       .parent= t('.parent_html', :link => link_to(@idea.parent.user.name, idea_path(@idea.parent)))
     .headline
-      h1= t('.headline')
       p= @idea.headline
   .menu
     ul

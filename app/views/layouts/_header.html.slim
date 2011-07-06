@@ -1,9 +1,10 @@
-= render 'layouts/new_idea'
-
-= link_to :root do
-  h1= current_site.name
+= link_to :root, :class => 'logo' do
+  h1.logo= current_site.name
   
+= render 'layouts/new_idea'
 = render 'layouts/login'
 = render 'layouts/login_menu'
 = render 'layouts/user_menu' if current_user
+= render 'layouts/social'
 = render 'layouts/header_menu'
+hr

@@ -12,6 +12,7 @@ h2= t('.discover')
 = render :partial => 'list', :locals => {:quick => "popular", :collection => @popular} unless @popular.empty?
 = render :partial => 'list', :locals => {:quick => "recent", :collection => @recent} unless @recent.empty?
 .explore= t('.explore.html', :count => @count, :link => link_to(t('.explore.link'), explore_path))
+hr
 h2= t('.didnt_find')
 .new_idea= link_to t('.new_idea'), '#'
 = render 'shared/application_js'
