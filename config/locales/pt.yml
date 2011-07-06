@@ -34,6 +34,14 @@ pt:
       my_profile: Meu perfil
       admin: Painel administrativo
       logout: Sair
+  sessions:
+    post_auth:
+      error: Ocorreu um erro ao realizar o login. Por favor, tente novamente.
+      success: Login realizado com sucesso. Bem-vindo, %{name}!
+    destroy:
+      success: Logout realizado com sucesso. Até logo!
+    failure:
+      error: Ocorreu um erro ao realizar o login. Por favor, tente novamente.
   ideas:
     index:
       title: Exponha suas ideias e venha junto construir inovações incríveis para o desenvolvimento social!
@@ -74,6 +82,10 @@ pt:
       recent: Recentes
       categories: Categorias
       empty: Nenhuma idéia encontrada
+    show:
+      user_html: Uma ideia de %{link}
+      parent_html: Baseada na ideia de %{link}
+      headline: Em poucas palavras...
   simple_form:
         labels:
           idea:

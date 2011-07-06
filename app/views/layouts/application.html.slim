@@ -1,7 +1,8 @@
 ! doctype html
 html
   head= render 'layouts/head'
-  body
+  body#site
+    = render :partial => 'layouts/flash', :locals => { :flash => flash } unless flash.empty?
     #header
       .wrapper= render 'layouts/header'
     #content

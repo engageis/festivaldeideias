@@ -5,5 +5,6 @@ function Application(locale){
   this.loginMenuView = new LoginMenuView()
   this.loginView = new LoginView()
   this.userMenuView = new UserMenuView()
+  this.flashView = new FlashView()
   
 }

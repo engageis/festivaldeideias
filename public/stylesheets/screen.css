@@ -1,5 +1,5 @@
-/* line 6, ../../app/stylesheets/screen.sass */
-.overlay {
+/* line 7, ../../app/stylesheets/screen.sass */
+body#site .overlay {
   background-color: #333333;
   background: rgba(0, 0, 0, 0.8);
   position: fixed;
@@ -10,25 +10,70 @@
   z-index: 400;
   display: none;
 }
-
-/* line 17, ../../app/stylesheets/screen.sass */
-.popup {
+/* line 18, ../../app/stylesheets/screen.sass */
+body#site .popup {
   z-index: 500;
   display: none;
   background-color: white;
 }
-
-/* line 23, ../../app/stylesheets/screen.sass */
-.loading img {
+/* line 24, ../../app/stylesheets/screen.sass */
+body#site #flash {
+  display: none;
+  z-index: 500;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  -moz-box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.75);
+  text-align: center;
+  color: white;
+  text-shadow: black 1px 1px 1px;
+}
+/* line 34, ../../app/stylesheets/screen.sass */
+body#site #flash .wrapper {
+  padding: 20px;
+}
+/* line 36, ../../app/stylesheets/screen.sass */
+body#site #flash .success.wrapper, body#site #flash .notice.wrapper {
+  background-color: #44a546;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
+  background-image: -webkit-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: -moz-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: -o-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: -ms-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: linear-gradient(top, #51c252, #49b249, #44a546);
+}
+/* line 39, ../../app/stylesheets/screen.sass */
+body#site #flash .failure.wrapper, body#site #flash .error.wrapper {
+  background-color: #aa3333;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #cc3333), color-stop(50%, #bb3333), color-stop(100%, #aa3333));
+  background-image: -webkit-linear-gradient(top, #cc3333, #bb3333, #aa3333);
+  background-image: -moz-linear-gradient(top, #cc3333, #bb3333, #aa3333);
+  background-image: -o-linear-gradient(top, #cc3333, #bb3333, #aa3333);
+  background-image: -ms-linear-gradient(top, #cc3333, #bb3333, #aa3333);
+  background-image: linear-gradient(top, #cc3333, #bb3333, #aa3333);
+}
+/* line 42, ../../app/stylesheets/screen.sass */
+body#site #flash .locale.wrapper {
+  background-color: #0084b9;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0da1c3), color-stop(50%, #0591bc), color-stop(100%, #0084b9));
+  background-image: -webkit-linear-gradient(top, #0da1c3, #0591bc, #0084b9);
+  background-image: -moz-linear-gradient(top, #0da1c3, #0591bc, #0084b9);
+  background-image: -o-linear-gradient(top, #0da1c3, #0591bc, #0084b9);
+  background-image: -ms-linear-gradient(top, #0da1c3, #0591bc, #0084b9);
+  background-image: linear-gradient(top, #0da1c3, #0591bc, #0084b9);
+}
+/* line 46, ../../app/stylesheets/screen.sass */
+body#site .loading img {
   display: none;
 }
-
-/* line 26, ../../app/stylesheets/screen.sass */
-.empty {
+/* line 49, ../../app/stylesheets/screen.sass */
+body#site .empty {
   display: none;
 }
-
-/* line 29, ../../app/stylesheets/screen.sass */
-#user_menu .menu {
+/* line 52, ../../app/stylesheets/screen.sass */
+body#site #user_menu .menu {
   display: none;
 }

@@ -1,0 +1,16 @@
+#idea
+  .header
+    h1= @idea.title
+    .user= t('.user_html', :link => link_to(@idea.user.name, user_path(@idea.user)))
+    - if @idea.parent
+      .parent= t('.parent_html', :link => link_to(@idea.parent.user.name, idea_path(@idea.parent)))
+    .headline
+      h1= t('.headline')
+      p= @idea.headline
+  .menu
+    .description= @idea.description
+    .have= @idea.have
+    .need= @idea.need
+    .versions
+= render 'shared/application_js'
+  
