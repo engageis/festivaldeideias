@@ -22,6 +22,9 @@
       li
         a href="#need"
           = t('.menu.need')
+      li
+        a href="#versions"
+          = t('.menu.versions')
   .content
     .description
       .text class=("editable" if @editable) data-attribute="description" data-raw=@idea.description data-raw-attribute="description_html"
@@ -47,6 +50,19 @@
           .placeholder= t('.placeholders.need')
           = render 'formatting_tips'
         .comments= render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#need" }
+    .versions
+      h1= t('.versions.title')
+      h2= t('.versions.subtitle')
+      - if @versions.empty?
+        em= t('.versions.empty.html', :link => link_to(t('.versions.empty.link'), '#', :class => 'fork_idea'))
+      - else
+        ul
+          - @versions.each do |version|
+            li
+              = t('.versions.user_html', :link => link_to(version.user.name, user_path(version.user)))
+              .created_at= t('.versions.created_at', :created_at => l(version.created_at.to_date, :format => :short))
+              - if @editable
+                .merge= link_to t('.versions.merge'), merge_idea_path(@idea, version)
   .footer
     .license= link_to image_tag('cc_by.png'), "http://creativecommons.org/licenses/by/3.0/br/", :target => :_blank
     .fork_idea= link_to t('.fork_idea'), '#'

@@ -98,10 +98,20 @@ pt:
         description: O que é essa ideia
         have: O que já temos
         need: O que precisamos
+        versions: Versões desta ideia
       placeholders:
         description: Explique aqui a sua ideia. Quanto mais detalhes você der, mais as pessoas vão poder contribuir com sua ideia. Mas ao mesmo tempo seja breve ;) ninguém gosta de ler textos gigantes que não vão direto ao ponto.
         have: Explique aqui o que você ou o seu grupo já possuem das coisas que são necessárias para botar sua ideia em prática. Você pode fazer uma lista e ir alterando à medida que recebe contribuições ;)
         need: Explique aqui o que você ou o seu grupo precisam para fazer a sua ideia acontecer. Deste modo, as pessoas que acreditam na sua ideia irão saber como podem contribuir ;)
+      versions:
+        title: Cada pessoa que quiser melhorar esta ideia pode criar sua própria versão
+        subtitle: Confira abaixo quais outras versões esta ideia já possui
+        empty:
+          html: Ninguém criou sua própria versão para esta ideia ainda. %{link}
+          link: Que tal ser o primeiro?
+        user_html: Uma versão de %{link}
+        created_at: Criada em %{created_at}
+        merge: Mesclar esta versão com a minha
     fork_idea:
       title: Melhorar esta ideia
       subtitle: Para que você aperfeiçoe esta ideia, criaremos uma versão dela para você.

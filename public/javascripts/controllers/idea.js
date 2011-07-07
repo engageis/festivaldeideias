@@ -4,7 +4,8 @@ var IdeaController = Backbone.Controller.extend({
     "": "description",
     "description": "description",
     "have": "have",
-    "need": "need"
+    "need": "need",
+    "versions": "versions"
   },
   
   description: function() {
@@ -17,6 +18,10 @@ var IdeaController = Backbone.Controller.extend({
   
   need: function() {
     app.showIdeaView.selectItem("need")
+  },
+  
+  versions: function() {
+    app.showIdeaView.selectItem("versions")
   }
   
 })

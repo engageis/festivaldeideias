@@ -28,6 +28,7 @@ class IdeasController < ApplicationController
   def show
     show! do
       @editable = (current_user and current_user == @idea.user)
+      @versions = @idea.versions.order("created_at DESC").all
     end
   end
   
@@ -50,7 +51,7 @@ class IdeasController < ApplicationController
   
   def create_fork
     idea = Idea.find(params[:id])
-    fork = idea.create_fork
+    fork = idea.create_fork(current_user)
     if fork
       flash[:success] = t('ideas.create_fork.success')
       redirect_to idea_path(fork)
