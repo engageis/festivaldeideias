@@ -56,6 +56,14 @@ body#site
   #user_menu .menu
     display: none
     
+  .editable
+    &:after
+      content: " " url(/images/edit.png)
+      
+  .editing
+    &:after
+      content: "" !important
+    
 .wrapper
   :width 962px
   :margin 0 auto

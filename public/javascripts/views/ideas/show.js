@@ -1,23 +1,38 @@
 var ShowIdeaView = Backbone.View.extend({
 
+  el: $('#idea'),
+  
   initialize: function() {
-    this.render()
+    _.bindAll(this, "selectItem")
+    this.$('.editable').each(function() {
+      $(this).click(function(){
+        $(this).addClass("editing")
+      })
+      $(this).editable("/" + app.locale + "/ideas/" + $(this).parents('#idea').attr('data-id'), {
+        data: function(){ return $(this).attr('data-raw') },
+        type: ($(this).attr('data-type') || "textarea"),
+        method: "PUT",
+        name: 'idea[' + $(this).attr('data-attribute') + ']',
+        onreset: function() {
+          $(this).parent().removeClass("editing")
+        },
+        callback: function(value, settings) {
+          idea = JSON.parse(value)
+          $(this).attr('data-raw', idea[$(this).attr('data-attribute')])
+          $(this).html(idea[($(this).attr('data-raw-attribute') || $(this).attr('data-attribute'))])
+          $(this).removeClass("editing")
+        }
+      })
+    })
+    
   },
   
-  render: function() {
-    this.$('.text').editable("/" + app.locale + "/ideas/" + this.el.parent().attr('data-id'), {
-      data: this.$('.text').attr('data-raw'),
-      type: "textarea",
-      method: "PUT",
-      name: 'idea[' + this.el.attr('class') + ']',
-      callback : function(value, settings) {
-        idea = JSON.parse(value)
-        $(this).html(idea[$(this).parent().attr('class') + '_html'])
-      }
-    })
-    $('#idea .content > div').hide()
-    this.el.show()
-    return this
+  selectItem: function(name) {
+    this.selectedItem = this.$('.menu a[href=#' + name + ']')
+    this.$('.menu .selected').removeClass('selected')
+    this.selectedItem.parent().addClass('selected')
+    this.$('.content > div').hide()
+    this.$('.content .' + name).show()
   }
   
 })

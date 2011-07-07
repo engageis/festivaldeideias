@@ -143,14 +143,22 @@ body#site .empty {
 body#site #user_menu .menu {
   display: none;
 }
+/* line 60, ../../app/stylesheets/screen.sass */
+body#site .editable:after {
+  content: " " url(/images/edit.png);
+}
+/* line 64, ../../app/stylesheets/screen.sass */
+body#site .editing:after {
+  content: "" !important;
+}
 
-/* line 59, ../../app/stylesheets/screen.sass */
+/* line 67, ../../app/stylesheets/screen.sass */
 .wrapper {
   width: 962px;
   margin: 0 auto;
 }
 
-/* line 63, ../../app/stylesheets/screen.sass */
+/* line 71, ../../app/stylesheets/screen.sass */
 h1 {
   width: 100%;
   float: left;
@@ -161,12 +169,12 @@ h1 {
   line-height: 120%;
 }
 
-/* line 76, ../../app/stylesheets/screen.sass */
+/* line 84, ../../app/stylesheets/screen.sass */
 ul {
   list-style: none;
 }
 
-/* line 78, ../../app/stylesheets/screen.sass */
+/* line 86, ../../app/stylesheets/screen.sass */
 hr {
   float: left;
   width: 100%;
@@ -176,7 +184,7 @@ hr {
   margin-bottom: 30px;
 }
 
-/* line 84, ../../app/stylesheets/screen.sass */
+/* line 92, ../../app/stylesheets/screen.sass */
 .logo {
   float: left;
   width: 299px;
@@ -186,66 +194,66 @@ hr {
   background: url(/images/logo.png) no-repeat top center;
 }
 
-/* line 92, ../../app/stylesheets/screen.sass */
+/* line 100, ../../app/stylesheets/screen.sass */
 #header {
   float: left;
   width: 100%;
   padding-top: 20px;
 }
-/* line 95, ../../app/stylesheets/screen.sass */
+/* line 103, ../../app/stylesheets/screen.sass */
 #header #login_menu {
   float: right;
   height: 35px;
   margin-bottom: 8px;
 }
-/* line 99, ../../app/stylesheets/screen.sass */
+/* line 107, ../../app/stylesheets/screen.sass */
 #header #login_menu ul {
   float: right;
   list-style: none;
 }
-/* line 102, ../../app/stylesheets/screen.sass */
+/* line 110, ../../app/stylesheets/screen.sass */
 #header #login_menu ul li {
   float: left;
   margin: 0 8px;
 }
-/* line 106, ../../app/stylesheets/screen.sass */
+/* line 114, ../../app/stylesheets/screen.sass */
 #header #social {
   float: right;
   clear: right;
   min-height: 30px;
   margin-bottom: 30px;
 }
-/* line 111, ../../app/stylesheets/screen.sass */
+/* line 119, ../../app/stylesheets/screen.sass */
 #header #social ul {
   float: right;
 }
-/* line 113, ../../app/stylesheets/screen.sass */
+/* line 121, ../../app/stylesheets/screen.sass */
 #header #social ul li {
   float: left;
 }
-/* line 115, ../../app/stylesheets/screen.sass */
+/* line 123, ../../app/stylesheets/screen.sass */
 #header #header_menu {
   float: right;
   clear: right;
 }
-/* line 118, ../../app/stylesheets/screen.sass */
+/* line 126, ../../app/stylesheets/screen.sass */
 #header #header_menu ul {
   float: right;
 }
-/* line 120, ../../app/stylesheets/screen.sass */
+/* line 128, ../../app/stylesheets/screen.sass */
 #header #header_menu ul li {
   float: left;
   margin: 0 14px;
 }
-/* line 123, ../../app/stylesheets/screen.sass */
+/* line 131, ../../app/stylesheets/screen.sass */
 #header #header_menu ul li:first-child {
   margin-left: 0;
 }
-/* line 125, ../../app/stylesheets/screen.sass */
+/* line 133, ../../app/stylesheets/screen.sass */
 #header #header_menu ul li:last-child {
   margin-right: 0;
 }
-/* line 127, ../../app/stylesheets/screen.sass */
+/* line 135, ../../app/stylesheets/screen.sass */
 #header #header_menu ul li a {
   color: white;
   padding: 6px 18px;
@@ -253,13 +261,13 @@ hr {
   text-decoration: none;
 }
 
-/* line 133, ../../app/stylesheets/screen.sass */
+/* line 141, ../../app/stylesheets/screen.sass */
 #content {
   float: left;
   width: 100%;
 }
 
-/* line 136, ../../app/stylesheets/screen.sass */
+/* line 144, ../../app/stylesheets/screen.sass */
 #footer {
   float: left;
   width: 100%;

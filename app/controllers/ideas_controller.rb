@@ -21,6 +21,12 @@ class IdeasController < ApplicationController
     end
   end
   
+  def show
+    show! do
+      @editable = (current_user and (current_user == @idea.user or current_user.admin))
+    end
+  end
+  
   def create
     return unless require_login
     @idea = Idea.new(params[:idea])

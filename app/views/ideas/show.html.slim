@@ -1,12 +1,14 @@
-#idea
+#idea data-id=@idea.id
   .header
-    h1= @idea.title
+    h1 class=("editable" if @editable) data-attribute="title" data-type="text" data-raw=@idea.title
+      = @idea.title
     .category= image_tag @idea.category.badge.url
     .user= t('.user_html', :link => link_to(@idea.user.name, user_path(@idea.user)))
     - if @idea.parent
       .parent= t('.parent_html', :link => link_to(@idea.parent.user.name, idea_path(@idea.parent)))
     .headline
-      p= @idea.headline
+      p class=("editable" if @editable) data-attribute="headline" data-raw=@idea.headline
+        = @idea.headline
   .menu
     ul
       li
@@ -18,9 +20,9 @@
       li
         a href="#need"
           = t('.menu.need')
-  .content data-id=@idea.id
+  .content
     .description
-      .text data-raw=@idea.description
+      .text class=("editable" if @editable) data-attribute="description" data-raw=@idea.description data-raw-attribute="description_html"
         == @idea.description_html
       .info
         - if current_user and current_user == @idea.user
@@ -28,7 +30,7 @@
           = render 'formatting_tips'
         .comments= render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#description" }
     .have
-      .text data-raw=@idea.have
+      .text class=("editable" if @editable) data-attribute="have" data-raw=@idea.have data-raw-attribute="have_html"
         == @idea.have_html
       .info
         - if current_user and current_user == @idea.user
@@ -36,7 +38,7 @@
           = render 'formatting_tips'
         .comments= render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#have" }
     .need
-      .text data-raw=@idea.need
+      .text class=("editable" if @editable) data-attribute="need" data-raw=@idea.need data-raw-attribute="need_html"
         == @idea.need_html
       .info
         - if current_user and current_user == @idea.user
@@ -47,5 +49,6 @@
 = javascript_include_tag 'views/ideas/show'
 = javascript_include_tag 'controllers/idea'
 javascript:
+  app.showIdeaView = new ShowIdeaView
   app.ideaController = new IdeaController
   Backbone.history.start()

@@ -37,6 +37,9 @@ pt:
       my_profile: Meu perfil
       admin: Painel administrativo
       logout: Sair
+  shared:
+    comments:
+      title: Comentários
   sessions:
     post_auth:
       error: Ocorreu um erro ao realizar o login. Por favor, tente novamente.
