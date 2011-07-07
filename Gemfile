@@ -17,7 +17,7 @@ gem "acts_as_commentable"
 gem 'routing-filter'
 gem 'http_accept_language'
 gem "autotest", "~> 4.4.6"
-gem 'activeadmin'
+gem 'activeadmin', :git => 'https://github.com/gregbell/active_admin.git'
 gem 'cancan'
 gem "mustache"
 gem 'kaminari'

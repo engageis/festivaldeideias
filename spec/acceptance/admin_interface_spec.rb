@@ -20,7 +20,7 @@ feature 'Admin interface', %q{
     page.should have_link('Templates')
     page.should have_link('Users')
     page.should have_link('Configurations')
-    page.should have_link('Ideas')
+    page.should have_link('Ideias')
     page.should have_link('Oauth Providers')
     page.should have_link('Sites')
   end
@@ -38,15 +38,15 @@ feature 'Admin interface for site admin', %q{
     find("a.user").click
     page.should have_link('Painel administrativo')
     visit admin_dashboard_path
-    # page.should have_link('Dashboard')
-    # page.should have_link('Categories')
-    # page.should have_link('Comments')
-    # page.should have_link('Links')
-    # page.should have_link('Templates')
-    # page.should have_link('Users')
-    # page.should_not have_link('Configurations')
-    # page.should have_link('Ideas')
-    # page.should_not have_link('Oauth Providers')
+    page.should have_link('Dashboard')
+    page.should have_link('Categories')
+    page.should have_link('Comments')
+    page.should have_link('Links')
+    page.should have_link('Templates')
+    page.should have_link('Users')
+    page.should_not have_link('Configurations')
+    # page.should have_link('Idéias')
+    page.should_not have_link('Oauth Providers')
     # page.should_not have_link('Sites')
   end
 
