@@ -23,7 +23,7 @@ class IdeasController < ApplicationController
   
   def show
     show! do
-      @editable = (current_user and (current_user == @idea.user or current_user.admin))
+      @editable = (current_user and current_user == @idea.user)
     end
   end
   

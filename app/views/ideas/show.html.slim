@@ -25,7 +25,7 @@
       .text class=("editable" if @editable) data-attribute="description" data-raw=@idea.description data-raw-attribute="description_html"
         == @idea.description_html
       .info
-        - if current_user and current_user == @idea.user
+        - if @editable
           .placeholder= t('.placeholders.description')
           = render 'formatting_tips'
         .comments= render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#description" }
@@ -33,7 +33,7 @@
       .text class=("editable" if @editable) data-attribute="have" data-raw=@idea.have data-raw-attribute="have_html"
         == @idea.have_html
       .info
-        - if current_user and current_user == @idea.user
+        - if @editable
           .placeholder= t('.placeholders.have')
           = render 'formatting_tips'
         .comments= render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#have" }
@@ -41,7 +41,7 @@
       .text class=("editable" if @editable) data-attribute="need" data-raw=@idea.need data-raw-attribute="need_html"
         == @idea.need_html
       .info
-        - if current_user and current_user == @idea.user
+        - if @editable
           .placeholder= t('.placeholders.need')
           = render 'formatting_tips'
         .comments= render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#need" }
