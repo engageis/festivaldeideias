@@ -22,9 +22,10 @@ gem 'cancan'
 gem "mustache"
 gem 'kaminari'
 gem "meta_search"
-gem 'carrierwave'
+gem 'carrierwave', :git => 'https://github.com/jnicklas/carrierwave.git'
 gem 'rest-client'
 gem "simple_form"
+gem 'rmagick'
 
 group :test, :development do
   gem 'capybara', "~> 1.0.0"

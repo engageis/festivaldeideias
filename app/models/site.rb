@@ -9,6 +9,8 @@ class Site < ActiveRecord::Base
   validates_presence_of :name, :host, :template
   validates_uniqueness_of :name, :host
 
+  mount_uploader :image, SiteImageUploader
+
   def self.auth_gateway
     where(:auth_gateway => true).first
   end

@@ -1,4 +1,6 @@
 title= current_site.name
+- if current_site.image
+  link rel="shortcut icon" href="http://#{current_site.host}:#{current_site.port}/#{current_site.image.url(:favicon)}"
 meta http-equiv='Content-Type' content='text/html'
 meta name='keywords' content='TODO keywords'
 meta name='description' content='TODO some nice and short text'

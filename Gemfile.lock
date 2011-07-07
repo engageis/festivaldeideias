@@ -12,6 +12,13 @@ GIT
       rails (>= 3.0.0)
       sass (>= 3.1.0)
 
+GIT
+  remote: https://github.com/jnicklas/carrierwave.git
+  revision: 3850f67ce1b7d25db595c3e2ec28b81ac172467c
+  specs:
+    carrierwave (0.5.4)
+      activesupport (~> 3.0)
+
 GEM
   remote: http://rubygems.org/
   remote: http://gems.github.com/
@@ -62,8 +69,6 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 0.2.0)
       xpath (~> 0.1.4)
-    carrierwave (0.5.4)
-      activesupport (~> 3.0)
     childprocess (0.1.9)
       ffi (~> 1.0.6)
     chunky_png (1.2.0)
@@ -199,6 +204,7 @@ GEM
     responders (0.6.4)
     rest-client (1.6.3)
       mime-types (>= 1.16)
+    rmagick (2.13.1)
     routing-filter (0.2.3)
       actionpack
     rspec (2.6.0)
@@ -262,7 +268,7 @@ DEPENDENCIES
   autotest (~> 4.4.6)
   cancan
   capybara (~> 1.0.0)
-  carrierwave
+  carrierwave!
   compass
   database_cleaner
   factory_girl_rails
@@ -280,6 +286,7 @@ DEPENDENCIES
   rake (= 0.8.7)
   rcov
   rest-client
+  rmagick
   routing-filter
   rspec-rails (~> 2.6.1)
   simple_form

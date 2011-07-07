@@ -1,3 +1,7 @@
+- content_for :meta_tags do
+  - if current_site.image
+    meta name="og:image" value="http://#{current_site.host}:#{current_site.port}/#{current_site.image.url(:thumb)}"
+
 h1= t('.title')
 .box
   .info
