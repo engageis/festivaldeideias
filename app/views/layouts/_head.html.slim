@@ -2,13 +2,13 @@ title= current_site.name
 - if current_site.image
   link rel="shortcut icon" href="http://#{current_site.host}:#{current_site.port}/#{current_site.image.url(:favicon)}"
 meta http-equiv='Content-Type' content='text/html'
-meta name='keywords' content='TODO keywords'
-meta name='description' content='TODO some nice and short text'
+meta name='keywords' content=current_site.name
+meta name='description' content=current_site.name
 meta charset='utf-8'
 meta name="robots" content="index, follow"
 meta name="author" content="Softa"
-meta name="og:site_name" content="#{current_site.name}"
-meta name="og:url" content="#{request.url}"
+meta name="og:site_name" content=current_site.name
+meta name="og:url" content=request.url
 = yield :meta_tags
 = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
 = stylesheet_link_tag 'print.css', :media => 'print'
@@ -18,5 +18,4 @@ meta name="og:url" content="#{request.url}"
 
 = javascript_include_tag "jquery-1.6.1.min", "underscore-min", "backbone-min", "waypoints.min", "mustache", "jquery.jeditable.mini"
 
-/ TODO favicon
 / TODO analytics

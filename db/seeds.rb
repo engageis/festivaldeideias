@@ -22,7 +22,6 @@ site.links.create :name => "Blog", :href => '#'
 site.links.create :name => "Vídeos", :href => '#'
 site.links.create :name => "Contato", :href => '#'
 
-# TODO create a badge for each category with carrier wave
 category_1 = Category.create! :site => site, :name => "Mobilidade urbana", :badge => File.open("#{Rails.root.to_s}/lib/fixtures/mobilidade.png")
 category_2 = Category.create! :site => site, :name => "Segurança comunitária", :badge => File.open("#{Rails.root.to_s}/lib/fixtures/seguranca.png")
 category_3 = Category.create! :site => site, :name => "Catástrofes naturais", :badge => File.open("#{Rails.root.to_s}/lib/fixtures/catastrofes.png")
