@@ -20,7 +20,9 @@ hr
   = render :partial => 'list', :locals => {:quick => "recommended", :collection => @featured} unless @featured.empty?
   = render :partial => 'list', :locals => {:quick => "popular", :collection => @popular} unless @popular.empty?
   = render :partial => 'list', :locals => {:quick => "recent", :collection => @recent} unless @recent.empty?
+.box
   .explore= t('.explore.html', :count => @count, :link => link_to(t('.explore.link'), explore_path))
+hr
 .box
   h2= t('.didnt_find')
   .new_idea= link_to t('.new_idea'), '#'

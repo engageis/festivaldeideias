@@ -81,7 +81,19 @@ h1
     :weight bold
   :line-height 120%
 h2
+  :font-size 30pt
+  :line-height 36pt
+  :float left
 h3
+  :float left
+  :background #02a170
+  //:width 330px
+  :width 100%
+  :font-size 30pt
+  :line-height 36pt
+  :color white
+  :padding-left 10px
+  :clear both
 
 
 ul
@@ -178,10 +190,28 @@ hr
     :width 460px
     :height 299px
     :float left
+  .new_idea
+    :float left
+    :padding 5px
+    +border-radius(4px)
+    :background #7675b1
+    :margin 8px 0 0 10px
+    a
+      :color white
+      :text-decoration none
+      :font-size 18pt
 .box
   @include estrutura
   .info
     :float left
     :width 50%
+.ideas
+  :margin-top 49px
+  @include estrutura
+.idea
+  :float left
+  :width 221px
+  :height 221px
+  :overflow hidden
 #footer
   @include estrutura
