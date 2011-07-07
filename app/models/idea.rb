@@ -57,6 +57,8 @@ class Idea < ActiveRecord::Base
     fork = self.clone
     fork.user = current_user
     fork.parent = self
+    fork.created_at = Time.now
+    fork.updated_at = Time.now
     if fork.save
       fork
     else
