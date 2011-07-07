@@ -306,6 +306,7 @@ CREATE TABLE sites (
     template_id integer NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
+    twitter text,
     CONSTRAINT sites_host_not_blank CHECK ((length(btrim(host)) > 0)),
     CONSTRAINT sites_name_not_blank CHECK ((length(btrim(name)) > 0))
 );
@@ -840,3 +841,5 @@ INSERT INTO schema_migrations (version) VALUES ('20110629150704');
 INSERT INTO schema_migrations (version) VALUES ('20110629215600');
 
 INSERT INTO schema_migrations (version) VALUES ('20110630020631');
+
+INSERT INTO schema_migrations (version) VALUES ('20110706235529');

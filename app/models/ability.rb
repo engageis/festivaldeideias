@@ -11,7 +11,6 @@ class Ability
       can :manage, Site do |site|
         user.sites.include?(site)
       end
-      cannot :create, Site
 
       can :manage, Category do |category|
         user.sites.include? category.site
