@@ -1,3 +1,4 @@
+= render 'fork_idea'
 #idea data-id=@idea.id
   .header
     h1 class=("editable" if @editable) data-attribute="title" data-type="text" data-raw=@idea.title
@@ -9,6 +10,7 @@
     .headline
       p class=("editable" if @editable) data-attribute="headline" data-raw=@idea.headline
         = @idea.headline
+    .fork_idea= link_to t('.fork_idea'), '#'
   .menu
     ul
       li
@@ -45,10 +47,15 @@
           .placeholder= t('.placeholders.need')
           = render 'formatting_tips'
         .comments= render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#need" }
+  .footer
+    .license= link_to image_tag('cc_by.png'), "http://creativecommons.org/licenses/by/3.0/br/", :target => :_blank
+    .fork_idea= link_to t('.fork_idea'), '#'
 = render 'shared/application_js'
+= javascript_include_tag 'views/ideas/fork'
 = javascript_include_tag 'views/ideas/show'
 = javascript_include_tag 'controllers/idea'
 javascript:
+  app.forkIdeaView = new ForkIdeaView
   app.showIdeaView = new ShowIdeaView
   app.ideaController = new IdeaController
   Backbone.history.start()

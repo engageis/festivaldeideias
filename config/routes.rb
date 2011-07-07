@@ -24,6 +24,9 @@ Ramify::Application.routes.draw do
     collection do
       get 'explore'
     end
+    member do
+      post 'create_fork'
+    end
   end
   
   resources :users, :only => [:show]

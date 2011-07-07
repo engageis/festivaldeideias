@@ -21,6 +21,10 @@ class IdeasController < ApplicationController
     end
   end
   
+  def explore
+    @categories = current_site.categories.with_ideas.order(:name).all
+  end
+  
   def show
     show! do
       @editable = (current_user and current_user == @idea.user)
@@ -44,8 +48,16 @@ class IdeasController < ApplicationController
     end
   end
   
-  def explore
-    @categories = current_site.categories.with_ideas.order(:name).all
+  def create_fork
+    idea = Idea.find(params[:id])
+    fork = idea.create_fork
+    if fork
+      flash[:success] = t('ideas.create_fork.success')
+      redirect_to idea_path(fork)
+    else
+      flash[:failure] = t('ideas.create_fork.failure')
+      redirect_to idea_path(idea)
+    end
   end
-  
+    
 end

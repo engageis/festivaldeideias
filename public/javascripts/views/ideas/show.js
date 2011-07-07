@@ -2,6 +2,10 @@ var ShowIdeaView = Backbone.View.extend({
 
   el: $('#idea'),
   
+  events: {
+    "click .fork_idea": "showForkIdea"
+  },
+  
   initialize: function() {
     _.bindAll(this, "selectItem")
     this.$('.editable').each(function() {
@@ -33,6 +37,15 @@ var ShowIdeaView = Backbone.View.extend({
     this.selectedItem.parent().addClass('selected')
     this.$('.content > div').hide()
     this.$('.content .' + name).show()
-  }
+  },
   
+  showForkIdea: function(event) {
+    event.preventDefault()
+    if($('#user_menu').length > 0) {
+      app.forkIdeaView.render()
+    } else {
+      app.loginView.render()
+    }
+  }
+
 })

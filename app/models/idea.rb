@@ -50,7 +50,17 @@ class Idea < ActiveRecord::Base
       RestClient.delete "#{self.url}/#{self.id}"
     rescue
     end
-  end    
+  end
+  
+  def create_fork
+    fork = self.clone
+    fork.parent = self
+    if fork.save
+      fork
+    else
+      nil
+    end
+  end
 
   def self.url
     @@url ||= Configuration.find_by_name('git_document_db_url').value
