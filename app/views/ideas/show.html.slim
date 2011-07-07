@@ -1,3 +1,8 @@
+- content_for :meta_tags do
+  meta name="og:title" value=@idea.title
+  meta name="og:description" value=@idea.headline
+  meta name="og:image" value=@idea.category.badge.url
+
 = render 'fork_idea'
 #idea data-id=@idea.id
   .header
