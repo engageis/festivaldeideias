@@ -12,6 +12,9 @@ pt:
       idea:
         create: "Criar minha ideia"
   or: ou
+  ok: OK
+  cancel: Cancelar
+  click_to_edit: Clique para editar...
   user:
     no_name: Sem nome
   layouts:

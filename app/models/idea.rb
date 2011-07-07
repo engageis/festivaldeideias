@@ -1,6 +1,7 @@
 class Idea < ActiveRecord::Base
   
   include Rails.application.routes.url_helpers
+  include AutoHtml
   
   belongs_to :site
   belongs_to :user
@@ -67,6 +68,57 @@ class Idea < ActiveRecord::Base
     @document = new_document.merge "id" => self.id, "user_id" => self.user_id, "title" => self.title, "headline" => self.headline
   end
   
+  def description
+    document["description"]
+  end
+  
+  def description=(value)
+    document["description"] = value
+  end
+  
+  def description_html
+    convert_html description
+  end
+  
+  def have
+    document["have"]
+  end
+  
+  def have=(value)
+    document["have"] = value
+  end
+  
+  def have_html
+    convert_html have
+  end
+  
+  def need
+    document["need"]
+  end
+  
+  def need=(value)
+    document["need"] = value
+  end
+  
+  def need_html
+    convert_html need
+  end
+  
+  def convert_html(text)
+    auto_html text do
+      html_escape :map => { 
+        '&' => '&amp;',  
+        '>' => '&gt;',
+        '<' => '&lt;',
+        '"' => '"' }
+      redcloth :target => :_blank
+      image
+      youtube :width => 580, :height => 378
+      vimeo :width => 580, :height => 378
+      link :target => :_blank
+    end
+  end
+  
   def to_param
     "#{self.id}-#{self.title.parameterize}"
   end
@@ -78,6 +130,12 @@ class Idea < ActiveRecord::Base
       :headline => headline,
       :category => category,
       :user => user,
+      :description => description,
+      :description_html => description_html,
+      :have => have,
+      :have_html => have_html,
+      :need => need,
+      :need_html => need_html,
       :document => document,
       :url => idea_path(self)
     }

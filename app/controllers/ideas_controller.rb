@@ -2,9 +2,9 @@ class IdeasController < ApplicationController
 
   inherit_resources
 
-  actions :index, :show, :create
-  respond_to :html
-  respond_to :json, :only => [:index]
+  actions :index, :show, :create, :update
+  respond_to :html, :except => [:update]
+  respond_to :json, :only => [:index, :update]
   
   def index
     index! do |format|
@@ -28,6 +28,14 @@ class IdeasController < ApplicationController
     @idea.user = current_user
     @idea.template = current_site.template
     create!
+  end
+  
+  def update
+    update! do |format|
+      format.json do
+        render :json => @idea.to_json
+      end
+    end
   end
   
   def explore

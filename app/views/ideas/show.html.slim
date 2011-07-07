@@ -18,26 +18,33 @@
       li
         a href="#need"
           = t('.menu.need')
-  .content
+  .content data-id=@idea.id
     .description
-      .text= @idea.document["description"]
-      - if current_user and current_user == @idea.user
-        .placeholder= t('.placeholders.description')
-        = render 'formatting_tips'
-      .comments= render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#description" }
+      .text data-raw=@idea.description
+        == @idea.description_html
+      .info
+        - if current_user and current_user == @idea.user
+          .placeholder= t('.placeholders.description')
+          = render 'formatting_tips'
+        .comments= render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#description" }
     .have
-      .text= @idea.document["have"]
-      - if current_user and current_user == @idea.user
-        .placeholder= t('.placeholders.have')
-        = render 'formatting_tips'
-      .comments= render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#have" }
+      .text data-raw=@idea.have
+        == @idea.have_html
+      .info
+        - if current_user and current_user == @idea.user
+          .placeholder= t('.placeholders.have')
+          = render 'formatting_tips'
+        .comments= render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#have" }
     .need
-      .text= @idea.document["need"]
-      - if current_user and current_user == @idea.user
-        .placeholder= t('.placeholders.need')
-        = render 'formatting_tips'
-      .comments= render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#need" }
+      .text data-raw=@idea.need
+        == @idea.need_html
+      .info
+        - if current_user and current_user == @idea.user
+          .placeholder= t('.placeholders.need')
+          = render 'formatting_tips'
+        .comments= render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#need" }
 = render 'shared/application_js'
+= javascript_include_tag 'views/ideas/show'
 = javascript_include_tag 'controllers/idea'
 javascript:
   app.ideaController = new IdeaController
