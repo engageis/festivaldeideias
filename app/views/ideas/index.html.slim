@@ -1,4 +1,5 @@
 - content_for :meta_tags do
+  meta name="og:type" value="website"
   - if current_site.image
     meta name="og:image" value="http://#{current_site.host}:#{current_site.port}/#{current_site.image.url(:thumb)}"
 
