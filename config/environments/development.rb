@@ -24,6 +24,6 @@ Ramify::Application.configure do
   config.action_dispatch.best_standards_support = :builtin
   
   # set slim to output formatted html
-  Slim::Engine.set_default_options :pretty => true
+  #Slim::Engine.set_default_options :pretty => true
 end
 
