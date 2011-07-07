@@ -1,7 +1,5 @@
 #social
   ul
-    li
-      | facebook
-    li
-      - if current_site.twitter && current_site.twitter != ''
-        |<a href="http://twitter.com/#{current_site.twitter}" class="twitter-follow-button" data-align="right" data-width="120px"  data-show-count="false">Siga @#{current_site.twitter}</a><script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+    li= render :partial => 'shared/fb_like', :locals => { :url => root_url }
+    - if current_site.twitter && current_site.twitter != ''
+      li= render :partial => 'layouts/twitter_follow'

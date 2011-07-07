@@ -12,7 +12,7 @@ Configuration.create :name => "git_document_db_url", :value => "http://localhost
 
 site_template = Template.create! :name => "Ideia", :description => "Modelo simples para a colaboração na evolução de uma ideia."
 
-site = Site.create! :name => "Festival de Ideias · Centro Ruth Cardoso", :host => "localhost", :port => "3000", :auth_gateway => true, :template => site_template
+site = Site.create! :name => "Festival de Ideias · Centro Ruth Cardoso", :host => "localhost", :port => "3000", :auth_gateway => true, :template => site_template, :twitter => "centrorcardoso"
 
 site.links.create :name => "Sobre o Festival", :href => '#', :header => true
 site.links.create :name => "Sobre os temas", :href => '#', :header => true
