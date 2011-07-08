@@ -26,9 +26,9 @@ gem 'carrierwave', :git => 'https://github.com/jnicklas/carrierwave.git'
 gem 'rest-client'
 gem "simple_form"
 gem 'rmagick'
+gem 'capybara', "~> 1.0.0"
 
 group :test, :development do
-  gem 'capybara', "~> 1.0.0"
   gem 'launchy'
   gem 'database_cleaner'
   gem 'steak', "~> 2.0.0"
