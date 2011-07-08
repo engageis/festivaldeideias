@@ -1,12 +1,14 @@
 class Idea < ActiveRecord::Base
   
   include Rails.application.routes.url_helpers
+  include AutoHtml
   
   belongs_to :site
   belongs_to :user
   belongs_to :category
   belongs_to :template
   belongs_to :parent, :class_name => 'Idea', :foreign_key => :parent_id
+  has_many :versions, :class_name => 'Idea', :foreign_key => :parent_id
   
   validates_presence_of :site, :user, :category, :template, :title, :headline
   validates_length_of :headline, :maximum => 140
@@ -49,7 +51,20 @@ class Idea < ActiveRecord::Base
       RestClient.delete "#{self.url}/#{self.id}"
     rescue
     end
-  end    
+  end
+  
+  def create_fork(current_user)
+    fork = self.clone
+    fork.user = current_user
+    fork.parent = self
+    fork.created_at = Time.now
+    fork.updated_at = Time.now
+    if fork.save
+      fork
+    else
+      nil
+    end
+  end
 
   def self.url
     @@url ||= Configuration.find_by_name('git_document_db_url').value
@@ -71,12 +86,51 @@ class Idea < ActiveRecord::Base
     document["description"]
   end
   
+  def description=(value)
+    document["description"] = value
+  end
+  
+  def description_html
+    convert_html description
+  end
+  
   def have
     document["have"]
   end
   
+  def have=(value)
+    document["have"] = value
+  end
+  
+  def have_html
+    convert_html have
+  end
+  
   def need
     document["need"]
+  end
+  
+  def need=(value)
+    document["need"] = value
+  end
+  
+  def need_html
+    convert_html need
+  end
+  
+  def convert_html(text)
+    auto_html text do
+      html_escape :map => { 
+        '&' => '&amp;',  
+        '>' => '&gt;',
+        '<' => '&lt;',
+        '"' => '"' }
+      redcloth :target => :_blank
+      image
+      youtube :width => 580, :height => 378
+      vimeo :width => 580, :height => 378
+      link :target => :_blank
+    end
   end
   
   def to_param
@@ -90,6 +144,12 @@ class Idea < ActiveRecord::Base
       :headline => headline,
       :category => category,
       :user => user,
+      :description => description,
+      :description_html => description_html,
+      :have => have,
+      :have_html => have_html,
+      :need => need,
+      :need_html => need_html,
       :document => document,
       :url => idea_path(self)
     }

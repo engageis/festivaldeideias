@@ -7,13 +7,14 @@
         = form.input :title, :as => :string
         = form.input :headline
         = form.association :category, :as => :radio
+        .warning= t('.warning')
         .input.boolean.required
-          = check_box_tag 'accept_license'
-          = label_tag 'accept_license', t('.accept.license_html')
+          = check_box_tag 'new_accept_license'
+          = label_tag 'new_accept_license', t('.accept.license_html')
         .input.boolean.required
-          = check_box_tag 'accept_share'
-          = label_tag 'accept_share', t('.accept.share')
+          = check_box_tag 'new_accept_share'
+          = label_tag 'new_accept_share', t('.accept.share')
         .input.boolean.required
-          = check_box_tag 'accept_copy'
-          = label_tag 'accept_copy', t('.accept.copy')
+          = check_box_tag 'new_accept_copy'
+          = label_tag 'new_accept_copy', t('.accept.copy')
         = form.button :submit, :disabled => true

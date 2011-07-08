@@ -2,9 +2,9 @@ class IdeasController < ApplicationController
 
   inherit_resources
 
-  actions :index, :show, :create
-  respond_to :html
-  respond_to :json, :only => [:index]
+  actions :index, :show, :create, :update
+  respond_to :html, :except => [:update]
+  respond_to :json, :only => [:index, :update]
   
   def index
     index! do |format|
@@ -21,6 +21,17 @@ class IdeasController < ApplicationController
     end
   end
   
+  def explore
+    @categories = current_site.categories.with_ideas.order(:name).all
+  end
+  
+  def show
+    show! do
+      @editable = (current_user and current_user == @idea.user)
+      @versions = @idea.versions.order("created_at DESC").all
+    end
+  end
+  
   def create
     return unless require_login
     @idea = Idea.new(params[:idea])
@@ -30,8 +41,24 @@ class IdeasController < ApplicationController
     create!
   end
   
-  def explore
-    @categories = current_site.categories.with_ideas.order(:name).all
+  def update
+    update! do |format|
+      format.json do
+        render :json => @idea.to_json
+      end
+    end
   end
   
+  def create_fork
+    idea = Idea.find(params[:id])
+    fork = idea.create_fork(current_user)
+    if fork
+      flash[:success] = t('ideas.create_fork.success')
+      redirect_to idea_path(fork)
+    else
+      flash[:failure] = t('ideas.create_fork.failure')
+      redirect_to idea_path(idea)
+    end
+  end
+    
 end

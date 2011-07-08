@@ -1,33 +1,82 @@
-#idea
+- content_for :meta_tags do
+  meta name="og:title" value=@idea.title
+  meta name="og:description" value=@idea.headline
+  meta name="og:image" value=@idea.category.badge.url
+
+= render 'fork_idea'
+#idea data-id=@idea.id
   .header
-    h1= @idea.title
+    h1 class=("editable" if @editable) data-attribute="title" data-type="text" data-raw=@idea.title
+      = @idea.title
+    .category= image_tag @idea.category.badge.url
     .user= t('.user_html', :link => link_to(@idea.user.name, user_path(@idea.user)))
     - if @idea.parent
       .parent= t('.parent_html', :link => link_to(@idea.parent.user.name, idea_path(@idea.parent)))
     .headline
-      h1= t('.headline')
-      p= @idea.headline
+      p class=("editable" if @editable) data-attribute="headline" data-raw=@idea.headline
+        = @idea.headline
+    .fork_idea= link_to t('.fork_idea'), '#'
   .menu
     ul
       li
         a href="#description"
           = t('.menu.description')
       li
-        a href="#description"
+        a href="#have"
           = t('.menu.have')
       li
-        a href="#description"
+        a href="#need"
           = t('.menu.need')
+      li
+        a href="#versions"
+          = t('.menu.versions')
   .content
     .description
-      .text= @idea.description
-      .placeholder= t('.placeholders.description')
+      .text class=("editable" if @editable) data-attribute="description" data-raw=@idea.description data-raw-attribute="description_html"
+        == @idea.description_html
+      .info
+        - if @editable
+          .placeholder= t('.placeholders.description')
+          = render 'formatting_tips'
+        .comments= render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#description" }
     .have
-      .text= @idea.have
-      .placeholder= t('.placeholders.have')
+      .text class=("editable" if @editable) data-attribute="have" data-raw=@idea.have data-raw-attribute="have_html"
+        == @idea.have_html
+      .info
+        - if @editable
+          .placeholder= t('.placeholders.have')
+          = render 'formatting_tips'
+        .comments= render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#have" }
     .need
-      .text= @idea.need
-      .placeholder= t('.placeholders.need')
-    .comments
-      = render :partial => 'layouts/comments'
+      .text class=("editable" if @editable) data-attribute="need" data-raw=@idea.need data-raw-attribute="need_html"
+        == @idea.need_html
+      .info
+        - if @editable
+          .placeholder= t('.placeholders.need')
+          = render 'formatting_tips'
+        .comments= render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#need" }
+    .versions
+      h1= t('.versions.title')
+      h2= t('.versions.subtitle')
+      - if @versions.empty?
+        em= t('.versions.empty.html', :link => link_to(t('.versions.empty.link'), '#', :class => 'fork_idea'))
+      - else
+        ul
+          - @versions.each do |version|
+            li
+              = t('.versions.user_html', :link => link_to(version.user.name, user_path(version.user)))
+              .created_at= t('.versions.created_at', :created_at => l(version.created_at.to_date, :format => :short))
+              - if @editable
+                .merge= link_to t('.versions.merge'), merge_idea_path(@idea, version)
+  .footer
+    .license= link_to image_tag('cc_by.png'), "http://creativecommons.org/licenses/by/3.0/br/", :target => :_blank
+    .fork_idea= link_to t('.fork_idea'), '#'
 = render 'shared/application_js'
+= javascript_include_tag 'views/ideas/fork'
+= javascript_include_tag 'views/ideas/show'
+= javascript_include_tag 'controllers/idea'
+javascript:
+  app.forkIdeaView = new ForkIdeaView
+  app.showIdeaView = new ShowIdeaView
+  app.ideaController = new IdeaController
+  Backbone.history.start()

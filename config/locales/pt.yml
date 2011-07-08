@@ -11,14 +11,18 @@ pt:
     submit:
       idea:
         create: "Criar minha ideia"
+        update: "Criar minha versão desta ideia"
   or: ou
+  ok: OK
+  cancel: Cancelar
+  click_to_edit: Clique para editar...
   user:
     no_name: Sem nome
   layouts:
     new_idea:
       title: Inicie sua ideia para o desenvolvimento social
+      warning: Ao criar minha ideia eu entendo que
       accept:
-        title: Ao cadastrar minha ideia eu entendo que
         license_html: Ela será licenciada em <a href="http://creativecommons.org/licenses/by/3.0/br/" target="_blank">Creative Commons Atribuição 3.0 (CC BY 3.0)</a>
         share: Qualquer pessoa poderá compartilhar minha ideia
         copy: Qualquer pessoa poderá copiar e modificar minha idéia
@@ -34,6 +38,9 @@ pt:
       my_profile: Meu perfil
       admin: Painel administrativo
       logout: Sair
+  shared:
+    comments:
+      title: Comentários
   sessions:
     post_auth:
       error: Ocorreu um erro ao realizar o login. Por favor, tente novamente.
@@ -86,16 +93,39 @@ pt:
       user_html: Uma ideia de %{link}
       parent_html: Baseada na ideia de %{link}
       headline: Em poucas palavras...
+      fork_idea: Melhorar esta ideia
       menu:
         description: O que é essa ideia
         have: O que já temos
         need: O que precisamos
+        versions: Versões desta ideia
       placeholders:
         description: Explique aqui a sua ideia. Quanto mais detalhes você der, mais as pessoas vão poder contribuir com sua ideia. Mas ao mesmo tempo seja breve ;) ninguém gosta de ler textos gigantes que não vão direto ao ponto.
         have: Explique aqui o que você ou o seu grupo já possuem das coisas que são necessárias para botar sua ideia em prática. Você pode fazer uma lista e ir alterando à medida que recebe contribuições ;)
         need: Explique aqui o que você ou o seu grupo precisam para fazer a sua ideia acontecer. Deste modo, as pessoas que acreditam na sua ideia irão saber como podem contribuir ;)
+      versions:
+        title: Cada pessoa que quiser melhorar esta ideia pode criar sua própria versão
+        subtitle: Confira abaixo quais outras versões esta ideia já possui
+        empty:
+          html: Ninguém criou sua própria versão para esta ideia ainda. %{link}
+          link: Que tal ser o primeiro?
+        user_html: Uma versão de %{link}
+        created_at: Criada em %{created_at}
+        merge: Mesclar esta versão com a minha
+    fork_idea:
+      title: Melhorar esta ideia
+      subtitle: Para que você aperfeiçoe esta ideia, criaremos uma versão dela para você.
+      warning: Ao criar minha versão desta ideia eu entendo que
+      accept:
+        license_html: Ela será licenciada em <a href="http://creativecommons.org/licenses/by/3.0/br/" target="_blank">Creative Commons Atribuição 3.0 (CC BY 3.0)</a>
+        share: Qualquer pessoa poderá compartilhar minha ideia
+        copy: Qualquer pessoa poderá copiar e modificar minha idéia
+        credits: Eu devo sempre atribuir créditos à ideia original
+    create_fork:
+      success: Sua versão foi criada com sucesso! Agora você já pode aperfeiçoar esta ideia à vontade.
+      failure: Ooops. Não foi possível criar sua versão desta ideia. Por favor, tente novamente.
   simple_form:
         labels:
           idea:
             title: Qual o título da sua ideia?
-            headline: Uma breve descrição da sua ideia...
+            headline: Sua ideia em poucas palavras...

@@ -1,6 +1,6 @@
 #social
   ul
-    li
-      |fabook
-    li
-      |twitter
+    /
+      li= render :partial => 'shared/fb_like', :locals => { :url => root_url }
+      - if current_site.twitter && current_site.twitter != ''
+        li= render :partial => 'layouts/twitter_follow'

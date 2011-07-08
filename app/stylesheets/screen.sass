@@ -1,4 +1,3 @@
-// TODO bring the reset back
 @import compass/reset
 @import compass/utilities
 @import compass/css3
@@ -8,6 +7,10 @@
   width: 100%
 
 body#site
+  :float left
+  :background url('/images/bg.png')
+  :font-family Calibri !important
+  :color #3d3d3d
   .overlay
     background-color: #333
     background: rgba(0,0,0,.8)
@@ -55,6 +58,15 @@ body#site
 
   #user_menu .menu
     display: none
+    
+  .editable
+    &:after
+      content: " " url(/images/edit.png)
+      
+  .editing
+    &:after
+      content: "" !important
+    
 .wrapper
   :width 962px
   :margin 0 auto
@@ -66,19 +78,29 @@ h1
   :font
     :size 35px
     :weight bold
-    :family Calibri
   :line-height 120%
 h2
+  :font-size 30pt
+  :line-height 36pt
+  :float left
 h3
+  :float left
+  :background #02a170
+  //:width 330px
+  :width 100%
+  :font-size 30pt
+  :line-height 36pt
+  :color white
+  :padding-left 10px
+  :clear both
 
 
 ul
-  :list-style none
 hr
   @include estrutura
   :border 0
   :border-bottom 3px dotted #a3dad0
-  :padding-bottom 40px
+  :padding-bottom 20px
   :margin-bottom 30px
 .logo
   :float left
@@ -97,11 +119,11 @@ hr
     :margin-bottom 8px
     ul
       :float right
-      :list-style none
       li
         :float left
         :margin 0 8px
         a
+          :color #7675b1
   #social
     :float right
     :clear right
@@ -131,6 +153,64 @@ hr
 
 #content
   @include estrutura
-
+  h1
+    :margin-bottom 22px
+  ol
+    :background #c1e7ee
+    :float left
+    :width 461px
+    :padding 10px 0
+    +border-radius(8px)
+    :margin 0 20px 20px 0
+    li
+      :line-height 15pt
+      :font-size 18pt
+      :margin-left 10px
+      :width 450px
+      :float left
+      :margin-bottom 20px
+      &:last-child
+        :margin-bottom 0
+      span
+        :color #36a1c2
+        :font-size 36pt
+        :float left
+        :margin 10px 10px 0 0
+      p
+        :float left
+        :width 415px
+  .text
+    :float left
+    :width 461px
+    :clear left
+    :font-size 11.9pt
+    :line-height 18pt
+  .video
+    :width 460px
+    :height 299px
+    :float left
+  .new_idea
+    :float left
+    :padding 5px
+    +border-radius(4px)
+    :background #7675b1
+    :margin 8px 0 0 10px
+    a
+      :color white
+      :text-decoration none
+      :font-size 18pt
+.box
+  @include estrutura
+  .info
+    :float left
+    :width 50%
+.ideas
+  :margin-top 49px
+  @include estrutura
+.idea
+  :float left
+  :width 221px
+  :height 221px
+  :overflow hidden
 #footer
   @include estrutura

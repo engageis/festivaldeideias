@@ -17,14 +17,15 @@ gem "acts_as_commentable"
 gem 'routing-filter'
 gem 'http_accept_language'
 gem "autotest", "~> 4.4.6"
-gem 'activeadmin'
+gem 'activeadmin', :git => 'https://github.com/gregbell/active_admin.git'
 gem 'cancan'
 gem "mustache"
 gem 'kaminari'
 gem "meta_search"
-gem 'carrierwave'
+gem 'carrierwave', :git => 'https://github.com/jnicklas/carrierwave.git'
 gem 'rest-client'
 gem "simple_form"
+gem 'rmagick'
 
 group :test, :development do
   gem 'capybara', "~> 1.0.0"

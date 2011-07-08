@@ -20,9 +20,13 @@ Ramify::Application.routes.draw do
     match "/fake_login" => "sessions#fake_create", :as => :fake_login
   end
 
-  resources :ideas, :only => [:index, :create, :show] do
+  resources :ideas, :only => [:index, :create, :update, :show] do
     collection do
       get 'explore'
+    end
+    member do
+      post 'create_fork'
+      get 'merge/:from_id', :action => :merge, :as => :merge
     end
   end
   

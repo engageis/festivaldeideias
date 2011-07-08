@@ -12,7 +12,7 @@ Configuration.create :name => "git_document_db_url", :value => "http://localhost
 
 site_template = Template.create! :name => "Ideia", :description => "Modelo simples para a colaboração na evolução de uma ideia."
 
-site = Site.create! :name => "Festival de Ideias · Centro Ruth Cardoso", :host => "localhost", :port => "3000", :auth_gateway => true, :template => site_template
+site = Site.create! :name => "Festival de Ideias · Centro Ruth Cardoso", :host => "localhost", :port => "3000", :auth_gateway => true, :template => site_template, :twitter => "centrorcardoso", :image => File.open("#{Rails.root.to_s}/lib/fixtures/site_logo.png")
 
 site.links.create :name => "Sobre o Festival", :href => '#', :header => true
 site.links.create :name => "Sobre os temas", :href => '#', :header => true
@@ -22,11 +22,9 @@ site.links.create :name => "Blog", :href => '#'
 site.links.create :name => "Vídeos", :href => '#'
 site.links.create :name => "Contato", :href => '#'
 
-# TODO create a badge for each category with carrier wave
-badge_file = File.open("#{Rails.root.to_s}/lib/fixtures/badge.gif")
-category_1 = Category.create! :site => site, :name => "Mobilidade urbana", :badge => badge_file
-category_2 = Category.create! :site => site, :name => "Segurança comunitária", :badge => badge_file
-category_3 = Category.create! :site => site, :name => "Catástrofes naturais", :badge => badge_file
+category_1 = Category.create! :site => site, :name => "Mobilidade urbana", :badge => File.open("#{Rails.root.to_s}/lib/fixtures/mobilidade.png")
+category_2 = Category.create! :site => site, :name => "Segurança comunitária", :badge => File.open("#{Rails.root.to_s}/lib/fixtures/seguranca.png")
+category_3 = Category.create! :site => site, :name => "Catástrofes naturais", :badge => File.open("#{Rails.root.to_s}/lib/fixtures/catastrofes.png")
 
 user = User.create! :site => site, :provider => 'fake', :uid => 'foo_bar', :name => "Foo Bar"
 user_2 = User.create! :site => site, :provider => 'fake', :uid => 'bar_foo', :name => "Bar Foo"

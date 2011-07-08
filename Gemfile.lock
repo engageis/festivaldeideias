@@ -1,3 +1,24 @@
+GIT
+  remote: https://github.com/gregbell/active_admin.git
+  revision: d14fb1f204f8be5f1d8276cd347c0a4bb231b4ca
+  specs:
+    activeadmin (0.2.2)
+      devise (>= 1.1.2)
+      fastercsv
+      formtastic (>= 1.1.0)
+      inherited_resources
+      kaminari (>= 0.12.4)
+      meta_search (>= 0.9.2)
+      rails (>= 3.0.0)
+      sass (>= 3.1.0)
+
+GIT
+  remote: https://github.com/jnicklas/carrierwave.git
+  revision: 3850f67ce1b7d25db595c3e2ec28b81ac172467c
+  specs:
+    carrierwave (0.5.4)
+      activesupport (~> 3.0)
+
 GEM
   remote: http://rubygems.org/
   remote: http://gems.github.com/
@@ -18,14 +39,6 @@ GEM
       rack-mount (~> 0.6.13)
       rack-test (~> 0.5.6)
       tzinfo (~> 0.3.23)
-    activeadmin (0.2.2)
-      devise (>= 1.1.2)
-      formtastic (>= 1.1.0)
-      inherited_views
-      meta_search (>= 0.9.2)
-      rails (>= 3.0.0)
-      sass (>= 3.1.0)
-      will_paginate (>= 3.0.pre2)
     activemodel (3.0.3)
       activesupport (= 3.0.3)
       builder (~> 2.1.2)
@@ -56,8 +69,6 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 0.2.0)
       xpath (~> 0.1.4)
-    carrierwave (0.5.4)
-      activesupport (~> 3.0)
     childprocess (0.1.9)
       ffi (~> 1.0.6)
     chunky_png (1.2.0)
@@ -67,7 +78,7 @@ GEM
       sass (~> 3.1)
     configuration (1.3.1)
     database_cleaner (0.6.7)
-    devise (1.4.1)
+    devise (1.4.2)
       bcrypt-ruby (~> 2.1.2)
       orm_adapter (~> 0.0.3)
       warden (~> 1.0.3)
@@ -82,6 +93,7 @@ GEM
       addressable (~> 2.2.4)
       multipart-post (~> 1.1.0)
       rack (>= 1.1.0, < 2)
+    fastercsv (1.5.4)
     ffi (1.0.9)
     formtastic (1.2.4)
       actionpack (>= 2.3.7)
@@ -94,10 +106,6 @@ GEM
     inherited_resources (1.2.2)
       has_scope (~> 0.5.0)
       responders (~> 0.6.0)
-    inherited_views (0.0.2)
-      formtastic (>= 0.9.8)
-      inherited_resources (>= 1.0.6)
-      will_paginate (>= 2.3.12)
     jasmine (1.0.2.1)
       json_pure (>= 1.4.3)
       rack (>= 1.1)
@@ -196,6 +204,7 @@ GEM
     responders (0.6.4)
     rest-client (1.6.3)
       mime-types (>= 1.16)
+    rmagick (2.13.1)
     routing-filter (0.2.3)
       actionpack
     rspec (2.6.0)
@@ -246,7 +255,6 @@ GEM
       raindrops (~> 0.6)
     warden (1.0.4)
       rack (>= 1.0)
-    will_paginate (3.0.pre2)
     xpath (0.1.4)
       nokogiri (~> 1.3)
 
@@ -254,13 +262,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activeadmin
+  activeadmin!
   acts_as_commentable
   auto_html (>= 1.3.5)
   autotest (~> 4.4.6)
   cancan
   capybara (~> 1.0.0)
-  carrierwave
+  carrierwave!
   compass
   database_cleaner
   factory_girl_rails
@@ -278,6 +286,7 @@ DEPENDENCIES
   rake (= 0.8.7)
   rcov
   rest-client
+  rmagick
   routing-filter
   rspec-rails (~> 2.6.1)
   simple_form
