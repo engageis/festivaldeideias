@@ -5,4 +5,4 @@ tmp/**/*
 *.tmproj
 config/database.yml
 public/uploads
-public/stylesheets/active_admin.css
+public/stylesheets/*.css
