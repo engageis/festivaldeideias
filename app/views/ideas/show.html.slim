@@ -1,7 +1,8 @@
 - content_for :meta_tags do
-  meta name="og:title" value=@idea.title
-  meta name="og:description" value=@idea.headline
-  meta name="og:image" value=@idea.category.badge.url
+  meta name=="og:title" value=@idea.title
+  meta name=="og:description" value=@idea.headline
+  meta name=="og:image" value=="#{current_site.full_url}#{@idea.category.badge.url}"
+  meta name=="og:type" value=="cause"
 
 = render 'fork_idea'
 
