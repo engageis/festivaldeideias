@@ -1,6 +1,6 @@
 var ShowIdeaView = Backbone.View.extend({
 
-  el: $('#idea'),
+  el: $('#show_idea'),
   
   events: {
     "click .fork_idea": "showForkIdea"
@@ -12,7 +12,7 @@ var ShowIdeaView = Backbone.View.extend({
       $(this).click(function(){
         $(this).addClass("editing")
       })
-      $(this).editable("/" + app.locale + "/ideas/" + $(this).parents('#idea').attr('data-id'), {
+      $(this).editable("/" + app.locale + "/ideas/" + $(this).parents('#show_idea').attr('data-id'), {
         data: function(){ return $(this).attr('data-raw') },
         type: ($(this).attr('data-type') || "textarea"),
         method: "PUT",

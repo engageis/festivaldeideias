@@ -4,7 +4,8 @@
   meta name="og:image" value=@idea.category.badge.url
 
 = render 'fork_idea'
-#idea data-id=@idea.id
+
+#show_idea data-id=@idea.id
   .header
     h1 class=("editable" if @editable) data-attribute="title" data-type="text" data-raw=@idea.title
       = @idea.title
@@ -64,13 +65,14 @@
         ul
           - @versions.each do |version|
             li
-              = t('.versions.user_html', :link => link_to(version.user.name, user_path(version.user)))
+              = t('.versions.user_html', :link => link_to(version.user.name, idea_path(version)))
               .created_at= t('.versions.created_at', :created_at => l(version.created_at.to_date, :format => :short))
               - if @editable
                 .merge= link_to t('.versions.merge'), merge_idea_path(@idea, version)
   .footer
     .license= link_to image_tag('cc_by.png'), "http://creativecommons.org/licenses/by/3.0/br/", :target => :_blank
     .fork_idea= link_to t('.fork_idea'), '#'
+
 = render 'shared/application_js'
 = javascript_include_tag 'views/ideas/fork'
 = javascript_include_tag 'views/ideas/show'

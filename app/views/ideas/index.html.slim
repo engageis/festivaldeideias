@@ -3,9 +3,9 @@
   - if current_site.image
     meta name="og:image" value="http://#{current_site.host}:#{current_site.port}/#{current_site.image.url(:thumb)}"
 
-h1= t('.title')
-.box
-  .info
+#index
+  h1= t('.title')
+  .text
     ol
       li
         span 1
@@ -16,22 +16,22 @@ h1= t('.title')
       li
         span 3
         p= t('.bullets.third')
-    .text= t('.text_html')
+    .description= t('.description_html')
   .video= t('.video_html')
-hr
-.box
-  h2= t('.discover')
-  .new_idea= link_to t('.new_idea'), '#'
+  hr
+  .new_idea
+    h2= t('.discover')
+    = link_to t('.new_idea'), '#'
   = render :partial => 'list', :locals => {:quick => "recommended", :collection => @featured} unless @featured.empty?
   = render :partial => 'list', :locals => {:quick => "popular", :collection => @popular} unless @popular.empty?
   = render :partial => 'list', :locals => {:quick => "recent", :collection => @recent} unless @recent.empty?
-.box
   .explore= t('.explore.html', :count => @count, :link => link_to(t('.explore.link'), explore_path))
-hr
-.box
-  h2= t('.didnt_find')
-  .new_idea= link_to t('.new_idea'), '#'
-  = render 'shared/application_js'
+  hr
+  .new_idea
+    h2= t('.didnt_find')
+    = link_to t('.new_idea'), '#'
+
+= render 'shared/application_js'
 = javascript_include_tag 'views/ideas/index'
 javascript:
   var indexView = new IndexView()

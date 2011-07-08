@@ -1,5 +1,7 @@
 .ideas
-  h3= t(".#{quick}.title")
-  = render :partial => 'idea', :collection => collection
+  h1= t(".#{quick}.title")
+  ul= render :partial => 'idea', :collection => collection
   .more
-    = link_to t(".#{quick}.more"), "#{explore_path}##{quick}"
+    = link_to "#{explore_path}##{quick}" do
+      = t(".#{quick}.more")
+      .arrow >

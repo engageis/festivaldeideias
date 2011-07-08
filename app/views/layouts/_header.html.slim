@@ -1,6 +1,6 @@
-= link_to :root, :class => 'logo' do
-  h1.logo= current_site.name
-  
+h1
+  = link_to :root do
+    = image_tag 'logo.png', :title => current_site.name
 = render 'layouts/new_idea'
 = render 'layouts/login'
 = render 'layouts/login_menu'

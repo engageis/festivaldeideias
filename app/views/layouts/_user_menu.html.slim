@@ -1,9 +1,13 @@
 #user_menu
   a.user href="#"
-    = image_tag current_user.display_image
+    = image_tag current_user.display_image, :class => 'avatar'
     = truncate current_user.display_name, :length => 24
     = image_tag 'dropdown.png', :class => 'dropdown'
   .menu
+    a.user href="#"
+      = image_tag current_user.display_image, :class => 'avatar'
+      = truncate current_user.display_name, :length => 24
+      = image_tag 'dropdown.png', :class => 'dropdown'
     ul
       li= link_to t('.my_profile'), user_path(current_user)
       - if can? :manage, current_site
