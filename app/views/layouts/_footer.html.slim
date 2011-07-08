@@ -1,3 +1,4 @@
 ul
   - current_site.links.each do |link|
     li= link_to link.name, link.href, :title => (link.title or link.name), :target => :_blank
+.softa= link_to image_tag('softa.png'), "http://softa.com.br", :target => :_blank

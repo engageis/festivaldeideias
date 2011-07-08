@@ -3,7 +3,7 @@ var IndexView = Backbone.View.extend({
   el: $('#content'),
 
   events: {
-    "click .new_idea": "showNewIdea"
+    "click .new_idea a": "showNewIdea"
   },
   
   showNewIdea: function(event) {

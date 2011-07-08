@@ -1,0 +1,50 @@
+@import settings
+@import fonts
+@import layouts
+@import defaults
+@import header
+@import content
+@import footer
+
+=body
+
+  background: url('/images/bg.png')
+  background: url(/images/bg_overlay.png) top left repeat-x, url('/images/bg.png')
+  text-rendering: optimizeLegibility
+  font-family: Calibri
+  color: #3d3d3d
+  font-size: 18px
+  line-height: 22px
+  font-weight: normal
+  
+  em
+    font-style: italic
+  strong
+    font-weight: bold
+  a
+    text-decoration: underline
+    color: #7675b1
+    +transition
+    &:hover
+      color: #9695d1
+  p
+    padding-bottom: 8px
+  h1
+    font-size: 36px
+    line-height: 40px
+    letter-spacing: 3px
+    font-weight: bold
+  h2
+    font-size: 32px
+    line-height: 36px
+    letter-spacing: 2px
+    font-weight: normal
+
+  +layouts
+  +defaults
+  #header
+    +header
+  #content
+    +content
+  #footer
+    +footer

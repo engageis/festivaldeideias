@@ -56,20 +56,20 @@ pt:
         first: Encontre uma ideia que você gostaria de aprimorar
         second: Crie sua própria versão e trabalhe até ficar satisfeito
         third: Devolva a ideia para a comunidade aprimorar ainda mais
-      text_html: <p>As melhores ideias serão selecionadas para o <strong>Festival de Ideias</strong>, que ocorrerá nos dias <strong>20 e 21 de setembro</strong>, na <strong>Cinemateca SP</strong>.</p><p>Contribuindo, você poderá ser escolhido para um dos times que irão ao festival e concorrer a <strong>prêmios incríveis</strong>, além, é claro, de ajudar a criar um mundo melhor :)</p>
-      video_html: <iframe src="http://player.vimeo.com/video/6428069?color=ffffff" width="400" height="225" frameborder="0"></iframe>
+      description_html: <p>As melhores ideias serão selecionadas para o <strong>Festival de Ideias</strong>, que ocorrerá nos dias <strong>20 e 21 de setembro</strong>, na <strong>Cinemateca SP</strong>.</p><p>Contribuindo, você poderá ser escolhido para um dos times que irão ao festival e concorrer a <strong>prêmios incríveis</strong>, além, é claro, de ajudar a criar um mundo melhor :)</p>
+      video_html: <iframe src="http://player.vimeo.com/video/6428069?color=ffffff" width="460" height="325" frameborder="0"></iframe>
       discover: Conheça algumas ideias e contribua!
       didnt_find: Tem uma ideia que não está aqui?
       new_idea: Inicie uma ideia
       explore:
-        html: Temos um total de %{count} idéias. Que tal explorar todas elas %{link}?
+        html: Temos um total de <span class="number">%{count}</span> idéias. Que tal explorar todas elas %{link}?
         link: clicando aqui
     list:
       recommended:
         title: Nossa seleção
         more: Conheça mais ideias recomendadas
       popular:
-        title: Ideias mais populares
+        title: Ideias populares
         more: Conheça mais ideias populares
       recent:
         title: Ideias recentes

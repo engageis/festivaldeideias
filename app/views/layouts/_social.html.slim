@@ -1,6 +1,7 @@
 #social
   ul
-    /
-      li= render :partial => 'shared/fb_like', :locals => { :url => root_url }
-      - if current_site.twitter && current_site.twitter != ''
-        li= render :partial => 'layouts/twitter_follow'
+      li= render :partial => 'shared/fb_like', :locals => { :url => root_url, :show_faces => false }
+      li
+        .twitter_share= render :partial => 'shared/twitter_share', :locals => { :url => root_url }
+        - if current_site.twitter and not current_site.twitter.empty?
+          .twitter_follow= render :partial => 'layouts/twitter_follow'

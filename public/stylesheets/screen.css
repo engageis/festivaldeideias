@@ -64,14 +64,85 @@ footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
-/* line 10, ../../app/stylesheets/screen.sass */
-body#site {
-  float: left;
-  background: url("/images/bg.png");
-  font-family: Calibri !important;
-  color: #3d3d3d;
+@font-face {
+  font-family: Calibri;
+  font-weight: normal;
+  src: url("/fonts/calibri.ttf");
 }
-/* line 15, ../../app/stylesheets/screen.sass */
+
+@font-face {
+  font-family: Calibri;
+  font-weight: bold;
+  src: url("/fonts/calibri_bold.ttf");
+}
+
+@font-face {
+  font-family: Calibri;
+  font-style: italic;
+  src: url("/fonts/calibri_italic.ttf");
+}
+
+/* line 6, ../../app/stylesheets/screen.sass */
+body#site {
+  background: url("/images/bg.png");
+  background: url(/images/bg_overlay.png) top left repeat-x, url("/images/bg.png");
+  text-rendering: optimizeLegibility;
+  font-family: Calibri;
+  color: #3d3d3d;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: normal;
+}
+/* line 20, ../../app/stylesheets/_body.sass */
+body#site em {
+  font-style: italic;
+}
+/* line 22, ../../app/stylesheets/_body.sass */
+body#site strong {
+  font-weight: bold;
+}
+/* line 24, ../../app/stylesheets/_body.sass */
+body#site a {
+  text-decoration: underline;
+  color: #7675b1;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+/* line 28, ../../app/stylesheets/_body.sass */
+body#site a:hover {
+  color: #9695d1;
+}
+/* line 30, ../../app/stylesheets/_body.sass */
+body#site p {
+  padding-bottom: 8px;
+}
+/* line 32, ../../app/stylesheets/_body.sass */
+body#site h1 {
+  font-size: 36px;
+  line-height: 40px;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+/* line 37, ../../app/stylesheets/_body.sass */
+body#site h2 {
+  font-size: 32px;
+  line-height: 36px;
+  letter-spacing: 2px;
+  font-weight: normal;
+}
+/* line 7, ../../app/stylesheets/_layouts.sass */
+body#site .wrapper {
+  width: 940px;
+  margin: 0 auto;
+  clear: both;
+}
+/* line 9, ../../app/stylesheets/_layouts.sass */
 body#site .overlay {
   background-color: #333333;
   background: rgba(0, 0, 0, 0.8);
@@ -83,13 +154,13 @@ body#site .overlay {
   z-index: 400;
   display: none;
 }
-/* line 26, ../../app/stylesheets/screen.sass */
+/* line 11, ../../app/stylesheets/_layouts.sass */
 body#site .popup {
   z-index: 500;
   display: none;
   background-color: white;
 }
-/* line 32, ../../app/stylesheets/screen.sass */
+/* line 13, ../../app/stylesheets/_layouts.sass */
 body#site #flash {
   display: none;
   z-index: 500;
@@ -104,11 +175,11 @@ body#site #flash {
   color: white;
   text-shadow: black 1px 1px 1px;
 }
-/* line 42, ../../app/stylesheets/screen.sass */
+/* line 11, ../../app/stylesheets/layouts/_flash.sass */
 body#site #flash .wrapper {
   padding: 20px;
 }
-/* line 44, ../../app/stylesheets/screen.sass */
+/* line 13, ../../app/stylesheets/layouts/_flash.sass */
 body#site #flash .success.wrapper, body#site #flash .notice.wrapper {
   background-color: #44a546;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
@@ -118,7 +189,7 @@ body#site #flash .success.wrapper, body#site #flash .notice.wrapper {
   background-image: -ms-linear-gradient(top, #51c252, #49b249, #44a546);
   background-image: linear-gradient(top, #51c252, #49b249, #44a546);
 }
-/* line 47, ../../app/stylesheets/screen.sass */
+/* line 16, ../../app/stylesheets/layouts/_flash.sass */
 body#site #flash .failure.wrapper, body#site #flash .error.wrapper {
   background-color: #aa3333;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #cc3333), color-stop(50%, #bb3333), color-stop(100%, #aa3333));
@@ -128,7 +199,7 @@ body#site #flash .failure.wrapper, body#site #flash .error.wrapper {
   background-image: -ms-linear-gradient(top, #cc3333, #bb3333, #aa3333);
   background-image: linear-gradient(top, #cc3333, #bb3333, #aa3333);
 }
-/* line 50, ../../app/stylesheets/screen.sass */
+/* line 19, ../../app/stylesheets/layouts/_flash.sass */
 body#site #flash .locale.wrapper {
   background-color: #0084b9;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0da1c3), color-stop(50%, #0591bc), color-stop(100%, #0084b9));
@@ -138,262 +209,625 @@ body#site #flash .locale.wrapper {
   background-image: -ms-linear-gradient(top, #0da1c3, #0591bc, #0084b9);
   background-image: linear-gradient(top, #0da1c3, #0591bc, #0084b9);
 }
-/* line 54, ../../app/stylesheets/screen.sass */
+/* line 2, ../../app/stylesheets/defaults/_hidden.sass */
 body#site .loading img {
   display: none;
 }
-/* line 57, ../../app/stylesheets/screen.sass */
+/* line 4, ../../app/stylesheets/defaults/_hidden.sass */
 body#site .empty {
   display: none;
 }
-/* line 60, ../../app/stylesheets/screen.sass */
-body#site #user_menu .menu {
-  display: none;
-}
-/* line 64, ../../app/stylesheets/screen.sass */
+/* line 3, ../../app/stylesheets/defaults/_editable.sass */
 body#site .editable:after {
   content: " " url(/images/edit.png);
 }
-/* line 68, ../../app/stylesheets/screen.sass */
+/* line 6, ../../app/stylesheets/defaults/_editable.sass */
 body#site .editing:after {
   content: "" !important;
 }
-
-/* line 71, ../../app/stylesheets/screen.sass */
-.wrapper {
-  width: 962px;
-  margin: 0 auto;
-}
-
-/* line 75, ../../app/stylesheets/screen.sass */
-h1 {
-  width: 100%;
-  float: left;
-  text-align: center;
-  font-size: 35px;
-  font-weight: bold;
-  line-height: 120%;
-}
-
-/* line 83, ../../app/stylesheets/screen.sass */
-h2 {
-  font-size: 30pt;
-  line-height: 36pt;
-  float: left;
-}
-
-/* line 87, ../../app/stylesheets/screen.sass */
-h3 {
-  float: left;
-  background: #02a170;
-  width: 100%;
-  font-size: 30pt;
-  line-height: 36pt;
-  color: white;
-  padding-left: 10px;
+/* line 2, ../../app/stylesheets/defaults/_separators.sass */
+body#site hr {
   clear: both;
-}
-
-/* line 100, ../../app/stylesheets/screen.sass */
-hr {
-  float: left;
-  width: 100%;
   border: 0;
   border-bottom: 3px dotted #a3dad0;
   padding-bottom: 20px;
   margin-bottom: 30px;
 }
-
-/* line 106, ../../app/stylesheets/screen.sass */
-.logo {
-  float: left;
-  width: 299px;
-  height: 0;
-  padding-top: 133px;
-  overflow: hidden;
-  background: url(/images/logo.png) no-repeat top center;
+/* line 45, ../../app/stylesheets/_body.sass */
+body#site #header {
+  margin-top: 26px;
 }
-
-/* line 114, ../../app/stylesheets/screen.sass */
-#header {
-  float: left;
-  width: 100%;
-  padding-top: 20px;
+/* line 8, ../../app/stylesheets/_header.sass */
+body#site #header .wrapper {
+  position: relative;
 }
-/* line 117, ../../app/stylesheets/screen.sass */
-#header #login_menu {
-  float: right;
-  height: 35px;
+/* line 10, ../../app/stylesheets/_header.sass */
+body#site #header h1 {
+  float: left;
+}
+/* line 12, ../../app/stylesheets/_header.sass */
+body#site #header #login_menu {
+  color: #999999;
+  position: absolute;
+  top: 0;
+  right: 0;
   margin-bottom: 8px;
+  text-transform: uppercase;
 }
-/* line 121, ../../app/stylesheets/screen.sass */
-#header #login_menu ul {
-  float: right;
+/* line 8, ../../app/stylesheets/header/_login_menu.sass */
+body#site #header #login_menu ul {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  *zoom: 1;
 }
-/* line 123, ../../app/stylesheets/screen.sass */
-#header #login_menu ul li {
+/* line 60, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #header #login_menu ul li {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0px;
+  white-space: nowrap;
+  display: inline;
   float: left;
-  margin: 0 8px;
+  padding-left: 4px;
+  padding-right: 4px;
 }
-/* line 126, ../../app/stylesheets/screen.sass */
-#header #login_menu ul li a {
-  color: #7675b1;
+/* line 48, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #header #login_menu ul li:first-child, body#site #header #login_menu ul li.first {
+  padding-left: 0;
 }
-/* line 128, ../../app/stylesheets/screen.sass */
-#header #social {
-  float: right;
-  clear: right;
-  min-height: 30px;
-  margin-bottom: 30px;
+/* line 49, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #header #login_menu ul li:last-child {
+  padding-right: 0;
 }
-/* line 133, ../../app/stylesheets/screen.sass */
-#header #social ul {
-  float: right;
+/* line 50, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #header #login_menu ul li.last {
+  padding-right: 0;
 }
-/* line 135, ../../app/stylesheets/screen.sass */
-#header #social ul li {
+/* line 14, ../../app/stylesheets/_header.sass */
+body#site #header #header_menu {
+  position: absolute;
+  top: 94px;
+  right: 0;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+/* line 7, ../../app/stylesheets/header/_header_menu.sass */
+body#site #header #header_menu ul {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 60, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #header #header_menu ul li {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0px;
+  white-space: nowrap;
+  display: inline;
   float: left;
+  padding-left: 12px;
+  padding-right: 12px;
 }
-/* line 137, ../../app/stylesheets/screen.sass */
-#header #header_menu {
-  float: right;
-  clear: right;
+/* line 48, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #header #header_menu ul li:first-child, body#site #header #header_menu ul li.first {
+  padding-left: 0;
 }
-/* line 140, ../../app/stylesheets/screen.sass */
-#header #header_menu ul {
-  float: right;
+/* line 49, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #header #header_menu ul li:last-child {
+  padding-right: 0;
 }
-/* line 142, ../../app/stylesheets/screen.sass */
-#header #header_menu ul li {
-  float: left;
-  margin: 0 14px;
+/* line 50, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #header #header_menu ul li.last {
+  padding-right: 0;
 }
-/* line 145, ../../app/stylesheets/screen.sass */
-#header #header_menu ul li:first-child {
-  margin-left: 0;
-}
-/* line 147, ../../app/stylesheets/screen.sass */
-#header #header_menu ul li:last-child {
-  margin-right: 0;
-}
-/* line 149, ../../app/stylesheets/screen.sass */
-#header #header_menu ul li a {
+/* line 9, ../../app/stylesheets/header/_header_menu.sass */
+body#site #header #header_menu ul a {
+  display: block;
   color: white;
-  padding: 6px 18px;
+  padding: 4px 16px;
   background: #64c5a7;
   text-decoration: none;
 }
-
-/* line 155, ../../app/stylesheets/screen.sass */
-#content {
-  float: left;
-  width: 100%;
+/* line 15, ../../app/stylesheets/header/_header_menu.sass */
+body#site #header #header_menu ul a:hover {
+  background: #44a587;
 }
-/* line 157, ../../app/stylesheets/screen.sass */
-#content h1 {
+/* line 16, ../../app/stylesheets/_header.sass */
+body#site #header #user_menu {
+  float: right;
+  position: absolute;
+  top: -24px;
+  right: -16px;
+  z-index: 200;
+  padding: 16px;
+}
+/* line 8, ../../app/stylesheets/header/_user_menu.sass */
+body#site #header #user_menu a.user {
+  text-decoration: none;
+}
+/* line 10, ../../app/stylesheets/header/_user_menu.sass */
+body#site #header #user_menu a.user img.avatar {
+  border: 2px solid #7675b1;
+  height: 24px;
+  margin-right: 8px;
+}
+/* line 14, ../../app/stylesheets/header/_user_menu.sass */
+body#site #header #user_menu a.user img.dropdown {
+  vertical-align: middle;
+  margin-left: 4px;
+}
+/* line 17, ../../app/stylesheets/header/_user_menu.sass */
+body#site #header #user_menu .menu {
+  background-color: #7675b1;
+  background-color: rgba(118, 117, 177, 0.9);
+  padding: 16px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -o-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  border-radius: 6px;
+  z-index: 100;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: right;
+}
+/* line 29, ../../app/stylesheets/header/_user_menu.sass */
+body#site #header #user_menu .menu a.user img.avatar {
+  border: 2px solid #eeeeee;
+}
+/* line 31, ../../app/stylesheets/header/_user_menu.sass */
+body#site #header #user_menu .menu a {
+  text-decoration: none;
+  color: #eeeeee;
+}
+/* line 34, ../../app/stylesheets/header/_user_menu.sass */
+body#site #header #user_menu .menu a:hover {
+  color: white;
+}
+/* line 36, ../../app/stylesheets/header/_user_menu.sass */
+body#site #header #user_menu .menu ul li {
+  padding: 8px 0;
+}
+/* line 38, ../../app/stylesheets/header/_user_menu.sass */
+body#site #header #user_menu .menu ul li:last-child {
+  padding-bottom: 0;
+}
+/* line 18, ../../app/stylesheets/_header.sass */
+body#site #header #social {
+  position: absolute;
+  top: 36px;
+  right: -22px;
+}
+/* line 5, ../../app/stylesheets/header/_social.sass */
+body#site #header #social ul {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 60, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #header #social ul li {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0px;
+  white-space: nowrap;
+  display: inline;
+  float: left;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+/* line 48, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #header #social ul li:first-child, body#site #header #social ul li.first {
+  padding-left: 0;
+}
+/* line 49, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #header #social ul li:last-child {
+  padding-right: 0;
+}
+/* line 50, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #header #social ul li.last {
+  padding-right: 0;
+}
+/* line 2, ../../app/stylesheets/content/_index.sass */
+body#site #content #index h1 {
+  text-align: center;
   margin-bottom: 22px;
 }
-/* line 159, ../../app/stylesheets/screen.sass */
-#content ol {
-  background: #c1e7ee;
+/* line 5, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .text {
   float: left;
-  width: 461px;
-  padding: 10px 0;
+  width: 50%;
+}
+/* line 8, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .text ol {
+  background: #c1e7ee;
+  background: rgba(193, 231, 238, 0.8);
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
   -o-border-radius: 8px;
   -ms-border-radius: 8px;
   -khtml-border-radius: 8px;
   border-radius: 8px;
-  margin: 0 20px 20px 0;
+  margin-right: 10px;
+  padding: 10px;
 }
-/* line 166, ../../app/stylesheets/screen.sass */
-#content ol li {
-  line-height: 15pt;
-  font-size: 18pt;
-  margin-left: 10px;
-  width: 450px;
+/* line 14, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .text ol li {
+  clear: both;
+  margin-left: 32px;
+  padding: 4px 0;
+}
+/* line 18, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .text ol li span {
   float: left;
-  margin-bottom: 20px;
-}
-/* line 173, ../../app/stylesheets/screen.sass */
-#content ol li:last-child {
-  margin-bottom: 0;
-}
-/* line 175, ../../app/stylesheets/screen.sass */
-#content ol li span {
+  margin-left: -28px;
   color: #36a1c2;
-  font-size: 36pt;
-  float: left;
-  margin: 10px 10px 0 0;
+  font-size: 36px;
+  line-height: 42px;
 }
-/* line 180, ../../app/stylesheets/screen.sass */
-#content ol li p {
-  float: left;
-  width: 415px;
+/* line 24, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .text ol li p {
+  font-size: 20px;
+  line-height: 24px;
+  color: #3d3d3d;
 }
-/* line 183, ../../app/stylesheets/screen.sass */
-#content .text {
-  float: left;
-  width: 461px;
-  clear: left;
-  font-size: 11.9pt;
-  line-height: 18pt;
+/* line 28, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .text .description {
+  margin: 10px 0;
+  margin-right: 10px;
+  font-size: 16px;
+  line-height: 18px;
 }
-/* line 189, ../../app/stylesheets/screen.sass */
-#content .video {
-  width: 460px;
-  height: 299px;
+/* line 33, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .video {
+  margin-left: 10px;
+  float: right;
+}
+/* line 37, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .new_idea h2 {
   float: left;
 }
-/* line 193, ../../app/stylesheets/screen.sass */
-#content .new_idea {
+/* line 39, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .new_idea a {
   float: left;
-  padding: 5px;
+  display: block;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   -o-border-radius: 4px;
   -ms-border-radius: 4px;
   -khtml-border-radius: 4px;
   border-radius: 4px;
+  padding: 4px 8px;
   background: #7675b1;
-  margin: 8px 0 0 10px;
+  color: white;
+  margin-top: 4px;
+  margin-left: 12px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 20px;
+  line-height: 24px;
 }
-/* line 199, ../../app/stylesheets/screen.sass */
-#content .new_idea a {
+/* line 52, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .new_idea a:hover {
+  background: #6665a1;
+}
+/* line 54, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .explore {
+  width: 83%;
+  margin: 0 auto;
+  margin-top: 48px;
+  margin-bottom: 32px;
+  padding: 12px 0;
+  background: #c1e7ee;
+  background: rgba(193, 231, 238, 0.8);
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 24px;
+  line-height: 28px;
+}
+/* line 66, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .explore .number {
+  font-size: 36px;
+  line-height: 36px;
+}
+/* line 69, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .explore a {
+  text-decoration: none;
+  color: #1681a2;
+}
+/* line 72, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .explore a:hover {
+  color: #36a1c2;
+}
+/* line 74, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas {
+  clear: both;
+  padding-top: 28px;
+}
+/* line 77, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas h1 {
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  background: #02a170;
+  background: rgba(2, 161, 112, 0.5);
+  color: white;
+  padding: 12px;
+  padding-left: 48px;
+  margin-left: -48px;
+  width: 288px;
+}
+/* line 92, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li {
+  float: left;
+  margin: 0 10px;
+  padding-top: 42px;
+  position: relative;
+}
+/* line 97, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li .category {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+/* line 101, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li:first-child {
+  margin-left: 0;
+}
+/* line 103, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li:last-child {
+  margin-right: 0;
+}
+/* line 105, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li .idea {
+  width: 194px;
+  height: 194px;
+  padding: 12px;
+  background: white;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  border-radius: 8px;
+}
+/* line 111, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li .idea h1 {
+  background: transparent;
+  padding: 0;
+  padding-top: 8px;
+  margin: 0;
+  width: 100%;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+/* line 121, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li .idea h1 a {
+  text-decoration: none;
+}
+/* line 123, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li .idea .user {
+  color: #525252;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 14px;
+}
+/* line 128, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li .idea .headline {
+  margin-top: 12px;
+}
+/* line 130, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li .idea .headline .quote {
+  float: left;
+  font-size: 102px;
+  line-height: 102px;
+  letter-spacing: -4px;
+  margin-top: -8px;
+  margin-left: -4px;
+  margin-right: 4px;
+  font-family: Arial;
+}
+/* line 139, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li .idea .headline p {
+  font-family: Calibri;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0;
+  color: #3d3d3d;
+}
+/* line 145, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li .idea .link {
+  clear: both;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+/* line 150, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li .idea .link a {
+  display: block;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
+  padding: 4px;
   color: white;
   text-decoration: none;
-  font-size: 18pt;
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 18px;
 }
-
-/* line 203, ../../app/stylesheets/screen.sass */
-.box {
-  float: left;
-  width: 100%;
+/* line 159, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li .idea.seguranca-comunitaria {
+  border: 1px solid #bcbfde;
 }
-/* line 205, ../../app/stylesheets/screen.sass */
-.box .info {
-  float: left;
-  width: 50%;
+/* line 161, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li .idea.seguranca-comunitaria h1 a {
+  color: #7675b1;
 }
-
-/* line 208, ../../app/stylesheets/screen.sass */
-.ideas {
-  margin-top: 49px;
-  float: left;
-  width: 100%;
+/* line 163, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li .idea.seguranca-comunitaria .headline {
+  color: #babddd;
+  color: rgba(186, 189, 221, 0.4);
 }
-
-/* line 211, ../../app/stylesheets/screen.sass */
-.idea {
+/* line 166, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li .idea.seguranca-comunitaria .link a {
+  background: #7675b1;
+}
+/* line 168, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li .idea.seguranca-comunitaria .link a:hover {
+  background: #9695d1;
+}
+/* line 170, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li .idea.mobilidade-urbana {
+  border: 1px solid #84d4eb;
+}
+/* line 172, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li .idea.mobilidade-urbana h1 a {
+  color: #599eb4;
+}
+/* line 174, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li .idea.mobilidade-urbana .headline {
+  color: #84d4eb;
+  color: rgba(132, 212, 235, 0.4);
+}
+/* line 177, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li .idea.mobilidade-urbana .link a {
+  background: #599eb4;
+}
+/* line 179, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li .idea.mobilidade-urbana .link a:hover {
+  background: #79bed4;
+}
+/* line 181, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li .idea.catastrofes-naturais {
+  border: 1px solid #6fc6a2;
+}
+/* line 183, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li .idea.catastrofes-naturais h1 a {
+  color: #608e7a;
+}
+/* line 185, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li .idea.catastrofes-naturais .headline {
+  color: #6fc6a2;
+  color: rgba(111, 198, 162, 0.4);
+}
+/* line 188, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li .idea.catastrofes-naturais .link a {
+  background: #608e7a;
+}
+/* line 190, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas ul li .idea.catastrofes-naturais .link a:hover {
+  background: #80ae9a;
+}
+/* line 192, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas .more {
+  clear: both;
+  text-align: right;
+  padding-top: 16px;
+}
+/* line 196, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas .more a {
+  text-decoration: none;
+}
+/* line 198, ../../app/stylesheets/content/_index.sass */
+body#site #content #index .ideas .more a .arrow {
+  float: right;
+  font-size: 32px;
+  line-height: 32px;
+  font-weight: bold;
+  margin-left: 8px;
+  margin-top: -3px;
+}
+/* line 2, ../../app/stylesheets/content/_show_idea.sass */
+body#site #content #show_idea img {
+  max-width: 534px;
+}
+/* line 49, ../../app/stylesheets/_body.sass */
+body#site #footer {
+  border-top: 6px solid white;
+  background-color: #d0ebf0;
+  padding: 24px 0 48px 0;
+  margin-top: 196px;
+}
+/* line 6, ../../app/stylesheets/_footer.sass */
+body#site #footer ul {
   float: left;
-  width: 221px;
-  height: 221px;
+  margin: 0;
+  padding: 0;
+  border: 0;
   overflow: hidden;
+  *zoom: 1;
+  font-size: 16px;
+  line-height: 20px;
 }
-
-/* line 216, ../../app/stylesheets/screen.sass */
-#footer {
+/* line 60, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #footer ul li {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0px;
+  white-space: nowrap;
+  display: inline;
   float: left;
-  width: 100%;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+/* line 48, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #footer ul li:first-child, body#site #footer ul li.first {
+  padding-left: 0;
+}
+/* line 49, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #footer ul li:last-child {
+  padding-right: 0;
+}
+/* line 50, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #footer ul li.last {
+  padding-right: 0;
+}
+/* line 11, ../../app/stylesheets/_footer.sass */
+body#site #footer ul a {
+  color: #5d5d5d;
+}
+/* line 13, ../../app/stylesheets/_footer.sass */
+body#site #footer ul a:hover {
+  color: #3d3d3d;
+}
+/* line 15, ../../app/stylesheets/_footer.sass */
+body#site #footer .softa {
+  float: right;
+}
+/* line 17, ../../app/stylesheets/_footer.sass */
+body#site #footer .softa a {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+}
+/* line 18, ../../app/stylesheets/_footer.sass */
+body#site #footer .softa a img {
+  vertical-align: middle;
+}
+/* line 21, ../../app/stylesheets/_footer.sass */
+body#site #footer .softa a:hover {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
 }
