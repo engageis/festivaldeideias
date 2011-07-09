@@ -3,9 +3,14 @@ var NewIdeaView = PopupView.extend({
   el: $('#new_idea'),
 
   events: {
-    "click .close": "close",
     "click [type=checkbox], [type=radio]": "validate",
     "keyup [type=text], textarea": "validate",
+    "submit form": "disableSubmit"
+  },
+  
+  initialize: function() {
+    this.$('textarea').maxlength()
+    _.bindAll(this, "render", "disableSubmit")
   },
   
   validate: function() {
@@ -20,5 +25,5 @@ var NewIdeaView = PopupView.extend({
       return
     this.$("[type=submit]").attr('disabled', false)
   }
-
+  
 })

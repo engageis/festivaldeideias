@@ -3,8 +3,8 @@ var ForkIdeaView = PopupView.extend({
   el: $('#fork_idea'),
 
   events: {
-    "click .close": "close",
-    "click [type=checkbox], [type=radio]": "validate"
+    "click [type=checkbox], [type=radio]": "validate",
+    "submit form": "disableSubmit"
   },
   
   validate: function() {

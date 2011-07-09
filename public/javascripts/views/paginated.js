@@ -10,7 +10,7 @@ var PaginatedView = Backbone.View.extend({
     this.render()
     this.$('.loading img').show()
     this.collection.page = 1
-    this.collection.bind("refresh", this.update)
+    this.collection.bind("reset", this.update)
     this.collection.fetch()
   },
   waypoint: function(event, direction){
@@ -27,15 +27,16 @@ var PaginatedView = Backbone.View.extend({
     }
   },
   render: function() {
-    this.$('.items').html("")
+    this.$('ul.items').html("")
+    this.$('.empty').hide()
     return this
   },
   update: function(){
     this.$('.loading img').hide()
     if(!this.collection.isEmpty()) {
       this.collection.each(function(model){
-        var item = $('<div class="item">')
-        this.$('.items').append(item)
+        var item = $('<li>')
+        this.$('ul.items').append(item)
         new this.modelView({el: item, model: model})        
       }, this)
     } else if(this.collection.page == 1) {

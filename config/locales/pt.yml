@@ -25,17 +25,18 @@ pt:
       accept:
         license_html: Ela será licenciada em <a href="http://creativecommons.org/licenses/by/3.0/br/" target="_blank">Creative Commons Atribuição 3.0 (CC BY 3.0)</a>
         share: Qualquer pessoa poderá compartilhar minha ideia
-        copy: Qualquer pessoa poderá copiar e modificar minha idéia
+        copy: Qualquer pessoa poderá copiar e modificar minha ideia
+        confirm: Li e concordo em licenciar minha ideia em Creative Commons BY 3.0
     login:
-      title: Entre através de sua rede social favorita
+      title: Acesse com sua rede social favorita
       remember_me: Lembre-se de mim e mantenha-me conectado.
-      description_html: Nós <strong>nunca</strong> iremos saber sua senha ou qualquer outro dado sigiloso de sua conta na rede social escolhida. Só teremos acesso a informações básicas, como nome, foto e email.
+      description_html: Nós <strong>nunca</strong> saberemos sua senha ou qualquer outra informação sigilosa de sua conta na rede social escolhida. Teremos acesso somente a dados básicos, como nome, foto e email.
       tips_html: <strong>Lembre-se com qual rede você se cadastrou</strong>. É com ela que você sempre irá acessar sua conta.
     login_menu:
       login: Fazer login
       signup: Criar uma conta
     user_menu:
-      my_profile: Meu perfil
+      my_profile: Ver meu perfil
       admin: Painel administrativo
       logout: Sair
   shared:
@@ -62,7 +63,7 @@ pt:
       didnt_find: Tem uma ideia que não está aqui?
       new_idea: Inicie uma ideia
       explore:
-        html: Temos um total de <span class="number">%{count}</span> idéias. Que tal explorar todas elas %{link}?
+        html: Temos um total de <span class="number">%{count}</span> ideias. Que tal explorar todas elas %{link}?
         link: clicando aqui
     list:
       recommended:
@@ -88,7 +89,7 @@ pt:
       popular: Populares
       recent: Recentes
       categories: Categorias
-      empty: Nenhuma idéia encontrada
+      empty: Nenhuma ideia encontrada
     show:
       user_html: Uma ideia de %{link}
       parent_html: Baseada na ideia de %{link}
@@ -119,8 +120,9 @@ pt:
       accept:
         license_html: Ela será licenciada em <a href="http://creativecommons.org/licenses/by/3.0/br/" target="_blank">Creative Commons Atribuição 3.0 (CC BY 3.0)</a>
         share: Qualquer pessoa poderá compartilhar minha ideia
-        copy: Qualquer pessoa poderá copiar e modificar minha idéia
+        copy: Qualquer pessoa poderá copiar e modificar minha ideia
         credits: Eu devo sempre atribuir créditos à ideia original
+        confirm: Li e concordo em licenciar minha ideia em Creative Commons BY 3.0
     create_fork:
       success: Sua versão foi criada com sucesso! Agora você já pode aperfeiçoar esta ideia à vontade.
       failure: Ooops. Não foi possível criar sua versão desta ideia. Por favor, tente novamente.
@@ -128,4 +130,4 @@ pt:
         labels:
           idea:
             title: Qual o título da sua ideia?
-            headline: Sua ideia em poucas palavras...
+            headline: Sua ideia em 140 caracteres...

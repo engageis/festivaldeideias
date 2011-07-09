@@ -1,4 +1,57 @@
+$popup_padding_vertical: 40px
+$popup_padding_horizontal: 20px
+$popup_width: 619px
+$popup_height: 408px
+
 =popup
   z-index: 500
   display: none
-  background-color: #fff
+  background-color: #EAEAEA
+  position: absolute
+  top: 50%
+  left: 50%
+  width: $popup_width - $popup_padding_horizontal * 2
+  height: $popup_height - $popup_padding_vertical * 2
+  margin-left: -($popup_width / 2)
+  margin-top: -($popup_height / 2)
+  padding: $popup_padding_vertical $popup_padding_horizontal
+  text-align: center
+  +border-radius(8px)
+  h1
+    font-size: 28px
+    letter-spacing: 0
+  h2
+    font-size: 24px
+    line-height: 32px
+  a
+    color: #3d3d3d
+    &:hover
+      color: #000
+  a.close
+    color: #fff
+    background-color: #FF4747
+    text-decoration: none
+    position: absolute
+    width: 30px
+    height: 30px
+    +border-radius(30px)
+    top: 0
+    left: 100%
+    margin-top: -15px
+    margin-left: -15px
+    +transition(all, 0.3s)
+    img
+      width: 15px
+      vertical-align: middle
+      margin-top: 2px
+      margin-left: -2px
+    &:hover
+      +scale(1.05)
+  form
+    padding-top: 16px
+    width: 92%
+    margin: 0 auto
+    .warning
+      margin: 16px 0
+      ul li
+        list-style: disc inside

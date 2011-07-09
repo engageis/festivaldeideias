@@ -9,11 +9,16 @@ class Category < ActiveRecord::Base
 
   mount_uploader :badge, BadgeUploader
 
+  def css_class
+    name.parameterize
+  end
+  
   def as_json(options={})
     {
       :id => id,
       :name => name,
-      :badge => badge.url
+      :badge => badge.url,
+      :css_class => css_class
     }
   end
   

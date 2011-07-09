@@ -1,1 +1,49 @@
+@import content/idea
+
 =explore
+  h2
+    font-size: 24px
+    letter-spacing: 1px
+  .content
+    padding: 32px 0 48px 0
+    clear: both
+    .menu
+      float: left
+      width: 240px
+      h3
+        padding-bottom: 8px
+        font-weight: normal
+        text-transform: uppercase
+        font-size: 16px
+      ul
+        padding-bottom: 32px
+        margin-right: 32px
+        li a
+          display: block
+          background: #454545
+          color: #fff
+          text-decoration: none
+          text-transform: uppercase
+          text-align: center
+          padding: 4px
+          margin-bottom: 16px
+          &:hover
+            background: #6FC5A1
+          &.selected
+            background: #4FA581
+    .results
+      float: right
+      width: 700px
+      overflow: hidden
+      padding-bottom: 48px
+      ul
+        width: 720px
+        li
+          +idea
+          margin-left: 0
+          margin-right: 20px
+          margin-top: 18px
+      .loading
+        text-align: center
+        clear: both
+        padding-top: 18px

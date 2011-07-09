@@ -66,7 +66,7 @@ class SessionsController < ApplicationController
   end
 
   def fake_create
-    return render :status => :forbidden unless Rails.env == "test"
+    return render :status => :forbidden unless Rails.env.test?
     user = Factory(:user, :uid => 'fake_login')
     user.admin = true if params[:root_admin] == 'true'
     user.sites << Site.find(params[:site]) if params[:site]

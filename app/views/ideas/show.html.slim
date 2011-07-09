@@ -2,7 +2,7 @@
   meta name=="og:title" value=@idea.title
   meta name=="og:description" value=@idea.headline
   meta name=="og:image" value=="#{current_site.full_url}#{@idea.category.badge.url}"
-  meta name=="og:type" value=="cause"
+  meta name=="og:type" value="cause"
 
 = render 'fork_idea'
 
@@ -17,7 +17,7 @@
     .headline
       p class=("editable" if @editable) data-attribute="headline" data-raw=@idea.headline
         = @idea.headline
-    .fork_idea= link_to t('.fork_idea'), '#'
+    .fork_idea= link_to t('.fork_idea'), '#fork'
   .menu
     ul
       li
@@ -61,7 +61,7 @@
       h1= t('.versions.title')
       h2= t('.versions.subtitle')
       - if @versions.empty?
-        em= t('.versions.empty.html', :link => link_to(t('.versions.empty.link'), '#', :class => 'fork_idea'))
+        em= t('.versions.empty.html', :link => link_to(t('.versions.empty.link'), '#fork'))
       - else
         ul
           - @versions.each do |version|
@@ -72,14 +72,14 @@
                 .merge= link_to t('.versions.merge'), merge_idea_path(@idea, version)
   .footer
     .license= link_to image_tag('cc_by.png'), "http://creativecommons.org/licenses/by/3.0/br/", :target => :_blank
-    .fork_idea= link_to t('.fork_idea'), '#'
+    .fork_idea= link_to t('.fork_idea'), '#fork'
 
 = render 'shared/application_js'
 = javascript_include_tag 'views/ideas/fork'
 = javascript_include_tag 'views/ideas/show'
-= javascript_include_tag 'controllers/idea'
+= javascript_include_tag 'routers/ideas/show'
 javascript:
   app.forkIdeaView = new ForkIdeaView
   app.showIdeaView = new ShowIdeaView
-  app.ideaController = new IdeaController
+  app.showIdeaRouter = new ShowIdeaRouter
   Backbone.history.start()

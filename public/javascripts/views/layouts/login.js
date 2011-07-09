@@ -3,16 +3,29 @@ var LoginView = PopupView.extend({
   el: $('#login'),
 
   events: {
-    "click .provider": "submit",
-    "click .close": "close"
+    "click .provider": "submit"
   },
 
+  initialize: function() {
+    _.bindAll(this, "render", "returnTo")
+  },
+  
+  returnTo: function(url) {
+    if(typeof(url) != 'undefined') {
+      this.$('#return_to').val(url)
+    } else {
+      return this.$('#return_to').val()
+    }
+  },
+  
   beforeRender: function() {
-    this.$('#return_to').val(location.href)
+    if(!this.returnTo()) {
+      this.returnTo(app.lastPath())
+    }
   },
   
   beforeClose: function() {
-    this.$('#return_to').val(null)
+    this.returnTo(null)
   },
   
   submit: function(event) {

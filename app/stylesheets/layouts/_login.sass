@@ -1,0 +1,21 @@
+=login
+  .popup
+    a.provider
+      img
+        width: 64px
+        margin: 8px
+        +transition(all, 0.3s)
+        &:hover, &:focus
+          +scale(1.1)
+      &.disabled
+        img
+          +opacity(0.6)
+        img:hover, img:focus, img:active
+          +scale(1)
+    form
+      margin-bottom: 40px
+      text-align: center
+    p
+      text-align: left
+      margin-bottom: 20px
+      padding: 0 40px

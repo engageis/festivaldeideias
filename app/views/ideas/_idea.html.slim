@@ -1,6 +1,6 @@
 li
   = image_tag idea.category.badge.url, :class => 'category'
-  .idea class=idea.category.name.parameterize
+  .idea class=idea.category.css_class
     h1= link_to idea.title, idea_path(idea)
     .user= t('.by', :user => idea.user.name)
     .headline
