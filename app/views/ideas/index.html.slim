@@ -4,21 +4,30 @@
     meta name=="og:image" value=="#{current_site.full_url}#{current_site.image.url(:thumb)}"
 
 #index
-  h1= t('.title')
-  .text
-    ol
-      li
-        span 1
-        p= t('.bullets.first')
-      li
-        span 2
-        p= t('.bullets.second')
-      li
-        span 3
-        p= t('.bullets.third')
-    .description= t('.description_html')
-  .video= t('.video_html')
-  hr
+  #promo
+    .wrapper
+
+      .text
+        h1= t('.title')
+        ol
+          li
+            / span 1
+            / p= t('.bullets.first')
+          li
+            / span 2
+            / p= t('.bullets.second')
+          li
+            / span 3
+            / p= t('.bullets.third')
+        .description
+          button#action Inicie uma idéia
+          div[style="clear:both"]
+          = t('.description_html')
+          
+      .video= t('.video_html')
+      hr
+.wrapper
+  
   .new_idea
     h2= t('.discover')
     = link_to t('.new_idea'), '#new_idea'
