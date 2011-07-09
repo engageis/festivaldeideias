@@ -1,0 +1,26 @@
+$login-width: 619px
+$login-height: 408px
+=login
+  .popup
+    width: $login-width - $popup-padding-horizontal * 2
+    height: $login-height - $popup-padding-vertical * 2
+    margin-left: -($login-width / 2)
+    margin-top: -($login-height / 2) - 80px
+    a.provider
+      img
+        width: 64px
+        margin: 8px
+        +transition(all, 0.3s)
+        &:hover, &:focus
+          +scale(1.1)
+      &.disabled
+        img
+          +opacity(0.6)
+        img:hover, img:focus, img:active
+          +scale(1)
+    form
+      margin-bottom: 40px
+    p
+      text-align: left
+      margin-bottom: 20px
+      padding: 0 40px

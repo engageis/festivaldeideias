@@ -27,9 +27,9 @@ pt:
         share: Qualquer pessoa poderá compartilhar minha ideia
         copy: Qualquer pessoa poderá copiar e modificar minha idéia
     login:
-      title: Entre através de sua rede social favorita
+      title: Acesse com sua rede social favorita
       remember_me: Lembre-se de mim e mantenha-me conectado.
-      description_html: Nós <strong>nunca</strong> iremos saber sua senha ou qualquer outro dado sigiloso de sua conta na rede social escolhida. Só teremos acesso a informações básicas, como nome, foto e email.
+      description_html: Nós <strong>nunca</strong> saberemos sua senha ou qualquer outra informação sigilosa de sua conta na rede social escolhida. Teremos acesso somente a dados básicos, como nome, foto e email.
       tips_html: <strong>Lembre-se com qual rede você se cadastrou</strong>. É com ela que você sempre irá acessar sua conta.
     login_menu:
       login: Fazer login
