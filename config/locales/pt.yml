@@ -36,7 +36,7 @@ pt:
       login: Fazer login
       signup: Criar uma conta
     user_menu:
-      my_profile: Meu perfil
+      my_profile: Ver meu perfil
       admin: Painel administrativo
       logout: Sair
   shared:

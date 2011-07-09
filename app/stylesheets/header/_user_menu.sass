@@ -1,23 +1,24 @@
 =user_menu
   float: right
   position: absolute
-  top: -24px
+  top: -16px
   right: -16px
   z-index: 200
   padding: 16px
   a.user
     text-decoration: none
     img.avatar
-      border: 2px solid #7675b1
+      border: 1px solid #7d7d7d
       height: 24px
       margin-right: 8px
     img.dropdown
       vertical-align: middle
       margin-left: 4px
   .menu
-    background-color: #7675b1
-    background-color: rgba(118, 117, 177, 0.9)
+    background-color: #3d3d3d
+    background-color: rgba(0, 0, 0, 0.8)
     padding: 16px
+    padding-top: 16px
     +border-radius(6px)
     z-index: 100
     display: none
@@ -25,9 +26,6 @@
     top: 0
     left: 0
     text-align: right
-    a.user
-      img.avatar
-        border: 2px solid #eee
     a
       text-decoration: none
       color: #eee
