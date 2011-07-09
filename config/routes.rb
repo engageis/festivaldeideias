@@ -16,9 +16,7 @@ Ramify::Application.routes.draw do
 
   match "/explore" => "ideas#explore", :as => :explore
   
-  if Rails.env == "test"
-    match "/fake_login" => "sessions#fake_create", :as => :fake_login
-  end
+  match "/fake_login" => "sessions#fake_create", :as => :fake_login if Rails.env.test?
 
   resources :ideas, :only => [:index, :create, :update, :show] do
     collection do
