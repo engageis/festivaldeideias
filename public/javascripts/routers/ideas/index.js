@@ -1,0 +1,2 @@
+var IndexRouter = ApplicationRouter.extend({
+})

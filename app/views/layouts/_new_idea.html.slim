@@ -1,7 +1,7 @@
 #new_idea
   .overlay
     .popup
-      a.close href='#' X
+      a.close href='javascript:app.back()' X
       h1= t('.title')
       = simple_form_for Idea.new do |form|
         = form.input :title, :as => :string

@@ -1,7 +1,7 @@
 #login
   .overlay
     .popup
-      a.close href='#' X
+      a.close href='javascript:app.back()' X
       h1= t('.title')
       = form_tag(pre_auth_path) do
         = hidden_field_tag 'provider'

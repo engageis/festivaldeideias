@@ -1,7 +1,9 @@
-var ExploreController = Backbone.Controller.extend({
+var ExploreRouter = ApplicationRouter.extend({
 
   routes: {
     "": "recommended",
+    "login": "login",
+    "new_idea": "newIdea",
     "recommended": "recommended",
     "popular": "popular",
     "recent": "recent",
@@ -56,6 +58,7 @@ var ExploreController = Backbone.Controller.extend({
   },
   
   selectItem: function(name) {
+    this.closePopups()
     this.selectedItem = $('#explore .menu a[href=#' + name + ']')
     $('#explore .menu .selected').removeClass('selected')
     this.selectedItem.parent().addClass('selected')

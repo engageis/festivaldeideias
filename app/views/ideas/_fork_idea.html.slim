@@ -1,7 +1,7 @@
 #fork_idea
   .overlay
     .popup
-      a.close href='#' X
+      a.close href='javascript:app.back()' X
       h1= t('.title')
       h2= t('.subtitle')
       = form_tag create_fork_idea_path(@idea)  do |f|

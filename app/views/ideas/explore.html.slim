@@ -32,7 +32,7 @@
 = javascript_include_tag 'views/model'
 = javascript_include_tag 'views/ideas/idea'
 = javascript_include_tag 'views/ideas/explore'
-= javascript_include_tag 'controllers/explore'
+= javascript_include_tag 'routers/ideas/explore'
 javascript:
-  app.exploreController = new ExploreController
+  app.exploreRouter = new ExploreRouter
   Backbone.history.start()

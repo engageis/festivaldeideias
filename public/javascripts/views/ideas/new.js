@@ -3,9 +3,8 @@ var NewIdeaView = PopupView.extend({
   el: $('#new_idea'),
 
   events: {
-    "click .close": "close",
     "click [type=checkbox], [type=radio]": "validate",
-    "keyup [type=text], textarea": "validate",
+    "keyup [type=text], textarea": "validate"
   },
   
   validate: function() {

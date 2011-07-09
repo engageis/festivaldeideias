@@ -10,7 +10,7 @@ var PaginatedView = Backbone.View.extend({
     this.render()
     this.$('.loading img').show()
     this.collection.page = 1
-    this.collection.bind("refresh", this.update)
+    this.collection.bind("reset", this.update)
     this.collection.fetch()
   },
   waypoint: function(event, direction){

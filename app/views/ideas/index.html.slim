@@ -21,7 +21,7 @@
   hr
   .new_idea
     h2= t('.discover')
-    = link_to t('.new_idea'), '#'
+    = link_to t('.new_idea'), '#new_idea'
   = render :partial => 'list', :locals => {:quick => "recommended", :collection => @featured} unless @featured.empty?
   = render :partial => 'list', :locals => {:quick => "popular", :collection => @popular} unless @popular.empty?
   = render :partial => 'list', :locals => {:quick => "recent", :collection => @recent} unless @recent.empty?
@@ -29,9 +29,12 @@
   hr
   .new_idea
     h2= t('.didnt_find')
-    = link_to t('.new_idea'), '#'
+    = link_to t('.new_idea'), '#new_idea'
 
 = render 'shared/application_js'
 = javascript_include_tag 'views/ideas/index'
+= javascript_include_tag 'routers/ideas/index'
 javascript:
-  var indexView = new IndexView()
+  app.indexView = new IndexView
+  app.indexRouter = new IndexRouter
+  Backbone.history.start()

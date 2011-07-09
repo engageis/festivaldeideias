@@ -1,11 +1,5 @@
 var PopupView = Backbone.View.extend({
 
-  el: $('#new_idea'),
-
-  events: {
-    "click .close": "close"
-  },
-
   initialize: function() {
     _.bindAll(this, "render")
   },
@@ -23,9 +17,8 @@ var PopupView = Backbone.View.extend({
   beforeClose: function(event) {
   },
   
-  close: function(event) {
-    event.preventDefault()
-    this.beforeClose(event)
+  close: function() {
+    this.beforeClose()
     this.$('.overlay').hide()
     this.$('.popup').hide()
   }

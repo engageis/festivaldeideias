@@ -2,10 +2,6 @@ var ShowIdeaView = Backbone.View.extend({
 
   el: $('#show_idea'),
   
-  events: {
-    "click .fork_idea": "showForkIdea"
-  },
-  
   initialize: function() {
     _.bindAll(this, "selectItem")
     this.$('.editable').each(function() {
