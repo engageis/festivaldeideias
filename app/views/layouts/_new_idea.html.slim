@@ -1,7 +1,7 @@
 #new_idea
   .overlay
     .popup
-      a.close href='javascript:app.back()'
+      a.close href='javascript:app.back()' title="X"
         = image_tag 'cancel.png'
       h1= t('.title')
       = simple_form_for Idea.new do |form|
