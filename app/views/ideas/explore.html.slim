@@ -14,12 +14,13 @@
         li
           a href='#recent'
             = t('.recent')
-      h3= t('.categories')
-      ul
-        - @categories.each do |category|
-          li
-            a href="##{category.name.parameterize}" data-id=category.id
-              = category.name
+      - unless @categories.empty?
+        h3= t('.categories')
+        ul
+          - @categories.each do |category|
+            li
+              a href="##{category.name.parameterize}" data-id=category.id
+                = category.name
     .results
       .empty= t('.empty')
       ul.items
