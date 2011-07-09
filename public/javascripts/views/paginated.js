@@ -28,6 +28,7 @@ var PaginatedView = Backbone.View.extend({
   },
   render: function() {
     this.$('ul.items').html("")
+    this.$('.empty').hide()
     return this
   },
   update: function(){
