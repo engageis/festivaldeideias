@@ -1,22 +1,21 @@
 #fork_idea
   .overlay
     .popup
-      a.close href='javascript:app.back()' X
+      a.close href='javascript:app.back()'
+        = image_tag 'cancel.png'
       h1= t('.title')
       h2= t('.subtitle')
       = form_tag create_fork_idea_path(@idea)  do |f|
         = simple_fields_for @idea do |form|
-          .warning= t('.warning')
+          .warning
+            h3= t('.warning')
+            ul
+              li= t('.accept.license_html')
+              li= t('.accept.share')
+              li= t('.accept.copy')
+              li= t('.accept.credits')
           .input.boolean.required
-            = check_box_tag 'fork_accept_license'
-            = label_tag 'fork_accept_license', t('.accept.license_html')
-          .input.boolean.required
-            = check_box_tag 'fork_accept_share'
-            = label_tag 'fork_accept_share', t('.accept.share')
-          .input.boolean.required
-            = check_box_tag 'fork_accept_copy'
-            = label_tag 'fork_accept_copy', t('.accept.copy')
-          .input.boolean.required
-            = check_box_tag 'fork_accept_credits'
-            = label_tag 'fork_accept_credits', t('.accept.credits')
-          = form.button :submit, :disabled => true
+            = check_box_tag 'fork_accept'
+            = label_tag 'fork_accept', t('.accept.confirm')
+          .submit
+            = form.button :submit, :disabled => true

@@ -26,6 +26,7 @@ pt:
         license_html: Ela será licenciada em <a href="http://creativecommons.org/licenses/by/3.0/br/" target="_blank">Creative Commons Atribuição 3.0 (CC BY 3.0)</a>
         share: Qualquer pessoa poderá compartilhar minha ideia
         copy: Qualquer pessoa poderá copiar e modificar minha idéia
+        confirm: Li e concordo em licenciar minha ideia em Creative Commons BY 3.0
     login:
       title: Acesse com sua rede social favorita
       remember_me: Lembre-se de mim e mantenha-me conectado.
@@ -121,6 +122,7 @@ pt:
         share: Qualquer pessoa poderá compartilhar minha ideia
         copy: Qualquer pessoa poderá copiar e modificar minha idéia
         credits: Eu devo sempre atribuir créditos à ideia original
+        confirm: Li e concordo em licenciar minha ideia em Creative Commons BY 3.0
     create_fork:
       success: Sua versão foi criada com sucesso! Agora você já pode aperfeiçoar esta ideia à vontade.
       failure: Ooops. Não foi possível criar sua versão desta ideia. Por favor, tente novamente.
@@ -128,4 +130,4 @@ pt:
         labels:
           idea:
             title: Qual o título da sua ideia?
-            headline: Sua ideia em poucas palavras...
+            headline: Sua ideia em 140 caracteres...

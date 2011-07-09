@@ -1,5 +1,9 @@
 var PopupView = Backbone.View.extend({
 
+  events: {
+    "submit form": "disableSubmit"
+  },
+  
   initialize: function() {
     _.bindAll(this, "render")
   },
@@ -21,6 +25,10 @@ var PopupView = Backbone.View.extend({
     this.beforeClose()
     this.$('.overlay').hide()
     this.$('.popup').hide()
+  },
+
+  disableSubmit: function() {
+    this.$("[type=submit]").attr('disabled', true)
   }
 
 })

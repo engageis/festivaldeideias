@@ -4,6 +4,7 @@ var ShowIdeaView = Backbone.View.extend({
   
   initialize: function() {
     _.bindAll(this, "selectItem")
+    this.$('textarea').maxlength()
     this.$('.editable').each(function() {
       $(this).click(function(){
         $(this).addClass("editing")
@@ -33,15 +34,6 @@ var ShowIdeaView = Backbone.View.extend({
     this.selectedItem.parent().addClass('selected')
     this.$('.content > div').hide()
     this.$('.content .' + name).show()
-  },
-  
-  showForkIdea: function(event) {
-    event.preventDefault()
-    if($('#user_menu').length > 0) {
-      app.forkIdeaView.render()
-    } else {
-      app.loginView.render()
-    }
   }
-
+  
 })

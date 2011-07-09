@@ -1,4 +1,50 @@
 =form
   clear: both
+  text-align: left
+  label
+    padding-bottom: 8px
+    abbr[title=required]
+      font-size: 14px
+      color: #DD3333
+      margin-left: 2px
+      float: right
+    &.radio
+      display: block
+      padding-bottom: 0
+    &.collection_radio
+      margin: 0 4px
+  input[type=text], textarea
+    font: inherit
+    border: none
+    background: transparent url(/images/edit.png) no-repeat 6px bottom
+    padding: 4px 12px
+    padding-left: 28px
+    width: 93%
+    &:hover, &:active
+      border: none
+      background-color: #fff
+  textarea
+    height: 85px
   input[type=checkbox]
     margin-right: 8px
+  input[type=radio]
+    margin-right: 4px
+  .submit
+    text-align: right
+    margin-top: 20px
+  input[type=submit]
+    font: inherit
+    text-rendering: optimizeLegibility
+    text-transform: uppercase
+    color: #fff
+    padding: 5px 15px
+    border: none
+    +border-radius(4px)
+    background-color: #FF4646
+  input[type=submit]:hover
+    background-color: #FF2626
+  input[type=submit]:active
+    padding: 6px 14px 4px 16px
+  input[type=submit]:disabled
+    color: #888
+    background-color: #aaa

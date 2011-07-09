@@ -1,20 +1,21 @@
 #new_idea
   .overlay
     .popup
-      a.close href='javascript:app.back()' X
+      a.close href='javascript:app.back()'
+        = image_tag 'cancel.png'
       h1= t('.title')
       = simple_form_for Idea.new do |form|
         = form.input :title, :as => :string
-        = form.input :headline
+        = form.input :headline, :input_html => { :maxlength => 140 }
         = form.association :category, :as => :radio
-        .warning= t('.warning')
+        .warning
+          h3= t('.warning')
+          ul
+           li= t('.accept.license_html')
+           li= t('.accept.share')
+           li= t('.accept.copy')
         .input.boolean.required
-          = check_box_tag 'new_accept_license'
-          = label_tag 'new_accept_license', t('.accept.license_html')
-        .input.boolean.required
-          = check_box_tag 'new_accept_share'
-          = label_tag 'new_accept_share', t('.accept.share')
-        .input.boolean.required
-          = check_box_tag 'new_accept_copy'
-          = label_tag 'new_accept_copy', t('.accept.copy')
-        = form.button :submit, :disabled => true
+          = check_box_tag 'new_accept'
+          = label_tag 'new_accept', t('.accept.confirm')
+        .submit
+          = form.button :submit, :disabled => true
