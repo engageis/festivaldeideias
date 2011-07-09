@@ -15,7 +15,10 @@ function Application(locale, current_user) {
   }
   this.history = [this.currentPath()]
   this.lastPath = function() {
-    return this.history[this.history.length - 2]
+    path = this.history[this.history.length - 2]
+    if(!path)
+      path = "#"
+    return path
   }
   this.hashChange = function() {
     this.history.push(this.currentPath())
