@@ -54,11 +54,16 @@ class Idea < ActiveRecord::Base
   end
   
   def create_fork(current_user)
-    fork = self.clone
-    fork.user = current_user
-    fork.parent = self
-    fork.created_at = Time.now
-    fork.updated_at = Time.now
+    fork = Idea.new({
+      :parent => self,
+      :site => self.site,
+      :user => current_user,
+      :category => self.category,
+      :template => self.template,
+      :title => self.title,
+      :headline => self.headline
+    })
+    # TODO actually create a fork using git_document_db's /fork
     if fork.save
       fork
     else
