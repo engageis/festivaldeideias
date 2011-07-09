@@ -71,8 +71,8 @@
               - if @editable
                 .merge= link_to t('.versions.merge'), merge_idea_path(@idea, version)
   .footer
-    .license= link_to image_tag('cc_by.png'), "http://creativecommons.org/licenses/by/3.0/br/", :target => :_blank
     .fork_idea= link_to t('.fork_idea'), '#fork'
+    .license= link_to image_tag('cc_by.png'), "http://creativecommons.org/licenses/by/3.0/br/", :target => :_blank
 
 = render 'shared/application_js'
 = javascript_include_tag 'views/ideas/fork'

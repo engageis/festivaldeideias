@@ -19,21 +19,26 @@ class Idea < ActiveRecord::Base
   scope :popular, order("likes DESC")
   scope :recent, order("created_at DESC")
 
+  attr_accessor :was_new_record
+  attr_accessor :forking
+  
   before_save :set_was_new_record
   def set_was_new_record
-    @was_a_new_record = new_record?
+    was_new_record = new_record?
     return true
   end
 
   after_save :save_document
   def save_document
     begin
-      if @was_a_new_record
+      if self.forking
+        self.document = JSON.parse(RestClient.post("#{self.url}/#{self.parent.id}/fork/#{self.id}", ""))
+      elsif self.was_new_record
         RestClient.post "#{self.url}", document.to_json
       else
         RestClient.put "#{self.url}/#{self.id}", document.to_json
       end
-    rescue
+    #rescue
     end
   end
   
@@ -63,7 +68,7 @@ class Idea < ActiveRecord::Base
       :title => self.title,
       :headline => self.headline
     })
-    # TODO actually create a fork using git_document_db's /fork
+    fork.forking = true
     if fork.save
       fork
     else
