@@ -1,3 +1,5 @@
+@import content/idea
+
 =index
   h1
     text-align: center
@@ -91,107 +93,7 @@
       width: 288px
     ul
       li
-        float: left
-        margin: 0 10px
-        padding-top: 42px
-        position: relative
-        .category
-          position: absolute
-          left: 0
-          top: 0
-        &:first-child
-          margin-left: 0
-        &:last-child
-          margin-right: 0
-        .idea
-          width: 194px
-          height: 194px
-          padding: 12px
-          background: #fff
-          +border-radius(8px)
-          h1
-            background: transparent
-            padding: 0
-            padding-top: 8px
-            margin: 0
-            width: 100%
-            font-size: 14px
-            line-height: 16px
-            font-weight: bold
-            text-transform: uppercase
-            a
-              text-decoration: none
-          .user
-            color: #525252
-            font-style: italic
-            font-size: 14px
-            line-height: 14px
-          .headline
-            margin-top: 12px
-            .quote
-              float: left
-              font-size: 102px
-              line-height: 102px
-              letter-spacing: -4px
-              margin-top: -8px
-              margin-left: -4px
-              margin-right: 4px
-              font-family: Arial
-            p
-              font-family: Calibri
-              font-size: 14px
-              line-height: 14px
-              letter-spacing: 0
-              color: #3d3d3d
-          .link
-            position: absolute
-            bottom: 20px
-            left: 10%
-            clear: both
-            width: 80%
-            text-align: center
-            a
-              display: block
-              +border-radius(4px)
-              padding: 4px
-              color: white
-              text-decoration: none
-              text-transform: uppercase
-              font-size: 14px
-              line-height: 18px
-          &.seguranca-comunitaria
-            border: 1px solid #bcbfde
-            h1 a
-              color: #7675b1
-            .headline
-              color: #babddd
-              color: rgba(186, 189, 221, 0.4)
-            .link a
-              background: #7675b1
-              &:hover
-                background: #9695d1
-          &.mobilidade-urbana
-            border: 1px solid #84d4eb
-            h1 a
-              color: #599eb4
-            .headline
-              color: #84d4eb
-              color: rgba(132, 212, 235, 0.4)
-            .link a
-              background: #599eb4
-              &:hover
-                background: #79bed4
-          &.catastrofes-naturais
-            border: 1px solid #6fc6a2
-            h1 a
-              color: #608e7a
-            .headline
-              color: #6fc6a2
-              color: rgba(111, 198, 162, 0.4)
-            .link a
-              background: #608e7a
-              &:hover
-                background: #80ae9a
+        +idea
     .more
       clear: both
       text-align: right

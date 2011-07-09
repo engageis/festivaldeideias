@@ -1,28 +1,29 @@
 #explore
   h1= t('.title')
   h2= t('.subtitle')
-  .menu
-    h3= t('.quick')
-    ul
-      li
-        a href='#recommended'
-          = t('.recommended')
-      li
-        a href='#popular'
-          = t('.popular')
-      li
-        a href='#recent'
-          = t('.recent')
-    h3= t('.categories')
-    ul
-      - @categories.each do |category|
+  .content
+    .menu
+      h3= t('.quick')
+      ul
         li
-          a href="##{category.name.parameterize}" data-id=category.id
-            = category.name
-  .results
-    .empty= t('.empty')
-    .items
-    .loading= image_tag "loading.gif"
+          a href='#recommended'
+            = t('.recommended')
+        li
+          a href='#popular'
+            = t('.popular')
+        li
+          a href='#recent'
+            = t('.recent')
+      h3= t('.categories')
+      ul
+        - @categories.each do |category|
+          li
+            a href="##{category.name.parameterize}" data-id=category.id
+              = category.name
+    .results
+      .empty= t('.empty')
+      ul.items
+      .loading= image_tag "loading.gif"
 = render 'idea_template'
 = render 'shared/application_js'
 = javascript_include_tag 'collections/paginated'

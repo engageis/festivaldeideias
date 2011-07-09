@@ -61,7 +61,7 @@ var ExploreRouter = ApplicationRouter.extend({
     this.closePopups()
     this.selectedItem = $('#explore .menu a[href=#' + name + ']')
     $('#explore .menu .selected').removeClass('selected')
-    this.selectedItem.parent().addClass('selected')
+    this.selectedItem.addClass('selected')
   }
 
 })

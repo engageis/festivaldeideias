@@ -27,15 +27,15 @@ var PaginatedView = Backbone.View.extend({
     }
   },
   render: function() {
-    this.$('.items').html("")
+    this.$('ul.items').html("")
     return this
   },
   update: function(){
     this.$('.loading img').hide()
     if(!this.collection.isEmpty()) {
       this.collection.each(function(model){
-        var item = $('<div class="item">')
-        this.$('.items').append(item)
+        var item = $('<li>')
+        this.$('ul.items').append(item)
         new this.modelView({el: item, model: model})        
       }, this)
     } else if(this.collection.page == 1) {

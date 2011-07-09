@@ -1,8 +1,8 @@
 script type="text/template" id="idea_template"
-  .idea
-    |{{#attributes}}
-    |{{#category}}
-    img src="{{badge}}"
+  |{{#attributes}}
+  |{{#category}}
+  img class="category" src="{{badge}}"
+  .idea class="{{css_class}}"
     |{{/category}}
     h1
       a href='{{url}}'
@@ -11,6 +11,7 @@ script type="text/template" id="idea_template"
     .user= t('.by', :user => "{{name}}")
     |{{/user}}
     .headline
-      |{{headline}}
-    = link_to t('.link'), '{{url}}'
-    |{{/attributes}}
+      .quote “
+      p {{headline}}
+    .link= link_to t('.link'), '{{url}}'
+  |{{/attributes}}
