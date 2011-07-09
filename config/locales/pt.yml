@@ -25,7 +25,7 @@ pt:
       accept:
         license_html: Ela será licenciada em <a href="http://creativecommons.org/licenses/by/3.0/br/" target="_blank">Creative Commons Atribuição 3.0 (CC BY 3.0)</a>
         share: Qualquer pessoa poderá compartilhar minha ideia
-        copy: Qualquer pessoa poderá copiar e modificar minha idéia
+        copy: Qualquer pessoa poderá copiar e modificar minha ideia
         confirm: Li e concordo em licenciar minha ideia em Creative Commons BY 3.0
     login:
       title: Acesse com sua rede social favorita
@@ -63,7 +63,7 @@ pt:
       didnt_find: Tem uma ideia que não está aqui?
       new_idea: Inicie uma ideia
       explore:
-        html: Temos um total de <span class="number">%{count}</span> idéias. Que tal explorar todas elas %{link}?
+        html: Temos um total de <span class="number">%{count}</span> ideias. Que tal explorar todas elas %{link}?
         link: clicando aqui
     list:
       recommended:
@@ -89,7 +89,7 @@ pt:
       popular: Populares
       recent: Recentes
       categories: Categorias
-      empty: Nenhuma idéia encontrada
+      empty: Nenhuma ideia encontrada
     show:
       user_html: Uma ideia de %{link}
       parent_html: Baseada na ideia de %{link}
@@ -120,7 +120,7 @@ pt:
       accept:
         license_html: Ela será licenciada em <a href="http://creativecommons.org/licenses/by/3.0/br/" target="_blank">Creative Commons Atribuição 3.0 (CC BY 3.0)</a>
         share: Qualquer pessoa poderá compartilhar minha ideia
-        copy: Qualquer pessoa poderá copiar e modificar minha idéia
+        copy: Qualquer pessoa poderá copiar e modificar minha ideia
         credits: Eu devo sempre atribuir créditos à ideia original
         confirm: Li e concordo em licenciar minha ideia em Creative Commons BY 3.0
     create_fork:
