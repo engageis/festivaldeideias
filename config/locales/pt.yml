@@ -91,8 +91,8 @@ pt:
       categories: Categorias
       empty: Nenhuma ideia encontrada
     show:
-      user_html: Uma ideia de %{link}
-      parent_html: Baseada na ideia de %{link}
+      user_html: Esta é uma ideia de %{link}
+      parent_html: ", baseada na ideia de %{link}."
       headline: Em poucas palavras...
       fork_idea: Melhorar esta ideia
       menu:

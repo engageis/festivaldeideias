@@ -8,16 +8,21 @@
 
 #show_idea data-id=@idea.id
   .header
-    h1 class=("editable" if @editable) data-attribute="title" data-type="text" data-raw=@idea.title
-      = @idea.title
     .category= image_tag @idea.category.badge.url
-    .user= t('.user_html', :link => link_to(@idea.user.name, user_path(@idea.user)))
-    - if @idea.parent
-      .parent= t('.parent_html', :link => link_to(@idea.parent.user.name, idea_path(@idea.parent)))
-    .headline
-      p class=("editable" if @editable) data-attribute="headline" data-raw=@idea.headline
-        = @idea.headline
-    .fork_idea= link_to t('.fork_idea'), '#fork'
+    .info
+      h1 class=("editable" if @editable) data-attribute="title" data-type="text" data-raw=@idea.title
+        = @idea.title
+      .user
+        = t('.user_html', :link => link_to(@idea.user.name, user_path(@idea.user)))
+        - if @idea.parent
+          = t('.parent_html', :link => link_to(@idea.parent.user.name, idea_path(@idea.parent)))
+      .headline
+        .quote “
+        p class=("editable" if @editable) data-attribute="headline" data-raw=@idea.headline
+          = @idea.headline
+  .social
+    .fb_like= render :partial => 'shared/fb_like'
+    .twitter_share= render :partial => 'shared/twitter_share'
   .menu
     ul
       li
@@ -32,6 +37,7 @@
       li
         a href="#versions"
           = t('.menu.versions')
+    .fork_idea= link_to t('.fork_idea'), '#fork'
   .content
     .description
       .text class=("editable" if @editable) data-attribute="description" data-raw=@idea.description data-raw-attribute="description_html"
