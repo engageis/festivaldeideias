@@ -12,13 +12,28 @@
         font-style: italic
         font-size: 16px
       .headline
+        margin-top: 6px
         .quote
           height: 40px
           overflow: hidden
         p
           padding-left: 8px
+          color: #3d3d3d
+    &.violencia
+      .headline
+        color: #babddd
+        color: rgba(186, 189, 221, 0.6)
+    &.mobilidade-urbana
+      .headline
+        color: #84d4eb
+        color: rgba(132, 212, 235, 0.6)
+    &.catastrofes-naturais
+      .headline
+        color: #6fc6a2
+        color: rgba(111, 198, 162, 0.6)
   .social
     clear: both
+    margin-top: 8px
     margin-left: 80px
     min-height: 40px
     .fb_like
@@ -28,6 +43,67 @@
       margin-right: -14px
   .menu
     clear: both
+    position: relative
+    ul
+      position: absolute
+      top: 1px
+      left: 0
+      +horizontal-list(0px)
+      li
+        a
+          color: #606060
+          text-decoration: none
+          text-transform: uppercase
+          font-size: 16px
+          display: block
+          padding: 8px 12px
+          text-align: center
+          border: 1px solid #bbb
+          border-right: none
+          +border-top-left-radius(8px)
+          +border-top-right-radius(8px)
+          background: #ddd
+          +transition(none)
+          +transition(color)
+          &:hover
+            color: #3d3d3d
+          &.selected
+            background: #fff
+            border-bottom: none
+            padding-bottom: 9px
+        &:last-child a
+          border-right: 1px solid #bbb
+  .fork_idea
+    float: right
+    margin-bottom: 8px
+    a
+      +button
   .content
+    clear: both
+    overflow: auto
+    border: 1px solid #bbb
+    background-color: #fff
+    padding: 20px 10px
+    min-height: 432px
+    h1
+      text-transform: uppercase
+      font-size: 28px
+      font-weight: normal
+      padding-bottom: 8px
+    .text
+      float: left
+      width: 510px
+      .attribute
+        padding-bottom: 16px
+        min-height: 320px
+    .info
+      float: right
+      width: 368px
     img
-      max-width: 534px
+      max-width: 510px
+  .footer
+    clear: both
+    text-align: center
+    padding-top: 32px
+    img
+      width: 96px

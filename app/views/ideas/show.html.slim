@@ -7,7 +7,7 @@
 = render 'fork_idea'
 
 #show_idea data-id=@idea.id
-  .header
+  .header class=@idea.category.css_class
     .category= image_tag @idea.category.badge.url
     .info
       h1 class=("editable" if @editable) data-attribute="title" data-type="text" data-raw=@idea.title
@@ -40,24 +40,33 @@
     .fork_idea= link_to t('.fork_idea'), '#fork'
   .content
     .description
-      .text class=("editable" if @editable) data-attribute="description" data-raw=@idea.description data-raw-attribute="description_html"
-        == @idea.description_html
+      .text
+        h1= t('.menu.description')
+        .attribute class=("editable" if @editable) data-attribute="description" data-raw=@idea.description data-raw-attribute="description_html"
+          == @idea.description_html
+        .fork_idea= link_to t('.fork_idea'), '#fork'
       .info
         - if @editable
           .placeholder= t('.placeholders.description')
           = render 'formatting_tips'
         .comments= render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#description" }
     .have
-      .text class=("editable" if @editable) data-attribute="have" data-raw=@idea.have data-raw-attribute="have_html"
-        == @idea.have_html
+      .text
+        h1= t('.menu.have')
+        .attribute class=("editable" if @editable) data-attribute="have" data-raw=@idea.have data-raw-attribute="have_html"
+          == @idea.have_html
+        .fork_idea= link_to t('.fork_idea'), '#fork'
       .info
         - if @editable
           .placeholder= t('.placeholders.have')
           = render 'formatting_tips'
         .comments= render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#have" }
     .need
-      .text class=("editable" if @editable) data-attribute="need" data-raw=@idea.need data-raw-attribute="need_html"
-        == @idea.need_html
+      .text
+        h1= t('.menu.need')
+        .attribute class=("editable" if @editable) data-attribute="need" data-raw=@idea.need data-raw-attribute="need_html"
+          == @idea.need_html
+        .fork_idea= link_to t('.fork_idea'), '#fork'
       .info
         - if @editable
           .placeholder= t('.placeholders.need')
@@ -77,7 +86,6 @@
               - if @editable
                 .merge= link_to t('.versions.merge'), merge_idea_path(@idea, version)
   .footer
-    .fork_idea= link_to t('.fork_idea'), '#fork'
     .license= link_to image_tag('cc_by.png'), "http://creativecommons.org/licenses/by/3.0/br/", :target => :_blank
 
 = render 'shared/application_js'

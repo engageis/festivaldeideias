@@ -96,7 +96,7 @@ pt:
       headline: Em poucas palavras...
       fork_idea: Melhorar esta ideia
       menu:
-        description: O que é essa ideia
+        description: O que é esta ideia
         have: O que já temos
         need: O que precisamos
         versions: Versões desta ideia

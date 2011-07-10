@@ -31,7 +31,7 @@ var ShowIdeaView = Backbone.View.extend({
   selectItem: function(name) {
     this.selectedItem = this.$('.menu a[href=#' + name + ']')
     this.$('.menu .selected').removeClass('selected')
-    this.selectedItem.parent().addClass('selected')
+    this.selectedItem.addClass('selected')
     this.$('.content > div').hide()
     this.$('.content .' + name).show()
   }
