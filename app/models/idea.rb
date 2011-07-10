@@ -38,7 +38,7 @@ class Idea < ActiveRecord::Base
       else
         RestClient.put "#{self.url}/#{self.id}", document.to_json
       end
-    #rescue
+    rescue
     end
   end
   
@@ -78,6 +78,8 @@ class Idea < ActiveRecord::Base
 
   def self.url
     @@url ||= Configuration.find_by_name('git_document_db_url').value
+  rescue
+    nil
   end
   def url
     self.class.url
