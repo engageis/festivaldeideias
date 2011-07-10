@@ -1,0 +1,20 @@
+=button
+  font: inherit
+  text-rendering: optimizeLegibility
+  text-transform: uppercase
+  text-decoration: none
+  display: block
+  color: #fff
+  padding: 5px 15px
+  border: none
+  +border-radius(4px)
+  background-color: #FF4646
+  +transition(all, 0.3s)
+  &:hover
+    background-color: #FF2626
+  &:active
+    +transition(none)
+    padding: 6px 14px 4px 16px
+  &:disabled
+    color: #888
+    background-color: #aaa

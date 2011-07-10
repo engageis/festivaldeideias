@@ -47,7 +47,7 @@
         .fork_idea= link_to t('.fork_idea'), '#fork'
       .info
         - if @editable
-          .placeholder= t('.placeholders.description')
+          .placeholder= t('.placeholders.description_html')
           = render 'formatting_tips'
         .comments= render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#description" }
     .have
@@ -58,7 +58,7 @@
         .fork_idea= link_to t('.fork_idea'), '#fork'
       .info
         - if @editable
-          .placeholder= t('.placeholders.have')
+          .placeholder= t('.placeholders.have_html')
           = render 'formatting_tips'
         .comments= render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#have" }
     .need
@@ -69,22 +69,28 @@
         .fork_idea= link_to t('.fork_idea'), '#fork'
       .info
         - if @editable
-          .placeholder= t('.placeholders.need')
+          .placeholder= t('.placeholders.need_html')
           = render 'formatting_tips'
         .comments= render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#need" }
     .versions
-      h1= t('.versions.title')
-      h2= t('.versions.subtitle')
-      - if @versions.empty?
-        em= t('.versions.empty.html', :link => link_to(t('.versions.empty.link'), '#fork'))
-      - else
-        ul
-          - @versions.each do |version|
-            li
-              = t('.versions.user_html', :link => link_to(version.user.name, idea_path(version)))
-              .created_at= t('.versions.created_at', :created_at => l(version.created_at.to_date, :format => :short))
-              - if @editable
-                .merge= link_to t('.versions.merge'), merge_idea_path(@idea, version)
+      .text
+        h1= t('.versions.title')
+        - if @versions.empty?
+          em= t('.versions.empty.html', :link => link_to(t('.versions.empty.link'), '#fork'))
+        - else
+          ul
+            - @versions.each do |version|
+              li class=@idea.category.css_class
+                h1= link_to(version.title, idea_path(version))
+                .user= t('.versions.user_html', :link => link_to(version.user.name, user_path(version.user)))
+                .headline
+                  .quote “
+                  p= version.headline
+                - if @editable
+                  .merge= link_to t('.versions.merge'), merge_idea_path(@idea, version)
+                .created_at= t('.versions.created_at', :created_at => l(version.created_at.to_date, :format => :short))
+      .info
+        .placeholder= t('.placeholders.versions_html')
   .footer
     .license= link_to image_tag('cc_by.png'), "http://creativecommons.org/licenses/by/3.0/br/", :target => :_blank
 
