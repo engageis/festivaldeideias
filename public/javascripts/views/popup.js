@@ -11,10 +11,14 @@ var PopupView = Backbone.View.extend({
   beforeRender: function() {
   },
 
+  afterRender: function() {
+  },
+
   render: function() {
     this.beforeRender()
     this.$('.overlay').show()
     this.$('.popup').fadeIn()
+    this.afterRender()
     return this
   },
   

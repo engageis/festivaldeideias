@@ -137,8 +137,8 @@ class Idea < ActiveRecord::Base
         '"' => '"' }
       redcloth :target => :_blank
       image
-      youtube :width => 534, :height => 348
-      vimeo :width => 534, :height => 348
+      youtube :width => 510, :height => 332
+      vimeo :width => 510, :height => 332
       link :target => :_blank
     end
   end

@@ -13,6 +13,10 @@ var NewIdeaView = PopupView.extend({
     _.bindAll(this, "render", "disableSubmit")
   },
   
+  afterRender: function() {
+    this.$("#idea_title").focus()
+  },
+
   validate: function() {
     this.$("[type=submit]").attr('disabled', true)
     if(this.$("#idea_title").val().length == 0)

@@ -10,7 +10,7 @@
   .header class=@idea.category.css_class
     .category= image_tag @idea.category.badge.url
     .info
-      h1 class=("editable" if @editable) data-attribute="title" data-type="text" data-raw=@idea.title
+      h1 class=("editable" if @editable) data-attribute="title" data-raw=@idea.title data-maxlength=60
         = @idea.title
       .user
         = t('.user_html', :link => link_to(@idea.user.name, user_path(@idea.user)))
@@ -18,7 +18,7 @@
           = t('.parent_html', :link => link_to(@idea.parent.user.name, idea_path(@idea.parent)))
       .headline
         .quote “
-        p class=("editable" if @editable) data-attribute="headline" data-raw=@idea.headline
+        p class=("editable" if @editable) data-attribute="headline" data-raw=@idea.headline data-maxlength=140
           = @idea.headline
   .social
     .fb_like= render :partial => 'shared/fb_like'
@@ -44,7 +44,6 @@
         h1= t('.menu.description')
         .attribute class=("editable" if @editable) data-attribute="description" data-raw=@idea.description data-raw-attribute="description_html"
           == @idea.description_html
-        .fork_idea= link_to t('.fork_idea'), '#fork'
       .info
         - if @editable
           .placeholder= t('.placeholders.description_html')
@@ -55,7 +54,6 @@
         h1= t('.menu.have')
         .attribute class=("editable" if @editable) data-attribute="have" data-raw=@idea.have data-raw-attribute="have_html"
           == @idea.have_html
-        .fork_idea= link_to t('.fork_idea'), '#fork'
       .info
         - if @editable
           .placeholder= t('.placeholders.have_html')
@@ -66,7 +64,6 @@
         h1= t('.menu.need')
         .attribute class=("editable" if @editable) data-attribute="need" data-raw=@idea.need data-raw-attribute="need_html"
           == @idea.need_html
-        .fork_idea= link_to t('.fork_idea'), '#fork'
       .info
         - if @editable
           .placeholder= t('.placeholders.need_html')
