@@ -8,7 +8,7 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-Configuration.create :name => "git_document_db_url", :value => "http://localhost:4567/documents"
+Configuration.create :name => "git_document_db_url", :value => "http://username:password@localhost:4567/documents"
 
 site_template = Template.create! :name => "Ideia", :description => "Modelo simples para a colaboração na evolução de uma ideia."
 
