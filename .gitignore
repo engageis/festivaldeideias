@@ -4,5 +4,6 @@ log/*.log
 tmp/**/*
 *.tmproj
 config/database.yml
+config/fog.rb
 public/uploads
 public/stylesheets

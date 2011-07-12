@@ -91,22 +91,22 @@ pt:
       categories: Categorias
       empty: Nenhuma ideia encontrada
     show:
-      user_html: Uma ideia de %{link}
-      parent_html: Baseada na ideia de %{link}
+      user_html: Esta é uma ideia de %{link}
+      parent_html: ", baseada na ideia de %{link}"
       headline: Em poucas palavras...
       fork_idea: Melhorar esta ideia
       menu:
-        description: O que é essa ideia
+        description: O que é esta ideia
         have: O que já temos
         need: O que precisamos
         versions: Versões desta ideia
       placeholders:
-        description: Explique aqui a sua ideia. Quanto mais detalhes você der, mais as pessoas vão poder contribuir com sua ideia. Mas ao mesmo tempo seja breve ;) ninguém gosta de ler textos gigantes que não vão direto ao ponto.
-        have: Explique aqui o que você ou o seu grupo já possuem das coisas que são necessárias para botar sua ideia em prática. Você pode fazer uma lista e ir alterando à medida que recebe contribuições ;)
-        need: Explique aqui o que você ou o seu grupo precisam para fazer a sua ideia acontecer. Deste modo, as pessoas que acreditam na sua ideia irão saber como podem contribuir ;)
+        description_html: "<p>Explique aqui a sua ideia. Quanto mais detalhes você der, mais as pessoas vão poder contribuir com sua ideia.</p><p>Mas ao mesmo tempo seja breve: ninguém gosta de ler textos gigantes que não vão direto ao ponto.</p>"
+        have_html: <p>Explique aqui o que você ou o seu grupo já possuem das coisas que são necessárias para botar sua ideia em prática.</p><p>Você pode fazer uma lista e ir alterando à medida que recebe contribuições.</p>
+        need_html: <p>Explique aqui o que você ou o seu grupo precisam para fazer a sua ideia acontecer.</p><p>Deste modo, as pessoas que acreditam na sua ideia irão saber como podem contribuir.</p>
+        versions_html: "<p>O nosso processo de colaboração funciona assim: cada pessoa pode criar sua própria versão de qualquer ideia e aprimorá-la à vontade.</p><p>Depois, é possível juntar os resultados dos trabalhos de cada um em uma ideia só.</p><p>Assim, as ideias podem ser desenvolvidas colaborativamente e ao mesmo tempo com liberdade para cada pessoa trabalhar sua visão.</p><p>Bateu a curiosidade? Clique no botão <em>melhorar esta ideia</em> acima e experimente!</p>"
       versions:
-        title: Cada pessoa que quiser melhorar esta ideia pode criar sua própria versão
-        subtitle: Confira abaixo quais outras versões esta ideia já possui
+        title: Outras versões desta ideia
         empty:
           html: Ninguém criou sua própria versão para esta ideia ainda. %{link}
           link: Que tal ser o primeiro?

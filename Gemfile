@@ -28,6 +28,10 @@ gem "simple_form"
 gem 'rmagick'
 gem 'capybara', "~> 1.0.0"
 
+group :production do
+  gem 'fog'
+end
+
 group :test, :development do
   gem 'launchy'
   gem 'database_cleaner'

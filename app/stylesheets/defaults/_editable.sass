@@ -2,6 +2,29 @@
   .editable
     &:after
       content: " " url(/images/edit.png)
+    &:hover
+      cursor: pointer
+    form
+      position: relative
+      input[type=text], textarea
+        background: transparent
+        padding: 0
+        width: auto
+      button
+        position: absolute
+        top: 4px
+        font-size: 14px
+        line-height: 16px
+        padding: 2px 8px
+        +opacity(0.4)
+        &:hover
+          +opacity(1)
+        &:active
+          padding: 3px 7px 1px 9px
+        &[type=submit]
+          right: 84px
+        &[type=cancel]
+          right: 0
   .editing
     &:after
       content: "" !important
