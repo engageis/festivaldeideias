@@ -24,7 +24,7 @@ class Idea < ActiveRecord::Base
   
   before_save :set_was_new_record
   def set_was_new_record
-    was_new_record = new_record?
+    self.was_new_record = new_record?
     return true
   end
 
