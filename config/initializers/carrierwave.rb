@@ -18,6 +18,7 @@ elsif Rails.env.production?
       :aws_secret_access_key  => secret_key        # required
       # :region                 => 'eu-west-1'  # optional, defaults to 'us-east-1'
     }
+    config.storage = :s3
     config.fog_directory  = fog_directory                             # required
     # config.fog_host       = 'https://assets.example.com'            # optional, defaults to nil
     # config.fog_public     = false                                   # optional, defaults to true
