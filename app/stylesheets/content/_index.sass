@@ -2,15 +2,18 @@
 
 =index
   #promo
-    background: #95E6E6
+    background: #A5F6F6
     padding-top: 10px
     h1
       margin-bottom: 22px
       font-size: 35px
       font-family: 'News Cycle', serif
+
+      
       line-height: 1em
       letter-spacing: -1px
-      text-shadow: 1px 0px 1px rgba(255,255,255,0.6)
+
+      text-align: left
     .text
       float: left
       width: 50%
@@ -43,7 +46,7 @@
         margin-left: 10px
         position: relative
         top: -30px
-        +linear-gradient(color_stops(#00EBA7,#0AD1B5))
+        +linear-gradient(color_stops(#0AD1B5,#0AC1A5))
         font-size: 24px
         padding: 10px
         color: white
@@ -52,6 +55,13 @@
         +border-radius(4px)
         +box-shadow(rgba(0,0,0,0.75),0px,2px,2px)
         float: right
+        border: 1px solid rgba(0,0,0,0.3)
+      button#action:hover
+        +linear-gradient(color_stops(#0AD1B5,#00EBA7))
+      button#action:active
+        position: relative
+        top: -28px
+        +box-shadow(none)
     .video
       margin-left: 10px
       float: right
