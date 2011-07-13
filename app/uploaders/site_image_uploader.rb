@@ -4,13 +4,14 @@ class SiteImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
 
   # Choose what kind of storage to use for this uploader:
-  if Rails.env == 'production'
+  if Rails.env.production?
     storage :fog
   else
     storage :file
-    def store_dir
-      "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-    end
+  end
+
+  def store_dir
+    "tmp/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
   # Override the directory where uploaded files will be stored.
