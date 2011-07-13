@@ -11,13 +11,14 @@
     margin-left: 0
   &:last-child
     margin-right: 0
+    
   .idea
+    border: 1px solid #ccc
     width: 194px
     height: 194px
     padding: 12px
-    background: #fff
-    +border-radius(8px)
     h1
+      font-family: 'News Cycle', serif
       background: transparent
       padding: 0
       padding-top: 8px
@@ -42,52 +43,35 @@
         line-height: 14px
         letter-spacing: 0
         color: #3d3d3d
-    .link
+    .footer
+      +linear-gradient(color_stops(#ccc,#eee))
+      bottom: 0
       position: absolute
-      bottom: 20px
-      left: 10%
-      clear: both
-      width: 80%
+      margin-left: -12px
+      margin-right: -12px
+      font-size: 0.8em
+      overflow: hidden
+      color: #666
+      text-shadow: 1px 0 1px rgba(255,255,255,0.6)
+      .comments
+        float: left
+        img
+          position: relative
+          top: 4px
+      .ramifies
+        float: right
+        img
+          position: relative
+          top: 4px
+    .link
       text-align: center
       a
         display: block
         +border-radius(4px)
         padding: 4px
-        color: white
+
         text-decoration: none
         text-transform: uppercase
         font-size: 14px
         line-height: 18px
-    &.violencia
-      border: 1px solid #bcbfde
-      h1 a
-        color: #7675b1
-      .headline
-        color: #babddd
-        color: rgba(186, 189, 221, 0.4)
-      .link a
-        background: #7675b1
-        &:hover
-          background: #9695d1
-    &.mobilidade-urbana
-      border: 1px solid #84d4eb
-      h1 a
-        color: #599eb4
-      .headline
-        color: #84d4eb
-        color: rgba(132, 212, 235, 0.4)
-      .link a
-        background: #599eb4
-        &:hover
-          background: #79bed4
-    &.catastrofes-naturais
-      border: 1px solid #6fc6a2
-      h1 a
-        color: #608e7a
-      .headline
-        color: #6fc6a2
-        color: rgba(111, 198, 162, 0.4)
-      .link a
-        background: #608e7a
-        &:hover
-          background: #80ae9a
+

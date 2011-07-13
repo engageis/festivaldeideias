@@ -4,6 +4,13 @@ li
     h1= link_to idea.title, idea_path(idea)
     .user= t('.by', :user => idea.user.name)
     .headline
-      .quote “
+      / .quote “
       p= idea.headline
     .link= link_to t('.link'), idea_path(idea)
+    .footer
+      .comments
+        = image_tag 'icons/comment.png', :align => 'absmiddle'
+        | 45 comentários
+      .ramifies
+        = image_tag 'icons/ramify.png', :align => 'absmiddle'
+        | 12 ramificações

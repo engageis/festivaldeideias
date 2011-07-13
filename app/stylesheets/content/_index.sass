@@ -42,7 +42,8 @@
         margin-right: 10px
         font-size: 16px
         line-height: 18px
-      button#action
+      a#action
+        text-decoration: none
         margin-left: 10px
         position: relative
         top: -30px
@@ -56,9 +57,9 @@
         +box-shadow(rgba(0,0,0,0.75),0px,2px,2px)
         float: right
         border: 1px solid rgba(0,0,0,0.3)
-      button#action:hover
+      a#action:hover
         +linear-gradient(color_stops(#0AD1B5,#00EBA7))
-      button#action:active
+      a#action:active
         position: relative
         top: -28px
         +box-shadow(none)
@@ -109,18 +110,12 @@
     padding-top: 28px
     h1
       text-align: left
-      text-transform: uppercase
+      font-family: 'News Cycle', serif
       font-size: 28px
       line-height: 32px
       font-weight: normal
       letter-spacing: 2px
-      background: #02a170
-      background: rgba(2, 161, 112, 0.4)
-      color: #fff
-      padding: 12px
-      padding-left: 48px
-      margin-left: -48px
-      width: 288px
+      color: #333
     ul
       li
         +idea
