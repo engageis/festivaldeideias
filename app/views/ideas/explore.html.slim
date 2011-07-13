@@ -1,40 +1,41 @@
-#explore
-  h1= t('.title')
-  h2= t('.subtitle')
-  .content
-    .menu
-      h3= t('.quick')
-      ul
-        li
-          a href='#recommended'
-            = t('.recommended')
-        li
-          a href='#popular'
-            = t('.popular')
-        li
-          a href='#recent'
-            = t('.recent')
-      - unless @categories.empty?
-        h3= t('.categories')
+.wrapper
+  #explore
+    h1= t('.title')
+    h2= t('.subtitle')
+    .content
+      .menu
+        h3= t('.quick')
         ul
-          - @categories.each do |category|
-            li
-              a href="##{category.name.parameterize}" data-id=category.id
-                = category.name
-    .results
-      .empty= t('.empty')
-      ul.items
-      .loading= image_tag "loading.gif"
-= render 'idea_template'
-= render 'shared/application_js'
-= javascript_include_tag 'collections/paginated'
-= javascript_include_tag 'models/idea'
-= javascript_include_tag 'collections/ideas'
-= javascript_include_tag 'views/paginated'
-= javascript_include_tag 'views/model'
-= javascript_include_tag 'views/ideas/idea'
-= javascript_include_tag 'views/ideas/explore'
-= javascript_include_tag 'routers/ideas/explore'
-javascript:
-  app.exploreRouter = new ExploreRouter
-  Backbone.history.start()
+          li
+            a href='#recommended'
+              = t('.recommended')
+          li
+            a href='#popular'
+              = t('.popular')
+          li
+            a href='#recent'
+              = t('.recent')
+        - unless @categories.empty?
+          h3= t('.categories')
+          ul
+            - @categories.each do |category|
+              li
+                a href="##{category.name.parameterize}" data-id=category.id
+                  = category.name
+      .results
+        .empty= t('.empty')
+        ul.items
+        .loading= image_tag "loading.gif"
+  = render 'idea_template'
+  = render 'shared/application_js'
+  = javascript_include_tag 'collections/paginated'
+  = javascript_include_tag 'models/idea'
+  = javascript_include_tag 'collections/ideas'
+  = javascript_include_tag 'views/paginated'
+  = javascript_include_tag 'views/model'
+  = javascript_include_tag 'views/ideas/idea'
+  = javascript_include_tag 'views/ideas/explore'
+  = javascript_include_tag 'routers/ideas/explore'
+  javascript:
+    app.exploreRouter = new ExploreRouter
+    Backbone.history.start()
