@@ -13,12 +13,12 @@ elsif Rails.env.production?
     fog_directory = fog_directory ? fog_directory.value : ''
     
     config.fog_credentials = {
-      :provider               => 'AWS',       # required
+      :provider               => 'AWS',            # required
       :aws_access_key_id      => access_key,       # required
-      :aws_secret_access_key  => secret_key       # required
+      :aws_secret_access_key  => secret_key        # required
       # :region                 => 'eu-west-1'  # optional, defaults to 'us-east-1'
     }
-    config.fog_directory  = fog_directory.value                       # required
+    config.fog_directory  = fog_directory                             # required
     # config.fog_host       = 'https://assets.example.com'            # optional, defaults to nil
     # config.fog_public     = false                                   # optional, defaults to true
     # config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}  # optional, defaults to {}
