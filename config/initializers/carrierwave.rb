@@ -8,14 +8,21 @@ elsif Rails.env.production?
     access_key = Configuration.find_by_name('aws_access_key')
     secret_key = Configuration.find_by_name('aws_secret_key')
     fog_directory = Configuration.find_by_name('fog_directory')
-    
-    config.fog_credentials = {
-      :provider               => 'AWS',       # required
-      :aws_access_key_id      => access_key.value,       # required
-      :aws_secret_access_key  => secret_key.value       # required
-      # :region                 => 'eu-west-1'  # optional, defaults to 'us-east-1'
-    }
-    config.fog_directory  = fog_directory.value                       # required
+    bucket = Configuration.find_by_name('aws_bucket')
+
+    if access_key and secret_key and fog_directory and bucket
+      config.s3_access_key_id = access_key.value
+      config.s3_secret_access_key = secret_key.value
+      config.s3_bucket = bucket.value
+      # config.s3_bucket = ""
+      # config.fog_credentials = {
+      #   :provider               => 'AWS',            # required
+      #   :aws_access_key_id      => access_key.value,       # required
+      #   :aws_secret_access_key  => secret_key.value        # required
+      #   # :region                 => 'eu-west-1'  # optional, defaults to 'us-east-1'
+      # }
+      config.fog_directory  = fog_directory.value                             # required
+    end
     # config.fog_host       = 'https://assets.example.com'            # optional, defaults to nil
     # config.fog_public     = false                                   # optional, defaults to true
     # config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}  # optional, defaults to {}
