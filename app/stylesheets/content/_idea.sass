@@ -14,64 +14,64 @@
     
   .idea
     border: 1px solid #ccc
-    width: 194px
-    height: 194px
-    padding: 12px
-    h1
-      font-family: 'News Cycle', serif
-      background: transparent
-      padding: 0
-      padding-top: 8px
-      margin: 0
-      width: 100%
-      font-size: 14px
-      line-height: 16px
-      font-weight: bold
-      text-transform: uppercase
-      a
-        text-decoration: none
-    .user
-      color: #525252
-      font-style: italic
-      font-size: 14px
-      line-height: 14px
-    .headline
-      margin-top: 12px
-      p
-        font-family: Calibri
+    .idea_wrapper
+      width: 194px
+      height: 194px
+
+      margin: 12px
+      h1
+        font-family: 'News Cycle', serif
+        background: transparent
+        padding: 0
+        padding-top: 8px
+        margin: 0
+        width: 100%
+        font-size: 14px
+        line-height: 16px
+        font-weight: bold
+        text-transform: uppercase
+        a
+          text-decoration: none
+      .user
+        color: #525252
+        font-style: italic
         font-size: 14px
         line-height: 14px
-        letter-spacing: 0
-        color: #3d3d3d
+      .headline
+        margin-top: 12px
+        p
+          font-family: Calibri
+          font-size: 14px
+          line-height: 14px
+          letter-spacing: 0
+          color: #3d3d3d
+      .link
+        text-align: center
+        a
+          display: block
+          +border-radius(4px)
+          padding: 4px
+
+          text-decoration: none
+          text-transform: uppercase
+          font-size: 14px
+          line-height: 18px
+
     .footer
-      +linear-gradient(color_stops(#ccc,#eee))
-      bottom: 0
-      position: absolute
-      margin-left: -12px
-      margin-right: -12px
+      border-top: 1px solid #ccc
+      +linear-gradient(color_stops(#fff,#eee))
       font-size: 0.8em
       overflow: hidden
       color: #666
       text-shadow: 1px 0 1px rgba(255,255,255,0.6)
-      .comments
-        float: left
-        img
-          position: relative
-          top: 4px
-      .ramifies
-        float: right
-        img
-          position: relative
-          top: 4px
-    .link
-      text-align: center
-      a
-        display: block
-        +border-radius(4px)
-        padding: 4px
-
-        text-decoration: none
-        text-transform: uppercase
-        font-size: 14px
-        line-height: 18px
-
+      ul
+        li
+          float: left
+          border-right: 1px solid #ccc
+          border-left: 1px solid #fff
+          padding: 0 5px 5px 5px
+          margin: 0
+          img
+            position: relative
+            top: 6px
+            margin-right: 4px
