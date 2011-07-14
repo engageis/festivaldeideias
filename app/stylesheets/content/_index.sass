@@ -1,40 +1,71 @@
 @import content/idea
 
 =index
-  h1
-    text-align: center
-    margin-bottom: 22px
-  .text
-    float: left
-    width: 50%
-    ol
-      background: #c1e7ee
-      background: rgba(193, 231, 238, 0.8)
-      +border-radius(8px)
-      margin-right: 10px
-      padding: 10px
-      li
-        clear: both
-        margin-left: 32px
-        padding: 4px 0
-        span
+  #promo
+    background: #A5F6F6
+    padding-top: 10px
+    h1
+      margin-bottom: 22px
+      font-size: 35px
+      font-family: 'News Cycle', serif
+
+      
+      line-height: 1em
+      letter-spacing: -1px
+
+      text-align: left
+    .text
+      float: left
+      width: 50%
+      ol
+        +horizontal-list(8px)
+        li
+          border: 1px solid #999
+          width: 140px
+          margin-right: 10px
+          height: 80px
           float: left
-          margin-left: -28px
-          color: #36a1c2
-          font-size: 36px
-          line-height: 42px
-        p
-          font-size: 20px
-          line-height: 24px
-          color: #3d3d3d
-    .description
-      margin: 10px 0
-      margin-right: 10px
-      font-size: 16px
-      line-height: 18px
-  .video
-    margin-left: 10px
-    float: right
+          padding: 4px 0
+          
+          span
+            float: left
+            margin-left: -28px
+            color: #36a1c2
+            font-size: 36px
+            line-height: 42px
+          p
+            font-size: 20px
+            line-height: 24px
+            color: #3d3d3d
+      .description
+        margin: 10px 0
+        margin-right: 10px
+        font-size: 16px
+        line-height: 18px
+      a#action
+        text-decoration: none
+        margin-left: 10px
+        position: relative
+        top: -30px
+        +linear-gradient(color_stops(#0AD1B5,#0AC1A5))
+        font-size: 24px
+        padding: 10px
+        color: white
+        text-shadow: 1px 1px 1px rgba(0,0,0,0.7)
+        border: 0
+        +border-radius(4px)
+        +box-shadow(rgba(0,0,0,0.75),0px,2px,2px)
+        float: right
+        border: 1px solid rgba(0,0,0,0.3)
+      a#action:hover
+        +linear-gradient(color_stops(#0AD1B5,#00EBA7))
+      a#action:active
+        position: relative
+        top: -28px
+        +box-shadow(none)
+    .video
+      margin-left: 10px
+      float: right
   .new_idea
     h2
       float: left
@@ -79,18 +110,12 @@
     padding-top: 28px
     h1
       text-align: left
-      text-transform: uppercase
+      font-family: 'News Cycle', serif
       font-size: 28px
       line-height: 32px
       font-weight: normal
       letter-spacing: 2px
-      background: #02a170
-      background: rgba(2, 161, 112, 0.4)
-      color: #fff
-      padding: 12px
-      padding-left: 48px
-      margin-left: -48px
-      width: 288px
+      color: #333
     ul
       li
         +idea

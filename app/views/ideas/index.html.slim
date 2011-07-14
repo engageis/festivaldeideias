@@ -4,32 +4,40 @@
     meta name=="og:image" value=="#{current_site.full_url}#{current_site.image.url(:thumb)}"
 
 #index
-  h1= t('.title')
-  .text
-    ol
-      li
-        span 1
-        p= t('.bullets.first')
-      li
-        span 2
-        p= t('.bullets.second')
-      li
-        span 3
-        p= t('.bullets.third')
-    .description= t('.description_html')
-  .video= t('.video_html')
-  hr
-  .new_idea
-    h2= t('.discover')
-    = link_to t('.new_idea'), '#new_idea'
-  = render :partial => 'list', :locals => {:quick => "recommended", :collection => @featured} unless @featured.empty?
-  = render :partial => 'list', :locals => {:quick => "popular", :collection => @popular} unless @popular.empty?
-  = render :partial => 'list', :locals => {:quick => "recent", :collection => @recent} unless @recent.empty?
-  .explore= t('.explore.html', :count => @count, :link => link_to(t('.explore.link'), explore_path))
-  hr
-  .new_idea
-    h2= t('.didnt_find')
-    = link_to t('.new_idea'), '#new_idea'
+  #promo
+    .wrapper
+
+      .text
+        h1= t('.title')
+        ol
+          li
+            / span 1
+            / p= t('.bullets.first')
+          li
+            / span 2
+            / p= t('.bullets.second')
+          li
+            / span 3
+            / p= t('.bullets.third')
+        .description
+          = link_to t('.new_idea'), '#new_idea', :id => 'action'
+          div[style="clear:both"]
+          = t('.description_html')
+          
+      .video= t('.video_html')
+      hr
+  .wrapper
+    / .new_idea
+    /   h2= t('.discover')
+    /   = link_to t('.new_idea'), '#new_idea'
+    = render :partial => 'list', :locals => {:quick => "recommended", :collection => @featured} unless @featured.empty?
+    = render :partial => 'list', :locals => {:quick => "popular", :collection => @popular} unless @popular.empty?
+    = render :partial => 'list', :locals => {:quick => "recent", :collection => @recent} unless @recent.empty?
+    .explore= t('.explore.html', :count => @count, :link => link_to(t('.explore.link'), explore_path))
+    hr
+    .new_idea
+      h2= t('.didnt_find')
+      = link_to t('.new_idea'), '#new_idea'
 
 = render 'shared/application_js'
 = javascript_include_tag 'views/ideas/index'
