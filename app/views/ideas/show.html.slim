@@ -20,9 +20,10 @@
           .quote “
           p class=("editable" if @editable) data-attribute="headline" data-raw=@idea.headline data-maxlength=140
             = @idea.headline
-    .social
-      .fb_like= render :partial => 'shared/fb_like'
-      .twitter_share= render :partial => 'shared/twitter_share'
+      .social
+        .fb_like= render :partial => 'shared/fb_like'
+        .twitter_share= render :partial => 'shared/twitter_share'
+        .clear
     .menu
       ul
         li
