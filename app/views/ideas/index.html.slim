@@ -6,18 +6,18 @@
 #index
   #promo
     .wrapper
-
       .text
         h1= t('.title')
-        img src="/images/steps.png" alt="steps"
+        /img src="/images/steps.png" alt="steps"
+        = image_tag 'arrow.png', :class => 'arrow first'
+        = image_tag 'arrow.png', :class => 'arrow second'
         ol
           li= t('.step_1')
           li= t('.step_2')
           li= t('.step_3')
-          div[style="clear:both"]
+        .clear
         .description
           = t('.description_html') 
-          
       .video= t('.video_html')
       .clear
   .wrapper

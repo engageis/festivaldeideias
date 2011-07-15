@@ -10,12 +10,10 @@ li
       .link= link_to t('.link'), idea_path(idea)
     .footer
       ul
-        li.comments[title="45 likes"]
-          
-          = image_tag 'icons/like.png', :align => 'absmiddle'
-          | 45 
-        li.ramifies[title="12 ramificações"]
-          
-          = image_tag 'icons/ramify.png', :align => 'absmiddle'
-          | 12
-         
+        li title=t('.versions', :count => idea.likes)
+          = image_tag 'icons/like.png'
+          = idea.likes
+        li title=t('.versions', :count => idea.versions.count)
+          = image_tag 'icons/ramify.png'
+          = idea.versions.count
+

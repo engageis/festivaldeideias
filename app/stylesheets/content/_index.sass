@@ -3,71 +3,53 @@
 =index
   #promo
     background: #c1e7ee
-    background: rgba(193, 231, 238, 0.8)
+    background: rgba(153, 191, 198, 0.6)
     padding-top: 16px
-    border-top: 5px solid #FAFAFA
-    border-bottom: 5px solid #FAFAFA   
+    padding-bottom: 12px
     +box-shadow(rgba(0, 0, 0, 0.4) 0 0 1px, rgba(0, 128, 0, 0.2) 0 0 20px 1px inset)
 
     h1
       margin-bottom: 22px
       font-size: 35px
       font-family: Myriad, serif
-
-      
       line-height: 1em
       letter-spacing: -1px
-
       text-align: left
     .text
+      position: relative
       float: left
       width: 50%
+      img.arrow
+        position: absolute
+        width: 24px
+        top: 160px
+        z-index: 200
+        &.first
+          left: 132px
+        &.second
+          left: 284px
       ol
         margin-top: -10px
         li
+          position: relative
           text-align: center
-          font-size: 0.6em
-          line-height: 1.2em
-          width: 140px
-          margin-left: 20px
+          font-size: 20px
+          line-height: 20px
+          letter-spacing: -2px
+          width: 120px
+          height: 80px
           float: left
+          margin-left: 12px
+          background: #fafafa
+          padding: 10px
+          +border-radius(6px)
+          +box-shadow(rgba(0, 0, 0, 0.4), 2px, 2px, 4px)
         li:first-child
           margin-left: 0
-          
-          span
-            float: left
-            margin-left: -28px
-            color: #36a1c2
-            font-size: 36px
-            line-height: 42px
-          p
-            font-size: 20px
-            line-height: 24px
-            color: #3d3d3d
       .description
-        margin: 10px 0
-        margin-right: 10px
+        margin: 10px 10px 0 0
         font-size: 16px
-        line-height: 18px
-      a#action
-        text-decoration: none
-        margin-left: 10px
-        +linear-gradient(color_stops(#0AD1B5,#0AC1A5))
-        font-size: 24px
-        padding: 10px
-        color: white
-        text-shadow: 1px 1px 1px rgba(0,0,0,0.7)
-        border: 0
-        +border-radius(4px)
-        +box-shadow(rgba(0,0,0,0.75),0px,2px,2px)
-        float: right
-        border: 1px solid rgba(0,0,0,0.3)
-      a#action:hover
-        +linear-gradient(color_stops(#0AD1B5,#00EBA7))
-      a#action:active
-        position: relative
-        top: -28px
-        +box-shadow(none)
+        line-height: 16px
     .video
       margin-left: 10px
       float: right
