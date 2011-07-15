@@ -1,4 +1,5 @@
 pt:
+  divulgue: Divulgue o Festival!
   activerecord:
       models:
         idea: Ideia
