@@ -9,20 +9,15 @@
 
       .text
         h1= t('.title')
+        img src="/images/steps.png" alt="steps"
         ol
-          li
-            / span 1
-            / p= t('.bullets.first')
-          li
-            / span 2
-            / p= t('.bullets.second')
-          li
-            / span 3
-            / p= t('.bullets.third')
-        .description
-          = link_to t('.new_idea'), '#new_idea', :id => 'action'
+          li= t('.step_1')
+          li= t('.step_2')
+          li= t('.step_3')
           div[style="clear:both"]
-          = t('.description_html')
+        .description
+          = t('.description_html') 
+          = link_to t('.new_idea'), '#new_idea', :id => 'action'
           
       .video= t('.video_html')
       hr
