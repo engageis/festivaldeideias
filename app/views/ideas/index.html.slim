@@ -21,9 +21,9 @@
       .video= t('.video_html')
       .clear
   .wrapper
-    / .new_idea
-    /   h2= t('.discover')
-    /   = link_to t('.new_idea'), '#new_idea'
+    .new_idea
+      h2= t('.discover')
+      = link_to t('.new_idea'), '#new_idea'
     = render :partial => 'list', :locals => {:quick => "recommended", :collection => @featured} unless @featured.empty?
     = render :partial => 'list', :locals => {:quick => "popular", :collection => @popular} unless @popular.empty?
     = render :partial => 'list', :locals => {:quick => "recent", :collection => @recent} unless @recent.empty?
