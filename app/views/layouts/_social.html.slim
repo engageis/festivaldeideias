@@ -1,5 +1,5 @@
 #social
-  em= t('divulgue')
+  img src="/images/divulgue.png" alt="Divulgue o Festival"
   .fb_like= render :partial => 'shared/fb_like', :locals => { :url => root_url, :show_faces => false, :width => '110', :layout => 'box_count' }
   .twitter_share= render :partial => 'shared/twitter_share', :locals => { :url => root_url, :count => 'vertical' }
   /- if current_site.twitter and not current_site.twitter.empty?
