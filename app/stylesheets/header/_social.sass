@@ -1,11 +1,20 @@
 =social
-  position: absolute
-  left: 52px
-  bottom: 12px
-  width: 96%
+  position: fixed
+  left: 0
+  top: 15px
+  background: rgba(255, 255, 255, 0.5)
+  border: 1px solid #FFF
+  +box-shadow(rgba(0,0,0,0.75),0px,0px,2px)
+  width: 110px
+  clear: both
+  padding: 5px 10px
+
+  em
+    font-size: 0.8em
+
   .fb_like
+    display: block
+    margin: 5px 0
+  .twitter_share, .twitter_follow
     float: left
-  .twitter_share
-    float: right
-  .twitter_follow
-    float: right
+    margin-top: 5px

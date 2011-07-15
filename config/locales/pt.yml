@@ -1,4 +1,5 @@
 pt:
+  divulgue: Divulgue o Festival!
   activerecord:
       models:
         idea: Ideia
@@ -57,6 +58,9 @@ pt:
         first: Encontre uma ideia que você gostaria de aprimorar
         second: Crie sua própria versão e trabalhe até ficar satisfeito
         third: Devolva a ideia para a comunidade aprimorar ainda mais
+      step_1: 1. Encontre uma ideia que você gostaria de aprimorar
+      step_2: 2. Crie sua própria versão e trabalhe até ficar satisfeito
+      step_3: 3. Devolva a ideia para que a comunidade aprimore ainda mais
       description_html: <p>As melhores ideias serão selecionadas para o <strong>Festival de Ideias</strong>, que ocorrerá nos dias <strong>20 e 21 de setembro</strong>, na <strong>Cinemateca SP</strong>.</p><p>Contribuindo, você poderá ser escolhido para um dos times que irão ao festival e concorrer a <strong>prêmios incríveis</strong>, além, é claro, de ajudar a criar um mundo melhor :)</p>
       video_html: <iframe src="http://player.vimeo.com/video/6428069?color=ffffff" width="460" height="325" frameborder="0"></iframe>
       discover: Conheça algumas ideias e contribua!
