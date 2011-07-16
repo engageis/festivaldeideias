@@ -4,14 +4,22 @@ script type="text/template" id="idea_template"
   img class="category" src="{{badge}}"
   .idea class="{{css_class}}"
     |{{/category}}
-    h1
-      a href='{{url}}'
-        |{{title}}
-    |{{#user}}
-    .user= t('.by', :user => "{{name}}")
-    |{{/user}}
-    .headline
-      .quote “
-      p {{headline}}
-    .link= link_to t('.link'), '{{url}}'
+    .idea_wrapper
+      h1
+        a href='{{url}}'
+          |{{title}}
+      |{{#user}}
+      .user= t('.by', :user => "{{name}}")
+      |{{/user}}
+      .headline
+        p {{headline}}
+      .link= link_to t('.link'), '{{url}}'
+    .footer
+      ul
+        li title=t('.versions', :count => '{{likes}}')
+          = image_tag 'icons/like.png'
+          |{{likes}}
+        li title=t('.versions', :count => '{{versions_count}}')
+          = image_tag 'icons/ramify.png'
+          |{{versions_count}}
   |{{/attributes}}

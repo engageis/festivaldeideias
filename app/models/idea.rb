@@ -162,6 +162,8 @@ class Idea < ActiveRecord::Base
       :have_html => have_html,
       :need => need,
       :need_html => need_html,
+      :likes => likes,
+      :versions_count => versions.count,
       :document => document,
       :url => idea_path(self)
     }
