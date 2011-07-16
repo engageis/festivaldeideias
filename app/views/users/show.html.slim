@@ -1,0 +1,6 @@
+= render 'shared/application_js'
+= javascript_include_tag 'routers/users/show'
+javascript:
+  app.showUserRouter = new ShowUserRouter
+  Backbone.history.start()
+

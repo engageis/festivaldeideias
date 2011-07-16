@@ -1,0 +1,2 @@
+var ShowUserRouter = ApplicationRouter.extend({
+})
