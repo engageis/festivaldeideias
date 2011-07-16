@@ -9,7 +9,7 @@ li
       .link= link_to t('.link'), idea_path(idea)
     .footer
       ul
-        li title=t('.versions', :count => idea.likes)
+        li title=t('.likes', :count => idea.likes)
           = image_tag 'icons/like.png'
           = idea.likes
         li title=t('.versions', :count => idea.versions.count)

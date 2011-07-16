@@ -16,7 +16,7 @@ script type="text/template" id="idea_template"
       .link= link_to t('.link'), '{{url}}'
     .footer
       ul
-        li title=t('.versions', :count => '{{likes}}')
+        li title=t('.likes', :count => '{{likes}}')
           = image_tag 'icons/like.png'
           |{{likes}}
         li title=t('.versions', :count => '{{versions_count}}')
