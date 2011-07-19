@@ -12,7 +12,7 @@ task :cron => :environment do
       idea_url = idea.site.full_url("/pt/ideas/#{idea.id}-#{idea.title.parameterize}")
       url = "#{rest_server}#{idea_url}"
       res = Nokogiri::XML(open(url))
-      idea.likes = res.search('like_count').children[0].content.to_i
+      idea.likes = res.search('total_count').children[0].content.to_i
       idea.save
     end
   end
