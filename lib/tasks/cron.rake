@@ -6,7 +6,7 @@ task :cron => :environment do
   rest_server = 'http://api.facebook.com/restserver.php?method=links.getStats&urls='
 
   Idea.all.each do |idea|
-    idea_url = idea.site.full_url("/pt/#{idea.id}-#{idea.title.parameterize}")
+    idea_url = idea.site.full_url("/pt/ideas/#{idea.id}-#{idea.title.parameterize}")
     url = "#{rest_server}#{idea_url}"
     res = Nokogiri::XML(open(url))
     idea.likes = res.search('like_count').children[0].content.to_i
