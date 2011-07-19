@@ -7,3 +7,7 @@ config/database.yml
 config/fog.rb
 public/uploads
 public/stylesheets
+*.swp
+*.swo
+*.swm
+*.swn
