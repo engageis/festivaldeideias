@@ -134,11 +134,11 @@ pt:
   users:
     show:
       ideas:
-        current: Suas ideias
-        other: Ideias de %{name}
+        current: Ideias que você começou
+        other: Ideias que %{name} começou
       versions:
-        current: Suas versões
-        other: Versões de %{name}
+        current: Ideias em que você colaborou
+        other: Ideias em que %{name} colaborou
       no_ideas:
         current_html: Você ainda não iniciou nenhuma ideia. Que tal começar %{link}?
         other: %{name} ainda não iniciou nenhuma ideia. Mas a gente sabe que é só questão de tempo!
