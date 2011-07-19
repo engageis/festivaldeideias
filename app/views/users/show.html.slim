@@ -4,3 +4,29 @@ javascript:
   app.showUserRouter = new ShowUserRouter
   Backbone.history.start()
 
+.wrapper
+  #user_profile
+    header
+      = image_tag current_user.display_image, :class => 'avatar'
+      h2
+        span.username.editable
+          = truncate current_user.display_name, :length => 24
+        | (
+        span.editable
+          | nataliarsand@gmail.com
+        | )
+      .tagline.editable
+        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet nunc ut purus luctus accumsan. Mauris ultricies condimentum blandit. Nam ut enim sit amet nibh ornare suscipit. 
+    aside.ideas
+      h3 
+        = t('your_ideas')
+      ul
+        li
+          | my idea 1
+    aside.contributions
+      h3
+        = t('your_contributions')
+      ul
+        li
+          | my contribution 1
+    
