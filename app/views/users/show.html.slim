@@ -1,56 +1,47 @@
 .wrapper
   #show_user
     .header
-      = image_tag current_user.display_image, :class => 'avatar'
+      = image_tag @user.display_image, :class => 'avatar'
       h2
         span.username
-          = truncate current_user.display_name, :length => 24
-        | (
-        span
-          | nataliarsand@gmail.com
-        | )
-      .tagline
-        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet nunc ut purus luctus accumsan. Mauris ultricies condimentum blandit. Nam ut enim sit amet nibh ornare suscipit. 
+          = truncate @user.display_name, :length => 24
+        - if @editable
+          |  (
+          span
+            = @user.email
+          | )
+      .bio= @user.bio
     .content
       .aside.ideas
         h3 
-          = t('your_ideas')
-        ul.items
-          li
-            .idea
-              .idea_wrapper
-                h1
-                  a href="#"
-                    | My idea 1
-                .headline
-                  p
-                    | Criar um sistema de monitoramento dos espaços públicos através de webcams que cada morador pode instalar.
-              .footer
-                ul
-                  li
-                    img src="/images/icons/like.png"
-                  li
-                    img src="/images/icons/ramify.png"
-
-      .aside.contributions
+          - if @editable
+            = t('.ideas.current')
+          - else
+            = t('.ideas.other', :name => @user.name)
+        - if @ideas.empty?
+          em
+            - if @editable
+              = t('.no_ideas.current_html', :link => link_to(t('.no_ideas.link'), '#new_idea'))
+            - else
+              = t('.no_ideas.other', :name => @user.name)
+        - else
+          ul.items
+            = render :partial => 'idea', :collection => @ideas
+      .aside.versions
         h3
-          = t('your_contributions')
-        ul.items
-          li
-            .idea
-              .idea_wrapper
-                h1
-                  a href="#"
-                    | My idea 1
-                .headline
-                  p
-                    | Criar um sistema de monitoramento dos espaços públicos através de webcams que cada morador pode instalar.
-              .footer
-                ul
-                  li
-                    img src="/images/icons/like.png"
-                  li
-                    img src="/images/icons/ramify.png"
+          - if @editable
+            = t('.versions.current')
+          - else
+            = t('.versions.other', :name => @user.name)
+        - if @versions.empty?
+          em
+            - if @editable
+              = t('.no_versions.current_html', :link => link_to(t('.no_versions.link'), explore_path))
+            - else
+              = t('.no_versions.other', :name => @user.name)
+        - else
+          ul.items
+            = render :partial => 'idea', :collection => @versions
 
 = render 'shared/application_js'
 = javascript_include_tag 'routers/users/show'
@@ -58,4 +49,4 @@ javascript:
   app.showUserRouter = new ShowUserRouter
   Backbone.history.start()
 
-.clear  
+.clear

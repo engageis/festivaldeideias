@@ -1,12 +1,11 @@
 li
-  = image_tag idea.category.badge.url, :class => 'category'
-  .idea class=idea.category.css_class
+  .idea
     .idea_wrapper
-      h1= link_to idea.title, idea_path(idea)
-      .user= t('.by', :user => idea.user.name)
+      h1
+        a href="#"
+          = idea.title
       .headline
         p= idea.headline
-      .link= link_to t('.link'), idea_path(idea)
     .footer
       ul
         li title=t('likes', :count => idea.likes)
