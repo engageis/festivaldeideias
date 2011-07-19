@@ -1,5 +1,5 @@
 class IdeasController < ApplicationController
-
+  load_and_authorize_resource
   inherit_resources
 
   actions :index, :show, :create, :update
