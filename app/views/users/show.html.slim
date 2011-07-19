@@ -1,32 +1,61 @@
+.wrapper
+  #show_user
+    .header
+      = image_tag current_user.display_image, :class => 'avatar'
+      h2
+        span.username
+          = truncate current_user.display_name, :length => 24
+        | (
+        span
+          | nataliarsand@gmail.com
+        | )
+      .tagline
+        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet nunc ut purus luctus accumsan. Mauris ultricies condimentum blandit. Nam ut enim sit amet nibh ornare suscipit. 
+    .content
+      .aside.ideas
+        h3 
+          = t('your_ideas')
+        ul.items
+          li
+            .idea
+              .idea_wrapper
+                h1
+                  a href="#"
+                    | My idea 1
+                .headline
+                  p
+                    | Criar um sistema de monitoramento dos espaços públicos através de webcams que cada morador pode instalar.
+              .footer
+                ul
+                  li
+                    img src="/images/icons/like.png"
+                  li
+                    img src="/images/icons/ramify.png"
+
+      .aside.contributions
+        h3
+          = t('your_contributions')
+        ul.items
+          li
+            .idea
+              .idea_wrapper
+                h1
+                  a href="#"
+                    | My idea 1
+                .headline
+                  p
+                    | Criar um sistema de monitoramento dos espaços públicos através de webcams que cada morador pode instalar.
+              .footer
+                ul
+                  li
+                    img src="/images/icons/like.png"
+                  li
+                    img src="/images/icons/ramify.png"
+
 = render 'shared/application_js'
 = javascript_include_tag 'routers/users/show'
 javascript:
   app.showUserRouter = new ShowUserRouter
   Backbone.history.start()
 
-.wrapper
-  #user_profile
-    header
-      = image_tag current_user.display_image, :class => 'avatar'
-      h2
-        span.username.editable
-          = truncate current_user.display_name, :length => 24
-        | (
-        span.editable
-          | nataliarsand@gmail.com
-        | )
-      .tagline.editable
-        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet nunc ut purus luctus accumsan. Mauris ultricies condimentum blandit. Nam ut enim sit amet nibh ornare suscipit. 
-    aside.ideas
-      h3 
-        = t('your_ideas')
-      ul
-        li
-          | my idea 1
-    aside.contributions
-      h3
-        = t('your_contributions')
-      ul
-        li
-          | my contribution 1
-    
+.clear  
