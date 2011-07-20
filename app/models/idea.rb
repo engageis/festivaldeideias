@@ -80,6 +80,16 @@ class Idea < ActiveRecord::Base
     end
   end
   
+  def document_changed
+    return false unless parent
+    return @document_changed if @document_changed
+    begin
+      @document_changed = JSON.parse(RestClient.get("#{self.url}/#{self.parent_id}/diff/#{self.id}")).size > 0
+    rescue
+      false
+    end
+  end
+  
   def merge!(from_id)
     self.merging = true
     merge = self.merges.new :from_id => from_id

@@ -49,6 +49,20 @@
     .twitter_share
       float: left
       padding: 2px 0 0
+  .versions_changed
+    clear: both
+    background: #7675b1
+    color: white
+    +border-radius(8px)
+    text-align: center
+    padding: 8px
+    margin-bottom: 20px
+    a
+      color: white
+      font-weight: bold
+      text-decoration: none
+      &:hover
+        text-decoration: underline
   .menu
     clear: both
     position: relative
@@ -155,19 +169,27 @@
               font-size: 16px
               padding-left: 8px
               color: #3d3d3d
-          .merge
-            float: left
-            a
-              +button
-              font-size: 16px
-              padding: 2px 8px
-              &:active
-                padding: 3px 7px 1px 9px
+              padding-bottom: 0
           .created_at
             color: #666
             float: right
             font-size: 14px
             text-transform: lowercase
+          .changes
+            padding-top: 4px
+            clear: both
+            font-style: italic
+            font-size: 16px
+          .merge
+            float: right
+            padding-top: 8px
+            a
+              +button
+              text-align: center
+              font-size: 16px
+              padding: 2px 8px
+              &:active
+                padding: 3px 7px 1px 9px
   .footer
     clear: both
     text-align: center

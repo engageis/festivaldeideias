@@ -1,0 +1,14 @@
+#merge_idea
+  .overlay
+    .popup
+      a.close href='javascript:app.back()' title="X"
+        = image_tag 'cancel.png'
+      h1= t('.title')
+      h2= t('.subtitle')
+      = form_tag merge_idea_path(@idea), :method => :put do |form|
+        = hidden_field_tag 'from_id'
+        .warning
+          h3= t('.how_it_works.title')
+          .text= t('.how_it_works.html')
+        .submit
+          = submit_tag t('.submit')

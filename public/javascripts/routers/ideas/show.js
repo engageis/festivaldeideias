@@ -10,11 +10,13 @@ var ShowIdeaRouter = ApplicationRouter.extend({
     "need": "need",
     "versions": "versions",
     "fork": "fork",
+    "merge/:from_id": "merge"
   },
   
   closePopups: function() {
     this.closeLayoutPopups()
     app.forkIdeaView.close()
+    app.mergeIdeaView.close()
   },
   
   description: function() {
@@ -36,6 +38,13 @@ var ShowIdeaRouter = ApplicationRouter.extend({
   fork: function() {
     if(this.requireLogin())
       app.forkIdeaView.render()
+  },
+  
+  merge: function(fromId) {
+    if(this.requireLogin()) {
+      app.mergeIdeaView.fromId = fromId
+      app.mergeIdeaView.render()
+    }
   },
   
   selectItem: function(name) {

@@ -26,7 +26,7 @@ Ramify::Application.routes.draw do
     end
     member do
       post 'create_fork'
-      get 'merge/:from_id', :action => :merge, :as => :merge
+      put 'merge'
     end
   end
   

@@ -3,8 +3,11 @@
   meta name=="og:description" value=@idea.headline
   meta name=="og:image" value==@idea.category.badge.url
   meta name=="og:type" value="cause"
+
+= render 'fork_idea'
+= render 'merge_idea'
+
 .wrapper
-  = render 'fork_idea'
 
   #show_idea data-id=@idea.id
     .header class=@idea.category.css_class
@@ -23,6 +26,8 @@
       .social
         .twitter_share= render :partial => 'shared/twitter_share'
         .fb_like= render :partial => 'shared/fb_like'
+      - if @versions_changed
+        .versions_changed= t('.versions_changed.html', :link => link_to(t('.versions_changed.link'), '#versions'))
     .menu
       ul
         li
@@ -83,9 +88,14 @@
                   .headline
                     .quote “
                     p= version.headline
-                  - if @editable
-                    .merge= link_to t('.versions.merge'), merge_idea_path(@idea, version.id)
                   .created_at= t('.versions.created_at', :created_at => l(version.created_at.to_date, :format => :short))
+                  .changes
+                    - if version.document_changed
+                      = t('.versions.changes')
+                    - else
+                      = t('.versions.no_changes')
+                  - if @editable and version.document_changed
+                    .merge= link_to t('.versions.merge'), "#merge/#{version.id}"
         .info
           .placeholder= t('.placeholders.versions_html')
     .footer
@@ -93,10 +103,12 @@
 
   = render 'shared/application_js'
   = javascript_include_tag 'views/ideas/fork'
+  = javascript_include_tag 'views/ideas/merge'
   = javascript_include_tag 'views/ideas/show'
   = javascript_include_tag 'routers/ideas/show'
   javascript:
     app.forkIdeaView = new ForkIdeaView
+    app.mergeIdeaView = new MergeIdeaView
     app.showIdeaView = new ShowIdeaView
     app.showIdeaRouter = new ShowIdeaRouter
     Backbone.history.start()

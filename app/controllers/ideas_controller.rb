@@ -31,6 +31,15 @@ class IdeasController < ApplicationController
       @editable = (current_user and current_user == @idea.user)
       @versions = @idea.versions.order("created_at DESC").all
       @title = @idea.title
+      @versions_changed = false
+      if @editable
+        @idea.versions.each do |version|
+          if version.document_changed
+            @versions_changed = true
+            break
+          end
+        end
+      end
     end
   end
   
