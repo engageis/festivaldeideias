@@ -65,4 +65,22 @@ describe Category do
     ability.should be_able_to(:manage, idea1)
   end
 
+  it "should enable users to merge others ideas derived from his work into the original" do
+    user1 = Factory.build(:user)
+    user2 = Factory.build(:user)
+    idea1 = Factory.build(:idea, :user => user1)
+    idea2 = idea1.create_fork(user2)
+    ability = Ability.new(user1)
+    ability.should be_able_to(:merge, idea1)
+  end
+
+  it "shouldn't enable users to merge others ideas derived from his work into the original" do
+    user1 = Factory.build(:user)
+    user2 = Factory.build(:user)
+    idea1 = Factory.build(:idea, :user => user1)
+    idea2 = idea1.create_fork(user2)
+    ability = Ability.new(user2)
+    ability.should_not be_able_to(:merge, idea1)
+  end
+
 end

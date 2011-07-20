@@ -396,6 +396,7 @@ CREATE TABLE users (
     locale text DEFAULT 'pt'::text NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
+    image text,
     CONSTRAINT users_bio_length_within CHECK (((length(bio) >= 0) AND (length(bio) <= 140))),
     CONSTRAINT users_provider_not_blank CHECK ((length(btrim(provider)) > 0)),
     CONSTRAINT users_uid_not_blank CHECK ((length(btrim(uid)) > 0))
@@ -846,3 +847,5 @@ INSERT INTO schema_migrations (version) VALUES ('20110630020631');
 INSERT INTO schema_migrations (version) VALUES ('20110706235529');
 
 INSERT INTO schema_migrations (version) VALUES ('20110707195046');
+
+INSERT INTO schema_migrations (version) VALUES ('20110720035242');
