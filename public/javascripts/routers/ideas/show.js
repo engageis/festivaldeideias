@@ -3,6 +3,7 @@ var ShowIdeaRouter = ApplicationRouter.extend({
   routes: {
     "": "description",
     "login": "login",
+    "sign_up": "signUp",
     "new_idea": "newIdea",
     "description": "description",
     "have": "have",

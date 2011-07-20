@@ -18,6 +18,8 @@ Ramify::Application.routes.draw do
   
   match "/fake_login" => "sessions#fake_create", :as => :fake_login if Rails.env.test?
 
+  match "/my_profile" => "users#my_profile", :as => :my_profile
+
   resources :ideas, :only => [:index, :create, :update, :show] do
     collection do
       get 'explore'
@@ -28,6 +30,10 @@ Ramify::Application.routes.draw do
     end
   end
   
-  resources :users, :only => [:show]
+  resources :users, :only => [:show] do
+    collection do
+      get 'my_profile'
+    end
+  end
   
 end

@@ -1,6 +1,9 @@
 pt:
   likes: %{count} likes
   versions: %{count} versões
+  require_login: Você precisa estar logado para realizar esta ação.
+  require_admin: Você precisa ser admin para realizar esta ação.
+  require_permission: Você não tem permissão para realizar esta ação.
   activerecord:
       models:
         idea: Ideia
