@@ -22,6 +22,7 @@ class IdeasController < ApplicationController
   end
   
   def explore
+    @title = t('ideas.explore.title')
     @categories = current_site.categories.with_ideas.order(:name).all
   end
   
@@ -29,6 +30,7 @@ class IdeasController < ApplicationController
     show! do
       @editable = (current_user and current_user == @idea.user)
       @versions = @idea.versions.order("created_at DESC").all
+      @title = @idea.title
     end
   end
   

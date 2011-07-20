@@ -19,7 +19,7 @@
           - else
             = t('.ideas.other', :name => @user.name)
         - if @ideas.empty?
-          em
+          .empty
             - if @editable
               = t('.no_ideas.current_html', :link => link_to(t('.no_ideas.link'), '#new_idea'))
             - else
@@ -34,7 +34,7 @@
           - else
             = t('.versions.other', :name => @user.name)
         - if @versions.empty?
-          em
+          .empty
             - if @editable
               = t('.no_versions.current_html', :link => link_to(t('.no_versions.link'), explore_path))
             - else

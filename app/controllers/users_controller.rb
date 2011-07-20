@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @editable = (current_user and current_user == @user)
     @ideas = @user.ideas.primary
     @versions = @user.ideas.secondary
+    @title = @user.name
     respond_to do |format|
       format.html
       format.json { render :json => @user }
