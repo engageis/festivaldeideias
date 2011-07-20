@@ -62,5 +62,16 @@ class IdeasController < ApplicationController
       redirect_to idea_path(idea)
     end
   end
+  
+  def merge
+    idea = Idea.find(params[:id])
+    if idea.merge!(params[:from_id])
+      flash[:success] = t('ideas.merge.success')
+      redirect_to idea_path(idea)
+    else
+      flash[:failure] = t('ideas.merge.failure')
+      redirect_to "#{idea_path(idea)}#versions"
+    end
+  end
     
 end
