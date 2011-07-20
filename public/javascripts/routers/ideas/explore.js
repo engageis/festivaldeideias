@@ -3,6 +3,7 @@ var ExploreRouter = ApplicationRouter.extend({
   routes: {
     "": "recommended",
     "login": "login",
+    "sign_up": "signUp",
     "new_idea": "newIdea",
     "recommended": "recommended",
     "popular": "popular",

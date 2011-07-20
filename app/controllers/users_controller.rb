@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource
   inherit_resources
   actions :show
   def show
@@ -10,5 +11,9 @@ class UsersController < ApplicationController
       format.html
       format.json { render :json => @user }
     end
+  end
+  def my_profile
+    return unless require_login
+    redirect_to user_path(current_user)
   end
 end
