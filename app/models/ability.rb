@@ -29,6 +29,8 @@ class Ability
       can :read, :all
 
       can :create, Idea
+      can :create_fork, Idea
+      can :explore, Idea
       can :manage, User, :id => user.id
       can :manage, Idea, :user_id => user.id
     end
