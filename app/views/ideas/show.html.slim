@@ -10,7 +10,7 @@
     .header class=@idea.category.css_class
       .category= image_tag @idea.category.badge.url, :title => @idea.category.name
       .info
-        h1 class=("editable" if @editable) data-attribute="title" data-raw=@idea.title data-maxlength=60
+        h2 class=("editable" if @editable) data-attribute="title" data-raw=@idea.title data-maxlength=60
           = @idea.title
         .user
           = t('.user_html', :link => link_to(@idea.user.name, user_path(@idea.user)))
@@ -21,9 +21,8 @@
           p class=("editable" if @editable) data-attribute="headline" data-raw=@idea.headline data-maxlength=140
             = @idea.headline
       .social
-        .fb_like= render :partial => 'shared/fb_like'
         .twitter_share= render :partial => 'shared/twitter_share'
-        .clear
+        .fb_like= render :partial => 'shared/fb_like'
     .menu
       ul
         li
