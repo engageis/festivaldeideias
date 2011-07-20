@@ -9,7 +9,7 @@
       = truncate current_user.display_name, :length => 24
       = image_tag 'dropdown.png', :class => 'dropdown'
     ul
-      li= link_to t('.my_profile'), my_profile_path
+      li= link_to t('.my_profile'), user_path(current_user)
       - if can? :manage, current_site
         li= link_to t('.admin'), admin_dashboard_path, :target => :_blank
       li= link_to t('.logout'), logout_path
