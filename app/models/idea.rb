@@ -9,7 +9,7 @@ class Idea < ActiveRecord::Base
   belongs_to :template
   belongs_to :parent, :class_name => 'Idea', :foreign_key => :parent_id
   has_many :versions, :class_name => 'Idea', :foreign_key => :parent_id
-  
+  has_many :merges
   validates_presence_of :site, :user, :category, :template, :title, :headline
   validates_length_of :headline, :maximum => 140
 
@@ -24,6 +24,7 @@ class Idea < ActiveRecord::Base
 
   attr_accessor :was_new_record
   attr_accessor :forking
+  attr_accessor :merging
   
   before_save :set_was_new_record
   def set_was_new_record
@@ -38,7 +39,7 @@ class Idea < ActiveRecord::Base
         self.document = JSON.parse(RestClient.post("#{self.url}/#{self.parent.id}/fork/#{self.id}", ""))
       elsif self.was_new_record
         RestClient.post "#{self.url}", document.to_json
-      else
+      elsif not self.merging
         RestClient.put "#{self.url}/#{self.id}", document.to_json
       end
     rescue
@@ -77,6 +78,24 @@ class Idea < ActiveRecord::Base
     else
       nil
     end
+  end
+  
+  def merge!(from_id)
+    self.merging = true
+    merge = self.merges.new :from_id => from_id
+    begin
+      merged_document = JSON.parse(RestClient.put("#{self.url}/#{self.id}/merge/#{from_id}", ""))
+      self.title = merged_document["title"]
+      self.headline = merged_document["headline"]
+      self.save
+      self.document = merged_document
+      merge.finished = true
+    rescue RestClient::Conflict
+      merge.pending = true
+    end
+    self.merging = false
+    merge.save
+    merge.finished
   end
 
   def self.url

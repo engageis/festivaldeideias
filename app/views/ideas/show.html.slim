@@ -84,7 +84,7 @@
                     .quote “
                     p= version.headline
                   - if @editable
-                    .merge= link_to t('.versions.merge'), merge_idea_path(@idea, version)
+                    .merge= link_to t('.versions.merge'), merge_idea_path(@idea, version.id)
                   .created_at= t('.versions.created_at', :created_at => l(version.created_at.to_date, :format => :short))
         .info
           .placeholder= t('.placeholders.versions_html')

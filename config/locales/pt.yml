@@ -134,6 +134,9 @@ pt:
     create_fork:
       success: Sua versão foi criada com sucesso! Agora você já pode aperfeiçoar esta ideia à vontade.
       failure: Ooops. Não foi possível criar sua versão desta ideia. Por favor, tente novamente.
+    merge:
+      success: As duas ideias foram mescladas automaticamente com sucesso!
+      failure: Não foi possível mesclar automaticamente as duas ideias. Por favor, revise os conflitos manualmente.
   users:
     show:
       upload: Clique para trocar
