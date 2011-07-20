@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
   end
   
   def display_bio
-    bio.gsub("\n", "<br/>")
+    bio and bio.gsub("\n", "<br/>")
   end
   
   def remember_me_hash
