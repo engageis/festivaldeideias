@@ -1,4 +1,4 @@
-title= current_site.name
+title= "#{@title}#{' · ' if @title}#{current_site.name}"
 - if current_site.image
   link rel="shortcut icon" href==current_site.image.url(:favicon)
 meta http-equiv='Content-Type' content='text/html'
