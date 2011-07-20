@@ -1,16 +1,20 @@
 .wrapper
-  #show_user
+  #show_user data-id=@user.id
     .header
-      = image_tag @user.display_image, :class => 'avatar'
-      h2
-        span.username
+      .image title=(t('.upload') if @editable)
+        = image_tag @user.display_image, :class => "avatar#{ ' clickable' if @editable }"
+        - if @editable
+          .upload= t('.upload')
+          = simple_form_for current_user, :html => {:multipart => true} do |form|
+            = form.input :image, :as => :file, :label => false
+      .info
+        h2 class=("editable" if @editable) data-attribute="name" data-raw=@user.name data-placeholder=t('.placeholders.name')
           = truncate @user.display_name, :length => 24
         - if @editable
-          |  (
-          span
+          .email class="editable" data-attribute="email" data-raw=@user.email data-placeholder=t('.placeholders.email')
             = @user.email
-          | )
-      .bio= @user.bio
+        .bio class=("editable" if @editable) data-attribute="bio" data-raw=@user.bio data-placeholder=t('.placeholders.bio') data-maxlength=140
+          == @user.display_bio
     .content
       .aside.ideas
         h3 
@@ -45,8 +49,9 @@
 
 = render 'shared/application_js'
 = javascript_include_tag 'routers/users/show'
+= javascript_include_tag 'views/users/show'
 javascript:
+  app.showUserView = new ShowUserView
   app.showUserRouter = new ShowUserRouter
   Backbone.history.start()
-
 .clear

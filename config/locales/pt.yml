@@ -136,6 +136,11 @@ pt:
       failure: Ooops. Não foi possível criar sua versão desta ideia. Por favor, tente novamente.
   users:
     show:
+      upload: Clique para trocar
+      placeholders:
+        bio: Clique para escrever algo sobre você...
+        email: Clique para informar seu email...
+        name: Clique para informar seu nome...
       ideas:
         current: Ideias que você começou
         other: Ideias que %{name} começou

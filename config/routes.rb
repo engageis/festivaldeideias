@@ -30,7 +30,7 @@ Ramify::Application.routes.draw do
     end
   end
   
-  resources :users, :only => [:show] do
+  resources :users, :only => [:show, :update] do
     collection do
       get 'my_profile'
     end

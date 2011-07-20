@@ -5,28 +5,50 @@
     width: 100%
     display: block
     float: left
-    img
-      +box-shadow(0 1px 4px rgba(0, 0, 0, 0.27))
-      padding: 5px
-      background: #FFF
-      height: 100px
-      width: 100px
+    .image
       float: left
       margin-right: 10px
-    h2
-      width: 80%
-      font-family: Myriad
-      float: left
-      color: #999
-      .username
+      position: relative
+      img
+        +box-shadow(0 1px 4px rgba(0, 0, 0, 0.27))
+        padding: 5px
+        background: #FFF
+        width: 100px
+        &.clickable
+          cursor: pointer
+      form
+        position: absolute
+        top: -1000px
+      .upload
+        position: absolute
+        width: 102px
+        bottom: 5px
+        background-color: #666
+        background-color: rgba(0, 0, 0, 0.5)
+        color: #fff
+        font-size: 14px
+        line-height: 14px
+        padding: 4px
+        text-align: center
+        cursor: pointer
+    .info
+      float: right
+      width: 810px
+      h2
+        font-family: Myriad
         color: #3D3D3D
-    .bio
-      display: block
-      margin-top: 10px
-      font-size: 0.9em
-      line-height: 0.9em
-      
-      
+        &.editable
+          height: 38px
+      .email
+        color: #999
+        &.editable
+          height: 32px
+      .bio
+        font-size: 0.9em
+        line-height: 0.9em
+        &.editable
+          height: 60px
+
   .aside
     margin-top: 20px
     width: 460px

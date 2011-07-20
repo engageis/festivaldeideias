@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
 
   scope :primary, :conditions => ["primary_user_id IS NULL"]
 
+  mount_uploader :image, UserImageUploader
+
   def to_param
     return "#{self.id}" unless self.display_name
     "#{self.id}-#{self.display_name.parameterize}"
@@ -52,7 +54,11 @@ class User < ActiveRecord::Base
   end
   
   def display_image
-    gravatar_url || image_url || '/images/user.png'
+    (image and image.thumb.url) || gravatar_url || image_url || '/images/user.png'
+  end
+  
+  def display_bio
+    bio.gsub("\n", "<br/>")
   end
   
   def remember_me_hash
@@ -64,6 +70,7 @@ class User < ActiveRecord::Base
       :id => id,
       :email => email,
       :name => display_name,
+      :bio => display_bio,
       :image => display_image
     }
   end

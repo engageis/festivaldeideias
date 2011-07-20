@@ -11,9 +11,9 @@
         .warning
           h3= t('.warning')
           ul
-           li= t('.accept.license_html')
-           li= t('.accept.share')
-           li= t('.accept.copy')
+            li= t('.accept.license_html')
+            li= t('.accept.share')
+            li= t('.accept.copy')
         .input.boolean.required
           = check_box_tag 'new_accept'
           = label_tag 'new_accept', t('.accept.confirm')
