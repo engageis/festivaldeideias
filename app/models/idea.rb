@@ -80,16 +80,6 @@ class Idea < ActiveRecord::Base
     end
   end
   
-  def document_changed
-    return false unless parent
-    return @document_changed if @document_changed
-    begin
-      @document_changed = JSON.parse(RestClient.get("#{self.url}/#{self.parent_id}/diff/#{self.id}")).size > 0
-    rescue
-      false
-    end
-  end
-  
   def merge!(from_id)
     self.merging = true
     merge = self.merges.new :from_id => from_id
@@ -199,6 +189,29 @@ class Idea < ActiveRecord::Base
       :document => document,
       :url => idea_path(self)
     }
+  end
+  
+  def need_to_merge?
+    return @need_to_merge if @need_to_merge
+    merge_needed?(self, parent)
+  end
+  
+  def parent_need_to_merge?
+    return @parent_need_to_merge if @parent_need_to_merge
+    merge_needed?(parent, self)
+  end
+  
+  private
+  
+  def merge_needed?(idea = nil, from = nil)
+    return false unless parent
+    idea = self unless idea
+    from = parent unless from
+    begin
+      RestClient.get("#{self.url}/#{idea.id}/merge_needed/#{from.id}") == "true"
+    rescue
+      false
+    end
   end
   
 end

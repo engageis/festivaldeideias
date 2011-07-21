@@ -34,7 +34,7 @@ class IdeasController < ApplicationController
       @versions_changed = false
       if @editable
         @idea.versions.each do |version|
-          if version.document_changed
+          if version.parent_need_to_merge?
             @versions_changed = true
             break
           end
