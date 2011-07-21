@@ -103,6 +103,9 @@ pt:
       parent_html: ", baseada na ideia de %{link}"
       headline: Em poucas palavras...
       fork_idea: Melhorar esta ideia
+      need_to_merge:
+        html: Ei, a ideia original de %{user} possui alterações. Que tal mesclar estas alterações com as suas %{link}?
+        link: clicando aqui
       versions_changed:
         html: Ei, pelo menos uma das versões da sua ideia possui alterações. Que tal mesclar estas alterações com as suas %{link}?
         link: clicando aqui
@@ -124,8 +127,8 @@ pt:
         user_html: Uma versão de %{link}
         created_at: Criada em %{created_at}
         merge: Mesclar esta versão com a minha
-        changes: Esta versão possui alterações em relação à ideia original.
-        no_changes: Esta versão não possui alterações e está 100% atualizada.
+        changes: Esta versão possui alterações para mesclar com a ideia original.
+        no_changes: Esta versão não possui alterações para mesclar com a ideia original.
     fork_idea:
       title: Melhorar esta ideia
       subtitle: Para que você aperfeiçoe esta ideia, criaremos uma versão dela para você.
