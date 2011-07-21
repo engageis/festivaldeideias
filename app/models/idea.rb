@@ -43,6 +43,7 @@ class Idea < ActiveRecord::Base
         RestClient.put "#{self.url}/#{self.id}", document.to_json
       end
     rescue
+      Rails.logger.error "Failed to save document from idea ##{self.id}: #{e.message}"
     end
   end
   
@@ -51,6 +52,7 @@ class Idea < ActiveRecord::Base
     begin
       self.document = JSON.parse(RestClient.get("#{self.url}/#{self.id}"))
     rescue
+      Rails.logger.error "Failed to load the document from idea ##{self.id}: #{e.message}"
     end
   end
 
@@ -58,7 +60,8 @@ class Idea < ActiveRecord::Base
   def delete_document
     begin
       RestClient.delete "#{self.url}/#{self.id}"
-    rescue
+    rescue => e
+      Rails.logger.error "Failed to delete the document from idea ##{self.id}: #{e.message}"
     end
   end
   
@@ -86,6 +89,7 @@ class Idea < ActiveRecord::Base
     begin
       @document_changed = JSON.parse(RestClient.get("#{self.url}/#{self.parent_id}/diff/#{self.id}")).size > 0
     rescue
+      Rails.logger.error "Failed to get the differences of the document from idea ##{self.id}: #{e.message}"
       false
     end
   end
@@ -101,6 +105,7 @@ class Idea < ActiveRecord::Base
       self.document = merged_document
       merge.finished = true
     rescue RestClient::Conflict
+      Rails.logger.error "Failed to merge documents ##{self.id}: #{e.message}"
       merge.pending = true
     end
     self.merging = false
