@@ -1,5 +1,7 @@
 =show_idea
   .header
+    float: left
+    margin-bottom: 20px
     .category
       float: left
       width: 80px
@@ -66,6 +68,8 @@
   .menu
     clear: both
     position: relative
+    border-bottom: 2px solid #DDD
+    +box-shadow(0 1px 0 #FFF)
     ul
       position: absolute
       top: 1px
@@ -80,18 +84,16 @@
           display: block
           padding: 8px 12px
           text-align: center
-          border: 1px solid #bbb
-          +border-top-left-radius(8px)
-          +border-top-right-radius(8px)
-          background: #ddd
           +transition(none)
           +transition(color)
           &:hover
             color: #3d3d3d
           &.selected
-            background: #fff
+            color: #3d3d3d
+            background: url(/images/arrow_tabs.png) no-repeat center 30px
             border-bottom: none
-            padding-bottom: 9px
+            padding-bottom: 11px
+            position: relative
   .fork_idea
     float: right
     margin-bottom: 8px
@@ -100,8 +102,6 @@
   .content
     clear: both
     overflow: auto
-    border: 1px solid #ccc
-    background-color: #fff
     padding: 20px 10px
     min-height: 432px
     h1
