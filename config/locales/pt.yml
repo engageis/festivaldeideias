@@ -7,11 +7,24 @@ pt:
   activerecord:
       models:
         idea: Ideia
+        configuration: Configuração
+        category: Categorias
+        user: Usuário
       attributes:
         idea:
           title: Título
           headline: Resumo
           category: Categoria
+        configuration:
+          name: Nome
+          value: Valor
+        category:
+          name: Nome
+          badge: Imagem
+        user:
+          name: Nome
+          email: E-Mail
+          image: Imagem
   helpers:
     submit:
       idea:
