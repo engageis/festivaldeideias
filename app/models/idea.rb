@@ -94,7 +94,7 @@ class Idea < ActiveRecord::Base
       self.save
       self.document = merged_document
       merge.finished = true
-    rescue
+    rescue RestClient::Conflict
       merge.pending = true
     end
     self.merging = false
