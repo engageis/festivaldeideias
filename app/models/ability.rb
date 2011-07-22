@@ -8,6 +8,8 @@ class Ability
       can :manage, :all
     elsif user.sites.size > 0
 
+      can :read, :all
+
       can :manage, Site do |site|
         user.sites.include?(site)
       end
@@ -17,6 +19,8 @@ class Ability
       end
       cannot :manage, Category
 
+      can :create, Idea
+      can :create_fork, Idea
       can :manage, Idea do |idea|
         user.sites.include?(idea.site)
       end

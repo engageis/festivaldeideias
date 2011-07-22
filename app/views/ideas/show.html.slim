@@ -26,7 +26,7 @@
       .social
         .twitter_share= render :partial => 'shared/twitter_share'
         .fb_like= render :partial => 'shared/fb_like'
-      - if @idea.need_to_merge?
+      - if @editable and @idea.need_to_merge?
         .changed= t('.need_to_merge.html', :link => link_to(t('.need_to_merge.link'), "#merge/#{@idea.parent.id}"), :user => @idea.parent.user.display_name)
       - if @versions_changed
         .changed= t('.versions_changed.html', :link => link_to(t('.versions_changed.link'), '#versions'))
