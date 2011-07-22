@@ -1,6 +1,8 @@
 ActiveAdmin.register User do
   controller.authorize_resource
 
+  scope_to :current_site
+
   index do
     column :name do |configuration|
       link_to configuration.name, admin_configuration_path(configuration)

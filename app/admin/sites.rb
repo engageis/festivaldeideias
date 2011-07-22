@@ -2,7 +2,8 @@ ActiveAdmin.register Site do
   controller.authorize_resource
 
   menu :if => lambda{|tabs_renderer|
-    controller.current_ability.can?(:manage, Site)
+    # controller.current_ability.can?(:manage, Site)
+    current_user.admin
   }
 
   index do
