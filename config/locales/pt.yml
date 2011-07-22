@@ -7,6 +7,9 @@ pt:
   activerecord:
       models:
         idea: Ideia
+        configuration: Configuração
+        category: Categorias
+        user: Usuário
       attributes:
         idea:
           title: Título
