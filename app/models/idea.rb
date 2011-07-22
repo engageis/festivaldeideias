@@ -42,7 +42,7 @@ class Idea < ActiveRecord::Base
       elsif not self.merging
         RestClient.put "#{self.url}/#{self.id}", document.to_json
       end
-    rescue
+    rescue Exception => e
       Rails.logger.error "Failed to save document from idea ##{self.id}: #{e.message}"
     end
   end
@@ -51,7 +51,7 @@ class Idea < ActiveRecord::Base
   def load_document
     begin
       self.document = JSON.parse(RestClient.get("#{self.url}/#{self.id}"))
-    rescue
+    rescue Exception => e
       Rails.logger.error "Failed to load the document from idea ##{self.id}: #{e.message}"
     end
   end
@@ -60,7 +60,7 @@ class Idea < ActiveRecord::Base
   def delete_document
     begin
       RestClient.delete "#{self.url}/#{self.id}"
-    rescue => e
+    rescue Exception => e
       Rails.logger.error "Failed to delete the document from idea ##{self.id}: #{e.message}"
     end
   end
@@ -94,7 +94,6 @@ class Idea < ActiveRecord::Base
       self.document = merged_document
       merge.finished = true
     rescue RestClient::Conflict
-      Rails.logger.error "Failed to merge documents ##{self.id}: #{e.message}"
       merge.pending = true
     end
     self.merging = false
