@@ -245,6 +245,41 @@ ALTER SEQUENCE links_id_seq OWNED BY links.id;
 
 
 --
+-- Name: merges; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE merges (
+    id integer NOT NULL,
+    idea_id integer NOT NULL,
+    from_id integer NOT NULL,
+    requested boolean DEFAULT false NOT NULL,
+    pending boolean DEFAULT false NOT NULL,
+    finished boolean DEFAULT false NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: merges_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE merges_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: merges_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE merges_id_seq OWNED BY merges.id;
+
+
+--
 -- Name: oauth_providers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -468,6 +503,13 @@ ALTER TABLE links ALTER COLUMN id SET DEFAULT nextval('links_id_seq'::regclass);
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE merges ALTER COLUMN id SET DEFAULT nextval('merges_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE oauth_providers ALTER COLUMN id SET DEFAULT nextval('oauth_providers_id_seq'::regclass);
 
 
@@ -554,6 +596,14 @@ ALTER TABLE ONLY ideas
 
 ALTER TABLE ONLY links
     ADD CONSTRAINT links_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: merges_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY merges
+    ADD CONSTRAINT merges_pkey PRIMARY KEY (id);
 
 
 --
@@ -777,6 +827,22 @@ ALTER TABLE ONLY links
 
 
 --
+-- Name: merges_from_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY merges
+    ADD CONSTRAINT merges_from_id_reference FOREIGN KEY (from_id) REFERENCES ideas(id);
+
+
+--
+-- Name: merges_idea_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY merges
+    ADD CONSTRAINT merges_idea_id_reference FOREIGN KEY (idea_id) REFERENCES ideas(id);
+
+
+--
 -- Name: sites_template_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -849,3 +915,5 @@ INSERT INTO schema_migrations (version) VALUES ('20110706235529');
 INSERT INTO schema_migrations (version) VALUES ('20110707195046');
 
 INSERT INTO schema_migrations (version) VALUES ('20110720035242');
+
+INSERT INTO schema_migrations (version) VALUES ('20110720170741');
