@@ -88,7 +88,7 @@ class Idea < ActiveRecord::Base
     self.merges.merges_from(from_id).pending.update_all :pending => false
     merge = self.merges.new :from_id => from_id
     begin
-      merged_document = JSON.parse(RestClient.put("#{self.url}/#{self.id}/merge/#{from_id}", ""))
+      merged_document = JSON.parse(RestClient.put("#{self.url}/#{self.id}/merge/#{from_id}", { :user_id => self.user.id }.to_json))
       self.title = merged_document["title"]
       self.headline = merged_document["headline"]
       self.save
