@@ -26,10 +26,13 @@
       .social
         .twitter_share= render :partial => 'shared/twitter_share'
         .fb_like= render :partial => 'shared/fb_like'
-      - if @editable and @idea.need_to_merge?
-        .changed= t('.need_to_merge.html', :link => link_to(t('.need_to_merge.link'), "#merge/#{@idea.parent.id}"), :user => @idea.parent.user.display_name)
-      - if @versions_changed
-        .changed= t('.versions_changed.html', :link => link_to(t('.versions_changed.link'), '#versions'))
+      - if @editable
+        - if @idea.parent and @idea.pending_merge(@idea.parent)
+          .changed= render :partial => 'pending_merge', :object => @idea.pending_merge(@idea.parent)
+        - elsif @idea.need_to_merge?
+          .changed= t('.need_to_merge.html', :link => link_to(t('.need_to_merge.link'), "#merge/#{@idea.parent.id}"), :user => @idea.parent.user.display_name)
+        - elsif @versions_changed
+          .changed= t('.versions_changed.html', :link => link_to(t('.versions_changed.link'), '#versions'))
     .menu
       ul
         li
@@ -97,8 +100,11 @@
                       = t('.versions.changes')
                     - else
                       = t('.versions.no_changes')
-                  - if @editable and version.parent_need_to_merge?
-                    .merge= link_to t('.versions.merge'), "#merge/#{version.id}"
+                  - if @editable
+                    - if @idea.pending_merge(version)
+                      = render :partial => 'pending_merge', :object => @idea.pending_merge(version), :locals => { :parent => true }
+                    - elsif version.parent_need_to_merge?
+                      .merge= link_to t('.versions.merge'), "#merge/#{version.id}"
         .info
           .placeholder= t('.placeholders.versions_html')
     .footer

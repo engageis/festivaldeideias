@@ -82,5 +82,10 @@ class IdeasController < ApplicationController
       redirect_to "#{idea_path(idea)}#versions"
     end
   end
+  
+  def review_conflicts
+    @idea = Idea.find(params[:id])
+    @from = Idea.find(params[:from_id])
+  end
     
 end

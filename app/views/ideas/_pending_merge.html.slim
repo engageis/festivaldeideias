@@ -1,0 +1,6 @@
+.pending_merge
+  h3= t(".title#{ '_parent' if defined?(parent) and parent }")
+  ul
+    li= link_to t('.review'), review_conflicts_idea_path(pending_merge.idea, pending_merge.from_id)
+    li= link_to t('.merge'), "#merge/#{pending_merge.from_id}", :class => 'merge'
+

@@ -165,6 +165,11 @@ pt:
     merge:
       success: As duas ideias foram mescladas automaticamente com sucesso!
       failure: Não foi possível mesclar automaticamente as duas ideias. Por favor, revise os conflitos manualmente.
+    pending_merge:
+      title_parent: "Você possui uma mescla pendente com esta versão. Neste caso, você pode:"
+      title: "Você possui uma mescla pendente com a versão original de sua ideia. Para se mesclar as duas ideias, você pode:"
+      review: Revisar as alterações manualmente
+      merge: Ou tentar uma nova mescla
   users:
     show:
       upload: Clique para trocar
