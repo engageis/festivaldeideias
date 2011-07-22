@@ -4,30 +4,32 @@
       content: " " url(/images/edit.png)
     &:hover
       cursor: pointer
+    img
+      vertical-align: middle
     form
-      position: relative
       input[type=text], textarea
         background: transparent
         padding: 0
         width: auto
       button
+        z-index: 300
         cursor: pointer
         position: absolute
-        top: 4px
+        top: 0
+        left: 0
         font-size: 14px
         line-height: 16px
         padding: 2px 8px
-        +opacity(0.4)
+        +transition(background-color, color)
         &:hover
-          +opacity(1)
+          background-color: red
         &:active
           padding: 3px 7px 1px 9px
-        &[type=submit]
-          right: 84px
         &[type=cancel]
-          background: none !important
-          color: red
-          right: 0
+          background: white !important
+          color: #FF4646
+          &:hover
+            color: red
   .editing
     &:after
       content: "" !important
