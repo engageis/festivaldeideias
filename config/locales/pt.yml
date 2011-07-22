@@ -30,9 +30,6 @@ pt:
       idea:
         create: "Criar minha ideia"
         update: "Criar minha versão desta ideia"
-      user:
-        create: "Criar novo usuário"
-        update: "Atualizar dados do usuário"
   or: ou
   ok: OK
   cancel: Cancelar

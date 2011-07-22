@@ -12,4 +12,14 @@ ActiveAdmin.register Configuration do
     column :value
     default_actions
   end
+  
+  form :html => {:multipart => true} do |f|
+    f.inputs do
+      f.input :name, :as => :string
+      f.input :value, :as => :string
+    end
+    f.buttons do
+      f.submit
+    end
+  end
 end

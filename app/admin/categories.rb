@@ -14,7 +14,7 @@ ActiveAdmin.register Category do
 
   form :html => {:multipart => true} do |f|
     f.inputs do
-      f.input :name
+      f.input :name, :as => :string
       f.input :badge, :as => :file
     end
     f.buttons do
