@@ -5,6 +5,7 @@ ActiveAdmin.register Idea do
       link_to idea.title, admin_idea_path(idea)
     end
     column :headline
+    default_actions
   end
 
 end

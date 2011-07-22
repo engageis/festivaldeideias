@@ -10,5 +10,6 @@ ActiveAdmin.register Configuration do
       link_to configuration.name, admin_configuration_path(configuration)
     end
     column :value
+    default_actions
   end
 end

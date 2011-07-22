@@ -5,6 +5,7 @@ ActiveAdmin.register Category do
       link_to category.name, admin_category_path(category)
     end
     column :badge
+    default_actions
   end
 
   # def show do
