@@ -25,8 +25,9 @@ var EditableView = Backbone.View.extend({
     element.click(function(){
       $(this).addClass("editing")
     })
+    _.bind(this.dataRaw, element)
     element.editable(this.updateUrl(), {
-      data: function(){ return $(this).attr('data-raw') },
+      data: this.dataRaw,
       type: (element.attr('data-type') || "textarea"),
       placeholder: (element.attr('data-placeholder') || $.fn.editable.defaults.placeholder),
       method: "PUT",
@@ -36,9 +37,9 @@ var EditableView = Backbone.View.extend({
         $(this).parent().removeClass("editing")
       },
       callback: function(value, settings) {
-        idea = JSON.parse(value)
-        $(this).attr('data-raw', idea[$(this).attr('data-attribute')])
-        $(this).html(idea[($(this).attr('data-raw-attribute') || $(this).attr('data-attribute'))])
+        var model = JSON.parse(value)
+        $(this).attr('data-raw', model[$(this).attr('data-attribute')])
+        $(this).html(model[($(this).attr('data-raw-attribute') || $(this).attr('data-attribute'))])
         $(this).removeClass("editing")
       }
     })
@@ -71,6 +72,8 @@ var EditableView = Backbone.View.extend({
   
   updateUrl: function() {
     return "/" + app.locale + "/" + this.collectionName() + "/" + this.el.attr('data-id') + '.json'
-  }
+  },
+  
+  dataRaw: function(){ return $(this).attr('data-raw') }
   
 })
