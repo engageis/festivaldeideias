@@ -15,11 +15,24 @@ pt:
           title: Título
           headline: Resumo
           category: Categoria
+        configuration:
+          name: Nome
+          value: Valor
+        category:
+          name: Nome
+          badge: Imagem
+        user:
+          name: Nome
+          email: E-Mail
+          image: Imagem
   helpers:
     submit:
       idea:
         create: "Criar minha ideia"
         update: "Criar minha versão desta ideia"
+      user:
+        create: "Criar novo usuário"
+        update: "Atualizar dados do usuário"
   or: ou
   ok: OK
   cancel: Cancelar
