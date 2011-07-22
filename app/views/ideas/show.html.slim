@@ -13,7 +13,7 @@
     .header class=@idea.category.css_class
       .category= image_tag @idea.category.badge.url, :title => @idea.category.name
       .info
-        h2 class=("editable" if @editable) data-attribute="title" data-raw=@idea.title data-maxlength=60
+        h2 class=("editable" if @editable) data-attribute="title" data-raw=@idea.title data-maxlength=60 data-singleline=true
           = @idea.title
         .user
           = t('.user_html', :link => link_to(@idea.user.display_name, user_path(@idea.user)))
@@ -21,7 +21,7 @@
             = t('.parent_html', :link => link_to(@idea.parent.user.display_name, idea_path(@idea.parent)))
         .headline
           .quote “
-          p class=("editable" if @editable) data-attribute="headline" data-raw=@idea.headline data-maxlength=140
+          p class=("editable" if @editable) data-attribute="headline" data-raw=@idea.headline data-maxlength=140 data-singleline=true
             = @idea.headline
       .social
         .twitter_share= render :partial => 'shared/twitter_share'
@@ -107,6 +107,7 @@
   = render 'shared/application_js'
   = javascript_include_tag 'views/ideas/fork'
   = javascript_include_tag 'views/ideas/merge'
+  = javascript_include_tag 'views/editable'
   = javascript_include_tag 'views/ideas/show'
   = javascript_include_tag 'routers/ideas/show'
   javascript:
