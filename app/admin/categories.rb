@@ -1,4 +1,9 @@
 ActiveAdmin.register Category do
+  controller.authorize_resource
+
+  menu :if => lambda{|tabs_renderer|
+    controller.current_ability.can?(:manage, Category)
+  }
 
   index do
     column :name do |category|

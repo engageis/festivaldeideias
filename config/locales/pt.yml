@@ -25,6 +25,8 @@ pt:
           name: Nome
           email: E-Mail
           image: Imagem
+  active_admin:
+    any: Qualquer um
   helpers:
     submit:
       idea:
