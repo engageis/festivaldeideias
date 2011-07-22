@@ -16,7 +16,10 @@
   font-size: 18px
   line-height: 22px
   font-weight: normal
-  
+
+body, html
+  height: 100%
+
   em
     font-style: italic
   strong
@@ -47,9 +50,15 @@
 
   +layouts
   +defaults
+
+  #container
+    min-height: 100%
+    position: relative
+
   #header
     +header
   #content
+    padding-bottom: 200px
     +content
   #footer
     +footer

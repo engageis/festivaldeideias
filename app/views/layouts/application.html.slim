@@ -2,10 +2,12 @@
 html
   head= render 'layouts/head'
   body#site
-    = render :partial => 'layouts/flash', :locals => { :flash => flash } unless flash.empty?
-    #header
-      .wrapper= render 'layouts/header'
-    #content
-      = yield
-    #footer
-      .wrapper= render 'layouts/footer'
+    #container
+      = render :partial => 'layouts/flash', :locals => { :flash => flash } unless flash.empty?
+      #header
+        .wrapper= render 'layouts/header'
+      #content
+        = yield
+      .clear  
+      #footer
+        .wrapper= render 'layouts/footer'

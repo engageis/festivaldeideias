@@ -22,10 +22,12 @@
               li
                 a href="##{category.name.parameterize}" data-id=category.id
                   = category.name
+                  
       .results
         .empty= t('.empty')
         ul.items
         .loading= image_tag "loading.gif"
+      .clear    
   = render 'idea_template'
   = render 'shared/application_js'
   = javascript_include_tag 'collections/paginated'
