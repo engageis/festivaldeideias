@@ -21,6 +21,9 @@ ActiveAdmin.register Site do
       f.input :twitter, :as => :string
       f.input :image, :as => :file
     end
+    f.buttons do
+      f.submit
+    end
   end
 
 end
