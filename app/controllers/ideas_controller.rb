@@ -79,13 +79,14 @@ class IdeasController < ApplicationController
       redirect_to idea_path(idea)
     else
       flash[:failure] = t('ideas.merge.failure')
-      redirect_to "#{idea_path(idea)}#versions"
+      redirect_to review_conflicts_idea_path(idea, params[:from_id])
     end
   end
   
   def review_conflicts
     @idea = Idea.find(params[:id])
     @from = Idea.find(params[:from_id])
+    @conflicts = @idea.conflicts(params[:from_id])["attributes"]
   end
     
 end

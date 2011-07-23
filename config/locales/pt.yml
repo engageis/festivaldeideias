@@ -166,12 +166,30 @@ pt:
       failure: Ooops. Não foi possível criar sua versão desta ideia. Por favor, tente novamente.
     merge:
       success: As duas ideias foram mescladas automaticamente com sucesso!
-      failure: Não foi possível mesclar automaticamente as duas ideias. Por favor, revise os conflitos manualmente.
+      failure: Não foi possível mesclar automaticamente as duas ideias. Por favor, revise as alterações manualmente.
     pending_merge:
       title_parent: "Você possui uma mescla pendente com esta versão. Neste caso, você pode:"
       title: "Você possui uma mescla pendente com a versão original de sua ideia. Para se mesclar as duas ideias, você pode:"
       review: Revisar as alterações manualmente
       merge: Ou tentar uma nova mescla
+    review_conflicts:
+      user_html: Esta é uma ideia de %{link}
+      parent_html: ", baseada na ideia de %{link}"
+      title: Revisar alterações manualmente
+      subtitle_html: Revise as alterações para concluir a mescla de sua ideia <em>%{title}</em> com a versão de <em>%{from_user}</em>
+      info_html: <p>Para concluir a mescla de sua ideia <em>%{title}</em> com a versão de <em>%{from_user}</em>, você precisa revisar as alterações manualmente e escolher com que partes você quer ficar.</p><p>Isto é necessário quando não conseguimos identificar automaticamente quais partes devem ser aproveitadas ou não em uma mescla.</p><p>Geralmente isto acontece em função de vocês terem feito alterações nas mesmas linhas ou em partes muito próximas de um texto.</p>
+      select: Clique e selecione as partes que você quer de cada campo e não se preocupe se não ficar exatamente como você gostaria. É só editar a ideia depois!
+    conflict_attribute:
+      attributes:
+        title: Título da ideia
+        headline: Resumo da ideia
+        description: O que é esta ideia
+        have: O que já temos
+        need: O que precisamos
+      ours: Na sua versão
+      theirs: Na versão de %{from_user}
+      both: Em ambas versões
+      click: Clique para selecionar
   users:
     show:
       upload: Clique para trocar

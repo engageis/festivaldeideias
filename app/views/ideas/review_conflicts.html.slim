@@ -1,3 +1,17 @@
 .wrapper
-  | TODO
+  #review_conflicts
+    .header
+      h2= t('.title')
+      h3= t('.subtitle_html', :title => @idea.title, :from_user => @from.user.display_name)
+    .content
+      .text
+        = render :partial => "conflict_attribute", :locals => { :name => 'title' }
+        = render :partial => "conflict_attribute", :locals => { :name => 'headline' }
+        = render :partial => "conflict_attribute", :locals => { :name => 'description' }
+        = render :partial => "conflict_attribute", :locals => { :name => 'have' }
+        = render :partial => "conflict_attribute", :locals => { :name => 'need' }
+      .info
+        .tips= t('.info_html', :title => link_to(@idea.title, idea_path(@idea)), :from_user => link_to(@from.user.display_name, idea_path(@from)))
+        .tips
+          h3= t('.select')
 

@@ -101,6 +101,18 @@ class Idea < ActiveRecord::Base
     merge.save
     merge.finished
   end
+  
+  def conflicts(from_id)
+    begin
+      
+      @conflicts ||= JSON.parse(RestClient.get("#{self.url}/#{self.id}/pending_merges"))
+      return unless @conflicts.is_a?(Array)
+      @conflicts.each do |conflict|
+        return conflict if conflict["from_id"] and conflict["from_id"].to_s == from_id.to_s
+      end
+    #rescue
+    end
+  end
 
   def self.url
     @@url ||= Configuration.find_by_name('git_document_db_url').value

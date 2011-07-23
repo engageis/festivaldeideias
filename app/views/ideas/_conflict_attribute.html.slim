@@ -1,0 +1,14 @@
+- if @conflicts.has_key?(name)
+  .attribute
+    h1= t(".attributes.#{name}")
+    - @conflicts[name]["text"].each do |section|
+      - section.each do |key, value|
+          .section class=key
+            .actions
+              h3= t(".#{key}", :from_user => @from.user.display_name)
+              - unless key=="both"
+                .click= t('.click')
+            .lines
+              - value.each do |line|
+                p= line
+
