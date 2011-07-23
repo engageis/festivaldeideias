@@ -104,14 +104,33 @@ class Idea < ActiveRecord::Base
   
   def conflicts(from_id)
     begin
-      
       @conflicts ||= JSON.parse(RestClient.get("#{self.url}/#{self.id}/pending_merges"))
       return unless @conflicts.is_a?(Array)
       @conflicts.each do |conflict|
         return conflict if conflict["from_id"] and conflict["from_id"].to_s == from_id.to_s
       end
-    #rescue
+    rescue
     end
+  end
+
+  def resolve_conflicts!(from_id, conflict_attributes)
+    merge = self.merges.merges_from(from_id).pending.first
+    return unless merge
+    self.merging = true
+    begin
+      merged_document = JSON.parse(RestClient.put("#{self.url}/#{self.id}/resolve_conflicts/#{from_id}", conflict_attributes.merge({ :user_id => self.user.id }).to_json))
+      self.title = merged_document["title"]
+      self.headline = merged_document["headline"]
+      self.save
+      self.document = merged_document
+      merge.pending = false
+      merge.finished = true
+    rescue
+      merge.pending = true
+    end
+    self.merging = false
+    merge.save
+    merge.finished
   end
 
   def self.url

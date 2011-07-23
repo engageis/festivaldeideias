@@ -1,14 +1,15 @@
 - if @conflicts.has_key?(name)
-  .attribute
+  .attribute data-attribute=name
     h1= t(".attributes.#{name}")
+    .error= t('.error_html', :attribute => t(".attributes.#{name}"))
     - @conflicts[name]["text"].each do |section|
       - section.each do |key, value|
-          .section class=key
-            .actions
-              h3= t(".#{key}", :from_user => @from.user.display_name)
-              - unless key=="both"
-                .click= t('ideas.review_conflicts.click_to_select')
-            .lines
-              - value.each do |line|
-                p= line
+        .section class="#{key}#{' selected' if key=='both'}"
+          .actions
+            h3= t(".#{key}", :from_user => @from.user.display_name)
+            - unless key=="both"
+              .click= t('ideas.review_conflicts.click_to_select')
+          .lines
+            - value.each do |line|
+              p= line
 

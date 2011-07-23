@@ -167,6 +167,9 @@ pt:
     merge:
       success: As duas ideias foram mescladas automaticamente com sucesso!
       failure: Não foi possível mesclar automaticamente as duas ideias. Por favor, revise as alterações manualmente.
+    resolve_conflicts:
+      success: As duas ideias foram mescladas com sucesso!
+      failure: Não foi possível mesclar as duas ideias. Por favor, revise as alterações novamente.
     pending_merge:
       title_parent: "Você possui uma mescla pendente com esta versão. Neste caso, você pode:"
       title: "Você possui uma mescla pendente com a versão original de sua ideia. Para se mesclar as duas ideias, você pode:"
@@ -181,6 +184,7 @@ pt:
       select: Clique e selecione as partes que você quer de cada campo e não se preocupe se não ficar exatamente como você gostaria. É só editar a ideia depois!
       click_to_select: Clique para selecionar
       click_to_deselect: Clique para deselecionar
+      submit: Confirmar revisão e finalizar mescla
     conflict_attribute:
       attributes:
         title: Título da ideia
@@ -191,6 +195,7 @@ pt:
       ours: Na sua versão
       theirs: Na versão de %{from_user}
       both: Em ambas versões
+      error_html: Você precisa selecionar pelo menos uma sessão no campo <em>%{attribute}</em>.
   users:
     show:
       upload: Clique para trocar

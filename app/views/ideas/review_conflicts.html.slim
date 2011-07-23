@@ -14,6 +14,12 @@
         .tips= t('.info_html', :title => link_to(@idea.title, idea_path(@idea)), :from_user => link_to(@from.user.display_name, idea_path(@from)))
         .tips
           h3= t('.select')
+      .clear
+      = form_tag resolve_conflicts_idea_path(@idea), :method => :put do |form|
+        = hidden_field_tag 'from_id', @from.id
+        = hidden_field_tag 'conflict_attributes'
+        .submit
+          = submit_tag t('.submit')
 = render 'shared/application_js'
 = javascript_include_tag 'routers/ideas/review_conflicts'
 = javascript_include_tag 'views/ideas/review_conflicts'

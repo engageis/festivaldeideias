@@ -88,5 +88,18 @@ class IdeasController < ApplicationController
     @from = Idea.find(params[:from_id])
     @conflicts = @idea.conflicts(params[:from_id])["attributes"]
   end
-    
+  
+  def resolve_conflicts
+    idea = Idea.find(params[:id])
+    conflict_attributes = JSON.parse(params[:conflict_attributes]) unless params[:conflict_attributes].empty?
+    conflict_attributes = {} unless conflict_attributes
+    if idea.resolve_conflicts!(params[:from_id], conflict_attributes)
+      flash[:success] = t('ideas.resolve_conflicts.success')
+      redirect_to idea_path(idea)
+    else
+      flash[:failure] = t('ideas.resolve_conflicts.failure')
+      redirect_to review_conflicts_idea_path(idea, params[:from_id])
+    end
+  end
+ 
 end
