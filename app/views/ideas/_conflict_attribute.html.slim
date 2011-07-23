@@ -7,7 +7,7 @@
             .actions
               h3= t(".#{key}", :from_user => @from.user.display_name)
               - unless key=="both"
-                .click= t('.click')
+                .click= t('ideas.review_conflicts.click_to_select')
             .lines
               - value.each do |line|
                 p= line

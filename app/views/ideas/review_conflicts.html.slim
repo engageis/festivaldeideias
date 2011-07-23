@@ -14,4 +14,14 @@
         .tips= t('.info_html', :title => link_to(@idea.title, idea_path(@idea)), :from_user => link_to(@from.user.display_name, idea_path(@from)))
         .tips
           h3= t('.select')
+= render 'shared/application_js'
+= javascript_include_tag 'routers/ideas/review_conflicts'
+= javascript_include_tag 'views/ideas/review_conflicts'
+javascript:
+  app.reviewConflictsView = new ReviewConflictsView({
+    selectText: '#{ t('.click_to_select') }',
+    deselectText: '#{ t('.click_to_deselect') }',
+  })
+  app.reviewConflictsRouter = new ReviewConflictsRouter
+  Backbone.history.start()
 
