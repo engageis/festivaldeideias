@@ -29,6 +29,11 @@ class Ability
         user.sites.include?(u.site)
       end
 
+      can :read, Link
+      can :manage, Link do |link|
+        u.sites.include?(link.site)
+      end
+
     else
       can :read, :all
 
