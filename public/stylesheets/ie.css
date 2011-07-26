@@ -1,0 +1,22 @@
+body h2, html h2,
+body h1, html h1,
+body #header #header_menu ul a, 
+html #header #header_menu ul a,
+body #content #index #promo h1, 
+html #content #index #promo h1,
+body #content #index .ideas ul li .idea .footer ul li, 
+html #content #index .ideas ul li .idea .footer ul li,
+body #content #explore .content .results ul li .idea .footer ul li, 
+html #content #explore .content .results ul li .idea .footer ul li {
+  font-family: "Arial", sans-serif;
+}
+body #header #header_menu ul a, 
+html #header #header_menu ul a {
+  font-size: 0.8em;
+}
+
+body #content #index .ideas ul li, 
+html #content #index .ideas ul li {
+  margin: 0 5px;
+}
+
