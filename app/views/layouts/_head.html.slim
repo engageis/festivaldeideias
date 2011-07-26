@@ -12,6 +12,8 @@ meta name="og:url" content==request.url
 = yield :meta_tags
 = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
 = stylesheet_link_tag 'print.css', :media => 'print'
+/[if IE]
+  = stylesheet_link_tag 'ie.css', :media => 'screen'
 /[if lt IE 9]
   = javascript_include_tag "http://html5shiv.googlecode.com/svn/trunk/html5.js"
 = csrf_meta_tag
