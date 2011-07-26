@@ -1,4 +1,16 @@
-ul
+ul class="partners"
+  li class="ruth_cardoso"
+    h2 Realização
+    img src="images/partners/centro_ruth_cardoso.png" width="130px" alt="Centro Ruth Cardoso"
+  li
+    h2 Parceiros
+    img src="images/partners/instituto_embraer.png" width="130px" alt="Centro Ruth Cardoso"
+  li
+    h2 &nbsp;
+    img src="images/partners/instituto_unibanco.png" width="130px" alt="Centro Ruth Cardoso"
+ 
+ul class="links"
   - current_site.links.each do |link|
     li= link_to link.name, link.href, :title => (link.title or link.name), :target => :_blank
+
 .softa= link_to image_tag('softa.png'), "http://softa.com.br", :target => :_blank
