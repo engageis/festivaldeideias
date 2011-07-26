@@ -13,11 +13,11 @@ class Ability
       can :manage, Site do |site|
         user.sites.include?(site)
       end
+      cannot :create, Site
 
       can :manage, Category do |category|
         user.sites.include? category.site
       end
-      cannot :manage, Category
 
       can :create, Idea
       can :create_fork, Idea
