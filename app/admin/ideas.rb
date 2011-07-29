@@ -1,6 +1,15 @@
 ActiveAdmin.register Idea do
 
   scope_to :current_site
+  
+  scope :all
+  scope :recommended
+  scope :featured
+  scope :not_featured
+  scope :popular
+  scope :recent
+  scope :primary
+  scope :secondary
 
   index do
     column :name do |idea|
