@@ -19,4 +19,19 @@ ActiveAdmin.register Idea do
     default_actions
   end
 
+  form do |f|
+    f.inputs do
+      f.input :category
+      f.input :title, :as => :string
+      f.input :headline
+      f.input :featured
+      f.input :recommended
+      f.input :order
+    end
+
+    f.buttons do
+      f.submit
+    end
+  end
+
 end
