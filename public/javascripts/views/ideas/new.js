@@ -9,6 +9,7 @@ var NewIdeaView = PopupView.extend({
   },
   
   initialize: function() {
+    this.$("[type=submit]").attr('disabled', true)
     this.$('textarea').maxlength()
     _.bindAll(this, "render", "disableSubmit")
   },
