@@ -72,16 +72,15 @@ pt:
       error: Ocorreu um erro ao realizar o login. Por favor, tente novamente.
   ideas:
     index:
-      title: Exponha suas ideias e venha junto construir inovações incríveis para o desenvolvimento social!
+      title: Intercâmbio de ideias, criação colaborativa e soluções inovadoras!
       bullets:
         first: Encontre uma ideia que você gostaria de aprimorar
         second: Crie sua própria versão e trabalhe até ficar satisfeito
         third: Devolva a ideia para a comunidade aprimorar ainda mais
-      step_1: Encontre uma ideia para aprimorar
-      step_2: Crie uma nova versão e melhore a ideia
-      step_3: Devolva a ideia para a comunidade aprimorar
-      description_html: <p>As melhores ideias serão selecionadas para o <strong>Festival de Ideias</strong>, que ocorrerá nos dias <strong>20 e 21 de setembro</strong>, na <strong>Cinemateca SP</strong>.</p><p>Contribuindo, você poderá ser escolhido para um dos times que irão ao festival e concorrer a <strong>prêmios incríveis</strong>, além, é claro, de ajudar a criar um mundo melhor :)</p>
-      video_html: <iframe src="http://player.vimeo.com/video/6428069?color=ffffff" width="460" height="325" frameborder="0"></iframe>
+      step_1_html: <span>#1</span> <div><strong>Inscreva sua ideia em um dos três temas</strong> Mobilidade urbana, Catástrofes naturais e Violência</div>
+      step_2_html: <span>#2</span> <div><strong>Trabalhe em rede</strong> As ideias podem ser aprimoradas e remixadas colaborativamente</div>
+      step_3_html: <span>#3</span> <div><strong>As três ideias finalistas levarão R$10 mil cada uma. </strong> As melhores ideias participarão da etapa presencial do Festival de Ideias nos dias <em>20 e 21 de setembro</em>, na Cinemateca Brasileira, em São Paulo, onde serão refinadas e escolhido as vencedoras.</div>
+      video_html: <div style="width:460px" id="__ss_8747771"><iframe src="http://www.slideshare.net/slideshow/embed_code/8747771" width="460" height="380" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></div>
       discover: Conheça algumas ideias e contribua!
       didnt_find: Tem uma ideia que não está aqui?
       new_idea: Inicie uma ideia
