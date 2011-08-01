@@ -90,8 +90,8 @@ pt:
         link: clicando aqui
     list:
       recommended:
-        title: Nossa seleção
-        more: Conheça mais ideias recomendadas
+        title: Ideias inscritas
+        more: Conheça mais ideias selecionadas
       popular:
         title: Ideias populares
         more: Conheça mais ideias populares
