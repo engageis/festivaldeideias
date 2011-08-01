@@ -17,6 +17,7 @@ ActiveAdmin.register Link do
       f.input :name, :as => :string
       f.input :title, :as => :string
       f.input :href, :as => :string
+      f.input :header
     end
     f.buttons do
       f.submit
