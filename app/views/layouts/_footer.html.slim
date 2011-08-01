@@ -1,23 +1,41 @@
-ul class="partners"
+ul class="thanks"
   li class="ruth_cardoso"
     h2 Realização
     a href="http://www.centroruthcardoso.org.br/home.asp" target="blank_"
       img src="/images/partners/centro_ruth_cardoso.png" width="130px" alt="Centro Ruth Cardoso"
-  li
+  li class="partners"
     h2 Parceiros
-    a href="http://www.institutoembraer.com.br/" target="blank_"
-      img src="/images/partners/instituto_embraer.png" width="130px" alt="Centro Ruth Cardoso"
+    a href="http://www.v2v.net" target="blank_"
+      img src="/images/partners/V2V.png" width="130px" alt="V2V.net"
   li
     h2 &nbsp;
+    a href="http://www.mandalah.com" target="blank_"
+      img src="/images/partners/mandalah.png" width="130px" alt="Mandalah"
+  li
+    h2 &nbsp;
+    a href="http://www.catarse.me" target="blank_"
+      img src="/images/partners/catarse.png" width="130px" alt="Catarse"
+  .clear
+  li class="sponsors"
+    h2 Patrocinadores
     a href="http://www.unibanco.com.br/int/hom/index.asp" target="blank_"
-      img src="/images/partners/instituto_unibanco.png" width="130px" alt="Centro Ruth Cardoso"
+      img src="/images/partners/instituto_unibanco.png" width="130px" alt="Instituto Unibanco"
   li
     h2 &nbsp;
     a href="http://www.fundacaotelefonica.org.br/Home/Home.aspx" target="blank_"
       img src="/images/partners/telefonica_vivo.png" height="50px" alt="Fundação Telefônica e Vivo"
- 
+  li
+    h2 &nbsp;
+    a href="http://www.institutoembraer.com.br/" target="blank_"
+      img src="/images/partners/instituto_embraer.png" width="130px" alt="Instituto Embraer"
+  li
+    h2 &nbsp;
+    a href="http://www.sebrae.com.br/" target="blank_"
+      img src="/images/partners/sebrae.png" width="130px" alt="Sebrae"
+
 ul class="links"
   - current_site.links.each do |link|
     li= link_to link.name, link.href, :title => (link.title or link.name), :target => :_blank
 
 .softa= link_to image_tag('softa.png'), "http://softa.com.br", :target => :_blank
+.clear
