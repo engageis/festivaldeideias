@@ -11,11 +11,12 @@
     border: 1px solid #9EBDC3
     h1
       margin-bottom: 22px
-      font-size: 35px
+      font-size: 39px
       font-family: Myriad, serif
       line-height: 1em
       letter-spacing: -1px
       text-align: left
+      +text-shadow(0 1px 0 #EEE)
     .text
       position: relative
       float: left
@@ -31,23 +32,33 @@
         &.second
           left: 284px
       ol
-        margin-top: -10px
+        margin-top: -20px
         li
           position: relative
-          text-align: center
           font-size: 20px
           line-height: 20px
-          letter-spacing: -2px
-          width: 120px
-          height: 80px
+          margin-top: 20px
           float: left
-          margin-left: 12px
-          background: #fafafa
-          padding: 10px
-          +border-radius(6px)
-          +box-shadow(rgba(0, 0, 0, 0.4), 2px, 2px, 4px)
-        li:first-child
-          margin-left: 0
+          
+          span
+            width: 36px
+            padding-top: 8px
+            font-size: 2em
+            font-family: "SueEllen"
+            float: left
+            color: #575656
+          div
+            color: #575656
+            width: 420px
+            margin-left: 10px
+            float: left
+            font-size: 18px
+            strong
+              display: block
+              color: #444
+              font-size: 23px
+              +text-shadow(0 1px 0 #EEE)
+
       .description
         margin: 10px 10px 0 0
         font-size: 16px

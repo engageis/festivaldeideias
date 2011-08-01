@@ -9,15 +9,13 @@
       .text
         h1= t('.title')
         /img src="/images/steps.png" alt="steps"
-        = image_tag 'arrow.png', :class => 'arrow first'
-        = image_tag 'arrow.png', :class => 'arrow second'
+        /= image_tag 'arrow.png', :class => 'arrow first'
+        /= image_tag 'arrow.png', :class => 'arrow second'
         ol
-          li= t('.step_1')
-          li= t('.step_2')
-          li= t('.step_3')
+          li= t('.step_1_html')
+          li= t('.step_2_html')
+          li= t('.step_3_html')
         .clear
-        .description
-          = t('.description_html') 
       .video= t('.video_html')
       .clear
   .wrapper
