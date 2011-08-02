@@ -56,6 +56,12 @@ class Idea < ActiveRecord::Base
     end
   end
 
+  before_destroy :remove_dependencies
+  def remove_dependencies
+    self.merges.each {|merge| merge.destroy } if self.merges.size > 0
+    self.versions.each {|version| version.parent = nil; version.save } if self.versions.size > 0
+  end
+
   after_destroy :delete_document
   def delete_document
     begin
