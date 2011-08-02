@@ -13,7 +13,7 @@ class Idea < ActiveRecord::Base
   validates_presence_of :site, :user, :category, :template, :title, :headline
   validates_length_of :headline, :maximum => 140
 
-  scope :featured, where(:featured => true).order('"order"')
+  scope :featured, where(:featured => true).order('created_at DESC')
   scope :not_featured, where(:featured => false)
   scope :recommended, where(:recommended => true).order("created_at DESC")
   scope :popular, order("likes DESC")
@@ -45,6 +45,15 @@ class Idea < ActiveRecord::Base
     rescue Exception => e
       Rails.logger.error "Failed to save document from idea ##{self.id}: #{e.message}"
     end
+  end
+
+  def after_update
+    return if self.featured
+    return unless self.document["description"] and self.document["description"].scan(/\w+/).size > 10
+    return unless self.document["have"] and self.document["have"].scan(/\w+/).size > 10
+    return unless self.document["need"] and self.document["need"].scan(/\w+/).size > 10
+    self.featured = true
+    self.save
   end
   
   after_find :load_document
