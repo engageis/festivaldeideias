@@ -9,7 +9,7 @@ class IdeasController < ApplicationController
   def index
     index! do |format|
       format.html do
-        @featured = current_site.ideas.featured.limit(4).all
+        @featured = current_site.ideas.featured.primary.limit(4).all
         @popular = current_site.ideas.not_featured.popular.limit(4).all
         @recent = current_site.ideas.not_featured.recent.limit(4).all
         @count = current_site.ideas.count
