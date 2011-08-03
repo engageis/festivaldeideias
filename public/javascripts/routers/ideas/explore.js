@@ -1,22 +1,22 @@
 var ExploreRouter = ApplicationRouter.extend({
 
   routes: {
-    "": "recommended",
+    "": "featured",
     "login": "login",
     "sign_up": "signUp",
     "new_idea": "newIdea",
-    "recommended": "recommended",
+    "featured": "featured",
     "popular": "popular",
     "recent": "recent",
     ":name": "category"
   },
 
-  recommended: function() {
-    this.selectItem("recommended")
+  featured: function() {
+    this.selectItem("featured")
     this.view = new ExploreView({
       collection: new Ideas({
         search: {
-          recommended_equals: true,
+          featured_equals: true,
           meta_sort: "created_at.desc"
         }
       })

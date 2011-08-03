@@ -22,7 +22,7 @@
     .new_idea
       strong= t('.discover')
       = link_to t('.new_idea'), '#new_idea'
-    = render :partial => 'list', :locals => {:quick => "recommended", :collection => @featured} unless @featured.empty?
+    = render :partial => 'list', :locals => {:quick => "featured", :collection => @featured} unless @featured.empty?
     = render :partial => 'list', :locals => {:quick => "popular", :collection => @popular} unless @popular.empty?
     = render :partial => 'list', :locals => {:quick => "recent", :collection => @recent} unless @recent.empty?
     .explore= t('.explore.html', :count => @count, :link => link_to(t('.explore.link'), explore_path))

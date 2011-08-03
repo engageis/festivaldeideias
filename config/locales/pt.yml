@@ -88,9 +88,9 @@ pt:
         html: Temos um total de <span class="number">%{count}</span> ideias. Que tal explorar todas elas %{link}?
         link: clicando aqui
     list:
-      recommended:
+      featured:
         title: Ideias inscritas
-        more: Conheça mais ideias selecionadas
+        more: Conheça mais ideias inscritas
       popular:
         title: Ideias populares
         more: Conheça mais ideias populares
@@ -107,7 +107,7 @@ pt:
       title: Conheça as ideias do Festival
       subtitle: Encontre as ideias que você gostaria de aprimorar e contribua!
       quick: Busca rápida
-      recommended: Recomendadas
+      featured: Inscritas
       popular: Populares
       recent: Recentes
       categories: Categorias
