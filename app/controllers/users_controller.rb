@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   respond_to :json, :only => [:update]
   def show
     @user = User.find(params[:id])
-    @editable = (current_user and current_user == @user)
     @ideas = @user.ideas.primary
     @versions = @user.ideas.secondary
     @title = @user.name
