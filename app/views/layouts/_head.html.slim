@@ -29,7 +29,7 @@ javascript:
     invert: true
   }
 
-- cache('analytics') do
+- cache("#{current_site.host}_analytics") do
   - if current_site.google_analytics and current_site.google_analytics.length > 0
     javascript:
       var _gaq = _gaq || [];
