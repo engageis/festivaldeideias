@@ -1,7 +1,7 @@
 class IdeasController < ApplicationController
   load_and_authorize_resource
   inherit_resources
-  caches_action :index, :layout => false
+  caches_action :index, :layout => false, :unless => Proc.new { |c| c.request.format.json? }
 
   actions :index, :show, :create, :update
   respond_to :html, :except => [:update]
