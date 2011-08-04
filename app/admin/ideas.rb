@@ -25,7 +25,6 @@ ActiveAdmin.register Idea do
       f.input :title, :as => :string
       f.input :headline
       f.input :featured
-      f.input :recommended
       f.input :order
     end
 
