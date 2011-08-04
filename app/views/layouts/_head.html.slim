@@ -30,10 +30,10 @@ javascript:
   }
 
 - cache('analytics') do
-  - if gai = Configuration.find_by_name('google_analytics_id')
+  - if current_site.google_analytics and current_site.google_analytics.length > 0
     javascript:
       var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', '#{gai.value}']);
+      _gaq.push(['_setAccount', '#{current_site.google_analytics}']);
       _gaq.push(['_trackPageview']);
 
       (function() {
