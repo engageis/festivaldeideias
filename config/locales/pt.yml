@@ -147,7 +147,7 @@ pt:
     remove_idea:
       title: Remover ideia
       subtitle: Deseja apagar esta ideia? Este processo não é reversível
-      versions: Existem versões baseadas nesta ideia, no caso de remoção as versões permanecerão no sistema
+      versions: Existem versões baseadas nesta ideia. No caso de remoção, as versões permanecerão ativas no sistema e continuarão a ser editadas pelos seus criadores.
       accept: Sim, desejo remover esta ideia
     fork_idea:
       title: Melhorar esta ideia

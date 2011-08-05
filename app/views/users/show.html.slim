@@ -10,6 +10,7 @@
       .info
         h2 class=("editable" if can? :manage, @user) data-attribute="name" data-raw=@user.name data-placeholder=t('.placeholders.name') data-singleline=true
           = truncate @user.display_name, :length => 24
+          = " (curador)" if @user.admin or @user.sites.count > 0
         - if can? :manage, @user
           .email class="editable" data-attribute="email" data-raw=@user.email data-placeholder=t('.placeholders.email') data-singleline=true
             = @user.email
