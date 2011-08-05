@@ -25,9 +25,9 @@ class Ability
         user.sites.include?(idea.site)
       end
 
-      can :manage, User do |u|
-        user.sites.include?(u.site)
-      end
+      can :manage, User # do |u|
+       #        user.sites.include?(u.site)
+       #      end
 
       can :read, Link
       can :manage, Link do |link|

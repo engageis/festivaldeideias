@@ -1,7 +1,7 @@
 ActiveAdmin.register User do
   controller.authorize_resource
 
-  scope_to :current_site
+  # scope_to :current_site
 
   index do
     column :name do |configuration|
