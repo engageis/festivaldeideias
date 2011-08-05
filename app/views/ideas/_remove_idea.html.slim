@@ -1,0 +1,19 @@
+#remove_idea
+  .overlay
+    .popup
+      a.close href='javascript:app.back()' title="X"
+        = image_tag 'cancel.png'
+      form
+        h1= t('.title')
+        h2= t('.subtitle')
+        - if @idea.versions.count > 0
+          .warning
+            h3= t('.versions')
+            ul
+              - @idea.versions.each do |version|
+                li= "#{version.title}, por #{version.user.name}"
+        .input.boolean.required
+          = check_box_tag 'fork_accept'
+          = label_tag 'remove_accept', t('.accept')
+        .submit
+          = button_to 'Remover', @idea, :method => :delete, :disabled => true

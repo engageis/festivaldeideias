@@ -3,7 +3,7 @@ class IdeasController < ApplicationController
   inherit_resources
   caches_action :index, :layout => false, :unless => Proc.new { |c| c.request.format.json? }
 
-  actions :index, :show, :create, :update
+  actions :index, :show, :create, :update, :destroy
   respond_to :html, :except => [:update]
   respond_to :json, :only => [:index, :update]
   
@@ -58,6 +58,16 @@ class IdeasController < ApplicationController
       format.json do
         render :json => @idea.to_json
       end
+    end
+  end
+  
+  def destroy
+    idea = Idea.find(params[:id])
+    if idea.destroy
+      flash[:success] = t('idea.remove.success')
+      redirect_to root_path
+    else
+      flash[:failure] = t('idea.remove.failure')
     end
   end
   

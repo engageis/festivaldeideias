@@ -117,6 +117,7 @@ pt:
       parent_html: ", baseada na ideia de %{link}"
       headline: Em poucas palavras...
       fork_idea: Melhorar esta ideia
+      remove_idea: Apagar
       need_to_merge:
         html: Ei, a ideia original de %{user} possui alterações. Que tal mesclar estas alterações com as suas %{link}?
         link: clicando aqui
@@ -143,6 +144,11 @@ pt:
         merge: Mesclar esta versão com a minha
         changes: Esta versão possui alterações para mesclar com a ideia original.
         no_changes: Esta versão não possui alterações para mesclar com a ideia original.
+    remove_idea:
+      title: Remover ideia
+      subtitle: Deseja apagar esta ideia? Este processo não é reversível
+      versions: Existem versões baseadas nesta ideia, no caso de remoção as versões permanecerão no sistema
+      accept: Sim, desejo remover esta ideia
     fork_idea:
       title: Melhorar esta ideia
       subtitle: Para que você aperfeiçoe esta ideia, criaremos uma versão dela para você.
@@ -160,6 +166,9 @@ pt:
       how_it_works:
         title: "A mescla de ideias funciona assim:"
         html: <p>Nós iremos tentar mesclar automaticamente as alterações realizadas nas duas ideias. Normalmente, isto funciona perfeitamente.</p><p>Apenas caso tenham sido feitas muitas alterações, em conteúdos muito próximos, o sistema não conseguirá mesclar tudo automaticamente.</p><p>Neste caso, você será solicitado a revisar as alterações e escolher com que partes de cada versão quer ficar.</p>
+    remove:
+      success: Sua ideia foi removida com sucesso.
+      failure: Não foi possível remover sua ideia.
     create_fork:
       success: Sua versão foi criada com sucesso! Agora você já pode aperfeiçoar esta ideia à vontade.
       failure: Ooops. Não foi possível criar sua versão desta ideia. Por favor, tente novamente.

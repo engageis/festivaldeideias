@@ -10,6 +10,7 @@ var ShowIdeaRouter = ApplicationRouter.extend({
     "need": "need",
     "versions": "versions",
     "fork": "fork",
+		"remove": "remove",
     "merge/:from_id": "merge"
   },
   
@@ -39,6 +40,11 @@ var ShowIdeaRouter = ApplicationRouter.extend({
     if(this.requireLogin())
       app.forkIdeaView.render()
   },
+
+	remove: function () {
+		if(this.requireLogin())
+			app.removeIdeaView.render()
+	},
   
   merge: function(fromId) {
     if(this.requireLogin()) {

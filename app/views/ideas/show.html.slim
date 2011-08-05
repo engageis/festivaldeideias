@@ -5,6 +5,7 @@
   meta property=="og:type" value="cause"
 
 = render 'fork_idea'
+= render 'remove_idea'
 = render 'merge_idea'
 
 .wrapper
@@ -47,6 +48,8 @@
         li
           a href="#versions"
             = t('.menu.versions')
+      - if can? :destroy, @idea
+        .remove_idea= link_to t('.remove_idea'), '#remove'
       .fork_idea= link_to t('.fork_idea'), '#fork'
       .clear
     .content
@@ -112,12 +115,14 @@
 
   = render 'shared/application_js'
   = javascript_include_tag 'views/ideas/fork'
+  = javascript_include_tag 'views/ideas/remove'
   = javascript_include_tag 'views/ideas/merge'
   = javascript_include_tag 'views/editable'
   = javascript_include_tag 'views/ideas/show'
   = javascript_include_tag 'routers/ideas/show'
   javascript:
     app.forkIdeaView = new ForkIdeaView
+    app.removeIdeaView = new RemoveIdeaView
     app.mergeIdeaView = new MergeIdeaView
     app.showIdeaView = new ShowIdeaView
     app.showIdeaRouter = new ShowIdeaRouter

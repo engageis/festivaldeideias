@@ -20,7 +20,7 @@ Ramify::Application.routes.draw do
 
   match "/my_profile" => "users#my_profile", :as => :my_profile
 
-  resources :ideas, :only => [:index, :create, :update, :show] do
+  resources :ideas, :only => [:index, :create, :update, :show, :destroy] do
     collection do
       get 'explore'
     end
