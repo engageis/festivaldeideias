@@ -62,15 +62,19 @@ class Idea < ActiveRecord::Base
     FileUtils.mkdir(cache_dir_path) until File.directory?(cache_dir_path)
     doc_cache_path = "#{cache_dir_path}/#{self.id}.json"
     if File.exists?(doc_cache_path)
-      doc_str = File.read(doc_cache_path).strip
-      self.document = JSON.parse(doc_str) if doc_str.length > 0
+      begin
+        doc_str = File.read(doc_cache_path).strip
+        self.document = JSON.parse(doc_str) if doc_str.length > 0
+      rescue Exception => e
+        Rails.logger.error "Failed to load the document from idea (using file system cache) ##{self.id}: #{e.message}"
+      end
     else
       begin
         doc_string = RestClient.get("#{self.url}/#{self.id}")
         File.open(doc_cache_path,"w") {|f| f.write doc_string}
         self.document = JSON.parse(doc_string)
       rescue Exception => e
-        Rails.logger.error "Failed to load the document from idea ##{self.id}: #{e.message}"
+        Rails.logger.error "Failed to load the document from idea (form remote webservice) ##{self.id}: #{e.message}"
       end
     end
   end
