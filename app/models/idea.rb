@@ -58,10 +58,20 @@ class Idea < ActiveRecord::Base
   
   after_find :load_document
   def load_document
-    begin
-      self.document = JSON.parse(RestClient.get("#{self.url}/#{self.id}"))
-    rescue Exception => e
-      Rails.logger.error "Failed to load the document from idea ##{self.id}: #{e.message}"
+    cache_dir_path = "#{RAILS_ROOT}/tmp/docs_cache"
+    FileUtils.mkdir(cache_dir_path) until File.directory?(cache_dir_path)
+    doc_cache_path = "#{cache_dir_path}/#{self.id}.json"
+    if File.exists?(doc_cache_path)
+      doc_str = File.read(doc_cache_path).strip
+      self.document = JSON.parse(doc_str) if doc_str.length > 0
+    else
+      begin
+        doc_string = RestClient.get("#{self.url}/#{self.id}")
+        File.open(doc_cache_path,"w") {|f| f.write doc_string}
+        self.document = JSON.parse(doc_string)
+      rescue Exception => e
+        Rails.logger.error "Failed to load the document from idea ##{self.id}: #{e.message}"
+      end
     end
   end
 
