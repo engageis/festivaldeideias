@@ -64,10 +64,10 @@ class IdeasController < ApplicationController
   def destroy
     idea = Idea.find(params[:id])
     if idea.destroy
-      flash[:success] = t('idea.remove.success')
+      flash[:success] = t('ideas.remove.success')
       redirect_to root_path
     else
-      flash[:failure] = t('idea.remove.failure')
+      flash[:failure] = t('ideas.remove.failure')
     end
   end
   

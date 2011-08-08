@@ -3,7 +3,7 @@
     .popup
       a.close href='javascript:app.back()' title="X"
         = image_tag 'cancel.png'
-      form
+      = form_for @idea do |f|
         h1= t('.title')
         h2= t('.subtitle')
         - if @idea.versions.count > 0
@@ -16,4 +16,4 @@
           = check_box_tag 'fork_accept'
           = label_tag 'remove_accept', t('.accept')
         .submit
-          = button_to 'Remover', @idea, :method => :delete, :disabled => true
+          = button_to 'Remover', idea_path(@idea), :method => :delete, :disabled => true
