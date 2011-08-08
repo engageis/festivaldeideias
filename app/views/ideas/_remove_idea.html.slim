@@ -13,7 +13,7 @@
               - @idea.versions.each do |version|
                 li= "#{version.title}, por #{version.user.name}"
         .input.boolean.required
-          = check_box_tag 'fork_accept'
+          = check_box_tag 'remove_accept'
           = label_tag 'remove_accept', t('.accept')
         .submit
           = button_to 'Remover', idea_path(@idea), :method => :delete, :disabled => true
