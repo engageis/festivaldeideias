@@ -38,6 +38,7 @@ class Idea < ActiveRecord::Base
 
   def expire_doc_cache
     Rails.cache.delete(doc_cache_name)
+    Rails.cache.delete("merges_needed_#{self.id}")
   end
 
   after_save :save_document
@@ -50,6 +51,7 @@ class Idea < ActiveRecord::Base
       elsif not self.merging
         RestClient.put "#{self.url}/#{self.id}", document.to_json
       end
+      Rails.cache.write(doc_cache_name, document.to_json)
     rescue Exception => e
       Rails.logger.error "Failed to save document from idea ##{self.id}: #{e.message}"
     end
@@ -283,7 +285,9 @@ class Idea < ActiveRecord::Base
     idea = self unless idea
     from = parent unless from
     begin
-      RestClient.get("#{self.url}/#{idea.id}/merge_needed/#{from.id}") == "true"
+      Rails.cache.fetch("merges_needed_#{self.id}") {
+        RestClient.get("#{self.url}/#{idea.id}/merge_needed/#{from.id}") == "true"
+      }
     rescue
       false
     end
