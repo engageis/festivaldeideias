@@ -22,8 +22,8 @@ feature 'Fork', %q{
       description = find(:xpath, '//p[@data-attribute="headline"]')
       description[:'data-raw'].should == idea.headline
     end
+    page.should_not have_link('Melhorar esta ideia')
     idea.reload
     idea.versions.size.should == 1
-
   end
 end

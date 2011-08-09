@@ -16,7 +16,7 @@ feature 'Footer', %q{
     other_site.links.create :name => "Other", :title => "Other Title", :href => 'other_url'
     
     visit homepage
-    within '#footer ul' do
+    within '#footer .wrapper ul.links' do
       
       link = page.find_link("Foo")
       link[:title].should == "Foo Title"
