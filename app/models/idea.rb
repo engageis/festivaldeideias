@@ -32,6 +32,14 @@ class Idea < ActiveRecord::Base
     return true
   end
 
+  def doc_cache_name
+    "document_cache_#{self.id}.json"
+  end
+
+  def expire_doc_cache
+    Rails.cache.delete(doc_cache_name)
+  end
+
   after_save :save_document
   def save_document
     begin
@@ -59,16 +67,19 @@ class Idea < ActiveRecord::Base
   after_find :load_document
   def load_document
     begin
-      RestClient.get("#{self.url}/#{self.id}") {|response, request, result|
-        case response.code
-        when 404
-          RestClient.post "#{self.url}", document.to_json
-        when 200
-          self.document = JSON.parse(response)
-        else
-          Rails.logger.error "Unhandled response result for idea ##{self.id}: #{response}"
-        end
-      }
+      self.document = JSON.parse(Rails.cache.fetch(doc_cache_name) {
+        RestClient.get("#{self.url}/#{self.id}") {|response, request, result|
+          case response.code
+          when 404
+            RestClient.post "#{self.url}", document.to_json
+            document
+          when 200
+            response
+          else
+            Rails.logger.error "Unhandled response result for idea ##{self.id}: #{response}"
+          end
+        }
+      })
     rescue Exception => e
       Rails.logger.error "Failed to load the document from idea ##{self.id}: #{e.message}"
     end
