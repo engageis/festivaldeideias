@@ -25,6 +25,4 @@ task :cron => :environment do
       puts "Error updating likes count for idea ##{idea.id}"
     end
   end
-  expire_page(:controller => 'ideas', :action => 'index')
-  expire_fragment(:controller => 'ideas', :action => 'index', :action_suffix => 'ideas_listing')
 end
