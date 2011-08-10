@@ -70,17 +70,7 @@ class Idea < ActiveRecord::Base
   def load_document
     begin
       self.document = JSON.parse(Rails.cache.fetch(doc_cache_name) {
-        RestClient.get("#{self.url}/#{self.id}") {|response, request, result|
-          case response.code
-          when 404
-            RestClient.post "#{self.url}", document.to_json
-            document
-          when 200
-            response
-          else
-            Rails.logger.error "Unhandled response result for idea ##{self.id}: #{response}"
-          end
-        }
+        RestClient.get("#{self.url}/#{self.id}")
       })
     rescue Exception => e
       Rails.logger.error "Failed to load the document from idea ##{self.id}: #{e.message}"
