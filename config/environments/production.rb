@@ -1,4 +1,8 @@
 Ramify::Application.configure do
+
+  # Making Heroku log SQLs
+  config.logger = Logger.new(STDOUT)
+  
   # Settings specified here will take precedence over those in config/application.rb
 
   # The production environment is meant for finished, "live" apps.
