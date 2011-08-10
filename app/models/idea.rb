@@ -51,7 +51,7 @@ class Idea < ActiveRecord::Base
       elsif not self.merging
         RestClient.put "#{self.url}/#{self.id}", document.to_json
       end
-      Rails.cache.write(doc_cache_name, document.to_json)
+      # Rails.cache.write(doc_cache_name, document.to_json)
     rescue Exception => e
       Rails.logger.error "Failed to save document from idea ##{self.id}: #{e.message}"
     end
@@ -69,9 +69,9 @@ class Idea < ActiveRecord::Base
   after_find :load_document
   def load_document
     begin
-      self.document = JSON.parse(Rails.cache.fetch(doc_cache_name) {
+      # self.document = JSON.parse(Rails.cache.fetch(doc_cache_name) {
         RestClient.get("#{self.url}/#{self.id}")
-      })
+      # })
     rescue Exception => e
       Rails.logger.error "Failed to load the document from idea ##{self.id}: #{e.message}"
     end
@@ -275,9 +275,9 @@ class Idea < ActiveRecord::Base
     idea = self unless idea
     from = parent unless from
     begin
-      Rails.cache.fetch("merges_needed_#{self.id}") {
+      # Rails.cache.fetch("merges_needed_#{self.id}") {
         RestClient.get("#{self.url}/#{idea.id}/merge_needed/#{from.id}") == "true"
-      }
+      # }
     rescue
       false
     end
