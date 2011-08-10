@@ -46,7 +46,6 @@ class IdeasController < ApplicationController
   end
   
   def create
-    return unless require_login
     @idea = Idea.new(params[:idea])
     @idea.site = current_site
     @idea.user = current_user
