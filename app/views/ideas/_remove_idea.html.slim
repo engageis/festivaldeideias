@@ -6,12 +6,15 @@
       = form_for @idea do |f|
         h1= t('.title')
         h2= t('.subtitle')
-        - if @idea.versions.count > 0
+        - if (@idea.versions.count > 0) or @idea.parent_need_to_merge?
           .warning
-            h3= t('.versions')
-            ul
-              - @idea.versions.each do |version|
-                li= "#{version.title}, por #{version.user.name}"
+            - if @idea.versions.count > 0
+              h3= t('.versions')
+              ul
+                - @idea.versions.each do |version|
+                  li= "#{version.title}, por #{version.user.name}"
+            - if @idea.parent_need_to_merge?
+              h3= t('.parent_need_to_merge')
         .input.boolean.required
           = check_box_tag 'remove_accept'
           = label_tag 'remove_accept', t('.accept')

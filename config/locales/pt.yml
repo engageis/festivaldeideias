@@ -148,6 +148,7 @@ pt:
       title: Remover ideia
       subtitle: Deseja apagar esta ideia? Este processo não é reversível
       versions: Existem versões baseadas nesta ideia. No caso de remoção, as versões permanecerão ativas no sistema e continuarão a ser editadas pelos seus criadores.
+      parent_need_to_merge: Existem alterações na sua ideia que não estão na ideia original
       accept: Sim, desejo remover esta ideia
     fork_idea:
       title: Melhorar esta ideia

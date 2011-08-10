@@ -9,6 +9,13 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET escape_string_warning = off;
 
+--
+-- Name: plpgsql; Type: PROCEDURAL LANGUAGE; Schema: -; Owner: -
+--
+
+CREATE OR REPLACE PROCEDURAL LANGUAGE plpgsql;
+
+
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -39,8 +46,8 @@ CREATE TABLE active_admin_comments (
 CREATE SEQUENCE admin_notes_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -74,8 +81,8 @@ CREATE TABLE categories (
 CREATE SEQUENCE categories_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -111,8 +118,8 @@ CREATE TABLE comments (
 CREATE SEQUENCE comments_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -144,8 +151,8 @@ CREATE TABLE configurations (
 CREATE SEQUENCE configurations_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -188,8 +195,8 @@ CREATE TABLE ideas (
 CREATE SEQUENCE ideas_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -225,8 +232,8 @@ CREATE TABLE links (
 CREATE SEQUENCE links_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -260,8 +267,8 @@ CREATE TABLE merges (
 CREATE SEQUENCE merges_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -300,8 +307,8 @@ CREATE TABLE oauth_providers (
 CREATE SEQUENCE oauth_providers_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -336,6 +343,7 @@ CREATE TABLE sites (
     updated_at timestamp without time zone,
     twitter text,
     image text,
+    google_analytics character varying(255) DEFAULT ''::character varying,
     CONSTRAINT sites_host_not_blank CHECK ((length(btrim(host)) > 0)),
     CONSTRAINT sites_name_not_blank CHECK ((length(btrim(name)) > 0))
 );
@@ -348,8 +356,8 @@ CREATE TABLE sites (
 CREATE SEQUENCE sites_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -392,8 +400,8 @@ CREATE TABLE templates (
 CREATE SEQUENCE templates_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -438,8 +446,8 @@ CREATE TABLE users (
 CREATE SEQUENCE users_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -910,3 +918,5 @@ INSERT INTO schema_migrations (version) VALUES ('20110707195046');
 INSERT INTO schema_migrations (version) VALUES ('20110720035242');
 
 INSERT INTO schema_migrations (version) VALUES ('20110720170741');
+
+INSERT INTO schema_migrations (version) VALUES ('20110804055240');
