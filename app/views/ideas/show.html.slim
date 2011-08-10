@@ -1,8 +1,8 @@
 - content_for :meta_tags do
-  meta property=="og:title" value=@idea.title
-  meta property=="og:description" value=@idea.headline
-  meta property=="og:image" value==@idea.category.badge.url
-  meta property=="og:type" value="cause"
+  meta property=="og:title" content=@idea.title
+  meta property=="og:description" content=@idea.headline
+  meta property=="og:image" content==@idea.category.badge.url
+  meta property=="og:type" content="cause"
 
 = render 'fork_idea'
 = render 'remove_idea'
