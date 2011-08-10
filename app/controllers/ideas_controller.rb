@@ -50,7 +50,13 @@ class IdeasController < ApplicationController
     @idea.site = current_site
     @idea.user = current_user
     @idea.template = current_site.template
-    create!
+    if @idea.save
+      redirect_to @idea
+      flash[:notice] = "Sua ideia foi criada com sucesso"
+    else
+      redirect_to root_path
+      flash[:error] = "Houve um erro ao criar a sua ideia"
+    end
   end
   
   def update
