@@ -4,7 +4,7 @@ require 'open-uri'
 desc "This task is called by the Heroku cron add-on"
 task :cron => :environment do
 
-  puts "Setting facebook's URL"
+  puts "Setting URL"
   rest_server = 'http://api.facebook.com/restserver.php?method=links.getStats&urls='
 
   puts "Including Routes URL helpers"
@@ -20,7 +20,7 @@ task :cron => :environment do
       url = "#{rest_server}#{idea_url}"
       res = Nokogiri::XML(open(url))
       idea.likes = res.search('total_count').children[0].content.to_i
-      idea.save
+      idea.send(:update_without_callbacks)
     rescue
       puts "Error updating likes count for idea ##{idea.id}"
     end
