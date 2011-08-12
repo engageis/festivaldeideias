@@ -29,6 +29,9 @@ var NewIdeaView = PopupView.extend({
     if(this.$("[type=checkbox]:checked").length != this.$("[type=checkbox]").length)
       return
     this.$("[type=submit]").attr('disabled', false)
+		this.$("[type=submit]").click(function () {
+			document.forms["new_idea"].submit();
+		})
   }
   
 })

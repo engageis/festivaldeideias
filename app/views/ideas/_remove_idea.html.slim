@@ -3,7 +3,7 @@
     .popup
       a.close href='javascript:app.back()' title="X"
         = image_tag 'cancel.png'
-      = form_for @idea do |f|
+      = form_tag @idea, :method => "delete", :name => 'remove_idea' do |f|
         h1= t('.title')
         h2= t('.subtitle')
         - if (@idea.versions.count > 0) or @idea.parent_need_to_merge?
@@ -19,4 +19,4 @@
           = check_box_tag 'remove_accept'
           = label_tag 'remove_accept', t('.accept')
         .submit
-          = button_to 'Remover', idea_path(@idea), :method => :delete, :disabled => true
+          = submit_tag t('.form_button')
