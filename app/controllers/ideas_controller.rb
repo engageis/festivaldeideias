@@ -53,10 +53,10 @@ class IdeasController < ApplicationController
     @idea.template_id = 1
     if @idea.save
       redirect_to @idea
-      flash[:notice] = "Sua ideia foi criada com sucesso"
+      flash[:success] = "Sua ideia foi criada com sucesso."
     else
       redirect_to root_path
-      flash[:error] = "Houve um erro ao criar a sua ideia"
+      flash[:failure] = "Houve um erro ao criar a sua ideia."
     end
   end
   
