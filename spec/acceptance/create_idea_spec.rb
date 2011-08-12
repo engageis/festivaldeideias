@@ -82,5 +82,8 @@ feature 'Create idea', %q{
   scenario "should see login options when trying to create an idea without being logged in" do
     visit root_path
     click_link("Inicie uma ideia")
+    OauthProvider.all.each do |op|
+      page.should have_link(op.name)
+    end
   end
 end
