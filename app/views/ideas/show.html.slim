@@ -34,6 +34,8 @@
           .changed= t('.need_to_merge.html', :link => link_to(t('.need_to_merge.link'), "#merge/#{@idea.parent.id}"), :user => @idea.parent.user.display_name)
         - elsif @versions_changed
           .changed= t('.versions_changed.html', :link => link_to(t('.versions_changed.link'), '#versions'))
+      - if @editable and not @idea.complete?
+        .changed= t('.not_complete')
     .menu
       ul
         li

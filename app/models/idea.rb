@@ -59,11 +59,13 @@ class Idea < ActiveRecord::Base
 
   def after_update
     return if self.featured
-    return unless self.document["description"] and self.document["description"].length > 0
-    return unless self.document["have"] and self.document["have"].length > 0
-    return unless self.document["need"] and self.document["need"].length > 0
+    return unless self.complete?
     self.featured = true
     self.save
+  end
+  
+  def complete?
+    self.document["description"] and self.document["description"].length > 0 and self.document["have"] and self.document["have"].length > 0 and self.document["need"] and self.document["need"].length > 0
   end
   
   after_find :load_document

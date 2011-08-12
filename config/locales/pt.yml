@@ -124,6 +124,7 @@ pt:
       versions_changed:
         html: Ei, pelo menos uma das versões da sua ideia possui alterações. Que tal mesclar estas alterações com as suas %{link}?
         link: clicando aqui
+      not_complete: "Para que a sua ideia seja considerada inscrita, você deve preencher os itens “O que é esta ideia”, “O que já temos” e “O que precisamos”. Enquanto isto, sua ideia poderá ser melhorada mas não irá participar do Festival de Ideias na Cinemateca SP."
       menu:
         description: O que é esta ideia
         have: O que já temos
