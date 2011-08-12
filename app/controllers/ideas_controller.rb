@@ -49,15 +49,8 @@ class IdeasController < ApplicationController
     @idea = Idea.new(params[:idea])
     @idea.site = current_site
     @idea.user = current_user
-    # TODO use current_site.template_id when we discover why it's returning a weird id
-    @idea.template_id = 1
-    if @idea.save
-      redirect_to @idea
-      flash[:success] = "Sua ideia foi criada com sucesso."
-    else
-      redirect_to root_path
-      flash[:failure] = "Houve um erro ao criar a sua ideia."
-    end
+    @idea.template = current_site.template
+    create!
   end
   
   def update
