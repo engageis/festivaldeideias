@@ -18,6 +18,7 @@ var ShowIdeaRouter = ApplicationRouter.extend({
     this.closeLayoutPopups()
     app.forkIdeaView.close()
     app.mergeIdeaView.close()
+    app.removeIdeaView.close()
   },
   
   description: function() {
