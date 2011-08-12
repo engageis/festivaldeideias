@@ -78,4 +78,9 @@ feature 'Create idea', %q{
       find('#idea_submit')['disabled'].should == "true"
     end
   end
+
+  scenario "should see login options when trying to create an idea without being logged in" do
+    visit root_path
+    click_link("Inicie uma ideia")
+  end
 end

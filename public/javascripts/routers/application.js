@@ -42,6 +42,5 @@ var ApplicationRouter = Backbone.Router.extend({
 				this.navigate("login", true)
 			}
 		}
-		return true
 	}
 })
