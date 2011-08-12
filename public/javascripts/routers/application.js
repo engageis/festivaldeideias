@@ -32,7 +32,16 @@ var ApplicationRouter = Backbone.Router.extend({
   },
   
   requireLogin: function() {
-    return true
-  }
-  
+		if(app.currentUser) {
+			return true
+		} else {
+			if(/#login/.test(app.lastPath())) {
+				this.navigate("", true)
+			} else {
+				app.loginView.returnTo(location.href)
+				this.navigate("login", true)
+			}
+		}
+		return true
+	}
 })
