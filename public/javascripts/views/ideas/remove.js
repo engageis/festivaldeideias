@@ -12,6 +12,9 @@ var RemoveIdeaView = PopupView.extend({
     if(this.$("[type=checkbox]:checked").length != this.$("[type=checkbox]").length)
       return
     this.$("[type=submit]").attr('disabled', false)
+		this.$("[type=submit]").click(function () {
+			document.forms["remove_idea"].submit();
+		})
   }
 
 })

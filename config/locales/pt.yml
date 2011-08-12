@@ -151,6 +151,7 @@ pt:
       versions: Existem versões baseadas nesta ideia. No caso de remoção, as versões permanecerão ativas no sistema e continuarão a ser editadas pelos seus criadores.
       parent_need_to_merge: Existem alterações na sua ideia que não estão na ideia original
       accept: Sim, desejo remover esta ideia
+      form_button: Apagar
     fork_idea:
       title: Melhorar esta ideia
       subtitle: Para que você aperfeiçoe esta ideia, criaremos uma versão dela para você.
