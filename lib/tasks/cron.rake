@@ -12,8 +12,7 @@ task :cron => :environment do
 
   # Run task every hour
   puts "Starting to update likes count for each idea"
-  Idea.all.each do |idea|
-    sleep 2
+  Idea.find(:all, :order => "updated_at desc").each do |idea|
     begin
       puts "Updating likes count for idea ##{idea.id}"
       idea_url = idea.site.full_url(idea_path(idea))
