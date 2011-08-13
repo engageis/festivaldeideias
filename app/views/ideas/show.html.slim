@@ -52,7 +52,7 @@
             = t('.menu.versions')
       - if can? :destroy, @idea
         .remove_idea= link_to t('.remove_idea'), '#remove'
-      - if current_user != @idea.user
+      - if can? :create_fork, @idea
         .fork_idea= link_to t('.fork_idea'), '#fork'
       .clear
     .content

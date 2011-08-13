@@ -83,13 +83,13 @@ describe Category do
     ability.should_not be_able_to(:merge, idea1)
   end
 
-  # it "shouldn't be able to fork his own idea" do
-  #   user1 = Factory.build(:user)
-  #   user1.save
-  #   idea1 = Factory.build(:idea, :user => user1)
-  #   idea1.save
-  #   ability = Ability.new(user1)
-  #   ability.should_not be_able_to(:create_fork, idea1)
-  # end
+  it "shouldn't be able to fork his own idea" do
+    user1 = Factory.build(:user)
+    user1.save
+    idea1 = Factory.build(:idea, :user => user1)
+    idea1.save
+    ability = Ability.new(user1)
+    ability.should_not be_able_to(:create_fork, idea1)
+  end
 
 end

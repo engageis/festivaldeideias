@@ -31,17 +31,18 @@ class Ability
 
       can :read, Link
       can :manage, Link do |link|
-        u.sites.include?(link.site)
+        user.sites.include?(link.site)
       end
 
     else
       can :read, :all
 
       can :create, Idea
-      can :create_fork, Idea
       can :explore, Idea
       can :manage, User, :id => user.id
       can :manage, Idea, :user_id => user.id
+      can :create_fork, Idea
+      cannot :create_fork, Idea, :user_id => user.id
     end
 
     #
