@@ -57,7 +57,8 @@ class Idea < ActiveRecord::Base
     end
   end
 
-  def after_update
+  after_update :check_if_complete
+  def check_if_complete
     return if self.featured
     return unless self.complete?
     self.featured = true
