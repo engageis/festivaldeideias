@@ -3,26 +3,21 @@ require 'open-uri'
 
 desc "This task is called by the Heroku cron add-on"
 task :cron => :environment do
-
-  puts "Setting URL"
-  rest_server = 'http://api.facebook.com/restserver.php?method=links.getStats&urls='
-
-  puts "Including Routes URL helpers"
+  access_token = Configuration.find_by_name("facebook_access_token")
+  return nil unless access_token
   include Rails.application.routes.url_helpers
 
-  # Run task every hour
-  puts "Starting to update likes count for each idea"
-  Idea.find(:all, :order => "updated_at desc").each do |idea|
+  urls_string = Idea.all.collect{|i| CGI.escape (i.site.full_url+idea_path(i))}.join(',')
+  request_url = "https://api.facebook.com/method/links.getStats?urls=#{urls_string}&access_token=#{CGI.escape access_token.value}&format=json"
+  url_stats = JSON.parse RestClient.get(request_url)
+  url_stats.each do |data|
     begin
-      puts "Updating likes count for idea ##{idea.id}"
-      idea_url = idea.site.full_url(idea_path(idea))
-      puts idea_url
-      url = "#{rest_server}#{idea_url}"
-      res = Nokogiri::XML(open(url))
-      idea.likes = res.search('total_count').children[0].content.to_i
-      idea.send(:update_without_callbacks)
-    rescue
-      puts "Error updating likes count for idea ##{idea.id}"
+      id = data["normalized_url"].scan(/.+\/ideas\/([0-9]+)\-.+/)[0][0].to_i
+      idea = Idea.find id
+      idea.likes = data["total_count"].to_i
+      idea.save
+    rescue Exception => e
+      Rails.logger.error "Error updating likes count for idea ##{idea.id}: #{e.message}"
     end
   end
 end
