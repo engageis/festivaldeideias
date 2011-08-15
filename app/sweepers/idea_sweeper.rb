@@ -1,7 +1,7 @@
 class IdeaSweeper < ActionController::Caching::Sweeper
   observe Idea
 
-  def before_update(idea)
+  def before_save(idea)
     expire_cache_for(idea)
   end
 
@@ -10,7 +10,7 @@ class IdeaSweeper < ActionController::Caching::Sweeper
   end
 
   def expire_cache_for(idea)
-    expire_page(:controller => 'ideas', :action => 'index')
+    # expire_page(:controller => 'ideas', :action => 'index')
     idea.expire_doc_cache
   end
 end
