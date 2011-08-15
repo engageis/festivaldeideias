@@ -1,6 +1,8 @@
 title= "#{@title}#{' · ' if @title}#{current_site.name}"
 - if current_site.image
   link rel="shortcut icon" href==current_site.image.url(:favicon)
+- if current_site.fb_admins
+  meta property="fb:admins" content==current_site.fb_admins
 meta http-equiv='Content-Type' content='text/html'
 meta name='keywords' content=current_site.name
 meta name='description' content=current_site.name
