@@ -1,7 +1,7 @@
 class IdeaSweeper < ActionController::Caching::Sweeper
   observe Idea
 
-  def before_save(idea)
+  def before_update(idea)
     expire_cache_for(idea)
   end
 
