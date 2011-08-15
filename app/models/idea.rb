@@ -43,6 +43,7 @@ class Idea < ActiveRecord::Base
 
   after_save :save_document
   def save_document
+    self.expire_doc_cache
     begin
       if self.forking
         self.document = JSON.parse(RestClient.post("#{self.url}/#{self.parent.id}/fork/#{self.id}", ""))
@@ -89,6 +90,7 @@ class Idea < ActiveRecord::Base
 
   after_destroy :delete_document
   def delete_document
+    self.expire_doc_cache
     begin
       RestClient.delete "#{self.url}/#{self.id}"
     rescue Exception => e
