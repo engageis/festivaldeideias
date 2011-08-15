@@ -51,7 +51,7 @@ class Idea < ActiveRecord::Base
       elsif not self.merging
         RestClient.put "#{self.url}/#{self.id}", document.to_json
       end
-      Rails.cache.write(doc_cache_name, document.to_json)
+      # Rails.cache.write(doc_cache_name, document.to_json)
     rescue Exception => e
       Rails.logger.error "Failed to save document from idea ##{self.id}: #{e.message}"
     end
