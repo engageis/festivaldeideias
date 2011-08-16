@@ -52,10 +52,10 @@ var EditableView = Backbone.View.extend({
     var cancel = form.find('button[type=cancel]')
     var left = element.offset().left + element.width()
     var top = element.offset().top + element.height() + 4
-    submit.css('left', left - 104)
-    submit.css('top', top)
-    cancel.css('left', left - 72)
-    cancel.css('top', top)
+		submit.css('position', 'relative')
+		submit.css('display', 'inline')
+		cancel.css('position','relative')
+		cancel.css('display', 'inline')
   },
   
   keydown: function(event) {
