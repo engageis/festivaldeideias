@@ -16,6 +16,7 @@ feature 'Fork', %q{
     click_link("Melhorar esta ideia")
     check('fork_accept')
     click_button("Criar minha versão desta ideia")
+    click_button("Criar minha versão desta ideia")
     within '#show_idea' do
       title = find('h2')
       title[:'data-raw'].should == idea.title

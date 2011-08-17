@@ -162,6 +162,10 @@ pt:
         copy: Qualquer pessoa poderá copiar e modificar minha ideia
         credits: Eu devo sempre atribuir créditos à ideia original
         confirm: Li e concordo em licenciar minha ideia em Creative Commons BY 3.0
+    confirm_fork:
+      title: Você tem certeza que quer criar sua versão desta ideia?
+      subtitle: Só recomendamos criar sua versão de uma ideia se você for de fato alterá-la. Caso contrário, recomendamos comentar a ideia original, e não criar uma nova versão.
+      cancel: Cancelar
     merge_idea:
       title: Mesclar alterações de duas ideias
       subtitle: Você pode mesclar as alterações que você e outros fizeram na sua ideia.

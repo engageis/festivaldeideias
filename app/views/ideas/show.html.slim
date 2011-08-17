@@ -4,6 +4,7 @@
   meta property=="og:image" content==@idea.category.badge.url
   meta property=="og:type" content="cause"
 
+= render 'confirm_fork'
 = render 'fork_idea'
 = render 'remove_idea'
 = render 'merge_idea'
@@ -117,6 +118,7 @@
       .license= link_to image_tag('cc_by.png'), "http://creativecommons.org/licenses/by/3.0/br/", :target => :_blank
 
   = render 'shared/application_js'
+  = javascript_include_tag 'views/ideas/confirm_fork'
   = javascript_include_tag 'views/ideas/fork'
   = javascript_include_tag 'views/ideas/remove'
   = javascript_include_tag 'views/ideas/merge'
@@ -124,6 +126,7 @@
   = javascript_include_tag 'views/ideas/show'
   = javascript_include_tag 'routers/ideas/show'
   javascript:
+    app.confirmForkView = new ConfirmForkView
     app.forkIdeaView = new ForkIdeaView
     app.removeIdeaView = new RemoveIdeaView
     app.mergeIdeaView = new MergeIdeaView

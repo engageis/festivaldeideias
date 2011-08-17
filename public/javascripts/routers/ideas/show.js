@@ -9,6 +9,7 @@ var ShowIdeaRouter = ApplicationRouter.extend({
     "have": "have",
     "need": "need",
     "versions": "versions",
+    "confirm_fork": "confirmFork",
     "fork": "fork",
 		"remove": "remove",
     "merge/:from_id": "merge"
@@ -16,6 +17,7 @@ var ShowIdeaRouter = ApplicationRouter.extend({
   
   closePopups: function() {
     this.closeLayoutPopups()
+    app.confirmForkView.close()
     app.forkIdeaView.close()
     app.mergeIdeaView.close()
     app.removeIdeaView.close()
@@ -37,12 +39,19 @@ var ShowIdeaRouter = ApplicationRouter.extend({
     this.selectItem("versions")
   },
   
+  confirmFork: function() {
+    this.closePopups()
+    app.confirmForkView.render()
+  },
+
   fork: function() {
+    this.closePopups()
     if(this.requireLogin())
       app.forkIdeaView.render()
   },
 
 	remove: function () {
+    this.closePopups()
 		if(this.requireLogin())
 			app.removeIdeaView.render()
 	},

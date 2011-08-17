@@ -1,0 +1,23 @@
+$confirm_fork_height: 280px
+
+=confirm_fork
+  .popup
+    height: $confirm_fork_height - $popup_padding_vertical * 2
+    margin-top: -($confirm_fork_height / 2)
+  h2
+    text-align: left
+    padding: 16px
+    font-size: 22px
+  .submit
+    padding-top: 0
+    margin-top: 0
+    input[type=submit]
+      display: inline
+      margin-right: 8px
+    .cancel
+      +button
+      display: inline
+      background: white !important
+      color: #FF4646
+      &:hover
+        color: red
