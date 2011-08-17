@@ -344,6 +344,7 @@ CREATE TABLE sites (
     twitter text,
     image text,
     google_analytics character varying(255) DEFAULT ''::character varying,
+    fb_admins character varying(255) DEFAULT NULL::character varying,
     CONSTRAINT sites_host_not_blank CHECK ((length(btrim(host)) > 0)),
     CONSTRAINT sites_name_not_blank CHECK ((length(btrim(name)) > 0))
 );
@@ -920,3 +921,5 @@ INSERT INTO schema_migrations (version) VALUES ('20110720035242');
 INSERT INTO schema_migrations (version) VALUES ('20110720170741');
 
 INSERT INTO schema_migrations (version) VALUES ('20110804055240');
+
+INSERT INTO schema_migrations (version) VALUES ('20110815202410');

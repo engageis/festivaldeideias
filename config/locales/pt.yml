@@ -113,8 +113,8 @@ pt:
       categories: Categorias
       empty: Nenhuma ideia encontrada
     show:
-      user_html: Esta é uma ideia de %{link}
-      parent_html: ", baseada na ideia de %{link}"
+      user_html: Esta é uma ideia de %{link}.
+      parent_html: "Esta é uma versão de %{user}, criada a partir da ideia de %{parent}."
       headline: Em poucas palavras...
       fork_idea: Melhorar esta ideia
       remove_idea: Apagar
