@@ -78,9 +78,9 @@ pt:
         first: Encontre uma ideia que você gostaria de aprimorar
         second: Crie sua própria versão e trabalhe até ficar satisfeito
         third: Devolva a ideia para a comunidade aprimorar ainda mais
-      step_1_html: <span>#1</span> <div><strong>Inscreva sua ideia em um dos três temas</strong> Mobilidade urbana, Catástrofes naturais e Violência</div>
-      step_2_html: <span>#2</span> <div><strong>Trabalhe em rede</strong> As ideias podem ser aprimoradas e remixadas colaborativamente</div>
-      step_3_html: <span>#3</span> <div><strong>As três ideias finalistas levarão R$10 mil cada uma. </strong> As melhores ideias participarão da etapa presencial do Festival de Ideias nos dias <em>20 e 21 de setembro</em>, na Cinemateca Brasileira, em São Paulo, onde serão refinadas e escolhidas as vencedoras.</div>
+      step_1_html: "<span>#1</span> <div><strong> Inscrições encerradas!</strong> Com apenas 3 semanas de vida, o #festideias fecha a 1ª fase com 346 ideias cadastradas e 234 inscritas! Foram milhares de interações sobre três grandes questões: Mobilidade urbana, Catástrofes naturais e Violência.</div>"
+      step_2_html: <span>#2</span> <div><strong>Seleção</strong> Agora os curadores se debruçarão sobre as ideias e recomendarão à Comissão Julgadora as que irão para o Festival de Ideias presencial, nos dias 20 e 21 de setembro, na Cinemateca Brasileira, em São Paulo.</div>
+      step_3_html: <span>#3</span> <div><strong>No dia</strong> Lá na Cinemateca, as ideias serão refinadas, estruturadas, apresentadas, e as três finalistas ganharão R$ 10 mil cada uma.</div>
       video_html: <div style="width:460px" id="__ss_8755784"><iframe src="http://www.slideshare.net/slideshow/embed_code/8755784" width="460" height="380" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></div>
       discover: Conheça algumas ideias e contribua!
       didnt_find: Tem uma ideia que não está aqui?
