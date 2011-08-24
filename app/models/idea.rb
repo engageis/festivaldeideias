@@ -43,7 +43,6 @@ class Idea < ActiveRecord::Base
 
   after_save :save_document
   def save_document
-    self.expire_doc_cache
     begin
       Rails.logger.message "Will send document to webservice"
       if self.forking
