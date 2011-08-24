@@ -75,9 +75,15 @@ class Idea < ActiveRecord::Base
   after_find :load_document
   def load_document
     begin
-      self.document = JSON.parse(Rails.cache.fetch(doc_cache_name) {
-        RestClient.get("#{self.url}/#{self.id}")
-      })
+      if Rails.cache.exist?(doc_cache_name)
+        self.document = JSON.parse(Rails.cache.read(doc_cache_name))
+      else
+        Rails.cache.write(doc_cache_name, RestClient.get("#{self.url}/#{self.id}"))
+        self.document = Rails.cache.read(doc_cache_name)
+      end
+      # self.document = JSON.parse(Rails.cache.fetch(doc_cache_name) {
+      #   RestClient.get("#{self.url}/#{self.id}")
+      # })
     rescue Exception => e
       Rails.logger.error "Failed to load the document from idea ##{self.id}: #{e.message}"
     end
@@ -283,9 +289,15 @@ class Idea < ActiveRecord::Base
     idea = self unless idea
     from = parent unless from
     begin
-      Rails.cache.fetch("merges_needed_#{self.id}") {
-        RestClient.get("#{self.url}/#{idea.id}/merge_needed/#{from.id}") == "true"
-      }
+      if Rails.cache.exist?("merges_needed_#{self.id}")
+        Rails.cache.read("merges_needed_#{self.id}")
+      else
+        Rails.cache.write("merges_needed_#{self.id}", RestClient.get("#{self.url}/#{idea.id}/merge_needed/#{from.id}") == "true")
+        Rails.cache.read("merges_needed_#{self.id}")
+      end
+      # Rails.cache.fetch("merges_needed_#{self.id}") {
+      #   RestClient.get("#{self.url}/#{idea.id}/merge_needed/#{from.id}") == "true"
+      # }
     rescue
       false
     end
