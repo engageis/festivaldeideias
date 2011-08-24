@@ -32,15 +32,6 @@ class Idea < ActiveRecord::Base
     return true
   end
 
-  def doc_cache_name
-    "document_cache_#{self.id}.json"
-  end
-
-  def expire_doc_cache
-    Rails.cache.delete(doc_cache_name)
-    Rails.cache.delete("merges_needed_#{self.id}")
-  end
-
   after_save :save_document
   def save_document
     begin
@@ -52,7 +43,6 @@ class Idea < ActiveRecord::Base
       elsif not self.merging
         RestClient.put "#{self.url}/#{self.id}", document.to_json
       end
-      # Rails.cache.write(doc_cache_name, document.to_json)
     rescue Exception => e
       Rails.logger.error "Failed to save document from idea ##{self.id}: #{e.message}"
     end
@@ -74,15 +64,7 @@ class Idea < ActiveRecord::Base
   after_find :load_document
   def load_document
     begin
-      if Rails.cache.exist?(doc_cache_name)
-        self.document = JSON.parse(Rails.cache.read(doc_cache_name))
-      else
-        Rails.cache.write(doc_cache_name, RestClient.get("#{self.url}/#{self.id}"))
-        self.document = JSON.parse(Rails.cache.read(doc_cache_name))
-      end
-      # self.document = JSON.parse(Rails.cache.fetch(doc_cache_name) {
-      #   RestClient.get("#{self.url}/#{self.id}")
-      # })
+      self.document = JSON.parse RestClient.get("#{self.url}/#{self.id}")
     rescue Exception => e
       Rails.logger.error "Failed to load the document from idea ##{self.id}: #{e.message}"
     end
@@ -97,7 +79,6 @@ class Idea < ActiveRecord::Base
 
   after_destroy :delete_document
   def delete_document
-    # self.expire_doc_cache
     begin
       RestClient.delete "#{self.url}/#{self.id}"
     rescue Exception => e
@@ -288,15 +269,7 @@ class Idea < ActiveRecord::Base
     idea = self unless idea
     from = parent unless from
     begin
-      if Rails.cache.exist?("merges_needed_#{self.id}")
-        Rails.cache.read("merges_needed_#{self.id}")
-      else
-        Rails.cache.write("merges_needed_#{self.id}", RestClient.get("#{self.url}/#{idea.id}/merge_needed/#{from.id}") == "true")
-        Rails.cache.read("merges_needed_#{self.id}")
-      end
-      # Rails.cache.fetch("merges_needed_#{self.id}") {
-      #   RestClient.get("#{self.url}/#{idea.id}/merge_needed/#{from.id}") == "true"
-      # }
+      RestClient.get("#{self.url}/#{idea.id}/merge_needed/#{from.id}") == "true"
     rescue
       false
     end
