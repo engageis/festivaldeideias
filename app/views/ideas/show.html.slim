@@ -15,7 +15,7 @@
     .header class=@idea.category.css_class
       .category= image_tag @idea.category.badge.url, :title => @idea.category.name
       .info
-        h2 class=("editable" if @editable) data-attribute="title" data-raw=@idea.title data-maxlength=60 data-singleline=true
+        h2 class=("editable" if can? :edit, @idea) data-attribute="title" data-raw=@idea.title data-maxlength=60 data-singleline=true
           = @idea.title
         .user
           = t('.user_html', :link => link_to(@idea.user.display_name, user_path(@idea.user))) unless @idea.parent
@@ -23,19 +23,19 @@
             = image_tag 'icons/ramify.png'
             = t('.parent_html', :user => link_to(@idea.user.display_name, user_path(@idea.user)), :parent => link_to(@idea.parent.user.display_name, idea_path(@idea.parent)))
         .headline
-          p class=("editable" if @editable) data-attribute="headline" data-raw=@idea.headline data-maxlength=140 data-singleline=true
+          p class=("editable" if can? :edit, @idea) data-attribute="headline" data-raw=@idea.headline data-maxlength=140 data-singleline=true
             = @idea.headline
       .social
         .twitter_share= render :partial => 'shared/twitter_share'
         .fb_like= render :partial => 'shared/fb_like'
-      - if @editable
+      - if can? :edit, @idea
         - if @idea.parent and @idea.pending_merge(@idea.parent)
           .changed= render :partial => 'pending_merge', :object => @idea.pending_merge(@idea.parent)
         - elsif @idea.need_to_merge?
           .changed= t('.need_to_merge.html', :link => link_to(t('.need_to_merge.link'), "#merge/#{@idea.parent.id}"), :user => @idea.parent.user.display_name)
         - elsif @versions_changed
           .changed= t('.versions_changed.html', :link => link_to(t('.versions_changed.link'), '#versions'))
-      - if @editable and not @idea.complete?
+      - if can? :edit, @idea and not @idea.complete?
         .changed= t('.not_complete')
     .menu
       ul
@@ -60,30 +60,30 @@
       .description
         .text
           h1= t('.menu.description')
-          .attribute class=("editable" if @editable) data-attribute="description" data-raw=@idea.description data-raw-attribute="description_html"
+          .attribute class=("editable" if can? :edit, @idea) data-attribute="description" data-raw=@idea.description data-raw-attribute="description_html"
             == @idea.description_html
         .info
-          - if @editable
+          - if can? :edit, @idea
             .placeholder= t('.placeholders.description_html')
             = render 'formatting_tips'
           .comments= render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#description" }
       .have
         .text
           h1= t('.menu.have')
-          .attribute class=("editable" if @editable) data-attribute="have" data-raw=@idea.have data-raw-attribute="have_html"
+          .attribute class=("editable" if can? :edit, @idea) data-attribute="have" data-raw=@idea.have data-raw-attribute="have_html"
             == @idea.have_html
         .info
-          - if @editable
+          - if can? :edit, @idea
             .placeholder= t('.placeholders.have_html')
             = render 'formatting_tips'
           .comments= render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#have" }
       .need
         .text
           h1= t('.menu.need')
-          .attribute class=("editable" if @editable) data-attribute="need" data-raw=@idea.need data-raw-attribute="need_html"
+          .attribute class=("editable" if can? :edit, @idea) data-attribute="need" data-raw=@idea.need data-raw-attribute="need_html"
             == @idea.need_html
         .info
-          - if @editable
+          - if can? :edit, @idea
             .placeholder= t('.placeholders.need_html')
             = render 'formatting_tips'
           .comments= render :partial => 'shared/comments', :locals => { :url => "#{idea_url(@idea)}#need" }
@@ -107,7 +107,7 @@
                       = t('.versions.changes')
                     - else
                       = t('.versions.no_changes')
-                  - if @editable
+                  - if can? :edit, @idea
                     - if @idea.pending_merge(version)
                       = render :partial => 'pending_merge', :object => @idea.pending_merge(version), :locals => { :parent => true }
                     - elsif version.parent_need_to_merge?
