@@ -6,7 +6,7 @@ class IdeasController < ApplicationController
   actions :index, :show, :create, :update, :destroy
   respond_to :html, :except => [:update]
   respond_to :json, :only => [:index, :update]
-  cache_sweeper :idea_sweeper
+  # cache_sweeper :idea_sweeper
   
   def index
     index! do |format|

@@ -92,7 +92,7 @@ class Idea < ActiveRecord::Base
 
   after_destroy :delete_document
   def delete_document
-    # self.expire_doc_cache
+    self.expire_doc_cache
     begin
       RestClient.delete "#{self.url}/#{self.id}"
     rescue Exception => e
