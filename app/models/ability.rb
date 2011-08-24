@@ -40,9 +40,7 @@ class Ability
       can :create, Idea
       can :explore, Idea
       can :manage, User, :id => user.id
-      can :manage, Idea do |idea|
-        (user == idea.user) and (not idea.site.deadline_finished?)
-      end
+      can :manage, Idea, :user_id => user.id
       can :create_fork, Idea do |idea|
         not idea.site.deadline_finished?
       end

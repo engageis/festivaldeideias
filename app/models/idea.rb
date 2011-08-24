@@ -63,6 +63,7 @@ class Idea < ActiveRecord::Base
   def check_if_complete
     return if self.featured
     return unless self.complete?
+    return if self.site.deadline_finished?
     self.featured = true
     self.save
   end
