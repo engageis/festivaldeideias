@@ -282,7 +282,7 @@ class Idea < ActiveRecord::Base
     idea = self unless idea
     from = parent unless from
     begin
-      Rails.cache.fetch("merges_needed_#{self.id}") {
+      Rails.cache.fetch("merges_needed_#{self.id}_from_#{from.id}", :expires_in => 30.minutes) {
         RestClient.get("#{self.url}/#{idea.id}/merge_needed/#{from.id}") == "true"
       }
     rescue
