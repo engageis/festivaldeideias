@@ -79,7 +79,7 @@ class Idea < ActiveRecord::Base
         self.document = JSON.parse(Rails.cache.read(doc_cache_name))
       else
         Rails.cache.write(doc_cache_name, RestClient.get("#{self.url}/#{self.id}"))
-        self.document = Rails.cache.read(doc_cache_name)
+        self.document = JSON.parse(Rails.cache.read(doc_cache_name))
       end
       # self.document = JSON.parse(Rails.cache.fetch(doc_cache_name) {
       #   RestClient.get("#{self.url}/#{self.id}")
