@@ -19,4 +19,7 @@ class Site < ActiveRecord::Base
     "http://#{host}#{port ? ":#{port}" : ""}#{path}"
   end
 
+  def deadline_finished?
+    deadline ? deadline.past? : false
+  end
 end

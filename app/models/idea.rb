@@ -45,6 +45,7 @@ class Idea < ActiveRecord::Base
   def save_document
     # self.expire_doc_cache
     begin
+      Rails.logger.message "Will send document to webservice"
       if self.forking
         self.document = JSON.parse(RestClient.post("#{self.url}/#{self.parent.id}/fork/#{self.id}", ""))
       elsif self.was_new_record

@@ -27,6 +27,7 @@ gem 'rest-client'
 gem "simple_form"
 gem 'rmagick'
 gem 'capybara', "~> 1.0.0"
+gem 'thin'
 
 group :production do
   gem 'fog'

@@ -5,7 +5,14 @@ feature 'Create idea', %q{
   As a user
   I want to access the new idea form, and submit my idea
 } do
-  
+
+  scenario "should not see new idea button when deadline finishes" do
+    current_site.deadline = Date.current - (rand(10) + 1).day
+    current_site.save
+    visit root_path
+    page.should_not have_link("Inicie uma ideia")
+  end
+
   scenario "create a new idea" do
     category = Factory.build(:category, :site_id => current_site.id)
     category.save

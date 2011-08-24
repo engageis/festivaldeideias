@@ -6,7 +6,18 @@ feature 'Fork', %q{
   As a user
   I want to access an idea page and fork it
 } do
-  
+
+  scenario "should not be able to fork ideas when deadline is finished" do
+    current_site.deadline = Date.current - (rand(10) + 1).day
+    current_site.save
+    idea = Factory.build(:idea, :site => current_site)
+    idea.save
+    fake_login
+    idea.versions.size.should == 0
+    find(".idea_wrapper h1 a").click
+    page.should_not have_link("Melhorar esta ideia")
+  end
+
   scenario "search an idea and fork it" do
     idea = Factory.build(:idea, :site => current_site)
     idea.save

@@ -71,6 +71,7 @@ pt:
     failure:
       error: Ocorreu um erro ao realizar o login. Por favor, tente novamente.
   ideas:
+    deadline_finished: "Encerrado o prazo para inscrição de novas ideias"
     index:
       title: Intercâmbio de ideias, criação colaborativa e soluções inovadoras!
       bullets:

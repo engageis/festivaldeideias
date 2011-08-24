@@ -92,4 +92,13 @@ describe Category do
     ability.should_not be_able_to(:create_fork, idea1)
   end
 
+  it "shouldn't be able to fork ideas after deadline" do
+    site = Factory.build(:site, :deadline => (Date.current - (rand(10)+1).day))
+    user1 = Factory.build(:user)
+    user2 = Factory.build(:user)
+    idea1 = Factory.build(:idea, :user => user1)
+    idea2 = idea1.create_fork(user2)
+    ability = Ability.new(user2)
+    ability.should_not be_able_to(:fork, idea1)
+  end
 end

@@ -46,11 +46,16 @@ class IdeasController < ApplicationController
   end
   
   def create
-    @idea = Idea.new(params[:idea])
-    @idea.site = current_site
-    @idea.user = current_user
-    @idea.template = current_site.template
-    create!
+    if current_site.deadline_finished?
+      flash[:error] = t('ideas.deadline_finished')
+      redirect_to root_path
+    else
+      @idea = Idea.new(params[:idea])
+      @idea.site = current_site
+      @idea.user = current_user
+      @idea.template = current_site.template
+      create!
+    end
   end
   
   def update
