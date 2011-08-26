@@ -17,7 +17,7 @@ task :cron => :environment do
       id = data["normalized_url"].scan(/.+\/ideas\/([0-9]+)\-.+/)[0][0].to_i
       idea = Idea.find id
       idea.likes = data["total_count"].to_i
-      idea.save
+      idea.send(:update_without_callbacks)
     rescue Exception => e
       Rails.logger.error "Error updating likes count for idea ##{idea.id}: #{e.message}"
     end
