@@ -55,6 +55,8 @@
         .remove_idea= link_to t('.remove_idea'), '#remove'
       - if can? :create_fork, @idea
         .fork_idea= link_to t('.fork_idea'), '#fork'
+      - else
+        .fork_idea(style="visibility:hidden;height: 32px")= link_to t('.fork_idea'), '#fork'
       .clear
     .content
       .description
