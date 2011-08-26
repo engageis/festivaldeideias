@@ -81,7 +81,6 @@ class Idea < ActiveRecord::Base
       })
     rescue Exception => e
       Rails.logger.error "Failed to load the document from idea ##{self.id}: #{e.message}"
-      RestClient.post "#{self.url}", document.to_json if e.message == "404 Resource Not Found"
     end
   end
 
