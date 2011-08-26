@@ -25,6 +25,7 @@ class Idea < ActiveRecord::Base
   attr_accessor :was_new_record
   attr_accessor :forking
   attr_accessor :merging
+  attr_accessor :without_save_document
   
   before_save :set_was_new_record
   def set_was_new_record
@@ -43,6 +44,7 @@ class Idea < ActiveRecord::Base
 
   after_save :save_document
   def save_document
+    return if self.without_save_document == true
     begin
       self.expire_doc_cache
       if self.forking
