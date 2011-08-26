@@ -80,7 +80,6 @@ class Idea < ActiveRecord::Base
         RestClient.get("#{self.url}/#{self.id}") do |response, request, result, &block|
           case response.code
           when 404
-            self.expire_doc_cache
             RestClient.post "#{self.url}", document.to_json
           else
             response.return!(request, result, &block)
