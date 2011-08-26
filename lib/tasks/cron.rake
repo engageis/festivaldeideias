@@ -16,7 +16,7 @@ task :cron => :environment do
     begin
       id = data["normalized_url"].scan(/.+\/ideas\/([0-9]+)\-.+/)[0][0].to_i
       idea = Idea.find id
-      idea.without_save_document
+      idea.without_save_document = true
       idea.likes = data["total_count"].to_i
       idea.save
     rescue Exception => e
