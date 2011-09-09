@@ -9,12 +9,12 @@ ul class="thanks"
       img src="/images/partners/V2V.png" width="130px" alt="V2V.net"
   li
     h2 &nbsp;
-    a href="http://www.mandalah.com" target="blank_"
-      img src="/images/partners/mandalah.png" width="130px" alt="Mandalah"
-  li
-    h2 &nbsp;
     a href="http://www.catarse.me" target="blank_"
       img src="/images/partners/catarse.png" width="130px" alt="Catarse"
+  li
+    h2 &nbsp;
+    a href="http://www.mandalah.com" target="blank_"
+      img src="/images/partners/mandalah.png" width="130px" alt="Mandalah"
   .clear
   li class="sponsors"
     h2 Patrocinadores
@@ -26,9 +26,33 @@ ul class="thanks"
       img src="/images/partners/telefonica_vivo.png" height="50px" alt="Fundação Telefônica e Vivo"
   li
     h2 &nbsp;
+    a href="http://sebraesp.com.br" target="blank_"
+      img src="/images/partners/sebraesp.png" height="50px" alt="Sebrae SP"
+  li
+    h2 &nbsp;
     a href="http://www.institutoembraer.com.br/" target="blank_"
       img src="/images/partners/instituto_embraer.png" width="130px" alt="Instituto Embraer"
-
+  li
+    a href="http://www.cpfl.com.br" target="blank_"
+      img src="/images/partners/cpfl.png" width="130px" alt="CPFL"
+  div.clear style="height: 30px"
+  li class="supporters"
+    h2 Apoiadores
+    a href="http://www.cinemateca.com.br" target="blank_"
+      img src="/images/partners/cinemateca.png" width="130px" alt="Cinemateca"
+  li
+    h2 &nbsp;
+    a href="http://www.ceats.org.br" target="blank_"
+      img src="/images/partners/ceats.png" width="130px" alt="Cinemateca"
+  li
+    h2 &nbsp;
+    a href="http://www.gife.org.br" target="blank_"
+      img src="/images/partners/gife.png" height="100px" alt="Gife"
+  li
+    h2 &nbsp;
+    a href="http://www.goldeletra.org.br" target="blank_"
+      img src="/images/partners/goldeletra.png" width="130px" alt="Gol de Letra"
+  
 ul class="links"
   - current_site.links.each do |link|
     li= link_to link.name, link.href, :title => (link.title or link.name), :target => :_blank

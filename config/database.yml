@@ -13,7 +13,7 @@ development:
   encoding: utf-8
   database: ramify_development
   pool: 5
-  username: ramify
+  username: nataliarsand
   
 
   # Connect on a TCP socket. Omitted by default since the client uses a
