@@ -181,11 +181,6 @@ GEM
       rspec (~> 2.7.0)
     rubyzip (0.9.5)
     sass (3.1.12)
-    sass-rails (3.1.5)
-      actionpack (~> 3.1.0)
-      railties (~> 3.1.0)
-      sass (~> 3.1.10)
-      tilt (~> 1.3.2)
     selenium-webdriver (2.15.0)
       childprocess (>= 0.2.1)
       ffi (~> 1.0.9)
@@ -235,7 +230,7 @@ DEPENDENCIES
   pg
   rails (= 3.1.3)
   rspec-rails
-  sass-rails (~> 3.1.5)
+  sass
   simple_form
   slim
   uglifier (>= 1.0.3)
