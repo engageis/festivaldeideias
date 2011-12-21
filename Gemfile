@@ -7,17 +7,13 @@ gem 'foreigner'
 gem 'cancan'
 gem 'activeadmin'
 gem 'simple_form'
-gem 'sass-rails'
 
 # Frontend stuff
-gem 'compass'
-gem 'compass-960-plugin'
+
 gem 'slim'
 
-# For heroku
+# Heroku
 gem 'heroku'
-
-
 
 group :development, :test do
   gem 'cucumber-rails'
@@ -26,10 +22,12 @@ group :development, :test do
   gem 'capybara'
 end
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'sass-rails'
+  gem 'compass'
+  gem 'compass-960-plugin'
   gem 'coffee-rails', '~> 3.1.1'
   gem 'uglifier', '>= 1.0.3'
 end
