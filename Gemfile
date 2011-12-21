@@ -7,7 +7,7 @@ gem 'foreigner'
 gem 'cancan'
 gem 'activeadmin'
 gem 'simple_form'
-gem 'sass'
+gem 'sass-rails'
 
 # Frontend stuff
 gem 'compass'
