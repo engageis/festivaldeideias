@@ -13,6 +13,5 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-
-.sw*
-/temp
+.*.sw*
+.DS_Store
