@@ -30,7 +30,7 @@ $darkred: #C00
   text-decoration: none
   &:hover
     color: white !important
-    background: lighten($color, 20%)
+    background: lighten($color, 10%)
 
 
 
@@ -39,11 +39,11 @@ body
   background:
     color: #F6F6F6
   color: #222
-  font-family: "Helvetica", Arial, sans-serif
+  font-family: "Helvetica Regular", Arial, sans-serif
   font-size: 13px
   line-height: 14px
 
-h1, h2, h3, h4
+h1, h2, h3, h4, h5
   margin-bottom: 10px
 
 h1
@@ -55,6 +55,9 @@ h3
   line-height: 1.2em
 h4
   font-size: 1.2em
+h5
+  font-size: 1.1em
+
 
 a, a:link, a:hover, a:visited, a:active
   text-decoration: none
@@ -163,4 +166,20 @@ ol.more_active
         float: left
         border-right: 1px solid #FFF
 
+// FOOTER
+
+footer
+  section.partners
+    clear: both
+    overflow: hidden
+    background: #FFF
+    border-top: 1px solid #CCC
+    border-bottom: 1px solid #CCC
+    ul
+      li
+        padding: 10px
+        text-transform: uppercase
+  ul
+    li
+      float: left
 
