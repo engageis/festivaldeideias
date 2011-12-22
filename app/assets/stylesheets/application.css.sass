@@ -1,5 +1,97 @@
 @import compass
-@import _blueprint
 @import compass/reset
+@import 960/grid
 //= require_self
 //= require_tree .
+
+// MIXINS
+@mixin button($color)
+  display: block
+  background: $color
+  color: white !important
+  text-decoration: none
+  border: 1px solid $color
+  font-size: 1.5em
+  cursor: pointer
+  margin: 0
+  line-height: 1em
+  +box-shadow(inset 0 1px 2px rgba(255, 255, 255, 0.6), 0 2px 1px rgba(0, 0, 0, 0.6))
+  +background-image(linear-gradient(top, lighten($color, 20%), $color))
+  +border-radius(5px)
+  &:hover
+    color: white !important
+    background: lighten($color, 20%)
+    +background-image(linear-gradient(bottom, lighten($color, 20%), $color))
+  &:active
+    padding: 6px 8px 4px 8px
+    +box-shadow(none)
+  &:visited
+    color: white
+
+
+
+// DEFAULT HTML
+
+body
+  background:
+    color: #F6F6F6
+  color: #222
+  font-family: "Helvetica", Arial, sans-serif
+  font-size: 13px
+  line-height: 14px
+
+h1, h2, h3, h4
+  margin-bottom: 10px
+
+h1
+  font-size: 2em
+h2
+  font-size: 1.5em
+h3
+  font-size: 1.3em
+h4
+  font-size: 1.2em
+
+aside
+  +grid(4)
+  +alpha
+  float: left
+
+// GENERAL CLASSES
+
+.wrapper
+  +grid(12)
+  float: none
+  display: block
+  margin: 0 auto
+
+.main
+  +grid(8)
+  +omega
+  float: left
+
+// IDEA BUCKETS
+ol.more_active
+  li.bucket
+    width: 270px
+    background: #FFF
+    border: 5px solid #CCC
+    padding: 10px
+    float: left
+    margin: 10px
+    &.first
+      margin-left: 0
+    &.last
+      margin-right: 0
+    .stats
+      overflow: hidden
+      background: #ECECEC
+      margin: 0 -9px -9px -9px
+      li
+        font-size: 0.85em
+        color: #666
+        padding: 5px
+        float: left
+        border-right: 1px solid #FFF
+
+
