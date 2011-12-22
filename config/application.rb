@@ -51,6 +51,10 @@ module FestivalDeIdeias
       Rails.configuration.sass.tap do |config|
         # Prefer SASS
         config.preferred_syntax = :sass
+
+        config.load_paths << "#{Gem.loaded_specs['compass'].full_gem_path}/frameworks/compass/stylesheets"
+        config.load_paths << "#{Gem.loaded_specs['compass'].full_gem_path}/frameworks/blueprint/stylesheets"
+  
       end
     end
  end
