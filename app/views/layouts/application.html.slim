@@ -24,7 +24,7 @@ body
                 strong
                   | sua 
                 | ideia
-      .login.right
+      section.login.right
         a[href="#login"] Criar uma conta 
         | &#10625; 
         a[href="#login"] Fazer login
@@ -32,8 +32,49 @@ body
 
   .wrapper
     aside
-      = render :partial => "layouts/filters"
+      = render :partial => "layouts/sidebar"
     #main
       = yield
 
   footer
+    section.partners
+      .wrapper
+        ul
+          li 
+            h5 Realização
+          li
+            a[href=""]
+              img[src="" alt="" title=""]
+        ul
+          li 
+            h5 Parceiros
+          li
+            a[href=""]
+              img[src="" alt="" title=""]
+        ul
+          li 
+            h5 Patrocinadores
+          li
+            a[href=""]
+              img[src="" alt="" title=""]
+        ul
+          li 
+            h5 Apoiadores
+          li
+            a[href=""]
+              img[src="" alt="" title=""]
+
+    .wrapper
+      nav
+        ul
+          li
+            a[href=""] Sobre o festival
+          li
+            a[href=""] Sobre os temas
+          li
+            a[href=""] Regulamento
+          li
+            a[href=""] Premiação
+          li
+            a[href=""] Contato
+      section.social
