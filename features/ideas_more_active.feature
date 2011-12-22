@@ -5,5 +5,5 @@ Feature: View more active Ideas
 
   Scenario: View a selection of active ideas
     Given I'm in the more active ideas page
-    Then I should see "Ideias mais colaboradas"
+    Then I should see "Ideias populares"
 
