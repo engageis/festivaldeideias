@@ -6,12 +6,34 @@ html
   = javascript_include_tag "application"
   = csrf_meta_tags
 body
-  header
+  header.main
+    .wrapper
+      img[alt="Festival de Ideias - Inovações para o desenvolvimento social" title="Festiva de Ideias" src="" class="logo"]
+      nav
+        ul
+          li
+            a[href="" class="button"] 
+              | Navegue
+              span 
+              | em mais de 300 ideias
+          li
+            a[href="" class="button"] 
+              | Compartilhe
+              span 
+                | a 
+                strong
+                  | sua 
+                | ideia
+      .login.right
+        a[href="#login"] Criar uma conta 
+        | &#10625; 
+        a[href="#login"] Fazer login
+
 
   .wrapper
     aside
       = render :partial => "layouts/filters"
-    .main
+    #main
       = yield
 
   footer

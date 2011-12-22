@@ -35,7 +35,6 @@ $darkred: #C00
 
 
 // DEFAULT HTML
-
 body
   background:
     color: #F6F6F6
@@ -53,6 +52,7 @@ h2
   font-size: 1.6em
 h3
   font-size: 1.4em
+  line-height: 1.2em
 h4
   font-size: 1.2em
 
@@ -67,28 +67,56 @@ aside
   +alpha
   float: left
 
-// GENERAL CLASSES
 
-.wrapper
-  +grid(12)
-  float: none
-  display: block
-  margin: 0 auto
-
-.main
+// DEFAULT STRUCTURE
+#main
   +grid(8)
   +omega
   float: left
 
 
+
+// GENERAL CLASSES
+.wrapper
+  +grid(12)
+  float: none
+  display: block
+  clear: both
+  margin: 0 auto
+
+.right
+  float: right
+
+.left
+  float: left
+
+.clear
+  clear: both
+
+// * different headings
+
+h2.info
+  font-size: 1em
+  color: #666
+  font-style: italic
+
 // * buttons
 .button
+  +btn
   &.primary
     +btn($blue)
 
 
-// SIDEBAR
+// HEADER
+header.main
+  background:
+    color: $lightgreen
+  overflow: hidden
+  padding: 20px
+  margin-bottom: 20px
 
+
+// SIDEBAR
 .navigation
   ul
     background:
