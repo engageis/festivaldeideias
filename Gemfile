@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.3'
 
+gem 'jquery-rails'
 gem 'pg'
 gem 'foreigner'
 gem 'cancan'
@@ -9,7 +10,6 @@ gem 'activeadmin'
 gem 'simple_form'
 
 # Frontend stuff
-
 gem 'slim'
 
 # Heroku
@@ -20,6 +20,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl'
   gem 'capybara'
+  gem 'database_cleaner'
 end
 
 # Gems used only for assets and not required
@@ -30,9 +31,9 @@ group :assets do
   gem 'compass-960-plugin'
   gem 'coffee-rails', '~> 3.1.1'
   gem 'uglifier', '>= 1.0.3'
+  gem 'compass'
+  gem 'compass-960-plugin'
 end
-
-gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
