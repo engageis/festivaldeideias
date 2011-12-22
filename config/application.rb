@@ -2,12 +2,12 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-if defined?(Bundler)
+
   # If you precompile assets before deploying to production, use this line
-  Bundler.require(*Rails.groups(:assets => %w(development test)))
+Bundler.require(*Rails.groups(:assets => %w(development test))) if defined?(Bundler)
   # If you want your assets lazily compiled in production, use this line
   # Bundler.require(:default, :assets, Rails.env)
-end
+
 
 module FestivalDeIdeias
   class Application < Rails::Application
@@ -41,13 +41,10 @@ module FestivalDeIdeias
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    config.assets.precompile << /(^[^_]|\/[^_])[^\/]*/
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-    config.generators.stylesheet_engine = :sass
-
-    config.sass.load_paths << "#{Gem.loaded_specs['compass'].full_gem_path}/frameworks/compass/stylesheets"
-    config.sass.load_paths << "#{Gem.loaded_specs['compass'].full_gem_path}/frameworks/blueprint/stylesheets"
-    config.sass.load_paths << "#{Gem.loaded_specs['compass-960-plugin'].full_gem_path}/stylesheets"
-  end
+    config.sass.preferred_syntax = :sass
+ end
 end
