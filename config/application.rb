@@ -45,6 +45,13 @@ module FestivalDeIdeias
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-    config.sass.preferred_syntax = :sass
+
+    # Fix for heroku
+    if Rails.configuration.respond_to?(:sass)
+      Rails.configuration.sass.tap do |config|
+        # Prefer SASS
+        config.preferred_syntax = :sass
+      end
+    end
  end
 end
