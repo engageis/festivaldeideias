@@ -9,6 +9,15 @@ gem 'cancan'
 gem 'activeadmin'
 gem 'simple_form'
 
+# Authentication + Authorization
+gem 'cancan'
+gem 'omniauth'
+
+# Omniauth Strategies
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-openid'
+
 # Frontend stuff
 gem 'slim'
 
@@ -18,9 +27,10 @@ gem 'heroku'
 group :development, :test do
   gem 'cucumber-rails'
   gem 'rspec-rails'
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
   gem 'capybara'
   gem 'database_cleaner'
+  gem "shoulda-matchers"
 end
 
 # Gems used only for assets and not required
@@ -34,6 +44,5 @@ group :assets do
   gem 'compass'
   gem 'compass-960-plugin'
 end
-
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
