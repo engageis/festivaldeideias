@@ -1,6 +1,6 @@
 development:
-  facebook_app_id: '142951129148413'
-  facebook_secret_key: 'ab9bb6972624b3f2ff3e09cce1cb062'
+  facebook_app_id: '130690353713201'
+  facebook_secret_key: 'd05642357fb03910f2c7d6f0b6708e89'
   callback_url: http://spider.dev:3000/auth/facebook/callback
 
 test: &development

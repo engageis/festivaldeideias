@@ -4,8 +4,6 @@ class CreateServices < ActiveRecord::Migration
       t.integer :user_id, :null => false
       t.text :provider, :null => false
       t.text :uid, :null => false
-      t.text :uname, :null => false
-      t.text :uemail, :null => false
 
       t.timestamps
     end
