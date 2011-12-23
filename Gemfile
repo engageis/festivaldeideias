@@ -24,6 +24,9 @@ gem 'slim'
 # Heroku
 gem 'heroku'
 
+# webserver
+gem 'thin'
+
 group :development, :test do
   gem 'cucumber-rails'
   gem 'rspec-rails'
@@ -31,18 +34,17 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem "shoulda-matchers"
+  gem "silent-postgres"
 end
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sass-rails'
-  gem 'compass'
+  gem 'compass', '>= 0.12.alpha.2'
   gem 'compass-960-plugin'
   gem 'coffee-rails', '~> 3.1.1'
   gem 'uglifier', '>= 1.0.3'
-  gem 'compass'
-  gem 'compass-960-plugin'
 end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
