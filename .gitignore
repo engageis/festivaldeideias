@@ -21,3 +21,4 @@ database.yml
 /tmp
 .*.sw*
 .DS_Store
+public/stylesheets

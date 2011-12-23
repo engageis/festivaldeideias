@@ -1,0 +1,38 @@
+doctype html
+html
+  head
+    title MIV
+    meta charset="utf-8"
+    link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon"
+    = stylesheet_link_tag 'application', :media => 'screen, projection'
+  body
+    h1 H1 Title
+    h2 H2 Title
+    h3 H3 Title
+    h4 H4 Title
+    h5 H5 Title
+    section
+      header
+        |Section header
+      |This text is inside a section ...
+      footer
+        |... that has this nice footer :D
+    nav#main
+      ul
+        li This is an unordered list item inside a nav#main for the main menu
+        li Just a second item to show
+    ul
+      li this is an unordered list item outside the nav element
+      li just a second item to show
+    ol
+      li this is an ordered list item outside the nav element
+      li just a second item to show
+    a href="#" This is a link
+    br
+    a.disabled href="#" This is a disabled link
+    br
+    form
+      fieldset
+        legend This is the fieldset legend
+        label for="example" Label for input
+        input#example type="text"
