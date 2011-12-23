@@ -7,29 +7,28 @@ html
   = csrf_meta_tags
 body
   header.main
+    section.login
+      .wrapper
+        a[href="#login"] Criar uma conta 
+        a[href="#login"] Fazer login
     .wrapper
       = image_tag "logo.png", :class => "logo", :alt => "Festival de Ideais", :title => "Festival de Ideias"
       nav
-        ul
+        ul.actions
           li
-            a[href="" class="button menu"] 
+            a[href=""] 
               span 
                 | Navegue
               | em mais de 300 ideias
           li
-            a[href="" class="button menu"] 
+            a[href=""] 
               span 
                 | Compartilhe
               | a 
               strong
                 | sua 
               | ideia
-      section.login.right
-        a[href="#login"] Criar uma conta 
-        | &#10625; 
-        a[href="#login"] Fazer login
-
-
+  
   .wrapper
     aside
       = render :partial => "layouts/sidebar"
