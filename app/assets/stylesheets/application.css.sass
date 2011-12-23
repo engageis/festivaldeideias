@@ -12,12 +12,12 @@ $lightyellow: #FF9
 $darkred: #C00
 
 // MIXINS
-@mixin btn($color: #333, $align: left)
+@mixin btn($color: #333, $align: left, $size: 13px)
   padding: 8px 10px
   border: 1px solid $color
   border: 1px solid rgba(0, 0, 0, 0.2)
   float: $align
-  font-size: 12px
+  font-size: $size
   text-align: center
   color: white !important
   +border-radius(5px)
@@ -113,8 +113,9 @@ h2.info
     +btn($blue, right)
     margin: 10px 0
   &.start
-    +btn($purple, none)
+    +btn($purple, none, 1.2em)
     display: block
+    padding: 12px
 
 
 // HEADER
@@ -142,10 +143,29 @@ header.main
       a
         display: block
         padding: 10px
-        &:hover
+        &:hover, &.selected
           background: 
             color: $lightyellow
           color: $darkred
+        &:first-child
+          +border-top-radius(5px)
+        &:last-child
+          +border-bottom-radius(5px)
+
+.community
+  margin-top: 20px
+  ul
+    clear: both
+    li
+      float: left
+      padding: 5px
+      img
+        height: 48px
+        width: 48px
+  h4
+    float: left
+  span  
+    float: right
 
 
 // IDEA BUCKETS
