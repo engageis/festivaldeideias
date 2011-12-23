@@ -58,6 +58,9 @@ h4
 h5
   font-size: 1.1em
 
+strong, b
+  font-weight: bold
+
 p
   line-height: 1.5em
 
@@ -116,6 +119,18 @@ h2.info
     +btn($purple, none, 1.2em)
     display: block
     padding: 12px
+  &.menu
+    +btn($blue)
+    display: block
+    color: #FFF
+    padding: 15px 10px
+    margin-right: 10px
+    +background-image(-webkit-gradient(linear,left bottom,left top,color-stop(0.51,rgba(255,255,255,0.1)),color-stop(0.49,rgba(0,0,0,0))))
+    span
+      margin-bottom: 12px
+      font-size: 2em
+      display: block
+
 
 
 // HEADER
@@ -125,8 +140,7 @@ header.main
   overflow: hidden
   padding: 20px
   margin-bottom: 20px
-
-
+    
 // SIDEBAR
 .navigation
   ul
