@@ -1,4 +1,4 @@
-class PagesController < ApplicationController
+class PagesController < InheritedResources::Base
 
   def ideas_more_active
 

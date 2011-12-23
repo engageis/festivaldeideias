@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Service do
-
   it { should validate_presence_of :uid }
   it { should validate_presence_of :uname }
   it { should validate_presence_of :uemail }

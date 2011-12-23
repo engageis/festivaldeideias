@@ -1,65 +1,91 @@
-/* line 17, ../../../../../../.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
+/*
+Syntax error: File to import not found or unreadable: 960/grid.
+              Load paths:
+                Compass::SpriteImporter
+                /Users/runeroniek/Projects/rubyapps/softa/festival-de-ideias/public/stylesheets/sass
+                /Users/runeroniek/Projects/rubyapps/softa/festival-de-ideias/app/assets/stylesheets
+                /Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/compass-0.11.3/frameworks/blueprint/stylesheets
+                /Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/compass-0.11.3/frameworks/compass/stylesheets
+        on line 3 of /Users/runeroniek/Projects/rubyapps/softa/festival-de-ideias/app/assets/stylesheets/application.css.sass
 
-/* line 20, ../../../../../../.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-body {
-  line-height: 1;
-}
+1: @import compass
+2: @import compass/reset
+3: @import 960/grid
+4: //= require_self
+5: //= require_tree .
+6: 
+7: // COLORS
+8: $blue: #09F
 
-/* line 22, ../../../../../../.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-ol, ul {
-  list-style: none;
-}
-
-/* line 24, ../../../../../../.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/* line 26, ../../../../../../.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-caption, th, td {
-  text-align: left;
-  font-weight: normal;
-  vertical-align: middle;
-}
-
-/* line 28, ../../../../../../.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-q, blockquote {
-  quotes: none;
-}
-/* line 101, ../../../../../../.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-q:before, q:after, blockquote:before, blockquote:after {
-  content: "";
-  content: none;
-}
-
-/* line 30, ../../../../../../.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-a img {
-  border: none;
-}
-
-/* line 115, ../../../../../../.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
+Backtrace:
+/Users/runeroniek/Projects/rubyapps/softa/festival-de-ideias/app/assets/stylesheets/application.css.sass:3
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/tree/import_node.rb:64:in `rescue in import'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/tree/import_node.rb:42:in `import'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/tree/import_node.rb:25:in `imported_file'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/tree/visitors/perform.rb:149:in `rescue in visit_import'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/tree/visitors/perform.rb:154:in `visit_import'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/tree/visitors/perform.rb:47:in `visit_root'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/tree/root_node.rb:20:in `render'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/engine.rb:300:in `_render'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/engine.rb:248:in `block in render'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/util.rb:297:in `silence_sass_warnings'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/engine.rb:248:in `render'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/plugin/compiler.rb:339:in `update_stylesheet'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/plugin/compiler.rb:202:in `block in update_stylesheets'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/plugin/compiler.rb:200:in `each'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/plugin.rb:81:in `update_stylesheets'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/plugin.rb:54:in `check_for_updates'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/sass-3.1.12/lib/sass/plugin/rack.rb:51:in `call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/warden-1.1.0/lib/warden/manager.rb:35:in `block in call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/warden-1.1.0/lib/warden/manager.rb:34:in `catch'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/warden-1.1.0/lib/warden/manager.rb:34:in `call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/actionpack-3.1.3/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/rack-1.3.5/lib/rack/etag.rb:23:in `call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/rack-1.3.5/lib/rack/conditionalget.rb:25:in `call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/actionpack-3.1.3/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/actionpack-3.1.3/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/actionpack-3.1.3/lib/action_dispatch/middleware/flash.rb:247:in `call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/rack-1.3.5/lib/rack/session/abstract/id.rb:195:in `context'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/rack-1.3.5/lib/rack/session/abstract/id.rb:190:in `call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/actionpack-3.1.3/lib/action_dispatch/middleware/cookies.rb:331:in `call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/activerecord-3.1.3/lib/active_record/query_cache.rb:64:in `call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/activerecord-3.1.3/lib/active_record/connection_adapters/abstract/connection_pool.rb:477:in `call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/actionpack-3.1.3/lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/activesupport-3.1.3/lib/active_support/callbacks.rb:392:in `_run_call_callbacks'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/activesupport-3.1.3/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/actionpack-3.1.3/lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/actionpack-3.1.3/lib/action_dispatch/middleware/reloader.rb:68:in `call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/rack-1.3.5/lib/rack/sendfile.rb:101:in `call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/actionpack-3.1.3/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/actionpack-3.1.3/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/railties-3.1.3/lib/rails/rack/logger.rb:13:in `call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/rack-1.3.5/lib/rack/methodoverride.rb:24:in `call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/rack-1.3.5/lib/rack/runtime.rb:17:in `call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/activesupport-3.1.3/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/rack-1.3.5/lib/rack/lock.rb:15:in `call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/actionpack-3.1.3/lib/action_dispatch/middleware/static.rb:53:in `call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/railties-3.1.3/lib/rails/engine.rb:456:in `call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/rack-1.3.5/lib/rack/content_length.rb:14:in `call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/railties-3.1.3/lib/rails/rack/log_tailer.rb:14:in `call'
+/Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/rack-1.3.5/lib/rack/handler/webrick.rb:59:in `service'
+/Users/runeroniek/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+/Users/runeroniek/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+/Users/runeroniek/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: File to import not found or unreadable: 960/grid.\A               Load paths:\A                 Compass::SpriteImporter\A                 /Users/runeroniek/Projects/rubyapps/softa/festival-de-ideias/public/stylesheets/sass\A                 /Users/runeroniek/Projects/rubyapps/softa/festival-de-ideias/app/assets/stylesheets\A                 /Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/compass-0.11.3/frameworks/blueprint/stylesheets\A                 /Users/runeroniek/.rvm/gems/ruby-1.9.2-p290@festival_ideias/gems/compass-0.11.3/frameworks/compass/stylesheets\A         on line 3 of /Users/runeroniek/Projects/rubyapps/softa/festival-de-ideias/app/assets/stylesheets/application.css.sass\A \A 1: @import compass\A 2: @import compass/reset\A 3: @import 960/grid\A 4: //= require_self\A 5: //= require_tree .\A 6: \A 7: // COLORS\A 8: $blue: #09F"; }

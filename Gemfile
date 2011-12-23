@@ -2,6 +2,8 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.3'
 
+gem 'inherited_resources'
+
 gem 'jquery-rails'
 gem 'pg'
 gem 'foreigner'
@@ -11,12 +13,8 @@ gem 'simple_form'
 
 # Authentication + Authorization
 gem 'cancan'
-gem 'omniauth'
+gem 'omniauth', '0.3.2'
 
-# Omniauth Strategies
-gem 'omniauth-facebook'
-gem 'omniauth-twitter'
-gem 'omniauth-openid'
 
 # Frontend stuff
 gem 'slim'
