@@ -36,45 +36,4 @@ body
     #main
       = yield
 
-  footer
-    section.partners
-      .wrapper
-        ul
-          li 
-            h5 Realização
-          li
-            a[href=""]
-              img[src="" alt="" title=""]
-        ul
-          li 
-            h5 Parceiros
-          li
-            a[href=""]
-              img[src="" alt="" title=""]
-        ul
-          li 
-            h5 Patrocinadores
-          li
-            a[href=""]
-              img[src="" alt="" title=""]
-        ul
-          li 
-            h5 Apoiadores
-          li
-            a[href=""]
-              img[src="" alt="" title=""]
-
-    .wrapper
-      nav
-        ul
-          li
-            a[href=""] Sobre o festival
-          li
-            a[href=""] Sobre os temas
-          li
-            a[href=""] Regulamento
-          li
-            a[href=""] Premiação
-          li
-            a[href=""] Contato
-      section.social
+  = render :partial => "layouts/footer"
