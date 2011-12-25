@@ -1,0 +1,27 @@
+# Use this to test authentication :)
+
+FACEBOOK_HASH_DATA = {
+      "provider"=>"facebook",
+      "uid"=>"547955110",
+      "credentials"=>{"token"=>"fake_token"},
+      "user_info"=>{"nickname"=>nil,
+                    "email"=>"runeroniek@gmail.com",
+                    "first_name"=>"Luiz",
+                    "last_name"=>"Fonseca",
+                    "name"=>"Luiz Fonseca",
+                    "image"=>"http://graph.facebook.com/100000428222603/picture?type=square",
+                    "urls"=>{"Facebook"=>"http://www.facebook.com/runeroniek",
+                             "Website"=>nil}},
+      "extra"=>{"user_hash"=>{"id"=>"100000428222603",
+                             "name"=>"Luiz Fonseca",
+                             "first_name"=>"Luiz",
+                             "last_name"=>"Fonseca",
+                             "link"=>"http://www.facebook.com/runeroniek",
+                             "bio"=>"",
+                             "work"=> [],
+                             "gender"=>"male",
+                             "email"=>"runeroniek@gmail.com",
+                             "timezone"=>-3,
+                             "locale"=>"en_US",
+                             "verified"=>true,
+                             "updated_time"=>"2011-12-23T05:19:42+0000"}}}
