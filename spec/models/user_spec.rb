@@ -10,4 +10,10 @@ describe User do
       it { should have_many :services }
     end
   end
+  describe "#create_from_hash!" do
+    fb = FACEBOOK_HASH_DATA
+    subject { User.create_from_hash!(FACEBOOK_HASH_DATA) }
+    its(:email){ should == fb['user_info']['email']}
+    its(:name) { should == fb['user_info']['name']}
+  end
 end
