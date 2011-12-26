@@ -10,5 +10,5 @@
 //= require backbone
 //= require backbone_rails_sync
 //= require backbone_datalink
-//= require backbone/festival_de_ideias
+//= require backbone/FDI
 //= require_tree .

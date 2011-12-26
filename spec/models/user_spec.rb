@@ -10,6 +10,7 @@ describe User do
       it { should have_many :services }
     end
   end
+
   describe "#create_from_hash!" do
     fb = FACEBOOK_HASH_DATA
     subject { User.create_from_hash!(FACEBOOK_HASH_DATA) }

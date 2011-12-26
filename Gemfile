@@ -33,6 +33,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem "shoulda-matchers"
   gem "silent-postgres"
+  gem 'jasmine'
 end
 
 # Gems used only for assets and not required
