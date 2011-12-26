@@ -22,3 +22,4 @@ database.yml
 .*.sw*
 .DS_Store
 public/stylesheets
+.sass-cache/

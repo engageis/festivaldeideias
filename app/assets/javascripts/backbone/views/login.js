@@ -1,12 +1,12 @@
-FDI.loginView = Backbone.View.extend({
+FDI.login = Backbone.View.extend({
 
   initialize: function(){
-    _.bindAll(this, 'render');
+    _.bindAll(this, 'render', 'loginAction');
+    this.bindRoutes();
+    this.loadLastFragment();
   },
 
   loginAction: function(){
-    console.log("Loco");
+    jQuery.facebox({ div : "#login" })
   }
-
-
 });

@@ -1,6 +1,8 @@
-FDI.appRouter = Backbone.Router.extend({
+FDI.Router = Backbone.Router.extend({
   routes: {
     '/login' : 'loginAction'
   },
-  loginAction: function(){}
+  loginAction: function(){
+    jQuery.facebox( { div: "#login" } )
+  }
 });

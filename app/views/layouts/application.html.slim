@@ -9,11 +9,20 @@ html
   - action = controller.action_name
 
   body[class="#{name} #{action}" data-controller="#{name}" data-action="#{action}" ]
+    = render :partial => "layouts/login"
     header.main
       section.login
         .wrapper
-          a[href="#login"] Criar uma conta
-          a[href="#login"] Fazer login
+          .user_actions
+            - if current_user
+              span
+                |Olá
+                em
+                  = current_user.name
+              a[href="/logout/"] Sair
+            - else
+              a[href="#/login"] Criar uma conta
+              a[href="#/login"] Fazer login
       .wrapper
         .logo
           = image_tag "logo.png", :size => "290x127", :class => "logo", :alt => "Festival de Ideais", :title => "Festival de Ideias"
