@@ -15,6 +15,7 @@ h1, h2, h3, h4, h5
 
 h1
   font-size: 2.1em
+  line-height: 1.1em
 h2
   font-size: 1.6em
 h3
@@ -29,7 +30,9 @@ strong, b
   font-weight: bold
 
 p
+  font-size: 1.03em
   line-height: 1.5em
+  margin-bottom: 20px
 
 a, a:link, a:hover, a:visited, a:active
   text-decoration: none
@@ -37,8 +40,13 @@ a, a:link, a:hover, a:visited, a:active
 a:hover
   color: #111
 
+article
+  clear: both
+  margin-top: 10px
+
 aside
   +grid(4)
+
 
 #login
   display: none
@@ -72,6 +80,13 @@ aside
 
 .first
   margin-left: 0 !important
+
+.badge
+  float: right
+  width: 48px
+  height: 48px
+  margin-left: 10px
+
 
 // * different headings
 
@@ -197,7 +212,7 @@ header.main
 
 
 // IDEA BUCKETS
-ol.more_active
+ol.ideas_buckets
   li.bucket
     width: 270px
     background:
@@ -216,11 +231,6 @@ ol.more_active
       border-bottom: 1px solid #ccc
       margin: -10px -10px 0 -10px
       padding: 10px
-      img
-        float: left
-        width: 48px
-        height: 48px
-        margin-right: 10px
       h3
         float: left
         margin: 0
