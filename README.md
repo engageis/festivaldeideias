@@ -1,4 +1,4 @@
-Festival de ideias
+Festival de Ideias
 ==================
 Setup
 -----
@@ -27,4 +27,8 @@ Test
 ----
 - `rspec spec/` to run RSpec (Controller/Models/etc) tests
 - `cucumber` to run cucumber tests
-- `rake jasmine` to run jasmine (Javascript) tests
+- `rake jasmine` to run jasmine (Javascript) tests **WARNING - using gem jasminerice to jasmine tests**
+
+#### JasmineRice
+As we're using the Gem JasmineRice, you just need to bootup the server (`rails s -p 3000`) and then
+access the tests through the URL [http://localhost:3000/jasmine](http://localhost:3000/jasmine)
