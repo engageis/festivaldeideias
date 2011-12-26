@@ -1,5 +1,5 @@
-Given /^I'm in the more active ideas page$/ do
-  visit ideas_more_active_path
+Given /^I'm in the most active ideas page$/ do
+  visit most_active_ideas_path
 end
 
 Then /^I should see "([^"]*)"$/ do |title|

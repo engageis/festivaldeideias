@@ -15,6 +15,7 @@ h1, h2, h3, h4, h5
 
 h1
   font-size: 2.1em
+  line-height: 1.1em
 h2
   font-size: 1.6em
 h3
@@ -29,16 +30,19 @@ strong, b
   font-weight: bold
 
 p
+  font-size: 1.03em
   line-height: 1.5em
+  margin-bottom: 20px
 
 a, a:link, a:hover, a:visited, a:active
   text-decoration: none
-  color: #555
+  color: $blue
 a:hover
-  color: #111
+  color: lighten($blue, 20%)
 
 aside
   +grid(4)
+
 
 #login
   display: none
@@ -72,6 +76,13 @@ aside
 
 .first
   margin-left: 0 !important
+
+.badge
+  float: right
+  width: 48px
+  height: 48px
+  margin-left: 10px
+
 
 // * different headings
 
@@ -122,6 +133,44 @@ header.main
           content: "\00b7"
           font-weight: bold
           margin-left: 20px
+    .user_actions
+      float: right
+      &:hover
+        #user_options
+          display: block
+      img
+        width: 35px
+        height: 35px
+        float: left
+      a.name
+        float: left
+        background:
+          image: url(asset_path("arrows.png", "image"))
+          repeat: no-repeat
+          position: right 15px
+        &:after
+          content: ""
+      #user_options
+        display: none
+        clear: both
+        overflow: hidden
+        background: #333
+        border: 1px solid #EEE
+        border-top: none
+        position: relative
+        a
+          text-align: left
+          display: block
+          width: 88%
+          padding: 10px
+          text-transform: capitalize
+          &:after
+            content: ""
+          &:hover
+            background:
+              color: #444
+            color: #FFF
+       
 
   .logo
     +grid(4)
@@ -197,7 +246,7 @@ header.main
 
 
 // IDEA BUCKETS
-ol.more_active
+ol.ideas_buckets
   li.bucket
     width: 270px
     background:
@@ -216,11 +265,6 @@ ol.more_active
       border-bottom: 1px solid #ccc
       margin: -10px -10px 0 -10px
       padding: 10px
-      img
-        float: left
-        width: 48px
-        height: 48px
-        margin-right: 10px
       h3
         float: left
         margin: 0
