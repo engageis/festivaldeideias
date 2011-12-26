@@ -38,21 +38,18 @@ a:hover
 
 aside
   +grid(4)
-  +alpha
-  float: left
 
 
 // DEFAULT STRUCTURE
 #main
   +grid(8)
   +omega
-  float: left
-
 
 
 // GENERAL CLASSES
 .wrapper
-  +grid(12)
+  +grid-container
+  overflow: hidden
   float: none
   display: block
   clear: both
@@ -99,12 +96,33 @@ header.main
   border-bottom: 5px solid #FFF
   overflow: hidden
   margin-bottom: 20px
-  padding-bottom: 20px
+  padding-bottom: 10px
+
+  .login
+    border-bottom: 1px solid #EEE
+    background:
+      color: #333
+    text-align: right
+    padding: 10px
+    margin-bottom: 10px
+    a
+      font-size: 0.9em
+      padding: 10px
+      color: #EEE
+      text-transform: uppercase
+      &:hover
+        color: #FFF
+        background: $blue
+        padding-bottom: 20px
+        +border-bottom-radius(5px)
+ 
   .logo
-    float: left
+    +grid(4)
+    img
+      width: 220px
   nav
-    +grid(5)
-    margin: 60px 0 0 29px
+    overflow: hidden
+    +grid(4)
     .actions
       a
         float: left
@@ -116,23 +134,7 @@ header.main
           font-size: 2em
           display: block
 
-  .login
-    background:
-      color: #333
-    text-align: right
-    padding: 10px
-    margin-bottom: 20px
-    a
-      font-size: 0.9em
-      padding: 10px
-      color: #EEE
-      text-transform: uppercase
-      &:hover
-        color: #FFF
-        background: $blue
-        padding-bottom: 20px
-        +border-bottom-radius(5px)
-    
+   
 // SIDEBAR
 .navigation
   ul
@@ -255,8 +257,19 @@ footer
         &:first-child
           float: none
   .brought_by
-    margin-right: 50px
+    +grid(3)
+  .partners
+    +grid(8)
+    +grid-prefix(1)
+  .sponsors
+    +grid(12)
+  .supporters
+    +grid(12)
   ul
     li
       float: left
+  .links
+    +grid(8)
+  .social
+    +grid(4)
       
