@@ -83,17 +83,17 @@
 
   $.extend($.facebox, {
     settings: {
-      opacity      : 0.2,
+      opacity      : 0.8,
       overlay      : true,
       loadingImage : '/assets/facebox/loading.gif',
-      closeImage   : '/assets/facebox/closelabel.png',
+      closeImage   : '/assets/facebox/cancel.png',
       imageTypes   : [ 'png', 'jpg', 'jpeg', 'gif' ],
       faceboxHtml  : '\
     <div id="facebox" style="display:none;"> \
       <div class="popup"> \
         <div class="content"> \
         </div> \
-        <a href="#" class="close"><img src="assets/facebox/closelabel.png" title="close" class="close_image" /></a> \
+        <a href="#" class="close"><img src="assets/facebox/cancel.png" title="close" class="close_image" /></a> \
       </div> \
     </div>'
     },
