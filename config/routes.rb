@@ -1,10 +1,10 @@
 FestivalDeIdeias::Application.routes.draw do
   match '/auth/:provider/callback', :to => 'sessions#create'
   match '/logout', :to => 'sessions#destroy'
-  match '/ideas/mais-colaboradas' => "pages#ideas_more_active", :as => :ideas_more_active
+  match '/ideas/mais-colaboradas' => "pages#most_active_ideas", :as => :most_active_ideas
   resources :users
   get "/miv" => "miv#index" if Rails.env.development?
 
-  root :to => "pages#ideas_more_active"
+  root :to => "pages#most_active_ideas"
 
 end
