@@ -20,9 +20,17 @@ html
                 em
                   = current_user.name
               a[href="/logout/"] Sair
-            - else
-              a[href="#/login"] Criar uma conta
-              a[href="#/login"] Fazer login
+            
+            = image_tag "no-picture.jpg"
+            a.name href="" Natalia Arsand
+            ul#user_options
+              li 
+                a href="" Meu perfil
+              li
+                a href="" Logout
+            //- else
+              //a[href="#/login"] Criar uma conta
+              //a[href="#/login"] Fazer login
       .wrapper
         .logo
           = image_tag "logo.png", :alt => "Festival de Ideais", :title => "Festival de Ideias"

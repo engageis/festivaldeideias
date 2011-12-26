@@ -133,6 +133,44 @@ header.main
           content: "\00b7"
           font-weight: bold
           margin-left: 20px
+    .user_actions
+      float: right
+      &:hover
+        #user_options
+          display: block
+      img
+        width: 35px
+        height: 35px
+        float: left
+      a.name
+        float: left
+        background:
+          image: url(asset_path("arrows.png", "image"))
+          repeat: no-repeat
+          position: right 15px
+        &:after
+          content: ""
+      #user_options
+        display: none
+        clear: both
+        overflow: hidden
+        background: #333
+        border: 1px solid #EEE
+        border-top: none
+        position: relative
+        a
+          text-align: left
+          display: block
+          width: 88%
+          padding: 10px
+          text-transform: capitalize
+          &:after
+            content: ""
+          &:hover
+            background:
+              color: #444
+            color: #FFF
+       
 
   .logo
     +grid(4)
