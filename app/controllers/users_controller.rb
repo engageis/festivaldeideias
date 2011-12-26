@@ -1,2 +1,2 @@
-class UsersController < ApplicationController
+class UsersController < InheritedResources::Base
 end

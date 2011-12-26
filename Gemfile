@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.3'
 
-gem 'jquery-rails'
+gem 'inherited_resources'
 gem 'pg'
 gem 'foreigner'
 gem 'cancan'
@@ -11,15 +11,13 @@ gem 'simple_form'
 
 # Authentication + Authorization
 gem 'cancan'
-gem 'omniauth'
+gem 'omniauth', '0.3.2'
 
-# Omniauth Strategies
-gem 'omniauth-facebook'
-gem 'omniauth-twitter'
-gem 'omniauth-openid'
 
 # Frontend stuff
+gem 'jquery-rails'
 gem 'slim'
+gem 'rails-backbone'
 
 # Heroku
 gem 'heroku'
@@ -35,6 +33,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem "shoulda-matchers"
   gem "silent-postgres"
+  gem "jasminerice"
 end
 
 # Gems used only for assets and not required
