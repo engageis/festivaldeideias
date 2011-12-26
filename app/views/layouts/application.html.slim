@@ -1,38 +1,41 @@
-DOCTYPE
+doctype 5
 html
   head
     title Festival de Ideias
-  = stylesheet_link_tag    "application"
-  = javascript_include_tag "application"
-  = csrf_meta_tags
-body
-  header.main
-    section.login
-      .wrapper
-        a[href="#login"] Criar uma conta 
-        a[href="#login"] Fazer login
-    .wrapper
-      = image_tag "logo.png", :class => "logo", :alt => "Festival de Ideais", :title => "Festival de Ideias"
-      nav
-        ul.actions
-          li
-            a[href=""] 
-              span 
-                | Navegue
-              | em mais de 300 ideias
-          li
-            a[href=""] 
-              span 
-                | Compartilhe
-              | a 
-              strong
-                | sua 
-              | ideia
-  
-  .wrapper
-    aside
-      = render :partial => "layouts/sidebar"
-    #main
-      = yield
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  - name = controller.controller_name
+  - action = controller.action_name
 
-  = render :partial => "layouts/footer"
+  body[class="#{name} #{action}" data-controller="#{name}" data-action="#{action}" ]
+    header.main
+      section.login
+        .wrapper
+          a[href="#login"] Criar uma conta
+          a[href="#login"] Fazer login
+      .wrapper
+        = image_tag "logo.png", :size => "290x127", :class => "logo", :alt => "Festival de Ideais", :title => "Festival de Ideias"
+        nav
+          ul.actions
+            li
+              a[href=""]
+                span
+                  | Navegue
+                | em mais de 300 ideias
+            li
+              a[href=""]
+                span
+                  | Compartilhe
+                | a
+                strong
+                  | sua
+                | ideia
+
+    .wrapper
+      aside
+        = render :partial => "layouts/sidebar"
+      #main
+        = yield
+
+    = render :partial => "layouts/footer"
