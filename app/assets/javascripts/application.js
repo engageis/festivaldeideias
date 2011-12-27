@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require libraries/facebox
+//= require libraries/start_facebox
 //= require libraries/store
 //= require underscore
 //= require backbone

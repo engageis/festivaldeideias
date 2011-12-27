@@ -42,7 +42,7 @@ html
                   | Navegue
                 | em mais de 300 ideias
             li
-              a[href=""]
+              a href="#start" rel="facebox"
                 span
                   | Compartilhe
                 | a
@@ -55,3 +55,6 @@ html
       #main
         = yield
     = render :partial => "layouts/footer"
+
+  #start.hidden
+    = render :partial => "pages/start_idea"
