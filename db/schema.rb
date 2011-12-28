@@ -11,14 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111223023411) do
+ActiveRecord::Schema.define(:version => 20111228050148) do
+
+  create_table "ideas", :force => true do |t|
+    t.integer  "user_id",                        :null => false
+    t.integer  "parent_id",                      :null => false
+    t.text     "title",                          :null => false
+    t.text     "headline",                       :null => false
+    t.text     "description",                    :null => false
+    t.boolean  "featured",    :default => false, :null => false
+    t.boolean  "recommend",   :default => false, :null => false
+    t.integer  "likes",       :default => 0,     :null => false
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "services", :force => true do |t|
     t.integer  "user_id",    :null => false
     t.text     "provider",   :null => false
     t.text     "uid",        :null => false
-    t.text     "uname",      :null => false
-    t.text     "uemail",     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -30,7 +42,8 @@ ActiveRecord::Schema.define(:version => 20111223023411) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_foreign_key "ideas", "ideas", :name => "ideas_parent_id_fk", :column => "parent_id"
+  add_foreign_key "ideas", "users", :name => "ideas_user_id_fk"
 
   add_foreign_key "services", "users", :name => "services_user_id_fk"
 

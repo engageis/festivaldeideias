@@ -13,5 +13,5 @@ end
 Factory.define :service do |s|
   s.association :user, :factory => :user
   s.uid(Factory.next(:uid))
-  s.provider("Facebook")
+  s.provider("facebook")
 end
