@@ -3,6 +3,7 @@ html
   head
     title Festival de Ideias
     = stylesheet_link_tag    "application"
+    link href='http://fonts.googleapis.com/css?family=Actor' rel='stylesheet' type='text/css'
     = javascript_include_tag "application"
     = csrf_meta_tags
   - name = controller.controller_name
@@ -42,16 +43,14 @@ html
           ul.actions
             li
               a[href=""]
-                span
+                h2
                   | Navegue
                 | em mais de 300 ideias
             li
               a href="#start" rel="facebox"
-                span
+                h2
                   | Compartilhe
-                | a
-                strong sua
-                | ideia
+                | adicione a sua ideia
 
     .wrapper
       aside
