@@ -1,16 +1,84 @@
-section.steps
-  ul
-    li.active 1. DESCREVA
-    li 2. REFINE
-    li 3. PUBLIQUE
+.step_1.hidden
+  h2 Compartilhe sua ideia
 
-h2 Compartilhe sua ideia
+  section.steps
+    ul
+      li.active 1. DESCREVA
+      li 2. REFINE
+      li 3. PUBLIQUE
 
-section.describe
-  form
-    h3 O que é essa ideia?
-    span Descreva como quiser. Você terá como editar depois.
-    textarea
-    
-    a.button.next
-      | Próxima etapa
+
+  section.describe
+    form
+      h3 O que é essa ideia?
+      p
+        label Descreva como quiser. Você terá como editar depois.
+        textarea
+      
+      a.button.next
+        | Próxima etapa
+
+
+
+.step_2.hidden
+  h2 Compartilhe sua ideia
+
+  section.steps
+    ul
+      li 
+        a href="#volta"
+          | 1. DESCREVA
+      li.active 2. REFINE
+      li 3. PUBLIQUE
+
+
+  section.refine
+    blockquote
+      p Aqui vem um preview da descrição entrada na primeira etapa. Quando a pessoa clica, volta para a primeira etapa.
+    form
+      h3 O que é essa ideia?
+      p
+        label Dê um nome:
+        input[type="text"]
+      h4 Escolha uma categoria:
+      p
+        label for="violence" Violência
+        input[type="radio" name="category" id="violence"]
+      p
+        label for="urban_mobility" Mobilidade Urbana
+        input[type="radio" name="category" id="urban_mobility"]
+      p
+        label for="natural_disasters" Catástrofes Naturais
+        input[type="radio" name="category" id="natural_disasters"]
+      
+      
+      a.button.next
+        | Próxima etapa
+
+
+.step_3
+  h2 Compartilhe sua ideia
+
+  section.steps
+    ul
+      li 
+        a href="#volta"
+          | 1. DESCREVA
+      li
+        a href="#volta"
+          | 2. REFINE
+      li.active 3. PUBLIQUE
+
+
+  section.refine
+    form
+      img[class="badge" src="" alt="nome da categoria" title="nome da categoria"]
+      h3.edit Nome da ideia
+      p.edit Aqui vem um preview da descrição entrada na primeira etapa. Quando a pessoa clica, volta para a primeira etapa.
+
+      .share
+        a twitter
+        a facebook
+
+      a.button
+        | Publicar!
