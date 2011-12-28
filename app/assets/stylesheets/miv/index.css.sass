@@ -56,7 +56,7 @@ aside
 // GENERAL CLASSES
 .wrapper
   +grid-container
-  overflow: hidden
+  position: relative
   float: none
   display: block
   clear: both
@@ -118,7 +118,7 @@ header.main
   .login
     border-bottom: 1px solid #EEE
     background:
-      color: #333
+      color: #464646
     text-align: right
     height: 35px
     a
@@ -137,13 +137,27 @@ header.main
           font-weight: bold
           margin-left: 20px
     .user_actions
+      margin: 0 10px
       float: right
+      padding: 0 5px
+      border-left: 1px solid #555
+      border-right: 1px solid #555
+      +background(linear-gradient(bottom,#373737,#464646 5px))
       &:hover
+        +background(none)
+        border: none
+        border-bottom: 1px solid #FEFFFF
+        background: 
+          color: #FEFFFF
+        a
+          color: #333
         #user_options
           display: block
       img
-        width: 35px
-        height: 35px
+        border: 1px solid #CCC
+        width: 22px
+        height: 22px
+        margin: 5px 0
         float: left
       a.name
         float: left
@@ -154,18 +168,38 @@ header.main
         &:after
           content: ""
       #user_options
+        +grid(3)
         display: none
-        clear: both
-        overflow: hidden
-        background: #333
-        border: 1px solid #EEE
-        border-top: none
-        position: relative
+        position: absolute
+        margin-top: 35px
+        z-index: 10
+        padding: 10px 0
+        right: 0
+        top: 0
+        background: #FEFFFF
+        +box-shadow(1px 1px 5px #999)
+        img
+          +grid(1)
+          +omega
+          width: 48px
+          height: 48px
+        .content
+          +grid(2)
+        .score
+          color: #888
+          font-size: 11px
+          text-align: left
+        ul
+          margin-top: 10px
+          float: left
+          display: block
+          width: 100%
         a
           text-align: left
+          color: #333
           display: block
           width: 88%
-          padding: 10px
+          padding: 5px 10px
           text-transform: capitalize
           &:after
             content: ""

@@ -23,11 +23,15 @@ html
             
             = image_tag "no-picture.jpg"
             a.name href="" Natalia Arsand
-            ul#user_options
-              li 
-                a href="" Meu perfil
-              li
-                a href="" Logout
+            #user_options
+              = image_tag "no-picture.jpg"
+              .content
+                .score 3 ideias próprias, 4 ideias colaboradas.
+                ul
+                  li 
+                    a href="" Meu perfil
+                  li
+                    a href="" Logout
             //- else
               //a[href="#/login"] Criar uma conta
               //a[href="#/login"] Fazer login
