@@ -368,7 +368,8 @@ ol.ideas_buckets
     &.last
       margin-right: 0
     .stats
-      overflow: hidden
+      float: left
+      width: 107%
       background: #ECECEC
       margin: 0 -9px -9px -9px
       li
@@ -390,8 +391,10 @@ footer
     overflow: hidden
     margin: 20px 0
     li
-      margin-right: 10px
+      margin-right: 50px
       text-transform: uppercase
+      &:last-child
+        margin: 0
 
   section.credits
     clear: both
@@ -423,6 +426,13 @@ footer
   ul
     li
       float: left
-  .links
+
+  section.links
     +grid(8)
+    a
+      font-size: 10px
+      color: #333
+      &:hover
+        color: #666
+
 
