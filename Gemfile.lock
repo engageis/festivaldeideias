@@ -327,6 +327,7 @@ DEPENDENCIES
   inherited_resources
   jasminerice
   jquery-rails
+  kaminari
   omniauth (= 0.3.2)
   pg
   rails (= 3.1.3)

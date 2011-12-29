@@ -8,6 +8,7 @@ gem 'foreigner'
 gem 'cancan'
 gem 'activeadmin'
 gem 'simple_form'
+gem 'kaminari'
 
 # Authentication + Authorization
 gem 'cancan'
