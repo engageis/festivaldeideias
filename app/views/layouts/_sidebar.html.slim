@@ -1,8 +1,8 @@
 // SIDEBAR FOR HOME AND FILTER PAGE
-//= render :partial => "layouts/filters"
-//= render :partial => "layouts/community"
-
-// SIDEBAR FOR IDEA PAGE
-
-=render :partial => "layouts/collaborators"
-=render :partial => "layouts/share"
+- if controller.action_name == "index"
+  = render :partial => "layouts/filters"
+  = render :partial => "layouts/community"
+- else
+  // SIDEBAR FOR IDEA PAGE
+  = render :partial => "layouts/collaborators"
+  = render :partial => "layouts/share"
