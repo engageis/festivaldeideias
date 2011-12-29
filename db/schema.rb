@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(:version => 20111228050148) do
 
   create_table "ideas", :force => true do |t|
     t.integer  "user_id",                        :null => false
-    t.integer  "parent_id",                      :null => false
+    t.integer  "parent_id"
     t.text     "title",                          :null => false
     t.text     "headline",                       :null => false
     t.text     "description",                    :null => false
