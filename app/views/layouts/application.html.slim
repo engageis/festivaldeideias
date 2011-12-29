@@ -20,7 +20,7 @@ html
                 em
                   = current_user.name
               a[href="/logout/"] Sair
-            
+
             = image_tag "no-picture.jpg"
             a.name href="" Natalia Arsand
             #user_options
@@ -28,7 +28,7 @@ html
               .content
                 .score 3 ideias próprias, 4 ideias colaboradas.
                 ul
-                  li 
+                  li
                     a href="" Meu perfil
                   li
                     a href="" Logout
@@ -61,4 +61,4 @@ html
     = render :partial => "layouts/footer"
 
   #start.hidden
-    = render :partial => "pages/start_idea"
+    = render :partial => "ideas/new_idea"
