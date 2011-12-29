@@ -28,7 +28,7 @@ Test
 
 ### Guard
 
-- Just type `guard` and this will run all the tests for you. And if you are working on some feature, open a new tab with `guard` and let the tests flow<3.
+- Just type `guard` and this will run all the tests for you. And if you are working on some feature, open a new tab with `guard` and let the tests flow❤.
 
 ### Manual way ~
 - `rspec spec/` to run RSpec (Controller/Models/etc) tests
