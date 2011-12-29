@@ -31,8 +31,6 @@ ActiveRecord::Schema.define(:version => 20111228050148) do
     t.integer  "user_id",    :null => false
     t.text     "provider",   :null => false
     t.text     "uid",        :null => false
-    t.text     "uname",      :null => false
-    t.text     "uemail",     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -43,8 +41,6 @@ ActiveRecord::Schema.define(:version => 20111228050148) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
   add_foreign_key "ideas", "ideas", :name => "ideas_parent_id_fk", :column => "parent_id"
   add_foreign_key "ideas", "users", :name => "ideas_user_id_fk"
