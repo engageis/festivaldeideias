@@ -3,13 +3,18 @@
   h2.info Uma ideia popular é aquela que tem bastante interação por contribuição e comentários de usuários.
 
   ol.ideas_buckets
-
     - unless @ideas.nil?
       - @ideas.each_with_index do |idea, pos|
         // TODO: Natalia, fix this list (is it first or last?)
+        // TODO: Luiz create Issues/Badges/Categories
+        // Badges:
+        //  = image_tag "badges/security.png", :alt => "Violência", :title => "Violência"
+        //  = image_tag "badges/urban.png", :alt => "Mobilidade Urbana", :title => "Mobilidade Urbana"
+        //  = image_tag "badges/disasters.png", :alt => "Catástrofes Naturais", :title => "Catástrofes Naturais"
+        //
         li.bucket.first[class=("last" if pos == (@ideas.size - 1))]
           header
-            img[alt="Badge" title="badge" src="" class="badge"]
+            = image_tag "badges/urban.png", :alt => "Mobilidade Urbana", :title => "Mobilidade Urbana"
             h3
               a.idea_title[href=""]
                 = idea.title
