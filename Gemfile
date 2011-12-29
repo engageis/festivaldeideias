@@ -34,6 +34,8 @@ group :development, :test do
   gem "shoulda-matchers"
   gem "silent-postgres"
   gem "jasminerice"
+  gem 'guard-cucumber'
+  gem 'guard-rspec'
 end
 
 # Gems used only for assets and not required
