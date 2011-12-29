@@ -2,7 +2,7 @@ class CreateIdeas < ActiveRecord::Migration
   def up
     create_table :ideas do |t|
       t.integer :user_id, :null => false
-      t.integer :parent_id, :null => false
+      t.integer :parent_id
       t.text    :title, :null => false
       t.text    :headline, :null => false
       t.text    :description, :null => false
