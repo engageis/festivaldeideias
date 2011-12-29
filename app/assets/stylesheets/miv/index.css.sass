@@ -377,9 +377,18 @@ ol.ideas_buckets
       li
         font-size: 0.85em
         color: #666
-        padding: 5px
+        padding: 5px 5px 5px 22px
         float: left
         border-right: 1px solid #FFF
+        &.comms, &.collabs, &.likes
+          background:
+            image: url(asset_path("sprite.png", "image"))
+            position: 5px -11px
+        &.collabs
+          background:
+            position: 7px 7px
+        &.likes
+          
 
 // FOOTER
 
