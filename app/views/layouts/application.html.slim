@@ -3,6 +3,7 @@ html
   head
     title Festival de Ideias
     = stylesheet_link_tag    "application"
+    link href='http://fonts.googleapis.com/css?family=Actor' rel='stylesheet' type='text/css'
     = javascript_include_tag "application"
     = csrf_meta_tags
   - name = controller.controller_name
@@ -11,30 +12,41 @@ html
   body[class="#{name} #{action}" data-controller="#{name}" data-action="#{action}" ]
     = render :partial => "layouts/login"
     header.main
-      section.login
-        .wrapper
-          .user_actions
-            - if current_user
-              span
-                |Olá
-                em
-                  = current_user.name
-              a[href="/logout/"] Sair
 
-            = image_tag "no-picture.jpg"
-            a.name href="" Natalia Arsand
-            #user_options
-              = image_tag "no-picture.jpg"
-              .content
-                .score 3 ideias próprias, 4 ideias colaboradas.
+      section.top_bar
+        .wrapper
+          ul.user_actions
+      
+            li.notifications
+              a.globe href="#"
+              .count 5
+              .notes
                 ul
                   li
-                    a href="" Meu perfil
-                  li
-                    a href="" Logout
-            //- else
-              //a[href="#/login"] Criar uma conta
-              //a[href="#/login"] Fazer login
+                    a href="#" Fulano comentou na sua ideia "Nome da Ideia"
+            li.login
+              //- if current_user
+                //span
+                  //|Olá
+                  //em
+                    //= current_user.name
+                //a[href="/logout/"] Sair
+
+              = image_tag "no-picture.jpg"
+              a.name href="" Natalia Arsand
+              .user_menu
+                = image_tag "no-picture.jpg"
+                .content
+                  .score 3 ideias próprias, 4 ideias colaboradas.
+                  ul
+                    li 
+                      a href="" Meu perfil
+                    li
+                      a href="/logout/" Sair
+
+              //- else
+                //a[href="#/login"] Criar uma conta
+                //a[href="#/login"] Fazer login
       .wrapper
         .logo
           = image_tag "logo.png", :alt => "Festival de Ideais", :title => "Festival de Ideias"
@@ -42,16 +54,14 @@ html
           ul.actions
             li
               a[href=""]
-                span
+                h2
                   | Navegue
                 | em mais de 300 ideias
             li
               a href="#start" rel="facebox"
-                span
+                h2
                   | Compartilhe
-                | a
-                strong sua
-                | ideia
+                | adicione a sua ideia
 
     .wrapper
       aside
