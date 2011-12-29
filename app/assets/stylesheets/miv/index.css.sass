@@ -126,59 +126,89 @@ header.main
   margin-bottom: 20px
   +background-image(linear-gradient(bottom, $lightgreen, #BED487))
 
-  .login
+  .top_bar
     border-bottom: 1px solid #EEE
     background:
       color: #464646
     text-align: right
     height: 35px
-    a
-      font-size: 0.9em
-      padding: 10px
-      color: #CCC
-      text-transform: uppercase
-      display: block
-      float: right
-      &:hover
-        color: #FFF
-      &:last-child
-        &:after
-          color: #DDD !important
-          content: "\00b7"
-          font-weight: bold
-          margin-left: 20px
-    .user_actions
+
+    ul.user_actions
       margin: 0 10px
       float: right
-      padding: 0 5px
-      border-left: 1px solid #555
-      border-right: 1px solid #555
-      +background(linear-gradient(bottom,#373737,#464646 5px))
-      &:hover
-        +background(none)
-        border: none
-        border-bottom: 1px solid #FEFFFF
-        background: 
-          color: #FEFFFF
-        a
-          color: #333
-        #user_options
+      a
+        font-size: 0.9em
+        padding: 10px
+        color: #CCC
+        text-transform: uppercase
+        display: block
+        float: right
+        &:hover
+          color: #FFF
+        &:last-child
+          &:after
+            color: #DDD !important
+            content: "\00b7"
+            font-weight: bold
+            margin-left: 20px
+      li
+        float: left
+        border-left: 1px solid #555
+        border-right: 1px solid #555
+        padding: 0 10px
+        img
+          border: 1px solid #CCC
+          width: 22px
+          height: 22px
+          margin: 5px 0
+          float: left
+
+      li.notifications
+        position: relative
+        padding: 9px 28px 9px 10px
+        margin-right: -1px
+        a.globe
+          padding: 0
           display: block
-      img
-        border: 1px solid #CCC
-        width: 22px
-        height: 22px
-        margin: 5px 0
-        float: left
-      a.name
-        float: left
-        background:
-          image: url(asset_path("arrows.png", "image"))
-          repeat: no-repeat
-          position: right 15px
-        &:after
-          content: ""
-      #user_options
+          background:
+            image: url(asset_path("sprite.png", "image"))
+            repeat: no-repeat
+            position: 0 -63px
+          height: 16px
+          width: 16px
+        .count
+          color: #FFF
+          background: red
+          font-size: 9px
+          position: absolute
+          left: 28px
+          top: 10px
+          padding: 0 3px
+          +border-radius(2px)
+        &:hover
+          .notes
+            display: block
+      li.login
+        +background(linear-gradient(bottom,#373737,#464646 5px))
+        a
+          float: left
+          background:
+            image: url(asset_path("arrows.png", "image"))
+            repeat: no-repeat
+            position: right 15px
+          &:after
+            content: ""
+        &:hover
+          +background(none)
+          border-bottom: 1px solid #FEFFFF
+          background: 
+            color: #FEFFFF
+          a
+            color: #333
+          .user_menu
+            display: block
+
+      .user_menu, .notes
         +grid(3)
         display: none
         position: absolute
@@ -205,20 +235,29 @@ header.main
           float: left
           display: block
           width: 100%
-        a
-          text-align: left
-          color: #333
-          display: block
-          width: 88%
-          padding: 5px 10px
-          text-transform: capitalize
-          &:after
-            content: ""
-          &:hover
-            background:
-              color: #444
+          li
+            padding: 0
+            float: none
+            border: none
             color: #FFF
-       
+            a
+              text-align: left
+              color: #333
+              display: block
+              width: 88%
+              padding: 5px 10px
+              text-transform: capitalize
+              background: none
+              &:after
+                content: ""
+              &:hover
+                background:
+                  color: #444
+                color: #FFF
+
+      .notes  
+        right: 0
+        margin-right: 0
 
   .logo
     +grid(4)
