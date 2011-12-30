@@ -17,9 +17,11 @@ html
 
             - if !is_signed_in?
               li.login
-                a.name href="#/login" Criar uma conta
+                a.name[href="#login" rel="facebox"]
+                  | Criar uma conta
               li.login
-                a.name href="#/login" Fazer login
+                a.name[href="#login" rel="facebox"]
+                  | Fazer login
             - else
                 li.notifications
                   a.globe href="#"
