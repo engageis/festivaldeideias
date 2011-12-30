@@ -17,7 +17,9 @@ html
 
             - if !is_signed_in?
               li.login
-                a.name href="#/login" Conectar-se
+                a.name href="#/login" Criar uma conta
+              li.login
+                a.name href="#/login" Fazer login
             - else
                 li.notifications
                   a.globe href="#"
@@ -26,7 +28,7 @@ html
                     ul
                       li
                         a href="#" Fulano comentou na sua ideia "Nome da Ideia"
-                li.login
+                li.logged_in
                   = image_tag "no-picture.jpg"
                   a.name[href=""]
                     = current_user.name

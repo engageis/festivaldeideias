@@ -165,13 +165,8 @@ header.main
         float: right
         &:hover
           color: #FFF
-        &:last-child
-          &:after
-            color: #DDD !important
-            content: "\00b7"
-            font-weight: bold
-            margin-left: 20px
       li
+        margin-right: -1px
         float: left
         border-left: 1px solid #555
         border-right: 1px solid #555
@@ -208,7 +203,7 @@ header.main
         &:hover
           .notes
             display: block
-      li.login
+      li.logged_in
         +background(linear-gradient(bottom,#373737,#464646 5px))
         a
           float: left
