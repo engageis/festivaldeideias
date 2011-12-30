@@ -13,6 +13,22 @@ html
     header.main
       section.top_bar
         .wrapper
+          .logo
+            = image_tag "logotipo.png", :alt => "Festival de Ideais", :title => "Festival de Ideias"
+
+          nav
+            ul.actions
+              li
+                a[href=""]
+                  h2
+                    | Navegue
+                  | em mais de 300 ideias
+              li
+                a href="#start" rel="facebox"
+                  h2
+                    | Compartilhe
+                  | adicione a sua ideia
+
           ul.user_actions
 
             - if !is_signed_in?
@@ -47,22 +63,6 @@ html
                         li
                           a href="/logout/" Sair
 
-
-      .wrapper
-        .logo
-          = image_tag "logo.png", :alt => "Festival de Ideais", :title => "Festival de Ideias"
-        nav
-          ul.actions
-            li
-              a[href=""]
-                h2
-                  | Navegue
-                | em mais de 300 ideias
-            li
-              a href="#start" rel="facebox"
-                h2
-                  | Compartilhe
-                | adicione a sua ideia
       .clear
 
     .wrapper
