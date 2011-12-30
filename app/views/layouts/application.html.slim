@@ -2,8 +2,7 @@ doctype 5
 html
   head
     title Festival de Ideias
-    = stylesheet_link_tag    "application"
-    link href='http://fonts.googleapis.com/css?family=Actor' rel='stylesheet' type='text/css'
+    = stylesheet_link_tag    "application", "http://fonts.googleapis.com/css?family=Actor"
     = javascript_include_tag "application"
     = csrf_meta_tags
   - name = controller.controller_name
@@ -12,43 +11,36 @@ html
   body[class="#{name} #{action}" data-controller="#{name}" data-action="#{action}" ]
     = render :partial => "layouts/login"
     header.main
-
       section.top_bar
         .wrapper
           ul.user_actions
 
-            li.notifications
-              a.globe href="#"
-              .count 5
-              .notes
-                ul
-                  li
-                    a href="#" Fulano comentou na sua ideia "Nome da Ideia"
-            li.login
-              //- if current_user
-                //span
-                  //|Olá
-                  //em
-                    //= current_user.name
-                //a[href="/logout/"] Sair
+            - if !is_signed_in?
+              li.login
+                a.name href="#/login" Conectar-se
+            - else
+                li.notifications
+                  a.globe href="#"
+                  .count 5
+                  .notes
+                    ul
+                      li
+                        a href="#" Fulano comentou na sua ideia "Nome da Ideia"
+                li.login
+                  = image_tag "no-picture.jpg"
+                  a.name[href=""]
+                    = current_user.name
+                  .user_menu
+                    = image_tag "no-picture.jpg"
+                    .content
+                      .score 3 ideias próprias, 4 ideias colaboradas.
+                      ul
+                        li
+                          a href="" Meu perfil
+                        li
+                          a href="/logout/" Sair
 
-              = image_tag "no-picture.jpg"
-              a.name href="" Natalia Arsand
-              .user_menu
-                = image_tag "no-picture.jpg"
-                .content
-                  .score 3 ideias próprias, 4 ideias colaboradas.
-                  ul
-                    li
-                      a href="" Meu perfil
-                    li
-                      a href="/logout/" Sair
-
-                    li
                       .fb-login-button[data-show-faces="true" data-width="200" data-max-rows="1"]
-              //- else
-                //a[href="#/login"] Criar uma conta
-                //a[href="#/login"] Fazer login
 
       .wrapper
         .logo
