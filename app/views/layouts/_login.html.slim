@@ -1,2 +1,13 @@
 #login
-  a[href="/auth/facebook"] Autentique-se usando o facebook!
+  #sign_in    
+    h2 Entre com sua conta do Facebook
+    
+    .login_box
+      a[class="button facebook" href="/auth/facebook"] Login com Facebook
+      .fb-login-button[data-show-faces="true" data-width="200" data-max-rows="1"]
+
+    footer
+      p 
+        | Nós nunca iremos saber sua senha ou qualquer outro dado sigiloso de sua conta do Facebook.
+        br
+        | Só teremos acesso a informações básicas, como nome, foto e email.

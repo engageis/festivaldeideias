@@ -57,6 +57,18 @@ aside
 #login
   display: none
 
+#sign_in
+  +grid(7)
+  .fb-login-button
+    padding: 10px 40px
+    margin-left: 20px
+    border-left: 1px solid #FFF
+    +box-shadow( -1px 0px 0 #CCC)
+  footer
+    color: #555
+    font-size: 11px
+    margin-top: 40px
+
 // DEFAULT STRUCTURE
 #main
   +grid(8)
@@ -116,6 +128,14 @@ h2.info
     margin-top: 20px
     display: block
     padding: 12px
+  &.facebook
+    +btn(#6B8BBA)
+    background:
+      image: url(asset_path("facebook.png", "image"))
+      repeat: no-repeat
+      position: 10px
+    padding-left: 35px
+    margin: 25px 20px
 
 // HEADER
 header.main
