@@ -16,7 +16,7 @@ html
       section.top_bar
         .wrapper
           ul.user_actions
-      
+
             li.notifications
               a.globe href="#"
               .count 5
@@ -39,14 +39,17 @@ html
                 .content
                   .score 3 ideias próprias, 4 ideias colaboradas.
                   ul
-                    li 
+                    li
                       a href="" Meu perfil
                     li
                       a href="/logout/" Sair
 
+                    li
+                      .fb-login-button[data-show-faces="true" data-width="200" data-max-rows="1"]
               //- else
                 //a[href="#/login"] Criar uma conta
                 //a[href="#/login"] Fazer login
+
       .wrapper
         .logo
           = image_tag "logo.png", :alt => "Festival de Ideais", :title => "Festival de Ideias"
@@ -72,3 +75,13 @@ html
 
   #start.hidden
     = render :partial => "ideas/new_idea"
+
+  #fb-root
+    script
+      |var app_id = "#{CONFIG['facebook_app_id']}";
+      |(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=" + app_id;
+        fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));
