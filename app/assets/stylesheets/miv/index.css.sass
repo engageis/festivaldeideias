@@ -450,6 +450,27 @@ ol.ideas_buckets
             position: 7px -81px
           
 
+
+// STATISTICS
+section#statistics
+  clear: both
+  margin: 40px 0
+  overflow: hidden
+  .wrapper
+    overflow: hidden
+    +bucket
+  ul
+    +grid(4)
+    li
+      padding: 10px 0
+      border-bottom: 1px solid #DDD
+      +box-shadow(0 1px 0 #FFF)
+      &:first-child, &:last-child
+        border: 0
+        +box-shadow(none)
+
+
+
 // FOOTER
 
 footer
