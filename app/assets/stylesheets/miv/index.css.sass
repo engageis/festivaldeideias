@@ -347,7 +347,11 @@ header.main
           position: right -123px
         a
           color: $darkred
-        
+      &:first-child
+        +border-top-radius(5px)
+      &:last-child
+        +border-bottom-radius(5px)
+      
       a
         color: #333
         display: block
@@ -371,10 +375,7 @@ header.main
         &.disasters
           background:
             position: 5px -147px
-        &:first-child
-          +border-top-radius(5px)
-        &:last-child
-          +border-bottom-radius(5px)
+
 
 .community
   +bucket
