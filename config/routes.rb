@@ -7,6 +7,7 @@ FestivalDeIdeias::Application.routes.draw do
   resources :users
   resources :ideas
 
+  get "/index" => "ideas#homepage"
   get "/miv" => "miv#index" if Rails.env.development?
   root :to => "ideas#index"
 

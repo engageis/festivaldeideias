@@ -143,158 +143,153 @@ header.main
   margin-bottom: 20px
   +background-image(linear-gradient(bottom, $lightgreen, #BED487))
 
-  .top_bar
-    border-bottom: 1px solid #EEE
-    text-align: right
-    height: 85px
-
-    ul.user_actions
-      margin: 0 10px
+  ul.user_actions
+    margin: 0 10px
+    float: right
+    +border-bottom-radius(5px)
+    background: #333
+    a
+      font-size: 0.9em
+      padding: 10px
+      color: #CCC
+      text-transform: uppercase
+      display: block
       float: right
-      +border-bottom-radius(5px)
-      background: #333
-      a
-        font-size: 0.9em
-        padding: 10px
-        color: #CCC
-        text-transform: uppercase
-        display: block
-        float: right
-        &:hover
-          color: #FFF
-      li
-        margin-right: -1px
+      &:hover
+        color: #FFF
+    li
+      margin-right: -1px
+      float: left
+      padding: 0 10px
+      img
+        border: 1px solid #CCC
+        width: 22px
+        height: 22px
+        margin: 5px 0
         float: left
-        padding: 0 10px
-        img
-          border: 1px solid #CCC
-          width: 22px
-          height: 22px
-          margin: 5px 0
-          float: left
 
-      li.notifications
-        position: relative
-        padding: 9px 28px 9px 10px
-        margin-right: -1px
-        a.globe
-          padding: 0
-          display: block
-          background:
-            image: url(asset_path("sprite.png", "image"))
-            repeat: no-repeat
-            position: 0 -63px
-          height: 16px
-          width: 16px
-        .count
-          color: #FFF
-          background: red
-          font-size: 9px
-          position: absolute
-          left: 28px
-          top: 10px
-          padding: 0 3px
-          +border-radius(2px)
-        &:hover
-          .notes
-            display: block
-
-      li.logged_in
-        +background(linear-gradient(bottom,#373737,#464646 5px))
-        +border-bottom-right-radius(5px)
-        a
-          float: left
-          background:
-            image: url(asset_path("arrows.png", "image"))
-            repeat: no-repeat
-            position: right 15px
-          &:after
-            content: ""
-        &:hover
-          +background(none)
-          border-bottom: 1px solid #FEFFFF
-          background: 
-            color: #FEFFFF
-          a
-            color: #333
-          .user_menu
-            display: block
-
-      .user_menu, .notes
-        +grid(3)
-        display: none
+    li.notifications
+      position: relative
+      padding: 9px 28px 9px 10px
+      margin-right: -1px
+      a.globe
+        padding: 0
+        display: block
+        background:
+          image: url(asset_path("sprite.png", "image"))
+          repeat: no-repeat
+          position: 0 -63px
+        height: 16px
+        width: 16px
+      .count
+        color: #FFF
+        background: red
+        font-size: 9px
         position: absolute
-        margin-top: 35px
-        z-index: 10
-        padding: 10px 0
-        right: 0
-        top: 0
-        background: #FEFFFF
-        +box-shadow(1px 1px 5px #999)
-        img
-          +grid(1)
-          +omega
-          width: 48px
-          height: 48px
-        .content
-          +grid(2)
-        .score
-          color: #888
-          font-size: 11px
-          text-align: left
-        ul
-          margin-top: 10px
-          float: left
+        left: 28px
+        top: 10px
+        padding: 0 3px
+        +border-radius(2px)
+      &:hover
+        .notes
           display: block
-          width: 100%
-          li
-            padding: 0
-            float: none
-            border: none
-            color: #FFF
-            a
-              text-align: left
-              color: #333
-              display: block
-              width: 88%
-              padding: 5px 10px
-              text-transform: initial
-              background: none
-              &:after
-                content: ""
-              &:hover
-                background:
-                  color: #444
-                color: #FFF
 
-      .notes  
-        +grid(4)
-        display: none
-        right: 0
-        margin-right: 0
-        padding-bottom: 0
-        .title
-          font-weight: bold
-          font-size: 14px
-          text-align: left
-          padding: 5px
-        ul
-          li
-            a
+    li.logged_in
+      +background(linear-gradient(bottom,#373737,#464646 5px))
+      +border-bottom-right-radius(5px)
+      a
+        float: left
+        background:
+          image: url(asset_path("arrows.png", "image"))
+          repeat: no-repeat
+          position: right 15px
+        &:after
+          content: ""
+      &:hover
+        +background(none)
+        border-bottom: 1px solid #FEFFFF
+        background: 
+          color: #FEFFFF
+        a
+          color: #333
+        .user_menu
+          display: block
+
+    .user_menu, .notes
+      +grid(3)
+      display: none
+      position: absolute
+      margin-top: 35px
+      z-index: 10
+      padding: 10px 0
+      right: 0
+      top: 0
+      background: #FEFFFF
+      +box-shadow(1px 1px 5px #999)
+      img
+        +grid(1)
+        +omega
+        width: 48px
+        height: 48px
+      .content
+        +grid(2)
+      .score
+        color: #888
+        font-size: 11px
+        text-align: left
+      ul
+        margin-top: 10px
+        float: left
+        display: block
+        width: 100%
+        li
+          padding: 0
+          float: none
+          border: none
+          color: #FFF
+          a
+            text-align: left
+            color: #333
+            display: block
+            width: 88%
+            padding: 5px 10px
+            text-transform: initial
+            background: none
+            &:after
+              content: ""
+            &:hover
               background:
-                color: #F0F0F0
-              border-top: 1px solid #D0D0D0
-              border-bottom: 1px solid #D0D0D0
-              padding: 10px
-              margin-top: -1px
-              float: left
-              display: block
-              width: 93.2%
-              color: #666
-              &:hover
-                background:
-                  color: lighten(#F0F0F0, 3%)
-                color: #888
+                color: #444
+              color: #FFF
+
+    .notes  
+      +grid(4)
+      display: none
+      right: 0
+      margin-right: 0
+      padding-bottom: 0
+      .title
+        font-weight: bold
+        font-size: 14px
+        text-align: left
+        padding: 5px
+      ul
+        li
+          a
+            background:
+              color: #F0F0F0
+            border-top: 1px solid #D0D0D0
+            border-bottom: 1px solid #D0D0D0
+            padding: 10px
+            margin-top: -1px
+            float: left
+            display: block
+            width: 93.2%
+            color: #666
+            &:hover
+              background:
+                color: lighten(#F0F0F0, 3%)
+              color: #888
 
   .logo
     +grid(3)

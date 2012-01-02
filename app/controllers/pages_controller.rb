@@ -6,4 +6,7 @@ class PagesController < InheritedResources::Base
 
   def ideas
   end
+
+  def index
+  end
 end
