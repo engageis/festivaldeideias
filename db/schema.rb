@@ -11,20 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111228050148) do
+ActiveRecord::Schema.define(:version => 20120102223020) do
+
+  create_table "idea_categories", :force => true do |t|
+    t.text     "name",                         :null => false
+    t.text     "badge",                        :null => false
+    t.boolean  "active",     :default => true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "ideas", :force => true do |t|
-    t.integer  "user_id",                        :null => false
+    t.integer  "user_id",                             :null => false
     t.integer  "parent_id"
-    t.text     "title",                          :null => false
-    t.text     "headline",                       :null => false
-    t.text     "description",                    :null => false
-    t.boolean  "featured",    :default => false, :null => false
-    t.boolean  "recommend",   :default => false, :null => false
-    t.integer  "likes",       :default => 0,     :null => false
+    t.text     "title",                               :null => false
+    t.text     "headline",                            :null => false
+    t.text     "description",                         :null => false
+    t.boolean  "featured",         :default => false, :null => false
+    t.boolean  "recommend",        :default => false, :null => false
+    t.integer  "likes",            :default => 0,     :null => false
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "idea_category_id", :default => 0
   end
 
   create_table "services", :force => true do |t|

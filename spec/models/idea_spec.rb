@@ -12,5 +12,9 @@ describe Idea do
     describe "#parent" do
       it { should belong_to :parent }
     end
+
+    describe "#category" do
+      it { should belong_to :category }
+    end
   end
 end
