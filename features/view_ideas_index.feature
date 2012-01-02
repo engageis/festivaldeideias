@@ -7,4 +7,5 @@ Feature: View a selection of ideas
     Given 3 ideas exist
     When I visit the ideas index page
     Then I should see a list with ideas
+    And I should see a link "Conheça e contribua"
 

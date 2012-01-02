@@ -15,3 +15,4 @@ Then /^I should see a list with ideas$/ do
  page.should have_content(@ideas.last.title)
 end
 
+
