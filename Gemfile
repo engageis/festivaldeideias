@@ -9,6 +9,7 @@ gem 'cancan'
 gem 'activeadmin'
 gem 'simple_form'
 gem 'kaminari'
+gem 'carrierwave'
 
 # Authentication + Authorization
 gem 'cancan'
