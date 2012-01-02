@@ -5,6 +5,16 @@
 //= require_tree ./views
 
 window.FDI = {
+  // Ideas Controller/View
+  ideas: {
+    index:  function(){ FDI.View = new FDI.IdeaIndexView() },
+    show:   function(){ FDI.View = new FDI.IdeaShowView()  }
+  },
+
+  users: {
+    edit: function(){}
+  },
+
   common: {
     finish: function(){
       Backbone.history.start();
