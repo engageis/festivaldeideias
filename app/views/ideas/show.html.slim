@@ -1,28 +1,31 @@
 #idea
   header
-    = image_tag "badges/disasters.png", :alt => "Catástrofes Naturais", :title => "Catástrofes Naturais", :class => "badge"
-    h1 Nome da ideia
-    section.idea_stats
-      span
-        | Iniciada por 
-        a href="" 
-          | Maria Chica 
-        | &#8226; 3 dias atrás
-      ul.totals
-        li.total_comments
-          // Total de comentários
-          | 6
-        li.total_collabs
-          // Total de colaborações aceitas
-          | 5
-        li.total_forks
-          // Total de forks
-          | 1
-  article
-    h3 O que é esta ideia
-    p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae nulla et quam pharetra consequat nec in velit. Maecenas porttitor, massa sed facilisis laoreet, est tortor feugiat ante, a venenatis eros massa sed lectus. Nunc lacinia, nisl et luctus placerat, quam justo gravida erat, eu ornare dolor risus at massa. Mauris sagittis lorem ac augue euismod lobortis. Mauris enim nibh, condimentum lacinia suscipit vel, sodales a sapien. Mauris eget ante at velit porta aliquam a nec eros. Donec eu tellus justo, at auctor dui. In ut libero sit amet libero tempus porttitor. Donec volutpat erat at justo dapibus ac egestas est bibendum. Aliquam dolor dui, vulputate sed condimentum sed, tincidunt nec turpis. Integer dignissim eros a lacus iaculis adipiscing. Proin et dui lorem, in suscipit tortor. Aliquam ultrices malesuada odio.
-    p Pellentesque tincidunt posuere neque, feugiat tristique turpis dapibus a. Nam adipiscing luctus odio, quis tempus mauris laoreet ac. Pellentesque tincidunt arcu vel purus convallis tempor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed porttitor commodo commodo. Duis tincidunt libero gravida nisi egestas ultricies. Nullam mattis placerat lectus fringilla tincidunt. Nulla elementum orci et nisi malesuada dapibus. Quisque lacinia suscipit elit nec pulvinar. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur a lacus quis ligula bibendum eleifend a sit amet eros. Ut a ipsum nec massa sollicitudin fringilla. Fusce vitae neque at nunc dapibus convallis et non nisi.
+    - if @idea
+      = image_tag "badges/disasters.png", :alt => "Catástrofes Naturais", :title => "Catástrofes Naturais", :class => "badge"
+      h1 = @idea.title
+      section.idea_stats
+        span
+          | Iniciada por
+          a href=""
+            = @idea.user.name
+          | &#8226;
+          // Check this with timestamps (JS plugin)
+          = @idea.created_at
+        ul.totals
+          li.total_comments
+            // Total de comentários
+            | 6
+          li.total_collabs
+            // Total de colaborações aceitas
+            | 5
+          li.total_forks
+            // Total de forks
+            | 1
+    article
+      h3 O que é esta ideia
+      p
+        = @idea.description
 
-  section#comments
-    h2 Comentários
-    p Comentários default do Facebook
+    section#comments
+      h2 Comentários
+      p Comentários default do Facebook

@@ -1,4 +1,8 @@
 FDI.Router = Backbone.Router.extend({
-  routes: {}
+  routes: {
+    '/idea-create' : 'createIdea',
+  },
+
+  createIdea: function(){}
 
 });
