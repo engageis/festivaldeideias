@@ -333,29 +333,44 @@ header.main
     margin-bottom: 20px
     +border-radius(5px)
     li
+      background:
+        image: url(asset_path("arrows.png", "image"))
+        repeat: no-repeat
+        position: right -73px
       border-bottom: 1px solid #CCC
       font-size: 1.1em
       &:last-child
         border: 0
+      &:hover, &.selected
+        background:
+          color: $lightyellow
+          position: right -123px
+        a
+          color: $darkred
+        
       a
         color: #333
         display: block
-        padding: 10px 10px 10px 50px
+        padding: 12px 10px 12px 50px
         background:
           image: url(asset_path("badges/sprite.png", "image"))
           repeat: no-repeat
-          position: 5px 0
+          position: 5px 4px
         &.recent
           background:
-            position: 5px 10px
+            position: 5px -33px
         &.modified
-        &.mobility
-        &.violence
-        &.disasters
-        &:hover, &.selected
           background:
-            color: $lightyellow
-          color: $darkred
+            position: 5px -72px
+        &.mobility
+          background:
+            position: 5px -186px
+        &.violence
+          background:
+            position: 5px -112px
+        &.disasters
+          background:
+            position: 5px -147px
         &:first-child
           +border-top-radius(5px)
         &:last-child
