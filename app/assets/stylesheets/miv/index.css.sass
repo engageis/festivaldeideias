@@ -151,6 +151,8 @@ header.main
     ul.user_actions
       margin: 0 10px
       float: right
+      +border-bottom-radius(5px)
+      background: #333
       a
         font-size: 0.9em
         padding: 10px
@@ -163,8 +165,6 @@ header.main
       li
         margin-right: -1px
         float: left
-        border-left: 1px solid #555
-        border-right: 1px solid #555
         padding: 0 10px
         img
           border: 1px solid #CCC
@@ -201,6 +201,7 @@ header.main
 
       li.logged_in
         +background(linear-gradient(bottom,#373737,#464646 5px))
+        +border-bottom-right-radius(5px)
         a
           float: left
           background:
