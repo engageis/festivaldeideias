@@ -11,6 +11,8 @@ FestivalDeIdeias::Application.routes.draw do
   resources :users
   resources :ideas
 
+  get "sobre-o-festival" => "pages#about"
+  get "sobre-os-temas" => "pages#themes"
   get "/miv" => "miv#index" if Rails.env.development?
   root :to => "ideas#index"
 

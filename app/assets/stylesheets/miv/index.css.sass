@@ -19,7 +19,7 @@ h1
   font-size: 2.1em
   line-height: 1.1em
 h2
-  font-size: 1.7em
+  font-size: 1.9em
   line-height: 1.6em
 h3
   font-size: 1.5em
@@ -117,25 +117,6 @@ h2.info
   font-family: "Gill Sans", sans-serif
   font-weight: lighter
 
-// * buttons
-.button
-  +btn
-  &.primary
-    +btn($blue, right)
-    margin: 10px 0
-  &.start
-    +btn($purple, none, 1.2em)
-    margin-top: 20px
-    display: block
-    padding: 12px
-  &.facebook
-    +btn(#6B8BBA)
-    background:
-      image: url(asset_path("facebook.png", "image"))
-      repeat: no-repeat
-      position: 10px
-    padding-left: 35px
-    margin: 25px 20px
 
 // HEADER
 header.main
@@ -299,6 +280,9 @@ header.main
       width: 180px
   nav
     +grid(5)
+    +grid-prefix(1)
+    width: 340px
+    margin-left: 0
     .actions
       li
         display: block

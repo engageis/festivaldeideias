@@ -7,4 +7,10 @@ class PagesController < InheritedResources::Base
   def ideas
   end
 
+  def about
+  end
+
+  def themes
+  end
+
 end

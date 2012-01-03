@@ -7,3 +7,23 @@
     image: url(asset_path("arrows.png", "image"))
     repeat: no-repeat
     position: right -212px
+
+// * buttons
+.button
+  +btn
+  &.primary
+    +btn($blue, right)
+    margin: 10px 0
+  &.start
+    +btn($purple, none, 1.2em)
+    margin-top: 20px
+    display: block
+    padding: 12px
+  &.facebook
+    +btn(#6B8BBA)
+    background:
+      image: url(asset_path("facebook.png", "image"))
+      repeat: no-repeat
+      position: 10px
+    padding-left: 35px
+    margin: 25px 20px
