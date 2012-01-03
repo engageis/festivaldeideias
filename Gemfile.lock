@@ -331,6 +331,7 @@ DEPENDENCIES
   jasminerice
   jquery-rails
   kaminari
+  meta_search (>= 1.1.0.pre)
   omniauth (= 0.3.2)
   pg
   rails (= 3.1.3)
