@@ -13,8 +13,7 @@ html
     header.main
       .wrapper
         .logo
-          = image_tag "logotipo.png", :alt => "Festival de Ideais", :title => "Festival de Ideias"
-
+          = image_tag "logotipo.png", :alt => "Festival de Ideais", :title => "Festival de Ideias", :size => "300x110"
         nav
           ul.actions
             li
@@ -29,41 +28,8 @@ html
                 | adicione a sua ideia
 
         ul.user_actions
-
-          - if !is_signed_in?
-            li.login
-              a.name[href="#login" rel="facebox"]
-                | Criar uma conta
-            li.login
-              a.name[href="#login" rel="facebox"]
-                | Fazer login
-          - else
-              li.notifications
-                a.globe href="#"
-                .count 5
-                .notes
-                  .title Notificações
-                  ul
-                    li
-                      a href="#" Fulano comentou na sua ideia "Nome da Ideia"
-                    li
-                      a href="#" Fulano quer colaborar com a sua ideia "Nome da Ideia"
-                    li
-                      a href="#" A ideia "Nome da Ideia", a qual você colaborou, foi atualizada.
-              li.logged_in
-                = image_tag "no-picture.jpg"
-                a.name[href=""]
-                  = current_user.name
-                .user_menu
-                  = image_tag "no-picture.jpg"
-                  .content
-                    .score 3 ideias próprias, 4 ideias colaboradas.
-                    ul
-                      li
-                        a href="" Meu perfil
-                      li
-                        a href="/logout/" Sair
-        
+          = render :partial => "layouts/user_actions"
+        //
         - if current_page?(root_url)
           = render :partial => "layouts/header"
 
@@ -82,12 +48,4 @@ html
   #start.hidden
     = render :partial => "ideas/new_idea"
 
-  #fb-root
-    script
-      |var app_id = "#{CONFIG['facebook_app_id']}";
-      |(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=" + app_id;
-        fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));
+  = render :partial => "layouts/facebook_defaults"

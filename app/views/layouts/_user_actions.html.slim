@@ -1,0 +1,34 @@
+- if not is_signed_in?
+  li.login
+    a.name[href="#login" rel="facebox"]
+      | Criar uma conta
+  li.login
+    a.name[href="#login" rel="facebox"]
+      | Fazer login
+- else
+    li.notifications
+      a.globe href="#"
+      .count 5
+      .notes
+        .title Notificações
+        ul
+          li
+            a href="#" Fulano comentou na sua ideia "Nome da Ideia"
+          li
+            a href="#" Fulano quer colaborar com a sua ideia "Nome da Ideia"
+          li
+            a href="#" A ideia "Nome da Ideia", a qual você colaborou, foi atualizada.
+    li.logged_in
+      = image_tag "no-picture.jpg"
+      a.name[href=""]
+        = current_user.name
+      .user_menu
+        = image_tag "no-picture.jpg"
+        .content
+          .score 3 ideias próprias, 4 ideias colaboradas.
+          ul
+            li
+              a href="" Meu perfil
+            li
+              a href="/logout/" Sair
+
