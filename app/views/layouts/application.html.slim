@@ -11,59 +11,61 @@ html
   body[class="#{name} #{action}" data-controller="#{name}" data-action="#{action}" ]
     = render :partial => "layouts/login"
     header.main
-      section.top_bar
-        .wrapper
-          .logo
-            = image_tag "logotipo.png", :alt => "Festival de Ideais", :title => "Festival de Ideias"
+      .wrapper
+        .logo
+          = image_tag "logotipo.png", :alt => "Festival de Ideais", :title => "Festival de Ideias"
 
-          nav
-            ul.actions
-              li
-                a[href=""]
-                  h2
-                    | Navegue
-                  | em mais de 300 ideias
-              li
-                a href="#start" rel="facebox"
-                  h2
-                    | Compartilhe
-                  | adicione a sua ideia
+        nav
+          ul.actions
+            li
+              a[href=""]
+                h2
+                  | Navegue
+                | em mais de 300 ideias
+            li
+              a href="#start" rel="facebox"
+                h2
+                  | Compartilhe
+                | adicione a sua ideia
 
-          ul.user_actions
+        ul.user_actions
 
-            - if !is_signed_in?
-              li.login
-                a.name[href="#login" rel="facebox"]
-                  | Criar uma conta
-              li.login
-                a.name[href="#login" rel="facebox"]
-                  | Fazer login
-            - else
-                li.notifications
-                  a.globe href="#"
-                  .count 5
-                  .notes
-                    .title Notificações
+          - if !is_signed_in?
+            li.login
+              a.name[href="#login" rel="facebox"]
+                | Criar uma conta
+            li.login
+              a.name[href="#login" rel="facebox"]
+                | Fazer login
+          - else
+              li.notifications
+                a.globe href="#"
+                .count 5
+                .notes
+                  .title Notificações
+                  ul
+                    li
+                      a href="#" Fulano comentou na sua ideia "Nome da Ideia"
+                    li
+                      a href="#" Fulano quer colaborar com a sua ideia "Nome da Ideia"
+                    li
+                      a href="#" A ideia "Nome da Ideia", a qual você colaborou, foi atualizada.
+              li.logged_in
+                = image_tag "no-picture.jpg"
+                a.name[href=""]
+                  = current_user.name
+                .user_menu
+                  = image_tag "no-picture.jpg"
+                  .content
+                    .score 3 ideias próprias, 4 ideias colaboradas.
                     ul
                       li
-                        a href="#" Fulano comentou na sua ideia "Nome da Ideia"
+                        a href="" Meu perfil
                       li
-                        a href="#" Fulano quer colaborar com a sua ideia "Nome da Ideia"
-                      li
-                        a href="#" A ideia "Nome da Ideia", a qual você colaborou, foi atualizada.
-                li.logged_in
-                  = image_tag "no-picture.jpg"
-                  a.name[href=""]
-                    = current_user.name
-                  .user_menu
-                    = image_tag "no-picture.jpg"
-                    .content
-                      .score 3 ideias próprias, 4 ideias colaboradas.
-                      ul
-                        li
-                          a href="" Meu perfil
-                        li
-                          a href="/logout/" Sair
+                        a href="/logout/" Sair
+        
+        - if current_page?(root_url)
+          = render :partial => "layouts/header"
 
       .clear
 

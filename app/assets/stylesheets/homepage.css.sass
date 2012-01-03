@@ -1,4 +1,4 @@
-body[data-action="homepage"][data-controller="ideas"]
+body[data-action="index"][data-controller="ideas"]
   // HEADER
   header.main
     .logo
@@ -12,3 +12,27 @@ body[data-action="homepage"][data-controller="ideas"]
       .actions
         a
           padding: 8px
+
+  #introduction
+    float: left
+    margin: 20px 0
+    clear: both
+
+    section.text_intro, 
+    section.video_intro
+      +grid(6)
+    
+    section.text_intro
+      h1
+        line-height: 1.5em
+        color: #444
+        +text-shadow(0 1px 0 #EEE)
+        padding: 30px 0
+    section.video_intro
+      iframe
+        margin-bottom: -2px
+      .border
+        float: right
+        border: 3px solid #FFF
+        +box-shadow(0 1px 2px #aaa)
+
