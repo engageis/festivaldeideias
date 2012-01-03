@@ -1,8 +1,7 @@
 Given /^I'm a logged user$/ do
-  @user = Factory.create(:user)
-  @service = Factory.create(:service, :user => @user)
-  current_user = @user
-  session[:user_id] = @user.id
+  @user = Factory.create(:user, :email => "runeroniek@gmail.com")
+  @service = Factory.create(:service, :provider => "facebook", :uid =>"547955110", :user => @user)
+  visit '/auth/facebook'
 end
 
 Given /^(\d+) idea category exist$/ do |count|
@@ -14,7 +13,7 @@ Given /^(\d+) idea category exist$/ do |count|
 end
 
 Then /^I should see user options$/ do
-  page.should have_css('nav ul.actions')
+  page.should have_xpath("//div[@class='wrapper']/ul[@class='user_actions']")
 end
 
 Then /^I should see "([^"]*)"$/ do |arg1|
@@ -22,11 +21,11 @@ Then /^I should see "([^"]*)"$/ do |arg1|
 end
 
 Then /^I should see a list of notifications$/ do
-  page.should have_css('.notes .notifications')
+  page.should have_css('.user_actions .notifications ul.notifications')
 end
 
-Then /^I should see my image$/ do
-  pending # express the regexp above with the code you wish you had
+Then /^I should see my profile image$/ do
+  page.should have_xpath("//ul[@class='user_actions']/li[@class='logged_in']/div[@class='user_menu']/img[@class='medium_profile_image']")
 end
 
 Then /^I should see my ideas count$/ do

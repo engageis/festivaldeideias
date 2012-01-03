@@ -19,11 +19,11 @@
           li
             a href="#" A ideia "Nome da Ideia", a qual você colaborou, foi atualizada.
     li.logged_in
-      = image_tag current_user_image
+      = image_tag current_user_image, :alt => "Profile image", :title => current_user.name, :class => "thumb_profile_image"
       a.name[href=""]
         = current_user.name
       .user_menu
-        = image_tag current_user_image
+        = image_tag current_user_image, :alt => "Profile image", :title => current_user.name, :class => "medium_profile_image"
         .content
           .score 3 ideias próprias, 4 ideias colaboradas.
           ul

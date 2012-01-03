@@ -11,7 +11,7 @@ Feature: View user actions
     Then I should see user options
     And I should see "Notificações"
     And I should see a list of notifications
-    And I should see my image
+    And I should see my profile image
     And I should see my ideas count
     And I should see my colaborations count
     And I should see "Meu perfil"
