@@ -45,6 +45,9 @@ module FestivalDeIdeias
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
+    # You shall not access my database when precompiling :<
+    config.assets.initialize_on_precompile = false
+
     # Fix for heroku
     if Rails.configuration.respond_to?(:sass)
       Rails.configuration.sass.tap do |config|

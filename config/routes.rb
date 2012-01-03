@@ -1,6 +1,10 @@
 FestivalDeIdeias::Application.routes.draw do
 
-   match '/auth/:provider/callback', :to => 'sessions#create', :as => :session_create
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
+  match '/auth/:provider/callback', :to => 'sessions#create', :as => :session_create
   match '/logout', :to => 'sessions#destroy', :as => :session_destroy
 
 
