@@ -7,10 +7,10 @@
         span
           | Iniciada por
           a href=""
-            = @idea.user.name
+            = " #{@idea.user.name} "
           | &#8226;
           // Check this with timestamps (JS plugin)
-          = @idea.created_at
+          = time_ago_in_words(@idea.created_at)
         ul.totals
           li.total_comments
             // Total de comentários
