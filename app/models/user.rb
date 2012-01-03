@@ -8,4 +8,5 @@ class User < ActiveRecord::Base
   def self.create_from_hash!(hash)
     self.create(:name => hash['user_info']['name'], :email => hash['user_info']['email'])
   end
+
 end

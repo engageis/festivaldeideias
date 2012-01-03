@@ -18,7 +18,14 @@ Factory.define :service do |s|
   s.provider("facebook")
 end
 
+Factory.define :idea_category do |c|
+  c.name(Factory.next(:title))
+  c.badge("image.jpg")
+  c.description("Some description")
+end
+
 Factory.define :idea do |i|
+  i.association :category, :factory => :idea_category
   i.association :user, :factory => :user
   i.title(Factory.next(:title))
   i.headline(Factory.next(:headline))
