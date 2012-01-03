@@ -8,10 +8,7 @@ body[data-action="index"][data-controller="ideas"]
         float: left
         width: 300px
     nav
-      +grid(4)
-      .actions
-        a
-          padding: 8px
+      display: none
 
   #introduction
     float: left
@@ -27,8 +24,11 @@ body[data-action="index"][data-controller="ideas"]
         line-height: 1.5em
         color: #444
         +text-shadow(0 1px 0 #EEE)
-        padding: 30px 0
+      .start
+        float: right
+        clear: both
     section.video_intro
+      margin-top: -50px
       iframe
         margin-bottom: -2px
       .border
