@@ -38,6 +38,12 @@ p
   line-height: 1.5em
   margin-bottom: 20px
 
+ul
+  display: block
+  li
+    display: block
+
+
 a, a:link, a:hover, a:visited, a:active
   text-decoration: none
   color: $blue
@@ -54,6 +60,15 @@ aside
   +grid(4)
 
 
+article
+  ul, ol
+    display: block
+    margin: 0 0 20px 20px
+    list-style-type: circle
+    li
+      display: list-item
+      padding: 5px
+      list-style-type: circle
 #login
   display: none
 

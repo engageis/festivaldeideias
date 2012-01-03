@@ -13,4 +13,10 @@ class PagesController < InheritedResources::Base
   def themes
   end
 
+  def regulation
+  end
+
+  def awards
+  end
+
 end

@@ -13,6 +13,10 @@ FestivalDeIdeias::Application.routes.draw do
 
   get "sobre-o-festival" => "pages#about"
   get "sobre-os-temas" => "pages#themes"
+  get "regulamento" => "pages#regulation"
+  get "premiacao" => "pages#awards"
+  get "navegue-nas-ideias" => "ideas#navigate"
+
   get "/miv" => "miv#index" if Rails.env.development?
   root :to => "ideas#index"
 
