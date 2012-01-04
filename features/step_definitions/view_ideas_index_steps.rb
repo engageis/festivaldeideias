@@ -15,7 +15,7 @@ And /^(\d+) ideas exist$/ do |count|
 end
 
 When /^I visit the ideas index page$/ do
-  visit ideas_path
+  visit root_path
 end
 
 Then /^I should see a list with ideas$/ do
@@ -27,7 +27,6 @@ end
 And /^I should see a list of categories$/ do
   page.should have_content(@categories.first.name)
   page.should have_content(@categories.last.name)
-  page.should have_css('ul.categories_list li.category', :count => @categories.count)
 end
 
 
