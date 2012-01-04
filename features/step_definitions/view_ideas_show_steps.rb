@@ -14,6 +14,6 @@ Then /^I should see the idea's description$/ do
   page.should have_content(@ideas.first.description)
 end
 
-Then /^I should see a link "([^"]*)"$/ do |arg1|
-  page.should have_link(arg1, :count => @ideas.count)
+And /^I should see a link "([^"]*)"$/ do |arg1|
+  page.should have_link(arg1)
 end

@@ -11,6 +11,12 @@ Factory.define :user do |u|
   u.email(Factory.next(:email))
 end
 
+Factory.define :admin_user do |u|
+  u.email("user@example.com")
+  u.password("super_safe")
+end
+
+
 # Defining provider factory (facebook, google, twitter - for instance)
 Factory.define :service do |s|
   s.association :user, :factory => :user
@@ -19,9 +25,9 @@ Factory.define :service do |s|
 end
 
 Factory.define :idea_category do |c|
-  c.name(Factory.next(:title))
-  c.badge("image.jpg")
-  c.description("Some description")
+  c.name Factory.next(:title)
+  c.badge File.open("#{Rails.root.to_s}/spec/fixtures/images/disasters.png")
+  c.description "Some description"
 end
 
 Factory.define :idea do |i|
