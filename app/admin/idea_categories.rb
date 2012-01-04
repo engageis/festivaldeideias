@@ -1,4 +1,4 @@
-ActiveAdmin.register IdeaCategory, :as => "Categorias" do
+ActiveAdmin.register IdeaCategory do
   menu :label => "Categorias"
 
 

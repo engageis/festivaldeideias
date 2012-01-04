@@ -14,7 +14,7 @@ When /^I fill the admin login form with my information$/ do
   click_button "Login"
 end
 
-Then /^I should be in the admin dashboard page$/ do
-  current_path.should == admin_dashboard_path
+Then /^I should be in the "([^"]*)"$/ do |arg|
+  current_path.should == eval(arg)
 end
 

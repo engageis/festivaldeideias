@@ -7,7 +7,7 @@ Feature: View my admin dashboard
     Given I'm an admin user
     When I go to the admin index page
     And I fill the admin login form with my information
-    Then I should be in the admin dashboard page
+    Then I should be in the "admin_dashboard_path"
     And I should see "Painel Administrativo"
     And I should see "Categorias"
     And I should see "Sair"
