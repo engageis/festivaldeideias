@@ -9,7 +9,9 @@ FestivalDeIdeias::Application.routes.draw do
 
 
   resources :users
-  resources :ideas
+  resources :idea_categories do
+    resources :ideas
+  end
 
   get "sobre-o-festival" => "pages#about"
   get "sobre-os-temas" => "pages#themes"

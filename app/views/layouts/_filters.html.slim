@@ -5,17 +5,17 @@
   ul
     li.selected
       a.popular[href=""] Mais populares
-    li 
+    li
       a.recent[href=""] Recém iniciadas
-    li 
+    li
       a.modified[href=""] Recém alteradas
 
   h4 Por categoria
-  ul
-    li 
-      a.mobility[href=""] Mobilidade urbana
-    li 
-      a.violence[href=""] Violência
-    li 
-      a.disasters[href=""] Catástrofes naturais
+  ul.categories_list
+    - @categories.each do |category|
+      li.category
+        span.image
+          = image_tag category.badge.url, :size => "31x31"
+        span.name
+          = link_to category.name, idea_category_ideas_path(category)
   a[href="#start" rel="facebox" class="button start"] Comece uma ideia!

@@ -1,9 +1,12 @@
 class IdeasController < InheritedResources::Base
-  def index
-    @ideas = Idea.order(:title).page params[:page]
-  end
+
+  respond_to :html, :json
+  before_filter :load_categories, :only => [:index, :show, :edit]
 
   def navigate
-    @ideas = Idea.order(:title).page params[:page]
+  end
+
+  def load_categories
+    @categories = IdeaCategory.order(:name).all(:include => :ideas)
   end
 end

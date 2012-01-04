@@ -16,7 +16,7 @@
           header
             = image_tag "badges/urban.png", :alt => "Mobilidade Urbana", :title => "Mobilidade Urbana"
             h3
-              a.idea_title[href=idea_path(idea)]
+              a.idea_title[href=idea_category_idea_path(idea.category, idea)]
                 = idea.title
             span.idea_user
               = "Iniciada por #{idea.user.name}"
@@ -25,7 +25,7 @@
             p.idea_headline
               = idea.headline
 
-          a.button.primary[href=idea_path(idea)]
+          a.button.primary[href=idea_category_idea_path(idea.category, idea)]
             |Conheça e contribua
           ul.stats
             li.likes
