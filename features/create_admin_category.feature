@@ -10,7 +10,6 @@ Feature: Create a category
     Then I should be in the "admin_dashboard_path"
     And I click the link "Categorias"
     Then I should be in the "admin_idea_categories_path"
-    And I should see a list of categories
 
   Scenario: Create a category
     Given I'm an admin user
