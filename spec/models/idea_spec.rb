@@ -5,6 +5,7 @@ describe Idea do
 
     it { should validate_presence_of :title }
     it { should validate_presence_of :headline }
+    it { should validate_presence_of :category }
 
     describe "#user" do
       it { should belong_to :user }
