@@ -9,15 +9,15 @@ FestivalDeIdeias::Application.routes.draw do
 
 
   resources :users
-  resources :idea_categories do
-    resources :ideas
-  end
 
   get "sobre-o-festival" => "pages#about"
   get "sobre-os-temas" => "pages#themes"
   get "regulamento" => "pages#regulation"
   get "premiacao" => "pages#awards"
   get "navegue-nas-ideias" => "ideas#navigate"
+
+  match ":idea_category/ideias/:id", :to => "ideas#show", :as => :idea_category_idea
+  match ":idea_category/ideias", :to => "ideas#index", :as => :idea_category_ideas
 
   get "/miv" => "miv#index" if Rails.env.development?
   root :to => "ideas#index"

@@ -12,15 +12,15 @@ service = Service.create!(:user => user, :uid => "547955110" , :provider => "fac
 
 # Categories
 c1 = IdeaCategory.create(:name => "Mobilidade Urbana", :description => "Sample description")
-c1.badge.store!(File.open(File.join(Rails.root, "spec/fixtures/images/disasters.png")))
+c1.badge.store!(File.open(File.join(Rails.root, "/spec/fixtures/images/disasters.png")))
 c1.save
 
 c2 = IdeaCategory.create(:name => "Catástrofes Naturais", :description => "Sample description")
-c2.badge.store!(File.open(File.join(Rails.root, "spec/fixtures/images/disasters.png")))
+c2.badge.store!(File.open(File.join(Rails.root, "/spec/fixtures/images/disasters.png")))
 c2.save
 
 c3 = IdeaCategory.create(:name => "Violência", :description => "Sample description")
-c3.badge.store!(File.open(File.join(Rails.root, "spec/fixtures/images/disasters.png")))
+c3.badge.store! File.open(File.join(Rails.root, "/spec/fixtures/images/disasters.png"))
 c3.save
 
 

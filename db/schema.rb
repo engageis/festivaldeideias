@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(:version => 20120103032146) do
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "idea_category_id", :default => 0
+    t.integer  "idea_category_id", :default => 0,     :null => false
   end
 
   create_table "services", :force => true do |t|
