@@ -1,6 +1,6 @@
-FDI.IdeaIndexView = Backbone.View.extend({
+App.Ideas.Index = Backbone.View.extend({
 
+  initialize: function(){
 
-
-
+  }
 });

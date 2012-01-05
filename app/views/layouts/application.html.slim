@@ -7,8 +7,9 @@ html
     = csrf_meta_tags
   - name = controller.controller_name
   - action = controller.action_name
+  - class = controller.class.name
 
-  body[class="#{name} #{action}" data-controller="#{name}" data-action="#{action}" ]
+  body[data-controller-class="#{class}" data-controller-name="#{name.camelize}" data-action="#{action.camelize}" ]
     = render :partial => "layouts/login"
     header.main
       .wrapper

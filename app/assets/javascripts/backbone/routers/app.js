@@ -1,8 +1,12 @@
-FDI.Router = Backbone.Router.extend({
+App.Router = Backbone.Router.extend({
   routes: {
-    '/idea-create' : 'createIdea',
+    "example": "example"
   },
-
-  createIdea: function(){}
-
+  /* You can let these functions empty
+   * and bind the routes in the view.
+   * Nevertheless you still need to define them.
+   */
+  example: function(){
+    console.log('This is just an example');
+  }
 });

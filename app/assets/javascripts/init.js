@@ -1,25 +1,45 @@
-// Init the Controller / Action
-UTIL = {
-  exec: function( controller, action ) {
-    var ns = FDI,
-        action = ( action === undefined ) ? "init" : action;
+/**
+ * Init JavaScript file
+ */
+jQuery(function () {
+  var body, controllerClass, controllerName, action;
 
-    if ( controller !== "" && ns[controller] && typeof ns[controller][action] == "function" ) {
-      ns[controller][action]();
+  body = $(document.body);
+
+  // Your body tag should have a "data-" tag. E.g.: "data-controller-class" or "data-controller-name"
+  controllerClass = body.data( "controller-class" );
+  controllerName = body.data( "controller-name" );
+  action = body.data( "action" );
+
+  function exec(controllerClass, controllerName, action) {
+    var ns, railsNS;
+
+    ns = App;
+    railsNS = controllerClass ? controllerClass.split("::").slice(0, -1) : [];
+
+    _.each(railsNS, function(name){
+      if(ns) {
+        ns = ns[name];
+      }
+    });
+
+    if ( ns && controllerName && controllerName !== "" ) {
+      if(_.isFunction(ns[controllerName][action])) {
+        var view = window.view = new ns[controllerName][action]();
+      }
     }
-  },
-
-  init: function() {
-    var body = document.body,
-        controller = body.getAttribute( "data-controller" ),
-        action = body.getAttribute( "data-action" );
-
-    UTIL.exec( "common" );
-    UTIL.exec( controller );
-    UTIL.exec( controller, action );
-    UTIL.exec( "common", "finish" );
   }
-};
 
-$( document ).ready( UTIL.init );
+  function exec_filter(filterName){
+    if(App.Common && _.isFunction(App.Common[filterName])){
+      App.Common[filterName]();
+    }
+  }
 
+  // First, initialize
+  exec_filter('init');
+
+  // Run Controller specific logic
+  exec( controllerClass, controllerName, action );
+  exec_filter('finish');
+});

@@ -1,4 +1,7 @@
-FDI.IdeaShowView = Backbone.View.extend({
+App.Ideas.Show = Backbone.View.extend({
 
+  initialize: function(){
+
+  }
 
 });
