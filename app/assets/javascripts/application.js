@@ -1,11 +1,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require libraries/facebox
-//= require libraries/start_facebox
 //= require libraries/store
 //= require underscore
 //= require backbone
 //= require backbone_rails_sync
 //= require backbone_datalink
-//= require backbone/FDI
+//= require backbone/app
 //= require init
