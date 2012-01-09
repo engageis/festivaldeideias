@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120103032146) do
+ActiveRecord::Schema.define(:version => 20120109070310) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -56,26 +56,27 @@ ActiveRecord::Schema.define(:version => 20120103032146) do
   end
 
   create_table "ideas", :force => true do |t|
-    t.integer  "user_id",                             :null => false
+    t.integer  "user_id",                        :null => false
     t.integer  "parent_id"
-    t.text     "title",                               :null => false
-    t.text     "headline",                            :null => false
-    t.text     "description",                         :null => false
-    t.boolean  "featured",         :default => false, :null => false
-    t.boolean  "recommend",        :default => false, :null => false
-    t.integer  "likes",            :default => 0,     :null => false
+    t.text     "title",                          :null => false
+    t.text     "headline",                       :null => false
+    t.text     "description",                    :null => false
+    t.boolean  "featured",    :default => false, :null => false
+    t.boolean  "recommend",   :default => false, :null => false
+    t.integer  "likes",       :default => 0,     :null => false
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "idea_category_id", :default => 0,     :null => false
+    t.integer  "category_id", :default => 0,     :null => false
   end
 
   create_table "services", :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.text     "provider",   :null => false
-    t.text     "uid",        :null => false
+    t.integer  "user_id",                        :null => false
+    t.text     "provider",                       :null => false
+    t.text     "uid",                            :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "profile",    :default => "null"
   end
 
   create_table "users", :force => true do |t|
