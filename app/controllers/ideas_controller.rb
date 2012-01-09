@@ -2,7 +2,7 @@ class IdeasController < InheritedResources::Base
 
   respond_to :html, :json
   optional_belongs_to :category
-  before_filter :load_resources, :only => [:index, :show, :edit]
+  before_filter :load_resources
 
   def navigate
   end

@@ -1,4 +1,4 @@
-class PagesController < InheritedResources::Base
+class PagesController < IdeasController
 
   def most_active_ideas
 
