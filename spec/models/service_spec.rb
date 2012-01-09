@@ -32,7 +32,6 @@ describe Service do
       its(:uid) { should == fb['uid'] }
       its(:provider) { should == fb['provider'] }
       its(:user) { should == user }
-      its(:profile) { should == fb['extra']['user_hash']['id']}
     end
     context "When the user doesn't exists yet, create one" do
       fb = FACEBOOK_HASH_DATA
@@ -40,7 +39,6 @@ describe Service do
       its(:uid) { should == fb['uid'] }
       its(:provider) { should == fb['provider'] }
       its(:user) { should_not == nil }
-      its(:profile) { should == fb['extra']['user_hash']['id']}
     end
   end
 
@@ -49,7 +47,7 @@ describe Service do
       fb = FACEBOOK_HASH_DATA
       user = Factory.create(:user)
       subject { Service.create_from_hash(fb, user) }
-      its(:facebook_avatar) { should == "http://graph.facebook.com/#{fb['extra']['user_hash']['id']}/picture?type=square" }
+      its(:facebook_avatar) { should == "http://graph.facebook.com/#{fb['uid']}/picture?type=square" }
     end
   end
 end
