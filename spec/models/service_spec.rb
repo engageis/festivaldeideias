@@ -49,7 +49,7 @@ describe Service do
       fb = FACEBOOK_HASH_DATA
       user = Factory.create(:user)
       subject { Service.create_from_hash(fb, user) }
-      its(:facebook_avatar) { should == "http://graph.facebook.com/#{fb['extra']['user_hash']['id']}/picture?type=large" }
+      its(:facebook_avatar) { should == "http://graph.facebook.com/#{fb['extra']['user_hash']['id']}/picture?type=square" }
     end
   end
 end

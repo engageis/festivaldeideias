@@ -5,36 +5,26 @@
       li
         h3 Estatísticas
       li
-        | Total de ideias: 345
+        | Total de ideias:
+        = @ideas_count if not @ideas_count.nil?
       li
-        | Total de colaborações: 457
-      li 
-        | Total de usuários: 120
+        | Total de colaborações:
       li
+        | Total de usuários:
+        = @users.count if not @users.nil?
+      //li
         | Usuários online agora: 6
     ul.latest_updates
       li
         h3 Últimas ideias modificadas
-      li
-        a href="#" Nome da ideia
-      li
-        a href="#" Nome da ideia  
-      li
-        a href="#" Nome da ideia
-      li
-        a href="#" Nome da ideia
-      li
-        a href="#" Nome da ideia
+
+      - @ideas_latest.each do |idea|
+        li
+          = link_to idea.title, idea_category_idea_path(idea.category, idea)
+
     ul.top_ideas
       li
         h3 Ideias em destaque
-      li
-        a href="#" Circuito de webcam entre vizinhos
-      li
-        a href="#" Nome da ideia
-      li
-        a href="#" Nome da ideia
-      li
-        a href="#" Nome da ideia
-      li
-        a href="#" Nome da ideia
+      - @ideas_featured.each do |idea|
+        li
+          = link_to idea.title, idea_category_idea_path(idea.category, idea)
