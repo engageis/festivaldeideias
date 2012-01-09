@@ -1,4 +1,8 @@
-App.Ideas = Backbone.View.extend({
-  Index: {},
-  Show: {}
-});
+App.Ideas.Index = App.BaseView.extend({
+
+  initialize: function(){
+    _.bindAll(this)
+
+  }
+
+})

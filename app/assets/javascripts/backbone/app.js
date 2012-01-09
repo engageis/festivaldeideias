@@ -1,10 +1,13 @@
 //= require_self
+//
+//= require_tree ./views
 //= require_tree ./routers
 //= require_tree ./templates
 //= require_tree ./models
-//= require_tree ./views
 
 var App = window.App = {
+  // Initializing the Object/Controller
+  Ideas: {},
   Common: {
     init: function(){
       // Start JS router if it's not started yet
