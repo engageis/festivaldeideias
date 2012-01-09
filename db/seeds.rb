@@ -8,7 +8,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
 user = User.create!(:name => "Luiz Fonseca", :email => "runeroniek@gmail.com")
-service = Service.create!(:user => user, :uid => "547955110" , :provider => "facebook", :profile => "100000428222603")
+service = Service.create!(:user => user, :uid => "100000428222603", :provider => "facebook")
 
 # Categories
 c1 = IdeaCategory.create(:name => "Mobilidade Urbana", :description => "Sample description")

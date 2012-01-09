@@ -3,8 +3,8 @@
   h4
     | Quem já faz parte
   ul
-    - unless @users.nil?
+    - if not @users.nil?
       - @users.each do |user|
         li
-          = link_to (image_tag user.services.first.facebook_avatar, :alt => user.name, :title => user.name) if not user == current_user
+          = link_to (image_tag user.services.first.facebook_avatar, :alt => user.name, :title => user.name) if not user == current_user and !user.services.nil?
 

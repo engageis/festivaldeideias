@@ -22,7 +22,6 @@ Factory.define :service do |s|
   s.association :user, :factory => :user
   s.uid(Factory.next(:uid))
   s.provider("facebook")
-  s.profile(Factory.next(:uid)) # Just to not repeat one more line of code
 end
 
 Factory.define :idea_category do |c|
