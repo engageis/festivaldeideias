@@ -14,11 +14,14 @@
   &.primary
     +btn($blue, right)
     margin: 10px 0
-  &.start
+  &.start, &.edit
     +btn($purple, none, 1.2em)
     margin-top: 20px
     display: block
     padding: 12px
+  &.edit
+    background:
+      color: $darkred
   &.facebook
     +btn(#6B8BBA)
     background:
