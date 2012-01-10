@@ -14,6 +14,8 @@
   ul.categories_list
     - @categories.each do |category|
       li.category
+        span.image
+          = image_tag category.badge.url, :size => "30x30"
         span.name
-          = link_to category.name, idea_category_ideas_path(category)
+          = link_to category.name, category_ideas_path(category)
   a[href="#start" rel="facebox" class="button start"] Comece uma ideia!

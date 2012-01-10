@@ -8,17 +8,31 @@
     repeat: no-repeat
     position: right -212px
 
+.view_more
+  float: right
+  color: $blue
+  padding-right: 18px
+  background:
+    image: url(asset_path("arrows.png", "image"))
+    repeat: no-repeat
+    position: right -242px
+
+
+
 // * buttons
 .button
   +btn
   &.primary
     +btn($blue, right)
     margin: 10px 0
-  &.start
+  &.start, &.edit
     +btn($purple, none, 1.2em)
     margin-top: 20px
     display: block
     padding: 12px
+  &.edit
+    background:
+      color: $darkred
   &.facebook
     +btn(#6B8BBA)
     background:
