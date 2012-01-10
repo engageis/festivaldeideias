@@ -20,11 +20,11 @@
 
       - @ideas_latest.each do |idea|
         li
-          = link_to idea.title, idea_category_idea_path(idea.category, idea)
+          = link_to idea.title, category_idea_path(idea.category, idea)
 
     ul.top_ideas
       li
         h3 Ideias em destaque
       - @ideas_featured.each do |idea|
         li
-          = link_to idea.title, idea_category_idea_path(idea.category, idea)
+          = link_to idea.title, category_idea_path(idea.category, idea)
