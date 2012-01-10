@@ -144,7 +144,7 @@ header.main
     float: right
     +border-bottom-radius(5px)
     background: #333
-    a
+    a.name
       font-size: 0.9em
       padding: 10px
       color: #CCC
@@ -246,8 +246,8 @@ header.main
           a
             text-align: left
             color: #333
-            display: block
             width: 88%
+            line-height: 18px
             padding: 5px 10px
             text-transform: initial
             background: none
@@ -265,10 +265,11 @@ header.main
       margin-right: 0
       padding-bottom: 0
       .title
+        float: left
         font-weight: bold
         font-size: 14px
         text-align: left
-        padding: 5px
+        padding: 0 5px
       ul
         li
           a
@@ -293,6 +294,24 @@ header.main
     img
       float: left
       width: 180px
+
+  #share
+    position: absolute
+    right: 330px
+    top: 19px
+    p
+      background:
+        image: url(asset_path("line.png", "image"))
+        repeat: no-repeat
+        position: 79px 26px
+      padding-bottom: 50px
+      font-family: 'Shadows Into Light', cursive
+      font-size: 19px
+      color: #666
+      position: absolute
+      left: -140px
+      +rotate(-10deg)
+
   nav
     +grid(5)
     +grid-prefix(1)
