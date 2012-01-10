@@ -1,4 +1,4 @@
-.step_1
+.step_1.hidden
   h2 Comece uma ideia
 
   section.steps
@@ -20,7 +20,7 @@
 
 
 
-.step_2.hidden
+.step_2
   h2 Comece uma ideia
 
 
@@ -41,16 +41,31 @@
       p
         label Dê um nome:
         input[type="text"]
-      h4 Escolha uma categoria:
       p
-        label for="violence" Violência
-        input[type="radio" name="category" id="violence"]
-      p
-        label for="urban_mobility" Mobilidade Urbana
-        input[type="radio" name="category" id="urban_mobility"]
-      p
-        label for="natural_disasters" Catástrofes Naturais
-        input[type="radio" name="category" id="natural_disasters"]
+        label.left Resuma em poucas palavras: 
+        span.char_counter 200
+        textarea.limited
+
+      .categories
+        h4 Escolha uma categoria:
+        p
+          label for="violence" 
+            = image_tag "badges/security.png"
+            br
+            | Segurança
+          input[type="radio" name="category" id="violence"]
+        p
+          label for="urban_mobility" 
+            = image_tag "badges/urban.png"
+            br
+            | Mobilidade Urbana
+          input[type="radio" name="category" id="urban_mobility"]
+        p
+          label for="natural_disasters" 
+            = image_tag "badges/disasters.png"
+            br
+            | Catástrofes Naturais
+          input[type="radio" name="category" id="natural_disasters"]
       
       
       a.button.next

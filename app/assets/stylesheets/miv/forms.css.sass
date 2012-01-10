@@ -17,9 +17,11 @@ form
         
     
   textarea   
+    clear: both
     height: 150px  
     line-height: 150%  
-        
+    &.limited
+      height: 75px
     
   input:hover, textarea:hover,  
   input:focus, textarea:focus   
@@ -33,10 +35,31 @@ form
     font-size: 17px
     display: block
     margin-bottom: 5px
+    &[for="violence"], &[for="urban_mobility"], &[for="natural_disasters"]
+      float: left
+
+  .categories
+    p, input, label
+      float: left
+    p
+      margin-right: 40px
+      text-align: center
+      padding: 5px
+      &:hover
+        background:
+          color: #FFF
+    input
 
   .button
+    clear: both
     float: right
     &.next
       &:after
         content: "\00bb"
         margin-left: 5px
+
+  .char_counter
+    color: #666
+    margin-left: 360px    
+    font-weight: lighter
+    font-family: "Gill Sans", sans-serif
