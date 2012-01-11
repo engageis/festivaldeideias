@@ -16,7 +16,7 @@ class IdeasController < ApplicationController
 
   protected
   def load_resources
-    @categories = parent? ? parent.idea_categories : IdeaCategory.all
+    @categories ||= parent? ? parent.idea_categories : IdeaCategory.all
     @users ||= User.all(:include => :services)
     @ideas_count ||= Idea.count
     @ideas_latest ||= Idea.order(:updated_at).all
