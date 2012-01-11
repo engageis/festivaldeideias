@@ -14,6 +14,23 @@ class IdeasController < ApplicationController
   def navigate
   end
 
+  def create
+    @idea = Idea.new(
+      :description      => params[:description],
+      :headline         => params[:headline],
+      :idea_category_id => params[:idea_category_id],
+      :title            => params[:title]
+    )
+    @idea.user = current_user if current_user
+    create! do |success, failure|
+      success.html { return redirect_to :back }
+      failure.html {
+        flash[:error] = "Logar-se please"
+        return redirect_to :back
+      }
+    end
+  end
+
   protected
   def load_resources
     @categories ||= parent? ? parent.idea_categories : IdeaCategory.all
@@ -22,4 +39,5 @@ class IdeasController < ApplicationController
     @ideas_latest ||= Idea.order(:updated_at).all
     @ideas_featured ||= Idea.order(:likes).all
   end
+
 end

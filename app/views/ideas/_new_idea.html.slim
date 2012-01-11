@@ -1,69 +1,59 @@
-form.new_idea
-  .step_1
-    h2= t('idea.new.start')
-    section.steps
-      ul
-        li.active= t('idea.new.step_1')
-        li= t('idea.new.step_2')
-        li= t('idea.new.step_3')
+= form_for(Idea.new, :class => 'new_idea') do |f|
+  h2 = t('idea.new.start')
+  
+  ul.short_cuts
+    li = link_to t('idea.new.step_1'), '#describe'
+    li = link_to t('idea.new.step_2'), '#refine'
+    li = link_to t('idea.new.step_3'), '#publish'
 
-    section.describe
-      h3= t('idea.new.about')
+  .steps
+    // Descrição da ideia
+    #describe
+      h3 = t('idea.new.about')
       p
-        label for="description"
-        textarea name="description"
-      a.button.next
-        = t('idea.new.next_step')
+        = f.label :description, t('idea.new.give_a_description')
+        = f.text_area :description
+      = link_to t('idea.new.next_step'), '#refine', :class => 'button next'
+    //--------------------------------------------------------------------------------------
 
-  .step_2.hidden
-    h2= t('idea.new.start')
-
-    section.steps
-      ul
-        li
-          a.volta_1= t('idea.new.step_1')
-        li.active= t('idea.new.step_2')
-        li= t('idea.new.step_3')
-    section.refine
+    // Refino da ideia
+    #refine.hidden
       blockquote
         p
           | Aqui vem um preview da descrição entrada na primeira etapa. Quando a pessoa clica, volta para a primeira etapa.
-      h3= t('idea.new.about')
+
+      h3 = t('idea.new.about')
+
       p
-        label for="name" Dê um nome:
-        input type="text" name="name"
+        = f.label :title, t('idea.new.give_a_name')
+        = f.text_field :title
+
       p
-        label.left for="nutshell"
-          | Resuma em poucas palavras:
+        = f.label :headline, t('idea.new.give_a_headline'), :class => 'left'
         span.char_counter 200
-        textarea.limited name="nutshell"
+        = f.text_area :headline, :class => 'limited', :maxlength => 200
+      
       .categories
-        h4 Escolha uma categoria:
+        h4 = t('idea.new.choose_a_category')
 
-        // Getting categories from the ideas_controller
-        - unless @categories.nil?
-          - @categories.each do |category|
+        // Getting categories from ideas_controller
+        - if !@categories.nil? && @categories.size > 0
+          ul
+            - @categories.each do |category|
+              li
+                - id = category.id
+                label for="idea_category_#{id}"
+                  = image_tag(category.badge.url, :size => '31x31', :alt => category.name, :title => category.name)
+                  br
+                  = category.name
+                input type="radio" value="#{id}" id="idea_category_id" name="idea[idea_category_id]"
+      = link_to t('idea.new.next_step'), '#publish', :class => 'button next'
 
-            p
-              label
-                = image_tag category.badge.url, :size => "31x31", :alt => "#{category.name}", :title => "#{category.name}"
-                br
-                = "#{category.name}"
-                input type="radio" name="category" id="#{category.name.parameterize}" value="#{category.id}"
+    //--------------------------------------------------------------------------------------
 
-      a.button.next Próxima etapa
-
-  .step_3.hidden
-    h2 Comece uma ideia
-    section.steps
-      ul
-        li
-          a.volta_1 1. descreva
-        li
-          a.volta_2 2. refine
-        li.active 3. publique
-    section.publish
-      img class='badge' src='' alt='nome da categoria' title='nome da categoria'
+    // Publicação da ideia
+    #publish.hidden
+      img class='badge' src='' alt="nome da categoria" title="nome da categoria"
       h3.edit Nome da ideia. Campo editável in loco.
       .what
         p.edit
@@ -71,5 +61,10 @@ form.new_idea
       .share
         a twitter
         a facebook
-      input.button type="submit"
-        | Publicar!
+
+      // Botão de Submit
+      - if current_user
+        = f.submit "Publicar!", :class => 'button'
+      - else
+        a.button Logar-se no facebook!
+    //--------------------------------------------------------------------------------------

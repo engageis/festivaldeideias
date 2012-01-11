@@ -10,7 +10,7 @@ var App = window.App = {
   Ideas: {},
 
   Common: {
-    init: function(){
+    init: function () {
       // Start JS router if it's not started yet
       if(!App.routes && _.isFunction(App.Router)){
         App.routes = new App.Router();
@@ -18,7 +18,7 @@ var App = window.App = {
 
       // Create existing flashes
       App.flashes = [];
-      $('.flash').each(function(){
+      $('.flash').each(function () {
         App.flashes.push(new PLOTO.Flash({el: this}));
       });
 
@@ -27,13 +27,14 @@ var App = window.App = {
     },
 
     finish: function(){
-      if(Backbone.history) {
+      if (Backbone.history) {
         Backbone.history.start();
       }
     },
 
-    startFacebox: function(){
+    startFacebox: function () {
       $('*[rel=facebox]').facebox();
-    }
+    },
+
   }
 };

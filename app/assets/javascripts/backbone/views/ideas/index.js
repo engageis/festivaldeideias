@@ -7,37 +7,52 @@ App.Ideas.Index = App.BaseView.extend({
     initialize: function () {
         _.bindAll(
             this,
-            "showStep1",
-            "showStep2",
-            "showStep3"
+            "showDescription",
+            "showRefinement",
+            "showPublishing",
+            "updateActiveLink"
         );
     },
 
     events: {
-        "click .popup .step_1 a.next": "showStep2",
-        "click .popup .step_2 a.next": "showStep3",
-        "click .popup a.volta_1": "showStep1",
-        "click .popup a.volta_2": "showStep2",
+        "click a[href='#describe']": 'showDescription',
+        "click a[href='#refine']": 'showRefinement',
+        "click a[href='#publish']": 'showPublishing',
+        "click .popup a": "updateActiveLink"
     },
 
-    showStep1: function () {
+    showDescription: function () {
         var box = $('.popup');
-        box.find('.step_2').addClass("hidden");
-        box.find('.step_3').addClass("hidden");
-        box.find('.step_1').removeClass("hidden");
+        box.find("#refine").addClass('hidden');
+        box.find("#publish").addClass('hidden');
+        box.find("#describe").removeClass('hidden');
     },
 
-    showStep2: function () {
+    showRefinement: function () {
         var box = $('.popup');
-        box.find('.step_1').addClass("hidden");
-        box.find('.step_3').addClass("hidden");
-        box.find('.step_2').removeClass("hidden");
+        box.find("#describe").addClass('hidden');
+        box.find("#publish").addClass('hidden');
+        box.find("#refine").removeClass('hidden');
     },
 
-    showStep3: function () {
+    showPublishing: function () {
         var box = $('.popup');
-        box.find('.step_1').addClass("hidden");
-        box.find('.step_2').addClass("hidden");
-        box.find('.step_3').removeClass("hidden");
+        box.find("#describe").addClass('hidden');
+        box.find("#refine").addClass('hidden');
+        box.find("#publish").removeClass('hidden');
+    },
+
+    updateActiveLink: function (e) {
+        var shorcuts, hash;
+        shorcuts = $('.popup .shortcuts a');
+        hash = e.target.hash;
+        shortcuts.each(function () {
+            alert(this.hash);
+            if (this.hash === hash) {
+                $(this).addClass('active');
+            } else {
+                $(this).removeClass('active');
+            }
+        });
     }
 });
