@@ -27,7 +27,7 @@ App.Ideas.Index = App.BaseView.extend({
         box.find('.step_1').removeClass("hidden");
     },
 
-    showStep2: function (e) {
+    showStep2: function () {
         var box = $('.popup');
         box.find('.step_1').addClass("hidden");
         box.find('.step_3').addClass("hidden");

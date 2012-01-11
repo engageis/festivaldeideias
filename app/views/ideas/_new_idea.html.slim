@@ -25,36 +25,36 @@ form.new_idea
       blockquote
         p
           | Aqui vem um preview da descrição entrada na primeira etapa. Quando a pessoa clica, volta para a primeira etapa.
-        h3 O que é essa ideia?
+      h3 O que é essa ideia?
+      p
+        label for="name" Dê um nome: 
+        input type="text" name="name"
+      p
+        label.left for="nutshell"
+          | Resuma em poucas palavras: 
+        span.char_counter 200
+        textarea.limited name="nutshell"
+      .categories
+        h4 Escolha uma categoria:
         p
-          label for="name" Dê um nome: 
-          input type="text" name="name"
+          label for="violence"
+            = image_tag('badges/security.png')
+            br
+            | Segurança
+          input type="radio" name="category" id="violence" value="violence"
         p
-          label.left for="nutshell"
-            | Resuma em poucas palavras: 
-          span.char_counter 200
-          textarea.limited name="nutshell"
-        .categories
-          h4 Escolha uma categoria:
-          p
-            label for="violence"
-              = image_tag('badges/security.png')
-              br
-              | Segurança
-            input type="radio" name="category" id="violence" value="violence"
-          p
-            label for="urban_mobility"
-              = image_tag('badges/urban.png')
-              br
-              | Mobilidade Urbana
-            input type="radio" name="category" id="urban_mobility" value="urban_mobility"
-          p
-            label for="natural_disasters"
-              = image_tag('badges/disasters.png')
-              br
-              | Catástrofes Naturais
-            input type="radio" name="category" id="natural_disasters" value="natural_disasters"
-        a.button.next Próxima etapa
+          label for="urban_mobility"
+            = image_tag('badges/urban.png')
+            br
+            | Mobilidade Urbana
+          input type="radio" name="category" id="urban_mobility" value="urban_mobility"
+        p
+          label for="natural_disasters"
+            = image_tag('badges/disasters.png')
+            br
+            | Catástrofes Naturais
+          input type="radio" name="category" id="natural_disasters" value="natural_disasters"
+      a.button.next Próxima etapa
 
   .step_3.hidden
     h2 Comece uma ideia
