@@ -58,13 +58,10 @@
       .what
         p.edit
           | Aqui vem todo o conteúdo entrado em "O que é esta ideia". Campo editável in loco.
-      .share
-        a twitter
-        a facebook
-
       // Botão de Submit
       - if current_user
         = f.submit "Publicar!", :class => 'button'
       - else
-        a.button Logar-se no facebook!
+        span.right Para publicar você deve estar logado:
+        a.button Logar-se com o Facebook!
     //--------------------------------------------------------------------------------------
