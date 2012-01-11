@@ -4,6 +4,7 @@ gem 'rails', '3.1.3'
 
 # Improvements
 gem 'inherited_resources'
+gem 'has_scope'
 
 # Database
 gem 'pg'
