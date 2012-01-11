@@ -56,18 +56,18 @@ ActiveRecord::Schema.define(:version => 20120103032146) do
   end
 
   create_table "ideas", :force => true do |t|
-    t.integer  "user_id",                        :null => false
+    t.integer  "user_id",                             :null => false
     t.integer  "parent_id"
-    t.text     "title",                          :null => false
-    t.text     "headline",                       :null => false
-    t.text     "description",                    :null => false
-    t.boolean  "featured",    :default => false, :null => false
-    t.boolean  "recommend",   :default => false, :null => false
-    t.integer  "likes",       :default => 0,     :null => false
+    t.text     "title",                               :null => false
+    t.text     "headline",                            :null => false
+    t.text     "description",                         :null => false
+    t.boolean  "featured",         :default => false, :null => false
+    t.boolean  "recommend",        :default => false, :null => false
+    t.integer  "likes",            :default => 0,     :null => false
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "category_id", :default => 0,     :null => false
+    t.integer  "idea_category_id", :default => 0
   end
 
   create_table "services", :force => true do |t|
