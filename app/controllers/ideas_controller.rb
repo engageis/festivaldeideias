@@ -12,6 +12,19 @@ class IdeasController < ApplicationController
   before_filter :load_resources
 
   def navigate
+    @ideas = collection
+  end
+
+  def create
+    @idea = Idea.new(params[:idea])
+    @idea.user = current_user if current_user
+    create! do |success, failure|
+      success.html { return redirect_to :back }
+      failure.html {
+        flash[:error] = @idea.errors.inspect
+        return redirect_to :back
+      }
+    end
   end
 
   protected
@@ -22,4 +35,5 @@ class IdeasController < ApplicationController
     @ideas_latest ||= Idea.order(:updated_at).all
     @ideas_featured ||= Idea.order(:likes).all
   end
+
 end

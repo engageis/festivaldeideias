@@ -22,13 +22,22 @@
       color: lighten($color, 10%)
 
 
-@mixin bucket
-  margin-top: 20px
-  padding: 10px
+@mixin bucket($padding: 10px)
+  padding: $padding
   border-radius: 5px
   border: 1px solid #DDD
   background:
     color: #F8F8F8
   +box-shadow(0 1px #eee, 0 0 0 1px #fff inset)
+
+@mixin list_link     
+  border-top: 1px solid #CCC
+  font-size: 1.1em
+  padding: 10px
+  line-height: 18px
+  display: block
+  cursor: pointer
+
+
 
 

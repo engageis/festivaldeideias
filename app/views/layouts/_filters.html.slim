@@ -3,7 +3,8 @@
 
   h4 Por estatísticas
   ul
-    li.selected
+    li 
+      // adiciona um .selected no li quando o item estiver selecionado
       = link_to "Mais populares", "/?popular=true", :class => "popular"
     li
       = link_to "Recém iniciadas", "/?recent=true", :class => "recent"

@@ -1,0 +1,94 @@
+// SIDEBAR
+aside
+  h3
+    margin: 20px 0 10px 0
+  .navigation
+    ul
+      background:
+        color: #FFF
+      border: 1px solid #CCC
+      margin-bottom: 20px
+      +border-radius(5px)
+      li
+        +list_link
+        padding: 0
+        background:
+          image: url(asset_path("arrows_sprite.png", "image"))
+          repeat: no-repeat
+          position: right -73px
+        &:hover, &.selected
+          background:
+            color: $lightyellow
+            position: right -123px
+          a
+            color: $darkred
+        &:first-child
+          +border-top-radius(5px)
+          border-top: 1px solid #FEFFFF
+        &:last-child
+          +border-bottom-radius(5px)
+
+        a
+          color: #333
+          display: block
+          padding: 12px 10px 12px 50px
+          background:
+            image: url(asset_path("badges/sprite.png", "image"))
+            repeat: no-repeat
+            position: 5px 4px
+          &.recent
+            background:
+              position: 5px -33px
+          &.modified
+            background:
+              position: 5px -72px
+          &.mobility
+            background:
+              position: 5px -186px
+          &.violence
+            background:
+              position: 5px -112px
+          &.disasters
+            background:
+              position: 5px -147px
+
+
+  .community
+    +bucket
+    overflow: hidden
+    ul
+      clear: both
+      li
+        float: left
+        padding: 5px
+        img
+          height: 48px
+          width: 48px
+    h4
+      float: left
+    span
+      float: right
+
+  .share
+    +bucket
+
+  .blog_feeds
+    +bucket(0)
+    h3
+      padding: 10px
+    li
+      a
+        +list_link
+        &:hover
+          background: #FFF
+        &.first
+          +border-top-radius(5px)
+          border: 0
+        &.last
+          +border-bottom-radius(5px)
+        .date
+          color: #666
+          display: block
+          font-size: 12px
+          margin-top: 5px
+
