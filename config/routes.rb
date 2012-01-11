@@ -16,8 +16,8 @@ FestivalDeIdeias::Application.routes.draw do
   get "premiacao" => "pages#awards"
   get "navegue-nas-ideias" => "ideas#navigate"
 
-  match ":category_id/ideia/:id", :to => "ideas#show", :as => :category_idea
-  match ":category_id/ideias", :to => "ideas#index", :as => :category_ideas
+  match ":idea_category_id/ideia/:id", :to => "ideas#show", :as => :category_idea
+  match ":idea_category_id/ideias", :to => "ideas#index", :as => :category_ideas
 
   get "/miv" => "miv#index" if Rails.env.development?
   root :to => "ideas#index"

@@ -4,18 +4,23 @@
   h4 Por estatísticas
   ul
     li.selected
-      a.popular[href=""] Mais populares
+      = link_to "Mais populares", "/?popular=true", :class => "popular"
     li
-      a.recent[href=""] Recém iniciadas
+      = link_to "Recém iniciadas", "/?recent=true", :class => "recent"
     li
-      a.modified[href=""] Recém alteradas
+      = link_to "Recém alteradas", "/?latest=true", :class => "modified"
 
   h4 Por categoria
   ul.categories_list
+    //
+    // TODO: Fix the category CSS badge. Use only the image_tag
+    //
     - @categories.each do |category|
       li.category
         span.image
           = image_tag category.badge.url, :size => "30x30"
         span.name
           = link_to category.name, category_ideas_path(category)
-  a[href="#start" rel="facebox" class="button start"] Comece uma ideia!
+
+  // Start a new idea
+  = link_to t('buttons.new_idea'), "#start", :class => "button start", :rel => "facebox"

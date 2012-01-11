@@ -326,6 +326,7 @@ DEPENDENCIES
   foreigner
   guard-cucumber
   guard-rspec
+  has_scope
   heroku
   inherited_resources
   jasminerice

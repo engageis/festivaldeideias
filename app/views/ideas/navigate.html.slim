@@ -1,6 +1,6 @@
 #most_active_ideas
-  h1 Ideias populares
-  h2.info Uma ideia popular é aquela que tem bastante interação por contribuição e comentários de usuários.
+  h1= t('idea.popular.header')
+  h2.info= t('idea.popular.about')
 
   ol.ideas_buckets
     - unless @ideas.nil?

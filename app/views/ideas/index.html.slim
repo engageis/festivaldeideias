@@ -1,6 +1,6 @@
 #most_active_ideas
-  h1 Ideias populares
-  h2.info Uma ideia popular é aquela que tem bastante interação por contribuição e comentários de usuários.
+  h1= t('idea.popular.header')
+  h2.info= t('idea.popular.about')
 
   ol.ideas_buckets
     - unless @ideas.nil?
@@ -28,7 +28,7 @@
               = idea.headline ? idea.headline : truncate(idea.description, :length => 140, :separator => " ")
 
           // Share btn
-          = link_to "Conheça e contribua", category_idea_path(idea.category, idea), :class => "button primary"
+          = link_to t('buttons.show_idea'), category_idea_path(idea.category, idea), :class => "button primary"
 
           // Collaboration & Popularity
           ul.stats
