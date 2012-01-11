@@ -15,17 +15,12 @@ class IdeasController < ApplicationController
   end
 
   def create
-    @idea = Idea.new(
-      :description      => params[:description],
-      :headline         => params[:headline],
-      :idea_category_id => params[:idea_category_id],
-      :title            => params[:title]
-    )
+    @idea = Idea.new(params[:idea])
     @idea.user = current_user if current_user
     create! do |success, failure|
       success.html { return redirect_to :back }
       failure.html {
-        flash[:error] = "Logar-se please"
+        flash[:error] = @idea.errors.inspect
         return redirect_to :back
       }
     end

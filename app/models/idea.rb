@@ -1,4 +1,5 @@
 class Idea < ActiveRecord::Base
+  attr_accessible :description, :title, :headline, :category, :category_id
 
   belongs_to :user
   belongs_to :category, :class_name => "IdeaCategory", :foreign_key => :category_id

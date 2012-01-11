@@ -42,11 +42,11 @@
             - @categories.each do |category|
               li
                 - id = category.id
-                label for="idea_category_#{id}"
+                label
                   = image_tag(category.badge.url, :size => '31x31', :alt => category.name, :title => category.name)
                   br
                   = category.name
-                input type="radio" value="#{id}" id="idea_category_id" name="idea[idea_category_id]"
+                = f.radio_button :category_id, id
       = link_to t('idea.new.next_step'), '#publish', :class => 'button next'
 
     //--------------------------------------------------------------------------------------
