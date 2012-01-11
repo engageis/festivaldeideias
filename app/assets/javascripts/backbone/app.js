@@ -8,6 +8,7 @@
 var App = window.App = {
   // Initializing the Object/Controller
   Ideas: {},
+
   Common: {
     init: function(){
       // Start JS router if it's not started yet

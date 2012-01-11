@@ -24,3 +24,4 @@ database.yml
 public/stylesheets
 public/uploads
 /.sass-cache
+.rvmrc

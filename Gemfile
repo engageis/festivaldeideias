@@ -1,14 +1,15 @@
 source 'http://rubygems.org'
 
+# Database
+gem 'pg'
+gem 'foreigner'
+
+
 gem 'rails', '3.1.3'
 
 # Improvements
 gem 'inherited_resources'
 gem 'has_scope'
-
-# Database
-gem 'pg'
-gem 'foreigner'
 
 # Administration & dependencies
 gem 'activeadmin'
@@ -59,3 +60,4 @@ group :assets do
 end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
+

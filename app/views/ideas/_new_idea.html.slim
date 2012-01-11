@@ -1,101 +1,78 @@
-.step_1.hidden
-  h2 Comece uma ideia
-
-  section.steps
-    ul
-      li.active 1. DESCREVA
-      li 2. REFINE
-      li 3. PUBLIQUE
-
-
-  section.describe
-    form
+form.new_idea
+  .step_1
+    h2 Comece uma ideia
+    section.steps
+      ul
+        li.active 1. descreva
+        li 2. refine
+        li 3. publique
+    section.describe
       h3 O que é essa ideia?
       p
-        label Descreva como quiser. Você terá como editar depois.
-        textarea
-      
-      a.button.next
-        | Próxima etapa
+        label for="description"
+        textarea name="description"
+      a.button.next Próxima etapa
 
-
-
-.step_2
-  h2 Comece uma ideia
-
-
-  section.steps
-    ul
-      li 
-        a href="#volta"
-          | 1. DESCREVA
-      li.active 2. REFINE
-      li 3. PUBLIQUE
-
-
-  section.refine
-    blockquote
-      p Aqui vem um preview da descrição entrada na primeira etapa. Quando a pessoa clica, volta para a primeira etapa.
-    form
+  .step_2.hidden
+    h2 Comece uma ideia
+    section.steps
+      ul
+        li
+          a.volta_1 1. descreva
+        li.active 2. refine
+        li 3. publique
+    section.refine
+      blockquote
+        p
+          | Aqui vem um preview da descrição entrada na primeira etapa. Quando a pessoa clica, volta para a primeira etapa.
       h3 O que é essa ideia?
       p
-        label Dê um nome:
-        input[type="text"]
+        label for="name" Dê um nome: 
+        input type="text" name="name"
       p
-        label.left Resuma em poucas palavras: 
+        label.left for="nutshell"
+          | Resuma em poucas palavras: 
         span.char_counter 200
-        textarea.limited
-
+        textarea.limited name="nutshell"
       .categories
         h4 Escolha uma categoria:
         p
-          label for="violence" 
-            = image_tag "badges/security.png"
+          label for="violence"
+            = image_tag('badges/security.png')
             br
             | Segurança
-          input[type="radio" name="category" id="violence"]
+          input type="radio" name="category" id="violence" value="violence"
         p
-          label for="urban_mobility" 
-            = image_tag "badges/urban.png"
+          label for="urban_mobility"
+            = image_tag('badges/urban.png')
             br
             | Mobilidade Urbana
-          input[type="radio" name="category" id="urban_mobility"]
+          input type="radio" name="category" id="urban_mobility" value="urban_mobility"
         p
-          label for="natural_disasters" 
-            = image_tag "badges/disasters.png"
+          label for="natural_disasters"
+            = image_tag('badges/disasters.png')
             br
             | Catástrofes Naturais
-          input[type="radio" name="category" id="natural_disasters"]
-      
-      
-      a.button.next
-        | Próxima etapa
+          input type="radio" name="category" id="natural_disasters" value="natural_disasters"
+      a.button.next Próxima etapa
 
-
-.step_3.hidden
-  h2 Comece uma ideia
-
-  section.steps
-    ul
-      li 
-        a href="#volta"
-          | 1. DESCREVA
-      li
-        a href="#volta"
-          | 2. REFINE
-      li.active 3. PUBLIQUE
-
-
-  section.refine
-    form
-      img[class="badge" src="" alt="nome da categoria" title="nome da categoria"]
+  .step_3.hidden
+    h2 Comece uma ideia
+    section.steps
+      ul
+        li
+          a.volta_1 1. descreva
+        li
+          a.volta_2 2. refine
+        li.active 3. publique
+    section.publish
+      img class='badge' src='' alt='nome da categoria' title='nome da categoria'
       h3.edit Nome da ideia. Campo editável in loco.
       .what
-        p.edit 
+        p.edit
           | Aqui vem todo o conteúdo entrado em "O que é esta ideia". Campo editável in loco.
       .share
         a twitter
         a facebook
-
-      a.button
+      input.button type="submit"
         | Publicar!
