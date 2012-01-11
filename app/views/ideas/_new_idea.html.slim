@@ -1,59 +1,56 @@
 form.new_idea
   .step_1
-    h2 Comece uma ideia
+    h2= t('idea.new.start')
     section.steps
       ul
-        li.active 1. descreva
-        li 2. refine
-        li 3. publique
+        li.active= t('idea.new.step_1')
+        li= t('idea.new.step_2')
+        li= t('idea.new.step_3')
+
     section.describe
-      h3 O que é essa ideia?
+      h3= t('idea.new.about')
       p
         label for="description"
         textarea name="description"
-      a.button.next Próxima etapa
+      a.button.next
+        = t('idea.new.next_step')
 
   .step_2.hidden
-    h2 Comece uma ideia
+    h2= t('idea.new.start')
+
     section.steps
       ul
         li
-          a.volta_1 1. descreva
-        li.active 2. refine
-        li 3. publique
+          a.volta_1= t('idea.new.step_1')
+        li.active= t('idea.new.step_2')
+        li= t('idea.new.step_3')
     section.refine
       blockquote
         p
           | Aqui vem um preview da descrição entrada na primeira etapa. Quando a pessoa clica, volta para a primeira etapa.
-      h3 O que é essa ideia?
+      h3= t('idea.new.about')
       p
-        label for="name" Dê um nome: 
+        label for="name" Dê um nome:
         input type="text" name="name"
       p
         label.left for="nutshell"
-          | Resuma em poucas palavras: 
+          | Resuma em poucas palavras:
         span.char_counter 200
         textarea.limited name="nutshell"
       .categories
         h4 Escolha uma categoria:
-        p
-          label for="violence"
-            = image_tag('badges/security.png')
-            br
-            | Segurança
-          input type="radio" name="category" id="violence" value="violence"
-        p
-          label for="urban_mobility"
-            = image_tag('badges/urban.png')
-            br
-            | Mobilidade Urbana
-          input type="radio" name="category" id="urban_mobility" value="urban_mobility"
-        p
-          label for="natural_disasters"
-            = image_tag('badges/disasters.png')
-            br
-            | Catástrofes Naturais
-          input type="radio" name="category" id="natural_disasters" value="natural_disasters"
+
+        // Getting categories from the ideas_controller
+        - unless @categories.nil?
+          - @categories.each do |category|
+
+            p
+              label
+                = image_tag category.badge.url, :size => "31x31", :alt => "#{category.name}", :title => "#{category.name}"
+                br
+                = "#{category.name}"
+                input type="radio" name="category" id="#{category.name.parameterize}" value="#{category.id}"
+
       a.button.next Próxima etapa
 
   .step_3.hidden

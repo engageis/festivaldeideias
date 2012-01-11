@@ -1,0 +1,26 @@
+pt-BR:
+  # Main texts for idea (create, edit and show actions are here)
+  idea:
+    new:
+      step_1: "1. Descreva"
+      step_2: "2. Refine"
+      step_3: "3. Publique"
+      start: Comece uma ideia
+      about: O que é esta ideia?
+      next_step: Próxima etapa
+
+    popular:
+      header: Ideias
+      about: Uma ideia popular é aquela que tem bastante interação por contribuição e comentários de usuários.
+
+  # Buttons
+  buttons:
+    new_idea: Comece uma ideia!
+    show_idea: Conheça e contribua
+    edit_idea: Editar minha ideia
+
+
+  # Login stuff
+  login:
+    create_account: Criar uma conta
+    do_login: Fazer login
