@@ -9,8 +9,11 @@ pt-BR:
       about: O que é esta ideia?
       next_step: Próxima etapa
 
+    homepage:
+      header: Ideias em destaque
+      about: Selecionamos algumas ideias interessantes que estão rolando. Quem sabe você não se interessa e começa colaborando em uma delas?
     popular:
-      header: Ideias
+      header: Ideias Populares
       about: Uma ideia popular é aquela que tem bastante interação por contribuição e comentários de usuários.
 
   # Buttons

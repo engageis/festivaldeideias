@@ -1,3 +1,5 @@
+/*h1= flash[:error]*/
+
 #most_active_ideas
   h1= t('idea.popular.header')
   h2.info= t('idea.popular.about')
@@ -5,8 +7,7 @@
   ol.ideas_buckets
     - unless @ideas.nil?
       - @ideas.each_with_index do |idea, pos|
-        // TODO: Natalia, fix this list (is it first or last?)
-        // TODO: Luiz create Issues/Badges/Categories
+        //
         // Badges:
         //  = image_tag "badges/security.png", :alt => "Violência", :title => "Violência"
         //  = image_tag "badges/urban.png", :alt => "Mobilidade Urbana", :title => "Mobilidade Urbana"
@@ -14,19 +15,24 @@
         //
         li.bucket.first[class=("last" if pos == (@ideas.size - 1))]
           header
-            = image_tag "badges/urban.png", :alt => "Mobilidade Urbana", :title => "Mobilidade Urbana"
+            // Category badge
+            = image_tag idea.category.badge.url, :size => "30x30", :alt => idea.category.name, :title => idea.category.name
             h3
-              a.idea_title[href=idea_path(idea)]
-                = idea.title
+              = link_to idea.title, category_idea_path(idea.category, idea), :class => "idea_title"
+            // Idea user
             span.idea_user
               = "Iniciada por #{idea.user.name}"
             .clear
           .description
             p.idea_headline
-              = idea.headline
 
-          a.button.primary[href=idea_path(idea)]
-            |Conheça e contribua
+              // Is Headline present? Ok, show me. If not, show me the description.
+              = idea.headline ? idea.headline : truncate(idea.description, :length => 140, :separator => " ")
+
+          // Share btn
+          = link_to t('buttons.show_idea'), category_idea_path(idea.category, idea), :class => "button primary"
+
+          // Collaboration & Popularity
           ul.stats
             li.likes
               = idea.likes

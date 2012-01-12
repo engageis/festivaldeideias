@@ -12,6 +12,7 @@ class IdeasController < ApplicationController
   before_filter :load_resources
 
   def navigate
+    @ideas = collection
   end
 
   def create

@@ -1,7 +1,8 @@
 // SIDEBAR FOR HOME AND FILTER PAGE
-- if controller.action_name == "index"
+- if controller.action_name =~ /^(navigate|index)$/
   = render :partial => "layouts/filters"
   = render :partial => "layouts/community"
+  = render :partial => "layouts/blog_feeds"
 - else
   // SIDEBAR FOR IDEA PAGE
   = render :partial => "layouts/collaborators"
