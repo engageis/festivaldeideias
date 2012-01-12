@@ -9,6 +9,9 @@ pt-BR:
       about: O que é esta ideia?
       next_step: Próxima etapa
 
+    message:
+      success: Sua ideia foi criada com sucesso!
+
     homepage:
       header: Ideias em destaque
       about: Selecionamos algumas ideias interessantes que estão rolando. Quem sabe você não se interessa e começa colaborando em uma delas?
