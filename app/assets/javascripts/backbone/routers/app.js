@@ -1,6 +1,7 @@
 App.Router = Backbone.Router.extend({
 
     routes: {
+        "continue_idea": "loadIdeaFromStore",
         "/login": "loginAction",
         "/idea/new": "newIdeaBox"
     },
@@ -18,4 +19,8 @@ App.Router = Backbone.Router.extend({
     newIdeaBox: function () {
         $.facebox({ div: "#start" });
     },
+
+    loadIdeaFromStore: function () {
+        App.Ideas.newIdea.openIdeaForm();
+    }
 });

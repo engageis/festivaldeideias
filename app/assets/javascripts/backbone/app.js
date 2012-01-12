@@ -26,7 +26,7 @@ var App = window.App = {
             App.Common.startFacebox();
 
             // Sempre executar
-            new App.Ideas.Common();
+            App.Ideas.newIdea = new App.Ideas.NewIdea();
         },
 
         finish: function(){
@@ -36,7 +36,13 @@ var App = window.App = {
         },
 
         startFacebox: function () {
-            $('*[rel=facebox]').facebox();
+            // NOTE: Tive que modificar isto.
+            // É pra funcionar igual (só que melhor).
+            // Qualquer dúvida, me pergunte (Chico) por quê?
+            $('*[rel=facebox]').click(function () {
+                var href = this.href;
+                $.facebox({ div: href });
+            });
         },
     }
 };
