@@ -2,8 +2,7 @@ doctype 5
 html
   head
     title Festival de Ideias
-    = stylesheet_link_tag "application", "http://fonts.googleapis.com/css?family=Actor", "http://fonts.googleapis.com/css?family=Shadows+Into+Light"
-    = javascript_include_tag "application"
+    = stylesheet_link_tag :application, "http://fonts.googleapis.com/css?family=Actor", "http://fonts.googleapis.com/css?family=Shadows+Into+Light"
     = csrf_meta_tags
   - name = controller.controller_name
   - action = controller.action_name
@@ -13,8 +12,7 @@ html
     header.main
       .wrapper
         .logo
-          a[href="/"]
-            = image_tag "logotipo.png", :alt => "Festival de Ideais", :title => "Festival de Ideias"
+          = link_to (image_tag "logotipo.png", :alt => "Festival de Ideais", :title => "Festival de Ideias"), root_url
         nav
           ul.actions
             li
@@ -49,3 +47,5 @@ html
     = render :partial => "ideas/new_idea"
 
   = render :partial => "layouts/facebook_defaults"
+
+  = javascript_include_tag :application
