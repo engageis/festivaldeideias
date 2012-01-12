@@ -32,7 +32,8 @@ App.Ideas.NewIdea = App.BaseView.extend({
         "keydown .popup #idea_headline": "updateCharactersLeft",
         "keyup .popup #idea_headline": "updateCharactersLeft",
         "click .popup #refine blockquote": "focusOnDescription",
-        "click .popup input[type=submit]": "clearAll"
+        "click .popup input[type=submit]": "clearAll",
+        "submit .popup form": "checkForm"
     },
 
     showDescription: function () {
@@ -152,8 +153,18 @@ App.Ideas.NewIdea = App.BaseView.extend({
         }).prop('checked', true);
     },
 
+    formIsValid: function () {
+        return this.hasTitle() && this.hasCategory() && this.hasDescription();
+    },
+
+    checkForm: function () {
+        if (!this.formIsValid()) {
+            return false;
+        }
+    },
+
     clearAll: function () {
-        this.store.clearAll();
+        this.store.removeAll();
         this.loadIdeaFromStore();
     }
 });
