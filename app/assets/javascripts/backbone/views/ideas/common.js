@@ -6,7 +6,8 @@ App.Ideas.Common = App.BaseView.extend({
             "showRefinement",
             "showPublishing",
             "updateActiveLink",
-            "updatePublishingFields"
+            "updatePublishingFields",
+            "selectCategory"
         );
     },
 
@@ -14,7 +15,8 @@ App.Ideas.Common = App.BaseView.extend({
         "click a[href='#describe']": 'showDescription',
         "click a[href='#refine']": 'showRefinement',
         "click a[href='#publish']": 'showPublishing',
-        "click .popup a": "updateActiveLink"
+        "click .popup a": "updateActiveLink",
+        "click .popup #refine .categories li": "selectCategory"
     },
 
     showDescription: function () {
@@ -59,6 +61,17 @@ App.Ideas.Common = App.BaseView.extend({
 
     hasDescription: function () {
         return jQuery.trim($('.popup').find('#idea_description').val()).length > 0;
+    },
+
+    selectCategory: function (e) {
+        var clickedListItem, target;
+        target = e.target;
+        if (target.tagName === 'LI') {
+            clickedListItem = $(target);
+        } else {
+            clickedListItem = $(target).parents('li');
+        }
+        clickedListItem.find(':radio').prop('checked', true);
     },
 
     updatePublishingFields: function () {
