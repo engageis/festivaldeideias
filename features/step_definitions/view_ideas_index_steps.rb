@@ -8,8 +8,7 @@ end
 
 And /^(\d+) ideas exist$/ do |count|
   @ideas = []
-  @service = Factory.create(:service)
-  @user = @service.user
+  @user = Factory(:user_with_service)
 
   count.to_i.times do |f|
     f = Factory.create(:idea, :user => @user)
@@ -18,6 +17,7 @@ And /^(\d+) ideas exist$/ do |count|
 end
 
 When /^I visit the ideas index page$/ do
+  @user = Factory(:user) #fix for facebook_avatar
   visit root_path
 end
 
