@@ -65,12 +65,13 @@ App.Ideas.Common = App.BaseView.extend({
         var form, description, title, headline, publish;
         form = $('.popup').find('form');
         publish = form.find('#publish');
+        categoryImage = form.find('#refine .categories').find(':radio:checked').parent().find('img').attr('src');
         description = form.find('#idea_description').val();
         title = form.find('#idea_title').val();
         headline = form.find('#idea_headline').val();
         publish.find('.title').text(title);
         publish.find('.description').text(description);
         publish.find('.headline').text(headline);
-        //publish.find('.img').val();
+        publish.find('.category').attr('src', categoryImage);
     }
 });
