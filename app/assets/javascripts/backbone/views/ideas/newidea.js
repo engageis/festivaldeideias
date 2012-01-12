@@ -32,7 +32,6 @@ App.Ideas.NewIdea = App.BaseView.extend({
         "keydown .popup #idea_headline": "updateCharactersLeft",
         "keyup .popup #idea_headline": "updateCharactersLeft",
         "click .popup #refine blockquote": "focusOnDescription",
-        "click .popup input[type=submit]": "clearAll",
         "submit .popup form": "checkForm"
     },
 
@@ -160,6 +159,8 @@ App.Ideas.NewIdea = App.BaseView.extend({
     checkForm: function () {
         if (!this.formIsValid()) {
             return false;
+        } else {
+            this.store.removeAll();
         }
     },
 
