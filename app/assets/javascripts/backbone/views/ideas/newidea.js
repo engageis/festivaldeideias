@@ -9,6 +9,8 @@ App.Ideas.NewIdea = App.BaseView.extend({
                 ,"updateStore"
                 ,"openIdeaForm"
                 ,"updateCharactersLeft"
+                ,"focusOnDescription"
+                ,"clearAll"
             );
         var me = this;
         //$('.popup form').on('load', function () {
@@ -29,6 +31,8 @@ App.Ideas.NewIdea = App.BaseView.extend({
         "click a.start[href=#start]": "loadIdeaFromStore",
         "keydown .popup #idea_headline": "updateCharactersLeft",
         "keyup .popup #idea_headline": "updateCharactersLeft",
+        "click .popup #refine blockquote": "focusOnDescription",
+        "click .popup input[type=submit]": "clearAll"
     },
 
     showDescription: function () {
@@ -39,13 +43,18 @@ App.Ideas.NewIdea = App.BaseView.extend({
         this.updateActiveLink('describe');
     },
 
+    focusOnDescription: function () {
+        this.showDescription();
+        $('.popup #idea_description').focus();
+    },
+
     showRefinement: function () {
-        var box;
+        var box, descriptionText;
         if (!this.hasDescription()) return false;
         box = $('.popup');
-        box.find("#describe").addClass('hidden');
+        descriptionText = box.find("#describe").addClass('hidden').find('#idea_description').val();
         box.find("#publish").addClass('hidden');
-        box.find("#refine").removeClass('hidden');
+        box.find("#refine").removeClass('hidden').find('blockquote p').text(descriptionText);
         this.updateActiveLink('refine');
         this.updateCharactersLeft();
     },
