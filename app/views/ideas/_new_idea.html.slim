@@ -53,15 +53,19 @@
 
     // Publicação da ideia
     #publish.hidden
-      img class='badge' src='' alt="nome da categoria" title="nome da categoria"
-      h3.edit Nome da ideia. Campo editável in loco.
+      img.category class='badge' src='' alt="nome da categoria" title="nome da categoria"
+      h3.title Nome da ideia. Campo editável in loco.
       .what
-        p.edit
+        p.description
           | Aqui vem todo o conteúdo entrado em "O que é esta ideia". Campo editável in loco.
       // Botão de Submit
       - if current_user
         = f.submit "Publicar!", :class => 'button'
       - else
-        span.right Para publicar você deve estar logado:
-        a.button Logar-se com o Facebook!
+        span Para publicar você deve estar logado:
+        /*a.button Logar-se com o Facebook!*/
+        /*h2 Entre com sua conta do Facebook*/
+        .login_box
+          a[class="button facebook" href="/auth/facebook"] Login com Facebook
+          /*.fb-login-button[data-show-faces="true" data-width="200" data-max-rows="1"]*/
     //--------------------------------------------------------------------------------------

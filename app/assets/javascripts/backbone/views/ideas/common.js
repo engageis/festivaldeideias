@@ -1,16 +1,12 @@
-App.Ideas.Index = App.BaseView.extend({
-
-    // TODO: Dar um jeito dos valores dos campos
-    // ficarem preservados quando o facebox fecha.
-    // Ainda não pensei como...
-
+App.Ideas.Common = App.BaseView.extend({
     initialize: function () {
         _.bindAll(
             this,
             "showDescription",
             "showRefinement",
             "showPublishing",
-            "updateActiveLink"
+            "updateActiveLink",
+            "updatePublishingFields"
         );
     },
 
@@ -40,19 +36,33 @@ App.Ideas.Index = App.BaseView.extend({
         box.find("#describe").addClass('hidden');
         box.find("#refine").addClass('hidden');
         box.find("#publish").removeClass('hidden');
+        this.updatePublishingFields();
     },
 
     updateActiveLink: function (e) {
-        var shorcuts, hash;
-        shorcuts = $('.popup .shortcuts a');
+        var shortcuts, hash;
+        shortcuts = $('.popup .short_cuts a');
         hash = e.target.hash;
         shortcuts.each(function () {
-            alert(this.hash);
             if (this.hash === hash) {
-                $(this).addClass('active');
+                $(this).parent().addClass('active');
             } else {
-                $(this).removeClass('active');
+                $(this).parent().removeClass('active');
             }
         });
+    },
+
+    updatePublishingFields: function () {
+        var form, description, title, headline, publish;
+        form = $('.popup').find('form');
+        publish = form.find('#publish');
+        description = form.find('#idea_description').val();
+        title = form.find('#idea_title').val();
+        headline = form.find('#idea_headline').val();
+        publish.find('.title').text(title);
+        publish.find('.description').text(description);
+        publish.find('.headline').text(headline);
+        //publish.find('.img').val();
+
     }
 });
