@@ -4,11 +4,13 @@ App.Ideas.NewIdea = App.BaseView.extend({
                 ,"showDescription"
                 ,"showRefinement"
                 ,"showPublishing"
-                ,"updateActiveLink"
                 ,"updatePublishingFields"
                 ,"selectCategory"
                 ,"updateStore"
                 ,"openIdeaForm"
+                ,"updateCharactersLeft"
+                ,"focusOnDescription"
+                ,"clearAll"
             );
         var me = this;
         //$('.popup form').on('load', function () {
@@ -23,11 +25,15 @@ App.Ideas.NewIdea = App.BaseView.extend({
         "click a[href='#describe']": 'showDescription',
         "click a[href='#refine']": 'showRefinement',
         "click a[href='#publish']": 'showPublishing',
-        "click .popup a": "updateActiveLink",
         "click .popup #refine .categories li": "selectCategory",
         "blur .popup input": "updateStore",
         "blur .popup textarea": "updateStore",
-        "click a.start[href=#start]": "loadIdeaFromStore"
+        "click a.start[href=#start]": "loadIdeaFromStore",
+        "keydown .popup #idea_headline": "updateCharactersLeft",
+        "keyup .popup #idea_headline": "updateCharactersLeft",
+        "click .popup #refine blockquote": "focusOnDescription",
+        "submit .popup form": "checkForm",
+        "click .popup .clear_form": "clearAll"
     },
 
     showDescription: function () {
@@ -35,43 +41,54 @@ App.Ideas.NewIdea = App.BaseView.extend({
         box.find("#refine").addClass('hidden');
         box.find("#publish").addClass('hidden');
         box.find("#describe").removeClass('hidden');
+        this.updateActiveLink('describe');
+    },
+
+    focusOnDescription: function () {
+        this.showDescription();
+        $('.popup #idea_description').focus();
     },
 
     showRefinement: function () {
-        var box;
+        var box, descriptionText;
         if (!this.hasDescription()) return false;
         box = $('.popup');
-        box.find("#describe").addClass('hidden');
+        descriptionText = box.find("#describe").addClass('hidden').find('#idea_description').val();
         box.find("#publish").addClass('hidden');
-        box.find("#refine").removeClass('hidden');
+        box.find("#refine").removeClass('hidden').find('blockquote p').text(descriptionText);
+        this.updateActiveLink('refine');
+        this.updateCharactersLeft();
     },
 
     showPublishing: function () {
         var box;
-        if (!this.hasDescription()) return false;
+        if (!this.hasDescription() || !this.hasCategory() || !this.hasTitle()) return false;
         box = $('.popup');
         box.find("#describe").addClass('hidden');
         box.find("#refine").addClass('hidden');
         box.find("#publish").removeClass('hidden');
+        this.updateActiveLink('publish');
         this.updatePublishingFields();
     },
 
-    updateActiveLink: function (e) {
-        var shortcuts, hash;
-        if (!this.hasDescription()) return false;
-        shortcuts = $('.popup .short_cuts a');
-        hash = e.target.hash;
-        shortcuts.each(function () {
-            if (this.hash === hash) {
-                $(this).parent().addClass('active');
-            } else {
-                $(this).parent().removeClass('active');
-            }
-        });
+    updateActiveLink: function (link) {
+        var lis = $('.popup .short_cuts li');
+        lis.removeClass('active');
+        lis.filter(function () {
+            return $(this).find('a[href=#'+link+']').size() > 0;
+        }).addClass('active');
     },
 
     hasDescription: function () {
         return jQuery.trim($('.popup').find('#idea_description').val()).length > 0;
+    },
+
+    hasCategory: function () {
+        return $('.popup').find('.categories :radio:checked').size() > 0;
+    },
+
+    hasTitle: function () {
+        return $('.popup').find('#idea_title').val().length > 0;
     },
 
     selectCategory: function (e) {
@@ -84,6 +101,13 @@ App.Ideas.NewIdea = App.BaseView.extend({
         }
         clickedListItem.find(':radio').prop('checked', true);
         this.updateStore();
+    },
+
+    updateCharactersLeft: function (e) {
+        var t, c;
+        t = this.headline || $('.popup #idea_headline');
+        c = this.counter  || $('.popup .char_counter');
+        c.text(200 - t.val().length);
     },
 
     updatePublishingFields: function () {
@@ -129,8 +153,21 @@ App.Ideas.NewIdea = App.BaseView.extend({
         }).prop('checked', true);
     },
 
+    formIsValid: function () {
+        return this.hasTitle() && this.hasCategory() && this.hasDescription();
+    },
+
+    checkForm: function () {
+        if (!this.formIsValid()) {
+            return false;
+        } else {
+            this.store.removeAll();
+        }
+    },
+
     clearAll: function () {
-        this.store.clearAll();
+        this.store.removeAll();
         this.loadIdeaFromStore();
+        this.updatePublishingFields();
     }
 });
