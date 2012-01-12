@@ -32,7 +32,8 @@ App.Ideas.NewIdea = App.BaseView.extend({
         "keydown .popup #idea_headline": "updateCharactersLeft",
         "keyup .popup #idea_headline": "updateCharactersLeft",
         "click .popup #refine blockquote": "focusOnDescription",
-        "submit .popup form": "checkForm"
+        "submit .popup form": "checkForm",
+        "click .popup .clear_form": "clearAll"
     },
 
     showDescription: function () {
@@ -167,5 +168,6 @@ App.Ideas.NewIdea = App.BaseView.extend({
     clearAll: function () {
         this.store.removeAll();
         this.loadIdeaFromStore();
+        this.updatePublishingFields();
     }
 });

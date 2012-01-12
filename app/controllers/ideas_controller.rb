@@ -14,7 +14,8 @@ class IdeasController < ApplicationController
   def create
     @idea = Idea.new(params[:idea])
     @idea.user = current_user if current_user
-    create!(t('idea.message.success')) { return redirect_to :back }
+    create!(:notice => t('idea.message.success'),
+            :warning => t('idea.message.failure')) { request.referer }
   end
 
   protected
