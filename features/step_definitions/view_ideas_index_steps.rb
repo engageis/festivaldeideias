@@ -8,11 +8,11 @@ end
 
 And /^(\d+) ideas exist$/ do |count|
   @ideas = []
-  user = Factory.create(:user)
-  service = Factory.create(:service, :user => user)
+  @service = Factory.create(:service)
+  @user = @service.user
 
   count.to_i.times do |f|
-    f = Factory.create(:idea, :user => user)
+    f = Factory.create(:idea, :user => @user)
     @ideas << f
   end
 end

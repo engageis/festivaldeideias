@@ -18,13 +18,7 @@ class IdeasController < ApplicationController
   def create
     @idea = Idea.new(params[:idea])
     @idea.user = current_user if current_user
-    create! do |success, failure|
-      success.html { return redirect_to :back }
-      failure.html {
-        flash[:error] = @idea.errors.inspect
-        return redirect_to :back
-      }
-    end
+    create! { return redirect_to :back }
   end
 
   protected
