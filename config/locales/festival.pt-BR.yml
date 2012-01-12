@@ -13,6 +13,9 @@ pt-BR:
       give_a_headline: "Se quiser, resuma sua ideia em algumas palavras:"
       choose_a_category: Em que categoria sua ideia se encaixa?
 
+    message:
+      success: Sua ideia foi criada com sucesso!
+
     homepage:
       header: Ideias em destaque
       about: Selecionamos algumas ideias interessantes que estão rolando. Quem sabe você não se interessa e começa colaborando em uma delas?
