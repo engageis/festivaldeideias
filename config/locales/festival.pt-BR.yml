@@ -8,6 +8,10 @@ pt-BR:
       start: Comece uma ideia
       about: O que é esta ideia?
       next_step: Próxima etapa
+      give_a_description: Descreva como quiser, você terá como editar depois.
+      give_a_name: "Nomeie sua ideia:"
+      give_a_headline: "Se quiser, resuma sua ideia em algumas palavras:"
+      choose_a_category: Em que categoria sua ideia se encaixa?
 
     homepage:
       header: Ideias em destaque
