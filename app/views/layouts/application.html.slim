@@ -8,6 +8,9 @@ html
   - action = controller.action_name
 
   body[data-controller-class="#{controller.class.name}" data-controller-name="#{name.camelize}" data-action="#{action.camelize}" ]
+    - if alert or notice
+      = alert & notice
+
     = render :partial => "layouts/login"
     header.main
       .wrapper
