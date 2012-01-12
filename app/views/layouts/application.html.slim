@@ -2,14 +2,14 @@ doctype 5
 html
   head
     title Festival de Ideias
-    = stylesheet_link_tag :application, "http://fonts.googleapis.com/css?family=Actor", "http://fonts.googleapis.com/css?family=Shadows+Into+Light"
+    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Actor", "http://fonts.googleapis.com/css?family=Shadows+Into+Light", :application
     = csrf_meta_tags
   - name = controller.controller_name
   - action = controller.action_name
 
   body[data-controller-class="#{controller.class.name}" data-controller-name="#{name.camelize}" data-action="#{action.camelize}" ]
     - if alert or notice
-      = alert & notice
+      span.message[class=(alert ? "alert" : "notice")]= alert or notice
 
     = render :partial => "layouts/login"
     header.main
