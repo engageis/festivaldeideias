@@ -25,14 +25,18 @@ App.Ideas.Common = App.BaseView.extend({
     },
 
     showRefinement: function () {
-        var box = $('.popup');
+        var box;
+        if (!this.hasDescription()) return false;
+        box = $('.popup');
         box.find("#describe").addClass('hidden');
         box.find("#publish").addClass('hidden');
         box.find("#refine").removeClass('hidden');
     },
 
     showPublishing: function () {
-        var box = $('.popup');
+        var box;
+        if (!this.hasDescription()) return false;
+        box = $('.popup');
         box.find("#describe").addClass('hidden');
         box.find("#refine").addClass('hidden');
         box.find("#publish").removeClass('hidden');
@@ -41,6 +45,7 @@ App.Ideas.Common = App.BaseView.extend({
 
     updateActiveLink: function (e) {
         var shortcuts, hash;
+        if (!this.hasDescription()) return false;
         shortcuts = $('.popup .short_cuts a');
         hash = e.target.hash;
         shortcuts.each(function () {
@@ -50,6 +55,10 @@ App.Ideas.Common = App.BaseView.extend({
                 $(this).parent().removeClass('active');
             }
         });
+    },
+
+    hasDescription: function () {
+        return jQuery.trim($('.popup').find('#idea_description').val()).length > 0;
     },
 
     updatePublishingFields: function () {
@@ -63,6 +72,5 @@ App.Ideas.Common = App.BaseView.extend({
         publish.find('.description').text(description);
         publish.find('.headline').text(headline);
         //publish.find('.img').val();
-
     }
 });
