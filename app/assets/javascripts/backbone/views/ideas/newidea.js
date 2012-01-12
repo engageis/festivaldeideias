@@ -1,14 +1,22 @@
-App.Ideas.Common = App.BaseView.extend({
+App.Ideas.NewIdea = App.BaseView.extend({
     initialize: function () {
-        _.bindAll(
-            this,
-            "showDescription",
-            "showRefinement",
-            "showPublishing",
-            "updateActiveLink",
-            "updatePublishingFields",
-            "selectCategory"
-        );
+        _.bindAll(this
+                ,"showDescription"
+                ,"showRefinement"
+                ,"showPublishing"
+                ,"updateActiveLink"
+                ,"updatePublishingFields"
+                ,"selectCategory"
+                ,"updateStore"
+                ,"openIdeaForm"
+            );
+        var me = this;
+        //$('.popup form').on('load', function () {
+            //alert("Loaded");
+            //me.loadIdeaFromStore();
+        //});
+        this.store = new Store('store');
+        this.loadIdeaFromStore();
     },
 
     events: {
@@ -16,7 +24,10 @@ App.Ideas.Common = App.BaseView.extend({
         "click a[href='#refine']": 'showRefinement',
         "click a[href='#publish']": 'showPublishing',
         "click .popup a": "updateActiveLink",
-        "click .popup #refine .categories li": "selectCategory"
+        "click .popup #refine .categories li": "selectCategory",
+        "blur .popup input": "updateStore",
+        "blur .popup textarea": "updateStore",
+        "click a.start[href=#start]": "loadIdeaFromStore"
     },
 
     showDescription: function () {
@@ -72,6 +83,7 @@ App.Ideas.Common = App.BaseView.extend({
             clickedListItem = $(target).parents('li');
         }
         clickedListItem.find(':radio').prop('checked', true);
+        this.updateStore();
     },
 
     updatePublishingFields: function () {
@@ -86,5 +98,39 @@ App.Ideas.Common = App.BaseView.extend({
         publish.find('.description').text(description);
         publish.find('.headline').text(headline);
         publish.find('.category').attr('src', categoryImage);
+    },
+
+    updateStore: function () {
+        var form, s;
+        form = $('.popup').find('form');
+        s = this.store;
+        s.set('description', form.find('#idea_description').val());
+        s.set('headline', form.find('#idea_headline').val());
+        s.set('category', form.find('.categories :radio:checked').val());
+        s.set('title', form.find('#idea_title').val());
+    },
+
+    openIdeaForm: function () {
+        $.facebox({ div: '#start' });
+        this.loadIdeaFromStore();
+        return false;
+    },
+
+    loadIdeaFromStore: function () {
+        var form, s, category_id;
+        form = $('.popup').find('form');
+        s = this.store;
+        form.find('#idea_description').val(s.get('description'));
+        form.find('#idea_headline').val(s.get('headline'));
+        form.find('#idea_title').val(s.get('title'));
+        category = s.get('category');
+        form.find('.categories :radio').filter(function () {
+            return this.value === category;
+        }).prop('checked', true);
+    },
+
+    clearAll: function () {
+        this.store.clearAll();
+        this.loadIdeaFromStore();
     }
 });
