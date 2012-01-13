@@ -8,8 +8,12 @@ ActiveAdmin.register IdeaCategory do
     end
     column :id
     column :name
-    column :created_at
-    column :updated_at
+    column "Criado em" do |s|
+      s.created_at.strftime('%d/%m/%Y')
+    end
+    column "Atualizado" do |s|
+      s.updated_at.strftime('%d/%m/%Y')
+    end
     default_actions
   end
 
