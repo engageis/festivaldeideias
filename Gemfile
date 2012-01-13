@@ -13,6 +13,7 @@ gem 'has_scope'
 
 # Administration & dependencies
 gem 'activeadmin'
+gem 'haml'
 gem 'sass-rails'
 gem 'meta_search',    '>= 1.1.0.pre'
 

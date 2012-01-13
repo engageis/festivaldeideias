@@ -11,6 +11,10 @@ Factory.define :user do |u|
   u.email(Factory.next(:email))
 end
 
+Factory.define :user_with_service, :parent => :user do |user|
+  user.after_create { |u| Factory(:service, :user => u) }
+end
+
 Factory.define :admin_user do |u|
   u.email("user@example.com")
   u.password("super_safe")
