@@ -17,10 +17,18 @@ class IdeasController < ApplicationController
   def create
     @idea = Idea.new(params[:idea])
     @idea.user = current_user if current_user
-    create!(
-            :notice => t('idea.message.success'),
-            :alert => t('idea.message.failure')
-    ) { request.referer }
+    # Agora depois de criada uma ideia, ela é exibida
+    #create!(:notice => t('idea.message.success'),:alert => t('idea.message.failure')) { request.referer }
+    create! do |success, failure|
+      success.html {
+        flash[:notice] = t('idea.message.success')
+        return redirect_to category_idea_path(@idea.category_id, @idea)
+      }
+      failure.html {
+        flash[:alert] = t('idea.message.failure')
+        return redirect_to request.referer
+      }
+    end
   end
 
   protected
