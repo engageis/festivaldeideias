@@ -28,6 +28,10 @@ App.Ideas.NewIdea = App.BaseView.extend({
         "blur .popup input": "updateStore",
         "blur .popup textarea": "updateStore",
         "click a.start[href=#start]": "loadIdeaFromStore",
+        "keyup .popup #idea_description": "updateLinkColors",
+        "keyup .popup #idea_headline": "updateLinkColors",
+        "keyup .popup #idea_title": "updateLinkColors",
+        "click .popup .categories li": "updateLinkColors",
         "keydown .popup #idea_headline": "updateCharactersLeft",
         "keyup .popup #idea_headline": "updateCharactersLeft",
         "click .popup #refine blockquote": "focusOnDescription",
@@ -50,13 +54,12 @@ App.Ideas.NewIdea = App.BaseView.extend({
         var method = 'showDescription';
         switch (this.lastPosition) {
             case 1:
-            if (this.hasDescription()) {
+            if (this.canGoToRefinement()) {
                 method = 'showRefinement';
             }
             break;
             case 2:
-            if (!this.hasDescription() || !this.hasTitle() || !this.hasCategory()) {}
-            else {
+            if (this.canGoToPublishing()) {
                 method = 'showPublishing'
             }
             break;
@@ -72,7 +75,7 @@ App.Ideas.NewIdea = App.BaseView.extend({
 
     showRefinement: function () {
         var box, descriptionText;
-        if (!this.hasDescription()) return false;
+        if (!this.canGoToRefinement()) return false;
         box = $('.popup');
         descriptionText = box.find("#describe").addClass('hidden').find('#idea_description').val();
         box.find("#publish").addClass('hidden');
@@ -84,7 +87,7 @@ App.Ideas.NewIdea = App.BaseView.extend({
 
     showPublishing: function () {
         var box;
-        if (!this.hasDescription() || !this.hasCategory() || !this.hasTitle()) return false;
+        if (!this.canGoToPublishing()) return false;
         box = $('.popup');
         box.find("#describe").addClass('hidden');
         box.find("#refine").addClass('hidden');
@@ -100,6 +103,15 @@ App.Ideas.NewIdea = App.BaseView.extend({
         lis.filter(function () {
             return $(this).find('a[href=#'+link+']').size() > 0;
         }).addClass('active');
+        this.updateLinkColors();
+    },
+
+    canGoToRefinement: function () {
+        return this.hasDescription();
+    },
+
+    canGoToPublishing: function () {
+        return !(!this.hasDescription() || !this.hasCategory() || !this.hasTitle());
     },
 
     hasDescription: function () {
@@ -155,6 +167,19 @@ App.Ideas.NewIdea = App.BaseView.extend({
         s.set('headline', form.find('#idea_headline').val());
         s.set('category', form.find('.categories :radio:checked').val());
         s.set('title', form.find('#idea_title').val());
+        this.updateLinkColors();
+    },
+
+    updateLinkColors: function () {
+        var links = $('.popup .short_cuts li');
+        links.removeClass('blue_link');
+        links.eq(0).addClass('blue_link');
+        if (this.canGoToRefinement()) {
+            links.eq(1).addClass('blue_link');
+        }
+        if (this.canGoToPublishing()) {
+            links.eq(2).addClass('blue_link');
+        }
     },
 
     openIdeaForm: function () {
@@ -177,6 +202,7 @@ App.Ideas.NewIdea = App.BaseView.extend({
         }).prop('checked', true);
         this.bindClearToCloseButton(box);
         this.goToLastOpenTab();
+        this.updateLinkColors();
     },
 
     bindClearToCloseButton: function (box) {
