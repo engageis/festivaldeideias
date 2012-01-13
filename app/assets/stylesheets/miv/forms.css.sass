@@ -53,10 +53,22 @@ form
   .button
     clear: both
     float: right
+    &.prev
+      float: left
+      &:before
+        content: "\00ab"
+        margin-right: 5px
     &.next
+      float: right
       &:after
         content: "\00bb"
         margin-left: 5px
+
+  //Natália, não me bate
+  .button_pair
+    clear: both
+    .button
+      clear: none
 
   .char_counter
     color: #666
