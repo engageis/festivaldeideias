@@ -3,9 +3,9 @@ class IdeasController < ApplicationController
   inherit_resources
 
   has_scope :featured, :type => :boolean, :only => :index
-  has_scope :popular
-  has_scope :latest
-  has_scope :recent
+  has_scope :popular, :type => :boolean
+  has_scope :latest, :type => :boolean
+  has_scope :recent, :type => :boolean
 
   belongs_to :idea_category, :optional => true
 
