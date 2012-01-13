@@ -5,13 +5,13 @@ pt-BR:
       step_1: "1. Descreva"
       step_2: "2. Refine"
       step_3: "3. Publique"
-      start: "Comece uma ideia"
-      about: "O que é esta ideia?"
-      next_step: "Próxima etapa"
-      give_a_description: "Descreva sua ideia"
-      give_a_name: "Dê um nome a sua idea"
-      give_a_headline: "Faça um resumo da sua ideia"
-      choose_a_category: "Escolha uma categoria"
+      start: Comece uma ideia
+      about: O que é esta ideia?
+      next_step: Próxima etapa
+      give_a_description: Descreva como quiser, você terá como editar depois.
+      give_a_name: "Nomeie sua ideia:"
+      give_a_headline: "Se quiser, resuma sua ideia em algumas palavras:"
+      choose_a_category: Em que categoria sua ideia se encaixa?
 
     message:
       success: "Sua ideia foi criada com sucesso!"
