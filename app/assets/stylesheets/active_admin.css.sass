@@ -1,0 +1,28 @@
+// Active Admin CSS Styles
+@import active_admin/mixins
+@import active_admin/base
+
+// To customize the Active Admin interfaces, add your
+// styles here:
+
+.idea_show
+  :width 100%
+  &:hover
+    :cursor pointer
+.idea_hidden
+  :position absolute
+  :margin-left 60px
+  :margin-top -40px
+  :padding 20px
+  :width 400px
+  :background #fff
+  :border 2px solid #dedede
+  :display none
+  :box-shadow 1px 1px 5px #666
+  .title
+    :color #09F
+  .category
+    :float right
+    :padding 10px
+tr.row_selected
+  :background #ffeea8
