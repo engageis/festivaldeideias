@@ -13,9 +13,9 @@ App.Ideas.NewIdea = App.BaseView.extend({
                 ,"clearAll"
                 ,"setRedirectUrl"
             );
-        var me = this;
         this.store = new Store('store');
-        this.loadIdeaFromStore();
+        this.lastPosition = 0;
+        //this.loadIdeaFromStore();
     },
 
     events: {
@@ -42,9 +42,28 @@ App.Ideas.NewIdea = App.BaseView.extend({
         this.updateActiveLink('describe');
     },
 
+    goToLastOpenTab: function () {
+        var method = 'showDescription';
+        switch (this.lastPosition) {
+            case 1:
+            if (this.hasDescription()) {
+                method = 'showRefinement';
+            }
+            break;
+            case 2:
+            if (!this.hasDescription() || !this.hasTitle() || !this.hasCategory()) {}
+            else {
+                method = 'showPublishing'
+            }
+            break;
+        }
+        this[method]();
+    },
+
     focusOnDescription: function () {
         this.showDescription();
         $('.popup #idea_description').focus();
+        this.lastPosition = 0;
     },
 
     showRefinement: function () {
@@ -56,6 +75,7 @@ App.Ideas.NewIdea = App.BaseView.extend({
         box.find("#refine").removeClass('hidden').find('blockquote p').text(descriptionText);
         this.updateActiveLink('refine');
         this.updateCharactersLeft();
+        this.lastPosition = 1;
     },
 
     showPublishing: function () {
@@ -67,6 +87,7 @@ App.Ideas.NewIdea = App.BaseView.extend({
         box.find("#publish").removeClass('hidden');
         this.updateActiveLink('publish');
         this.updatePublishingFields();
+        this.lastPosition = 2;
     },
 
     updateActiveLink: function (link) {
@@ -151,6 +172,7 @@ App.Ideas.NewIdea = App.BaseView.extend({
             return this.value === category;
         }).prop('checked', true);
         this.bindClearToCloseButton(box);
+        this.goToLastOpenTab();
     },
 
     bindClearToCloseButton: function (box) {
