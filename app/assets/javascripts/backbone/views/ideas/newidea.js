@@ -11,6 +11,7 @@ App.Ideas.NewIdea = App.BaseView.extend({
                 ,"updateCharactersLeft"
                 ,"focusOnDescription"
                 ,"clearAll"
+                ,"setRedirectUrl"
             );
         var me = this;
         //$('.popup form').on('load', function () {
@@ -33,7 +34,8 @@ App.Ideas.NewIdea = App.BaseView.extend({
         "keyup .popup #idea_headline": "updateCharactersLeft",
         "click .popup #refine blockquote": "focusOnDescription",
         "submit .popup form": "checkForm",
-        "click .popup .clear_form": "clearAll"
+        "click .popup .clear_form": "clearAll",
+        "click a.start[href=#login]": "setRedirectUrl"
     },
 
     showDescription: function () {
@@ -169,5 +171,15 @@ App.Ideas.NewIdea = App.BaseView.extend({
         this.store.removeAll();
         this.loadIdeaFromStore();
         this.updatePublishingFields();
-    }
+    },
+
+    setRedirectUrl: function (e) {
+        console.log($(e.target).data(''))
+        if ($(e.target).data('return-url') === '#continue_idea') {
+            var field, value;
+            field = $('.popup').find('#redirect_url');
+            value = field.val();
+            field.val(value + '#continue_idea');
+        }
+    },
 });
