@@ -42,14 +42,6 @@ App.Ideas.NewIdea = App.BaseView.extend({
         "click .popup #fbh a[href=#fbl]": "showFbl"
     },
 
-    showDescription: function () {
-        var box = $('.popup');
-        box.find("#refine").addClass('hidden');
-        box.find("#publish").addClass('hidden');
-        box.find("#describe").removeClass('hidden');
-        this.updateActiveLink('describe');
-    },
-
     goToLastOpenTab: function () {
         var method = 'showDescription';
         switch (this.lastPosition) {
@@ -65,6 +57,15 @@ App.Ideas.NewIdea = App.BaseView.extend({
             break;
         }
         this[method]();
+    },
+
+    showDescription: function () {
+        var box = $('.popup');
+        box.find("#refine").addClass('hidden');
+        box.find("#publish").addClass('hidden');
+        box.find("#describe").removeClass('hidden');
+        this.updateActiveLink('describe');
+        this.lastPosition = 0;
     },
 
     focusOnDescription: function () {
