@@ -14,10 +14,6 @@ App.Ideas.NewIdea = App.BaseView.extend({
                 ,"setRedirectUrl"
             );
         var me = this;
-        //$('.popup form').on('load', function () {
-            //alert("Loaded");
-            //me.loadIdeaFromStore();
-        //});
         this.store = new Store('store');
         this.loadIdeaFromStore();
     },
@@ -34,7 +30,7 @@ App.Ideas.NewIdea = App.BaseView.extend({
         "keyup .popup #idea_headline": "updateCharactersLeft",
         "click .popup #refine blockquote": "focusOnDescription",
         "submit .popup form": "checkForm",
-        "click .popup .clear_form": "clearAll",
+        "click .popup img.close_image": "clearAll",
         "click a.start[href=#login]": "setRedirectUrl"
     },
 
@@ -143,8 +139,9 @@ App.Ideas.NewIdea = App.BaseView.extend({
     },
 
     loadIdeaFromStore: function () {
-        var form, s, category_id;
-        form = $('.popup').find('form');
+        var box, form, s, category_id;
+        box = $('.popup');
+        form = box.find('form');
         s = this.store;
         form.find('#idea_description').val(s.get('description'));
         form.find('#idea_headline').val(s.get('headline'));
@@ -153,6 +150,14 @@ App.Ideas.NewIdea = App.BaseView.extend({
         form.find('.categories :radio').filter(function () {
             return this.value === category;
         }).prop('checked', true);
+        this.bindClearToCloseButton(box);
+    },
+
+    bindClearToCloseButton: function (box) {
+        var me = this;
+        box.find('a.close').click(function () {
+            me.clearAll();
+        });
     },
 
     formIsValid: function () {
@@ -169,8 +174,9 @@ App.Ideas.NewIdea = App.BaseView.extend({
 
     clearAll: function () {
         this.store.removeAll();
-        this.loadIdeaFromStore();
-        this.updatePublishingFields();
+        //this.store.removeAll();
+        //this.loadIdeaFromStore();
+        //this.updatePublishingFields();
     },
 
     setRedirectUrl: function (e) {
