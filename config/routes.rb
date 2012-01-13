@@ -5,8 +5,9 @@ FestivalDeIdeias::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   # Authentication
-  match '/auth/:provider/callback', :to => 'sessions#create',   :as => :session_create
-  match '/logout',                  :to => 'sessions#destroy',  :as => :session_destroy
+  match '/auth/:provider/callback', :to => 'sessions#create',                :as => :session_create
+  match '/logout',                  :to => 'sessions#destroy',               :as => :session_destroy
+  match '/connect_with_facebook',   :to => 'sessions#connect_with_facebook', :as => :connect_with_facebook
 
   # Resources
   resources :users
@@ -31,4 +32,5 @@ FestivalDeIdeias::Application.routes.draw do
 
   get "/miv" => "miv#index" if Rails.env.development?
   root :to => redirect("/featured")
+
 end
