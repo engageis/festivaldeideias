@@ -5,33 +5,35 @@ pt-BR:
       step_1: "1. Descreva"
       step_2: "2. Refine"
       step_3: "3. Publique"
-      start: Comece uma ideia
-      about: O que é esta ideia?
-      next_step: Próxima etapa
-      prev_step: Voltar
-      give_a_description: Descreva como quiser, você terá como editar depois.
+      start: "Comece uma ideia"
+      about: "O que é esta ideia?"
+      next_step: "Próxima etapa"
+      prev_step: "Voltar"
+      give_a_description: "Descreva como quiser, você terá como editar depois."
       give_a_name: "Nomeie sua ideia:"
       give_a_headline: "Se quiser, resuma sua ideia em algumas palavras:"
-      choose_a_category: Em que categoria sua ideia se encaixa?
+      choose_a_category: "Em que categoria sua ideia se encaixa?"
 
     message:
       success: "Sua ideia foi criada com sucesso!"
 
     homepage:
-      header: Ideias em destaque
-      about: Selecionamos algumas ideias interessantes que estão rolando. Quem sabe você não se interessa e começa colaborando em uma delas?
+      header: "Ideias em destaque"
+      about: "Selecionamos algumas ideias interessantes que estão rolando. Quem sabe você não se interessa e começa colaborando em uma delas?"
     popular:
-      header: Ideias Populares
-      about: Uma ideia popular é aquela que tem bastante interação por contribuição e comentários de usuários.
+      header: "Ideias Populares"
+      about: "Uma ideia popular é aquela que tem bastante interação por contribuição e comentários de usuários."
 
   # Buttons
   buttons:
-    new_idea: Comece uma ideia!
-    show_idea: Conheça e contribua
-    edit_idea: Editar minha ideia
+    new_idea: "Comece uma ideia!"
+    show_idea: "Conheça e contribua"
+    edit_idea: "Editar minha ideia"
 
+  facebox:
+    submit_email: "Enviar e-mail"
 
   # Login stuff
   login:
-    create_account: Criar uma conta
-    do_login: Fazer login
+    create_account: "Criar uma conta"
+    do_login: "Fazer login"

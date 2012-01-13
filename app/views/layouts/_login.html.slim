@@ -1,17 +1,37 @@
 #login
   #sign_in    
-    h2 Entre com sua conta do Facebook
-    
-    .login_box
-      /*a[class="button facebook" href="/auth/facebook"] Login com Facebook*/
-      /*.fb-login-button[data-show-faces="true" data-width="200" data-max-rows="1"]*/
-      = form_tag connect_with_facebook_url, :method => 'POST' do
-        = hidden_field_tag :redirect_url, request.url
-        = submit_tag 'Login com Facebook', :class => 'button facebook'
-      .fb-login-button[data-show-faces="true" data-width="200" data-max-rows="1"]
+    #fbl
+      h2 Entre com sua conta do Facebook
+      
+      .login_box
+        /*a[class="button facebook" href="/auth/facebook"] Login com Facebook*/
+        /*.fb-login-button[data-show-faces="true" data-width="200" data-max-rows="1"]*/
+        = form_tag connect_with_facebook_url, :method => 'POST' do
+          = hidden_field_tag :redirect_url, request.url
+          = submit_tag 'Login com Facebook', :class => 'button facebook'
+        .fb-login-button[data-show-faces="true" data-width="200" data-max-rows="1"]
 
-    footer
-      p 
-        | Nós nunca iremos saber sua senha ou qualquer outro dado sigiloso de sua conta do Facebook.
-        br
-        | Só teremos acesso a informações básicas, como nome, foto e email.
+        p
+          a href='#fbh' Não quero usar o Facebook
+
+      footer
+        p 
+          | Nós nunca iremos saber sua senha ou qualquer outro dado sigiloso de sua conta do Facebook.
+          br
+          | Só teremos acesso a informações básicas, como nome, foto e email.
+    #fbh.hidden
+      = form_tag '', :method => 'POST' do
+        p
+          | Texto que explica porque é importante usar o Facebook, bla bla bla.<br />
+          | Para me editar -> app/views/layouts/_login.html.slim
+        p
+          a href="#fbl" Ok, mudei de idéia, quero usar o Facebook
+          /*= form_tag connect_with_facebook_url, :method => 'POST' do*/
+            /*= hidden_field_tag :redirect_url, request.url*/
+            /*= submit_tag 'Login com Facebook', :class => 'button facebook'*/
+        p Você realmente não quer usar o Facebook? Deixe o seu e-mail para sabermos.
+        p
+          = label_tag :email, 'Seu endereço de e-mail'
+          = text_field_tag :email
+        p
+          = submit_tag t('facebox.submit_email'), :class => 'button'

@@ -12,6 +12,8 @@ App.Ideas.NewIdea = App.BaseView.extend({
                 ,"focusOnDescription"
                 ,"clearAll"
                 ,"setRedirectUrl"
+                ,"showFbh"
+                ,"showFbl"
             );
         this.store = new Store('store');
         this.lastPosition = 0;
@@ -31,7 +33,9 @@ App.Ideas.NewIdea = App.BaseView.extend({
         "click .popup #refine blockquote": "focusOnDescription",
         "submit .popup form": "checkForm",
         "click .popup img.close_image": "clearAll",
-        "click a.start[href=#login]": "setRedirectUrl"
+        "click a.start[href=#login]": "setRedirectUrl",
+        "click .popup #fbl a[href=#fbh]": "showFbh",
+        "click .popup #fbh a[href=#fbl]": "showFbl"
     },
 
     showDescription: function () {
@@ -210,4 +214,20 @@ App.Ideas.NewIdea = App.BaseView.extend({
             field.val(value + '#continue_idea');
         }
     },
+
+    showFbh: function () {
+        var box;
+        box = $('.popup');
+        box.find('#fbl').addClass('hidden');
+        box.find('#fbh').removeClass('hidden');
+        return false;
+    },
+
+    showFbl: function () {
+        var box;
+        box = $('.popup');
+        box.find('#fbh').addClass('hidden');
+        box.find('#fbl').removeClass('hidden');
+        return false;
+    }
 });
