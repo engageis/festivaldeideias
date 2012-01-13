@@ -3,13 +3,13 @@
 
   h4 Por estatísticas
   ul
-    li 
+    li
       // adiciona um .selected no li quando o item estiver selecionado
-      = link_to "Mais populares", "/?popular=true", :class => "popular"
+      = link_to "Mais populares", scope_popular_path, :class => "popular"
     li
-      = link_to "Recém iniciadas", "/?recent=true", :class => "recent"
+      = link_to "Recém iniciadas", scope_recent_path, :class => "recent"
     li
-      = link_to "Recém alteradas", "/?latest=true", :class => "modified"
+      = link_to "Recém alteradas", scope_latest_path, :class => "modified"
 
   h4 Por categoria
   ul.categories_list
