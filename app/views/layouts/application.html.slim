@@ -31,7 +31,7 @@ html
         ul.user_actions
           = render :partial => "layouts/user_actions"
         //
-        - if current_page?(root_url)
+        - if current_page?(root_url) or current_page?(scope_featured_url)
           = render :partial => "layouts/header"
 
       .clear
