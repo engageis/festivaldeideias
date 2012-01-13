@@ -8,24 +8,33 @@
           | Iniciada por
           a href=""
             = " #{@idea.user.name} "
-          | &#8226;
+          | &#8226; 
           // Check this with timestamps (JS plugin)
           = time_ago_in_words(@idea.created_at)
-        ul.totals
-          li.total_comments
-            // Total de comentários
-            | 6
-          li.total_collabs
-            // Total de colaborações aceitas
-            | 5
-          li.total_forks
-            // Total de forks
-            | 1
-    article
-      h3 O que é esta ideia
-      p
-        = @idea.description
+             // Colaborar muda para Editar quando sou o dono da ideia
 
-    section#comments
-      h2 Comentários
-      p Comentários default do Facebook
+  article
+    h3 O que é esta ideia
+    p
+      = @idea.description
+    .utils
+      ul.totals
+        li.comments
+          // Total de comentários
+          | 6
+        li.collabs
+          // Total de colaborações aceitas
+          | 5
+        li.forks
+          // Total de forks
+          | 1
+      ul.act
+        li.comments
+          a href="#comment" Comentar
+        li.collabs
+          a href="#colaborar" Colaborar (sugerir)
+     
+  section#comments
+    a[name="comment"]
+    h2 Comentários
+    p Comentários default do Facebook

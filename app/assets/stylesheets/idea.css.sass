@@ -12,26 +12,38 @@
         font-family: "Gill Sans", sans-serif
         font-weight: lighter
         font-size: 1.1em
-      .totals
-        font-size: 0.9em
-        overflow: hidden
-        margin-top: 10px
-        li
-          background:
-            image: url(asset_path("sprite.png", "image"))
-            repeat: no-repeat
-            position: 1px 2px
-          padding-left: 15px
-          float: left
-          margin-right: 10px
-        .total_comments
-          background:
-            position: 1px -16px
-        .total_forks
-          background:
-            position: 1px -33px
+  .utils
+    font-size: 0.9em
+    overflow: hidden
+    margin-top: 10px
+    background: #FFF
+    padding: 5px
+    .totals
+      float: left
+      margin: 0
+    li
+      display: inline
+      padding: 0
+      background:
+        image: url(asset_path("sprite.png", "image"))
+        repeat: no-repeat
+        position: 1px 2px
+      padding-left: 15px
+      float: left
+      margin-right: 10px
+    .comments
+      background:
+        position: 1px -16px
+    .forks
+      background:
+        position: 1px -33px
+  .act
+    float: right
+    margin: 0
+
   article
     clear: both
+    margin-top: 10px
     border-bottom: 1px solid #CCC
   #comments
     margin: 10px 0
