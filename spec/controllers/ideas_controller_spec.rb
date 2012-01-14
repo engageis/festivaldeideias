@@ -4,7 +4,7 @@ describe IdeasController do
 
   describe "GET #index" do
     before do
-      get :index
+      get :controller => 'ideas', :action => 'index'
     end
     its(:status) { should == 200 }
   end
