@@ -10,6 +10,7 @@ aside
       margin-bottom: 20px
       +border-radius(5px)
       li
+        overflow: hidden
         +list_link
         padding: 0
         background:
@@ -32,25 +33,28 @@ aside
           color: #333
           display: block
           padding: 12px 10px 12px 50px
+
+    .by_statistics
+      a
+        background:
+          image: url(asset_path("badges/sprite.png", "image"))
+          repeat: no-repeat
+          position: 5px 6px
+        &.recent
           background:
-            image: url(asset_path("badges/sprite.png", "image"))
-            repeat: no-repeat
-            position: 5px 4px
-          &.recent
-            background:
-              position: 5px -33px
-          &.modified
-            background:
-              position: 5px -72px
-          &.mobility
-            background:
-              position: 5px -186px
-          &.violence
-            background:
-              position: 5px -112px
-          &.disasters
-            background:
-              position: 5px -147px
+            position: 5px -33px
+        &.modified
+          background:
+            position: 5px -72px
+    
+    .category
+      span
+        float: left
+        &.image
+          padding: 5px
+        &.name
+          a
+            padding-left: 0
 
 
   .community

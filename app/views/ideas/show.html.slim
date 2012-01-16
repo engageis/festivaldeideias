@@ -20,22 +20,30 @@
           // Using rails helper for time ago
           = time_ago_in_words(@idea.updated_at)
 
-        // Buzz with this idea
-        ul.totals
-          li.total_comments
-            // Total de comentários
-            | 6
-          li.total_collabs
-            // Total de colaborações aceitas
-            | 5
-          li.total_forks
-            // Total de forks
-            | 1
-    article
-      h3 O que é esta ideia
-      p[class=ability_class]
-        = @idea.headline
+  // Colaborar muda para Editar quando sou o dono da ideia
 
-    section#comments
-      h2 Comentários
-      p Comentários default do Facebook
+  article
+    h3 O que é esta ideia
+    p[class=ability_class]
+      = @idea.description
+    .utils
+      ul.totals
+        li.comments
+          // Total de comentários
+          | 6
+        li.collabs
+          // Total de colaborações aceitas
+          | 5
+        li.forks
+          // Total de forks
+          | 1
+      ul.act
+        li.comments
+          a href="#comment" Comentar
+        li.collabs
+          a href="#colaborar" Colaborar (sugerir)
+     
+  section#comments
+    a[name="comment"]
+    h2 Comentários
+    p Comentários default do Facebook

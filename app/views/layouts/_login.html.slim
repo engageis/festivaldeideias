@@ -9,10 +9,16 @@
         = form_tag connect_with_facebook_url, :method => 'POST' do
           = hidden_field_tag :redirect_url, request.url
           = submit_tag 'Login com Facebook', :class => 'button facebook'
+          
+          ul
+            li
+              | Não tem conta no Facebook? 
+              a href="http://facebook.com" target="blank_" Crie uma agora!
+            li
+              a.non_fb href='#fbh' Não quero usar o Facebook.
+
         .fb-login-button[data-show-faces="true" data-width="200" data-max-rows="1"]
 
-        p
-          a href='#fbh' Não quero usar o Facebook
 
       footer
         p 
@@ -20,7 +26,7 @@
           br
           | Só teremos acesso a informações básicas, como nome, foto e email.
     #fbh.hidden
-      = form_tag '/', :method => 'POST' do
+      = form_for NonFacebookUser.new, :method => 'POST' do |f|
         p
           | Texto que explica porque é importante usar o Facebook, bla bla bla.<br />
           | Para me editar -> app/views/layouts/_login.html.slim
@@ -31,7 +37,7 @@
             /*= submit_tag 'Login com Facebook', :class => 'button facebook'*/
         p Você realmente não quer usar o Facebook? Deixe o seu e-mail para sabermos.
         p
-          = label_tag :email, 'Seu endereço de e-mail'
-          = text_field_tag :email
+          = f.label :email, 'Seu endereço de e-mail'
+          = f.text_field :email, :maxlength => 255
         p
-          = submit_tag t('facebox.submit_email'), :class => 'button'
+          = f.submit t('facebox.submit_email'), :class => 'button'
