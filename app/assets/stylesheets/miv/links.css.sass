@@ -17,8 +17,6 @@
     repeat: no-repeat
     position: right -242px
 
-
-
 // * buttons
 .button
   +btn
@@ -40,3 +38,25 @@
       repeat: no-repeat
       position: 10px
     padding-left: 35px
+  &.prev
+    float: left
+    padding: 5px 8px
+    background:
+      color: $darkred
+    &:before
+      content: "\00ab"
+      margin-right: 5px
+    &:hover
+      background:
+        color: lighten($darkred,  10%)
+  &.next
+    float: right
+    &:after
+      content: "\00bb"
+      margin-left: 5px
+
+
+.button_pair
+  margin-top: 20px
+  float: left
+  width: 100%
