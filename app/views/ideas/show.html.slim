@@ -1,16 +1,26 @@
 #idea
   header
     - if @idea
-      = image_tag "badges/disasters.png", :alt => "Catástrofes Naturais", :title => "Catástrofes Naturais", :class => "badge"
-      h1 = @idea.title
+      // Defining a class for editable fields based on cancan ability
+      - ability_class = can?(:edit, @idea) ?  "editable" : "idea_detail"
+
+      // Category badge
+      = image_tag @idea.category.badge.url, :alt => @idea.category.name, :title => @idea.category.name, :class => "badge"
+      // Idea's title
+      h1[class=ability_class data-url=category_idea_path(@idea.category, @idea)]
+        = @idea.title
+
+      // Statistics of this idea
       section.idea_stats
         span
-          | Iniciada por
-          a href=""
-            = " #{@idea.user.name} "
-          | &#8226;
-          // Check this with timestamps (JS plugin)
-          = time_ago_in_words(@idea.created_at)
+          | Iniciada por &nbsp;
+          = link_to @idea.user.name, @idea.user.services.first.facebook_profile, :class => "user_info"
+          | &nbsp; &mdash; &nbsp;
+
+          // Using rails helper for time ago
+          = time_ago_in_words(@idea.updated_at)
+
+        // Buzz with this idea
         ul.totals
           li.total_comments
             // Total de comentários
@@ -23,8 +33,8 @@
             | 1
     article
       h3 O que é esta ideia
-      p
-        = @idea.description
+      p[class=ability_class]
+        = @idea.headline
 
     section#comments
       h2 Comentários
