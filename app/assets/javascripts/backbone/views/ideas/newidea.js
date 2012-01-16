@@ -14,6 +14,7 @@ App.Ideas.NewIdea = App.BaseView.extend({
                 ,"setRedirectUrl"
                 ,"showFbh"
                 ,"showFbl"
+                ,"validateFblForm"
             );
         this.store = new Store('store');
         this.lastPosition = 0;
@@ -39,7 +40,8 @@ App.Ideas.NewIdea = App.BaseView.extend({
         "click .popup img.close_image": "clearAll",
         "click a.start[href=#login]": "setRedirectUrl",
         "click .popup #fbl a[href=#fbh]": "showFbh",
-        "click .popup #fbh a[href=#fbl]": "showFbl"
+        "click .popup #fbh a[href=#fbl]": "showFbl",
+        "click .popup #fbh input[type=submit]": "validateFblForm"
     },
 
     goToLastOpenTab: function () {
@@ -256,5 +258,9 @@ App.Ideas.NewIdea = App.BaseView.extend({
         box.find('#fbh').addClass('hidden');
         box.find('#fbl').removeClass('hidden');
         return false;
+    },
+
+    validateFblForm: function () {
+        return (jQuery.trim($('.popup #fbh #non_facebook_user_email').val()).length > 0);
     }
 });
