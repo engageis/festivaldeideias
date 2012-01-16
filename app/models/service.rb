@@ -18,4 +18,8 @@ class Service < ActiveRecord::Base
   def facebook_avatar
     "http://graph.facebook.com/#{uid}/picture?type=square"
   end
+
+  def facebook_profile
+    "https://www.facebook.com/profile.php?id=#{uid}"
+  end
 end
