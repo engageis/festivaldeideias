@@ -50,4 +50,13 @@ describe Service do
       its(:facebook_avatar) { should == "http://graph.facebook.com/#{fb['uid']}/picture?type=square" }
     end
   end
+
+  describe "#facebook_profile" do
+    context "When user exists" do
+      fb = FACEBOOK_HASH_DATA
+      user = Factory.create(:user)
+      subject { Service.create_from_hash(fb, user) }
+      its(:facebook_profile) { should == "https://www.facebook.com/profile.php?id=#{fb['uid']}"}
+    end
+  end
 end
