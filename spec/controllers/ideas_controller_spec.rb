@@ -17,7 +17,7 @@ describe IdeasController do
       @user = Factory.create(:service).user
       idea = { :title => "Just a test dude", :headline => "Headline test", :description => "Hey, I'm a test", }
 
-      controller.stub(:current_member).and_return(@user)
+      controller.stub(:current_user).and_return(@user)
 
       post :create, :category_id => @category.id, :idea => idea
     end
