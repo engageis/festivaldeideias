@@ -20,7 +20,7 @@
           br
           | Só teremos acesso a informações básicas, como nome, foto e email.
     #fbh.hidden
-      = form_tag '/', :method => 'POST' do
+      = form_for NonFacebookUser.new, :method => 'POST' do |f|
         p
           | Texto que explica porque é importante usar o Facebook, bla bla bla.<br />
           | Para me editar -> app/views/layouts/_login.html.slim
@@ -31,7 +31,7 @@
             /*= submit_tag 'Login com Facebook', :class => 'button facebook'*/
         p Você realmente não quer usar o Facebook? Deixe o seu e-mail para sabermos.
         p
-          = label_tag :email, 'Seu endereço de e-mail'
-          = text_field_tag :email
+          = f.label :email, 'Seu endereço de e-mail'
+          = f.text_field :email, :maxlength => 255
         p
-          = submit_tag t('facebox.submit_email'), :class => 'button'
+          = f.submit t('facebox.submit_email'), :class => 'button'

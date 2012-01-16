@@ -1,9 +1,9 @@
 # Defining sequencies
-Factory.sequence(:name)   { |n| "User #{n}" }
-Factory.sequence(:email)  { |n| "user#{n}@gmail.com" }
-Factory.sequence(:uid)    { |n| "#{n}" }
-Factory.sequence(:title)  { |n| "Title#{n}" }
-Factory.sequence(:headline) { |n| "Headline#{n}" }
+Factory.sequence(:name)     { |n| "User #{n}"          } 
+Factory.sequence(:email)    { |n| "user#{n}@gmail.com" } 
+Factory.sequence(:uid)      { |n| "#{n}"               } 
+Factory.sequence(:title)    { |n| "Title#{n}"          } 
+Factory.sequence(:headline) { |n| "Headline#{n}"       } 
 
 # Defining user factory
 Factory.define :user do |u|
@@ -40,4 +40,8 @@ Factory.define :idea do |i|
   i.title(Factory.next(:title))
   i.headline(Factory.next(:headline))
   i.description("Some description")
+end
+
+Factory.define :non_facebook_user do |hater|
+  hater.email Factory.next :email
 end

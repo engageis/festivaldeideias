@@ -37,3 +37,7 @@ pt-BR:
   login:
     create_account: "Criar uma conta"
     do_login: "Fazer login"
+
+  non_facebook_user:
+    create:
+      success: "E-mail cadastrado com sucesso!"

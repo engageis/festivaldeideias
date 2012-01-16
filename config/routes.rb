@@ -12,6 +12,7 @@ FestivalDeIdeias::Application.routes.draw do
   # Resources
   resources :users
   resources :ideas, :only => [:create]
+  resources :non_facebook_users, :only => [:create]
 
   # Pages
   get "sobre-o-festival"    => "pages#about",       :as => :about_page

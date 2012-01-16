@@ -57,10 +57,11 @@
     // Publicação da ideia
     #publish.hidden
       img.category class='badge' src='' alt="nome da categoria" title="nome da categoria"
-      h3.title Nome da ideia. Campo editável in loco.
+      h3.title Título
       .what
-        p.description
-          | Aqui vem todo o conteúdo entrado em "O que é esta ideia". Campo editável in loco.
+        p.description Descrição
+      .what
+        p.headline Resumo
       // Botão de Submit
       .button_pair
         = link_to t('idea.new.prev_step'), '#refine', :class => 'button prev'
