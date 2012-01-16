@@ -9,4 +9,4 @@ Feature: View a selection of ideas
     When I visit the ideas index page
     Then I should see a list of categories
     And I should see a list with ideas
-    And I should see a link "Conheça e contribua"
+    And I should see "Conheça e contribua"

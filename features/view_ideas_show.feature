@@ -9,4 +9,4 @@ Feature: View an Idea
     Then I follow the link "Conheça e contribua"
     And I should see the idea's title
     And I should see the idea's description
-    And I should see a link "Colaborar com esta ideia"
+    And I should see "Colaborar com esta ideia"
