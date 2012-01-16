@@ -74,11 +74,27 @@ article
 
 #sign_in
   +grid(7)
+  form
+    margin-top: 60px
+
+    float: left
+    ul
+      margin: 20px 0 0 20px
+      clear: both
+      float: left
+      li
+        display: list-item
+        list-style-type: square
+        margin: 8px 0
+    .non_fb
+      display: block
+      clear: both
   .fb-login-button
-    padding: 10px 40px
     margin-left: 20px
+    padding-left: 20px
     border-left: 1px solid #FFF
-    +box-shadow( -1px 0px 0 #CCC)
+    +box-shadow( -1px 0px 0 #CCC)   
+
   footer
     color: #555
     font-size: 11px
