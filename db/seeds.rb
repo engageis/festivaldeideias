@@ -35,3 +35,6 @@ Idea.create!([
 
 ])
 
+%W(miguxo@facebooksucks.com juquinha@amoorkut.com sem.idea@email.com).each do |email|
+  NonFacebookUser.create(:email => email)
+end
