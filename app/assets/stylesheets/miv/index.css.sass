@@ -16,6 +16,10 @@ h1, h2, h3
   font-family: "Helvetica-bold", Helvetica, Arial, sans-serif
 
 h1
+  background:
+    image: url(asset_path("bg-quote.png", "image"))
+    repeat: no-repeat
+  padding: 15px 18px
   font-size: 2.1em
   line-height: 1.1em
 h2
@@ -323,6 +327,7 @@ header.main
   .logo
     +grid(3)
     margin: 10px
+    margin-bottom: 0
     img
       float: left
       width: 180px
