@@ -5,12 +5,12 @@ section#statistics
       li
         h3 Estatísticas
       li
-        | Total de ideias:
+        | Total de ideias: 
         = @ideas_count if not @ideas_count.nil?
       li
-        | Total de colaborações:
+        | Total de colaborações: 
       li
-        | Total de usuários:
+        | Total de usuários: 
         = @users.count if not @users.nil?
       //li
         | Usuários online agora: 6
@@ -21,7 +21,7 @@ section#statistics
       - @ideas_latest.limit(5).each do |idea|
         li
           = link_to idea.title, category_idea_path(idea.category, idea)
-          em
+          span
             | &nbsp; - &nbsp;por 
             = idea.user.name
 
@@ -31,3 +31,8 @@ section#statistics
       - @ideas_featured.limit(5).each do |idea|
         li
           = link_to idea.title, category_idea_path(idea.category, idea)
+          span
+            | &nbsp; - &nbsp;por 
+            = idea.user.name
+
+
