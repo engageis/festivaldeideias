@@ -58,6 +58,27 @@ form.new_idea
       color: #333
       cursor: pointer
 
+  .categories
+    width: 570px
+    ul
+    li
+      float: left
+      label
+        margin-bottom: 10px
+        text-align: center
+        padding: 10px
+        +border-radius(4px)
+        border: 1px solid transparent
+        cursor: pointer
+        &:hover
+          background: #FFF
+          border: 1px solid #999
+    input[type="radio"]
+      display: none
+
+    label + input[type="radio"]:checked
+      background: pink !important
+
 #publish
   .what
     width: 550px

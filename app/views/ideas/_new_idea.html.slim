@@ -43,11 +43,11 @@
             - @categories.each do |category|
               li
                 - id = category.id
+                = f.radio_button :category_id, id
                 label
                   = image_tag(category.badge.url, :size => '31x31', :alt => category.name, :title => category.name)
                   br
                   = category.name
-                = f.radio_button :category_id, id
       .button_pair
         = link_to t('idea.new.prev_step'), '#describe', :class => 'button prev'
         = link_to t('idea.new.next_step'), '#publish', :class => 'button next'
