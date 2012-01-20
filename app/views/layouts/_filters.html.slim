@@ -5,11 +5,11 @@
   ul.by_statistics
     li
       // adiciona um .selected no li quando o item estiver selecionado
-      = link_to "Mais populares", scope_popular_path, :class => "popular"
+      = link_to "Mais populares", scope_popular_path, class: "popular"
     li
-      = link_to "Recém iniciadas", scope_recent_path, :class => "recent"
+      = link_to "Recém iniciadas", scope_recent_path, class: "recent"
     li
-      = link_to "Recém alteradas", scope_latest_path, :class => "modified"
+      = link_to "Recém alteradas", scope_latest_path, class: "modified"
 
   h4 Por categoria
   ul.categories_list
@@ -19,9 +19,7 @@
     - @categories.each do |category|
       li.category
         span.image
-          = image_tag category.badge.url, :size => "30x30"
+          = image_tag category.badge.url, size: "30x30"
         span.name
           = link_to category.name, category_ideas_path(category)
 
-  // Start a new idea
-  = new_idea_button

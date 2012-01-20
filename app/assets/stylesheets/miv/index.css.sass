@@ -380,6 +380,8 @@ header.main
 ol.ideas_buckets
   li.bucket
     width: 270px
+    height: 250px
+    position: relative
     background:
       color: #FFF
     border: 5px solid #CCC
@@ -392,7 +394,6 @@ ol.ideas_buckets
       p
         margin-top: 10px
     header
-      height: 55px
       border-bottom: 1px solid #ccc
       margin: -10px -10px 0 -10px
       padding: 10px
@@ -400,21 +401,34 @@ ol.ideas_buckets
         float: right
       h3
         float: left
-        margin: 0
+        margin-bottom: 5px
         width: 210px
         font-size: 1.3em
+        font-family: "Helvetica-bold", Helvetica
       span
+        font-family: "Helvetica"
         display: block
-        clear: both
-        font-size: 0.85em
+        font-size: 12px
+        float: left
         color: #666
+        font-weight: normal
+
+    .button
+      &.primary
+        position: absolute
+        bottom: 25px
+        right: 10px
+
+
     &.first
       margin-left: 0
     &.last
       margin-right: 0
     .stats
+      position: absolute
+      bottom: 10px
+      width: 99.5%
       float: left
-      width: 107%
       background: #ECECEC
       margin: 0 -9px -9px -9px
       li

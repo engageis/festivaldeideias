@@ -1,10 +1,17 @@
 // SIDEBAR FOR HOME AND FILTER PAGE
-- if controller.action_name =~ /^(navigate|index)$/
-  = render :partial => "layouts/filters"
-  = render :partial => "layouts/community"
-  = render :partial => "layouts/blog_feeds"
-  = render :partial => "layouts/twitter_feeds"
+/- if controller.action_name =~ /^(navigate|index)$/
+- if controller.action_name = "index"
+  = render "layouts/community"
+  = new_idea_button
+  = render "layouts/filters"
+  = render "layouts/blog_feeds"
+  = render "layouts/twitter_feeds"
+
+- elsif controller.action_name = "navigate"
+  = render "layouts/filters"
+  = new_idea_button
+
 - else
   // SIDEBAR FOR IDEA PAGE
-  = render :partial => "layouts/collaborators"
-  = render :partial => "layouts/share"
+  = render "layouts/collaborators"
+  = render "layouts/share"
