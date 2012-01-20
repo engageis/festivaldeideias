@@ -56,12 +56,20 @@
 
     // Publicação da ideia
     #publish.hidden
-      img.category class='badge' src='' alt="nome da categoria" title="nome da categoria"
-      h3.title Título
-      .what
-        p.description Descrição
-      .what
-        p.headline Resumo
+      h3 
+        | Revise e publique:
+        em 
+          | * Você ainda conseguirá editar sua ideia depois de publicada.
+      
+      .review
+        img.category class='badge' src='' alt="nome da categoria" title="nome da categoria"
+        h4.title Título
+        .what
+          p.description Descrição
+        .what
+          strong Ideia resumida:
+          p.headline Resumo
+
       // Botão de Submit
       .button_pair
         = link_to t('idea.new.prev_step'), '#refine', :class => 'button prev'

@@ -22,7 +22,6 @@ form.new_idea
     display: block
     overflow: hidden
     border-bottom: 1px solid #FFF
-    margin-bottom: 5px
     li
       float: left
       text-transform: uppercase
@@ -39,7 +38,7 @@ form.new_idea
         background: #FFF
         a
           cursor: pointer !important
-          color: $blue
+          color: #333
 
 //#describe
 
@@ -60,7 +59,8 @@ form.new_idea
 
   .categories
     width: 570px
-    ul
+    h4
+      font-size: 1.3em
     li
       float: left
       label
@@ -81,7 +81,22 @@ form.new_idea
       border: 1px solid #FFF
 
 #publish
+  h3
+    em
+      font-size: 12px
+      display: block
+      clear: both
+
+  .review
+    background: #FFF
+    padding: 10px
+    margin-right: 10px
+    +border-radius(5px)
+    h4
+      font-size: 1.2em
+    img
+      margin: -15px -15px 0 0
   .what
-    width: 550px
+    width: 510px
 
 
