@@ -9,7 +9,7 @@ class CreateIdeas < ActiveRecord::Migration
       t.boolean :featured, :null => false, :default => false
       t.boolean :recommend, :null => false, :default => false
       t.integer :likes, :null => false, :default => 0
-      t.integer :position
+      t.integer :position, :null => false, :default => 0
       t.timestamps
     end
     add_foreign_key :ideas, :users

@@ -3,12 +3,17 @@
     - if @idea
       // Defining a class for editable fields based on cancan ability
       - ability_class = can?(:edit, @idea) ?  "editable" : "idea_detail"
+      - url = idea_path(@idea) if @idea
 
       // Category badge
       = image_tag @idea.category.badge.url, :alt => @idea.category.name, :title => @idea.category.name, :class => "badge"
       // Idea's title
-      h1[class=ability_class data-url=category_idea_path(@idea.category, @idea)]
+      h1[class=ability_class data-url=url data-param="idea[title]"]
         = @idea.title
+
+      // Information that will be shown to the user when in edit mode
+      section.idea_edit_helper.hidden
+        = t('idea.helpers.edit')
 
       // Statistics of this idea
       section.idea_stats
@@ -24,7 +29,7 @@
 
   article
     h3 O que é esta ideia
-    p[class=ability_class]
+    p[class=ability_class data-url=url data-param="idea[description]"]
       = @idea.description
     .utils
       ul.totals
@@ -42,7 +47,7 @@
           a href="#comment" Comentar
         li.collabs
           a href="#colaborar" Colaborar (sugerir)
-     
+
   section#comments
     a[name="comment"]
     h3 Comentários

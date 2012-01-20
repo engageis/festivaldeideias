@@ -1,9 +1,9 @@
 h3 Colaboradores
-h4 
+h4
   | Quem já colaborou com essa ideia
 span
   | 23
- 
+
 .community
   ul
     li
@@ -29,8 +29,9 @@ span
         img[src="" alt="Nome da Pessoa" title="Nome da Pessoa"]
   .clear
 
-// se esta ideia é do usuário, então
-a[href="" class="button edit"] Editar minha ideia
+    // se esta ideia é do usuário, então
+- if @idea
+  = link_to "Editar minha ideia", "#edit", :class => "button edit" if can?(:edit, @idea)
 
 // se não
 a[href="" class="button start"] Colaborar com esta ideia
