@@ -76,8 +76,9 @@ form.new_idea
     input[type="radio"]
       display: none
 
-    label + input[type="radio"]:checked
-      background: pink !important
+    input:checked + label
+      background: $lightgreen !important
+      border: 1px solid #FFF
 
 #publish
   .what
