@@ -24,6 +24,10 @@ pt-BR:
       header: "Ideias Populares"
       about: "Uma ideia popular é aquela que tem bastante interação por contribuição e comentários de usuários."
 
+    # Warnings, helpers & etc
+    helpers:
+      edit: "Para editar a sua ideia, observe os campos em destaque; modifique-os e salve as alterações."
+
   # Buttons
   buttons:
     new_idea: "Comece uma ideia!"
