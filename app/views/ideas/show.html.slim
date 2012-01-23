@@ -9,6 +9,10 @@
       // Defining a class for editable fields based on cancan ability
       - ability_class = can?(:edit, @idea) ?  "editable" : "idea_detail"
 
+
+      - if can?(:edit, @idea)
+        .edit_message
+          | Você é o criador desta ideia, para editá-la clique nos campos e divirta-se :)
       // Category badge
       = image_tag @idea.category.badge.url, :alt => @idea.category.name, :title => @idea.category.name, :class => "badge"
       // Idea's title
@@ -31,7 +35,6 @@
 
   // Colaborar muda para Editar quando sou o dono da ideia
   article
-    h3 O que é esta ideia
     p[class=ability_class data-url=idea_path(@idea) data-attribute="description" data-raw=@idea.description data-raw-attribute="description"]
       = @idea.description
     .utils
