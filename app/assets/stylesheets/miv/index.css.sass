@@ -3,7 +3,7 @@
 body
   background:
     color: #F1F1F1
-  color: #222
+  color: #333
   font-family: "Helvetica Regular", Arial, sans-serif
   font-size: 13px
   line-height: 14px
@@ -12,10 +12,11 @@ body
 h1, h2, h3, h4, h5, h6
   margin-bottom: 10px
 
-h1, h2, h3
-  font-family: "Actor", sans-serif
+h1, h2
+  font-family: "Helvetica-bold", Helvetica, Arial, sans-serif
 
 h1
+
   font-size: 2.1em
   line-height: 1.1em
 h2
@@ -32,6 +33,9 @@ h5
 
 strong, b
   font-weight: bold
+
+em
+  font-style: italic
 
 p
   font-size: 1.03em
@@ -74,11 +78,27 @@ article
 
 #sign_in
   +grid(7)
+  form
+    margin-top: 60px
+
+    float: left
+    ul
+      margin: 20px 0 0 20px
+      clear: both
+      float: left
+      li
+        display: list-item
+        list-style-type: square
+        margin: 8px 0
+    .non_fb
+      display: block
+      clear: both
   .fb-login-button
-    padding: 10px 40px
     margin-left: 20px
+    padding-left: 20px
     border-left: 1px solid #FFF
-    +box-shadow( -1px 0px 0 #CCC)
+    +box-shadow( -1px 0px 0 #CCC)   
+
   footer
     color: #555
     font-size: 11px
@@ -122,6 +142,19 @@ article
   width: 48px
   height: 48px
   margin-left: 10px
+
+.message
+  padding: 20px
+  font-size: 15px
+  color: #FFF
+  width: 100%
+  z-index: 1
+  float: left
+  text-align: center
+  &.notice
+    background:
+      color: green
+    +background-image(linear-gradient(top, #66cc66, #499449))
 
 
 // * different headings
@@ -291,6 +324,7 @@ header.main
   .logo
     +grid(3)
     margin: 10px
+    margin-bottom: 0
     img
       float: left
       width: 180px
@@ -368,7 +402,10 @@ ol.ideas_buckets
         float: left
         margin: 0
         width: 210px
+        font-size: 1.3em
       span
+        display: block
+        clear: both
         font-size: 0.85em
         color: #666
     &.first
@@ -402,30 +439,43 @@ section#statistics
   clear: both
   overflow: hidden
   overflow: hidden
-  +bucket
-  padding: 0
-  margin: 40px 10px
+  padding: 20px 0
+  margin: 40px 0 40px 0
+  background: #666
+  color: #EEE
+  border-top: 4px solid #FFF
+  border-bottom: 4px solid #FFF
+  h3
+    border-bottom: 1px dashed #999
+    padding-bottom: 5px
   ul
     +grid(4)
-    width: 292px
-    margin: 10px
     li
-      padding: 10px 0
-      border-bottom: 1px solid #DDD
-      +box-shadow(0 1px 0 #FFF)
+      line-height: 24px
+      padding: 5px 0
+      margin: 0 10px
+      border-bottom: 1px solid #555
+      +box-shadow(0 1px 0 #777)
       &:first-child, &:last-child
         border: 0
         +box-shadow(none)
+
+  a, a:link, a:hover, a:visited
+    color: #D7F977
+    font-size: 15px
+    +text-shadow(-1px 1px 0 #777)
+  a:hover
+    color: lighten(#D7F977, 10%)
 
 
 
 // FOOTER
 
 footer
-  margin-top: 40px
   clear: both
   float: left
   width: 100%
+
 
   nav
     overflow: hidden
@@ -474,5 +524,9 @@ footer
       color: #333
       &:hover
         color: #666
+
+  .engage
+    float: right
+    margin-top: 10px
 
 

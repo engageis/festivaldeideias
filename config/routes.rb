@@ -11,7 +11,7 @@ FestivalDeIdeias::Application.routes.draw do
 
   # Resources
   resources :users
-  resources :ideas, :only => [:create]
+  resources :ideas
   resources :non_facebook_users, :only => [:create]
 
   # Pages

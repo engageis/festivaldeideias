@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(:version => 20120115211636) do
     t.boolean  "featured",    :default => false, :null => false
     t.boolean  "recommend",   :default => false, :null => false
     t.integer  "likes",       :default => 0,     :null => false
-    t.integer  "position"
+    t.integer  "position",    :default => 0,     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "category_id", :default => 0,     :null => false

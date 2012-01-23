@@ -9,10 +9,16 @@
         = form_tag connect_with_facebook_url, :method => 'POST' do
           = hidden_field_tag :redirect_url, request.url
           = submit_tag 'Login com Facebook', :class => 'button facebook'
+          
+          ul
+            li
+              | Não tem conta no Facebook? 
+              a href="http://facebook.com" target="blank_" Crie uma agora!
+            li
+              a.non_fb href='#fbh' Não quero usar o Facebook.
+
         .fb-login-button[data-show-faces="true" data-width="200" data-max-rows="1"]
 
-        p
-          a href='#fbh' Não quero usar o Facebook
 
       footer
         p 

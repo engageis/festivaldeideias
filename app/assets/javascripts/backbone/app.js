@@ -1,13 +1,16 @@
 //= require_self
 //
-//= require_tree ./views
 //= require_tree ./routers
 //= require_tree ./templates
 //= require_tree ./models
+//= require_tree ./views
 
 var App = window.App = {
     // Initializing the Object/Controller
     Ideas: {},
+    Models: {
+      Idea: {}
+    },
 
     Common: {
         init: function () {

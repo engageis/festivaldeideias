@@ -5,8 +5,8 @@ Feature: View user actions
 
   Scenario: View user actions as a logged user
     Given 1 idea category exist
-    Given I'm a logged user
-    Given 3 ideas exist
+    And 3 ideas exist
+    And I'm a logged user
     When I visit the ideas index page
     Then I should see user options
     And I should see "Notificações"
@@ -19,7 +19,7 @@ Feature: View user actions
 
   Scenario: View user actions as a visitor
     Given 1 idea category exist
-    Given 3 ideas exist
+    And 3 ideas exist
     When I visit the ideas index page
     Then I should see user options
     And I should see "Criar uma conta"

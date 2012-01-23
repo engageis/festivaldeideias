@@ -43,11 +43,11 @@
             - @categories.each do |category|
               li
                 - id = category.id
-                label
+                = f.radio_button :category_id, id
+                label for="idea_category_id_#{id}"
                   = image_tag(category.badge.url, :size => '31x31', :alt => category.name, :title => category.name)
                   br
                   = category.name
-                = f.radio_button :category_id, id
       .button_pair
         = link_to t('idea.new.prev_step'), '#describe', :class => 'button prev'
         = link_to t('idea.new.next_step'), '#publish', :class => 'button next'
@@ -56,17 +56,25 @@
 
     // Publicação da ideia
     #publish.hidden
-      img.category class='badge' src='' alt="nome da categoria" title="nome da categoria"
-      h3.title Título
-      .what
-        p.description Descrição
-      .what
-        p.headline Resumo
+      h3 
+        | Revise e publique:
+        em 
+          | * Você ainda conseguirá editar sua ideia depois de publicada.
+      
+      .review
+        img.category class='badge' src='' alt="nome da categoria" title="nome da categoria"
+        h4.title Título
+        .what
+          p.description Descrição
+        .what
+          strong Ideia resumida:
+          p.headline Resumo
+
       // Botão de Submit
       .button_pair
         = link_to t('idea.new.prev_step'), '#refine', :class => 'button prev'
         - if current_user
-          = f.submit "Publicar!", :class => 'button'
+          = f.submit "Publicar!", :class => 'button next'
         - else
           span Para publicar você deve estar logado:
           /*a.button Logar-se com o Facebook!*/

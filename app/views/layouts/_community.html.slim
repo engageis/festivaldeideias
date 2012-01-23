@@ -6,6 +6,6 @@ h4
     - if not @users.nil?
       - @users.each do |user|
         li
-          - if not current_user and !user.services.nil?
-            = link_to (image_tag user.services.first.facebook_avatar, :alt => user.name, :title => user.name)
+          - if not user == current_user
+            = link_to (image_tag user.services.first.facebook_avatar, :alt => user.name, :title => user.name), user.services.first.facebook_profile
 

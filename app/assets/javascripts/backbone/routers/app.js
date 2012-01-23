@@ -2,8 +2,7 @@ App.Router = Backbone.Router.extend({
 
     routes: {
         "continue_idea": "loadIdeaFromStore",
-        "/login": "loginAction",
-        "/idea/new": "newIdeaBox"
+        "login": "loginAction",
     },
 
     // You can let these functions empty
@@ -14,10 +13,6 @@ App.Router = Backbone.Router.extend({
 
     loginAction: function () {
         $.facebox({ div: "#login" });
-    },
-
-    newIdeaBox: function () {
-        $.facebox({ div: "#start" });
     },
 
     loadIdeaFromStore: function () {

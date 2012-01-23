@@ -1,5 +1,6 @@
 class IdeasController < ApplicationController
 
+  load_and_authorize_resource
   inherit_resources
 
   has_scope :featured, :type => :boolean, :only => :index
@@ -33,11 +34,19 @@ class IdeasController < ApplicationController
 
   protected
   def load_resources
-    @categories ||= parent? ? parent.idea_categories : IdeaCategory.all
+    @categories ||= IdeaCategory.all
     @users ||= User.all(:include => :services)
     @ideas_count ||= Idea.count
     @ideas_latest ||= Idea.latest
     @ideas_featured ||= Idea.featured
   end
 
+  def current_ability
+    @current_ability ||= case
+                         when current_user
+                           UserAbility.new(current_user)
+                         else
+                           GuestAbility.new
+                         end
+  end
 end

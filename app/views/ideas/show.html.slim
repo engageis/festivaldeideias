@@ -1,31 +1,49 @@
 #idea
   header
     - if @idea
-      = image_tag "badges/disasters.png", :alt => "Catástrofes Naturais", :title => "Catástrofes Naturais", :class => "badge"
-      h1 = @idea.title
+      // Defining a class for editable fields based on cancan ability
+      - ability_class = can?(:edit, @idea) ?  "editable" : "idea_detail"
+
+      // Category badge
+      = image_tag @idea.category.badge.url, :alt => @idea.category.name, :title => @idea.category.name, :class => "badge"
+      // Idea's title
+      h1[class=ability_class data-url=category_idea_path(@idea.category, @idea)]
+        = @idea.title
+
+      // Statistics of this idea
       section.idea_stats
         span
-          | Iniciada por
-          a href=""
-            = " #{@idea.user.name} "
-          | &#8226;
-          // Check this with timestamps (JS plugin)
-          = time_ago_in_words(@idea.created_at)
-        ul.totals
-          li.total_comments
-            // Total de comentários
-            | 6
-          li.total_collabs
-            // Total de colaborações aceitas
-            | 5
-          li.total_forks
-            // Total de forks
-            | 1
-    article
-      h3 O que é esta ideia
-      p
-        = @idea.description
+          | Iniciada por &nbsp;
+          = link_to @idea.user.name, @idea.user.services.first.facebook_profile, :class => "user_info"
+          | &nbsp; &mdash; &nbsp;
 
-    section#comments
-      h2 Comentários
-      p Comentários default do Facebook
+          // Using rails helper for time ago
+          = time_ago_in_words(@idea.updated_at)
+
+  // Colaborar muda para Editar quando sou o dono da ideia
+
+  article
+    h3 O que é esta ideia
+    p[class=ability_class]
+      = @idea.description
+    .utils
+      ul.totals
+        li.comments
+          // Total de comentários
+          | 6
+        li.collabs
+          // Total de colaborações aceitas
+          | 5
+        li.forks
+          // Total de forks
+          | 1
+      ul.act
+        li.comments
+          a href="#comment" Comentar
+        li.collabs
+          a href="#colaborar" Colaborar (sugerir)
+     
+  section#comments
+    a[name="comment"]
+    h3 Comentários
+    p Comentários default do Facebook

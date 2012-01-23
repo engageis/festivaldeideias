@@ -23,7 +23,7 @@ html
                 h2
                   | Navegue
                 | em mais de 300 ideias
-						
+
             //li
               //a href="#start" rel="facebox"
                 //h2 Comece uma nova ideia
@@ -46,9 +46,9 @@ html
     = render :partial => "layouts/statistics"
     = render :partial => "layouts/footer"
 
-  #start.hidden
-    = render :partial => "ideas/new_idea"
+    #start.hidden
+      = render :partial => "ideas/new_idea"
 
-  = render :partial => "layouts/facebook_defaults"
+    = render :partial => "layouts/facebook_defaults"
 
   = javascript_include_tag :application
