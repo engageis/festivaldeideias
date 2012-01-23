@@ -9,11 +9,19 @@
   = render "layouts/blog_feeds"
   = render "layouts/twitter_feeds"
 
-- elsif path =~ /^\/(navegue-nas-ideias|ideias)/
+- elsif path =~ /^\/(navegue-nas-ideias)/
   = render "layouts/filters"
   = new_idea_button
 
-- else
+- elsif path =~ /^\/(ideias)/
   // SIDEBAR FOR IDEA PAGE
   = render "layouts/collaborators"
   = render "layouts/share"
+
+- else
+  = render "layouts/community"
+  = new_idea_button
+  = render "layouts/blog_feeds"
+  = render "layouts/twitter_feeds"
+
+ 
