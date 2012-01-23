@@ -12,7 +12,7 @@
       h3 = t('idea.new.about')
       p
         = f.label :description, t('idea.new.give_a_description')
-        = f.text_area :description
+        = f.text_area :description, :class => 'required'
       = link_to t('idea.new.next_step'), '#refine', :class => 'button next'
     //--------------------------------------------------------------------------------------
 
@@ -26,7 +26,7 @@
 
       p
         = f.label :title, t('idea.new.give_a_name')
-        = f.text_field :title, :maxlength => 255
+        = f.text_field :title, :maxlength => 255, :class => 'required'
         // TODO: Ver qual o tamanho máximo do título da ideia
 
       p
@@ -34,7 +34,7 @@
         span.char_counter 200
         = f.text_area :headline, :class => 'limited', :maxlength => 200
       
-      .categories
+      .categories.required
         h4 = t('idea.new.choose_a_category')
 
         // Getting categories from ideas_controller

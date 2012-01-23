@@ -15,6 +15,7 @@ App.Ideas.NewIdea = App.BaseView.extend({
                 ,"showFbh"
                 ,"showFbl"
                 ,"validateFblForm"
+                ,"checkRequiredFields"
             );
         this.store = new Store('store');
         this.lastPosition = 0;
@@ -41,7 +42,35 @@ App.Ideas.NewIdea = App.BaseView.extend({
         "click a.start[href=#login]": "setRedirectUrl",
         "click .popup #fbl a[href=#fbh]": "showFbh",
         "click .popup #fbh a[href=#fbl]": "showFbl",
-        "click .popup #fbh input[type=submit]": "validateFblForm"
+        "click .popup #fbh input[type=submit]": "validateFblForm",
+        "click .popup .next": "checkRequiredFields"
+    },
+
+    checkRequiredFields: function (e) {
+        var target, href, me;
+        me = this;
+        target = $(e.target);
+        href = target.attr('href');
+        if (href === '#refine') {
+            if (!this.canGoToRefinement()) {
+                this.showAlert($('.popup #idea_description'));
+            }
+        } else if (href === '#publish') {
+            if (!this.hasCategory()) {
+                this.showAlert($('.popup .categories'));
+            }
+            if (!this.hasTitle()) {
+                this.showAlert($('.popup #idea_title'));
+            }
+        }
+    },
+
+    showAlert: function (obj) {
+        // TODO: resolver isto;
+        obj.addClass('error');
+        setTimeout(function () {
+            obj.removeClass('error');
+        }, 2000);
     },
 
     goToLastOpenTab: function () {
@@ -54,7 +83,7 @@ App.Ideas.NewIdea = App.BaseView.extend({
             break;
             case 2:
             if (this.canGoToPublishing()) {
-                method = 'showPublishing'
+                method = 'showPublishing';
             }
             break;
         }
