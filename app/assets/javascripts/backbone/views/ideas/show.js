@@ -1,14 +1,10 @@
-App.Ideas.Show = App.BaseView.extend({
+App.Ideas.Show = App.EditableView.extend({
 
   initialize: function(){
-    this.model = new App.Models.Idea
-    _.bindAll(this)
-    this.model.bind('save', this.model.save);
+    _.bindAll(this);
+    this.modelName = 'idea'
+    this.prepareEditables();
   },
 
-  events: {
-    'mousedown .editable' : 'editableClick'
-  },
 
-  editableClick: etch.editableInit
 });

@@ -1,30 +1,38 @@
 #idea
   header
     - if @idea
+      = content_for :meta_tags do
+        meta[property="og:title" content=@idea.title]
+        meta[property="og:description" content=@idea.headline]
+        meta[property="og:url" content=category_idea_url(@idea.category,@idea)]
+
       // Defining a class for editable fields based on cancan ability
       - ability_class = can?(:edit, @idea) ?  "editable" : "idea_detail"
 
       // Category badge
       = image_tag @idea.category.badge.url, :alt => @idea.category.name, :title => @idea.category.name, :class => "badge"
       // Idea's title
-      h1[class=ability_class data-url=category_idea_path(@idea.category, @idea)]
+      h1[class=ability_class data-placeholder="#{t('jquery.editable.defaults.tooltip')}" data-type="text" data-raw=@idea.title data-attribute="title" data-maxlenght=140 data-singleline=true data-url=idea_path(@idea)]
         = @idea.title
 
       // Statistics of this idea
       section.idea_stats
         span
           | Iniciada por &nbsp;
-          = link_to @idea.user.name, @idea.user.services.first.facebook_profile, :class => "user_info"
+          // User profile
+          - profile = @idea.user.services.first.facebook_profile
+
+          // User profile url
+          = link_to @idea.user.name, profile[:url], :target => profile[:target], :class => "user_info"
           | &nbsp; &mdash; &nbsp;
 
           // Using rails helper for time ago
           = time_ago_in_words(@idea.updated_at)
 
   // Colaborar muda para Editar quando sou o dono da ideia
-
   article
     h3 O que é esta ideia
-    p[class=ability_class]
+    p[class=ability_class data-url=idea_path(@idea) data-attribute="description" data-raw=@idea.description data-raw-attribute="description"]
       = @idea.description
     .utils
       ul.totals
@@ -42,7 +50,7 @@
           a href="#comment" Comentar
         li.collabs
           a href="#colaborar" Colaborar (sugerir)
-     
+
   section#comments
     a[name="comment"]
     h3 Comentários
