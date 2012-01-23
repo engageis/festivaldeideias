@@ -13,10 +13,8 @@ pt-BR:
       give_a_name: "Nomeie sua ideia:"
       give_a_headline: "Se quiser, resuma sua ideia em algumas palavras:"
       choose_a_category: "Em que categoria sua ideia se encaixa?"
-
     message:
       success: "Sua ideia foi criada com sucesso!"
-
     homepage:
       header: "Ideias em destaque"
       about: "Selecionamos algumas ideias legais que estão rolando na plataforma e as colocamos aqui, quem sabe você não se interessa e começa colaborando em uma delas?"
@@ -24,12 +22,11 @@ pt-BR:
       header: "Ideias Populares"
       about: "Uma ideia popular é aquela que tem bastante interação por contribuição e comentários de usuários."
 
-  # Buttons
+  # Buttons & Boxes
   buttons:
     new_idea: "Comece uma ideia!"
     show_idea: "Conheça e contribua"
     edit_idea: "Editar minha ideia"
-
   facebox:
     submit_email: "Enviar e-mail"
 
@@ -37,7 +34,15 @@ pt-BR:
   login:
     create_account: "Criar uma conta"
     do_login: "Fazer login"
-
   non_facebook_user:
     create:
       success: "E-mail cadastrado com sucesso!"
+
+  # Plugin options
+  jquery:
+    editable:
+      defaults:
+        submit: "OK"
+        cancel: "Cancelar"
+        tooltip: "Clique para editar..."
+        onblur: "ignore"

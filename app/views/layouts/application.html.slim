@@ -2,6 +2,8 @@ doctype 5
 html
   head
     title Festival de Ideias
+    = render :partial => "layouts/meta_tags_defaults"
+
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Actor", "http://fonts.googleapis.com/css?family=Shadows+Into+Light", :application
     = csrf_meta_tags
   - name = controller.controller_name
@@ -49,6 +51,5 @@ html
     #start.hidden
       = render :partial => "ideas/new_idea"
 
-    = render :partial => "layouts/facebook_defaults"
-
   = javascript_include_tag :application
+  = render :partial => "layouts/plugin_defaults"
