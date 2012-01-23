@@ -20,6 +20,6 @@ class Service < ActiveRecord::Base
   end
 
   def facebook_profile
-    "https://www.facebook.com/profile.php?id=#{uid}"
+    { :url => "https://www.facebook.com/profile.php?id=#{uid}", :target => "_blank" }
   end
 end
