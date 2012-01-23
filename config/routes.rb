@@ -19,19 +19,22 @@ FestivalDeIdeias::Application.routes.draw do
   get "sobre-os-temas"      => "pages#themes",      :as => :themes_page
   get "regulamento"         => "pages#regulation",  :as => :regulation_page
   get "premiacao"           => "pages#awards",      :as => :awards_page
-  get "navegue-nas-ideias"  => "pages#navigate",    :as => :navigate_page
+  #get "navegue-nas-ideias"  => "pages#navigate",    :as => :navigate_page
 
   # Scopes
-  get 'popular' => "ideas#index",     :defaults => { :popular  => true },   :as => :scope_popular
-  get 'recent'  => "ideas#index",     :defaults => { :recent   => true },   :as => :scope_recent
-  get 'latest'  => "ideas#index",     :defaults => { :latest   => true },   :as => :scope_latest
-  get 'featured' => "ideas#index",    :defaults => { :featured => true },   :as => :scope_featured
+  # NOTE: Mudado a pedidos da Natália
+  scope '/navegue-nas-ideias' do
+    get '/'        => 'ideas#index'
+    get 'popular'  => "ideas#index", :defaults => { :popular  => true }, :as => :scope_popular
+    get 'recent'   => "ideas#index", :defaults => { :recent   => true }, :as => :scope_recent
+    get 'latest'   => "ideas#index", :defaults => { :latest   => true }, :as => :scope_latest
+    get 'featured' => "ideas#index", :defaults => { :featured => true }, :as => :scope_featured
+  end
 
   # Match relations ideas vs categories
   match ":idea_category_id/ideia/:id",   :to => "ideas#show",  :as => :category_idea
   match ":idea_category_id/ideias",      :to => "ideas#index", :as => :category_ideas
 
   get "/miv" => "miv#index" if Rails.env.development?
-  root :to => redirect("/featured")
-
+  root :to => redirect("/navegue-nas-ideias/featured")
 end
