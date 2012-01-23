@@ -21,6 +21,7 @@ gem 'meta_search',    '>= 1.1.0.pre'
 gem 'simple_form'
 gem 'kaminari'
 gem 'carrierwave'
+gem 'fog'
 
 # Authentication + Authorization
 gem 'cancan'

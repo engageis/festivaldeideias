@@ -32,15 +32,6 @@ class IdeasController < ApplicationController
     end
   end
 
-
-  def update
-    update! do |format|
-      format.json do
-        render :json => @idea.to_json
-      end
-    end
-  end
-
   protected
   def load_resources
     @categories ||= IdeaCategory.all

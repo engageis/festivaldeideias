@@ -7,21 +7,8 @@ App.Ideas.Show = App.BaseView.extend({
   },
 
   events: {
-    'click a[href="#edit"]' : 'highlightEditable',
     'mousedown .editable' : 'editableClick'
   },
 
-  editableClick: etch.editableInit,
-
-  highlightEditable: function(){
-
-    var editable = $('.editable');
-    var helper = $('.idea_edit_helper')
-    editable.addClass('highlighted');
-    helper.fadeIn('slow', function(){
-      setTimeout(1000, function(){ helper.fadeOut(); })
-    })
-
-  }
-
+  editableClick: etch.editableInit
 });

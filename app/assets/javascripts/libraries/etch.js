@@ -233,7 +233,7 @@
         // you use to initialize editing 
         editableInit: function(e) {
             e.stopPropagation();
-            var $editable = $(e.srcElement).etchFindEditable();
+            var $editable = $(e.target).etchFindEditable();
             $editable.attr('contenteditable', true);
 
             // if the editor isn't already built, build it
@@ -274,7 +274,7 @@
             // listen for mousedowns that are not coming from the editor
             // and close the editor
             $('body').bind('mousedown.editor', function(e) {
-                if ($(e.srcElement).not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *').size()) {
+                if ($(e.target).not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *').size()) {
                     $editor.remove();
                     
                     // unblind the image-tools if the editor isn't active
