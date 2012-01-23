@@ -24,7 +24,7 @@ FestivalDeIdeias::Application.routes.draw do
   # Scopes
   # NOTE: Mudado a pedidos da Natália
   scope '/navegue-nas-ideias' do
-    get '/'        => 'ideas#index'
+    get '/'        => redirect('/navegue-nas-ideias/popular')
     get 'popular'  => "ideas#index", :defaults => { :popular  => true }, :as => :scope_popular
     get 'recent'   => "ideas#index", :defaults => { :recent   => true }, :as => :scope_recent
     get 'latest'   => "ideas#index", :defaults => { :latest   => true }, :as => :scope_latest
@@ -36,5 +36,6 @@ FestivalDeIdeias::Application.routes.draw do
   match ":idea_category_id/ideias",      :to => "ideas#index", :as => :category_ideas
 
   get "/miv" => "miv#index" if Rails.env.development?
-  root :to => redirect("/navegue-nas-ideias/featured")
+  #root :to => redirect("/featured")
+  root :to => 'ideas#index'
 end
