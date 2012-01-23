@@ -51,4 +51,19 @@
   .editable
     position: relative
     background: url(asset_path('editable_icon.png', 'image')) no-repeat top right
+    &:hover
+      background: #FFF
+      cursor: text
+
+  .edit_message
+    font-size: 1.3em
+    color: darken($lightyellow, 65%)
+    padding: 20px 10px
+    text-align: center
+    background: 
+      color: $lightyellow
+    border: 1px solid darken($lightyellow, 40%)
+    outline: 2px solid #FFF
+    margin: 20px 0
+
 
