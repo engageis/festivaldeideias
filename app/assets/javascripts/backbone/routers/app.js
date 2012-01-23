@@ -2,7 +2,7 @@ App.Router = Backbone.Router.extend({
 
     routes: {
         "continue_idea": "loadIdeaFromStore",
-        "login": "loginAction",
+        //"login": "loginAction", // Acaba acontencendo duas vezes, por causa do router e por causa do evento
     },
 
     // You can let these functions empty
