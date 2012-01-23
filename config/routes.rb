@@ -19,7 +19,7 @@ FestivalDeIdeias::Application.routes.draw do
   get "sobre-os-temas"      => "pages#themes",      :as => :themes_page
   get "regulamento"         => "pages#regulation",  :as => :regulation_page
   get "premiacao"           => "pages#awards",      :as => :awards_page
-  get "navegue-nas-ideias"  => "ideas#navigate",    :as => :navigate_page
+  get "navegue-nas-ideias"  => "pages#navigate",    :as => :navigate_page
 
   # Scopes
   get 'popular' => "ideas#index",     :defaults => { :popular  => true },   :as => :scope_popular

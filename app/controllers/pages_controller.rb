@@ -20,6 +20,9 @@ class PagesController < ApplicationController
   def awards
   end
 
+  def navigate
+  end
+
   protected
   def load_resources
     @categories ||= IdeaCategory.all
