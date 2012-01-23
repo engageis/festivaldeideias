@@ -46,13 +46,17 @@
     clear: both
     margin-top: 10px
     border-bottom: 1px solid #CCC
+    p
+      font-size: 1.2em
   #comments
     margin: 10px 0
   .editable
     position: relative
-    background: url(asset_path('editable_icon.png', 'image')) no-repeat top right
+    padding-right: 20px
+    background: url(asset_path('editable_icon.png', 'image')) no-repeat right
     &:hover
-      background: #FFF
+      background: 
+        color: #FFF
       cursor: text
 
   .edit_message
