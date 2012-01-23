@@ -2,14 +2,21 @@
   h3 Navegue nas ideias
 
   h4 Por estatísticas
+
   ul.by_statistics
-    li
-      // adiciona um .selected no li quando o item estiver selecionado
-      = link_to "Mais populares", scope_popular_path, :class => "popular"
-    li
-      = link_to "Recém iniciadas", scope_recent_path, :class => "recent"
-    li
-      = link_to "Recém alteradas", scope_latest_path, :class => "modified"
+    // Determina o link ativo
+    - path = request.path
+    - popular_path = scope_popular_path
+    - recent_path = scope_recent_path
+    - latest_path = scope_latest_path
+
+    // adiciona um .selected no li quando o item estiver selecionado
+    li class=(path == popular_path ? 'selected' : '')
+      = link_to "Mais populares", popular_path, :class => "popular"
+    li class=(path == recent_path ? 'selected' : '')
+      = link_to "Recém iniciadas", recent_path, :class => "recent"
+    li class=(path == latest_path ? 'selected' : '')
+      = link_to "Recém alteradas", latest_path, :class => "modified"
 
   h4 Por categoria
   ul.categories_list
@@ -17,11 +24,12 @@
     // TODO: Fix the category CSS badge. Use only the image_tag
     //
     - @categories.each do |category|
-      li.category
+      - current_category_path = category_ideas_path(category)
+      li class=(path == current_category_path ? 'category selected' : 'category')
         span.image
           = image_tag category.badge.url, :size => "30x30"
         span.name
-          = link_to category.name, category_ideas_path(category)
+          = link_to category.name, current_category_path
 
   // Start a new idea
   = new_idea_button

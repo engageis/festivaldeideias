@@ -29,11 +29,15 @@ FestivalDeIdeias::Application.routes.draw do
     get 'recent'   => "ideas#index", :defaults => { :recent   => true }, :as => :scope_recent
     get 'latest'   => "ideas#index", :defaults => { :latest   => true }, :as => :scope_latest
     get 'featured' => "ideas#index", :defaults => { :featured => true }, :as => :scope_featured
+
+    # Match relations ideas vs categories
+    match ":idea_category_id/ideia/:id",   :to => "ideas#show",  :as => :category_idea
+    match ":idea_category_id/ideias",      :to => "ideas#index", :as => :category_ideas
   end
 
-  # Match relations ideas vs categories
-  match ":idea_category_id/ideia/:id",   :to => "ideas#show",  :as => :category_idea
-  match ":idea_category_id/ideias",      :to => "ideas#index", :as => :category_ideas
+  ## Match relations ideas vs categories
+  #match ":idea_category_id/ideia/:id",   :to => "ideas#show",  :as => :category_idea
+  #match ":idea_category_id/ideias",      :to => "ideas#index", :as => :category_ideas
 
   get "/miv" => "miv#index" if Rails.env.development?
   #root :to => redirect("/featured")
