@@ -9,7 +9,7 @@
   = render "layouts/blog_feeds"
   = render "layouts/twitter_feeds"
 
-- elsif path =~ /navegue-nas-ideias/
+- elsif path =~ /^\/(navegue-nas-ideias|ideias)/
   = render "layouts/filters"
   = new_idea_button
 
