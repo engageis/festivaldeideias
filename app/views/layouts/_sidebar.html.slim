@@ -1,11 +1,17 @@
 // SIDEBAR FOR HOME AND FILTER PAGE
-/- if controller.action_name =~ /^(navigate|index)$/
-- if controller.action_name = "index"
+
+- path = request.path
+
+- if path == root_path
   = render "layouts/community"
   = new_idea_button
   = render "layouts/filters"
   = render "layouts/blog_feeds"
   = render "layouts/twitter_feeds"
+
+- elsif path =~ /^\/(navegue-nas-ideias|ideias)/
+  = render "layouts/filters"
+  = new_idea_button
 
 - else
   // SIDEBAR FOR IDEA PAGE
