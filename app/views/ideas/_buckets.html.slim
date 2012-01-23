@@ -1,0 +1,35 @@
+ol.ideas_buckets
+  - unless @ideas.nil?
+    - @ideas.each_with_index do |idea, pos|
+      //
+      // Badges:
+      //  = image_tag "badges/security.png", :alt => "Violência", :title => "Violência"
+      //  = image_tag "badges/urban.png", :alt => "Mobilidade Urbana", :title => "Mobilidade Urbana"
+      //  = image_tag "badges/disasters.png", :alt => "Catástrofes Naturais", :title => "Catástrofes Naturais"
+      //
+      li.bucket.first[class=("last" if pos == (@ideas.size - 1))]
+        header
+          // Category badge
+          = image_tag idea.category.badge.url, :size => "30x30", :alt => idea.category.name, :title => idea.category.name
+          h3
+            = link_to idea.title, category_idea_path(idea.category, idea), :class => "idea_title"
+          // Idea user
+          span.idea_user
+            = "Iniciada por #{idea.user.name}"
+          .clear
+        .description
+          p.idea_headline
+
+            // Is Headline present? Ok, show me. If not, show me the description.
+            = idea.headline ? idea.headline : truncate(idea.description, :length => 140, :separator => " ")
+
+        // Share btn
+        = link_to t('buttons.show_idea'), category_idea_path(idea.category, idea), :class => "button primary"
+
+        // Collaboration & Popularity
+        ul.stats
+          li.likes
+            = idea.likes
+          li.collabs
+            = nil
+
