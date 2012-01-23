@@ -37,7 +37,7 @@ App.Ideas.NewIdea = App.BaseView.extend({
         "keydown .popup #idea_headline": "updateCharactersLeft",
         "keyup .popup #idea_headline": "updateCharactersLeft",
         "click .popup #refine blockquote": "focusOnDescription",
-        "submit .popup form": "checkForm",
+        "submit .popup form.new_idea": "checkForm",
         "click .popup img.close_image": "clearAll",
         "click a.start[href=#login]": "setRedirectUrl",
         "click .popup #fbl a[href=#fbh]": "showFbh",
@@ -264,8 +264,8 @@ App.Ideas.NewIdea = App.BaseView.extend({
     },
 
     setRedirectUrl: function (e) {
-        console.log($(e.target).data(''))
-        if ($(e.target).data('return-url') === '#continue_idea') {
+        var target = e.target;
+        if ((target && $(target).data('return-url') === '#continue_idea') || e === '#continue_idea') {
             var field, value;
             field = $('.popup').find('#redirect_url');
             value = field.val();
