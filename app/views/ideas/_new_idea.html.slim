@@ -22,8 +22,7 @@
 
       p
         = f.label :title, t('idea.new.give_a_name')
-        = f.text_field :title, :maxlength => 255, :class => 'required'
-        // TODO: Ver qual o tamanho máximo do título da ideia
+        = f.text_field :title, :maxlength => 70, :class => 'required'
 
       p
         = f.label :headline, t('idea.new.give_a_headline'), :class => 'left'

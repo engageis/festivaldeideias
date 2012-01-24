@@ -17,7 +17,7 @@
       = image_tag @idea.category.badge.url, :alt => @idea.category.name, :title => @idea.category.name, :class => "badge"
 
       // Idea's title
-      h1[class=ability_class data-placeholder="#{t('jquery.editable.defaults.tooltip')}" data-type="text" data-raw=@idea.title data-attribute="title" data-maxlenght=140 data-singleline=true data-url=idea_path(@idea)]
+      h1[class=ability_class data-placeholder="#{t('jquery.editable.defaults.tooltip')}" data-type="text" data-raw=@idea.title data-attribute="title" data-maxlenght=70 data-singleline=true data-url=idea_path(@idea)]
         = @idea.title
 
       // Statistics of this idea
