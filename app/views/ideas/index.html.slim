@@ -4,7 +4,7 @@
   h1= t('idea.homepage.header')
   h2.info= t('idea.homepage.about')
 
-  div data-pjax-container=''
+  .ajax-container data-pjax-container=''
     ol.ideas_buckets
       - unless @ideas.nil?
         - last_pos = @ideas.size - 1

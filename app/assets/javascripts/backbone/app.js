@@ -50,13 +50,21 @@ var App = window.App = {
         },
 
         startPjaxLinks: function () {
-            var lis, pjaxLinks;
+            var lis, pjaxLinks, container;
             // Não executar no home.
             if (window.location.pathname === '/') { return; }
+            // Área que será substituída, primeiro por uma imagem.
+            container = $('[data-pjax-container]');
             lis = $('.navigation.filter li');
             pjaxLinks = $('a', lis);
+            // Não dá para usar o container como parâmetro, porque
+            // a função abaixo espera por uma String.
             pjaxLinks.pjax('[data-pjax-container]').click(function () {
+                // A imagem de "carregando"
+                container.html("<img class='loading-image' src='/loading.gif' />");
+                // Remove a seleção dos outros links
                 lis.removeClass('selected');
+                // Deixa o link atual selecionado
                 $(this).parents('li').addClass('selected');
             });
         }
