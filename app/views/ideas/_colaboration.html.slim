@@ -1,5 +1,5 @@
 #colaborate.hidden
-  = form_for(Idea.new, :class => 'new_idea') do |f|
+  = form_for(Idea.new, :class => 'new_idea', :remote => true) do |f|
     h2 = t('idea.colaboration.new.start')
     .steps
       // Descrição da ideia
@@ -18,10 +18,10 @@
         p
           = f.label :description, t('idea.colaboration.new.give_a_description')
           = f.text_area :description, :class => 'required', :value => idea.description
+          = f.hidden_field :parent_id, :value => idea.id
 
 
-
-
+      #refine
         .categories.required
           h4 = t('idea.colaboration.new.choose_a_category')
 
@@ -37,9 +37,6 @@
                     br
                     = category.name
       // Publicação da ideia
-      #publish.hidden
-        h3
-          | Revise e publique:
-          em
-            | * Você ainda conseguirá editar sua ideia depois de publicada.
+      #publish
+        = f.submit "Publicar!", :class => 'button next'
 
