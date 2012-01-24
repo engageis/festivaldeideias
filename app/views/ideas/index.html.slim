@@ -4,7 +4,9 @@
   /*h1.title= t('idea.homepage.header')*/
   /*h2.info= t('idea.homepage.about')*/
   h1.title= @ideas_title
-  h2.info= @ideas_about
+  h2.info
+    = @ideas_about
+    a[href="" class="view_more"] Entenda as colaborações
 
   .ajax-container data-pjax-container=''
     ol.ideas_buckets
