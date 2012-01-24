@@ -53,7 +53,7 @@ var App = window.App = {
             var lis, pjaxLinks;
             // Não executar no home.
             if (window.location.pathname === '/') { return; }
-            lis = $('.navigation li');
+            lis = $('.navigation.filter li');
             pjaxLinks = $('a', lis);
             pjaxLinks.pjax('[data-pjax-container]').click(function () {
                 lis.removeClass('selected');
