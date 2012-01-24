@@ -11,7 +11,7 @@ html
 
   body[data-controller-class="#{controller.class.name}" data-controller-name="#{name.camelize}" data-action="#{action.camelize}" ]
     - if alert or notice
-      span.message[class=(alert ? "alert" : "notice")]= alert or notice
+      span.flash.message[class=(alert ? "alert" : "notice")]= alert or notice
 
     = render :partial => "layouts/login"
     header.main
