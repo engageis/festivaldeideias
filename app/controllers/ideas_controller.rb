@@ -47,14 +47,39 @@ class IdeasController < ApplicationController
     @ideas_count ||= Idea.count
     @ideas_latest ||= Idea.latest
     @ideas_featured ||= Idea.featured
+    load_title_and_about
   end
 
   def current_ability
+    # NOTE: só porque eu sou chato
+    @current_ability ||= current_user ? UserAbility.new(current_user) : GuestAbility.new
+=begin
     @current_ability ||= case
                          when current_user
                            UserAbility.new(current_user)
                          else
                            GuestAbility.new
                          end
+=end
+  end
+
+  def load_title_and_about
+    if params[:lastest]
+      @ideas_title = I18n.translate('idea.filters.latest.title')
+      @ideas_about = I18n.translate('idea.filters.latest.about')
+    elsif params[:recent]
+      @ideas_title = I18n.translate('idea.filters.recent.title')
+      @ideas_about = I18n.translate('idea.filters.recent.about')
+    elsif params[:popular]
+      @ideas_title = I18n.translate('idea.filters.popular.title')
+      @ideas_about = I18n.translate('idea.filters.popular.about')
+    elsif params[:featured]
+      @ideas_title = I18n.translate('idea.filters.featured.title')
+      @ideas_about = I18n.translate('idea.filters.featured.about')
+    elsif params[:idea_category_id]
+      category = IdeaCategory.find(params[:idea_category_id])
+      @ideas_title = I18n.translate('idea.filters.category.title', :category_name => category.name)
+      @ideas_about = nil # substituir pela descrição da categoria
+    end
   end
 end

@@ -27,6 +27,23 @@ pt-BR:
       header: "Ideias Populares"
       about: "Uma ideia popular é aquela que tem bastante interação por contribuição e comentários de usuários."
 
+    # É aqui mesmo, Natália...
+    filters:
+      popular:
+        title: 'Título para as ideias populares'
+        about: 'Sobre as ideias populares'
+      recent:
+        title: 'Título para as ideias recentes'
+        about: 'Sobre as ideias recentes'
+      modified:
+        title: 'Título para as ideias alteradas'
+        about: 'Sobre as ideias alteradas'
+      featured:
+        title: "Ideias em destaque"
+        about: "Selecionamos algumas ideias legais que estão rolando na plataforma e as colocamos aqui, quem sabe você não se interessa e começa colaborando em uma delas?"
+      category:
+        title: 'Ideias a respeito de %{category_name}'
+
   # Buttons & Boxes
   buttons:
     new_idea: "Comece uma ideia!"
