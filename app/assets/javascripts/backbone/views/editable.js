@@ -35,7 +35,7 @@ App.EditableView = App.BaseView.extend({
     })
     _.bind(this.dataRaw, element)
     element.editable(this.updateUrl(element), {
-      data: this.dataRaw,
+      data: this.dataRaw(element),
       type: (element.attr('data-type') || "textarea"),
       placeholder: element.attr('data-placeholder'),
       method: "PUT",
@@ -81,7 +81,7 @@ App.EditableView = App.BaseView.extend({
     return $(element).attr('data-url') + '.json'
   },
 
-  dataRaw: function(){ return $(this).attr('data-raw') }
+  dataRaw: function(element){ return $(element).attr('data-raw') }
 
 })
 
