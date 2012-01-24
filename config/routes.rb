@@ -44,5 +44,5 @@ FestivalDeIdeias::Application.routes.draw do
 
   get "/miv" => "miv#index" if Rails.env.development?
   #root :to => redirect("/featured")
-  root :to => 'ideas#index'
+  root :to => 'ideas#index', :defaults => { :featured => true }
 end
