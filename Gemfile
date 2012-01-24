@@ -22,6 +22,7 @@ gem 'simple_form'
 gem 'kaminari'
 gem 'carrierwave'
 gem 'fog'
+gem 'auto_html'
 
 # Authentication + Authorization
 gem 'cancan'
