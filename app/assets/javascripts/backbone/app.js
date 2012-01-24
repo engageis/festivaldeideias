@@ -27,10 +27,10 @@ var App = window.App = {
 
             // Starting Facebox
             App.Common.startFacebox();
-            App.Common.startPjaxLinks();
 
             // Sempre executar
             App.Ideas.newIdea = new App.Ideas.NewIdea();
+            App.Common.startPjaxLinks();
         },
 
         finish: function(){
@@ -51,9 +51,8 @@ var App = window.App = {
 
         startPjaxLinks: function () {
             var lis, pjaxLinks;
-            if (window.location.pathname === '/') {
-                return;
-            }
+            // Não executar no home.
+            if (window.location.pathname === '/') { return; }
             lis = $('.navigation li');
             pjaxLinks = $('a', lis);
             pjaxLinks.pjax('[data-pjax-container]').click(function () {
