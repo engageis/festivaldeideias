@@ -29,12 +29,19 @@ span
         img[src="" alt="Nome da Pessoa" title="Nome da Pessoa"]
   .clear
 
-// se esta ideia é do usuário, então
-p
-  | Para editar, sua ideia... (explicar o ícone)
+- if can?(:edit, @idea)
+  .hightlight
+    h3 Você é o chefe
+    .youre_boss
+      p 
+        strong
+          | Esta ideia é de autoria sua
+        | , você pode editá-la e aceitar as colaborações que outras pessoas enviam.
+      a.view_more href="#" Saiba mais sobre colaborações
+      br
 
-// se não
-a[href="" class="button start"] Colaborar com esta ideia
+- else
+  a[href="" class="button start"] Colaborar com esta ideia
 
 // ambos os botões levam para a mesma interface, porém, quando dono da ideia, alterações são aplicadas de imediato (sem fase de aprovação)
 
