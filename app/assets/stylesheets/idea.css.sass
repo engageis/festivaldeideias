@@ -52,12 +52,27 @@
     margin: 10px 0
   .editable
     position: relative
-    padding-right: 20px
-    background: url(asset_path('editable_icon.png', 'image')) no-repeat right
+    padding-left: 20px
+    background: url(asset_path('editable_icon.png', 'image')) no-repeat left
     &:hover
       background: 
         color: #FFF
       cursor: text
+    form
+      margin-left: -20px
+      textarea
+        min-height: 200px
+      button
+        text-transform: uppercase
+        letter-spacing: 1px
+        border: none
+        background:
+          color: darken($lightgreen, 40%)
+        color: #FFF
+        +border-radius(3px)
+        &[type="cancel"]
+          background:
+            color: lighten($darkred, 20%)
 
   .edit_message
     font-size: 1.3em
