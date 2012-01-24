@@ -24,11 +24,14 @@ html
             = link_to (image_tag "logotipo.png", :alt => "Festival de Ideais", :title => "Festival de Ideias"), root_url
           nav
             ul.actions
-              li
-                a[href="/navegue-nas-ideias"]
+              - path = request.path
+              - link_path = scope_root_path
+              li class=(path.include?(link_path) ? 'selected' : '')
+                = link_to link_path do
                   h2
                     | Navegue
                   | em mais de 300 ideias
+                /*a[href="/navegue-nas-ideias"]*/
 
             //li
               //a href="#start" rel="facebox"

@@ -26,7 +26,7 @@ FestivalDeIdeias::Application.routes.draw do
   # Scopes
   # NOTE: Mudado a pedidos da Natália
   scope '/navegue-nas-ideias' do
-    get '/'        => redirect('/navegue-nas-ideias/popular')
+    get '/'        => redirect('/navegue-nas-ideias/popular'), :as => :scope_root
     get 'popular'  => "ideas#index", :defaults => { :popular  => true }, :as => :scope_popular
     get 'recent'   => "ideas#index", :defaults => { :recent   => true }, :as => :scope_recent
     get 'latest'   => "ideas#index", :defaults => { :latest   => true }, :as => :scope_latest
