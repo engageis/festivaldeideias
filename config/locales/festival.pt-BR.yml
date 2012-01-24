@@ -13,8 +13,13 @@ pt-BR:
       give_a_name: "Nomeie sua ideia:"
       give_a_headline: "Se quiser, resuma sua ideia em algumas palavras:"
       choose_a_category: "Em que categoria sua ideia se encaixa?"
+
+    # Messages
     message:
       success: "Sua ideia foi criada com sucesso!"
+      edit: "Você é o criador desta ideia, para editá-la clique nos campos e divirta-se :)"
+
+    # Stuff from pages
     homepage:
       header: "Ideias em destaque"
       about: "Selecionamos algumas ideias legais que estão rolando na plataforma e as colocamos aqui, quem sabe você não se interessa e começa colaborando em uma delas?"

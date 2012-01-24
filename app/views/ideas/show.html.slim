@@ -11,10 +11,11 @@
 
 
       - if can?(:edit, @idea)
-        .edit_message
-          | Você é o criador desta ideia, para editá-la clique nos campos e divirta-se :)
+        .edit_message= t('idea.message.edit')
+
       // Category badge
       = image_tag @idea.category.badge.url, :alt => @idea.category.name, :title => @idea.category.name, :class => "badge"
+
       // Idea's title
       h1[class=ability_class data-placeholder="#{t('jquery.editable.defaults.tooltip')}" data-type="text" data-raw=@idea.title data-attribute="title" data-maxlenght=140 data-singleline=true data-url=idea_path(@idea)]
         = @idea.title
@@ -25,9 +26,8 @@
           | Iniciada por &nbsp;
           // User profile
           - profile = @idea.user.services.first.facebook_profile
-
           // User profile url
-          = link_to @idea.user.name, profile[:url], :target => profile[:target], :class => "user_info"
+          = link_to @idea.user.name, profile, :target => "_blank", :class => "user_info"
           | &nbsp; &mdash; &nbsp;
 
           // Using rails helper for time ago

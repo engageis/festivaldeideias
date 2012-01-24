@@ -8,5 +8,5 @@ h4
         li
           - if not user == current_user
             - profile = user.services.first.facebook_profile
-            = link_to (image_tag user.services.first.facebook_avatar, :alt => user.name, :title => user.name), profile[:url], :target => profile[:target]
+            = link_to (image_tag user.services.first.facebook_avatar, :alt => user.name, :title => user.name), profile, :target => "_blank"
 

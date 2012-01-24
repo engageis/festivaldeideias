@@ -64,10 +64,10 @@ ActiveRecord::Schema.define(:version => 20120115211636) do
     t.boolean  "featured",    :default => false, :null => false
     t.boolean  "recommend",   :default => false, :null => false
     t.integer  "likes",       :default => 0,     :null => false
-    t.integer  "position"
+    t.integer  "position",    :default => 0,     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "category_id", :default => 0,     :null => false
+    t.integer  "category_id",                    :null => false
   end
 
   create_table "non_facebook_users", :force => true do |t|
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20120115211636) do
     t.datetime "updated_at"
   end
 
+  add_foreign_key "ideas", "idea_categories", :name => "ideas_category_id_fk", :column => "category_id"
   add_foreign_key "ideas", "ideas", :name => "ideas_parent_id_fk", :column => "parent_id"
   add_foreign_key "ideas", "users", :name => "ideas_user_id_fk"
 
