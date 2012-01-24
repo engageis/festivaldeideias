@@ -55,9 +55,12 @@
     padding-left: 25px
     background: url(asset_path('editable_icon.png', 'image')) no-repeat left 5px
     &:hover
-      background: 
+      background:
         color: #FFF
-      cursor: text
+      cursor: pointer
+    &:focus
+      background:
+        color: none
     form
       margin-left: -25px
       textarea
@@ -86,7 +89,7 @@
     color: darken($lightyellow, 65%)
     padding: 20px 10px
     text-align: center
-    background: 
+    background:
       color: $lightyellow
     border: 1px solid darken($lightyellow, 40%)
     outline: 2px solid #FFF

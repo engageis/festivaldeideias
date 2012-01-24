@@ -10,8 +10,7 @@
       - ability_class = can?(:edit, @idea) ?  "editable" : "idea_detail"
 
 
-      - if can?(:edit, @idea)
-        .edit_message= t('idea.message.edit')
+      .edit_message= t('idea.message.edit') if can?(:edit, @idea)
 
       // Category badge
       = image_tag @idea.category.badge.url, :alt => @idea.category.name, :title => @idea.category.name, :class => "badge"
@@ -31,13 +30,13 @@
           | &nbsp; &mdash; &nbsp;
 
           // Using rails helper for time ago
-          | Última edição feita há
+          | Última edição feita há&nbsp;
           = time_ago_in_words(@idea.updated_at)
 
   // Colaborar muda para Editar quando sou o dono da ideia
   article
-    p[class=ability_class data-url=idea_path(@idea) data-attribute="description" data-raw=@idea.description data-raw-attribute="description_html"]
-      = @idea.description
+    div[class=ability_class data-placeholder="#{t('jquery.editable.defaults.tooltip')}" data-url=idea_path(@idea) data-attribute="description" data-raw=@idea.description data-raw-attribute="description_html"]
+      = @idea.description_html
     .utils
       ul.totals
         li.comments

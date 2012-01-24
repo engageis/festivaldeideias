@@ -29,27 +29,30 @@ App.EditableView = App.BaseView.extend({
   },
 
   prepareEditable: function(index, element) {
+    console.log(element)
+    self = this;
     element = $(element)
     element.click(function(){
       $(this).addClass("editing")
     })
-    _.bind(this.dataRaw, element)
     element.editable(this.updateUrl(element), {
-      data: this.dataRaw(element),
+      data: function(value, settings){
+        return $(this).attr('data-raw')
+      },
       type: (element.attr('data-type') || "textarea"),
       placeholder: element.attr('data-placeholder'),
       method: "PUT",
       name: this.modelName + '[' + element.attr('data-attribute') + ']',
       indicator : '<img src="/assets/loading.gif">',
       onreset: function() {
-        $(this).parent().removeClass("editing")
+        $(this).parents().removeClass("editing")
       },
       callback: function(value, settings) {
         var model = JSON.parse(value)
         $(this).attr('data-raw', model[$(this).attr('data-attribute')])
-        $(this).html(model[($(this).attr('data-raw-attribute') || $(this).attr('data-attribute'))])
+        $(this).html(model[$(this).attr('data-raw-attribute') || $(this).attr('data-attribute')])
         $(this).removeClass("editing")
-
+        $('.editable').each(self.prepareEditable)
       }
     })
   },
@@ -77,11 +80,9 @@ App.EditableView = App.BaseView.extend({
 
   },
 
-  updateUrl: function(element) {
-    return $(element).attr('data-url') + '.json'
-  },
+  updateUrl: function(element) {return $(element).attr('data-url') + '.json' },
 
-  dataRaw: function(element){ return $(element).attr('data-raw') }
+  dataRaw: function(){ return $(this).attr('data-raw') }
 
 })
 
