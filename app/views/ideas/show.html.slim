@@ -8,9 +8,8 @@
 
       // Defining a class for editable fields based on cancan ability
       - ability_class = can?(:edit, @idea) ?  "editable" : "idea_detail"
-
-
-      .edit_message= t('idea.message.edit') if can?(:edit, @idea)
+      - if can?(:edit, @idea) 
+        .edit_message= t('idea.message.edit') 
 
       // Category badge
       = image_tag @idea.category.badge.url, :alt => @idea.category.name, :title => @idea.category.name, :class => "badge"
