@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
+//= require libraries/jquery.pjax
 //= require libraries/facebox
 //= require libraries/store
 //= require underscore

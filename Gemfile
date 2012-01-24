@@ -32,6 +32,7 @@ gem 'omniauth', '0.3.2'
 gem 'jquery-rails'
 gem 'slim'
 gem 'rails-backbone'
+gem 'rack-pjax'
 
 # Heroku
 gem 'heroku'

@@ -27,6 +27,7 @@ var App = window.App = {
 
             // Starting Facebox
             App.Common.startFacebox();
+            App.Common.startPjaxLinks();
 
             // Sempre executar
             App.Ideas.newIdea = new App.Ideas.NewIdea();
@@ -47,5 +48,18 @@ var App = window.App = {
                 $.facebox({ div: href });
             });
         },
+
+        startPjaxLinks: function () {
+            var lis, pjaxLinks;
+            if (window.location.pathname === '/') {
+                return;
+            }
+            lis = $('.navigation li');
+            pjaxLinks = $('a', lis);
+            pjaxLinks.pjax('[data-pjax-container]').click(function () {
+                lis.removeClass('selected');
+                $(this).parents('li').addClass('selected');
+            });
+        }
     }
 };
