@@ -1,0 +1,45 @@
+#colaborate.hidden
+  = form_for(Idea.new, :class => 'new_idea') do |f|
+    h2 = t('idea.colaboration.new.start')
+    .steps
+      // Descrição da ideia
+      #describe
+        h3 = t('idea.colaboration.new.about')
+
+        p
+          = f.label :title, t('idea.colaboration.new.give_a_name')
+          = f.text_field :title, :maxlength => 70, :class => 'required', :value => idea.title
+
+        p
+          = f.label :headline, t('idea.colaboration.new.give_a_headline'), :class => 'left'
+          span.char_counter 200
+          = f.text_area :headline, :class => 'limited', :maxlength => 200, :value => idea.headline
+
+        p
+          = f.label :description, t('idea.colaboration.new.give_a_description')
+          = f.text_area :description, :class => 'required', :value => idea.description
+
+
+
+
+        .categories.required
+          h4 = t('idea.colaboration.new.choose_a_category')
+
+          // Getting categories from ideas_controller
+          - if !@categories.nil? && @categories.size > 0
+            ul
+              - @categories.each do |category|
+                li
+                  - id = category.id
+                  = f.radio_button :category_id, id
+                  label for="idea_category_id_#{id}"
+                    = image_tag(category.badge.url, :size => '31x31', :alt => category.name, :title => category.name)
+                    br
+                    = category.name
+      // Publicação da ideia
+      #publish.hidden
+        h3
+          | Revise e publique:
+          em
+            | * Você ainda conseguirá editar sua ideia depois de publicada.
+

@@ -8,8 +8,9 @@
 
       // Defining a class for editable fields based on cancan ability
       - ability_class = can?(:edit, @idea) ?  "editable" : "idea_detail"
-      - if can?(:edit, @idea) 
-        .edit_message= t('idea.message.edit') 
+
+      - if can?(:edit, @idea)
+        .edit_message= t('idea.message.edit')
 
       // Category badge
       = image_tag @idea.category.badge.url, :alt => @idea.category.name, :title => @idea.category.name, :class => "badge"
@@ -43,7 +44,7 @@
           | 6
         li.collabs
           // Total de colaborações aceitas
-          | 5
+          = @idea.colaborations.count
         li.forks
           // Total de forks
           | 1
@@ -51,9 +52,11 @@
         li.comments
           a href="#comment" Comentar
         li.collabs
-          a href="#colaborar" Colaborar (sugerir)
+          a href="#colaborate" Colaborar (sugerir)
 
   section#comments
     a[name="comment"]
     h3 Comentários
     p Comentários default do Facebook
+
+  = render :partial => "colaboration", :locals => {:idea => @idea}

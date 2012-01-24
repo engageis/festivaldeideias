@@ -16,15 +16,19 @@ html
     = render :partial => "layouts/login"
     header.main
       .wrapper
-        .logo
-          = link_to (image_tag "logotipo.png", :alt => "Festival de Ideais", :title => "Festival de Ideias"), root_url
-        nav
-          ul.actions
-            li
-              a[href="/navegue-nas-ideias"]
-                h2
-                  | Navegue
-                | em mais de 300 ideias
+        - if current_page?(root_url)
+          .logo
+            = link_to (image_tag "logotipo.png", :alt => "Festival de Ideais", :title => "Festival de Ideias"), root_url
+        - else
+          .logo.smaller
+            = link_to (image_tag "logotipo.png", :alt => "Festival de Ideais", :title => "Festival de Ideias"), root_url
+          nav
+            ul.actions
+              li
+                a[href="/navegue-nas-ideias"]
+                  h2
+                    | Navegue
+                  | em mais de 300 ideias
 
             //li
               //a href="#start" rel="facebox"
@@ -33,7 +37,8 @@ html
         ul.user_actions
           = render :partial => "layouts/user_actions"
         //
-        - if current_page?(root_url) or current_page?(scope_featured_url)
+        /*- if current_page?(root_url) or current_page?(scope_featured_url)*/
+        - if current_page?(root_url)
           = render :partial => "layouts/header"
 
       .clear
