@@ -31,12 +31,12 @@
           | &nbsp; &mdash; &nbsp;
 
           // Using rails helper for time ago
-          | Última edição feita há 
+          | Última edição feita há
           = time_ago_in_words(@idea.updated_at)
 
   // Colaborar muda para Editar quando sou o dono da ideia
   article
-    p[class=ability_class data-url=idea_path(@idea) data-attribute="description" data-raw=@idea.description data-raw-attribute="description"]
+    p[class=ability_class data-url=idea_path(@idea) data-attribute="description" data-raw=@idea.description data-raw-attribute="description_html"]
       = @idea.description
     .utils
       ul.totals
