@@ -51,7 +51,6 @@ class IdeasController < ApplicationController
   end
 
   def current_ability
-    # NOTE: só porque eu sou chato
     @current_ability ||= current_user ? UserAbility.new(current_user) : GuestAbility.new
 =begin
     @current_ability ||= case

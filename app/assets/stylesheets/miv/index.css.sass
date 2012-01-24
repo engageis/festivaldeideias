@@ -332,13 +332,19 @@ header.main
                 color: lighten(#F0F0F0, 3%)
               color: #888
 
-  .logo
+  .logo.smaller
     +grid(3)
     margin: 10px
     margin-bottom: 0
     img
       float: left
       width: 180px
+  .logo
+    +grid(4)
+    margin: 10px
+    img
+      float: left
+      width: 300px
 
   #share
     position: absolute
