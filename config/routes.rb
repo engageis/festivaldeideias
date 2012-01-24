@@ -1,3 +1,5 @@
+# coding: utf-8
+
 FestivalDeIdeias::Application.routes.draw do
 
   # First role routes
@@ -31,11 +33,12 @@ FestivalDeIdeias::Application.routes.draw do
     get 'featured' => "ideas#index", :defaults => { :featured => true }, :as => :scope_featured
 
     # Match relations ideas vs categories
-    match ":idea_category_id/ideias",      :to => "ideas#index", :as => :category_ideas
+    match ":idea_category_id/ideias", :to => "ideas#index", :as => :category_ideas
   end
 
   scope '/ideias' do
-    match ":idea_category_id/ideia/:id",   :to => "ideas#show",  :as => :category_idea
+    # Coisa da Natália... "É 'semântico!!'"
+    match ":idea_category_id/ideia/:id", :to => "ideas#show",  :as => :category_idea
   end
 
   ## Match relations ideas vs categories

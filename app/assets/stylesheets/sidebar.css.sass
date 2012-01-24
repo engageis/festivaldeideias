@@ -10,13 +10,11 @@ aside
       margin-bottom: 20px
       +border-radius(5px)
       li
-        overflow: hidden
         +list_link
+        overflow: hidden
         padding: 0
-        background:
-          image: url(asset_path("arrows_sprite.png", "image"))
-          repeat: no-repeat
-          position: right -73px
+        background: url(asset_path('arrows_sprite.png', 'image')) no-repeat
+        background-position: right -73px
         &:hover, &.selected
           background:
             color: $lightyellow
@@ -28,7 +26,6 @@ aside
           border-top: 1px solid #FEFFFF
         &:last-child
           +border-bottom-radius(5px)
-
         a
           color: #333
           display: block
@@ -48,13 +45,9 @@ aside
             position: 5px -72px
     
     .category
-      span
+      img
         float: left
-        &.image
-          padding: 5px
-        &.name
-          a
-            padding-left: 0
+        padding: 5px
 
   .youre_boss
     +bucket

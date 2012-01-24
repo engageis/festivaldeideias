@@ -26,8 +26,6 @@
     - @categories.each do |category|
       - current_category_path = category_ideas_path(category)
       li class=(path == current_category_path ? 'category selected' : 'category')
-        span.image
-          = image_tag category.badge.url, size: "30x30"
-        span.name
-          = link_to category.name, current_category_path
+        = image_tag category.badge.url, size: "30x30"
+        = link_to category.name, current_category_path
 
