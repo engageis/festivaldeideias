@@ -3,7 +3,7 @@ class CreateIdeaCategories < ActiveRecord::Migration
     create_table :idea_categories do |t|
       t.text :name, :null => false
       t.text :description, :null => false
-      t.text :badge, :null => false
+      t.text :badge
       t.boolean :active, :default => true
       t.timestamps
     end

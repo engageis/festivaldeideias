@@ -1,6 +1,6 @@
 class IdeaCategory < ActiveRecord::Base
 	has_many :ideas, :dependent => :destroy, :foreign_key => :category_id
-	validates_presence_of :name, :badge
+	validates_presence_of :name
 
 	mount_uploader :badge, BadgeUploader
 	

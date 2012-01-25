@@ -11,17 +11,9 @@ user = User.create!(:name => "Luiz Fonseca", :email => "runeroniek@gmail.com")
 service = Service.create!(:user => user, :uid => "100000428222603", :provider => "facebook")
 
 # Categories
-c1 = IdeaCategory.create(:name => "Mobilidade Urbana", :description => "Sample description")
-c1.badge.store!(File.open(File.join(Rails.root, "/spec/fixtures/images/disasters.png")))
-c1.save
-
-c2 = IdeaCategory.create(:name => "Catástrofes Naturais", :description => "Sample description")
-c2.badge.store!(File.open(File.join(Rails.root, "/spec/fixtures/images/disasters.png")))
-c2.save
-
-c3 = IdeaCategory.create(:name => "Violência", :description => "Sample description")
-c3.badge.store! File.open(File.join(Rails.root, "/spec/fixtures/images/disasters.png"))
-c3.save
+c1 = IdeaCategory.create(:name => "Mobilidade Urbana", :description => "Sample description", :badge => "")
+c2 = IdeaCategory.create(:name => "Catástrofes Naturais", :description => "Sample description", :badge => "")
+c3 = IdeaCategory.create(:name => "Violência", :description => "Sample description", :badge => "")
 
 
 # Ideas
