@@ -1,6 +1,8 @@
 class Idea < ActiveRecord::Base
   include AutoHtml
+  include ActiveRecord::SpawnMethods
   include Rails.application.routes.url_helpers
+
 
   validates_presence_of :title, :description, :category, :user
   belongs_to :user
@@ -9,10 +11,10 @@ class Idea < ActiveRecord::Base
 
   has_many :colaborations, :class_name => "Idea", :foreign_key => :parent_id
 
-  scope :featured,  where(:featured => true).order('position DESC')
-  scope :latest,    order('updated_at DESC')
-  scope :recent,    order('created_at DESC')
-  scope :popular,   order('likes DESC')
+  scope :featured,  where(:featured => true, :parent_id => nil).order('position DESC')
+  scope :latest,    where(:parent_id => nil).order('updated_at DESC')
+  scope :recent,    where(:parent_id => nil).order('created_at DESC')
+  scope :popular,   where(:parent_id => nil).order('likes DESC')
 
 
   # Modify the json response
@@ -41,20 +43,21 @@ class Idea < ActiveRecord::Base
     convert_html description
   end
 
-  # Use AutoHtml gem to convert texts
-  def convert_html(text)
-    auto_html text do
-      html_escape :map => {
-        '&' => '&amp;',
-        '>' => '&gt;',
-        '<' => '&lt;',
-        '"' => '"'
-      }
-      image
-      youtube :width => 510, :height => 332
-      vimeo :width => 510, :height => 332
-      link :target => :_blank
-      redcarpet :target => :_blank
+  private
+    # Use AutoHtml gem to convert texts
+    def convert_html(text)
+      auto_html text do
+        html_escape :map => {
+          '&' => '&amp;',
+          '>' => '&gt;',
+          '<' => '&lt;',
+          '"' => '"'
+        }
+        image
+        youtube :width => 510, :height => 332
+        vimeo :width => 510, :height => 332
+        link :target => :_blank
+        redcarpet :target => :_blank
+      end
     end
-  end
 end
