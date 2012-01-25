@@ -49,8 +49,6 @@
 
   // Colaborar muda para Editar quando sou o dono da ideia
   article
-    div[class=ability_class data-placeholder="#{t('jquery.editable.defaults.tooltip')}" data-url=idea_path(@idea) data-attribute="description" data-raw=@idea.description data-raw-attribute="description_html"]
-      = @idea.description_html
     .utils
       ul.totals
         li.comments
@@ -68,9 +66,13 @@
         li.collabs
           a href="#colaborate" Colaborar (sugerir)
 
+    div[class=ability_class data-placeholder="#{t('jquery.editable.defaults.tooltip')}" data-url=idea_path(@idea) data-attribute="description" data-raw=@idea.description data-raw-attribute="description_html"]
+      = @idea.description_html
+
+
   section#comments
-    a[name="comment"]
+    a name="comment"
     h3 Comentários
-    p Comentários default do Facebook
+    = render :partial => 'comments', :locals => { :url => url_for(@idea) }
 
   = render :partial => "colaboration", :locals => {:idea => @idea}
