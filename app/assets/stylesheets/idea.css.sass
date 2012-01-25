@@ -2,8 +2,6 @@
   header
     border-bottom: 1px solid #CCC
     padding-bottom: 10px
-    margin-bottom: 10px
-    +box-shadow(0 1px 0 #FFF)
     h1
       width: auto
       margin: 0 60px 5px 0
@@ -16,7 +14,7 @@
   .utils
     font-size: 0.9em
     overflow: hidden
-    margin-top: 10px
+    margin-bottom: 20px
     background: #FFF
     padding: 5px
     .totals
@@ -29,7 +27,7 @@
         image: url(asset_path("sprite.png", "image"))
         repeat: no-repeat
         position: 1px 2px
-      padding-left: 15px
+      padding-left: 18px
       float: left
       margin-right: 10px
     .comments
@@ -44,8 +42,8 @@
 
   article
     clear: both
-    margin-top: 10px
     border-bottom: 1px solid #CCC
+    +box-shadow(0 1px 0 #FFF)
     p
       font-size: 1.2em
   #comments
