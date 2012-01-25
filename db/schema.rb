@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120124235955) do
+ActiveRecord::Schema.define(:version => 20120125230723) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20120124235955) do
   create_table "idea_categories", :force => true do |t|
     t.text     "name",                          :null => false
     t.text     "description",                   :null => false
-    t.text     "badge"
+    t.text     "badge",                         :null => false
     t.boolean  "active",      :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -73,6 +73,14 @@ ActiveRecord::Schema.define(:version => 20120124235955) do
 
   create_table "non_facebook_users", :force => true do |t|
     t.string   "email",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notifications", :force => true do |t|
+    t.integer  "user_id"
+    t.text     "message"
+    t.boolean  "read"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
