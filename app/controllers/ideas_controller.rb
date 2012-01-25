@@ -32,6 +32,7 @@ class IdeasController < ApplicationController
     end
   end
 
+
   def update
     update! do |format|
       format.json do
@@ -41,7 +42,8 @@ class IdeasController < ApplicationController
   end
 
   protected
-  def load_resources
+  def load_resources 
+    @ideas = end_of_association_chain.where(:parent_id => nil) #querying only ideas, no collab.
     @categories ||= IdeaCategory.all
     @users ||= User.all(:include => :services)
     @ideas_count ||= Idea.count
@@ -52,16 +54,9 @@ class IdeasController < ApplicationController
 
   def current_ability
     @current_ability ||= current_user ? UserAbility.new(current_user) : GuestAbility.new
-=begin
-    @current_ability ||= case
-                         when current_user
-                           UserAbility.new(current_user)
-                         else
-                           GuestAbility.new
-                         end
-=end
   end
 
+  # Holy baby jesus! <o>
   def load_title_and_about
     if params[:lastest]
       @ideas_title = I18n.translate('idea.filters.latest.title')
