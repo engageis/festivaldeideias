@@ -4,7 +4,7 @@ describe IdeaCategory do
   describe "Validations/Associations" do
     it { should have_many(:ideas), :class_name => "Ideas" }
     it { should validate_presence_of :name }
-    it { should validate_presence_of :badge }
+
   end
 
   describe "#to_param" do

@@ -42,21 +42,21 @@ class Idea < ActiveRecord::Base
     convert_html description
   end
 
-  private
-    # Use AutoHtml gem to convert texts
-    def convert_html(text)
-      auto_html text do
-        html_escape :map => {
-          '&' => '&amp;',
-          '>' => '&gt;',
-          '<' => '&lt;',
-          '"' => '"'
-        }
-        image
-        youtube :width => 510, :height => 332
-        vimeo :width => 510, :height => 332
-        link :target => :_blank
-        redcarpet :target => :_blank
-      end
+
+  # Use AutoHtml gem to convert texts
+  def convert_html(text)
+    auto_html text do
+      html_escape :map => {
+        '&' => '&amp;',
+        '>' => '&gt;',
+        '<' => '&lt;',
+        '"' => '"'
+      }
+      image
+      youtube :width => 510, :height => 332
+      vimeo :width => 510, :height => 332
+      link :target => :_blank
+      redcarpet :target => :_blank
     end
+  end
 end
