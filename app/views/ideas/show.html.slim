@@ -55,8 +55,8 @@
           a href="#colaborate" Colaborar (sugerir)
 
   section#comments
-    a[name="comment"]
+    a name="comment"
     h3 Comentários
-    p Comentários default do Facebook
+    = render :partial => 'comments', :locals => { :url => url_for(@idea) }
 
   = render :partial => "colaboration", :locals => {:idea => @idea}
