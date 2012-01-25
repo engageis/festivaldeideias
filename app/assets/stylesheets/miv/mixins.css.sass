@@ -16,8 +16,12 @@
     color: $color
   color: white !important
   text-decoration: none
+  cursor: pointer
+  +background-image(none)
   &:hover
     color: white !important
+    border: 1px solid rgba(0, 0, 0, 0.2)
+    +box-shadow(0 1px rgba(255, 255, 255, 0.4) inset, 0 1px #fff)
     background: 
       color: lighten($color, 10%)
 
