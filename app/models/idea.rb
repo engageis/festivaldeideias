@@ -16,7 +16,6 @@ class Idea < ActiveRecord::Base
   scope :recent,    where(:parent_id => nil).order('created_at DESC')
   scope :popular,   where(:parent_id => nil).order('likes DESC')
 
-
   # Modify the json response
   def as_json(options={})
     {
