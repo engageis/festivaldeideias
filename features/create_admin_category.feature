@@ -18,6 +18,6 @@ Feature: Create a category
     Then I should be in the "admin_dashboard_path"
     And I click the link "Categorias"
     Then I should be in the "admin_idea_categories_path"
-    And I click the link "Novo(a) Idea Category"
+    And I click the link "Novo(a) Categoria"
     Then I should be in the "new_admin_idea_category_path"
     And I fill the form with my category data

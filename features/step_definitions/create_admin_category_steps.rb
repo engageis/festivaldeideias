@@ -8,7 +8,8 @@ Then /^I fill the form with my category data$/ do
     fill_in "idea_category_description", :with => "Description"
     attach_file "idea_category_badge", "#{Rails.root}/spec/fixtures/images/disasters.png"
   end
-  click_button "Create Idea category"
+  #click_button "Create Idea category"
+  click_button "Create Categoria"
 end
 
 Then /^I should be redirected to "([^"]*)"$/ do |arg1|

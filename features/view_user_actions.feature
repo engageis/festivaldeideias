@@ -12,10 +12,10 @@ Feature: View user actions
     And I should see "Notificações"
     And I should see a list of notifications
     And I should see my profile image
-    And I should see my ideas count
     And I should see my colaborations count
     And I should see "Meu perfil"
     And I should see "Sair"
+    And I should see my ideas count
 
   Scenario: View user actions as a visitor
     Given 1 idea category exist

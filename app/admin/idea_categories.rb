@@ -1,5 +1,5 @@
 ActiveAdmin.register IdeaCategory do
-  #menu :label => "Categorias"
+  menu :label => "Categorias"
 
 
   index do

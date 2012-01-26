@@ -1,3 +1,5 @@
+# coding: utf-8
+
 # Defining sequencies
 Factory.sequence(:name)     { |n| "User #{n}"          }
 Factory.sequence(:email)    { |n| "user#{n}@gmail.com" }
@@ -45,4 +47,9 @@ end
 
 Factory.define :non_facebook_user do |hater|
   hater.email Factory.next :email
+end
+
+Factory.define :page do |page|
+  page.title 'Página Genérica'
+  page.body '<p>Texto genérico de um parágrafo&hellip;</p>'
 end
