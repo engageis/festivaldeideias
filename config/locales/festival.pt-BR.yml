@@ -64,6 +64,7 @@ pt-BR:
 
   # Login stuff
   login:
+    success: "Bem vindo!"
     create_account: "Criar uma conta"
     do_login: "Fazer login"
   non_facebook_user:
