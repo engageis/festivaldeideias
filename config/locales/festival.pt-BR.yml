@@ -31,6 +31,9 @@ pt-BR:
 
     # Stuff from pages
     homepage:
+      intro: "Uma plataforma para unir ideias. Um Festival para torná-las reais."
+      how_it_works: "Como funciona"
+      about_themes: "Conheça os temas"
       header: "Ideias em destaque"
       about: "Selecionamos algumas ideias legais que estão rolando na plataforma e as colocamos aqui, quem sabe você não se interessa e começa colaborando em uma delas?"
     popular:

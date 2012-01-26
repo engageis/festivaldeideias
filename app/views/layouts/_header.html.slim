@@ -3,13 +3,10 @@ section#share
   = image_tag "share_placeholder.png"
 #introduction
   section.text_intro
-    h1
-      | Uma plataforma para unir ideias.
-      br
-      | Um Festival para torná-las reais.
+    h1 = t ('idea.homepage.intro')
 
-    a.learn_more[href="/sobre-o-festival"] Saiba mais sobre o Festival
-    a.learn_more[href="/sobre-os-temas"] Conheça os temas
+    a.learn_more[href="/sobre-o-festival"] = t ('idea.homepage.how_it_works')
+    a.learn_more[href="/sobre-os-temas"] = t ('idea.homepage.about_themes')
 
     // Super helper
     = new_idea_button
