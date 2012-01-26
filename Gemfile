@@ -23,6 +23,8 @@ gem 'kaminari'
 gem 'carrierwave'
 gem 'fog'
 gem 'auto_html'
+gem 'friendly_id'
+gem 'tinymce-rails'
 
 # Authentication + Authorization
 gem 'cancan'

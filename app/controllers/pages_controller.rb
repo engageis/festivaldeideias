@@ -1,5 +1,7 @@
 #class PagesController < IdeasController
 class PagesController < ApplicationController
+  inherit_resources
+  actions :show
   before_filter :load_resources
 
   def most_active_ideas

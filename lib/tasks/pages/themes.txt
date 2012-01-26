@@ -1,0 +1,35 @@
+Sobre os temas
+
+<article>
+  <p>Para a primeira edição do Festival de Ideias, o Centro Ruth Cardoso elegeu três desafios para formar o eixo de ação do evento. Durante um mês, os interessados poderão inscrever e desenvolver suas ideias em resposta a tais desafios na plataforma de colaboração. As temáticas escolhidas pretendem agir como provocação e incentivo aos empreendedores sociais brasileiros. Para isso, o número de ideias permitido a cada usuário é ilimitado. </p>
+  <h3>Conheça os temas e veja onde sua ideia se encaixa:</h3>
+  <table>
+    <tr>
+      <td class="center"><img alt="Violência" src="/assets/badges/security.png" title="Violência" /><strong>Violência</strong>
+      </td>
+      <td>
+        <p>Salvo raras exceções, todos já fomos vítimas de alguma espécie de violência – ou temos alguém próximo a nós que já sofreu este triste ocorrido. O problema atinge a todos, e não dá mais pra ficar esperando uma solução milagrosa ou algo que só mudará no longo prazo. É preciso que nós e todos os indivíduos também se comprometam com esta questão. Você já pensou em que tipo de violência precisa de mais atenção na sua região? O que você, seus vizinhos e amigos podem fazer a respeito disso? Que ideias práticas e acionáveis você tem que possam ajudar a mitigar algum tipo de violência?</p>
+        <strong>Exemplo de práticas inspiradoras:</strong><blockquote>Uma comunidade nos arredores de Buenos Aires conseguiu mobilizar seus moradores para fazerem um “Corredor   de Vigilância” para que as crianças pudessem ir às aulas com segurança em uma região de muita incidência de crimes.</blockquote>
+        <p>
+          <strong>Dica: </strong>identificamos dois assuntos relevantes, relacionados ao tema da violência: o combate à exploração sexual de menores de idade (ex.: turismo sexual) e o esporte como instrumento inclusão social e de aproximação com o jovem em contextos de violência. Seria desejável se também tivéssemos ideias relacionadas a estes dois assuntos.</p>
+      </td>
+    </tr>
+    <tr>
+      <td class="center"><img alt="Catástrofes Naturais" src="/assets/badges/disasters.png" title="Catástrofes Naturais" /><strong>Catástrofes Naturais</strong>
+      </td>
+      <td>
+        <p>Inundações, deslizamentos, chuvas torrenciais, que alagam vias e bairros inteiros, tempestades que derrubam árvores e fazem telhados voarem como folhas de papel: essas manchetes já são comuns todos os anos no Brasil. Como nós, que muitas vezes já nos sentimos indefesos diante de outros seres humanos e de situações muito mais corriqueiras, podemos lidar com forças tão poderosas? Sempre há algo a se fazer. Como podemos nos prevenir e nos organizar para minimizar os danos e as fatalidades, respeitando a natureza de eventos que muitas vezes só se tornam catástrofes por causa da inconsequência do ser humano? Qual a sua ideia para melhorar esse quadro?</p>
+        <strong>Exemplo de práticas inspiradoras:</strong><blockquote>O prefeito da cidade de Areal, na região serrana do RJ, soube que a chuva carregara casas e pontes rio acima e que, em cerca de duas horas, ela chegaria a Areal.  Imediatamente, ele colocou na rua um carro de som para alertar a população ribeirinha. Não houve uma só morte em decorrência das chuvas em Areal, onde a chuva devastou as casas de 1.300 pessoas.</blockquote>
+      </td>
+    </tr>
+    <tr>
+      <td class="center"><img alt="Mobilidade Urbana" src="/assets/badges/urban.png" title="Mobilidade Urbana" /><strong>Mobilidade Urbana</strong>
+      </td>
+      <td>
+        <p>A decisão de se viver em um centro urbano tem muito a ver com uma maior facilidade de acesso à educação, comércio, serviços e emprego, mas o que fazer quando tudo isso fica à mercê dos constantes congestionamentos, da falta de uma estrutura adequada de transporte público e de um sistema que coloca todos participantes em conflito, marginalizando principalmente ciclistas e pedestres? É, algumas mudanças são grandes e estruturais, mas sempre tem algo que está ao nosso alcance, que podemos fazer e que pode ajudar a transformar essa realidade para termos uma melhor fluidez nos grandes centros urbanos. Qual a sua ideia para melhorar a fluidez nos grandes centros urbanos? Com quais iniciativas individuais ou coletivas podemos melhorar o contexto da mobilidade urbana?</p>
+        <strong>Exemplo de práticas inspiradoras:</strong><blockquote>Um programador juntou dados da localização de acidentes com ciclistas na cidade de Londres e, em poucas horas, plotou-os em um mapa na Internet, para que os ciclistas pudessem planejar suas rotas de locomoção pela cidade, escolhendo caminhos mais seguros.</blockquote>
+      </td>
+    </tr>
+  </table>
+</article>
+

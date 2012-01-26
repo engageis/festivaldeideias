@@ -1,12 +1,12 @@
 ActiveAdmin.register IdeaCategory do
-  menu :label => "Categorias"
+  #menu :label => "Categorias"
 
 
   index do
+    column :id
     column :badge do |s|
       image_tag s.badge.url, :size => "31x31"
     end
-    column :id
     column :name
     column "Criado em" do |s|
       s.created_at.strftime('%d/%m/%Y')

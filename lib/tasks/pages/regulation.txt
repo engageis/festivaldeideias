@@ -1,0 +1,27 @@
+Regulamento
+
+<article>
+  <h3>Introdução</h3>
+  <p>O Festival de Ideias (FDI) é uma rede de colaboração e troca de informações entre empreendedores, investidores e o público em geral com o objetivo de realizar projetos de cunho social, educacional e de inovação. Por meio de uma plataforma web e de um evento presencial na Cinemateca Brasileira, em São Paulo, nos dias 20 e 21 de setembro de 2011, o FDI se tornará um hub para compartilhamento e discussão de ideias e facilitará a captação de recursos por seus autores e colaboradores, por financiamento direto de empresas parceiras e de pessoas físicas , através da plataforma de crowdfunding Catarse.me.</p>
+  <p>Este edital torna público o regulamento do Festival e convida os interessados a concorrerem a prêmios no valor de R$ 10.000,00 (dez mil reais), oferecidos pelo Centro Ruth Cardoso/AlfaSol aos três projetos mais bem avaliados, escolhidos ao final do calendário de atividades descrito abaixo.</p>
+  <h3>Objetivos</h3>
+  <p>São objetivos do Festival de Ideias:</p>
+  <ul>
+    <li>Fomentar soluções criativas para problemas sociais de todas as regiões do Brasil</li>
+    <li>Promover a inovação, o empreendedorismo e a consciência social</li>
+    <li>Fazer a mediação entre realizadores de projetos e financiadores</li>
+    <li>Alertar para a importância da autonomia e capacidade de execução independente de ideias e projetos</li>
+  </ul>
+  <h3>Como Funciona</h3>
+  <p>As ideias inscritas na plataforma do Festival de Ideias (http://www.festivaldeideias.org) circularão pela rede durante um mês, período pelo qual serão avaliadas coletivamente. Qualquer usuário poderá fazer comentários, sugerir detalhes e, se for o caso, se apropriar, modificar e republicar a ideia.</p>
+  <p>Uma rede de curadores escolhida pela comissão de organização do Festival também conviverá com os usuários e autores de ideias durante o período, e será responsável por um trabalho de consultoria: conversar com os autores das ideias, melhorá-las, formatá-las e mediar os contatos entre os participantes da plataforma.</p>
+  <p>Este grupo de curadores escolherá, ao final do período, até no máximo 20 projetos para participar do evento. Os autores (ou grupos de autores formados na plataforma) serão convidados para estar em São Paulo/SP nos dias 20 e 21 de setembro para apresentar a ideia a uma plateia de investidores, representantes de empresas parceiras do Centro Ruth Cardoso e outros empreendedores sociais. O Centro Ruth Cardoso não se responsabilizará pelas despesas de passagem e hospedagem dos participantes.</p>
+  <p>Os projetos que chegarem a esta etapa serão chancelados pelo Festival de Ideias e passarão a captar recursos numa área especial da plataforma de crowdfunding Catarse, no endereço catarse.me/festivaldeideias. Ao final do evento, uma comissão julgadora com cinco membros e os participantes do Festival votarão presencialmente nos três melhores projetos, que receberão um aporte de R$ 10.000 (dez mil reais) cada, em forma de doação no Catarse.</p>
+  <p>
+    <strong>Nota: </strong>O Centro Ruth Cardoso/AlfaSol não se responsabiliza pelo conteúdo das ideias publicadas na plataforma, uma vez que não tem controle sobre a publicação; o Centro promove, desenvolve e modera a rede, mas deixa livre, para critério de cada usuário, o que postar em seu perfil.Os participantes autorizam, a partir de sua inscrição, que suas ideias sejam ramificadas, copiadas, reproduzidas e remixadas por terceiros, isentando a AlfaSol/Centro Ruth Cardoso de todo e qualquer prejuízo que venha acarretar ao autor.</p>
+  <h3>Inscrições</h3>
+  <p>Qualquer pessoa física ou organização pode se inscrever no Festival de Ideias, exceto patrocinadores do evento, colaboradores do Centro Ruth Cardoso e seus cônjuges e parentes de primeiro grau.</p>
+  <p>A inscrição será feita exclusivamente mediante preenchimento completo do formulário na plataforma online hospedada no endereço http://festivaldeideias.org.br/pt.</p>
+  <p>É ilimitado o número de ideias permitido a cada usuário.</p>
+</article>
+

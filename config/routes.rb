@@ -16,13 +16,6 @@ FestivalDeIdeias::Application.routes.draw do
   resources :ideas
   resources :non_facebook_users, :only => [:create]
 
-  # Pages
-  get "sobre-o-festival"    => "pages#about",       :as => :about_page
-  get "sobre-os-temas"      => "pages#themes",      :as => :themes_page
-  get "regulamento"         => "pages#regulation",  :as => :regulation_page
-  get "premiacao"           => "pages#awards",      :as => :awards_page
-  #get "navegue-nas-ideias"  => "pages#navigate",    :as => :navigate_page
-
   # Scopes
   # NOTE: Mudado a pedidos da Natália
   scope '/navegue-nas-ideias' do
@@ -41,6 +34,7 @@ FestivalDeIdeias::Application.routes.draw do
     match ":idea_category_id/ideia/:id", :to => "ideas#show",  :as => :category_idea
   end
 
+
   ## Match relations ideas vs categories
   #match ":idea_category_id/ideia/:id",   :to => "ideas#show",  :as => :category_idea
   #match ":idea_category_id/ideias",      :to => "ideas#index", :as => :category_ideas
@@ -48,4 +42,9 @@ FestivalDeIdeias::Application.routes.draw do
   get "/miv" => "miv#index" if Rails.env.development?
   #root :to => redirect("/featured")
   root :to => 'ideas#index', :defaults => { :featured => true }
+
+  # Pages
+  # Tem que ficar no final
+  match '/:id', :to => 'pages#show', :as => :page
+
 end

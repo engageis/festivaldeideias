@@ -20,7 +20,8 @@ ActiveAdmin.register Idea do
 
     # Testing the position implementation
     # This will make the order in the featured page (eg.: ORDER BY position DESC)
-    column "Posição", :sortable => :position do |s|
+    #column "Posição", :sortable => :position do |s|
+    column :position, :sortable => :position do |s|
       form do
         select :class => "form_idea idea_position", :name => "idea[position]", "data-url" => admin_idea_path(s)  do
           0.upto(8).each do |n|
@@ -58,10 +59,10 @@ ActiveAdmin.register Idea do
     end
     column :headline
 
-    column "Criado em" do |s|
+    column :created_at do |s|
       s.created_at.strftime('%d/%m/%Y')
     end
-    column "Atualizado" do |s|
+    column :updated_at do |s|
       s.updated_at.strftime('%d/%m/%Y')
     end
     # Edit, View, Delete links

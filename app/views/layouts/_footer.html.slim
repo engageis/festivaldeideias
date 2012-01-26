@@ -63,15 +63,18 @@ footer
     section.links
       nav
         ul
-          li
-            a[href="/sobre-o-festival"] Sobre o festival &nbsp;
-          li
-            a[href="/sobre-os-temas"] Sobre os temas &nbsp;
-          li
-            a[href="/regulamento"] Regulamento &nbsp;
-          li
-            a[href="/premiacao"] Premiação &nbsp;
-          li
-            a[href=""] Contato
+          - Page.all.each do |page|
+            li
+              = link_to page.title, page
+          /*li*/
+            /*a[href="/sobre-o-festival"] Sobre o festival &nbsp;*/
+          /*li*/
+            /*a[href="/sobre-os-temas"] Sobre os temas &nbsp;*/
+          /*li*/
+            /*a[href="/regulamento"] Regulamento &nbsp;*/
+          /*li*/
+            /*a[href="/premiacao"] Premiação &nbsp;*/
+          /*li*/
+            /*a[href=""] Contato*/
     section.engage
       = image_tag "engage.png", :alt => "Criado por Engage.", :title => "Engage: Power to the Crowd!"
