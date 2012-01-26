@@ -73,6 +73,6 @@
   section#comments
     a name="comment"
     h3 Comentários
-    = render :partial => 'comments', :locals => { :url => url_for(@idea) }
+    = render :partial => 'shared/comments', :locals => { :url => url_for(@idea) }
 
   = render :partial => "colaboration", :locals => {:idea => @idea}
