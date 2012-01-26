@@ -11,10 +11,16 @@ class Idea < ActiveRecord::Base
 
   has_many :colaborations, :class_name => "Idea", :foreign_key => :parent_id
 
+  # Scope for colaborations
+  scope :not_accepted, where(:accepted => false).order('created_at DESC')
+
   scope :featured,  where(:featured => true, :parent_id => nil).order('position DESC')
   scope :latest,    where(:parent_id => nil).order('updated_at DESC')
   scope :recent,    where(:parent_id => nil).order('created_at DESC')
   scope :popular,   where(:parent_id => nil).order('likes DESC')
+
+  after_save :notify_parent_idea
+
 
   # Modify the json response
   def as_json(options={})
@@ -59,4 +65,13 @@ class Idea < ActiveRecord::Base
       redcarpet :target => :_blank
     end
   end
+
+ 
+    def notify_parent_idea
+      if self.parent_id
+        nil 
+        
+      end
+    end
+
 end
