@@ -77,6 +77,14 @@ ActiveRecord::Schema.define(:version => 20120125230723) do
     t.datetime "updated_at"
   end
 
+  create_table "notifications", :force => true do |t|
+    t.integer  "user_id"
+    t.text     "message"
+    t.boolean  "read"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "pages", :force => true do |t|
     t.string   "title",      :null => false
     t.text     "body",       :null => false
@@ -87,14 +95,6 @@ ActiveRecord::Schema.define(:version => 20120125230723) do
 
   add_index "pages", ["slug"], :name => "index_pages_on_slug"
   add_index "pages", ["title"], :name => "index_pages_on_title"
-
-  create_table "notifications", :force => true do |t|
-    t.integer  "user_id"
-    t.text     "message"
-    t.boolean  "read"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "services", :force => true do |t|
     t.integer  "user_id",    :null => false
