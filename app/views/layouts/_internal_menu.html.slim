@@ -3,14 +3,8 @@ h4 Navegue nas páginas internas
 
 .navigation.internal
   ul
-    li
-      a[href="/sobre-o-festival" class="selected"] Sobre o festival &nbsp;
-    li
-      a[href="/sobre-os-temas"] Sobre os temas &nbsp;
-    li
-      a[href="/regulamento"] Regulamento &nbsp;
-    li
-      a[href="/premiacao"] Premiação &nbsp;
-    li
-      a[href=""] Entre em contato
-
+    - current_path = request.path
+    - @pages_for_links.each do |page|
+      li
+        - path = page_path(page)
+        = link_to page.title, path, :class => current_path == path ? 'selected' : ''

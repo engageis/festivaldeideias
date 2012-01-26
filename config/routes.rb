@@ -34,11 +34,6 @@ FestivalDeIdeias::Application.routes.draw do
     match ":idea_category_id/ideia/:id", :to => "ideas#show",  :as => :category_idea
   end
 
-
-  ## Match relations ideas vs categories
-  #match ":idea_category_id/ideia/:id",   :to => "ideas#show",  :as => :category_idea
-  #match ":idea_category_id/ideias",      :to => "ideas#index", :as => :category_ideas
-
   get "/miv" => "miv#index" if Rails.env.development?
   #root :to => redirect("/featured")
   root :to => 'ideas#index', :defaults => { :featured => true }
@@ -46,5 +41,4 @@ FestivalDeIdeias::Application.routes.draw do
   # Pages
   # Tem que ficar no final
   match '/:id', :to => 'pages#show', :as => :page
-
 end
