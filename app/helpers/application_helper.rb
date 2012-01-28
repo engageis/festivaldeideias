@@ -9,4 +9,12 @@ module ApplicationHelper
     end
   end
 
+  def social_buttons(url, type = :horizontal)
+    args = (type.to_sym == :horizontal) ? ['horizontal', 'button_count'] : ['vertical', 'box_count']
+    render partial: 'shared/social_buttons', locals: { url: url,
+                                                       orientation: type,
+                                                       twitter_count: args[0],
+                                                       facebook_count: args[1] }
+  end
+
 end

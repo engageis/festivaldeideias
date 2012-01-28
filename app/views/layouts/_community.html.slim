@@ -9,4 +9,3 @@ h4
           - if current_user != user
             - profile = user.services.first.facebook_profile
             = link_to (image_tag user.services.first.facebook_avatar, :alt => user.name, :title => user.name), profile, :target => "_blank"
-

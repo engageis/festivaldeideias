@@ -1,6 +1,7 @@
 section#share
   p Divulgue o Festival
-  = image_tag "share_placeholder.png"
+  = social_buttons(request.host, :vertical)
+
 #introduction
   section.text_intro
     h1 = t ('idea.homepage.intro')
