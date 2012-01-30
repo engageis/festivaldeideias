@@ -5,8 +5,7 @@
   /*h2.info= t('idea.homepage.about')*/
   h1.title= @ideas_title
   h2.info
-    = @ideas_about
-    a[href="" class="view_more"] Entenda as colaborações
+    = raw(@ideas_about)
 
   .ajax-container data-pjax-container=''
     ol.ideas_buckets
