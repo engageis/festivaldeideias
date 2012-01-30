@@ -1,19 +1,21 @@
 #fb-root
-  script
-    |var app_id = "#{CONFIG['facebook_app_id']}";
-    |(function(d, s, id) {
+  javascript:
+    var app_id = "#{CONFIG['facebook_app_id']}";
+    (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=" + app_id;
-      fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=" + app_id;
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
 
-script
-  |App.editable = {
-  |     defaults: {
-  |        submit:  "#{t('jquery.editable.defaults.submit')}",
-  |        cancel:  "#{t('jquery.editable.defaults.cancel')}",
-  |        tooltip: "#{t('jquery.editable.defaults.tooltip')}",
-  |        onblur:  "#{t('jquery.editable.defaults.onblur')}"
-  |     }
-  |}
+javascript:
+  App.editable = {
+       defaults: {
+          submit:  "#{t('jquery.editable.defaults.submit')}",
+          cancel:  "#{t('jquery.editable.defaults.cancel')}",
+          tooltip: "#{t('jquery.editable.defaults.tooltip')}",
+          onblur:  "#{t('jquery.editable.defaults.onblur')}"
+       }
+  }
