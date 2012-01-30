@@ -69,7 +69,7 @@ class IdeasController < ApplicationController
       @ideas_about = I18n.translate('idea.filters.popular.about')
     elsif params[:featured]
       @ideas_title = I18n.translate('idea.filters.featured.title')
-      @ideas_about = I18n.translate('idea.filters.featured.about')
+      @ideas_about = I18n.translate('idea.filters.featured.about', :url => page_path("o-que-e-co-criacao"))
     elsif params[:idea_category_id]
       category = IdeaCategory.find(params[:idea_category_id])
       @ideas_title = I18n.translate('idea.filters.category.title', :category_name => category.name)
