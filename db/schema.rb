@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20120125230723) do
   create_table "idea_categories", :force => true do |t|
     t.text     "name",                          :null => false
     t.text     "description",                   :null => false
-    t.text     "badge"
+    t.text     "badge",                         :null => false
     t.boolean  "active",      :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
