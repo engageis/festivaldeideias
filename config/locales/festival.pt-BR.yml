@@ -34,8 +34,6 @@ pt-BR:
       intro: "Uma plataforma para unir ideias. Um Festival para torná-las reais."
       how_it_works: "Como funciona"
       about_themes: "Conheça os temas"
-      header: "Ideias em destaque"
-      about: "Selecionamos algumas ideias legais que estão rolando na plataforma! Quem sabe você não se interessa e começa colaborando com uma delas?"
     popular:
       header: "Ideias Populares"
       about: "Uma ideia popular é aquela que tem bastante interação por contribuição e comentários de usuários."
@@ -53,7 +51,7 @@ pt-BR:
         about: 'Quando uma ideia recebe uma nova colaboração ou edição, ela aparece aqui.'
       featured:
         title: "Ideias em destaque"
-        about: "Selecionamos algumas ideias legais que estão rolando na plataforma e as colocamos aqui, quem sabe você não se interessa e começa colaborando em uma delas?"
+        about: "Selecionamos algumas ideias legais que estão rolando na plataforma! Quem sabe você não se interessa e começa colaborando com uma delas? <a href='%{url}'>Entenda as colaborações</a>"
       category:
         title: '%{category_name}'
 
