@@ -1,11 +1,6 @@
 # coding: utf-8
 
-require 'json'
-require 'open-uri'
-
 class IdeasController < ApplicationController
-  @@facebook_query_url = 'https://api.facebook.com/method/fql.query?format=json&query=' 
-
   load_and_authorize_resource
   inherit_resources
 
@@ -112,12 +107,5 @@ class IdeasController < ApplicationController
     if name != 'category'
       @ideas_about = I18n.translate("idea.filters.#{name}.about", options)
     end
-  end
-
-  # Supostamente retornará um hash cujas chaves serão as URL das ideias e os valores o número de likes.
-  def get_count_for_ideas(ideas)
-      urls = ideas.map { |idea| "'#{idea_url(idea)}'" }.join(',')
-      fql = "SELECT url, total_count FROM link_stat WHERE url in (#{urls})";
-      return Hash[JSON.parse(open(@@facebook_query_url + URI.encode(fql)).read).map { |j| [j['url'], j['total_count']] }]
   end
 end
