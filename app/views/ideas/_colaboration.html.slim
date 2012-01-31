@@ -1,5 +1,5 @@
 #colaborate.hidden
-  = form_for(Idea.new, :class => 'new_idea') do |f|
+  = simple_form_for @idea, :url => colaborate_idea_path(@idea), :html => {:class => "new_idea" } do |f|
     h2 = t('idea.colaboration.new.start')
     .steps
       // Descrição da ideia

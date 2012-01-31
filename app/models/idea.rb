@@ -69,8 +69,7 @@ class Idea < ActiveRecord::Base
  
     def notify_parent_idea
       if self.parent_id
-        nil 
-        
+        nil
       end
     end
 

@@ -13,7 +13,11 @@ FestivalDeIdeias::Application.routes.draw do
 
   # Resources
   resources :users
-  resources :ideas
+  resources :ideas do
+    member do
+      post "colaborate", :as => :colaborate
+    end
+  end
   resources :non_facebook_users, :only => [:create]
 
   # Scopes

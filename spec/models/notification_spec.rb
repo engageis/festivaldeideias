@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe Notification do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "Notifications & Associations" do
+  	it { should validate_presence_of :user_id }
+  	it { should validate_presence_of :message }
+  end
 end
