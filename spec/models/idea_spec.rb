@@ -23,6 +23,23 @@ describe Idea do
       it { should have_many :colaborations }
     end
 
+    describe "#create_colaboration" do
+      it "Should create a child idea in order to colaborate" do
+        @idea = Factory.create(:idea)
+        @user = Factory.create(:user)
+        idea = {
+          :title => "Test",
+          :headline => "Test",
+          :description => "Test",
+          :category_id => @idea.category.id,
+          :parent_id => @idea.id,
+          :user_id => @user.id
+
+        }
+        Idea.create_colaboration(idea).should_not == nil
+      end
+    end
+
     describe "#as_json" do
       it "Should return a given json output" do
         @idea = Factory.create(:idea)

@@ -19,9 +19,6 @@ class Idea < ActiveRecord::Base
   scope :recent,    where(:parent_id => nil).order('created_at DESC')
   scope :popular,   where(:parent_id => nil).order('likes DESC')
 
-  after_save :notify_parent_idea
-
-
 
   def self.create_colaboration(params = {})
     if params.has_key? :parent_id
@@ -75,12 +72,4 @@ class Idea < ActiveRecord::Base
       redcarpet :target => :_blank
     end
   end
-
-
-    def notify_parent_idea
-      if self.parent_id
-        nil
-      end
-    end
-
 end
