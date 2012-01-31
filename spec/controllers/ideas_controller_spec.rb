@@ -26,12 +26,27 @@ describe IdeasController do
     it { should redirect_to :back }
   end
   describe "GET #show" do
-    before do 
+    before do
       @idea = Factory.create(:idea)
-      get :show, :id => @idea.id 
+      get :show, :id => @idea.id
 
     end
     its(:status) { should == 200}
-    
+
+  end
+
+  describe "put #colaborate" do
+    before do
+      @user = Factory.create(:user)
+      @new_user = Factory.create(:user, :name => "Tester")
+      @idea = Factory.create(:idea, :user => @user)
+      controller.stub(:current_user).and_return(@new_user)
+      idea = {:headline => "Test", :description => "test", :title => "test", :parent_id => @idea.id}
+      put :colaborate, :id => @idea.id, :idea => idea
+    end
+
+    its(:status){ should == 302 }
+    it { should redirect_to category_idea_path(@idea)}
+
   end
 end

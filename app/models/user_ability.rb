@@ -4,6 +4,9 @@ class UserAbility
   def initialize(user)
 
     can :create, Idea
+    can :colaborate, Idea do |idea|
+      idea.user != user
+    end
     can :read, :all
     can :manage, Idea, :user => user
     # Define abilities for the passed in user here. For example:

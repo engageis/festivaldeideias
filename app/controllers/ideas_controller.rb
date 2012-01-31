@@ -45,7 +45,7 @@ class IdeasController < ApplicationController
   def colaborate
     if @idea
       @collab = Idea.create_colaboration(params[:idea])
-      redirect_to :back
+      redirect_to category_idea_path(@idea)
     end
   end
 
