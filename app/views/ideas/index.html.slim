@@ -1,8 +1,4 @@
-/*h1= flash[:error]*/
-
 #most_active_ideas
-  /*h1.title= t('idea.homepage.header')*/
-  /*h2.info= t('idea.homepage.about')*/
   h1.title= @ideas_title
   h2.info
     = raw(@ideas_about)
@@ -12,12 +8,6 @@
       - unless @ideas.nil?
         - last_pos = @ideas.size - 1
         - @ideas.each_with_index do |idea, pos|
-          //
-          // Badges:
-          //  = image_tag "badges/security.png", :alt => "Violência", :title => "Violência"
-          //  = image_tag "badges/urban.png", :alt => "Mobilidade Urbana", :title => "Mobilidade Urbana"
-          //  = image_tag "badges/disasters.png", :alt => "Catástrofes Naturais", :title => "Catástrofes Naturais"
-          //
           li.bucket.first class=("last" if pos == last_pos) 
             header
               // Category badge
@@ -32,7 +22,7 @@
               p.idea_headline
 
                 // Is Headline present? Ok, show me. If not, show me the description.
-                = idea.headline ? idea.headline : truncate(idea.description, :length => 140, :separator => " ")
+                = idea.headline.present? ? idea.headline : truncate(idea.description, :length => 140, :separator => " ")
 
             // Share btn
             = link_to t('buttons.show_idea'), category_idea_path(idea.category, idea), :class => "button primary"
