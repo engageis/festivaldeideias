@@ -15,7 +15,7 @@ FestivalDeIdeias::Application.routes.draw do
   resources :users
   resources :ideas do
     member do
-      post "colaborate", :as => :colaborate
+      put "colaborate", :as => :colaborate
     end
   end
   resources :non_facebook_users, :only => [:create]

@@ -41,8 +41,16 @@ class IdeasController < ApplicationController
     end
   end
 
+
+  def colaborate
+    if @idea
+      @collab = Idea.create_colaboration(params[:idea])
+      redirect_to :back
+    end
+  end
+
   protected
-  def load_resources 
+  def load_resources
     @ideas = end_of_association_chain.where(:parent_id => nil) #querying only ideas, no collab.
     @categories ||= IdeaCategory.all
     @users ||= User.all(:include => :services)

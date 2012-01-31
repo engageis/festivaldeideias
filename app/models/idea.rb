@@ -22,6 +22,16 @@ class Idea < ActiveRecord::Base
   after_save :notify_parent_idea
 
 
+
+  def self.create_colaboration(params = {})
+    if params.has_key? :parent_id
+      begin
+        Idea.create!(params)
+      rescue
+      end
+    end
+  end
+
   # Modify the json response
   def as_json(options={})
     {
@@ -66,7 +76,7 @@ class Idea < ActiveRecord::Base
     end
   end
 
- 
+
     def notify_parent_idea
       if self.parent_id
         nil
