@@ -20,7 +20,6 @@
               .clear
             .description
               p.idea_headline
-
                 // Is Headline present? Ok, show me. If not, show me the description.
                 = idea.headline.present? ? idea.headline : truncate(idea.description, :length => 140, :separator => " ")
 

@@ -24,13 +24,19 @@ FestivalDeIdeias::Application.routes.draw do
   # NOTE: Mudado a pedidos da Natália
   scope '/navegue-nas-ideias' do
     get '/'        => redirect('/navegue-nas-ideias/popular'), :as => :scope_root
-    get 'popular'  => "ideas#index", :defaults => { :popular  => true }, :as => :scope_popular
-    get 'recent'   => "ideas#index", :defaults => { :recent   => true }, :as => :scope_recent
-    get 'latest'   => "ideas#index", :defaults => { :latest   => true }, :as => :scope_latest
-    get 'featured' => "ideas#index", :defaults => { :featured => true }, :as => :scope_featured
+    
+    #get 'popular'  => "ideas#index", :defaults => { :popular  => true }, :as => :scope_popular
+    #get 'recent'   => "ideas#index", :defaults => { :recent   => true }, :as => :scope_recent
+    #get 'latest'   => "ideas#index", :defaults => { :latest   => true }, :as => :scope_latest
+    #get 'featured' => "ideas#index", :defaults => { :featured => true }, :as => :scope_featured
 
+    get 'popular'  => "ideas#popular", :as => :scope_popular
+    get 'recent'   => "ideas#recent", :as => :scope_recent
+    get 'latest'   => "ideas#modified", :as => :scope_latest
+    get 'featured' => "ideas#featured", :as => :scope_featured
+    
     # Match relations ideas vs categories
-    match ":idea_category_id/ideias", :to => "ideas#index", :as => :category_ideas
+    match ":idea_category_id/ideias", :to => "ideas#category", :as => :category_ideas
   end
 
   scope '/ideias' do

@@ -30,7 +30,6 @@ gem 'tinymce-rails'
 gem 'cancan'
 gem 'omniauth', '0.3.2'
 
-
 # Frontend stuff
 gem 'jquery-rails'
 gem 'slim'

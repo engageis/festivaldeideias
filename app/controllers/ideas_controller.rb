@@ -1,4 +1,10 @@
+# coding: utf-8
+
+require 'json'
+require 'open-uri'
+
 class IdeasController < ApplicationController
+  @@facebook_query_url = 'https://api.facebook.com/method/fql.query?format=json&query=' 
 
   load_and_authorize_resource
   inherit_resources
@@ -32,7 +38,6 @@ class IdeasController < ApplicationController
     end
   end
 
-
   def update
     update! do |format|
       format.json do
@@ -41,12 +46,47 @@ class IdeasController < ApplicationController
     end
   end
 
-
   def colaborate
     if @idea
       @collab = Idea.create_colaboration(params[:idea])
       redirect_to category_idea_path(@idea)
     end
+  end
+
+  def index
+    load_headers(:name => 'featured', :url => page_path('o-que-e-co-criacao'))
+  end
+
+  def modified
+    @ideas = @ideas.latest
+    load_headers
+    render :index
+  end
+
+  def recent
+    @ideas = @ideas.recent
+    load_headers
+    render :index
+  end
+
+  def popular
+    @ideas = @ideas.popular
+    load_headers
+    render :index
+  end
+
+  def featured
+    #redirect_to :root
+    @ideas = @ideas.featured
+    load_headers(:url => page_path('o-que-e-co-criacao'))
+    render :index
+  end
+
+  def category
+    category = IdeaCategory.find(params[:idea_category_id])
+    @ideas = category.ideas
+    load_headers(:category_name => category.name)
+    render :index
   end
 
   protected
@@ -57,7 +97,6 @@ class IdeasController < ApplicationController
     @ideas_count ||= Idea.count
     @ideas_latest ||= Idea.latest
     @ideas_featured ||= Idea.featured
-    load_title_and_about
   end
 
   def current_ability
@@ -65,23 +104,20 @@ class IdeasController < ApplicationController
   end
 
   # Holy baby jesus! <o>
-  def load_title_and_about
-    if params[:lastest]
-      @ideas_title = I18n.translate('idea.filters.latest.title')
-      @ideas_about = I18n.translate('idea.filters.latest.about')
-    elsif params[:recent]
-      @ideas_title = I18n.translate('idea.filters.recent.title')
-      @ideas_about = I18n.translate('idea.filters.recent.about')
-    elsif params[:popular]
-      @ideas_title = I18n.translate('idea.filters.popular.title')
-      @ideas_about = I18n.translate('idea.filters.popular.about')
-    elsif params[:featured]
-      @ideas_title = I18n.translate('idea.filters.featured.title')
-      @ideas_about = I18n.translate('idea.filters.featured.about', :url => page_path("o-que-e-co-criacao"))
-    elsif params[:idea_category_id]
-      category = IdeaCategory.find(params[:idea_category_id])
-      @ideas_title = I18n.translate('idea.filters.category.title', :category_name => category.name)
-      @ideas_about = nil # substituir pela descrição da categoria
+  # Not anymore!!! :D
+  def load_headers(options = {})
+    name = options[:name] || action_name
+    @ideas_title = I18n.translate("idea.filters.#{name}.title", options)
+    # TODO: mudar a condicional quando houver descrição das categorias
+    if name != 'category'
+      @ideas_about = I18n.translate("idea.filters.#{name}.about", options)
     end
+  end
+
+  # Supostamente retornará um hash cujas chaves serão as URL das ideias e os valores o número de likes.
+  def get_count_for_ideas(ideas)
+      urls = ideas.map { |idea| "'#{idea_url(idea)}'" }.join(',')
+      fql = "SELECT url, total_count FROM link_stat WHERE url in (#{urls})";
+      return Hash[JSON.parse(open(@@facebook_query_url + URI.encode(fql)).read).map { |j| [j['url'], j['total_count']] }]
   end
 end
