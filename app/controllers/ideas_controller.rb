@@ -2,6 +2,7 @@
 
 class IdeasController < ApplicationController
   load_and_authorize_resource
+  skip_authorize_resource :only => [:featured, :popular, :modified, :recent]
   inherit_resources
 
   has_scope :featured, :type => :boolean, :only => :index
