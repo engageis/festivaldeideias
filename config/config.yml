@@ -1,7 +1,7 @@
 development: &defaults
   facebook_app_id: '130690353713201'
   facebook_secret_key: 'd05642357fb03910f2c7d6f0b6708e89'
-  callback_url: http://localhost:3000/auth/facebook/callback
+  callback_url: 'http://localhost:3000/auth/facebook/callback'
 
 test: &development
   <<: *defaults
@@ -9,4 +9,4 @@ test: &development
 production:
   facebook_app_id: '310127662355164'
   facebook_secret_key: '4bf67a101cd447081a3eca147d2bf769'
-  callback_url: hhttp://festivalstagging.heroku.com/auth/facebook/callback
+  callback_url: 'http://festivalstagging.heroku.com/auth/facebook/callback'

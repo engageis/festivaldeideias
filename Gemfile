@@ -4,7 +4,6 @@ source 'http://rubygems.org'
 gem 'pg'
 gem 'foreigner'
 
-
 gem 'rails', '3.1.3'
 
 # Improvements

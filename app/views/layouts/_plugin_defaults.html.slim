@@ -1,14 +1,43 @@
+- query = "SELECT eid, name FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid = 211024602327337)"
 #fb-root
   javascript:
-    var app_id = "#{CONFIG['facebook_app_id']}";
-    (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s);
+    function populateEventField(events) {
+      var div, i, length, e, li;
+      if (events.constructor !== Array) { return; }
+      div = $('<div></div>');
+      length = events.length;
+      for (i = 0; i < length; ++i) {
+        e = events[i];
+        li = "<li>" + e.name + "</li>"
+        div.append(li);
+      }
+      $('.fb_events').html(div);
+    }
+    function getEvents() {
+      var token;
+      if (token = FB.getAccessToken()) {
+        FB.api({ method: "fql.query", query: "#{query}" }, function (events) { populateEventField(events) });
+      } else {
+        setTimeout(getEvents, 20);
+      }
+    }
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: "#{CONFIG['facebook_app_id']}", // App ID
+        xfbml: true  // parse XFBML
+      });
+      getEvents();
+    };
+    (function (d) {
+      var fjs, js, id = 'facebook-jssdk';
+      fjs = d.getElementsByTagName('script')[0];
+      if (d.getElementById(id)) { return; }
+      js = d.createElement('script');
       js.id = id;
-      js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=" + app_id;
+      js.async = true;
+      js.src = "//connect.facebook.net/pt_BR/all.js";
       fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+    }(document));
 
 javascript:
   App.editable = {
