@@ -4,7 +4,7 @@
     function populateEventField(events) {
       var div, i, length, e, li;
       if (events.constructor !== Array) { return; }
-      div = $('<div></div>');
+      div = $('<ul></ul>');
       length = events.length;
       for (i = 0; i < length; ++i) {
         e = events[i];
