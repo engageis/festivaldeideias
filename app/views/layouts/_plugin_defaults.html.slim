@@ -5,7 +5,8 @@
         appId: "#{CONFIG['facebook_app_id']}", // App ID
         xfbml: true  // parse XFBML
       });
-      App.fbEvents.getEvents(); //getEvents();
+      // Carrega os eventos do facebook e apende na barra lateral
+      App.fbEvents.getEvents();
     };
     (function (d) {
       var fjs, js, id = 'facebook-jssdk';

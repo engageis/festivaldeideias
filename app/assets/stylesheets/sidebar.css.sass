@@ -79,6 +79,11 @@ aside
     +bucket
 
 .events_feed
+  .loading-image
+    display: block
+    padding: 16px
+    margin: auto
+    border: none
   .view_more
     margin-top: 10px
 
@@ -87,14 +92,18 @@ aside
   h3
     padding: 10px
   li
+    border: none
     border-top: 1px solid #ccc
     &:first-child
+      +border-top-radius(5px)
       border-top: none
+    &:last-child
+      +border-bottom-radius(5px)
+    &:hover
+      background: #FFF
     a
       +list_link
       border: none
-      &:hover
-        background: #FFF
       .date
         color: #666
         //display: block
