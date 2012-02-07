@@ -23,7 +23,6 @@ var App = window.App = {
             // Create existing flashes
             App.flashes = [];
             $('.flash').each(function () {
-
                 App.flashes.push(new App.Flash({el: this, timeout: 2000}));
             });
 
@@ -32,6 +31,7 @@ var App = window.App = {
 
             // Sempre executar
             App.Ideas.newIdea = new App.Ideas.NewIdea();
+            App.fbEvents = new App.FbEvents();
             App.Common.startPjaxLinks();
         },
 

@@ -81,29 +81,29 @@ aside
 .events_feed
   .view_more
     margin-top: 10px
-  .blog_feeds, .events_feed
-    +bucket(0)
-    h3
-      padding: 10px
-    li
-      a
-        +list_link
-        &:hover
-          background: #FFF
-        &.first
-          +border-top-radius(5px)
-          border: 0
-        &.last
-          +border-bottom-radius(5px)
-        .date
-          color: #666
-          display: block
-          font-size: 12px
-          margin-top: 5px
+
+.blog_feeds, .events_feed
+  +bucket(0)
+  h3
+    padding: 10px
+  li
+    border-top: 1px solid #ccc
+    &:first-child
+      border-top: none
+    a
+      +list_link
+      border: none
+      &:hover
+        background: #FFF
+      .date
+        color: #666
+        //display: block
+        font-size: 12px
+        margin-top: 5px
 
 
-  .navigation.internal
-    li 
-      a
-        padding: 12px 10px 12px
+.navigation.internal
+  li 
+    a
+      padding: 12px 10px 12px
 

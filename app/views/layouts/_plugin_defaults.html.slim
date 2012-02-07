@@ -1,32 +1,11 @@
-- query = "SELECT eid, name FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid = 211024602327337)"
 #fb-root
   javascript:
-    function populateEventField(events) {
-      var div, i, length, e, li;
-      if (events.constructor !== Array) { return; }
-      div = $('<ul></ul>');
-      length = events.length;
-      for (i = 0; i < length; ++i) {
-        e = events[i];
-        li = "<li>" + e.name + "</li>"
-        div.append(li);
-      }
-      $('.fb_events').html(div);
-    }
-    function getEvents() {
-      var token;
-      if (token = FB.getAccessToken()) {
-        FB.api({ method: "fql.query", query: "#{query}" }, function (events) { populateEventField(events) });
-      } else {
-        setTimeout(getEvents, 20);
-      }
-    }
     window.fbAsyncInit = function () {
       FB.init({
         appId: "#{CONFIG['facebook_app_id']}", // App ID
         xfbml: true  // parse XFBML
       });
-      getEvents();
+      App.fbEvents.getEvents(); //getEvents();
     };
     (function (d) {
       var fjs, js, id = 'facebook-jssdk';
