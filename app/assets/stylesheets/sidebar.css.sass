@@ -79,6 +79,12 @@ aside
     +bucket
 
 .events_feed
+  li
+    background:
+      image: url(asset_path("calendar.png", "image"))
+      repeat: no-repeat
+      position: 10px center
+    padding-left: 30px
   .loading-image
     display: block
     padding: 16px
@@ -100,7 +106,8 @@ aside
     &:last-child
       +border-bottom-radius(5px)
     &:hover
-      background: #FFF
+      background: 
+        color: #FFF
     a
       +list_link
       border: none

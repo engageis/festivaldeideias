@@ -30,7 +30,7 @@ App.FbEvents = App.BaseView.extend({
 
       li = "<li><a href='http://www.facebook.com/events/" + e.eid + "' target='_blank'><div class='name'>" +
           e.name + "</div><div class='info'><span class='date'>" +
-          this.formatDate(date) + "</span> <span class='where'>" + e.location + "</span></div></a></li>";
+          this.formatDate(date) + "</span> <span class='date'>" + e.location + "</span></div></a></li>";
       ul.append(li);
     }
     $('.fb_events').html(ul);
