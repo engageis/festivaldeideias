@@ -1,12 +1,15 @@
 #fb-root
   javascript:
+    function loadEvents() {
+      if (App.fbEvents) {
+        App.fbEvents.getEvents();
+      } else {
+        setTimeout(loadEvents, 300);
+      }
+    }
     window.fbAsyncInit = function () {
-      FB.init({
-        appId: "#{CONFIG['facebook_app_id']}", // App ID
-        xfbml: true  // parse XFBML
-      });
-      // Carrega os eventos do facebook e apende na barra lateral
-      App.fbEvents.getEvents();
+      FB.init({ appId: "#{CONFIG['facebook_app_id']}", xfbml: true });
+      loadEvents();
     };
     (function (d) {
       var fjs, js, id = 'facebook-jssdk';
@@ -21,10 +24,8 @@
 
 javascript:
   App.editable = {
-       defaults: {
-          submit:  "#{t('jquery.editable.defaults.submit')}",
-          cancel:  "#{t('jquery.editable.defaults.cancel')}",
-          tooltip: "#{t('jquery.editable.defaults.tooltip')}",
-          onblur:  "#{t('jquery.editable.defaults.onblur')}"
-       }
-  }
+    defaults: { submit:  "#{t('jquery.editable.defaults.submit')}",
+                cancel:  "#{t('jquery.editable.defaults.cancel')}",
+                tooltip: "#{t('jquery.editable.defaults.tooltip')}",
+                onblur:  "#{t('jquery.editable.defaults.onblur')}" }
+  };
