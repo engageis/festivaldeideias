@@ -93,6 +93,7 @@ class IdeasController < ApplicationController
     @ideas_count ||= Idea.count
     @ideas_latest ||= Idea.latest
     @ideas_featured ||= Idea.featured
+    @ideas_popular ||= Idea.popular
   end
 
   def current_ability
