@@ -41,7 +41,7 @@
           | &nbsp; &mdash; &nbsp;
 
           // Using rails helper for time ago
-          | Última edição feita há&nbsp;
+          | Última alteração feita há&nbsp;
           = time_ago_in_words(@idea.updated_at)
 
   // Colaborar muda para Editar quando sou o dono da ideia
@@ -49,9 +49,9 @@
     div[class=ability_class data-placeholder="#{t('jquery.editable.defaults.tooltip')}" data-url=idea_path(@idea) data-attribute="description" data-raw=@idea.description data-raw-attribute="description_html"]
       = @idea.description_html
 
-    section#comments
-      a name="comment"
-      h3 Comentários
-      = render :partial => 'shared/comments', :locals => { :url => url_for(@idea) }
+  section#comments
+    a name="comment"
+    h3 Comentários
+    = render :partial => 'shared/comments', :locals => { :url => url_for(@idea) }
 
   = render :partial => "colaboration", :locals => {:idea => @idea}
