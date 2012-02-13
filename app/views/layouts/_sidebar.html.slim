@@ -6,6 +6,7 @@
 - if path == root_path
   = render "layouts/community"
   = new_idea_button
+  = render "layouts/events"
   = render "layouts/filters"
   // = render "layouts/blog_feeds"
   // = render "layouts/twitter_feeds"
@@ -13,18 +14,20 @@
 - elsif path =~ /^\/(navegue-nas-ideias)/
   = render "layouts/filters"
   = new_idea_button
+  = render "layouts/events"
 
 - elsif path =~ /^\/(ideias)/
   // SIDEBAR FOR IDEA PAGE
   = render "layouts/collaborators"
   = render "layouts/share"
+  = render "layouts/events"
 
 - else
   = render "layouts/internal_menu"
   = render "layouts/community"
   = new_idea_button
+  = render "layouts/events"
   // = render "layouts/blog_feeds"
   // = render "layouts/twitter_feeds"
 
-= render "layouts/events"
 
