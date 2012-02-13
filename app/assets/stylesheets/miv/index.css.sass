@@ -26,7 +26,7 @@ h3
   font-size: 1.5em
   line-height: 1.2em
 h4
-  font-size: 1.1em
+  font-size: 1em
   color: #666
   span
     float: right
@@ -52,9 +52,9 @@ ul
 
 a, a:link, a:hover, a:visited, a:active
   text-decoration: none
-  color: $blue
+  color: $orange
 a:hover
-  color: lighten($blue, 20%)
+  color: lighten($orange, 5%)
 
 blockquote
   font-size: 14px
@@ -186,7 +186,10 @@ h2.info
 header.main
   border-bottom: 5px solid #FFF
   margin-bottom: 20px
-  +background-image(linear-gradient(bottom, $lightgreen, #BED487))
+  background:
+    image: url(asset_path("bg_header.png", "image"))
+  //+background-image(linear-gradient(bottom, $lightgreen, #BED487))
+  +box-shadow(0 0 2px #555)
 
   ul.user_actions
     margin: 0 10px
@@ -346,7 +349,7 @@ header.main
     margin-bottom: 0
     img
       float: left
-      width: 180px
+      width: 225px
   .logo
     +grid(4)
     margin: 10px
@@ -388,7 +391,7 @@ header.main
         +text-shadow(0 1px 0 #EEE)
 
         h2
-          color: $blue
+          color: $orange
           font-size: 2em
           margin: 0
 
@@ -396,7 +399,7 @@ header.main
         +box-shadow(inset 0 1px 20px rgba(0,0,0,.2))
         +text-shadow(0 -1px 0 #EEE)
       span
-        color: $blue
+        color: $orange
         font-size: 2em
         line-height: 1.2em
         display: block
