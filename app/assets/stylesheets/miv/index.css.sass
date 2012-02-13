@@ -483,32 +483,34 @@ section#statistics
   overflow: hidden
   overflow: hidden
   padding: 20px 0
-  margin: 40px 0 40px 0
-  background: #666
-  color: #EEE
+  margin: 40px 0 0 0
+  background: $orange
+  color: #212121
   border-top: 4px solid #FFF
   border-bottom: 4px solid #FFF
   h3
-    border-bottom: 1px dashed #999
-    padding-bottom: 5px
+    text-transform: uppercase
+    font-size: 1.3em
+    font-weight: 700
+    color: #444
+    +text-shadow(0 -1px 0 #CCC)
   ul
     +grid(4)
     li
       line-height: 24px
       padding: 5px 0
       margin: 0 10px
-      border-bottom: 1px solid #555
-      +box-shadow(0 1px 0 #777)
+      border-bottom: 1px solid #ED8D22
+      +box-shadow(0 1px 0 #FFB45E)
       &:first-child, &:last-child
         border: 0
         +box-shadow(none)
 
   a, a:link, a:hover, a:visited
-    color: #D7F977
+    color: #333
     font-size: 15px
-    +text-shadow(-1px 1px 0 #777)
   a:hover
-    color: lighten(#D7F977, 10%)
+    color: lighten(#333, 10%)
 
 
 
@@ -518,6 +520,7 @@ footer
   clear: both
   float: left
   width: 100%
+  margin-top: 40px
 
 
   nav
