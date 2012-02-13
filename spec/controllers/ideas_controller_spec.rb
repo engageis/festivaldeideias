@@ -25,14 +25,14 @@ describe IdeasController do
     its(:status) { should == 302 }
     it { should redirect_to :back }
   end
+
   describe "GET #show" do
     before do
       @idea = Factory.create(:idea)
       get :show, :id => @idea.id
 
     end
-    its(:status) { should == 200}
-
+    its(:status) { should == 200 }
   end
 
   describe "put #colaborate" do

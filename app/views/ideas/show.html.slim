@@ -12,15 +12,16 @@
       - if can?(:edit, @idea)
         .edit_message= t('idea.message.edit')
 
-      p
-        | Você possui 
-        = @idea.colaborations.count
-        |&nbsp;colaborações para aceite
-      // Listing all colaborations that aren't accepted
-      - @idea.colaborations.not_accepted.each do |collab|
-        h3= collab.title
-        = button_tag "Aceitar"
-        = button_tag "Recusar"
+      - if current_user == @idea.user
+        p#ideas-to-accept
+          | Você possui 
+          = @idea.colaborations.count
+          |&nbsp;colaborações para aceite
+        // Listing all colaborations that aren't accepted
+        - @idea.colaborations.not_accepted.each do |collab|
+          h3= collab.title
+          = button_tag "Aceitar"
+          = button_tag "Recusar"
 
       // Category badge
       = image_tag @idea.category.badge.url, :alt => @idea.category.name, :title => @idea.category.name, :class => "badge"
