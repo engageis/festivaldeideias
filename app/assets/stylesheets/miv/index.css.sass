@@ -53,7 +53,11 @@ ul
 
 a, a:link, a:hover, a:visited, a:active
   text-decoration: none
-  color: $orange
+  color: #555
+  +transition(color .2s linear 0s)
+  +text-shadow(1px 0 #FFF)
+  font-weight: 700
+  font-family: "Helvetica", Arial, sans-serif
 a:hover
   color: lighten($orange, 5%)
 
@@ -201,6 +205,9 @@ header.main
     //float: right
     +border-bottom-radius(5px)
     background: #333
+    a
+      font-weight: 400
+      +text-shadow(none)
     a.name
       font-size: 0.9em
       padding: 10px
@@ -524,7 +531,6 @@ footer
   width: 100%
   margin-top: 40px
 
-
   nav
     overflow: hidden
     margin: 20px 0
@@ -570,6 +576,8 @@ footer
     a
       font-size: 10px
       color: #333
+      font-weight: 400
+      +text-shadow(none)
       &:hover
         color: #666
 

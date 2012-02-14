@@ -51,7 +51,7 @@ pt-BR:
         about: 'Quando uma ideia recebe uma nova colaboração ou edição, ela aparece aqui.'
       featured:
         title: "Ideias em destaque"
-        about: "Selecionamos algumas ideias legais que estão rolando na plataforma! Quem sabe você não se interessa e começa colaborando com uma delas? <a href='%{url}'>Entenda as colaborações</a>"
+        about: "Selecionamos algumas ideias legais que estão rolando na plataforma! Quem sabe você não se interessa e começa colaborando com uma delas? <a href='%{url}' class='view_more'>Entenda as colaborações</a>"
       category:
         title: '%{category_name}'
 
