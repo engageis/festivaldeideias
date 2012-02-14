@@ -7,8 +7,6 @@ App.BaseView = Backbone.View.extend({
     if (!$('.user_actions .logged_in').length) {
       // Gotta use name because the STUPID facebox duplicates all elements
       // so IDs cannot be used. Please, do not use facebox.
-      // alert($('input[name=redirect_url]'))
-      // alert(location.href)
       $('input[name=redirect_url]').val(location.href)
       $.facebox({ div : "#login" })
       return false;

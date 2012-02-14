@@ -1,0 +1,43 @@
+#idea
+  header
+    - if @idea
+      = content_for :meta_tags do
+        meta[property="og:title" content=@idea.title]
+        meta[property="og:description" content=@idea.headline]
+        meta[property="og:url" content=category_idea_url(@idea.category,@idea)]
+
+      - if can?(:edit, @idea)
+
+        .collab[style="background: red; padding: 10px; overflow: hidden"]
+          h3[style="float: left"]= @collab.title
+          .buttons[style="float:right"]
+            = link_to "Aceitar", accept_collaboration_idea_path(@idea, collab: @collab)
+            = link_to "Recusar", refuse_collaboration_idea_path(@idea, collab: @collab)
+
+      // Category badge
+      = image_tag @idea.category.badge.url, :alt => @idea.category.name, :title => @idea.category.name, :class => "badge"
+
+      // Idea's title
+      h1
+        / = @idea.title
+        = raw Differ.diff_by_word(@idea.title, @collab.title)
+
+      // Statistics of this idea
+      section.idea_stats
+        span
+          | Iniciada por &nbsp;
+          // User profile
+          - profile = @idea.user.services.first.facebook_profile
+          // User profile url
+          = link_to @idea.user.name, profile, :target => "_blank", :class => "user_info"
+          | &nbsp; &mdash; &nbsp;
+
+          // Using rails helper for time ago
+          | Última alteração feita há&nbsp;
+          = time_ago_in_words(@idea.updated_at)
+
+  // Colaborar muda para Editar quando sou o dono da ideia
+  article
+    div
+      = raw Differ.diff_by_word(@idea.title, @collab.description_html)
+      / = @idea.description_html

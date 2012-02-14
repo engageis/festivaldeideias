@@ -16,6 +16,9 @@ FestivalDeIdeias::Application.routes.draw do
   resources :ideas do
     member do
       put "colaborate", :as => :colaborate
+      get "accept_collaboration", :as => :accept_collaboration
+      get "refuse_collaboration", :as => :refuse_collaboration
+      get "collaboration", :as => :collaboration
     end
   end
   resources :non_facebook_users, :only => [:create]
