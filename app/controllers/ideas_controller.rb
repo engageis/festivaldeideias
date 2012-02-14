@@ -49,6 +49,24 @@ class IdeasController < ApplicationController
     end
   end
 
+  def collaboration
+    @idea = resource
+    @collab = resource.colaborations.find(params[:collab])
+  end
+
+  def accept_collaboration
+    @collab = resource.colaborations.find(params[:collab])
+    resource.update_attributes title: @collab.title, headline: @collab.headline, description: @collab.description
+    @collab.update_attribute :accepted, true 
+    return redirect_to resource
+  end
+
+  def refuse_collaboration
+    @collab = resource.colaborations.find(params[:collab])
+    @collab.update_attribute :accepted, false
+    return redirect_to resource
+  end
+
   def index
     load_headers(:name => 'featured', :url => page_path('o-que-e-co-criacao'))
   end

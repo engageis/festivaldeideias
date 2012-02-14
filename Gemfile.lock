@@ -90,6 +90,7 @@ GEM
       orm_adapter (~> 0.0.3)
       warden (~> 1.1)
     diff-lcs (1.1.3)
+    differ (0.1.2)
     ejs (1.0.0)
     erubis (2.7.0)
     eventmachine (0.12.10)
@@ -352,6 +353,7 @@ DEPENDENCIES
   compass-960-plugin
   cucumber-rails
   database_cleaner
+  differ
   factory_girl_rails
   fog
   foreigner
