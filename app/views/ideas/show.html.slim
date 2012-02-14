@@ -59,9 +59,9 @@
       / = raw Differ.diff_by_word(@idea.title, collab.description_html)
       = @idea.description_html
 
-  section#comments
-    a name="comment"
-    h3 Comentários
-    = render :partial => 'shared/comments', :locals => { :url => url_for(@idea) }
+section#comments
+  a name="comment"
+  h3 Comentários
+  = render :partial => 'shared/comments', :locals => { :url => url_for(@idea) }
 
   = render :partial => "colaboration", :locals => {:idea => @idea}

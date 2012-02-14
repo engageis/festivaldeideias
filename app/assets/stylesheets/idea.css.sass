@@ -1,4 +1,9 @@
 #idea
+  +box-shadow(0 1px 2px #aaa)
+  +border-radius(5px)
+  padding: 10px
+  background:
+    color: #FFF
   header
     border-bottom: 1px solid #CCC
     padding-bottom: 10px
@@ -43,12 +48,8 @@
   article, .page_body
     margin: 10px 0
     clear: both
-    border-bottom: 1px solid #CCC
-    +box-shadow(0 1px 0 #FFF)
     p
       font-size: 1.2em
-  #comments
-    margin: 10px 0
   .editable
     position: relative
     padding-left: 25px
@@ -56,15 +57,19 @@
     &:hover
       background:
         color: #FFF
+        color: rgba(255, 255, 255, 0.4)
       cursor: pointer
-    &:focus
+    &.editing:hover
       background:
-        color: none
+        color: transparent
     form
       margin-left: -25px
+      overflow: hidden
       textarea
         min-height: 200px
       button
+        margin: 15px 5px
+        float: right
         text-transform: uppercase
         letter-spacing: 1px
         border: none
@@ -93,5 +98,9 @@
     border: 1px solid darken($lightyellow, 40%)
     outline: 2px solid #FFF
     margin: 20px 0
+
+
+#comments
+  margin: 20px 0 0 0
 
 
