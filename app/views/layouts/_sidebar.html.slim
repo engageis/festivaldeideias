@@ -22,6 +22,11 @@
   = render "layouts/share"
   = render "layouts/events"
 
+- elsif path =~ /(collaboration)/
+  = render "layouts/collaborators"
+  = render "layouts/share"
+  = render "layouts/events"
+
 - else
   = render "layouts/internal_menu"
   = render "layouts/events"
