@@ -51,6 +51,7 @@
     p
       font-size: 1.2em
   .editable
+    overflow: hidden
     position: relative
     padding-left: 25px
     background: url(asset_path('editable_icon.png', 'image')) no-repeat left 5px
@@ -88,8 +89,7 @@
           background:
             color: darken($lightgreen, 30%)
 
-  .edit_message
-    font-size: 1.3em
+  .edit_message, .collab
     color: darken($lightyellow, 65%)
     padding: 20px 10px
     text-align: center
@@ -98,6 +98,21 @@
     border: 1px solid darken($lightyellow, 40%)
     outline: 2px solid #FFF
     margin: 20px 0
+
+  .collab
+    margin: 0 0 20px 0
+    text-align: left
+    padding: 0
+    h3
+      font-size: 1.3em
+      padding: 10px
+      margin: 0
+      background: 
+        color: darken($lightyellow, 40%)
+    ul
+      li
+        padding: 10px
+
 
 
 #comments
