@@ -74,3 +74,27 @@ h2
   margin-top: 20px
   float: left
   width: 100%
+
+
+button
+  margin: 15px 5px
+  float: right
+  text-transform: uppercase
+  letter-spacing: 1px
+  border: none
+  background:
+    color: darken($lightgreen, 40%)
+  color: #FFF
+  cursor: pointer
+  +border-radius(3px)
+  &[type="cancel"]
+    background:
+      color: lighten($darkred, 20%)
+    &:hover
+      background:
+        color: lighten($darkred, 30%)
+  &:hover
+    background:
+      color: darken($lightgreen, 30%)
+
+

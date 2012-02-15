@@ -72,27 +72,6 @@
       input[name="idea[title]"]
         font-size: 1em
         padding: 5px
-      button
-        margin: 15px 5px
-        float: right
-        text-transform: uppercase
-        letter-spacing: 1px
-        border: none
-        background:
-          color: darken($lightgreen, 40%)
-        color: #FFF
-        cursor: pointer
-        +border-radius(3px)
-        &[type="cancel"]
-          background:
-            color: lighten($darkred, 20%)
-          &:hover
-            background:
-              color: lighten($darkred, 30%)
-        &:hover
-          background:
-            color: darken($lightgreen, 30%)
-
   .edit_message, .collab
     color: darken($lightyellow, 65%)
     padding: 20px 10px
@@ -116,6 +95,23 @@
     ul
       li
         padding: 10px
+    h4
+      padding: 10px
+      margin: 0
+
+    .buttons
+      margin-top: -2px
+      button
+        margin: 0 0 0 10px
+        a
+          color: #FFF
+          font-weight: normal
+          +text-shadow(none)
+
+  ins
+    color: green
+  del
+    color: red
 
 
 
