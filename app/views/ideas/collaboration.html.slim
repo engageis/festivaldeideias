@@ -8,9 +8,12 @@
 
       - if can?(:edit, @idea)
 
+        h3 Veja abaixo as diferenças entre a versão anterior e a editada 
         .collab
           h4 
-            = @collab.title
+            | O que deseja fazer com a colaboração de 
+            = @collab.user.name
+            | ?
             .buttons[style="float:right"]
               button[type="submit"] = link_to "Aceitar", accept_collaboration_idea_path(@idea, collab: @collab)
               button[type="cancel"] = link_to "Recusar", refuse_collaboration_idea_path(@idea, collab: @collab)
