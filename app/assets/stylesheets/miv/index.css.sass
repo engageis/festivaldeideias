@@ -17,14 +17,14 @@ h1, h2
   font-family: "Helvetica-bold", Helvetica, Arial, sans-serif
 
 h1
-
   font-size: 2.1em
   line-height: 1.1em
+  margin-bottom: 5px
 h2
   font-size: 1.9em
   line-height: 1.6em
 h3
-  font-size: 1.5em
+  font-size: 1.3em
   line-height: 1.2em
 h4
   font-size: 1em
@@ -181,10 +181,15 @@ article, .page_body
 // * different headings
 
 h2.info
-  font-size: 1.1em
+  font-size: 1.3em
+  line-height: 1.4em
   color: #666
   font-family: "Gill Sans", sans-serif
   font-weight: lighter
+  padding-top: 5px
+  border-top: 1px solid #B0B0B0
+  .view_more
+    font-size: 13px
 
 
 // HEADER
@@ -195,7 +200,7 @@ header.main
     color: #FFF
     color: rgba(255, 255, 255, 0.5)
   //+background-image(linear-gradient(bottom, $lightgreen, #BED487))
-  +box-shadow(0 0 2px #555)
+  +box-shadow(0 0 2px #999)
 
   ul.user_actions
     margin: 0 10px
@@ -369,7 +374,7 @@ header.main
   #share
     position: absolute
     right: 330px
-    top: 19px
+    top: 12px
     p
       background:
         image: url(asset_path("line.png", "image"))
@@ -493,31 +498,32 @@ section#statistics
   overflow: hidden
   padding: 20px 0
   margin: 40px 0 0 0
-  background: $orange
-  color: #212121
+  background: #686868
+  color: #EEE
   border-top: 4px solid #FFF
   border-bottom: 4px solid #FFF
   h3
     text-transform: uppercase
     font-size: 1.3em
     font-weight: 700
-    color: #444
-    +text-shadow(0 -1px 0 #CCC)
+    +text-shadow(none)
   ul
     +grid(4)
     li
       line-height: 24px
       padding: 5px 0
       margin: 0 10px
-      border-bottom: 1px solid #ED8D22
-      +box-shadow(0 1px 0 #FFB45E)
+      border-bottom: 1px solid #545454
+      +box-shadow(0 1px 0 #777)
       &:first-child, &:last-child
         border: 0
         +box-shadow(none)
 
   a, a:link, a:hover, a:visited
-    color: #333
+    color: $orange
+    font-weight: 400
     font-size: 15px
+    +text-shadow(none)
   a:hover
     color: lighten(#333, 10%)
 

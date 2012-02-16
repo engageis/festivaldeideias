@@ -21,7 +21,7 @@
             .description
               p.idea_headline
                 // Is Headline present? Ok, show me. If not, show me the description.
-                = idea.headline.present? ? idea.headline : truncate(idea.description, :length => 140, :separator => " ")
+                = truncate(idea.description, :length => 140, :separator => " ")
 
             // Share btn
             = link_to t('buttons.show_idea'), category_idea_path(idea.category, idea), :class => "button primary"
