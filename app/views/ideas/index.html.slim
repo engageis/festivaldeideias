@@ -10,8 +10,9 @@
         - @ideas.each_with_index do |idea, pos|
           li.bucket class=cycle('odd', 'middle', 'even') 
             header
-              // Category badge
-              = image_tag idea.category.badge.url, :size => "30x30", :alt => idea.category.name, :title => idea.category.name
+              .category
+                // Category badge
+                = image_tag idea.category.badge.url, :size => "30x30", :alt => idea.category.name, :title => idea.category.name
               h3
                 = link_to idea.title, category_idea_path(idea.category, idea), :class => "idea_title"
               // Idea user
