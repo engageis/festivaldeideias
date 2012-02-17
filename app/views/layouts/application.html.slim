@@ -52,7 +52,9 @@ html
       aside
         = render :partial => "layouts/sidebar"
       #main
-        = yield
+        #idea
+          = yield
+          .clear
 
 
     - if current_page?(root_url)

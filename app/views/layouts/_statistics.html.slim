@@ -1,19 +1,6 @@
 .clear
-section#statistics
-  .wrapper
-    ul.totals
-      li
-        h3 Estatísticas
-      li
-        | Total de ideias: 
-        = @ideas_count if not @ideas_count.nil?
-      li
-        | Total de colaborações: 
-      li
-        | Total de usuários: 
-        = @users.count if not @users.nil?
-      //li
-        | Usuários online agora: 6
+.wrapper
+  section#statistics
     ul.latest_updates
       li
         h3 Ideias recém alteradas
@@ -21,9 +8,6 @@ section#statistics
       - @ideas_latest.limit(5).each do |idea|
         li
           = link_to idea.title, category_idea_path(idea.category, idea)
-          span
-            | &nbsp; - &nbsp;por 
-            = idea.user.name
 
     ul.top_ideas
       li
@@ -31,8 +15,22 @@ section#statistics
       - @ideas_popular.limit(5).each do |idea|
         li
           = link_to idea.title, category_idea_path(idea.category, idea)
-          span
-            | &nbsp; - &nbsp;por 
-            = idea.user.name
 
+    ul.totals
+      li
+        h3 Estatísticas bacanas
+      li
+        span.number
+          = @ideas_count if not @ideas_count.nil?
+        | ideias no ar agora
+      li
+        span.number
+          | 76440
+        | colaborações em ideias
+      li
+        span.number
+          = @users.count if not @users.nil?
+        | usuários participando
+      //li
+        | Usuários online agora: 6
 
