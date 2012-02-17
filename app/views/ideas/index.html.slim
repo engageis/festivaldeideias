@@ -8,7 +8,7 @@
       - unless @ideas.nil?
         - last_pos = @ideas.size - 1
         - @ideas.each_with_index do |idea, pos|
-          li.bucket.first class=("last" if pos == last_pos) 
+          li.bucket class=cycle('odd', 'middle', 'even') 
             header
               // Category badge
               = image_tag idea.category.badge.url, :size => "30x30", :alt => idea.category.name, :title => idea.category.name

@@ -68,7 +68,10 @@ blockquote
   font-style: italic
 
 aside
-  +grid(4)
+  +grid(3)
+  +alpha
+  +omega
+  width: 240px
 
 
 article, .page_body
@@ -114,9 +117,10 @@ article, .page_body
 
 // DEFAULT STRUCTURE
 #main
-  +grid(8)
-  margin-top: 20px
+  +grid(9)
   +omega
+  margin-top: 20px
+  width: 710px
 
 
 // GENERAL CLASSES
@@ -182,6 +186,7 @@ article, .page_body
 
 h2.info
   font-size: 1.3em
+  margin-bottom: 20px
   line-height: 1.4em
   color: #666
   font-family: "Gill Sans", sans-serif
@@ -422,17 +427,19 @@ header.main
 // IDEA BUCKETS
 ol.ideas_buckets
   li.bucket
-    width: 270px
+    width: 201px
     height: 250px
     position: relative
     background:
-      color: #FFF
-    border: 5px solid #CCC
+      color: #EEE
+    border: 1px solid #CCC
     padding: 10px
     float: left
-    margin: 10px
+    margin-bottom: 10px
+    &.middle
+      margin: 0 10px
     .description
-      height: 100px
+      height: 90px
       overflow: hidden
       p
         margin-top: 10px
@@ -445,13 +452,13 @@ ol.ideas_buckets
       h3
         float: left
         margin-bottom: 5px
-        width: 210px
-        font-size: 1.3em
+        width: 171px
+        font-size: 1.1em
         font-family: "Helvetica-bold", Helvetica
       span
         font-family: "Helvetica"
         display: block
-        font-size: 12px
+        font-size: 11px
         float: left
         color: #666
         font-weight: normal
@@ -461,18 +468,12 @@ ol.ideas_buckets
         position: absolute
         bottom: 25px
         right: 10px
-
-
-    &.first
-      margin-left: 0
-    &.last
-      margin-right: 0
     .stats
       position: absolute
       bottom: 10px
       width: 99.5%
       float: left
-      background: #ECECEC
+      background: #E1E1E1
       margin: 0 -9px -9px -9px
       li
         height: 12px
@@ -480,7 +481,7 @@ ol.ideas_buckets
         color: #666
         padding: 5px 5px 5px 22px
         float: left
-        border-right: 1px solid #FFF
+        border-right: 1px solid #EEE
         &.collabs, &.likes
           background:
             image: url(asset_path("icons.png", "image"))
@@ -504,7 +505,7 @@ section#statistics
   h3
     text-transform: capitalize
     font-size: 1.3em
-    color: lighten($orange, 10%)
+    color: $orange
     padding-bottom: 5px
     border-bottom: 1px dotted $orange
     +text-shadow(none)
