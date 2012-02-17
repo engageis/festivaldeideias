@@ -58,7 +58,7 @@ pt-BR:
   # Buttons & Boxes
   buttons:
     new_idea: "Comece uma ideia!"
-    show_idea: "Conheça e contribua"
+    show_idea: "Conheça e contribua »"
     edit_idea: "Editar minha ideia"
   facebox:
     submit_email: "Enviar e-mail"
