@@ -38,9 +38,17 @@ App.FbEvents = App.BaseView.extend({
 
   getEvents: function () {
     var token, query, view = this;
-    query = "SELECT eid, name, start_time, location FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid = 211024602327337) ORDER BY start_time ASC LIMIT 10";
+    query = "SELECT eid, name, start_time, location FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid=211024602327337) ORDER BY start_time ASC LIMIT 10";
+    //query = {
+      //'query1': 'SELECT eid FROM event_member WHERE uid = "211024602327337"',
+      //'query2': 'SELECT eid, name, start_time, location FROM event WHERE eid IN (SELECT eid FROM #query1)'
+    //};
     // Deve ter um jeito melhor do que usar hardcoded...
-    token = "AAAB23Lgb0DEBABOGBdlloz16VoI22ZA1btPa9yr1waUrpP0R8dXGCp1F8Anh20yP7pN8IJrTEDB16jYfFZAyNgSluaPqZAwyITCS29gZAAZDZD";
-    FB.api({ method: "fql.query", query: query, access_token: token }, function (events) { view.populateEventField(events) });
+    //token = "AAAB23Lgb0DEBABOGBdlloz16VoI22ZA1btPa9yr1waUrpP0R8dXGCp1F8Anh20yP7pN8IJrTEDB16jYfFZAyNgSluaPqZAwyITCS29gZAAZDZD";
+    token = "130690353713201|msd-rohD3kkcJKOkpKLCaQ1O2KQ"; // Token do App
+    FB.api({ method: "fql.query", query: query, access_token: token }, function (events) {
+      console.log(events);
+      view.populateEventField(events);
+    });
   }
 });

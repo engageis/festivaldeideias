@@ -24,6 +24,7 @@ gem 'fog'
 gem 'auto_html'
 gem 'friendly_id'
 gem 'tinymce-rails'
+gem 'koala'
 
 # Authentication + Authorization
 gem 'cancan'
