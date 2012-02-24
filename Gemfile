@@ -62,6 +62,7 @@ end
 group :assets do
   gem 'compass', '>= 0.12.alpha.2'
   gem 'compass-960-plugin'
+  gem 'therubyracer'
   gem 'coffee-rails', '~> 3.1.1'
   gem 'uglifier', '>= 1.0.3'
 end
