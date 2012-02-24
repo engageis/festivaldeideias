@@ -6,14 +6,14 @@
 - if path == root_path
   = render "layouts/filters"
   = render "layouts/community"
-  = new_idea_button
+  = new_idea_button('button start')
   = render "layouts/events"
   // = render "layouts/blog_feeds"
   // = render "layouts/twitter_feeds"
 
 - elsif path =~ /^\/(navegue-nas-ideias)/
   = render "layouts/filters"
-  = new_idea_button
+  = new_idea_button('button start')
   = render "layouts/events"
 
 - elsif path =~ /^\/(ideias)/
@@ -31,7 +31,7 @@
   = render "layouts/internal_menu"
   = render "layouts/events"
   = render "layouts/community"
-  = new_idea_button
+  = new_idea_button('button start')
   // = render "layouts/blog_feeds"
   // = render "layouts/twitter_feeds"
 
