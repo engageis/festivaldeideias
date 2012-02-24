@@ -3,8 +3,12 @@ body[data-action="Index"][data-controller-name="Ideas"]
     height: auto
 
   #introduction
-    float: left
-    margin: 10px 0 20px 0
+    margin: 20px 0 0 0
+    padding: 10px 0
+    background:
+      image: url(asset_path("banner.png", "image"))
+      repeat: no-repeat
+    overflow: hidden
     clear: both
 
     section.text_intro,
@@ -12,23 +16,9 @@ body[data-action="Index"][data-controller-name="Ideas"]
       +grid(6)
 
     section.text_intro
-      h1
-        margin-bottom: 10px
-        background:
-          color: #FFF
-        padding: 15px 18px
-        line-height: 1.5em
-        color: #444
-        +text-shadow(0 1px 0 #EEE)
-      .start
-        float: right
-        clear: both
+      display: none
     section.video_intro
-      margin-top: -33px
-      h2
-        float: right
-        margin: 0
-        font-size: 1.2em
+      float: right
       iframe
         margin-bottom: -2px
       .border

@@ -1,16 +1,11 @@
-section#share
+//section#share
   p Divulgue o Festival
   = social_buttons(request.host, :vertical)
-
+.clear
 #introduction
   section.text_intro
-    h1 = t ('idea.homepage.intro')
+    | Uma plataforma para unir ideias. Um festival para torná-las reais
 
-    a.learn_more[href="/como-funciona"] = t ('idea.homepage.how_it_works')
-    a.learn_more[href="/sobre-os-temas"] = t ('idea.homepage.about_themes')
-
-    // Super helper
-    = new_idea_button
 
   section.video_intro
     .border

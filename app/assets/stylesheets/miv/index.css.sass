@@ -4,7 +4,7 @@ body
   background:
     color: #F1F1F1
     image: url(asset_path("background.png", "image"))
-  color: #333
+  color: #111
   font-family: "Helvetica Regular", Arial, sans-serif
   font-size: 13px
   line-height: 14px
@@ -55,7 +55,7 @@ a, a:link, a:hover, a:visited, a:active
   text-decoration: none
   color: #555
   +transition(color .2s linear 0s)
-  +text-shadow(1px 0 #FFF)
+  +transition(background-color .2s linear 0s)
   font-weight: 700
   font-family: "Helvetica", Arial, sans-serif
 a:hover
@@ -120,7 +120,13 @@ article, .page_body
   +grid(9)
   +omega
   margin-top: 20px
-  width: 710px
+  width: 690px
+  +box-shadow(0 1px 2px #aaa)
+  +border-radius(5px)
+  padding: 10px
+  background:
+    color: #FFF
+
 
 
 // GENERAL CLASSES
@@ -200,8 +206,9 @@ h2.info
 // HEADER
 header.main
   border-bottom: 5px solid #FFF
+  border-top: 3px solid #333
   margin-bottom: 20px
-  height: 84px
+  height: 103px
   background:
     color: rgba(255, 255, 255, 0.8)
   //+background-image(linear-gradient(bottom, $lightgreen, #BED487))
@@ -209,19 +216,17 @@ header.main
 
   ul.user_actions
     margin: 0 10px
-    position: absolute
-    top: 0
-    right: 0
-    //float: right
-    +border-bottom-radius(5px)
-    background: #333
+    margin-top: -4px
+    float: right
+    +border-bottom-radius(3px)
+    background: #000
     a
       font-weight: 400
       +text-shadow(none)
     a.name
       font-size: 0.9em
       padding: 10px
-      color: #CCC
+      color: $orange
       text-transform: uppercase
       display: block
       float: right
@@ -394,40 +399,27 @@ header.main
       +rotate(-10deg)
 
   nav
-    +grid(5)
-    +grid-prefix(1)
-    width: 340px
-    margin-left: 0
+    width: 548px
+    float: right
+    margin: 45px 10px 0 0
     .actions
       li
-        display: block
-        text-align: center
         float: left
-      a
-        padding: 15px
-        display: block
-        color: #333
-        border-bottom: transparent 4px solid
-        +text-shadow(0 1px 0 #EEE)
-        &:hover
-          border-bottom: #999 4px solid
+        text-transform: uppercase
+        a, a:link, a:hover, a:visited, a:active
+          color: #000
+          padding: 5px 10px
+          +border-radius(2px)
+        a:hover
+          background:
+            color: $orange
+      .selected
+        a
+          background:
+            color: $orange
+          color: #FFF !important
 
-        h2
-          color: $purple
-          font-size: 2em
-          margin: 0
-        
-      li.selected a
-        border-bottom: #BBB 4px solid
-        +box-shadow(inset 0 1px 20px rgba(0,0,0,.2))
-        +text-shadow(0 -1px 0 #EEE)
-      span
-        color: $orange
-        font-size: 2em
-        line-height: 1.2em
-        display: block
-
-
+    
 // IDEA BUCKETS
 ol.ideas_buckets
   li.bucket
@@ -451,6 +443,9 @@ ol.ideas_buckets
       border-bottom: 1px solid #ccc
       margin: -10px -10px 0 -10px
       padding: 10px
+      h3
+        a
+          color: #222
       .category
         overflow: visible
         float: right

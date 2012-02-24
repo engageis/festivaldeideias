@@ -16,31 +16,29 @@ html
     = render :partial => "layouts/login"
     header.main
       .wrapper
-        - if current_page?(root_url)
-          .logo
-            = link_to (image_tag "logotipo.png", :alt => "Festival de Ideais", :title => "Festival de Ideias"), root_url
-        - else
-          .logo.smaller
-            = link_to (image_tag "logotipo.png", :alt => "Festival de Ideais", :title => "Festival de Ideias"), root_url
-          nav
-            ul.actions
-              - path = request.path
-              - link_path = scope_root_path
-              li class=(path.include?(link_path) ? 'selected' : '')
-                = link_to link_path do
-                  h2
-                    | Navegue
-                  | em mais de 300 ideias
-                /*a[href="/navegue-nas-ideias"]*/
-
-              li
-                a href="#start" rel="facebox"
-                  h2 
-                    | Comece 
-                  | uma nova ideia
-
         ul.user_actions
           = render :partial => "layouts/user_actions"
+        .logo
+          = link_to (image_tag "logotipo.png", :alt => "Festival de Ideais", :title => "Festival de Ideias"), root_url
+        nav
+          ul.actions
+            - path = request.path
+            - link_path = scope_root_path
+            li class=(path.include?(link_path) ? 'selected' : '')
+              = link_to link_path do
+                | Navegue nas ideias
+
+            li
+              a href="#start" rel="facebox"
+                | Inicie uma ideia
+            li
+              a href=""
+                | Conheça os temas
+            li
+              a href=""
+                | Saiba mais
+
+
         //
         /*- if current_page?(root_url) or current_page?(scope_featured_url)*/
         - if current_page?(root_url)
