@@ -121,8 +121,8 @@ article, .page_body
   +omega
   margin-top: 20px
   width: 690px
-  +box-shadow(0 1px 2px #aaa)
-  +border-radius(5px)
+  +box-shadow(0 0 1px #ddd)
+  +border-radius(3px)
   padding: 10px
   background:
     color: #FFF
@@ -435,7 +435,7 @@ ol.ideas_buckets
     &.middle
       margin: 0 10px
     .description
-      height: 90px
+      height: 130px
       overflow: hidden
       p
         margin-top: 10px
@@ -445,7 +445,9 @@ ol.ideas_buckets
       padding: 10px
       h3
         a
-          color: #222
+          color: $orange
+          &:hover
+            color: #111
       .category
         overflow: visible
         float: right

@@ -10,7 +10,6 @@
   color: white !important
   +border-radius(3px)
   +transition(opacity 0.2s linear)
-  +box-shadow(0 1px rgba(255, 255, 255, 0.2) inset, 0 1px #fff)
   +text-shadow(0 -1px rgba(0, 0, 0, 0.2))
   display: block
   background: 
@@ -22,7 +21,6 @@
   &:hover
     color: white !important
     border: 1px solid rgba(0, 0, 0, 0.2)
-    +box-shadow(0 1px rgba(255, 255, 255, 0.4) inset, 0 1px #fff)
     background: 
       color: lighten($color, 10%)
 
@@ -33,10 +31,9 @@
   border: 1px solid #DDD
   background:
     color: #F8F8F8
-  +box-shadow(0 1px #eee, 0 0 0 1px #fff inset)
 
 @mixin list_link     
-  border-top: 1px solid #CCC
+  border-top: 1px solid #DDD
   font-size: 1.1em
   padding: 10px
   line-height: 18px

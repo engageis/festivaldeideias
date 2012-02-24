@@ -24,10 +24,8 @@
             .description
               p.idea_headline
                 // Is Headline present? Ok, show me. If not, show me the description.
-                = truncate(idea.description, :length => 140, :separator => " ")
+                = truncate(idea.description, :length => 185, :separator => " ")
 
-            // Share btn
-            = link_to t('buttons.show_idea'), category_idea_path(idea.category, idea), :class => "button primary"
 
             // Collaboration & Popularity
             ul.stats
