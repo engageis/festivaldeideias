@@ -50,6 +50,6 @@ Factory.define :non_facebook_user do |hater|
 end
 
 Factory.define :page do |page|
-  page.title 'Página Genérica'
+  page.title(Factory.next(:title))
   page.body '<p>Texto genérico de um parágrafo&hellip;</p>'
 end
