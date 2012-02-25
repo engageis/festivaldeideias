@@ -37,10 +37,7 @@ class Idea < ActiveRecord::Base
 
   def self.create_colaboration(params = {})
     if params.has_key? :parent_id
-      begin
-        Idea.create!(params)
-      rescue
-      end
+      Idea.create(params)
     end
   end
 
