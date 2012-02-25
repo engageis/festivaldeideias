@@ -3,7 +3,7 @@
 body
   background:
     color: #F1F1F1
-    image: url(asset_path("background.png", "image"))
+    image: url(asset_path("tile.gif", "image"))
   color: #111
   font-family: "Helvetica Regular", Arial, sans-serif
   font-size: 13px
@@ -12,9 +12,6 @@ body
 
 h1, h2, h3, h4, h5, h6
   margin-bottom: 10px
-
-h1, h2
-  font-family: "Helvetica-bold", Helvetica, Arial, sans-serif
 
 h1
   font-size: 2.1em
@@ -130,6 +127,7 @@ article, .page_body
 
 
 // GENERAL CLASSES
+
 .wrapper
   +grid-container
   position: relative
@@ -191,11 +189,11 @@ article, .page_body
 // * different headings
 
 h2.info
-  font-size: 1.3em
+  font-family: 'Droid Serif', serif
+  font-size: 1em
   margin-bottom: 20px
   line-height: 1.4em
   color: #666
-  font-family: "Gill Sans", sans-serif
   font-weight: lighter
   padding-top: 5px
   border-top: 1px solid #B0B0B0
@@ -205,9 +203,7 @@ h2.info
 
 // HEADER
 header.main
-  border-bottom: 5px solid #FFF
-  border-top: 3px solid #333
-  margin-bottom: 20px
+  border-bottom: 5px solid $orange
   height: 103px
   background:
     color: rgba(255, 255, 255, 0.8)
@@ -396,7 +392,7 @@ header.main
       +rotate(-10deg)
 
   nav
-    width: 466px
+    width: 470px
     float: right
     margin: 45px 0 0 0
     .actions
@@ -413,7 +409,7 @@ header.main
           border-bottom: 1px solid
       .selected
         a, a:link, a:visited
-          border-top: 1px solid $orange
+          border-bottom: 1px solid $orange
           color: $orange
           &:hover
             cursor: default
