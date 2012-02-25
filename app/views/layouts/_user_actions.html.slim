@@ -9,17 +9,14 @@
 - else
     li.notifications
       a.globe href="#"
-      .count 5
+      - notifications = current_user.notifications
+      .count= notifications.count
       .notes
         .title Notificações
         a[href="" class="view_more"] Ver todas
         ul.notifications
-          li
-            a href="#" Fulano comentou na sua ideia "Nome da Ideia"
-          li
-            a href="#" Fulano quer colaborar com a sua ideia "Nome da Ideia"
-          li
-            a href="#" A ideia "Nome da Ideia", a qual você colaborou, foi atualizada.
+          - notifications.each do |n|
+            li= n.html_safe
     li.logged_in
       = image_tag current_user_image, :alt => "Profile image", :title => current_user.name, :class => "thumb_profile_image"
       a.name[href=""]
