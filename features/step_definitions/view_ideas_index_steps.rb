@@ -25,6 +25,11 @@ Then /^I should see a list with ideas$/ do
  page.should have_content(@ideas.last.title)
 end
 
+Then /^I click the idea title$/ do
+  click_link "#{@ideas.first.title}"
+end
+
+
 
 And /^I should see a list of categories$/ do
   page.should have_content(@categories.first.name)
