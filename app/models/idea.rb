@@ -19,6 +19,21 @@ class Idea < ActiveRecord::Base
   scope :recent,    where(:parent_id => nil).order('created_at DESC')
   scope :popular,   where(:parent_id => nil).order('likes DESC')
 
+  scope :new_collaborations, ->(user) {
+    where(['parent_id IN (?) AND created_at > ?', user.ideas.map(&:id), user.notifications_read_at])
+  }
+
+  scope :collaborations_status_changed, ->(user) {
+    where(['user_id = ? AND accepted IS NOT NULL AND parent_id IS NOT NULL AND updated_at > ?', user.id, user.notifications_read_at])
+  }
+
+  scope :collaborated_idea_changed, ->(user) {
+    where(['EXISTS(
+              SELECT true FROM ideas AS collaboration
+              WHERE collaboration.parent_id = ideas.id
+              AND collaboration.user_id = ?
+          ) AND ideas.updated_at > ?', user.id, user.notifications_read_at])
+  }
 
   def self.create_colaboration(params = {})
     if params.has_key? :parent_id

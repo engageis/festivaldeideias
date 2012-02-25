@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120224220338) do
+ActiveRecord::Schema.define(:version => 20120225185444) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(:version => 20120224220338) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "category_id",                    :null => false
-    t.boolean  "accepted",    :default => false, :null => false
+    t.boolean  "accepted"
   end
 
   create_table "non_facebook_users", :force => true do |t|
@@ -105,10 +105,11 @@ ActiveRecord::Schema.define(:version => 20120224220338) do
   end
 
   create_table "users", :force => true do |t|
-    t.text     "name",       :null => false
-    t.text     "email",      :null => false
+    t.text     "name",                  :null => false
+    t.text     "email",                 :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "notifications_read_at"
   end
 
   add_foreign_key "ideas", "idea_categories", :name => "ideas_category_id_fk", :column => "category_id"

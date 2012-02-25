@@ -35,7 +35,6 @@ GEM
       activesupport (= 3.1.3)
       arel (~> 2.2.1)
       tzinfo (~> 0.3.29)
-    activerecord-postgresql-extensions (0.0.11)
     activeresource (3.1.3)
       activemodel (= 3.1.3)
       activesupport (= 3.1.3)
@@ -351,7 +350,6 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
-  activerecord-postgresql-extensions
   auto_html
   cancan
   capybara

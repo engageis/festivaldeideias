@@ -3,7 +3,6 @@ source 'http://rubygems.org'
 # Database
 gem 'pg'
 gem 'foreigner'
-gem 'activerecord-postgresql-extensions'
 
 gem 'rails', '3.1.3'
 

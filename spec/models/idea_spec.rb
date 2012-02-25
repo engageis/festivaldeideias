@@ -87,5 +87,46 @@ describe Idea do
       end
     end
 
+    describe ".new_collaborations" do
+      before do
+        @idea = Factory(:idea, :parent_id => nil, :user => Factory(:user, :notifications_read_at => Time.now))
+        Factory(:idea, :parent_id => @idea.id, :created_at => Time.now - 1.day)
+        @collaboration = Factory(:idea, :parent_id => @idea.id)
+      end
+      subject { Idea.new_collaborations(@idea.user) }
+      it { should == [@collaboration] }
+    end
+
+    describe ".collaborations_status_changed" do
+      before do
+        @idea = Factory(:idea, :parent_id => nil)
+        @user = Factory(:user, :notifications_read_at => Time.now)
+
+        # The user shouldn't see this on notifications
+        Factory(:idea, :parent_id => @idea.id, :accepted => true, :user => @user,:updated_at => Time.now - 1.day)
+        Factory(:idea, :parent_id => @idea.id, :accepted => nil, :user => @user)
+
+        # The user should see this
+        @collaboration = Factory(:idea, :parent_id => @idea.id, :accepted => true, :user => @user)
+      end
+
+      subject { Idea.collaborations_status_changed(@user) }
+      it { should == [@collaboration]}
+    end
   end
+
+
+  describe ".collaborated_idea_changed" do
+    before do
+      @user = Factory(:user, :notifications_read_at => Time.now)
+      @idea = Factory(:idea, :parent_id => nil)
+      @collaboration = Factory(:idea, :parent_id => @idea.id, :user => @user)
+
+      # This collaboration parent was read by the user
+      Factory(:idea, :parent_id => Factory(:idea, :updated_at => Time.now - 1.day), :user => @user)
+    end
+    subject { Idea.collaborated_idea_changed(@user) }
+    it { should == [@idea] }
+  end
+
 end
