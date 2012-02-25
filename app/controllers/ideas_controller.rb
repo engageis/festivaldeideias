@@ -123,7 +123,7 @@ class IdeasController < ApplicationController
   end
 
   def load_collaborators
-    @collaborators = resource.colaborations.reduce({}){ |memo, c| memo[c.user_id] = c.user; memo }.values
+    @collaborators = resource.colaborations.reduce({}){ |memo, c| memo[c.user_id] = c.user; memo }.values || []
   end
 
   # Holy baby jesus! <o>
