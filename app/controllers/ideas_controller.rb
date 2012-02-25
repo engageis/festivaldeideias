@@ -15,6 +15,7 @@ class IdeasController < ApplicationController
   respond_to :html, :except => [:update]
   respond_to :json, :only => [:index, :update]
 
+  before_filter :load_collaborators, :only => [ :show ]
   before_filter :load_resources
 
   def create
@@ -59,12 +60,14 @@ class IdeasController < ApplicationController
     @collab = resource.colaborations.find(params[:collab])
     resource.update_attributes title: @collab.title, headline: @collab.headline, description: @collab.description
     @collab.update_attribute :accepted, true 
+    flash[:notice] = t('idea.colaboration.accepted')
     return redirect_to resource
   end
 
   def refuse_collaboration
     @collab = resource.colaborations.find(params[:collab])
     @collab.update_attribute :accepted, false
+    flash[:notice] = t('idea.colaboration.rejected')
     return redirect_to resource
   end
 
@@ -117,6 +120,10 @@ class IdeasController < ApplicationController
 
   def current_ability
     @current_ability ||= current_user ? UserAbility.new(current_user) : GuestAbility.new
+  end
+
+  def load_collaborators
+    @collaborators = resource.colaborations.reduce({}){ |memo, c| memo[c.user_id] = c.user; memo }.values || []
   end
 
   # Holy baby jesus! <o>

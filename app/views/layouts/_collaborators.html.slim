@@ -3,7 +3,7 @@
   h4
     | Quem já colaborou com essa ideia
     span
-      = @idea.colaborations.count
+      = @collaborators.size
 
   .community
     - if @idea.colaborations.count == 0 && current_user != @idea.user
@@ -12,9 +12,9 @@
           | Ainda não há colaboradores neste ideia, quem sabe você não é o primeiro.
     - else
       ul
-        - @idea.colaborations.each do |colaboration|
+        - @collaborators.each do |user|
           li
-            = link_to image_tag(colaboration.user.services.first.facebook_avatar, :title => colaboration.user.name), "#"
+            = link_to image_tag(user.services.first.facebook_avatar, :title => user.name), "#"
     .clear
 
   - if can?(:edit, @idea)
