@@ -5,7 +5,7 @@ pt-BR:
       step_1: "1. Descreva"
       step_2: "2. Refine"
       step_3: "3. Publique"
-      start: "Comece uma ideia"
+      start: "Inicie uma ideia"
       about: "O que é esta ideia?"
       next_step: "Próxima etapa"
       prev_step: "Voltar"
@@ -57,7 +57,7 @@ pt-BR:
 
   # Buttons & Boxes
   buttons:
-    new_idea: "Comece uma ideia!"
+    new_idea: "Inicie uma ideia"
     show_idea: "Conheça e contribua »"
     edit_idea: "Editar minha ideia"
   facebox:

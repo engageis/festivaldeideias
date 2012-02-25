@@ -215,7 +215,7 @@ header.main
   +box-shadow(0 0 1px #BBB)
 
   ul.user_actions
-    margin: 0 10px
+    margin: 0 0 0 10px
     margin-top: -4px
     float: right
     +border-bottom-radius(3px)
@@ -271,7 +271,9 @@ header.main
 
     li.logged_in
       +background(linear-gradient(bottom,#373737,#464646 5px))
-      +border-bottom-right-radius(5px)
+      +border-bottom-right-radius(3px)
+      .name
+        color: #FFF
       a
         float: left
         background:
@@ -298,7 +300,7 @@ header.main
       z-index: 10
       padding: 10px 0
       right: 0
-      top: 0
+      top: -5px
       background: #FEFFFF
       +box-shadow(1px 1px 5px #999)
       img
@@ -341,6 +343,7 @@ header.main
       +grid(4)
       display: none
       right: 0
+      top: -1px
       margin-right: 0
       padding-bottom: 0
       .title
@@ -367,19 +370,13 @@ header.main
                 color: lighten(#F0F0F0, 3%)
               color: #888
 
-  .logo.smaller
-    +grid(3)
-    margin: 10px
-    margin-bottom: 0
-    img
-      float: left
-      width: 225px
   .logo
     +grid(4)
-    margin: 10px
+    margin-top: 10px
+    +alpha
     img
       float: left
-      width: 300px
+      width: 280px
 
   #share
     position: absolute
@@ -399,25 +396,27 @@ header.main
       +rotate(-10deg)
 
   nav
-    width: 548px
+    width: 466px
     float: right
-    margin: 45px 10px 0 0
+    margin: 45px 0 0 0
     .actions
       li
         float: left
         text-transform: uppercase
-        a, a:link, a:hover, a:visited, a:active
+        a, a:link, a:visited, a:active
+          font-weight: lighter
+          font-size: 1.3em
           color: #000
-          padding: 5px 10px
-          +border-radius(2px)
+          margin-left: 20px
         a:hover
-          background:
-            color: $orange
+          color: #666
+          border-bottom: 1px solid
       .selected
-        a
-          background:
-            color: $orange
-          color: #FFF !important
+        a, a:link, a:visited
+          border-top: 1px solid $orange
+          color: $orange
+          &:hover
+            cursor: default
 
     
 // IDEA BUCKETS
