@@ -4,7 +4,7 @@ html
     title Festival de Ideias
     = render :partial => "layouts/meta_tags_defaults"
 
-    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Actor", "http://fonts.googleapis.com/css?family=Shadows+Into+Light", :application
+    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Droid+Serif", :application
     = csrf_meta_tags
   - name = controller.controller_name
   - action = controller.action_name
@@ -26,16 +26,13 @@ html
             - link_path = scope_root_path
             li class=(path.include?(link_path) ? 'selected' : '')
               = link_to link_path do
-                | Navegue nas ideias
+                | navegue nas ideias
 
             li
               = new_idea_button
             li
               a href=""
-                | Conheça os temas
-            li
-              a href=""
-                | Saiba mais
+                | saiba mais
 
 
         //
