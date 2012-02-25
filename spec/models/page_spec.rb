@@ -3,10 +3,10 @@
 require 'spec_helper'
 
 describe Page do
-  before do
-    @page = Factory.create(:page)
-  end
 
+  before do
+    Factory(:page)
+  end
   describe "Validations/Associations" do
     it { should validate_presence_of :title }
     it { should validate_presence_of :body }
@@ -15,8 +15,9 @@ describe Page do
 
   describe "Slug verification" do
     it 'Should convert the page title to a friendly_id' do
-      page = Factory.create(:page, :title => 'Minha Página Especial', :body => '<p>Conteúdo</p>')
-      page.slug.should == 'minha-pagina-especial'
+      number = rand 1..1000
+      page = Factory.create(:page, :title => "Minha Página Especial #{number}", :body => '<p>Conteúdo</p>')
+      page.slug.should == "minha-pagina-especial-#{number}"
     end
   end
 end

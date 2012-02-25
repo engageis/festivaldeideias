@@ -1,6 +1,6 @@
 Given /^I'm a logged user$/ do
-  @user ||= Factory.create(:user, :email => "runeroniek@gmail.com")
-  @service ||= Factory.create(:service, :provider => "facebook", :uid =>"547955110", :user => @user)
+  @user = Factory.create(:user, :email => "runeroniek@gmail.com")
+  @service = Factory.create(:service, :provider => "facebook", :uid =>"547955110", :user => @user)
   visit '/auth/facebook'
 end
 
@@ -11,6 +11,7 @@ Given /^(\d+) idea category exist$/ do |count|
     @categories << f
   end
 end
+
 
 Then /^I should see user options$/ do
   page.should have_xpath("//div[@class='wrapper']/ul[@class='user_actions']")
