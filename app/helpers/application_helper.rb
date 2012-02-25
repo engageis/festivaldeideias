@@ -2,8 +2,13 @@ module ApplicationHelper
 
   def new_idea_button(css_class = nil)
     text = t('buttons.new_idea')
+    if css_class.nil?
+      css_class = 'start'
+    else
+      css_class << ' start'
+    end
     if current_user
-      link_to text, '#start', :rel => 'facebox', :class => css_class
+      link_to text, '#start', :rel => 'facebox', :class => css_class + ' start'
     else
       link_to text, '#login', :rel => 'facebox', :class => css_class, :'data-return-url' => '#continue_idea' 
     end
