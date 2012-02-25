@@ -23,6 +23,7 @@ pt-BR:
         give_a_name: "Colabore no titulo desta ideia"
         give_a_headline: "Se quiser, colabore no resumo da ideia:"
         choose_a_category: "Em que categoria esta ideia se encaixa?"
+      success: "Colaboração feita com sucesso"
 
     # Messages
     message:

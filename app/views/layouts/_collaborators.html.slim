@@ -6,10 +6,15 @@
       = @idea.colaborations.count
 
   .community
-    ul
-      - @idea.colaborations.each do |colaboration|
+    - if @idea.colaborations.count == 0 && current_user != @idea.user
+      ul
         li
-          = link_to image_tag(colaboration.user.services.first.facebook_avatar, :title => colaboration.user.name), "#"
+          | Ainda não há colaboradores neste ideia, quem sabe você não é o primeiro.
+    - else
+      ul
+        - @idea.colaborations.each do |colaboration|
+          li
+            = link_to image_tag(colaboration.user.services.first.facebook_avatar, :title => colaboration.user.name), "#"
     .clear
 
   - if can?(:edit, @idea)

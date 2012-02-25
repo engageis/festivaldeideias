@@ -45,6 +45,7 @@ class IdeasController < ApplicationController
   def colaborate
     if @idea
       @collab = Idea.create_colaboration(params[:idea].merge(:user_id => current_user.id))
+      flash[:alert] = t('idea.colaboration.success')
       redirect_to category_idea_path(@idea.category.id, @idea)
     end
   end
