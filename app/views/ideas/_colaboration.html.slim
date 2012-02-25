@@ -11,11 +11,6 @@
           = f.text_field :title, :maxlength => 70, :class => 'required', :value => idea.title
 
         p
-          = f.label :headline, t('idea.colaboration.new.give_a_headline'), :class => 'left'
-          span.char_counter 200
-          = f.text_area :headline, :class => 'limited', :maxlength => 200, :value => idea.headline
-
-        p
           = f.label :description, t('idea.colaboration.new.give_a_description')
           = f.text_area :description, :class => 'required', :value => idea.description
           = f.hidden_field :parent_id, :value => idea.id
