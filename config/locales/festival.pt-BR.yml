@@ -24,6 +24,8 @@ pt-BR:
         give_a_headline: "Se quiser, colabore no resumo da ideia:"
         choose_a_category: "Em que categoria esta ideia se encaixa?"
       success: "Colaboração feita com sucesso"
+      accepted: "A colaboração foi aceita"
+      rejected: "A colaboração foi rejeitada"
 
     # Messages
     message:
@@ -69,6 +71,8 @@ pt-BR:
     success: "Bem vindo!"
     create_account: "Criar uma conta"
     do_login: "Fazer login"
+  logout:
+    success: "Obrigado por participar. Até logo."
   non_facebook_user:
     create:
       success: "E-mail cadastrado com sucesso!"
