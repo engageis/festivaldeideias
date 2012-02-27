@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   # User has many types of services (facebook, twitter and so on)
   has_many :services
   has_many :ideas
+  has_many :colaborations, :through => :ideas
   validates_presence_of :name, :email
   attr_accessible :name, :email
 

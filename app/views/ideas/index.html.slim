@@ -6,9 +6,8 @@
   .ajax-container data-pjax-container=''
     ol.ideas_buckets
       - unless @ideas.nil?
-        - last_pos = @ideas.size - 1
         - @ideas.each_with_index do |idea, pos|
-          li.bucket class=cycle('odd', 'middle', 'even') 
+          li.bucket class=cycle('odd', 'middle', 'even')
             header
               .category
                 // Category badge
@@ -23,7 +22,7 @@
               .clear
             .description
               p.idea_headline
-                // Is Headline present? Ok, show me. If not, show me the description.
+                // Is Headline present? Ok, show it. If not, show me the description.
                 = truncate(idea.description, :length => 185, :separator => " ")
 
 
@@ -32,5 +31,5 @@
               li.likes
                 = idea.likes
               li.collabs
-                = nil
+                = idea.colaborations.size
 

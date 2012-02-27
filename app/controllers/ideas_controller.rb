@@ -59,7 +59,7 @@ class IdeasController < ApplicationController
   def accept_collaboration
     @collab = resource.colaborations.find(params[:collab])
     resource.update_attributes title: @collab.title, headline: @collab.headline, description: @collab.description
-    @collab.update_attribute :accepted, true 
+    @collab.update_attribute :accepted, true
     flash[:notice] = t('idea.colaboration.accepted')
     return redirect_to resource
   end
@@ -112,10 +112,11 @@ class IdeasController < ApplicationController
     @ideas = end_of_association_chain.where(:parent_id => nil) #querying only ideas, no collab.
     @categories ||= IdeaCategory.all
     @users ||= User.all(:include => :services)
-    @ideas_count ||= Idea.count
-    @ideas_latest ||= Idea.latest
-    @ideas_featured ||= Idea.featured
-    @ideas_popular ||= Idea.popular
+    @ideas_count ||= Idea.where(:parent_id => nil)
+    @collab_count ||=  Idea.where("parent_id IS NOT NULL")
+    @ideas_latest ||= @ideas_count.latest
+    @ideas_featured ||= @ideas_count.featured
+    @ideas_popular ||= @ideas_count.popular
   end
 
   def current_ability

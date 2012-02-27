@@ -5,7 +5,7 @@ body
     color: #F1F1F1
     image: url(asset_path("tile.gif", "image"))
   color: #111
-  font-family: "Helvetica Regular", Arial, sans-serif
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
   font-size: 13px
   line-height: 14px
   overflow-x: hidden
@@ -118,8 +118,7 @@ article, .page_body
   +omega
   margin-top: 20px
   width: 690px
-  +box-shadow(0 0 1px #ddd)
-  +border-radius(3px)
+  +box-shadow(0 1px 2px rgba(0, 0, 0, 0.07))
   padding: 10px
   background:
     color: #FFF
@@ -204,16 +203,15 @@ h2.info
 // HEADER
 header.main
   margin-bottom: 20px
-  border-bottom: 5px solid $orange
+  border-bottom: 5px solid #FFF
   height: 103px
   background:
-    color: rgba(255, 255, 255, 0.8)
+    color: rgba(255, 255, 255, 0.6)
   //+background-image(linear-gradient(bottom, $lightgreen, #BED487))
   +box-shadow(0 0 1px #BBB)
 
   ul.user_actions
     margin: 0 0 0 10px
-    margin-top: -4px
     float: right
     +border-bottom-radius(3px)
     background: #000
@@ -242,7 +240,7 @@ header.main
 
     li.notifications
       position: relative
-      padding: 9px 28px 9px 10px
+      padding: 10px 10px 9px 10px
       margin-right: -1px
       a.globe
         padding: 0
@@ -256,10 +254,10 @@ header.main
       .count
         color: #FFF
         background: red
+        background: rgba(255, 0, 0, 0.8)
         font-size: 9px
-        position: absolute
-        left: 28px
-        top: 10px
+        margin: -22px 0 0 -5px
+        float: left
         padding: 0 3px
         +border-radius(2px)
       &:hover
@@ -282,10 +280,7 @@ header.main
       &:hover
         +background(none)
         border-bottom: 1px solid #FEFFFF
-        background:
-          color: #FEFFFF
         a
-          color: #333
         .user_menu
           display: block
 
@@ -296,8 +291,8 @@ header.main
       margin-top: 35px
       z-index: 10
       padding: 10px 0
-      right: 0
-      top: -5px
+      right: -5px
+      top: -1px
       background: #FEFFFF
       +box-shadow(1px 1px 5px #999)
       img

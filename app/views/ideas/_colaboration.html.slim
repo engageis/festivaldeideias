@@ -20,7 +20,7 @@
           h4 = t('idea.colaboration.new.choose_a_category')
 
           // Getting categories from ideas_controller
-          - if !@categories.nil? && @categories.size > 0
+          - if @categories.size
             ul
               - @categories.each do |category|
                 li

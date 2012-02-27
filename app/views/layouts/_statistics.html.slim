@@ -21,15 +21,15 @@
         h3 Estatísticas bacanas
       li
         span.number
-          = @ideas_count if not @ideas_count.nil?
+          = @ideas_count.size
         | ideias no ar agora
       li
         span.number
-          | 76440
+          = @collab_count.size
         | colaborações em ideias
       li
         span.number
-          = @users.count if not @users.nil?
+          = @users.size
         | usuários participando
       //li
         | Usuários online agora: 6
