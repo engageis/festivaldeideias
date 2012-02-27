@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
     redirect_url = session[:redirect_url]
     session[:redirect_url] = nil
     auth = request.env['omniauth.auth']
+    session[:fb_token] = auth['credentials']['token']
     logger.info(auth)
 
     unless @auth = Service.find_from_hash(auth)
@@ -21,10 +22,11 @@ class SessionsController < ApplicationController
   def destroy
     flash[:notice] = t('logout.success')
     session[:user_id] = nil
+    session[:fb_token] = nil
     redirect_to root_path
   end
 
-  # WARNING: Gambiarra!!!
+  # NOTE: Gambiarra!!!
   # Para saber para onde voltar quando
   # for feito o login com o facebook.
   # Se alguém souber melhor, sinta-se à vontade.

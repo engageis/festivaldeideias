@@ -12,7 +12,12 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   # App ID:	142951129148413
   # App Secret:	ab9bb6972624b3f2ff3e09cce1cb062
 
-  provider :facebook, CONFIG['facebook_app_id'], CONFIG['facebook_secret_key'], :scope => "email,offline_access,create_event,user_location"
+  provider(:facebook,
+           CONFIG['facebook_app_id'],
+           CONFIG['facebook_secret_key'],
+           :scope => "email,offline_access,create_event,user_location,user_groups,user_events",
+           :access_token_path => '/oauth/access_token')
+
   #provider :twitter, "key", "secret"
 
 end

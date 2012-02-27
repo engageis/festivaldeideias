@@ -58,7 +58,5 @@ html
     #start.hidden
       = render :partial => "ideas/new_idea"
 
-  script
-    |var FB_TOKEN = "#{CONFIG['facebook_access_token']}";
   = javascript_include_tag :application
   = render :partial => "layouts/plugin_defaults"
