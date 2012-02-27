@@ -1,5 +1,5 @@
 #colaborate.hidden
-  = simple_form_for @idea, :url => colaborate_idea_path(@idea), :html => {:class => "new_idea" } do |f|
+  = simple_form_for @idea, :url => colaborate_idea_path(@idea), :html => { :class => "new_idea" } do |f|
     h2 = t('idea.colaboration.new.start')
     .steps
       // Descrição da ideia
@@ -15,13 +15,12 @@
           = f.text_area :description, :class => 'required', :value => idea.description
           = f.hidden_field :parent_id, :value => idea.id
 
-
       #refine
         .categories.required
           h4 = t('idea.colaboration.new.choose_a_category')
 
           // Getting categories from ideas_controller
-          - if !@categories.nil? && @categories.size > 0
+          - if @categories.size
             ul
               - @categories.each do |category|
                 li

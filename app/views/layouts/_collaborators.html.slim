@@ -3,18 +3,22 @@
   h4
     | Quem já colaborou com essa ideia
     span
-      = @collaborators.size
+      = @collaborators.size if @collaborators.any?
 
   .community
-    - if @idea.colaborations.count == 0 && current_user != @idea.user
+    - if @idea.colaborations.size == 0
       ul
-        li
-          | Ainda não há colaboradores neste ideia, quem sabe você não é o primeiro.
+        - if current_user != @idea.user
+          li
+            | Ainda não há colaboradores nesta ideia, quem sabe você não é o primeiro?
+        - else
+          li
+            | Nenhum colaborador pra esta ideia ainda.
     - else
       ul
         - @collaborators.each do |user|
           li
-            = link_to image_tag(user.services.first.facebook_avatar, :title => user.name), "#"
+            = link_to image_tag(user.services.first.facebook_avatar, :title => user.name), user.services.first.facebook_profile
     .clear
 
   - if can?(:edit, @idea)
