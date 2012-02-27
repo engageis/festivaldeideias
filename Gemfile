@@ -38,6 +38,7 @@ gem 'rack-pjax'
 
 # Heroku
 gem 'heroku'
+gem 'newrelic_rpm'
 
 # webserver
 gem 'thin'

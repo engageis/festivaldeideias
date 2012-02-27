@@ -187,6 +187,7 @@ GEM
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.3.0)
+    newrelic_rpm (3.3.2)
     nokogiri (1.5.0)
     oa-basic (0.3.2)
       oa-core (= 0.3.2)
@@ -376,6 +377,7 @@ DEPENDENCIES
   kaminari
   koala
   meta_search (>= 1.1.0.pre)
+  newrelic_rpm
   omniauth (= 0.3.2)
   pg
   rack-pjax
