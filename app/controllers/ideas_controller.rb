@@ -15,7 +15,7 @@ class IdeasController < ApplicationController
   respond_to :html, :except => [:update]
   respond_to :json, :only => [:index, :update]
 
-  before_filter :load_collaborators, :only => [ :show ]
+  before_filter :load_collaborators, :only => [ :show, :collaboration ]
   before_filter :load_resources
 
   def create
