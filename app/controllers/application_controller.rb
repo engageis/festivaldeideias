@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :is_signed_in?, :current_user_image
 
   before_filter :load_pages_for_the_links
-  # before_filter :load_facebook_events
+  #before_filter :load_facebook_token
 
   protected
   def current_user
@@ -27,13 +27,11 @@ class ApplicationController < ActionController::Base
     session[:user_id] = user.id
   end
 
-
   def load_pages_for_the_links
     @pages_for_links = Page.order('title ASC').select(['title', 'slug'])
   end
 
-  #def load_facebook_events
-    #@events = FacebookEvents.get_events
-  #end
-
+  def load_facebook_token
+    @facebook_token = FacebookEvents.get_token
+  end
 end

@@ -10,6 +10,9 @@ html
   - action = controller.action_name
 
   body[data-controller-class="#{controller.class.name}" data-controller-name="#{name.camelize}" data-action="#{action.camelize}" ]
+    /*javascript:*/
+      /*window.FB_TOKEN = "#{@facebook_token}";*/
+
     - if alert or notice
       span.flash.message[class=(alert ? "alert" : "notice")]= alert or notice
 
@@ -58,7 +61,5 @@ html
     #start.hidden
       = render :partial => "ideas/new_idea"
 
-  script
-    |var FB_TOKEN = "#{CONFIG['facebook_access_token']}";
   = javascript_include_tag :application
   = render :partial => "layouts/plugin_defaults"
