@@ -10,21 +10,13 @@ require 'json'
 =end
 
 class FacebookEvents
-  FB = Koala::Facebook
-  @@queries = {
-    "query1" => "SELECT eid FROM event_member WHERE uid = 211024602327337",
-    "query2" => "SELECT eid, name, start_time, location FROM event WHERE eid IN ( SELECT eid FROM #query1 )"
-  }
-  @@oauth = FB::OAuth.new(CONFIG['facebook_app_id'], CONFIG['facebook_secret_key'], CONFIG['callback_url'])
-  @@api = FB::API.new
-
+  #@@oauth = Koala::Facebook::OAuth.new(CONFIG['facebook_app_id'],
+                                       #CONFIG['facebook_secret_key'],
+                                       #CONFIG['callback_url'])
   def self.get_token
-    raise @@api.get_object('fql?q=select eid from event where eid =211024602327337').inspect
+    oauth = Koala::Facebook::OAuth.new(CONFIG['facebook_app_id'],
+                                       CONFIG['facebook_secret_key'],
+                                       CONFIG['callback_url'])
+    return oauth.get_app_access_token
   end
-
-  #def self.get_events
-    #now = Time.now
-    #fql = @@rest.fql_multiquery(@@queries)
-    #JSON.parse(fql['query2'].to_json)
-  #end
 end

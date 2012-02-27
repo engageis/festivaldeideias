@@ -10,6 +10,9 @@ html
   - action = controller.action_name
 
   body[data-controller-class="#{controller.class.name}" data-controller-name="#{name.camelize}" data-action="#{action.camelize}" ]
+    /*javascript:*/
+      /*window.FB_TOKEN = "#{@facebook_token}";*/
+
     - if alert or notice
       span.flash.message[class=(alert ? "alert" : "notice")]= alert or notice
 

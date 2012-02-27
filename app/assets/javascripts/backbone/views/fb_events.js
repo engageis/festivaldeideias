@@ -40,7 +40,8 @@ App.FbEvents = App.BaseView.extend({
     var view, token, query;
     view = this;
     // Ganhei o token de um dos meus app numa página que fornece tokens para teste. Não sei se expira
-    token = "AAAEirF16n5EBAIwqRbZAEFUZCX8IzK2xqTlyQ5Bv2QcRSGdTcU2AYwQOnVr0u5SoNnVPS6xY97H8DZBxu5tJ1EZBA0FZAc2sNKcWLLMHdSOL9c6sCZA5H3";
+    //token = window.FB_TOKEN;
+    token = "319598674747281|nAO3_yd8d4tAha2kjNltKlWC8oc";
     query = "SELECT eid, name, start_time, location FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid=211024602327337) ORDER BY start_time DESC LIMIT 10";
     // Usando a Graph API do Facebook
     // Aparentemente a API REST (legacy) não está funcionando direito.
