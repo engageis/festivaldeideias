@@ -29,13 +29,13 @@
 
 @mixin bucket($padding: 10px)
   padding: $padding
-  border-radius: 5px
-  border: 1px solid #DDD
+  +border-radius(6px)
+  border: 1px solid #CCC
   background:
-    color: #F8F8F8
+    color: rgba(0, 0, 0, 0.05)
 
 @mixin list_link     
-  border-top: 1px solid #DDD
+  border-top: 1px solid #CCC
   font-size: 1.1em
   padding: 10px
   line-height: 18px

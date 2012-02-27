@@ -22,15 +22,14 @@
     .clear
 
   - if can?(:edit, @idea)
-    .hightlight
-      h3 Você é o chefe
-      .youre_boss
-        p
-          strong
-            | Esta ideia é de autoria sua
-          | , você pode editá-la quando quiser clicando nos textos e aceitar as colaborações que outras pessoas enviam.
-        a.view_more href="#" Saiba mais sobre colaborações
-        br
+    h3 Você é o chefe
+    .youre_boss
+      p
+        strong
+          | Esta ideia é de autoria sua
+        | , você pode editá-la quando quiser clicando nos textos e aceitar as colaborações que outras pessoas enviam.
+      a.view_more href="#" Saiba mais sobre colaborações
+      br
 
   - else
     = link_to "Colaborar com esta ideia", "#colaborate", :class => "button start"
