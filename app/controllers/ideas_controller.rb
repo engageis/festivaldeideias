@@ -61,14 +61,14 @@ class IdeasController < ApplicationController
     resource.update_attributes title: @collab.title, headline: @collab.headline, description: @collab.description
     @collab.update_attribute :accepted, true
     flash[:notice] = t('idea.colaboration.accepted')
-    return redirect_to resource
+    return redirect_to category_idea_path(resource.category, resource)
   end
 
   def refuse_collaboration
     @collab = resource.colaborations.find(params[:collab])
     @collab.update_attribute :accepted, false
     flash[:notice] = t('idea.colaboration.rejected')
-    return redirect_to resource
+    return redirect_to category_idea_path(resource.category, resource)
   end
 
   def index
