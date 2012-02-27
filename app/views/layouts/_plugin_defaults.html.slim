@@ -8,7 +8,12 @@
       }
     }
     window.fbAsyncInit = function () {
-      FB.init({ appId: "#{CONFIG['facebook_app_id']}", xfbml: true });
+      FB.init({
+        appId: "#{CONFIG['facebook_app_id']}",
+        status: true,
+        cookie: true,
+        xfbml: true
+      });
       loadEvents();
     };
     (function (d) {

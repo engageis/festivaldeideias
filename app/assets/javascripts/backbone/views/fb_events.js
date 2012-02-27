@@ -29,26 +29,29 @@ App.FbEvents = App.BaseView.extend({
       date = new Date(Number(e.start_time) * 1000);
 
       li = "<li><a href='http://www.facebook.com/events/" + e.eid + "' target='_blank'><div class='name'>" +
-          e.name + "</div><div class='info'><span class='date'>" +
-          this.formatDate(date) + "</span> <span class='date'>" + e.location + "</span></div></a></li>";
+      e.name + "</div><div class='info'><span class='date'>" +
+      this.formatDate(date) + "</span> <span class='date'>" + e.location + "</span></div></a></li>";
       ul.append(li);
     }
     $('.fb_events').html(ul);
   },
 
   getEvents: function () {
-    var token, query, view = this;
-    query = "SELECT eid, name, start_time, location FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid=211024602327337) ORDER BY start_time ASC LIMIT 10";
-    //query = {
-      //'query1': 'SELECT eid FROM event_member WHERE uid = "211024602327337"',
-      //'query2': 'SELECT eid, name, start_time, location FROM event WHERE eid IN (SELECT eid FROM #query1)'
-    //};
-    // Deve ter um jeito melhor do que usar hardcoded...
-    //token = "AAAB23Lgb0DEBABOGBdlloz16VoI22ZA1btPa9yr1waUrpP0R8dXGCp1F8Anh20yP7pN8IJrTEDB16jYfFZAyNgSluaPqZAwyITCS29gZAAZDZD";
-    token = "130690353713201|msd-rohD3kkcJKOkpKLCaQ1O2KQ"; // Token do App
-    FB.api({ method: "fql.query", query: query, access_token: token }, function (events) {
-      console.log(events);
-      view.populateEventField(events);
-    });
+    var view, token, query, now;
+    view = this;
+    now = ~~((new Date()).getTime() / 1000);
+    //token = window.FB_TOKEN;
+    // Ganhei o token de um dos meus app numa página que fornece tokens para teste. Não sei se expira
+    token = "319598674747281|nAO3_yd8d4tAha2kjNltKlWC8oc";
+    query = "SELECT eid, name, start_time, location FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid=211024602327337) AND start_time > " + now + " ORDER BY start_time ASC LIMIT 10";
+    // Usando a Graph API do Facebook
+    // Aparentemente a API REST (legacy) não está funcionando direito.
+    $.get("https://graph.facebook.com/fql", {
+      'q': query,
+      'access_token': token
+    }, function (data, textStatus) {
+      view.populateEventField(data.data);
+    }, 'json');
   }
+
 });
