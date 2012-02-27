@@ -6,12 +6,12 @@
         meta[property="og:description" content=@idea.headline]
         meta[property="og:url" content=category_idea_url(@idea.category,@idea)]
 
-      - if can?(:edit, @idea)
+      - if can?(:manage, @idea)
 
         h3 Veja abaixo as diferenças entre a versão anterior e a sugerida
         .collab
-          h4 
-            | O que deseja fazer com a colaboração de 
+          h4
+            | O que deseja fazer com a colaboração de
             = @collab.user.name
             | ?
             .buttons[style="float:right"]

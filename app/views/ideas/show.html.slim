@@ -11,14 +11,14 @@ header
     //- if can?(:edit, @idea)
       .edit_message= t('idea.message.edit')
 
-    - if current_user == @idea.user
+    - if can?(:manage, @idea)
       .collab
         - if @idea.colaborations.not_accepted.empty?
           h3#ideas-to-accept
             | Nenhuma colaborações para aceite
         - else
           h3#ideas-to-accept
-            | Você possui 
+            | Você possui
             = @idea.colaborations.not_accepted.count
             |&nbsp;colaborações para aceite
           // Listing all colaborations that aren't accepted
