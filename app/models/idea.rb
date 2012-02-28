@@ -19,6 +19,7 @@ class Idea < ActiveRecord::Base
   scope :recent,    where(:parent_id => nil).order('created_at DESC')
   scope :popular,   where(:parent_id => nil).order('likes DESC')
 
+
   scope :new_collaborations, ->(user) {
     where(['parent_id IN (?) AND created_at > ?', user.ideas.map(&:id), user.notifications_read_at])
   }

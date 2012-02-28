@@ -1,7 +1,7 @@
 # coding: utf-8
 ActiveAdmin.register Idea do
   menu :label => "Curação de ideias"
-
+  scope_to :current_user, :association_method => :list_ideas
   #
   # Initial Implementation of featured / position ajax submition
   #
@@ -12,7 +12,7 @@ ActiveAdmin.register Idea do
     column "Capa?", :sortable => :featured do |s|
       form do
         check_box "idea",
-          :featured, :class => "form_idea", :data => {:url => admin_idea_path(s)},
+          :featured, :class => "form_idea", :data => {:url => admin_idea_url(s)},
           :checked => (s.featured? ? "checked" : "false")
       end
     end
@@ -23,7 +23,7 @@ ActiveAdmin.register Idea do
     #column "Posição", :sortable => :position do |s|
     column :position, :sortable => :position do |s|
       form do
-        select :class => "form_idea idea_position", :name => "idea[position]", "data-url" => admin_idea_path(s)  do
+        select :class => "form_idea idea_position", :name => "idea[position]", "data-url" => admin_idea_url(s)  do
           0.upto(8).each do |n|
             if n == s.position
               option "#{n}", :value => "#{n}", :selected => "selected"
@@ -40,7 +40,11 @@ ActiveAdmin.register Idea do
     column :id
     column :title do |idea|
       div :class => "idea_show" do
-        idea.title
+        if idea.parent_id
+          strong "[colaboração] #{idea.title}"
+        else
+          idea.title
+        end
       end
       div :class => "idea_hidden" do
         div :class => "category" do
@@ -57,7 +61,6 @@ ActiveAdmin.register Idea do
         p idea.description
       end
     end
-    column :headline
 
     column :created_at do |s|
       s.created_at.strftime('%d/%m/%Y')
