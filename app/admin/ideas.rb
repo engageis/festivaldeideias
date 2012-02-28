@@ -10,10 +10,12 @@ ActiveAdmin.register Idea do
     # Testing the featured? implementation
     # This will change the boolean column to true or false (eg.: featured = true, so checkbox should be checked)
     column "Capa?", :sortable => :featured do |s|
-      form do
-        check_box "idea",
-          :featured, :class => "form_idea", :data => {:url => admin_idea_url(s)},
-          :checked => (s.featured? ? "checked" : "false")
+      if !s.parent_id
+        form do
+          check_box "idea",
+            :featured, :class => "form_idea", :data => {:url => admin_idea_url(s)},
+            :checked => (s.featured? ? "checked" : "false")
+        end
       end
     end
 
@@ -22,13 +24,15 @@ ActiveAdmin.register Idea do
     # This will make the order in the featured page (eg.: ORDER BY position DESC)
     #column "Posição", :sortable => :position do |s|
     column :position, :sortable => :position do |s|
-      form do
-        select :class => "form_idea idea_position", :name => "idea[position]", "data-url" => admin_idea_url(s)  do
-          0.upto(8).each do |n|
-            if n == s.position
-              option "#{n}", :value => "#{n}", :selected => "selected"
-            else
-              option "#{n}", :value => "#{n}"
+      if !s.parent_id
+        form do
+          select :class => "form_idea idea_position", :name => "idea[position]", "data-url" => admin_idea_url(s)  do
+            0.upto(8).each do |n|
+              if n == s.position
+                option "#{n}", :value => "#{n}", :selected => "selected"
+              else
+                option "#{n}", :value => "#{n}"
+              end
             end
           end
         end
