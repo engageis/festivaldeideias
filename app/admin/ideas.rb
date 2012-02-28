@@ -1,7 +1,6 @@
 # coding: utf-8
 ActiveAdmin.register Idea do
   menu :label => "Curação de ideias"
-  scope_to :current_user, :association_method => :list_ideas
   #
   # Initial Implementation of featured / position ajax submition
   #
