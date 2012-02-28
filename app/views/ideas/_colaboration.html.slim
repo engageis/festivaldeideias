@@ -27,7 +27,7 @@
                   - id = category.id
                   = f.radio_button :category_id, id
                   label for="idea_category_id_#{id}"
-                    = image_tag(category.badge.url, :size => '31x31', :alt => category.name, :title => category.name)
+                    = image_tag(category.badge, :size => '31x31', :alt => category.name, :title => category.name)
                     br
                     = category.name
       // Publicação da ideia

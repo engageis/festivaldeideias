@@ -11,7 +11,7 @@
             header
               .category
                 // Category badge
-                = image_tag idea.category.badge.url, :size => "30x30", :alt => idea.category.name, :title => idea.category.name
+                = image_tag idea.category.badge, :size => "30x30", :alt => idea.category.name, :title => idea.category.name
                 span
                   = idea.category.name
               h3

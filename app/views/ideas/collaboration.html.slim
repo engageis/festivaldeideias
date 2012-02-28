@@ -21,7 +21,7 @@
                 = link_to "Recusar", refuse_collaboration_idea_path(@idea, collab: @collab)
 
       // Category badge
-      = image_tag @idea.category.badge.url, :alt => @idea.category.name, :title => @idea.category.name, :class => "badge"
+      = image_tag @idea.category.badge, :alt => @idea.category.name, :title => @idea.category.name, :class => "badge"
 
       // Idea's title
       h1

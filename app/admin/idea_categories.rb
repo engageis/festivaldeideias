@@ -5,7 +5,7 @@ ActiveAdmin.register IdeaCategory do
   index do
     column :id
     column :badge do |s|
-      image_tag s.badge.url, :size => "31x31"
+      image_tag s.badge, :size => "31x31"
     end
     column :name
     column "Criado em" do |s|

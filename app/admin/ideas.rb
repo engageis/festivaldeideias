@@ -44,7 +44,7 @@ ActiveAdmin.register Idea do
       end
       div :class => "idea_hidden" do
         div :class => "category" do
-          image_tag idea.category.badge.url, :size => "31x31"
+          image_tag idea.category.badge, :size => "31x31"
         end
         h2 :class => "title" do
           idea.title
