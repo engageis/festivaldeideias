@@ -23,7 +23,7 @@ var App = window.App = {
             // Create existing flashes
             App.flashes = [];
             $('.flash').each(function () {
-                App.flashes.push(new App.Flash({el: this, timeout: 2000}));
+                App.flashes.push(new App.Flash({el: this, timeout: 5000}));
             });
 
             // Starting Facebox
