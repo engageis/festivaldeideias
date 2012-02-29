@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe Service do
+  before do
+    @user = Factory(:user)
+  end
   describe "Validations/Associations" do
     it { should validate_presence_of :uid }
     it { should validate_presence_of :provider }
@@ -13,8 +16,7 @@ describe Service do
   describe "#find_from_hash" do
     it "Should find the provider and UID when it's already in database" do
       fb = FACEBOOK_HASH_DATA
-      user = Factory.create(:user)
-      service = Factory.create(:service, :provider => fb['provider'], :uid => fb['uid'], :user => user)
+      service = Factory.create(:service, :provider => fb['provider'], :uid => fb['uid'], :user => @user)
       Service.find_from_hash(fb).should_not be_nil
     end
 
@@ -27,11 +29,10 @@ describe Service do
   describe "#create_from_hash" do
     context "When an user exists, return an existent" do
       fb = FACEBOOK_HASH_DATA
-      user = Factory.create(:user)
-      subject { Service.create_from_hash(fb, user) }
+      subject { Service.create_from_hash(fb, @user) }
       its(:uid) { should == fb['uid'] }
       its(:provider) { should == fb['provider'] }
-      its(:user) { should == user }
+      its(:user) { should == @user }
     end
     context "When the user doesn't exists yet, create one" do
       fb = FACEBOOK_HASH_DATA
@@ -45,8 +46,7 @@ describe Service do
   describe "#facebook_avatar" do
     context "When user exists" do
       fb = FACEBOOK_HASH_DATA
-      user = Factory.create(:user)
-      subject { Service.create_from_hash(fb, user) }
+      subject { Service.create_from_hash(fb, @user) }
       its(:facebook_avatar) { should == "http://graph.facebook.com/#{fb['uid']}/picture?type=square" }
     end
   end
@@ -54,8 +54,7 @@ describe Service do
   describe "#facebook_profile" do
     context "When user exists" do
       fb = FACEBOOK_HASH_DATA
-      user = Factory.create(:user)
-      subject { Service.create_from_hash(fb, user) }
+      subject { Service.create_from_hash(fb, @user) }
       its(:facebook_profile) { should == "https://www.facebook.com/profile.php?id=#{fb['uid']}"}
     end
   end
