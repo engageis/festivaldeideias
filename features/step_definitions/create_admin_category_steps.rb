@@ -4,7 +4,7 @@ end
 
 Then /^I fill the form with my category data$/ do
   within "#idea_category_new" do
-    fill_in "idea_category_name", :with => "Sample"
+    #fill_in "idea_category_name", :with => "Sample"
     fill_in "idea_category_description", :with => "Description"
     attach_file "idea_category_badge", "#{Rails.root}/spec/fixtures/images/disasters.png"
   end
