@@ -116,7 +116,7 @@ class IdeasController < ApplicationController
     @collab_count ||=  Idea.where("parent_id IS NOT NULL")
     @ideas_latest ||= Idea.latest
     @ideas_featured ||= Idea.featured
-    @ideas_popular ||= Idea.popular.shuffle { rand }
+    @ideas_popular ||= Idea.popular.shuffle
   end
 
   def current_ability
