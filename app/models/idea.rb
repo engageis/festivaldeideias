@@ -17,17 +17,19 @@ class Idea < ActiveRecord::Base
   scope :featured,  where(:featured => true, :parent_id => nil).order('position DESC')
   scope :latest,    where(:parent_id => nil).order('updated_at DESC')
   scope :recent,    where(:parent_id => nil).order('created_at DESC')
-  scope :popular,   where(:parent_id => nil).order('likes DESC')
+  scope :popular,   select("DISTINCT ON (ideas.id) ideas.*").
+                    joins("INNER JOIN ideas b ON b.parent_id = ideas.id")
 
-  scope :new_collaborations, ->(user) {
+
+  scope :new_collaborations, lambda { |user|
     where(['parent_id IN (?) AND created_at > ?', user.ideas.map(&:id), user.notifications_read_at])
   }
 
-  scope :collaborations_status_changed, ->(user) {
+  scope :collaborations_status_changed, lambda { |user|
     where(['user_id = ? AND accepted IS NOT NULL AND parent_id IS NOT NULL AND updated_at > ?', user.id, user.notifications_read_at])
   }
 
-  scope :collaborated_idea_changed, ->(user) {
+  scope :collaborated_idea_changed, lambda { |user|
     where(['EXISTS(
               SELECT true FROM ideas AS collaboration
               WHERE collaboration.parent_id = ideas.id

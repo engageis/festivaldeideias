@@ -11,6 +11,12 @@ class User < ActiveRecord::Base
   validates_presence_of :name, :email
   attr_accessible :name, :email
 
+  before_create :updates_notifications_read_at
+
+  def updates_notifications_read_at
+    self.notifications_read_at = Time.now
+  end
+
   def self.create_from_hash!(hash)
     self.create(:name => hash['user_info']['name'], :email => hash['user_info']['email'])
   end

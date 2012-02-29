@@ -1,6 +1,6 @@
 = form_for(Idea.new, :class => 'new_idea') do |f|
   h2 = t('idea.new.start')
-  
+
   ul.short_cuts
     li.active = link_to t('idea.new.step_1'), '#describe'
     li = link_to t('idea.new.step_2'), '#refine'
@@ -35,7 +35,7 @@
                 - id = category.id
                 = f.radio_button :category_id, id
                 label for="idea_category_id_#{id}"
-                  = image_tag(category.badge.url, :size => '31x31', :alt => category.name, :title => category.name)
+                  = image_tag(category.badge, :size => '31x31', :alt => category.name, :title => category.name)
                   br
                   = category.name
       .button_pair
@@ -46,11 +46,11 @@
 
     // Publicação da ideia
     #publish.hidden
-      h3 
+      h3
         | Revise e publique:
-        em 
+        em
           | * Você ainda conseguirá editar sua ideia depois de publicada.
-      
+
       .review
         img.category class='badge' src='' alt="nome da categoria" title="nome da categoria"
         h4.title Título

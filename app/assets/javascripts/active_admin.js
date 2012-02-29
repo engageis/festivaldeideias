@@ -47,15 +47,17 @@ $('.idea_show').live('mouseout', function(){
 // Form submits through ajax, for every "mini-form"
 $('.form_idea').live('change',function(){
   var self = $(this);
+  var csrf_token = $('meta[name="csrf-token"]').attr('content');
+  var csrf_param = $('meta[name="csrf-param"]').attr('content');
+  $(this).append("<input name='"+csrf_param+"' value='"+csrf_token+"' type='hidden' />");
   $.ajax({
     type: "PUT",
     // As backwards compatibility, every field has a form
     data: $(this).parents('form').serialize(),
     url: $(this).attr('data-url'),
     beforeSend: function(xhr){
-
       // Without this, you can't send data to the server.
-      xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+      xhr.setRequestHeader('X-CSRF-Token', csrf_token);
       self.parents('tr').animate({opacity: "0.5"}, 1000);
     },
     success: function(data){
