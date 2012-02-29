@@ -12,9 +12,8 @@
     ul.top_ideas
       li
         h3 Ideias populares
-      - @ideas_popular.limit(5).each do |idea|
-        li
-          = link_to idea.title, category_idea_path(idea.category, idea)
+      - @ideas_popular.each_with_index do |idea, index|
+          li= link_to idea.title, category_idea_path(idea.category, idea) unless index > 5
 
     ul.totals
       li
