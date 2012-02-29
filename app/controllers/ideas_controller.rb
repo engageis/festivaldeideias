@@ -88,7 +88,7 @@ class IdeasController < ApplicationController
   end
 
   def popular
-    @ideas = @ideas.popular.sort { rand }
+    @ideas = @ideas.popular.shuffle
     load_headers
     render :index
   end
@@ -116,7 +116,7 @@ class IdeasController < ApplicationController
     @collab_count ||=  Idea.where("parent_id IS NOT NULL")
     @ideas_latest ||= Idea.latest
     @ideas_featured ||= Idea.featured
-    @ideas_popular ||= Idea.popular.sort { rand }
+    @ideas_popular ||= Idea.popular.shuffle { rand }
   end
 
   def current_ability
