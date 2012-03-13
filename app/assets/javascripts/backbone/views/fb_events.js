@@ -42,14 +42,17 @@ App.FbEvents = App.BaseView.extend({
     now = ~~((new Date()).getTime() / 1000);
     //token = window.FB_TOKEN;
     // Ganhei o token de um dos meus app numa página que fornece tokens para teste. Não sei se expira
-    token = "319598674747281|nAO3_yd8d4tAha2kjNltKlWC8oc";
+    //token = "AAAEaDzkmUtwBANmbwUX5lPdesBThhQCNXrXGxSc99mLyUbTOKh4DJZAQYGRitZCm8LgfZCy0kscVnZBZAADe7tNPPoBxag68Jg1COGO6hRwZDZD";
+    token = App.accessToken;
+
     query = "SELECT eid, name, start_time, location FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid=211024602327337) AND start_time > " + now + " ORDER BY start_time ASC LIMIT 10";
+
     // Usando a Graph API do Facebook
-    // Aparentemente a API REST (legacy) não está funcionando direito.
     $.get("https://graph.facebook.com/fql", {
       'q': query,
       'access_token': token
     }, function (data, textStatus) {
+      console.log(data.data);
       view.populateEventField(data.data);
     }, 'json');
   }
