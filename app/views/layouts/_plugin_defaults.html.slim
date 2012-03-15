@@ -14,7 +14,15 @@
         cookie: true,
         xfbml: true
       });
+      window.accessToken = "#{FacebookEvents.get_token}";
       loadEvents();
+      /*FB.getLoginStatus(function (response) {*/
+        /*if (response.status === "connected") {*/
+          /*loadEvents();*/
+        /*} else {*/
+          /*$('.fb_events').html("<p>Você precisa estar conectado ao Facebook para ver os eventos.</p>");*/
+        /*}*/
+      /*});*/
     };
     (function (d) {
       var fjs, js, id = 'facebook-jssdk';
@@ -28,7 +36,6 @@
     }(document));
 
 javascript:
-  App.accessToken = "#{FacebookEvents.get_token}";
   App.editable = {
     defaults: { submit:  "#{t('jquery.editable.defaults.submit')}",
                 cancel:  "#{t('jquery.editable.defaults.cancel')}",

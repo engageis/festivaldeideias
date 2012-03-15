@@ -15,7 +15,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider(:facebook,
            CONFIG['facebook_app_id'],
            CONFIG['facebook_secret_key'],
-           :scope => "email,offline_access,create_event,user_location")
+           :scope => "email,offline_access,create_event,user_location,user_events,friends_events")
 
   #provider :twitter, "key", "secret"
 
