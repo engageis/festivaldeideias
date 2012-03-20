@@ -8,21 +8,9 @@
       }
     }
     window.fbAsyncInit = function () {
-      FB.init({
-        appId: "#{CONFIG['facebook_app_id']}",
-        status: true,
-        cookie: true,
-        xfbml: true
-      });
-      window.accessToken = "#{FacebookEvents.get_token}";
-      loadEvents();
-      /*FB.getLoginStatus(function (response) {*/
-        /*if (response.status === "connected") {*/
-          /*loadEvents();*/
-        /*} else {*/
-          /*$('.fb_events').html("<p>Você precisa estar conectado ao Facebook para ver os eventos.</p>");*/
-        /*}*/
-      /*});*/
+      FB.init({ appId: "#{CONFIG['facebook_app_id']}", status: true, cookie: true, xfbml: true });
+      /*window.accessToken = "#{FacebookEvents.get_token}";*/
+      /*loadEvents();*/
     };
     (function (d) {
       var fjs, js, id = 'facebook-jssdk';
