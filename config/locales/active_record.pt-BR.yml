@@ -29,6 +29,6 @@
         created_at: 'Criada em'
         updated_at: 'Atualizada'
       non_facebook_user:
-        email: 'E-mail'
+        email: 'Email'
         created_at: 'Criado em'
         updated_at: 'Atualizado'
