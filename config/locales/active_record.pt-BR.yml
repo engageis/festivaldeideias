@@ -1,10 +1,13 @@
-pt-BR:
+'pt-BR':
 
   activerecord:
     models:
       idea: "Ideia"
       idea_category: 'Categoria'
       page: 'Página'
+      non_facebook_user:
+        one: 'Não-usuário do Facebook'
+        other: 'Não-usuários do Facebook'
 
     attributes:
       idea:
@@ -25,4 +28,7 @@ pt-BR:
         body: 'Texto'
         created_at: 'Criada em'
         updated_at: 'Atualizada'
-
+      non_facebook_user:
+        email: 'E-mail'
+        created_at: 'Criado em'
+        updated_at: 'Atualizado'
