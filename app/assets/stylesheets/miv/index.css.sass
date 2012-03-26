@@ -51,8 +51,6 @@ ul
 a, a:link, a:hover, a:visited, a:active
   text-decoration: none
   color: #555
-  +transition(color .2s linear 0s)
-  +transition(background-color .2s linear 0s)
   font-weight: 700
   font-family: "Helvetica", Arial, sans-serif
 a:hover
@@ -191,7 +189,6 @@ article, .page_body
 // * different headings
 
 h2.info
-  font-family: 'Droid Serif', serif
   font-size: 1em
   margin-bottom: 20px
   line-height: 1.4em
@@ -391,25 +388,27 @@ header.main
       +rotate(-10deg)
 
   nav
-    width: 470px
+    width: 440px
     float: right
     margin: 45px 0 0 0
     .actions
       li
         float: left
-        text-transform: uppercase
         a, a:link, a:visited, a:active
           font-weight: lighter
           font-size: 1.3em
           color: #000
+          padding: 5px
           margin-left: 20px
+          +border-radius(3px)
         a:hover
-          color: #666
-          border-bottom: 1px solid
+          background: #666
+          color: #FFF
       .selected
         a, a:link, a:visited
-          border-bottom: 1px solid $orange
-          color: $orange
+          background: #EEE
+          color: #999
+          +box-shadow(-1px -1px 0 #DDD)
           &:hover
             cursor: default
 
