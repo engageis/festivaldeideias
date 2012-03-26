@@ -19,6 +19,12 @@ class IdeasController < ApplicationController
   before_filter :load_resources
 
   def create
+    # O usuário deve aceitar os "termos de uso" clicando no checkbox
+    unless params[:terms_acceptance] == 'on'
+      flash[:alert] = "Os termos de uso devem ser aceitos"
+      return redirect_to request.referer
+    end
+
     @idea = Idea.new(params[:idea])
     @idea.user = current_user if current_user
     # Agora depois de criada uma ideia, ela é exibida

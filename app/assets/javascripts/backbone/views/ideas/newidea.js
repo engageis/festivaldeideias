@@ -1,22 +1,22 @@
 App.Ideas.NewIdea = App.BaseView.extend({
     initialize: function () {
         _.bindAll(this
-                ,"showDescription"
-                ,"showRefinement"
-                ,"showPublishing"
-                ,"updatePublishingFields"
-                ,"selectCategory"
-                ,"updateStore"
-                ,"openIdeaForm"
-                ,"updateCharactersLeft"
-                ,"focusOnDescription"
-                ,"clearAll"
-                ,"setRedirectUrl"
-                ,"showFbh"
-                ,"showFbl"
-                ,"validateFblForm"
-                ,"checkRequiredFields"
-            );
+            ,"showDescription"
+            ,"showRefinement"
+            ,"showPublishing"
+            ,"updatePublishingFields"
+            ,"selectCategory"
+            ,"updateStore"
+            ,"openIdeaForm"
+            //,"updateCharactersLeft"
+            ,"focusOnDescription"
+            ,"clearAll"
+            ,"setRedirectUrl"
+            ,"showFbh"
+            ,"showFbl"
+            ,"validateFblForm"
+            ,"checkRequiredFields"
+        );
         this.store = new Store('store');
         this.lastPosition = 0;
         //this.loadIdeaFromStore();
@@ -34,8 +34,8 @@ App.Ideas.NewIdea = App.BaseView.extend({
         "keyup .popup #idea_headline": "updateLinkColors",
         "keyup .popup #idea_title": "updateLinkColors",
         "click .popup .categories li": "updateLinkColors",
-        "keydown .popup #idea_headline": "updateCharactersLeft",
-        "keyup .popup #idea_headline": "updateCharactersLeft",
+        //"keydown .popup #idea_headline": "updateCharactersLeft",
+        //"keyup .popup #idea_headline": "updateCharactersLeft",
         "click .popup #refine blockquote": "focusOnDescription",
         "submit .popup form.new_idea": "checkForm",
         "click .popup img.close_image": "clearAll",
@@ -43,7 +43,30 @@ App.Ideas.NewIdea = App.BaseView.extend({
         "click .popup #fbl a[href=#fbh]": "showFbh",
         "click .popup #fbh a[href=#fbl]": "showFbl",
         "click .popup #fbh input[type=submit]": "validateFblForm",
-        "click .popup .next": "checkRequiredFields"
+        "click .popup .next": "checkRequiredFields",
+        "click .terms_acceptance_link label": "toggleTermsCheckbox",
+        "change .terms_acceptance_link input": "changePublishButton"
+    },
+
+    changePublishButton: function (e) {
+        var checkbox, submit;
+        checkbox = $(e.target);
+        submit = $('.popup #new_idea input[type=submit]');
+        if (checkbox.attr('checked')) {
+            submit.removeClass('inactive');
+        } else {
+            submit.addClass('inactive');
+        }
+    },
+
+    toggleTermsCheckbox: function (e) {
+        var checkbox;
+        if (e.target.tagName === 'A') {
+            return;
+        } else {
+            checkbox = $(e.target).siblings('input');
+            checkbox.attr("checked", !checkbox.attr("checked"));
+        }
     },
 
     checkRequiredFields: function (e) {
@@ -107,19 +130,23 @@ App.Ideas.NewIdea = App.BaseView.extend({
 
     showRefinement: function () {
         var box, descriptionText;
-        if (!this.canGoToRefinement()) return false;
+        if (!this.canGoToRefinement()) {
+            return false;
+        }
         box = $('.popup');
         descriptionText = box.find("#describe").addClass('hidden').find('#idea_description').val();
         box.find("#publish").addClass('hidden');
         box.find("#refine").removeClass('hidden').find('blockquote p').text(descriptionText);
         this.updateActiveLink('refine');
-        this.updateCharactersLeft();
+        //this.updateCharactersLeft();
         this.lastPosition = 1;
     },
 
     showPublishing: function () {
         var box;
-        if (!this.canGoToPublishing()) return false;
+        if (!this.canGoToPublishing()) {
+            return false;
+        }
         box = $('.popup');
         box.find("#describe").addClass('hidden');
         box.find("#refine").addClass('hidden');
@@ -244,8 +271,15 @@ App.Ideas.NewIdea = App.BaseView.extend({
         });
     },
 
+    userHasAccepted: function () {
+        return $('.terms_acceptance_link input[type="checkbox"]').attr("checked");
+    },
+
     formIsValid: function () {
-        return this.hasTitle() && this.hasCategory() && this.hasDescription();
+        return (
+            this.userHasAccepted() && this.hasTitle() &&
+            this.hasCategory()     && this.hasDescription()
+        );
     },
 
     checkForm: function () {

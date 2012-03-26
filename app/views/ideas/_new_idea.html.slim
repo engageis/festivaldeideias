@@ -61,7 +61,14 @@
       .button_pair
         = link_to t('idea.new.prev_step'), '#refine', :class => 'button prev'
         - if current_user
-          = f.submit "Publicar!", :class => 'button next'
+          .terms_acceptance_link
+            input type="checkbox" name="terms_acceptance" id="terms_acceptance"
+            label for="terms_acceptance"
+              // TODO: Natália, no "href" de baixo deverá estar o nome
+              // da página contendo os termos de uso
+              | Aceito os 
+              a href="/termos-de-uso" termos de uso
+          = f.submit "Publicar!", :class => 'button next inactive'
         - else
           span Para publicar você deve estar logado:
           /*a.button Logar-se com o Facebook!*/
