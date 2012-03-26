@@ -518,7 +518,6 @@ section#statistics
   color: #EEE
   +border-radius(5px)
   h3
-    text-transform: capitalize
     font-size: 1.3em
     color: $orange
     padding-bottom: 5px
@@ -534,6 +533,8 @@ section#statistics
         border: 0
         +box-shadow(none)
     &.totals
+      h3
+        text-transform: none
       li
         text-transform: uppercase
         color: #B0B0B0
