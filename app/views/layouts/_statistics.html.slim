@@ -1,35 +1,34 @@
 .clear
-.wrapper
-  section#statistics
-    ul.latest_updates
-      li
-        h3 Ideias recém alteradas
+section#statistics
+  ul.latest_updates
+    li
+      h3 Ideias recém alteradas
 
-      - @ideas_latest.limit(5).each do |idea|
-        li
-          = link_to idea.title, category_idea_path(idea.category, idea)
+    - @ideas_latest.limit(5).each do |idea|
+      li
+        = link_to idea.title, category_idea_path(idea.category, idea)
 
-    ul.top_ideas
-      li
-        h3 Ideias populares
-      - @ideas_popular.each_with_index do |idea, index|
-          li= link_to idea.title, category_idea_path(idea.category, idea) unless index > 5
+  ul.top_ideas
+    li
+      h3 Ideias populares
+    - @ideas_popular.each_with_index do |idea, index|
+        li= link_to idea.title, category_idea_path(idea.category, idea) unless index > 5
 
-    ul.totals
-      li
-        h3 Estatísticas bacanas
-      li
-        span.number
-          = @ideas_count.size
-        | ideias no ar agora
-      li
-        span.number
-          = @collab_count.size
-        | colaborações em ideias
-      li
-        span.number
-          = @users.size
-        | usuários participando
-      //li
-        | Usuários online agora: 6
+  ul.totals
+    li
+      h3 Estatísticas bacanas
+    li
+      span.number
+        = @ideas_count.size
+      | ideias no ar agora
+    li
+      span.number
+        = @collab_count.size
+      | colaborações em ideias
+    li
+      span.number
+        = @users.size
+      | usuários participando
+    //li
+      | Usuários online agora: 6
 
