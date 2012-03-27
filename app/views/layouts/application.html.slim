@@ -51,9 +51,9 @@ html
           = yield
           .clear
 
+      - if current_page?(root_url)
+        = render :partial => "layouts/statistics"
 
-    - if current_page?(root_url)
-      = render :partial => "layouts/statistics"
     = render :partial => "layouts/footer"
 
     #start.hidden
