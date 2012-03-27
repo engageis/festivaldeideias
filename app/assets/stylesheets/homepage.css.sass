@@ -4,13 +4,20 @@ body[data-action="Index"][data-controller-name="Ideas"]
 
   #introduction
     margin: 20px 0 0 0
-    padding: 10px 0
+    padding: 17px 0
     background:
       image: url(asset_path("banner.png", "image"))
       repeat: no-repeat
     overflow: hidden
     clear: both
 
+    .button.start
+      float: left
+      position: absolute
+      left: 185px
+      padding: 15px 25px
+      bottom: 17px
+      font-size: 1.4em
     section.text_intro,
     section.video_intro
       +grid(6)
@@ -18,6 +25,7 @@ body[data-action="Index"][data-controller-name="Ideas"]
     section.text_intro
       display: none
     section.video_intro
+      margin-right: 17px
       float: right
       iframe
         margin-bottom: -2px
