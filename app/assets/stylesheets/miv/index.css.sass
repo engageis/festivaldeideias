@@ -15,22 +15,23 @@
     position: absolute
     top: 20px
     right: 0
+    padding: 5px 0
     .submenu-item
-      padding: 0 10px 8px
-      &:first-child
-        padding-top: 8px
       text-align: right
       a
+        padding: 5px
+        display: block
         white-space: nowrap
         font-size: 14px
-        color: #FFF
+        color: #CCC
         background-color: transparent
-        padding: 0
         margin: 0
         line-height: 130%
         @include box-shadow(none)
         &:hover
-          text-decoration: underline
+          color: #FFF
+          @include border-radius(0)
+          background: #999
   &:hover
     .submenu
       display: block
