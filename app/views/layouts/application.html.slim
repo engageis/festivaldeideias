@@ -31,10 +31,14 @@ html
 
             li
               = new_idea_button
-            li
-              a href=""
-                | saiba mais
 
+            li#more_info_links
+              a href="" id="more_info"
+                | Saiba mais
+              div.submenu
+                - @pages_for_links.each do |page|
+                  div.submenu-item
+                    = link_to page.title, page
 
         //
         /*- if current_page?(root_url) or current_page?(scope_featured_url)*/

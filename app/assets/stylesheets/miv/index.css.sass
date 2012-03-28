@@ -1,5 +1,44 @@
 // DEFAULT HTML
 
+// Natália: Este é o submenu do "Saiba Mais"
+#more_info_links
+  position: relative
+  a
+    @include border-bottom-radius(0)
+  .submenu
+    @include border-radius(3px)
+    @include box-shadow(0 4px 5px rgba(0, 0, 0, 0.5))
+    display: none
+    background: #666
+    @include background-image(linear-gradient(top, #666, #444))
+    position: absolute
+    top: 20px
+    right: 0
+    .submenu-item
+      padding: 0 10px 8px
+      &:first-child
+        padding-top: 8px
+      text-align: right
+      a
+        white-space: nowrap
+        font-size: 14px
+        color: #FFF
+        background-color: transparent
+        padding: 0
+        margin: 0
+        line-height: 130%
+        @include box-shadow(none)
+        &:hover
+          text-decoration: underline
+  &:hover
+    .submenu
+      display: block
+    a
+      background: #666
+      color: #FFF
+      @include box-shadow(0 4px 5px rgba(0, 0, 0, 0.5))
+
+
 body
   background:
     color: #F1F1F1
@@ -387,7 +426,8 @@ header.main
       +rotate(-10deg)
 
   nav
-    width: 440px
+    min-width: 440px
+    max-width: 650px
     float: right
     margin: 45px 0 0 0
     .actions
@@ -395,6 +435,7 @@ header.main
         float: left
         a, a:link, a:visited, a:active
           font-weight: lighter
+          text-transform: capitalize
           font-size: 1.3em
           color: #000
           padding: 5px
