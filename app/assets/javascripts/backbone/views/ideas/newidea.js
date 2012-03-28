@@ -272,7 +272,8 @@ App.Ideas.NewIdea = App.BaseView.extend({
     },
 
     userHasAccepted: function () {
-        return $('.terms_acceptance_link input[type="checkbox"]').attr("checked");
+        // Verifica se todos o checkboxes dos termos estão selecionados.
+        return $('.popup .terms_acceptance_link input[type=checkbox]').not(':checked').length === 0;
     },
 
     formIsValid: function () {

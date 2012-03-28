@@ -29,7 +29,7 @@ App.EditableView = App.BaseView.extend({
   },
 
   prepareEditable: function(index, element) {
-    console.log(element)
+    //console.log(element)
     self = this;
     element = $(element)
     element.click(function(){
