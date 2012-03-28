@@ -5,6 +5,7 @@ html
     = render :partial => "layouts/meta_tags_defaults"
 
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Droid+Serif", :application
+    script[src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"]
     = csrf_meta_tags
   - name = controller.controller_name
   - action = controller.action_name
