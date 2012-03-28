@@ -52,7 +52,7 @@ App.Ideas.NewIdea = App.BaseView.extend({
         var checkbox, submit;
         checkbox = $(e.target);
         submit = $('.popup #new_idea input[type=submit]');
-        if (checkbox.attr('checked')) {
+        if (this.userHasAccepted()) {
             submit.removeClass('inactive');
         } else {
             submit.addClass('inactive');
