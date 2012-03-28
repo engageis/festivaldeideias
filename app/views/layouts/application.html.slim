@@ -31,9 +31,14 @@ html
 
             li.start_idea
               = new_idea_button
-            li
-              a href=""
+
+            li#more_info_links
+              a href="" id="more_info"
                 | Saiba mais
+              div.submenu
+                - @pages_for_links.each do |page|
+                  div.submenu-item
+                    = link_to page.title, page
 
 
         //
