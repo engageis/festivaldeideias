@@ -19,9 +19,9 @@ class IdeasController < ApplicationController
   before_filter :load_resources
 
   def create
-    # O usuário deve aceitar os "termos de uso" clicando no checkbox
-    unless params[:terms_acceptance] == 'on'
-      flash[:alert] = "Os termos de uso devem ser aceitos"
+    # O usuário deve aceitar os todos os termos clicando no checkbox
+    unless params[:terms_acceptance] && params[:cc_license] && params[:share_license] && params[:change_license]
+      flash[:alert] = "Os termos de devem ser aceitos"
       return redirect_to request.referer
     end
 
