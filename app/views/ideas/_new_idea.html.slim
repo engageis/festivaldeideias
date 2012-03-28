@@ -46,34 +46,45 @@
 
     // Publicação da ideia
     #publish.hidden
-      h3
-        | Revise e publique:
-        em
-          | * Você ainda conseguirá editar sua ideia depois de publicada.
+      em
+        | * Você ainda conseguirá editar sua ideia depois que ela for publicada.
 
-      .review
+      //.review
         img.category class='badge' src='' alt="nome da categoria" title="nome da categoria"
         h4.title Título
         .what
           p.description Descrição
 
+      h3 Ao cadastrar minha ideia entendo que:
+      ul.terms_acceptance_link
+        li
+          input type="checkbox" name="terms_acceptance" id="cc_license"
+          label for="cc_license"
+            | Ela será licenciada em 
+            a href="http://creativecommons.org/licenses/by/3.0/deed.pt_BR" target="blank_" Creative Commons Atribuição 3.0 (CC BY 3.0)
+        li
+          input type="checkbox" name="terms_acceptance" id="share_license"
+          label for="share_license"
+            | Qualquer pessoa poderá compartilhar minha ideia
+        li
+          input type="checkbox" name="terms_acceptance" id="change_license"
+          label for="change_license"
+            | Qualquer pessoa poderá copiar e modificar sua ideia
+        li
+          input type="checkbox" name="terms_acceptance" id="terms_acceptance"
+          label for="terms_acceptance"
+            | Eu li e estou de acordo com o 
+            a href="/regulamento" regulamento do Festival de Ideias
+
+      .clear
       // Botão de Submit
       .button_pair
         = link_to t('idea.new.prev_step'), '#refine', :class => 'button prev'
+        
         - if current_user
-          .terms_acceptance_link
-            input type="checkbox" name="terms_acceptance" id="terms_acceptance"
-            label for="terms_acceptance"
-              // TODO: Natália, no "href" de baixo deverá estar o nome
-              // da página contendo os termos de uso
-              | Aceito os 
-              a href="/termos-de-uso" termos de uso
           = f.submit "Publicar!", :class => 'button next inactive'
+        
         - else
           span Para publicar você deve estar logado:
-          /*a.button Logar-se com o Facebook!*/
-          /*h2 Entre com sua conta do Facebook*/
           .login_box
             a[class="button facebook" href="/auth/facebook"] Login com Facebook
-            /*.fb-login-button[data-show-faces="true" data-width="200" data-max-rows="1"]*/
-    //--------------------------------------------------------------------------------------

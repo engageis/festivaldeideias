@@ -27,9 +27,9 @@ html
             - link_path = scope_root_path
             li class=(path.include?(link_path) ? 'selected' : '')
               = link_to link_path do
-                | Navegue nas ideias
+                | navegue nas ideias
 
-            li.start_idea
+            li
               = new_idea_button
 
             li#more_info_links
@@ -39,7 +39,6 @@ html
                 - @pages_for_links.each do |page|
                   div.submenu-item
                     = link_to page.title, page
-
 
         //
         /*- if current_page?(root_url) or current_page?(scope_featured_url)*/
@@ -56,9 +55,9 @@ html
           = yield
           .clear
 
+      - if current_page?(root_url)
+        = render :partial => "layouts/statistics"
 
-    - if current_page?(root_url)
-      = render :partial => "layouts/statistics"
     = render :partial => "layouts/footer"
 
     #start.hidden
