@@ -1,14 +1,18 @@
-//section#share
-  p Divulgue o Festival
-  = social_buttons(request.host, :vertical)
 .clear
 #introduction
   section.text_intro
     | Uma plataforma para unir ideias. Um festival para torná-las reais
-  = new_idea_button('button')
 
 
   section.video_intro
     .border
+      //.prezi-player
+        object id="prezi_row6dzyapfic" name="prezi_row6dzyapfic" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="550" height="400"
+          param name="movie" value="http://prezi.com/bin/preziloader.swf"
+          param name="allowfullscreen" value="true"
+          param name="allowscriptaccess" value="always"
+          param name="bgcolor" value="#ffffff"
+          param name="flashvars" value="prezi_id=row6dzyapfic&amp;lock_to_path=0&amp;color=ffffff&amp;autoplay=no&amp;autohide_ctrls=0"
+          embed id="preziEmbed_row6dzyapfic" name="preziEmbed_row6dzyapfic" src="http://prezi.com/bin/preziloader.swf" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="435" height="245" bgcolor="#ffffff" flashvars="prezi_id=row6dzyapfic&amp;lock_to_path=0&amp;color=ffffff&amp;autoplay=no&amp;autohide_ctrls=0"
       iframe src="http://player.vimeo.com/video/27553293?title=0&amp;byline=0&amp;portrait=0" width="435" height="245" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
 

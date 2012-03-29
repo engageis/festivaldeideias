@@ -87,8 +87,17 @@ aside
     span
       float: right
 
-  .share
+  .share, .share_festival, .be_social
     +bucket
+  .be_social
+    li
+      float: left
+      margin-right: 10px
+      img
+        +opacity(0.8)
+        &:hover
+          +opacity(1)
+        
 
 .events_feed
   li
