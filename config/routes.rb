@@ -51,6 +51,11 @@ FestivalDeIdeias::Application.routes.draw do
   #root :to => redirect("/featured")
   root :to => 'ideas#index', :defaults => { :featured => true }
 
+
+  resources :pages, :only => [] do
+    collection { post :sort }
+  end
+
   # Pages
   # Tem que ficar no final
   match '/:id', :to => 'pages#show', :as => :page

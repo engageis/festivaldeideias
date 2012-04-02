@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   end
 
   def load_pages_for_the_links
-    @pages_for_links = Page.order('title ASC').select(['title', 'slug'])
+    @pages_for_links = Page.order('position, title ASC').select(['title', 'slug'])
   end
 
   def load_facebook_token

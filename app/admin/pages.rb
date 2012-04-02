@@ -1,5 +1,7 @@
 # coding: utf-8
-ActiveAdmin.register Page do
+
+ActiveAdmin.register Page, { :sort_order => 'position, created_ad' } do |a|
+
   menu :label => "Páginas"
 
   filter :title
@@ -8,14 +10,18 @@ ActiveAdmin.register Page do
   filter :updated_at
 
   index do
-    column :id
-    column :title
+    input :type => 'hidden', :id => 'update-url', :"data-update-url" => sort_pages_url
+
+    column :title, :sortable => false
+
     column :created_at do |s|
       s.created_at.strftime('%d/%m/%Y')
     end
+
     column :updated_at do |s|
       s.updated_at.strftime('%d/%m/%Y')
     end
+
     default_actions
   end
 
