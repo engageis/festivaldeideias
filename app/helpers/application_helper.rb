@@ -26,4 +26,11 @@ module ApplicationHelper
                      facebook_count: args[1] }
   end
 
+
+  def link_to_partner(name, url, image)
+    link_to(url, :target => '_blank') do
+      image_tag("partners/#{image}", :alt => name, :title => name)
+    end
+  end
+
 end
