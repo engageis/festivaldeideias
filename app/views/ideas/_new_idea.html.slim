@@ -47,7 +47,7 @@
     // Publicação da ideia
     #publish.hidden
       em
-        | * Você ainda conseguirá editar sua ideia depois que ela for publicada.
+        | Você ainda conseguirá editar sua ideia depois que ela for publicada.
 
       //.review
         img.category class='badge' src='' alt="nome da categoria" title="nome da categoria"
@@ -62,19 +62,23 @@
           label for="cc_license"
             | Ela será licenciada em 
             a href="http://creativecommons.org/licenses/by/3.0/deed.pt_BR" target="blank_" Creative Commons Atribuição 3.0 (CC BY 3.0)
+            |  <span class="star">*</span>
         li
           input type="checkbox" name="share_license" id="share_license"
           label for="share_license"
-            | Qualquer pessoa poderá compartilhar minha ideia
+            | Qualquer pessoa poderá compartilhar minha ideia <span class="star">*</span>
         li
           input type="checkbox" name="change_license" id="change_license"
           label for="change_license"
-            | Qualquer pessoa poderá copiar e modificar minha ideia
+            | Qualquer pessoa poderá copiar e modificar minha ideia <span class="star">*</span>
         li
           input type="checkbox" name="terms_acceptance" id="terms_acceptance"
           label for="terms_acceptance"
             | Eu li e estou de acordo com o 
             a href="/regulamento" regulamento do Festival de Ideias
+            |  <span class="star">*</span>
+        li
+          em * Campos obrigatórios
 
       .clear
       // Botão de Submit
