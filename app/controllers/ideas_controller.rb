@@ -78,7 +78,7 @@ class IdeasController < ApplicationController
   end
 
   def index
-    load_headers(:name => 'featured', :url => page_path('o-que-e-co-criacao'))
+    load_headers(:name => 'featured', :url => page_path('co-criacao'))
   end
 
   def modified
@@ -102,7 +102,7 @@ class IdeasController < ApplicationController
   def featured
     #redirect_to :root
     @ideas = @ideas.featured
-    load_headers(:url => page_path('o-que-e-co-criacao'))
+    load_headers(:url => page_path('co-criacao'))
     render :index
   end
 
