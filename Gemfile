@@ -1,10 +1,15 @@
 source 'http://rubygems.org'
 
+# Rãius
+gem 'rails', '3.2.3'
+
+
 # Database
 gem 'pg'
 gem 'foreigner'
 
-gem 'rails', '3.1.3'
+# Differ tool
+gem 'differ'
 
 # Improvements
 gem 'inherited_resources'
@@ -12,9 +17,7 @@ gem 'has_scope'
 
 # Administration & dependencies
 gem 'activeadmin'
-gem 'haml'
-gem 'sass-rails'
-gem 'meta_search',    '>= 1.1.0.pre'
+gem 'meta_search'
 
 # Tools
 gem 'simple_form'
@@ -28,7 +31,8 @@ gem 'koala'
 
 # Authentication + Authorization
 gem 'cancan'
-gem 'omniauth', '0.3.2'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 # Frontend stuff
 gem 'jquery-rails'
@@ -40,10 +44,7 @@ gem 'rack-pjax'
 gem 'heroku'
 gem 'newrelic_rpm'
 
-# webserver
-gem 'thin'
-
-group :development, :test do
+group :test do
   gem 'cucumber-rails'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
@@ -51,23 +52,15 @@ group :development, :test do
   gem 'database_cleaner'
   gem "shoulda-matchers"
   gem "silent-postgres"
-  gem "jasminerice"
   gem 'rb-fsevent'
-  gem 'guard-cucumber'
-  gem 'guard-rspec'
-  gem 'growl'
 end
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'compass', '>= 0.12.alpha.2'
+  gem 'compass-rails'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'sass-rails', '~> 3.2.2'
   gem 'compass-960-plugin'
-  gem 'therubyracer'
-  gem 'coffee-rails', '~> 3.1.1'
   gem 'uglifier', '>= 1.0.3'
 end
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-gem 'differ'
