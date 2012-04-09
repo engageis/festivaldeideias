@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       @auth = Service.create_from_hash(auth, current_user)
     end
     self.current_user = @auth.user
-    session[:user_image] = auth['user_info']['image']
+    #session[:user_image] = auth['user_info']['image']
     redirect_to redirect_url || root_path
 
     flash[:notice] = t('login.success')
