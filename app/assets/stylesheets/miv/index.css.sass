@@ -1,4 +1,5 @@
-// DEFAULT HTML
+@import compass/css3
+
 
 // Natália: Este é o submenu do "Saiba Mais"
 #more_info_links
@@ -144,7 +145,7 @@ article, .page_body
     margin-left: 20px
     padding-left: 20px
     border-left: 1px solid #FFF
-    +box-shadow( -1px 0px 0 #CCC)   
+    +box-shadow( -1px 0px 0 #CCC)
 
   footer
     color: #555
@@ -199,29 +200,26 @@ article, .page_body
   margin-left: 10px
 
 .message
-  padding: 20px
-  font-size: 21px
+  padding: 10px 5px
+  font-size: 14px
   color: #FFF
-  width: 100%
-  z-index: 1
-  float: left
+  display: block
+  margin: 8px auto
+  width: 960px
   text-align: center
-  //position: absolute
-  position: fixed
-  bottom: 0
-  right: 0
-  left: 0
-  top: auto
-  &.notice
-    background:
-      color: #3C9
-    border-top: 3px solid darken(#3C9, 20%)
-    border-bottom: 3px solid darken(#3C9, 20%)
+  border-left: 1px solid white
+  border-right: 1px solid white
+  border-bottom: 1px solid white
+  text-shadow: 0 -1px 1px #333
+  +border-radius(8px)
+  +box-shadow(1px 1px 5px lighten(#3C9, 40%))
+  +clearfix
+  +background-image(linear-gradient(bottom, color-stops(#4CB053 47%, #7FC796 98%)))
 
 .hightlight
   padding: 10px
   margin: 20px 0 10px 0
-  background: 
+  background:
     color: $lightyellow
   border: 1px solid darken($lightyellow, 40%)
   outline: 2px solid #FFF
@@ -441,7 +439,7 @@ header.main
           &:hover
             cursor: default
 
-    
+
 // IDEA BUCKETS
 ol.ideas_buckets
   li.bucket
@@ -644,3 +642,6 @@ footer
     float: right
     margin-top: 10px
 
+
+.star
+  font-size: 80%

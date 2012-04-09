@@ -8,16 +8,19 @@
 
 aside
   h3
-    margin: 40px 0 0 0
+    //margin: 40px 0 0 0
+    margin: 20px 0 0 0
     text-transform: uppercase
-  h4
 
   a, a:link, a:hover, a:visited, a:active
     text-decoration: none
     font-weight: 400
-  a:hover
-    color: lighten($darkorange, 5%)
+  a
+    &:hover
+      color: lighten($darkorange, 5%)
 
+  .button.start
+    margin-top: 20px
 
   .navigation
     ul

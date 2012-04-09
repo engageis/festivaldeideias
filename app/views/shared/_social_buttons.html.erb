@@ -2,13 +2,34 @@
 <% size = orientation == :horizontal ? '110' : '57' %>
 
 <div class="social-buttons <%= orientation %>">
-    <div class='twitter-like'>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= url %>" data-lang="en" data-size="<%= size %>" data-count="<%= twitter_count %>" >Tweetar</a>
-    </div>
-    <script>
-        (function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js,fjs); } }(document, "script", "twitter-wjs"));
-    </script>
 
-    <!-- Facebook -->
-    <div class="fb-like" data-href="<%= url %>" data-send="false" data-layout="<%= facebook_count %>" data-width="<%= size %>" data-show-faces="false" data-font="lucida grande"></div>
+  <!-- Google Plus -->
+  <!-- <g:plusone size=""></g:plusone> -->
+
+  <!-- Facebook -->
+  <div class="fb-like" data-href="<%= url %>" data-send="false" data-layout="<%= facebook_count %>" data-width="<%= size %>" data-show-faces="false" data-font="lucida grande"></div>
+
+
+  <!-- Twitter -->
+  <div class='twitter-like'>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= url %>" data-lang="en" data-size="<%= size %>" data-count="<%= twitter_count %>" >Tweetar</a>
+  </div>
+
+
+  <!-- Social scripts -->
+  <script>
+    (function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js,fjs); } }(document, "script", "twitter-wjs"));
+  </script>
+
+  <!--
+  <script>
+    window.___gcfg = {lang: 'pt-BR'};
+
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+  </script>
+  -->
 </div>

@@ -22,13 +22,13 @@
     .clear
 
   - if can?(:edit, @idea)
-    h3 Você é o chefe
+    h3 Você é o moderador
     .youre_boss
       p
         strong
-          | Esta ideia é de autoria sua
-        | , você pode editá-la quando quiser clicando nos textos e aceitar as colaborações que outras pessoas enviam.
-      a.view_more href="#" Saiba mais sobre colaborações
+          | Esta ideia é moderada por você
+        | . Você pode editá-la quando quiser clicando nos textos e aceitar as colaborações que outras pessoas enviam.
+      a.view_more href=page_path('co-criacao') Saiba mais sobre colaborações
       br
 
   - else

@@ -2,10 +2,11 @@
 
 - path = request.path
 
+= new_idea_button('button') unless path =~ /^\/(ideias)/
 
 - if path == root_path
   = render "layouts/filters"
-  = new_idea_button('button')
+  /*= new_idea_button('button')*/
   = render "layouts/community"
   = render "layouts/events"
   = render "layouts/share_festival"
@@ -15,7 +16,7 @@
 
 - elsif path =~ /^\/(navegue-nas-ideias)/
   = render "layouts/filters"
-  = new_idea_button('button')
+  /*= new_idea_button('button')*/
   = render "layouts/share_festival"
 
 - elsif path =~ /^\/(ideias)/
@@ -31,7 +32,7 @@
 
 - else
   = render "layouts/internal_menu"
-  = new_idea_button('button')
+  /*= new_idea_button('button')*/
   = render "layouts/events"
   = render "layouts/community"
   = render "layouts/social"
