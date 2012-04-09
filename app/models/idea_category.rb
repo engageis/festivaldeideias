@@ -17,6 +17,7 @@ class IdeaCategory < ActiveRecord::Base
              when 4 then "/assets/badges/business.png"
              when 5 then "/assets/badges/learning.png"
              when 6 then "/assets/badges/volunteer.png"
+             when 7 then "/assets/badges/apps.png"
              else "/assets/badges/urban.png"
              end
   end
