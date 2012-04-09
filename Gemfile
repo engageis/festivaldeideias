@@ -41,8 +41,8 @@ gem 'rails-backbone'
 gem 'rack-pjax'
 
 # Heroku
+gem 'thin'
 gem 'heroku'
-gem 'newrelic_rpm'
 
 group :test do
   gem 'cucumber-rails'
