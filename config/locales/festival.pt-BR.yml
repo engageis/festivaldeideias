@@ -1,4 +1,14 @@
 pt-BR:
+  login:
+    success: "Bem vindo!"
+    create_account: "Crie uma conta"
+    do_login: "Faça login"
+  logout:
+    success: "Obrigado por participar. Até logo."
+  non_facebook_user:
+    create:
+      success: "E-mail cadastrado com sucesso!"
+
   # Main texts for idea (create, edit and show actions are here)
   idea:
     new:
@@ -16,6 +26,9 @@ pt-BR:
 
     # Colaboration
     colaboration:
+      moderation:
+        by_you: "Esta ideia é moderada por você"
+        can_edit: " . Você pode editá-la quando quiser clicando nos textos e aceitar as colaborações que outras pessoas enviam."
       new:
         start: "Colabore com esta ideia"
         about: "O que deseja colaborar nesta ideia?"
@@ -23,8 +36,12 @@ pt-BR:
         give_a_name: "Colabore no titulo desta ideia"
         give_a_headline: "Se quiser, colabore no resumo da ideia:"
         choose_a_category: "Em que categoria esta ideia se encaixa?"
+      who_colaborated: "Quem já colaborou com esta ideia"
+      no_colaborators_yet: "Ainda não há colaboradores nesta ideia, quem sabe você não é o primeiro?"
+      zero_colaborators: "Ainda não há colaboradores nesta ideia."
+      know_more: "Saiba mais sobre colaborações"
       success: "Sua colaboração foi envidada! O dono da ideia precisa aceitá-la para que ela apareça."
-      accepted: "A colaboração foi aceita"
+      accepted: "Você aceitou a colaboração de %{user} e ela foi incorporada na ideia anterior"
       rejected: "A colaboração foi rejeitada"
 
     # Messages
@@ -66,16 +83,6 @@ pt-BR:
   facebox:
     submit_email: "Enviar e-mail"
 
-  # Login stuff
-  login:
-    success: "Bem vindo!"
-    create_account: "Criar uma conta"
-    do_login: "Fazer login"
-  logout:
-    success: "Obrigado por participar. Até logo."
-  non_facebook_user:
-    create:
-      success: "E-mail cadastrado com sucesso!"
 
   # Plugin options
   jquery:

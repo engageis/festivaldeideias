@@ -1,24 +1,21 @@
 - if @idea
   h3 Colaboradores
   h4
-    | Quem já colaborou com essa ideia
-    span
-      = @collaborators.size if @collaborators.any?
+    = t('idea.colaboration.who_colaborated')
+    span= @collaborators.size if @collaborators.any?
 
   .community
     - if @idea.colaborations.size == 0
       ul
-        - if current_user != @idea.user
-          li
-            | Ainda não há colaboradores nesta ideia, quem sabe você não é o primeiro?
+        - unless current_user == @idea.user
+          li= t('idea.colaboration.no_colaborators_yet')
         - else
-          li
-            | Nenhum colaborador pra esta ideia ainda.
+          li= t('idea.colaboration.zero_colaborators')
     - else
       ul
         - @collaborators.each do |user|
-          li
-            = link_to image_tag(user.services.first.facebook_avatar, :title => user.name), user.services.first.facebook_profile
+          - service = user.services.first
+          li= link_to image_tag(service.facebook_avatar, :title => user.name), service.facebook_profile
     .clear
 
   - if can?(:edit, @idea)
@@ -26,13 +23,10 @@
     .youre_boss
       p
         strong
-          | Esta ideia é moderada por você
-        | . Você pode editá-la quando quiser clicando nos textos e aceitar as colaborações que outras pessoas enviam.
-      a.view_more href=page_path('co-criacao') Saiba mais sobre colaborações
+          = t('idea.colaboration.moderation.by_you')
+        = t('idea.colaboration.moderation.can_edit')
+      = link_to t("idea.colaboration.know_more"), page_path("co-criacao"), :class => "view_more"
       br
 
   - else
-    = link_to "Colaborar com esta ideia", "#colaborate", :class => "button start"
-
-  // ambos os botões levam para a mesma interface, porém, quando dono da ideia, alterações são aplicadas de imediato (sem fase de aprovação)
-
+    = link_to t("idea.colaboration.new.start"), "#colaborate", :class => "button start"
