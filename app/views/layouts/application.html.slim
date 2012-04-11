@@ -36,10 +36,13 @@ html
             li#more_info_links
               a href="" id="more_info"
                 | Saiba mais
-              div.submenu
+              ul.submenu
                 - @pages_for_links.each do |page|
-                  div.submenu-item
+                  li.submenu-item
                     = link_to page.title, page
+                li.submenu-item
+                  a href="http://blog.festivaldeideias.org.br" target="blank_"
+                    | Blog
 
         //
         /*- if current_page?(root_url) or current_page?(scope_featured_url)*/
