@@ -65,19 +65,20 @@ pt-BR:
     # É aqui mesmo, Natália...
     filters:
       popular:
-        title: 'Ideias populares'
+        title: 'Mais populares'
         about: 'Uma ideia popular é a que tem maior número de comentários, colaborações e divulgação em redes sociais.'
       recent:
-        title: 'Ideias recentes'
-        about: 'Ideias fresquinhas, récem entradas no sistema, esperando comentários e colaborações!'
+        title: 'Recém-iniciadas'
+        about: 'Ideias fresquinhas, récem-criadas no sistema, esperando comentários e colaborações!'
       modified:
-        title: 'Últimas ideias alteradas'
+        title: 'Recém-alteradas'
         about: 'Quando uma ideia recebe uma nova colaboração ou edição, ela aparece aqui.'
       featured:
         title: "Ideias em destaque"
         about: "Selecionamos algumas ideias legais que estão rolando na plataforma! Quem sabe você não se interessa e começa colaborando com uma delas? <a href='%{url}' class='view_more'>Entenda as colaborações</a>"
       category:
         title: '%{category_name}'
+        about: "asiahse"
 
   # Buttons & Boxes
   buttons:

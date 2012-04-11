@@ -12,11 +12,11 @@
 
     // adiciona um .selected no li quando o item estiver selecionado
     li class=(path == popular_path ? 'selected' : '')
-      = link_to "Mais populares", popular_path, :class => "popular", :'data-title' => t('idea.filters.popular.title'), :'data-about' => t('idea.filters.popular.about')
+      = link_to  t('idea.filters.popular.title'), popular_path, :class => "popular", :'data-title' => t('idea.filters.popular.title'), :'data-about' => t('idea.filters.popular.about')
     li class=(path == recent_path ? 'selected' : '')
-      = link_to "Recém iniciadas", recent_path, :class => "recent", :'data-title' => t('idea.filters.recent.title'), :'data-about' => t('idea.filters.recent.about')
+      = link_to t('idea.filters.recent.title'), recent_path, :class => "recent", :'data-title' => t('idea.filters.recent.title'), :'data-about' => t('idea.filters.recent.about')
     li class=(path == latest_path ? 'selected' : '')
-      = link_to "Recém alteradas", latest_path, :class => "modified", :'data-title' => t('idea.filters.modified.title'), :'data-about' => t('idea.filters.modified.about')
+      = link_to t('idea.filters.modified.title'), latest_path, :class => "modified", :'data-title' => t('idea.filters.modified.title'), :'data-about' => t('idea.filters.modified.about')
 
   h4 Por categoria
   ul.categories_list
