@@ -1,11 +1,8 @@
 - if not is_signed_in?
   li.login
-    a.name[href="#login" rel="facebox"]
-      | Criar uma conta
+    a.name[href="#login" rel="facebox"]= t 'login.create_account'
   li.login
-    a.name[href="#login" rel="facebox"]
-      | Fazer login
-
+    a.name[href="#login" rel="facebox"]= t 'login.do_login'
 - else
     li.notifications
       a.globe href="#"
@@ -28,7 +25,7 @@
           .score
             - ideas = current_user.ideas
             - collab = current_user.colaborations
-            |#{ideas.size} ideia(s) própria(s), #{collab.size} ideia(s) colaborada(s).
+            |#{ideas.size} ideia(s) própria(s), #{collab.size} ideias colaboradas.
           ul
             //li
               a href="" Meu perfil
