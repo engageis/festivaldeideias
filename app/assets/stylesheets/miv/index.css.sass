@@ -280,9 +280,18 @@ header.main
         float: left
 
     li.notifications
+      +background(linear-gradient(bottom,#373737,#464646 5px))
       position: relative
       padding: 10px 10px 9px 10px
       margin-right: -1px
+      &:hover
+        +background(none)
+      .no_notifications
+        padding: 10px
+        background: lighten(#666, 50%)
+        text-align: center
+        margin: 5px
+        display: block
       a.globe
         padding: 0
         display: block
@@ -301,9 +310,6 @@ header.main
         float: left
         padding: 0 3px
         +border-radius(2px)
-      &:hover
-        .notes
-          display: block
 
     li.logged_in
       +background(linear-gradient(bottom,#373737,#464646 5px))
@@ -417,7 +423,8 @@ header.main
     min-width: 440px
     max-width: 650px
     float: right
-    margin: 45px 0 0 0
+    margin: 42px 0 0 0
+    clear: right
     .actions
       li
         float: left
