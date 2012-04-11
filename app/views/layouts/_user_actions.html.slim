@@ -11,10 +11,13 @@
         .count= notifications.size
       .notes
         .title Notificações
-        a[href="" class="view_more"] Ver todas
         ul.notifications
+          - unless notifications.any?
+            span.no_notifications
+              | Nenhuma nova notificação
           - notifications.each do |n|
             li= n.html_safe
+
     li.logged_in
       = image_tag current_user.services.first.facebook_avatar, :alt => "Profile image", :title => current_user.name, :class => "thumb_profile_image"
       a.name[href=""]

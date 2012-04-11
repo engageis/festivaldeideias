@@ -12,7 +12,11 @@ FestivalDeIdeias::Application.routes.draw do
   match '/connect_with_facebook',   :to => 'sessions#connect_with_facebook', :as => :connect_with_facebook
 
   # Resources
-  resources :users
+  resources :users do
+    member do
+      put 'update_notification', :as => :update_notification
+    end
+  end
   resources :ideas do
     member do
       put "colaborate", :as => :colaborate
@@ -27,7 +31,7 @@ FestivalDeIdeias::Application.routes.draw do
   # NOTE: Mudado a pedidos da Natália
   scope '/navegue-nas-ideias' do
     get '/'        => redirect('/navegue-nas-ideias/popular'), :as => :scope_root
-    
+
     #get 'popular'  => "ideas#index", :defaults => { :popular  => true }, :as => :scope_popular
     #get 'recent'   => "ideas#index", :defaults => { :recent   => true }, :as => :scope_recent
     #get 'latest'   => "ideas#index", :defaults => { :latest   => true }, :as => :scope_latest
@@ -37,7 +41,7 @@ FestivalDeIdeias::Application.routes.draw do
     get 'recent'   => "ideas#recent", :as => :scope_recent
     get 'latest'   => "ideas#modified", :as => :scope_latest
     get 'featured' => "ideas#featured", :as => :scope_featured
-    
+
     # Match relations ideas vs categories
     match ":idea_category_id/ideias", :to => "ideas#category", :as => :category_ideas
   end
