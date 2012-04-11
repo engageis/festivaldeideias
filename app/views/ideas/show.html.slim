@@ -15,12 +15,11 @@ header
       .collab
         - if @idea.colaborations.not_accepted.empty?
           h3#ideas-to-accept
-            | Nenhuma colaborações para aceite
+            = t "idea.colaboration.accept.no_colaborations"
         - else
           h3#ideas-to-accept
-            | Você possui
-            = @idea.colaborations.not_accepted.count
-            |&nbsp;colaborações para aceite
+            = t "idea.colaboration.accept.some_colaborations", number: @idea.colaborations.not_accepted.count
+
           // Listing all colaborations that aren't accepted
           / - collab = @idea.colaborations.not_accepted.first
           - @idea.colaborations.not_accepted.each do |collab|

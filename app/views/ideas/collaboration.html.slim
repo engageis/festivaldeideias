@@ -11,9 +11,7 @@
         h3 Veja abaixo as diferenças entre a versão anterior e a sugerida
         .collab
           h4
-            | O que deseja fazer com a colaboração de
-            = @collab.user.name
-            | ?
+            = t "idea.colaboration.accept.what_do_you_want_html", user: @collab.user.name
             .buttons[style="float:right"]
               button[type="submit"]
                 = link_to "Aceitar", accept_collaboration_idea_path(@idea, collab: @collab)
