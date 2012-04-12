@@ -3,9 +3,9 @@ meta[property="keywords"    content="#{t 'site.keywords'}"]
 meta[property="fb:app_id"   content="#{CONFIG['facebook_app_id']}"]
 
 - if (content_for :meta_tags).empty?
-  meta[property="og:title"  content=""]
+  meta[property="og:title"  content="#{t 'site.fb_title'}"]
   meta[property="og:url"    content=request.url]
-  meta[property="og:description" content=""]
+  meta[property="og:description" content="#{t 'site.fb_description'}"]
   meta[property="og:image" content="#{root_url}/#{image_path 'logo.png'}"]
 
 - else
