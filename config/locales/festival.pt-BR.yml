@@ -1,4 +1,8 @@
 pt-BR:
+  site:
+    title: 'Festival de Ideias 2012 - Uma plataforma para unir ideias'
+    description: 'O Festival de Ideias é uma rede de colaboração e troca de informações entre empreendedores, investidores e o público em geral.'
+    keywords: 'colaboracao, festival, ideias, empreendedores, inovacao'
   login:
     success: "Bem vindo!"
     create_account: "Crie uma conta"

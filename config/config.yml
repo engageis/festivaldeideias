@@ -7,10 +7,7 @@ test: &development
   <<: *defaults
 
 production:
-  site:
-    title: 'Festival de Ideias 2012 - Uma plataforma para unir ideias'
-    description: 'O Festival de Ideias é uma rede de colaboração e troca de informações entre empreendedores, investidores e o público em geral.'
-    keywords: 'colaboracao, festival, ideias, empreendedores, inovacao'
   facebook_app_id: '310127662355164'
   facebook_secret_key: '4bf67a101cd447081a3eca147d2bf769'
   callback_url: 'http://festival2012.herokuapp.com/auth/facebook/callback'
+
