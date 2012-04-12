@@ -10,3 +10,4 @@ production:
   facebook_app_id: '310127662355164'
   facebook_secret_key: '4bf67a101cd447081a3eca147d2bf769'
   callback_url: 'http://festival2012.herokuapp.com/auth/facebook/callback'
+

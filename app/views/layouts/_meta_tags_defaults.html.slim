@@ -1,11 +1,12 @@
-meta[property="description" content="#{CONFIG['site.description']}"]
-meta[property="keywords"    content="#{CONFIG['site.keywords']}"]
+meta[property="description" content="#{t 'site.description'}"]
+meta[property="keywords"    content="#{t 'site.keywords'}"]
 meta[property="fb:app_id"   content="#{CONFIG['facebook_app_id']}"]
 
 - if (content_for :meta_tags).empty?
-  meta[property="og:title"  content="#{CONFIG['site.fb_og_title']}"]
-  meta[property="og:url"    content="#{CONFIG['site.fb_og_url']}"]
-  meta[property="og:description" content="#{CONFIG['site.fb_og_description']}"]
+  meta[property="og:title"  content="#{t 'site.fb_title'}"]
+  meta[property="og:url"    content=request.url]
+  meta[property="og:description" content="#{t 'site.fb_description'}"]
+  meta[property="og:image" content="#{root_url}/#{image_path 'logo.png'}"]
 
 - else
   = yield :meta_tags
