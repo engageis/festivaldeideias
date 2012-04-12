@@ -43,6 +43,7 @@ gem 'rack-pjax'
 # Heroku
 gem 'thin'
 gem 'heroku'
+gem 'taps'
 
 group :test do
   gem 'cucumber-rails'

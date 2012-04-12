@@ -25,7 +25,6 @@
       h1
         / = @idea.title
         = raw Differ.diff_by_word(@collab.title, @idea.title)
-
       // Statistics of this idea
       section.idea_stats
         span
