@@ -1,7 +1,10 @@
 #most_active_ideas
   h1.title= @ideas_title
   h2.info
-    = raw(@ideas_about)
+    - unless @category.nil?
+      = link_to @category.description, page_path('temas')
+    - else
+      = raw(@ideas_about)
 
   .ajax-container data-pjax-container=''
     ol.ideas_buckets
