@@ -109,6 +109,7 @@ class IdeasController < ApplicationController
   def category
     category = IdeaCategory.find(params[:idea_category_id])
     @ideas = category.ideas
+    @ideas_about = category.description
     load_headers(:category_name => category.name)
     render :index
   end
@@ -138,8 +139,9 @@ class IdeasController < ApplicationController
   def load_headers(options = {})
     name = options[:name] || action_name
     @ideas_title = I18n.translate("idea.filters.#{name}.title", options)
-    # TODO: mudar a condicional quando houver descrição das categorias
-    if name != 'category'
+
+    #if name != 'category'
+    unless options[:category_name]
       @ideas_about = I18n.translate("idea.filters.#{name}.about", options)
     end
   end
