@@ -40,5 +40,6 @@
         p
           = f.label :email, 'Seu endereço de e-mail'
           = f.text_field :email, :maxlength => 255
-        p
-          = f.submit t('facebox.submit_email'), :class => 'button'
+        .button_pair
+          = link_to t('idea.new.prev_step'), '#login', :class => 'button prev'
+          = f.submit t('facebox.submit_email'), :class => 'button next'

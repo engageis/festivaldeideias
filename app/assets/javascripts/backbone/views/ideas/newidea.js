@@ -42,6 +42,7 @@ App.Ideas.NewIdea = App.BaseView.extend({
         "click a.start[href=#login]": "setRedirectUrl",
         "click .popup #fbl a[href=#fbh]": "showFbh",
         "click .popup #fbh a[href=#fbl]": "showFbl",
+        "click .popup #fbh a[href=#login]": "showFbl",
         "click .popup #fbh input[type=submit]": "validateFblForm",
         "click .popup .next": "checkRequiredFields",
         "click .terms_acceptance_link label": "toggleTermsCheckbox",
