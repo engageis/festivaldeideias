@@ -107,10 +107,10 @@ class IdeasController < ApplicationController
   end
 
   def category
-    category = IdeaCategory.find(params[:idea_category_id])
-    @ideas = category.ideas
-    @ideas_about = category.description
-    load_headers(:category_name => category.name)
+    @category = IdeaCategory.find(params[:idea_category_id])
+    @ideas = @category.ideas
+    @ideas_about = @category.description
+    load_headers(:category_name => @category.name)
     render :index
   end
 
