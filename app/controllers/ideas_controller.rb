@@ -117,7 +117,7 @@ class IdeasController < ApplicationController
   protected
   def load_resources
     @ideas = end_of_association_chain.where(:parent_id => nil) #querying only ideas, no collab.
-    @categories ||= IdeaCategory.all
+    @categories ||= IdeaCategory.order('created_at ASC')
     @users ||= User.all(:include => :services)
     @ideas_count ||= Idea.where(:parent_id => nil)
     @collab_count ||=  Idea.where("parent_id IS NOT NULL")
