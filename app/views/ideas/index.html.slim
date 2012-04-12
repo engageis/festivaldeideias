@@ -2,7 +2,7 @@
   h1.title= @ideas_title
   h2.info
     - unless @category.nil?
-      = link_to @category.description, page_path('temas')
+      = link_to @category.description, page_path('os-temas')
     - else
       = raw(@ideas_about)
 
