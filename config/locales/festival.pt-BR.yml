@@ -22,7 +22,7 @@ pt-BR:
       give_a_description: "Descreva como quiser, você terá como editar depois."
       give_a_name: "Nomeie sua ideia:"
       give_a_headline: "Se quiser, resuma sua ideia em algumas palavras:"
-      choose_a_category: "Em que categoria sua ideia se encaixa?"
+      choose_a_category: "Em que tema sua ideia se encaixa?"
 
     # Colaboration
     colaboration:
@@ -35,7 +35,7 @@ pt-BR:
         give_a_description: "Colabore na descrição desta ideia"
         give_a_name: "Colabore no titulo desta ideia"
         give_a_headline: "Se quiser, colabore no resumo da ideia:"
-        choose_a_category: "Em que categoria esta ideia se encaixa?"
+        choose_a_category: "Em que tema esta ideia se encaixa?"
       accept:
         no_colaborations: "Nenhuma colaboração para aceite, ainda."
         some_colaborations: "Você possui %{number} colaborações para aceite!"
