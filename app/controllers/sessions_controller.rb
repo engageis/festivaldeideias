@@ -6,7 +6,9 @@ class SessionsController < ApplicationController
     session[:redirect_url] = nil
     auth = request.env['omniauth.auth']
     session[:fb_token] = auth['credentials']['token']
-    logger.info(auth)
+    logger.info(auth['info'])
+    logger.info(auth['uid'])
+    logger.info(auth['provider'])
 
     unless @auth = Service.find_from_hash(auth)
       @auth = Service.create_from_hash(auth, current_user)

@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   end
 
   def self.create_from_hash!(hash)
-    self.create(:name => hash['user_info']['name'], :email => hash['user_info']['email'])
+    self.create(:name => hash['info']['name'], :email => hash['info']['email'])
   end
 
   def notifications
