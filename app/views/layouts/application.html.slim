@@ -8,6 +8,8 @@ html
     script[src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"]
 
     = csrf_meta_tags
+    = render :partial => "shared/google_analytics"
+
   - name = controller.controller_name
   - action = controller.action_name
 
