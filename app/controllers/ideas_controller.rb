@@ -78,7 +78,7 @@ class IdeasController < ApplicationController
   end
 
   def index
-    load_headers(:name => 'featured', :url => page_path('co-criacao'))
+    load_headers(:name => 'recent', :url => page_path('co-criacao'))
   end
 
   def modified
