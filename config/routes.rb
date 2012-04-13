@@ -45,7 +45,7 @@ FestivalDeIdeias::Application.routes.draw do
     # Match relations ideas vs categories
     match ":idea_category_id/ideias", :to => "ideas#category", :as => :category_ideas
   end
-
+  get '/ideias', :to => "ideas#index"
   scope '/ideias' do
     # Coisa da Natália... "É 'semântico!!'"
     match ":idea_category_id/ideia/:id", :to => "ideas#show",  :as => :category_idea

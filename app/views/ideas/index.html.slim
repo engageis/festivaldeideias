@@ -26,7 +26,7 @@
             .description
               p.idea_headline
                 // Is Headline present? Ok, show it. If not, show me the description.
-                = truncate(idea.description, :length => 185, :separator => " ")
+                = truncate(idea.description, :length => 180, :separator => "...")
 
 
             // Collaboration & Popularity

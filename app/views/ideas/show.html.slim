@@ -1,8 +1,10 @@
 header
   - if @idea
     = content_for :meta_tags do
+      - desc = truncate(@idea.description, length: 180, separator: "...")
+      meta[name="description" content=desc]
       meta[property="og:title" content=@idea.title]
-      meta[property="og:description" content=@idea.headline]
+      meta[property="og:description" content=desc]
       meta[property="og:url" content=category_idea_url(@idea.category,@idea)]
 
     // Defining a class for editable fields based on cancan ability
