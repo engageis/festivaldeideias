@@ -2,9 +2,11 @@ pt-BR:
   site:
     title: 'Festival de Ideias 2012 - Uma plataforma para unir ideias'
     description: 'O Festival de Ideias é uma rede de colaboração e troca de informações entre empreendedores, investidores e o público em geral.'
+    url: "http://festivaldeideias.org.br"
     keywords: 'colaboracao, festival, ideias, empreendedores, inovacao'
     fb_title: 'Festival de Ideias 2012'
     fb_description: 'Formulado para fomentar soluções criativas frente aos problemas atuais da sociedade e para promover a inovação e o empreendedorismo, o FdI é uma rede de colaboração e troca de informações entre empreendedores, investidores e o público em geral.'
+    fb_image: "http://festivaldeideias.org.br/assets/logo.png"
   login:
     success: "Bem vindo!"
     create_account: "Crie uma conta"
