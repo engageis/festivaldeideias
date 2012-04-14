@@ -65,6 +65,7 @@ article
 section#comments
   a name="comment"
   h3 Comentários
-  = render :partial => 'shared/comments', :locals => { :url => url_for(@idea) }
+
+  .fb-comments data-href=category_idea_url(@idea.category,@idea) data-num-posts="10" data-width="690"
 
 = render :partial => "colaboration", :locals => {:idea => @idea}
