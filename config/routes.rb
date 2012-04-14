@@ -51,6 +51,10 @@ FestivalDeIdeias::Application.routes.draw do
     match ":idea_category_id/ideia/:id", :to => "ideas#show",  :as => :category_idea
   end
 
+  match 'ideas/:id', :to => "ideas#show" 
+
+
+
   get "/miv" => "miv#index" if Rails.env.development?
   #root :to => redirect("/featured")
   root :to => 'ideas#index', :defaults => { :recent => true }
