@@ -4,7 +4,7 @@ html
     meta[content="text/html; charset=UTF-8" http-equiv="Content-Type"]
   body
     h2
-      = t "mailer.new_colaboration_notification.body.header", user: @user.name
+      = t "mailer.new_colaboration_notification.body.header", name: @user.name
     - url = category_idea_url(@idea.category, @idea, host: "festivaldeideias.org.br")
     p 
       | Sua ideia #{link_to @idea.title, url} recebeu uma colaboração!

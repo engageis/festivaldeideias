@@ -20,7 +20,7 @@ pt-BR:
     new_colaboration_notification:
       subject: "Sua ideia recebeu uma colaboração!"
       body:
-        header: "Olá %{username}!"
+        header: "Olá %{name}!"
   # Main texts for idea (create, edit and show actions are here)
   idea:
     new:
