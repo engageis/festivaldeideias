@@ -6,7 +6,7 @@ class IdeaMailer < ActionMailer::Base
     @idea = idea
     @user = idea.user
     
-    mail(to: "runeroniek@gmail.com", subject: "Sua ideia recebeu uma colaboração!") do |format|
+    mail(to: "#{@user.name} <#{@user.email}>", subject: "Sua ideia recebeu uma colaboração!") do |format|
       format.html
     end
 

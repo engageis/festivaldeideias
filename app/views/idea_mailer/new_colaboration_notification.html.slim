@@ -4,20 +4,21 @@ html
     meta[content="text/html; charset=UTF-8" http-equiv="Content-Type"]
   body
     h2
-      | Olá #{@user.name}!
+      = t "mailer.new_colaboration_notification.body.header", user: @user.name
     - url = category_idea_url(@idea.category, @idea, host: "festivaldeideias.org.br")
     p 
       | Sua ideia #{link_to @idea.title, url} recebeu uma colaboração!
 
     p
-      | Para ver a colaboração, <strong>#{link_to "clique aqui", url}</strong>
+      | Para ver a colaboração, <strong>#{link_to "clique aqui", url}</strong>.
     br
     br
     br
     
     p
       | Obrigado e tenha um ótimo dia!
-      | <strong> Equipe Festival de Ideias </strong>
+    p
+      | <strong>Equipe Festival de Ideias<a href="http://festivaldeideias.org.br/">http://festivaldeideias.org.br</a></strong>
     p
       img src="http://i.imgur.com/jrx4k.png" alt="Festival de ideias"
 

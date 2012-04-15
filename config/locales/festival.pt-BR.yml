@@ -16,7 +16,11 @@ pt-BR:
   non_facebook_user:
     create:
       success: "E-mail cadastrado com sucesso!"
-
+  mailer:
+    new_colaboration_notification:
+      subject: "Sua ideia recebeu uma colaboração!"
+      body:
+        header: "Olá %{username}!"
   # Main texts for idea (create, edit and show actions are here)
   idea:
     new:
