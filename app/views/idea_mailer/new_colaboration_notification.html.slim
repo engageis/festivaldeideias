@@ -5,9 +5,9 @@ html
   body
     h2
       | Olá #{@user.name}!
-    - url = category_idea_path(@idea.category, @idea)
+    - url = category_idea_url(@idea.category, @idea, host: "festivaldeideias.org.br")
     p 
-      | Sua ideia "#{link_to @idea.title, url}" recebeu uma colaboração!
+      | Sua ideia #{link_to @idea.title, url} recebeu uma colaboração!
 
     p
       | Para ver a colaboração, <strong>#{link_to "clique aqui", url}</strong>
