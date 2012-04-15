@@ -1,12 +1,14 @@
 # coding: utf-8
 class IdeaMailer < ActionMailer::Base
-  default from: "fdi@festivaldeideias.org.br"
+  default from: "Festival de Ideias 2012 <fdi@festivaldeideias.org.br>"
 
   def new_colaboration_notification(idea)
     @idea = idea
     @user = idea.user
     
-    mail(to: "runeroniek@gmail.com", subject: "Sua ideia recebeu uma colaboração!")
+    mail to: "runeroniek@gmail.com", subject: "Sua ideia recebeu uma colaboração!" do |format|
+      format.html
+    end
 
   end
 
