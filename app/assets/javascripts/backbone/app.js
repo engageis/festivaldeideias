@@ -95,18 +95,19 @@ var App = window.App = {
       initialize: function(){
         this.url = $(this.el).data('url');
         this.notes = this.$('.notes');
-        this.counter = this.$('.count');
+        this.counter = this.$('.count')[0];
       },
 
       showNotes: function(){
-        this.notes.fadeToggle(200);
-        if (this.counter.length){
+        var self = this;
+        self.notes.fadeToggle(200);
+        if (this.counter){
           $.ajax({
             url: self.url,
             type: "PUT",
             data: "notifications_read_at",
             success: function(data){
-              this.counter.detach();
+              self.counter.remove();
             }
           });
         }
