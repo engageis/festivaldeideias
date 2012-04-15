@@ -1,55 +1,57 @@
 # coding: utf-8
 
 # Defining sequencies
-Factory.sequence(:name)     { |n| "User #{n}"          }
-Factory.sequence(:email)    { |n| "user#{n}@gmail.com" }
-Factory.sequence(:uid)      { |n| "#{n}"               }
-Factory.sequence(:title)    { |n| "Title#{n}"          }
-Factory.sequence(:headline) { |n| "Headline#{n}"       }
 
-# Defining user factory
-Factory.define :user do |u|
-  u.name(Factory.next(:name))
-  u.email(Factory.next(:email))
-end
+FactoryGirl.define do 
 
-Factory.define :user_with_service, :parent => :user do |user|
-  user.after_create { |u| Factory(:service, :user => u) }
-end
-
-Factory.define :admin_user do |u|
-  u.email("user@example.com")
-  u.password("super_safe")
-end
+  sequence(:name)     { |n| "Name#{n}"          }
+  sequence(:email)    { |n| "user#{n}@gmail.com" }
+  sequence(:uid)      { |n| "#{n}"               }
+  sequence(:title)    { |n| "Title#{n}"          }
+  sequence(:headline) { |n| "Headline#{n}"       }
 
 
-# Defining provider factory (facebook, google, twitter - for instance)
-Factory.define :service do |s|
-  s.association :user, :factory => :user
-  s.uid(Factory.next(:uid))
-  s.provider("facebook")
-end
+  factory :user do
+    name 
+    email
+  end
 
-Factory.define :idea_category do |c|
-  c.name Factory.next(:title)
-  c.badge File.open("#{Rails.root.to_s}/spec/fixtures/images/disasters.png")
-  c.description "Some description"
-end
+  factory :user_with_service, :parent => :user do
+    after_create { |u| FactoryGirl(:service, :user => u) }
+  end
 
-Factory.define :idea do |i|
-  i.association :category, :factory => :idea_category
-  i.association :user, :factory => :user
-  i.title(Factory.next(:title))
-  i.headline(Factory.next(:headline))
-  i.description("Some description")
-  i.featured true
-end
+  factory :admin_user do
+    email("user@example.com")
+    password("super_safe")
+  end
 
-Factory.define :non_facebook_user do |hater|
-  hater.email Factory.next :email
-end
+  factory :service do
+    user 
+    uid
+    provider "facebook"
+  end
 
-Factory.define :page do |page|
-  page.title(Factory.next(:title))
-  page.body '<p>Texto genérico de um parágrafo&hellip;</p>'
+  factory :idea_category do
+    name
+    badge File.open("#{Rails.root.to_s}/spec/fixtures/images/disasters.png")
+    description "Some description"
+  end
+
+  factory :idea do
+    idea_category
+    user
+    title
+    headline
+    description "Some description"
+    featured true
+  end
+
+  factory :non_facebook_user do
+    email
+  end
+
+  factory :page do
+    title
+    body '<p>Texto genérico de um parágrafo&hellip;</p>'
+  end
 end

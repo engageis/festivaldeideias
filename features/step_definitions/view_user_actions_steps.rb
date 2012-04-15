@@ -1,13 +1,13 @@
 Given /^I'm a logged user$/ do
-  @user = Factory.create(:user, :email => "runeroniek@gmail.com")
-  @service = Factory.create(:service, :provider => "facebook", :uid =>"547955110", :user => @user)
+  @user = FactoryGirl.create(:user, :email => "runeroniek@gmail.com")
+  @service = FactoryGirl.create(:service, :provider => "facebook", :uid =>"547955110", :user => @user)
   visit '/auth/facebook'
 end
 
 Given /^(\d+) idea category exist$/ do |count|
   @categories = []
   count.to_i.times do |f|
-    f = Factory.create(:idea_category)
+    f = FactoryGirl.create(:idea_category)
     @categories << f
   end
 end

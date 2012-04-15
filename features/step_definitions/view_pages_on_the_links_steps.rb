@@ -2,7 +2,7 @@
 
 And /^(\d+) pages exist$/ do |count|
   count.to_i.times { |counter|
-    Factory.create(:page, :title => "Página #{counter}",   :body => "<p>Página #{counter}</p>")
+    FactoryGirl.create(:page, :title => "Página #{counter}",   :body => "<p>Página #{counter}</p>")
   }
 end
 

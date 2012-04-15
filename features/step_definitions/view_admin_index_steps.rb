@@ -1,5 +1,5 @@
 Given /^I'm an admin user$/ do
-  @user = Factory.create(:admin_user)
+  @user = FactoryGirl.create(:admin_user)
 end
 
 When /^I go to the admin index page$/ do

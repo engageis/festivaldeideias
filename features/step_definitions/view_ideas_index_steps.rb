@@ -1,17 +1,17 @@
 Given /^(\d+) category exist$/ do |count|
   @categories = []
   count.to_i.times do |f|
-    f = Factory.create(:idea_category)
+    f = FactoryGirl.create(:idea_category)
     @categories << f
   end
 end
 
 And /^(\d+) ideas exist$/ do |count|
   @ideas = []
-  @user = Factory(:user_with_service)
+  @user = FactoryGirl.create(:user_with_service)
 
   count.to_i.times do |f|
-    f = Factory.create(:idea, :user => @user)
+    f = FactoryGirl.create(:idea, :user => @user)
     @ideas << f
   end
 end
