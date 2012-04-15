@@ -40,6 +40,8 @@ class Idea < ActiveRecord::Base
   def self.create_colaboration(params = {})
     if params.has_key? :parent_id
       Idea.create(params)
+      idea = Idea.where(parent_id: params[:parent_id])
+      # IdeaMailer.new_colaboration_notification(idea)
     end
   end
 
