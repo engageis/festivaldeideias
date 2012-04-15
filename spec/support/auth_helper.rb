@@ -4,7 +4,7 @@ FACEBOOK_HASH_DATA = {
       "provider"=>"facebook",
       "uid"=>"547955110",
       "credentials"=>{"token"=>"fake_token"},
-      "user_info"=>{"nickname"=>nil,
+      "info"=>{"nickname"=>nil,
                     "email"=>"runeroniek@gmail.com",
                     "first_name"=>"Luiz",
                     "last_name"=>"Fonseca",

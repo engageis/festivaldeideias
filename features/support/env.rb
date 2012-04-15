@@ -6,6 +6,7 @@
 
 require 'cucumber/rails'
 require 'capybara/cucumber'
+World FactoryGirl::Syntax::Methods
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
 # order to ease the transition to Capybara we set the default here. If you'd
@@ -60,7 +61,7 @@ OmniAuth.config.mock_auth[:facebook] = {
       "provider"=>"facebook",
       "uid"=>"547955110",
       "credentials"=>{"token"=>"fake_token"},
-      "user_info"=>{"nickname"=>nil,
+      "info"=>{"nickname"=>nil,
                     "email"=>"runeroniek@gmail.com",
                     "first_name"=>"Luiz",
                     "last_name"=>"Fonseca",
