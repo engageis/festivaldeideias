@@ -16,7 +16,7 @@ describe SessionsController do
     end
     context "When the user is in the service list" do
       before do
-        @auth = Factory.create(:service, :uid => FACEBOOK_HASH_DATA["uid"])
+        @auth = create(:service, :uid => FACEBOOK_HASH_DATA["uid"])
         Service.stub(:find_from_hash).and_return(true)
       end
       it { should redirect_to root_path }

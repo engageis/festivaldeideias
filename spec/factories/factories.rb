@@ -26,7 +26,7 @@ FactoryGirl.define do
   end
 
   factory :service do
-    user 
+    association :user, factory: :user 
     uid
     provider "facebook"
   end
@@ -38,8 +38,8 @@ FactoryGirl.define do
   end
 
   factory :idea do
-    idea_category
-    user
+    association :category, factory: :idea_category
+    association :user, factory: :user
     title
     headline
     description "Some description"

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe PagesController do
   before do
-    @page = Factory.create(:page)
+    @page = create(:page)
   end
 
   describe "GET #index" do

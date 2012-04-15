@@ -9,7 +9,7 @@ describe IdeaCategory do
 
   describe "#to_param" do
     it "Should concatenate id and name params" do
-      @category = Factory.create(:idea_category)
+      @category = create(:idea_category)
       @category.to_param.should == "#{@category.id}-#{@category.name.parameterize}"
     end
 

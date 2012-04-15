@@ -13,8 +13,8 @@ describe IdeasController do
   describe "POST #create" do
     before do
       request.env['HTTP_REFERER'] = root_url
-      @category = Factory.create(:idea_category)
-      @user = Factory.create(:service).user
+      @category = create(:idea_category)
+      @user = create(:service).user
       idea = { :title => "Just a test dude", :headline => "Headline test", :description => "Hey, I'm a test", }
 
       controller.stub(:current_user).and_return(@user)
@@ -28,7 +28,7 @@ describe IdeasController do
 
   describe "GET #show" do
     before do
-      @idea = Factory.create(:idea)
+      @idea = create(:idea)
       get :show, :id => @idea.id
 
     end
@@ -37,9 +37,9 @@ describe IdeasController do
 
   describe "put #colaborate" do
     before do
-      @user = Factory.create(:user)
-      @new_user = Factory.create(:user, :name => "Tester")
-      @idea = Factory.create(:idea, :user => @user)
+      @user = create(:user)
+      @new_user = create(:user, :name => "Tester")
+      @idea = create(:idea, :user => @user)
       controller.stub(:current_user).and_return(@new_user)
       idea = {"headline" => "Test", "description" => "test", "title" => "test", "parent_id" => @idea.id.to_s}
       Idea.should_receive(:create_colaboration).with(idea.merge("user_id" => @new_user.id))

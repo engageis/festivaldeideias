@@ -25,8 +25,8 @@ describe Idea do
 
     describe "#create_colaboration" do
       it "Should create a child idea in order to colaborate" do
-        @idea = Factory.create(:idea)
-        @user = Factory.create(:user)
+        @idea = create(:idea)
+        @user = create(:user)
         idea = {
           :title => "Test",
           :headline => "Test",
@@ -42,7 +42,7 @@ describe Idea do
 
     describe "#as_json" do
       it "Should return a given json output" do
-        @idea = Factory.create(:idea)
+        @idea = create(:idea)
         idea_json = {
           :id => @idea.id,
           :title => @idea.title,
@@ -63,7 +63,7 @@ describe Idea do
 
     describe "#to_param" do
       it "Should concatenate id and title" do
-        @idea = Factory.create(:idea)
+        @idea = create(:idea)
         @idea.to_param.should == "#{@idea.id}-#{@idea.title.parameterize}"
       end
     end
@@ -72,7 +72,7 @@ describe Idea do
     describe "#description_html" do
       it "Should convert the description to html" do
         string = "<p>This is a description</p>\n"
-        @idea = Factory.create(:idea, :description => "This is a description")
+        @idea = create(:idea, :description => "This is a description")
         @idea.description_html.should == string
       end
     end
@@ -82,16 +82,16 @@ describe Idea do
         str = "This is a string with a link: http://google.com"
         str_html = "<p>This is a string with a link: <a href=\"http://google.com\" target=\"_blank\">http://google.com</a></p>\n"
 
-        @idea = Factory.create(:idea)
+        @idea = create(:idea)
         @idea.convert_html(str).should == str_html
       end
     end
 
     describe ".new_collaborations" do
       before do
-        @idea = Factory(:idea, :parent_id => nil, :user => Factory(:user, :notifications_read_at => Time.now))
-        Factory(:idea, :parent_id => @idea.id, :created_at => Time.now - 1.day)
-        @collaboration = Factory(:idea, :parent_id => @idea.id)
+        @idea = create(:idea, :parent_id => nil, :user => create(:user, :notifications_read_at => Time.now))
+        create(:idea, :parent_id => @idea.id, :created_at => Time.now - 1.day)
+        @collaboration = create(:idea, :parent_id => @idea.id)
       end
       subject { Idea.new_collaborations(@idea.user) }
       it { should == [@collaboration] }
@@ -99,15 +99,15 @@ describe Idea do
 
     describe ".collaborations_status_changed" do
       before do
-        @idea = Factory(:idea, :parent_id => nil)
-        @user = Factory(:user, :notifications_read_at => Time.now)
+        @idea = create(:idea, :parent_id => nil)
+        @user = create(:user, :notifications_read_at => Time.now)
 
         # The user shouldn't see this on notifications
-        Factory(:idea, :parent_id => @idea.id, :accepted => true, :user => @user,:updated_at => Time.now - 1.day)
-        Factory(:idea, :parent_id => @idea.id, :accepted => nil, :user => @user)
+        create(:idea, :parent_id => @idea.id, :accepted => true, :user => @user,:updated_at => Time.now - 1.day)
+        create(:idea, :parent_id => @idea.id, :accepted => nil, :user => @user)
 
         # The user should see this
-        @collaboration = Factory(:idea, :parent_id => @idea.id, :accepted => true, :user => @user)
+        @collaboration = create(:idea, :parent_id => @idea.id, :accepted => true, :user => @user)
       end
 
       subject { Idea.collaborations_status_changed(@user) }
@@ -118,12 +118,12 @@ describe Idea do
 
   describe ".collaborated_idea_changed" do
     before do
-      @user = Factory(:user, :notifications_read_at => Time.now)
-      @idea = Factory(:idea, :parent_id => nil)
-      @collaboration = Factory(:idea, :parent_id => @idea.id, :user => @user)
+      @user = create(:user, :notifications_read_at => Time.now)
+      @idea = create(:idea, :parent_id => nil)
+      @collaboration = create(:idea, :parent_id => @idea.id, :user => @user)
 
       # This collaboration parent was read by the user
-      Factory(:idea, :parent_id => Factory(:idea, :updated_at => Time.now - 1.day), :user => @user)
+      create(:idea, :parent_id => create(:idea, :updated_at => Time.now - 1.day), :user => @user)
     end
     subject { Idea.collaborated_idea_changed(@user) }
     it { should == [@idea] }

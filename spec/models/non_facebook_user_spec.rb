@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe NonFacebookUser do
   before do
-    Factory.create :non_facebook_user
+    create :non_facebook_user
   end
 
   describe "Validations" do
