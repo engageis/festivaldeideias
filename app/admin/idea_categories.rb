@@ -25,6 +25,6 @@ ActiveAdmin.register IdeaCategory do
     f.inputs "Badge" do
       f.input :badge, :as => :file
     end
-    f.buttons
+    f.actions
   end
 end
