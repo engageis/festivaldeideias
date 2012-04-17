@@ -120,7 +120,7 @@ class IdeasController < ApplicationController
     @ideas = end_of_association_chain.where(:parent_id => nil).includes(:user, :colaborations, :category)
 
     @categories ||= IdeaCategory.order('created_at ASC')
-    @users ||= User.find(:all, :order => 'RANDOM()', :limit => 25, :include => :services)
+    @users ||= User.find(:all, :order => 'RANDOM()', :include => :services)
     @ideas_count ||= Idea.where(:parent_id => nil).includes(:user, :category)
     @collab_count ||=  Idea.where("parent_id IS NOT NULL").includes(:user, :category, :parent)
     @ideas_latest ||= Idea.latest.includes(:user, :category)

@@ -95,7 +95,7 @@ var App = window.App = {
       initialize: function(){
         this.url = $(this.el).data('url');
         this.notes = this.$('.notes');
-        this.counter = this.$('.count')[0];
+        this.counter = this.$('.count');
       },
 
       showNotes: function(){
