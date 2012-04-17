@@ -116,7 +116,9 @@ class IdeasController < ApplicationController
 
   protected
   def load_resources
-    @ideas = end_of_association_chain.where(:parent_id => nil).includes(:user, :category) #querying only ideas, no collab.
+    #querying only ideas, no collab.
+    @ideas = end_of_association_chain.where(:parent_id => nil).includes(:user, :colaborations, :category)
+
     @categories ||= IdeaCategory.order('created_at ASC')
     @users ||= User.find(:all, :order => 'RANDOM()', :limit => 25, :include => :services)
     @ideas_count ||= Idea.where(:parent_id => nil).includes(:user, :category)
