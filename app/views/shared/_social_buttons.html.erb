@@ -6,10 +6,11 @@
   <!-- Google Plus -->
 
   <!-- Twitter -->
-  <div class='twitter-like'>
-    <a href="https://twitter.com/share" class="twitter-share-button" data-lang="pt" data-size="<%= size %>" data-count="<%= twitter_count %>" >Tweetar</a>
-  </div>
+  <% twitter_text = @idea.respond_to?(:title) ? @idea.title : "" %>
 
+  <div class='twitter-like'>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= request.url %>" data-text="<%= twitter_text + " " + request.url %>" data-lang="pt" data-size="<%= size %>" data-count="<%= twitter_count %>" >Tweetar</a>
+  </div>
 
   <!-- Facebook -->
   <div class="fb-like" style="display: inline-block" data-send="false" data-layout="<%= facebook_count %>" data-width="<%= size %>" data-show-faces="false" data-font="lucida grande"></div>
