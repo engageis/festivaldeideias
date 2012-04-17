@@ -116,14 +116,14 @@ class IdeasController < ApplicationController
 
   protected
   def load_resources
-    @ideas = end_of_association_chain.where(:parent_id => nil) #querying only ideas, no collab.
+    @ideas = end_of_association_chain.where(:parent_id => nil).includes(:user, :category) #querying only ideas, no collab.
     @categories ||= IdeaCategory.order('created_at ASC')
-    @users ||= User.all(:include => :services)
-    @ideas_count ||= Idea.where(:parent_id => nil)
-    @collab_count ||=  Idea.where("parent_id IS NOT NULL")
-    @ideas_latest ||= Idea.latest
-    @ideas_featured ||= Idea.featured
-    @ideas_popular ||= Idea.popular.shuffle
+    @users ||= User.find(:all, :order => 'RANDOM()', :limit => 25, :include => :services)
+    @ideas_count ||= Idea.where(:parent_id => nil).includes(:user, :category)
+    @collab_count ||=  Idea.where("parent_id IS NOT NULL").includes(:user, :category, :parent)
+    @ideas_latest ||= Idea.latest.includes(:user, :category)
+    @ideas_featured ||= Idea.featured.includes(:user, :category)
+    @ideas_popular ||= Idea.popular.includes(:user, :category).shuffle
   end
 
   def current_ability
