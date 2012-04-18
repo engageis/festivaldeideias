@@ -2,9 +2,6 @@ class Idea < ActiveRecord::Base
   require 'json'
   require 'open-uri'
 
-  @@facebook_query_url = 'https://api.facebook.com/method/fql.query?format=json&query=' 
-  @@fql = "SELECT total_count FROM link_stat WHERE url='%s'"
-
   include AutoHtml
   include ActiveRecord::SpawnMethods
   include Rails.application.routes.url_helpers
@@ -97,7 +94,11 @@ class Idea < ActiveRecord::Base
 
   # Atualiza o número de likes da ideia
   def update_facebook_likes
-    total_count = JSON.parse(open(facebook_query_url + URI.encode(@@fql % idea_url(self))).read).first["total_count"]
+    #default_url_options[:host] = 'festivaldeideias.org.br'
+    facebook_query_url = 'https://api.facebook.com/method/fql.query?format=json&query=' 
+    fql = "SELECT total_count FROM link_stat WHERE url='%s'"
+    path = "http://festivaldeideias.org.br"
+    total_count = JSON.parse(open(facebook_query_url + URI.encode(fql % idea_path(self))).read).first["total_count"]
     self.update_attribute(:likes, total_count.to_i) if total_count
   end
 end
