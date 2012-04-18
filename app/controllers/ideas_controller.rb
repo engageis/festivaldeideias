@@ -18,6 +18,12 @@ class IdeasController < ApplicationController
   before_filter :load_collaborators, :only => [ :show, :collaboration ]
   before_filter :load_resources
 
+  def show
+    @idea = Idea.find(params[:id])
+    @idea.update_facebook_likes
+    show!
+  end
+
   def create
     # O usuário deve aceitar os todos os termos clicando no checkbox
     unless params[:terms_acceptance] && params[:cc_license] && params[:share_license] && params[:change_license]
