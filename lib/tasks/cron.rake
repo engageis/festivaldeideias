@@ -7,6 +7,7 @@ task :cron => :environment do
   include Rails.application.routes.url_helpers
   #default_url_options[:host] = 'festivaldeideias.org.br'
   host_name = "http://festivaldeideias.org.br"
+  default_url_options[:only_path] = true
   ideas = Idea.select(['id', 'title', 'likes'])
   facebook_query_url = 'https://api.facebook.com/method/fql.query?format=json&query=' 
 
