@@ -9,9 +9,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 
 
   # List of authorized providers for this app
-  # App ID:	142951129148413
-  # App Secret:	ab9bb6972624b3f2ff3e09cce1cb062
-
+  
   provider(:facebook,
            ENV['FB_APP_ID'],
            ENV['FB_APP_SECRET'],
