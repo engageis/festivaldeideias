@@ -6,7 +6,7 @@ desc "This task is called by the Heroku cron add-on"
 task :cron => :environment do
   include Rails.application.routes.url_helpers
   #default_url_options[:host] = 'localhost:3000'
-  default_url_options[:host] = 'festivalstagging.heroku.com'
+  default_url_options[:host] = 'festivaldeideias.org.br'
   ideas = Idea.select(['id', 'title', 'likes'])
   facebook_query_url = 'https://api.facebook.com/method/fql.query?format=json&query=' 
 
@@ -23,7 +23,7 @@ task :cron => :environment do
     ideas.each do |idea|
       url = idea_url(idea)
       likes = hash[url]
-      idea.update_attribute(:likes, likes) if likes
+      idea.update_attribute(:likes, likes.to_i) if likes
       puts "#{url} : #{idea.likes}"
     end
   end
