@@ -1,5 +1,5 @@
 meta[name="keywords"    content="#{t 'site.keywords'}"]
-meta[property="fb:app_id"   content="#{CONFIG['facebook_app_id']}"]
+meta[property="fb:app_id"   content="#{ENV['FB_APP_ID']}"]
 meta[property="og:image"        content="#{t 'site.fb_image'}"]
 
 - unless content_for? :meta_tags
