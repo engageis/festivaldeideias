@@ -7,11 +7,7 @@
         setTimeout(loadEvents, 300);
       }
     }
-    window.fbAsyncInit = function () {
-      FB.init({ appId: "#{CONFIG['facebook_app_id']}", status: true, cookie: true, xfbml: true });
-      /*window.accessToken = "#{FacebookEvents.get_token}";*/
-      /*loadEvents();*/
-    };
+
     (function (d) {
       var fjs, js, id = 'facebook-jssdk';
       fjs = d.getElementsByTagName('script')[0];

@@ -1,4 +1,3 @@
-CONFIG = []
 unless Rails.env.production?
   CONFIG = YAML.load_file("#{Rails.root}/config/config.yml")[Rails.env]
   ENV['FB_APP_ID'] = CONFIG['FB_APP_ID']
