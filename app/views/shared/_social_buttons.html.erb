@@ -16,7 +16,8 @@
   </div>
 
   <!-- Facebook -->
-  <div class="fb-like" style="display: inline-block"<%= " data-href='#{url}'" if url %> data-send="false" data-layout="<%= facebook_count %>" data-width="<%= size %>" data-show-faces="false" data-font="lucida grande"></div>
+  <% url = @idea.present? ? category_idea_path(@idea.category, @idea) : url %>
+  <div class="fb-like" style="display: inline-block" data-href="<%= #{url ? url : ''} %>" data-send="false" data-layout="<%= facebook_count %>" data-width="<%= size %>" data-show-faces="false" data-font="lucida grande"></div>
 
 
   <!-- Social scripts -->
