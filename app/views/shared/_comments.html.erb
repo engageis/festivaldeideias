@@ -1,1 +1,7 @@
-<div class="fb-comments" data-href="<%= url || request.url %>" data-num-posts="10" data-width="690"></div>
+<% 
+    if @idea.present?
+      url = category_idea_path(@idea.category, @idea)
+    end
+%>
+
+  <div class="fb-comments" data-href="<%= url || request.url %>" data-num-posts="10" data-width="690"></div>
