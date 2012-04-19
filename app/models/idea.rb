@@ -37,6 +37,9 @@ class Idea < ActiveRecord::Base
           ) AND ideas.updated_at > ?', user.id, user.notifications_read_at])
   }
 
+  def rejected_colaborations
+    self.colaborations.where(accepted: false)
+  end
 
   def accepted_colaborations
     self.colaborations.where(accepted: true)
