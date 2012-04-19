@@ -5,7 +5,7 @@
     span= @collaborators.size if @collaborators.any?
 
   .community
-    - if @idea.colaborations.size == 0
+    - if @idea.accepted_colaborations.size == 0
       ul
         - unless current_user == @idea.user
           li= t('idea.colaboration.no_colaborators_yet')

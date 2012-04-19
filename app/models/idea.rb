@@ -23,22 +23,24 @@ class Idea < ActiveRecord::Base
   scope :popular,   select("DISTINCT ON (ideas.id) ideas.*").
                     joins("INNER JOIN ideas b ON b.parent_id = ideas.id")
 
+  scope :new_collaborations, ->(user) { where(['parent_id IN (?) AND created_at > ?', user.ideas.map(&:id), user.notifications_read_at]) }
 
-  scope :new_collaborations, lambda { |user|
-    where(['parent_id IN (?) AND created_at > ?', user.ideas.map(&:id), user.notifications_read_at])
-  }
-
-  scope :collaborations_status_changed, lambda { |user|
+  scope :collaborations_status_changed, ->(user) { 
     where(['user_id = ? AND accepted IS NOT NULL AND parent_id IS NOT NULL AND updated_at > ?', user.id, user.notifications_read_at])
   }
 
-  scope :collaborated_idea_changed, lambda { |user|
+  scope :collaborated_idea_changed, ->(user) {
     where(['EXISTS(
               SELECT true FROM ideas AS collaboration
               WHERE collaboration.parent_id = ideas.id
               AND collaboration.user_id = ?
           ) AND ideas.updated_at > ?', user.id, user.notifications_read_at])
   }
+
+
+  def accepted_colaborations
+    self.colaborations.where(accepted: true)
+  end
 
   def self.create_colaboration(params = {})
     if params.has_key? :parent_id
