@@ -5,31 +5,41 @@
 
   <!-- Google Plus -->
 
-  <!-- Twitter -->
-  <% twitter_text = @idea.respond_to?(:title) ? @idea.title : "" %>
+  <%
+      twitter_text = @idea.respond_to?(:title) ? @idea.title : ""
+      url = options[:url]
+  %>
 
+  <!-- Twitter -->
   <div class='twitter-like'>
-    <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= request.url %>" data-text="<%= twitter_text + " " + request.url %>" data-lang="pt" data-size="<%= size %>" data-count="<%= twitter_count %>" >Tweetar</a>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= url || request.url %>" data-text="<%= twitter_text + " " + request.url %>" data-lang="pt" data-size="<%= size %>" data-count="<%= twitter_count %>" >Tweetar</a>
   </div>
 
   <!-- Facebook -->
-  <div class="fb-like" style="display: inline-block" data-send="false" data-layout="<%= facebook_count %>" data-width="<%= size %>" data-show-faces="false" data-font="lucida grande"></div>
-
+  <div class="fb-like" style="display: inline-block"<%= " data-href='#{url}'" if url %> data-send="false" data-layout="<%= facebook_count %>" data-width="<%= size %>" data-show-faces="false" data-font="lucida grande"></div>
 
 
   <!-- Social scripts -->
   <script>
-    (function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js,fjs); } }(document, "script", "twitter-wjs"));
-  </script>
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (!d.getElementById(id)) {
+        js = d.createElement(s);
+        js.id = id;
+        js.src="//platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js,fjs);
+      }
+    }(document, "script", "twitter-wjs"));
 
+    window.___gcfg = { lang: 'pt-BR' };
 
-  <script>
-    window.___gcfg = {lang: 'pt-BR'};
-
-    (function() {
-      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    (function () {
+      var po = document.createElement('script');
+      po.type = 'text/javascript';
+      po.async = true;
       po.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(po, s);
     })();
   </script>
   

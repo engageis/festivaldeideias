@@ -16,14 +16,15 @@ module ApplicationHelper
 
   # A url é o endereço que será 'curtido' no facebook e 'tweetado' no twitter
   # Se o objetivo é o endereço do site, passar 'request.host'
-  def social_buttons(url, type = :horizontal)
+  def social_buttons(url, type = :horizontal, options = {})
     args = (type.to_sym == :horizontal) ? ['horizontal', 'button_count'] : ['vertical', 'box_count']
 
     render partial: 'shared/social_buttons',
            locals: { url: url,
                      orientation: type,
                      twitter_count: args[0],
-                     facebook_count: args[1] }
+                     facebook_count: args[1],
+                     options: options }
   end
 
 
