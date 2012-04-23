@@ -8,10 +8,12 @@
 
 aside
   h3
-    //margin: 40px 0 0 0
-    margin: 20px 0 0 0
+    margin: 40px 0 0 0
+    color: #000
     text-transform: uppercase
     font-weight: lighter
+  h4
+    color: #333
 
   a, a:link, a:hover, a:visited, a:active
     text-decoration: none
@@ -76,21 +78,24 @@ aside
     border-color: lighten($orange, 10%)
 
   .community
-    +bucket(4px)
+    +bucket()
     overflow: hidden
+    .none
+      padding: 10px
+      background: $lightyellow
+      border: solid 1px $yellow
+    .x_more
+      clear: both
+      text-align: right
     ul
       clear: both
       li
         float: left
         padding: 1px
         img
-          border: 2px solid #dedede
-          +border-radius(6px)
-          &:hover
-            border: 2px solid orange
         img
-          height: 36px
-          width: 36px
+          height: 40px
+          width: 40px
       h4
         float: right
         +border-radius(6px)
@@ -107,6 +112,8 @@ aside
     li
       float: left
       margin-right: 8px
+      &:last-child
+        margin: 0
       img
         +opacity(0.8)
         &:hover

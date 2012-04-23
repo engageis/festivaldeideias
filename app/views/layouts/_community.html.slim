@@ -9,6 +9,5 @@ h4
           - profile = user.services.first
           = link_to (image_tag profile.facebook_avatar, :alt => user.name, :title => user.name), profile.facebook_profile, :target => "_blank"
 
-    h4
-      span
-        | E mais #{@users.size}!
+      .x_more
+        | + #{@users.size} pessoas

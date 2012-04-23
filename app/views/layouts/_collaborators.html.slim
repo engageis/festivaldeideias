@@ -8,7 +8,7 @@
     - if @idea.accepted_colaborations.size == 0
       ul
         - unless current_user == @idea.user
-          li= t('idea.colaboration.no_colaborators_yet')
+          li.none= t('idea.colaboration.no_colaborators_yet')
         - else
           li= t('idea.colaboration.zero_colaborators')
     - else
