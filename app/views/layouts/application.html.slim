@@ -55,12 +55,12 @@ html
       .clear
 
     .wrapper
-      aside
-        = render :partial => "layouts/sidebar"
       #main
+        aside
+          = render :partial => "layouts/sidebar"
         #idea
           = yield
-          .clear
+        .clear
 
       - if current_page?(root_url)
         = render :partial => "layouts/statistics"
