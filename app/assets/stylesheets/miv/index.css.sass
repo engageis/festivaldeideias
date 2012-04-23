@@ -555,15 +555,10 @@ section#statistics
   overflow: hidden
   padding: 20px 0
   margin: 40px 0 0 0
-  background: #343434
-  color: #EEE
+  background: #000
+  color: $lightyellow
   +border-radius(5px)
-  h3
-    font-size: 1.3em
-    color: $orange
-    padding-bottom: 5px
-    border-bottom: 1px dotted $orange
-    +text-shadow(none)
+
   ul
     +grid(4)
     li
@@ -573,19 +568,34 @@ section#statistics
       &:first-child, &:last-child
         border: 0
         +box-shadow(none)
+    h3
+      background:
+        image: url(asset_path("icons.png", "image"))
+        repeat: no-repeat
+        position: 0 -276px
+      padding-left: 30px
+      padding-bottom: 5px
+      font-weight: lighter
+      font-size: 1.8em
+      color: $yellow
+    &.more_info
+      h3
+        background:
+          position: 0 -337px
     &.totals
       h3
         text-transform: none
+        background:
+          position: 0 -395px
       li
         text-transform: uppercase
-        color: #B0B0B0
         .number
-          color: #FFF
+          font-weight: bold
           margin-right: 10px
-          font-size: 1.8em
+          font-size: 2.2em
 
   a, a:link, a:hover, a:visited
-    color: #DDD
+    color: $lightyellow
     font-weight: lighter
     font-size: 1.1em
     +text-shadow(none)

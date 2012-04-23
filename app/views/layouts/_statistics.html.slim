@@ -1,22 +1,23 @@
 .clear
 section#statistics
-  ul.latest_updates
-    li
-      h3 Ideias recém-alteradas
-
-    - @ideas_latest.limit(5).each do |idea|
-      li
-        = link_to idea.title, category_idea_path(idea.category, idea)
-
   ul.top_ideas
     li
-      h3 Ideias populares
+      h3 ideias populares
     - @ideas_popular.each_with_index do |idea, index|
         li= link_to idea.title, category_idea_path(idea.category, idea) unless index > 5
 
+  ul.more_info
+    li
+      h3 informações úteis
+    - @pages_for_links.each do |page|
+      li
+        = link_to page.title, page
+      
+
+
   ul.totals
     li
-      h3 Estatísticas bacanas
+      h3 estatísticas bacanas
     li
       span.number
         = @ideas_count.size
