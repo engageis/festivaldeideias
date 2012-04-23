@@ -61,6 +61,12 @@ article
   div[class=ability_class data-placeholder="#{t('jquery.editable.defaults.tooltip')}" data-url=idea_path(@idea) data-attribute="description" data-raw=@idea.description data-raw-attribute="description_html"]
     / = raw Differ.diff_by_word(@idea.title, collab.description_html)
     = @idea.description_html
+  .collaborate
+    img[src="/assets/gostou.png"]
+    p
+      | Colabore com referências e mais informações para o desenvolvimento desta ideia, ajude a elaborar as necessidades e próximos passos!
+    = link_to t("idea.colaboration.new.start"), "#colaborate", :class => "button contribute"
+    .clear
 
 section#comments
   a name="comment"

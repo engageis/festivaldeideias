@@ -107,6 +107,31 @@
     color: red
 
 
+.collaborate
+  background: #333
+  margin: 0 -30px 0 -10px
+  color: #FFF
+  padding: 30px 30px 20px 30px
+  position: relative
+  &:before
+    content: ""
+    right: 0
+    border-width: 20px 20px 0 0
+    border-color: #111 transparent
+    border-style: solid
+    position: absolute
+    bottom: -20px
+    display: block
+
+  img
+    float: left
+    padding: 11px 0
+  p
+    +grid(5)
+    margin-bottom: 5px
+    font-weight: lighter
+    letter-spacing: 1px
+    float: right
 
 #comments
   margin: 40px 0 0 0
