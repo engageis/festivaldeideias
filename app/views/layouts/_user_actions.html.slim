@@ -21,7 +21,7 @@
         = image_tag current_user.services.first.facebook_avatar, :alt => "Profile image", :title => current_user.name, :class => "medium_profile_image"
         .content
           .score
-            - ideas = current_user.ideas
+            - ideas = current_user.ideas.where(parent_id: nil)
             - collab = current_user.colaborations
             |#{ideas.size} ideia(s) própria(s), #{collab.size} ideias colaboradas.
           ul
