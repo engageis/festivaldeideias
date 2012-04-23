@@ -28,7 +28,7 @@ aside
   .navigation
     ul
       background:
-        color: rgba(0, 0, 0, 0.05)
+        color: #FFF
       border: 1px solid #CCC
       margin-bottom: 20px
       +border-radius(3px)
@@ -188,6 +188,14 @@ aside
   li 
     a
       padding: 12px 10px 12px
+  &.fb
+    li
+      a
+        background:
+          image: url(asset_path("icons.png", "image"))
+          repeat: no-repeat
+          position: 0 -139px
+        padding-left: 25px
 
 .idea_value
   span
