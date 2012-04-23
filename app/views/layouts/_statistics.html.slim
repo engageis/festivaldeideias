@@ -4,7 +4,8 @@ section#statistics
     li
       h3 ideias populares
     - @ideas_popular.each_with_index do |idea, index|
-        li= link_to idea.title, category_idea_path(idea.category, idea) unless index > 5
+      - unless index > 5
+        li= link_to idea.title, category_idea_path(idea.category, idea)
 
   ul.more_info
     li
