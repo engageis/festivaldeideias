@@ -6,16 +6,11 @@
 - else
     li.notifications
       a.globe href="#"
-      - notifications = current_user.notifications
-      - if notifications.any?
-        .count= notifications.size
+      .count= current_user.new_notifications_count if current_user.new_notifications_count > 0
       .notes
         .title Notificações
         ul.notifications
-          - unless notifications.any?
-            span.no_notifications
-              | Nenhuma nova notificação
-          - notifications.each do |n|
+          - current_user.notifications[0..4].each do |n|
             li= n.html_safe
 
     li.logged_in

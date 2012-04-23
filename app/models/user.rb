@@ -21,9 +21,15 @@ class User < ActiveRecord::Base
     self.create(:name => hash['info']['name'], :email => hash['info']['email'])
   end
 
+  def new_notifications_count
+    Idea.new_collaborations(self).where(["created_at > ?", self.notifications_read_at]).size + 
+    Idea.collaborations_status_changed(self).where(["updated_at > ?", self.notifications_read_at]).size + 
+    Idea.collaborated_idea_changed(self).where(["updated_at > ?", self.notifications_read_at]).size
+  end
+
   def notifications
     Idea.new_collaborations(self).map do |i|
-      "<a href='#{category_idea_path(i.parent.category, i.parent.id)}'>#{i.user.name} quer colaborar com a sua ideia \"#{i.parent.title}\"</a>\""
+      "<a href='#{category_idea_path(i.parent.category, i.parent.id)}'>#{i.user.name} quer colaborar com a sua ideia \"#{i.parent.title}\"</a>"
     end +
     Idea.collaborations_status_changed(self).map do |i|
       "<a href='#{category_idea_path(i.parent.category, i.parent.id)}'>A sua colaboração para a ideia \"#{i.parent.title}\" foi #{i.accepted ? "aceita" : "rejeitada"}.</a>"

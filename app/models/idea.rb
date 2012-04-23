@@ -23,10 +23,10 @@ class Idea < ActiveRecord::Base
   scope :popular,   select("DISTINCT ON (ideas.id) ideas.*").
                     joins("INNER JOIN ideas b ON b.parent_id = ideas.id")
 
-  scope :new_collaborations, ->(user) { where(['parent_id IN (?) AND created_at > ?', user.ideas.map(&:id), user.notifications_read_at]) }
+  scope :new_collaborations, ->(user) { where(['parent_id IN (?)', user.ideas.map(&:id)]).order("created_at DESC") }
 
   scope :collaborations_status_changed, ->(user) { 
-    where(['user_id = ? AND accepted IS NOT NULL AND parent_id IS NOT NULL AND updated_at > ?', user.id, user.notifications_read_at])
+    where(['user_id = ? AND accepted IS NOT NULL AND parent_id IS NOT NULL', user.id]).order("updated_at DESC")
   }
 
   scope :collaborated_idea_changed, ->(user) {
@@ -34,7 +34,7 @@ class Idea < ActiveRecord::Base
               SELECT true FROM ideas AS collaboration
               WHERE collaboration.parent_id = ideas.id
               AND collaboration.user_id = ?
-          ) AND ideas.updated_at > ?', user.id, user.notifications_read_at])
+          )', user.id]).order("updated_at DESC")
   }
 
   def rejected_colaborations

@@ -19,4 +19,24 @@ describe User do
     its(:email){ should == fb['info']['email']}
     its(:name) { should == fb['info']['name']}
   end
+
+
+  describe "#new_notifications_count" do
+    before do
+      # The user read its notifications yesterday
+      @user = create(:user, notifications_read_at: Time.now - 1.day)
+
+      # The parent idea 
+      @idea = create(:idea, parent_id: nil)
+
+      # Covers the case: "When the idea receives a new colaboration."
+      create(:idea, parent_id: @idea.id)
+
+      # Covers the case: "When colaboration status changes"
+      create(:idea, parent_id: @idea.id, user: @user, accepted: false)
+
+    end
+    subject { @user.new_notifications_count }
+    it { should == 2 }
+  end
 end
