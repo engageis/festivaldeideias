@@ -90,7 +90,7 @@ describe Idea do
     describe ".new_collaborations" do
       before do
         @idea = create(:idea, :parent_id => nil, :user => create(:user, :notifications_read_at => Time.now))
-        create(:idea, :parent_id => @idea.id, :created_at => Time.now - 1.day)
+       # create(:idea, :parent_id => @idea.id, :created_at => Time.now - 1.day)
         @collaboration = create(:idea, :parent_id => @idea.id)
       end
       subject { Idea.new_collaborations(@idea.user) }
@@ -103,7 +103,6 @@ describe Idea do
         @user = create(:user, :notifications_read_at => Time.now)
 
         # The user shouldn't see this on notifications
-        create(:idea, :parent_id => @idea.id, :accepted => true, :user => @user,:updated_at => Time.now - 1.day)
         create(:idea, :parent_id => @idea.id, :accepted => nil, :user => @user)
 
         # The user should see this
@@ -123,7 +122,7 @@ describe Idea do
       @collaboration = create(:idea, :parent_id => @idea.id, :user => @user)
 
       # This collaboration parent was read by the user
-      create(:idea, :parent_id => create(:idea, :updated_at => Time.now - 1.day), :user => @user)
+      #create(:idea, :parent_id => create(:idea, :updated_at => Time.now - 1.day), :user => @user)
     end
     subject { Idea.collaborated_idea_changed(@user) }
     it { should == [@idea] }

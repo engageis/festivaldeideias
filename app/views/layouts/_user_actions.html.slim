@@ -6,16 +6,11 @@
 - else
     li.notifications
       a.globe href="#"
-      - notifications = current_user.notifications
-      - if notifications.any?
-        .count= notifications.size
+      .count= current_user.new_notifications_count if current_user.new_notifications_count > 0
       .notes
         .title Notificações
         ul.notifications
-          - unless notifications.any?
-            span.no_notifications
-              | Nenhuma nova notificação
-          - notifications.each do |n|
+          - current_user.notifications[0..4].each do |n|
             li= n.html_safe
 
     li.logged_in
@@ -26,7 +21,7 @@
         = image_tag current_user.services.first.facebook_avatar, :alt => "Profile image", :title => current_user.name, :class => "medium_profile_image"
         .content
           .score
-            - ideas = current_user.ideas
+            - ideas = current_user.ideas.where(parent_id: nil)
             - collab = current_user.colaborations
             |#{ideas.size} ideia(s) própria(s), #{collab.size} ideias colaboradas.
           ul
