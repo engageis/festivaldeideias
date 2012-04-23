@@ -62,7 +62,7 @@ html
           = yield
         .clear
 
-      - if current_page?(root_url)
+      - if current_page?(root_url) or request.url.match(/navegue-nas-ideias/)
         = render :partial => "layouts/statistics"
 
     = render :partial => "layouts/footer"
