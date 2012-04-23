@@ -81,9 +81,12 @@ aside
     +bucket()
     overflow: hidden
     .none
-      padding: 10px
-      background: $lightyellow
-      border: solid 1px $yellow
+      padding: 10px 20px
+      text-align: center
+      color: darken($yellow, 30%)
+      background: darken($yellow, 10%)
+      +border-radius(50px)
+      +text-shadow(0px 1px 1px $lightyellow)
     .x_more
       clear: both
       text-align: right
