@@ -4,7 +4,11 @@ h4
 .community
    ul
     - if @users.any?
-      - @users.each do |user|
+      - @users[0..29].each do |user|
         li
           - profile = user.services.first
           = link_to (image_tag profile.facebook_avatar, :alt => user.name, :title => user.name), profile.facebook_profile, :target => "_blank"
+
+    h4
+      span
+        | E mais #{@users.size}!
