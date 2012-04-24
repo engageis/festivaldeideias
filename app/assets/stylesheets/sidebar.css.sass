@@ -71,22 +71,14 @@ aside
         padding: 5px
 
   .youre_boss
-    +bucket
-    background:
-      color: $orange
-      color: rgba(255, 155, 15, 0.3)
-    border-color: lighten($orange, 10%)
+    +hightlight
+    margin: 0 0 40px 0
 
   .community
     +bucket()
     overflow: hidden
     .none
-      padding: 10px 20px
-      text-align: center
-      color: darken($yellow, 30%)
-      background: darken($yellow, 10%)
-      +border-radius(50px)
-      +text-shadow(0px 1px 1px $lightyellow)
+      +hightlight
     .x_more
       clear: both
       text-align: right

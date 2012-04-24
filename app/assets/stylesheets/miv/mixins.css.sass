@@ -26,6 +26,17 @@
     background: 
       color: lighten($color, 10%)
 
+@mixin hightlight
+  padding: 15px 20px
+  line-height: 1.3em
+  text-align: center
+  color: darken($yellow, 50%)
+  background: darken($yellow, 10%)
+  float: left
+  +border-radius(50px)
+  +text-shadow(0px 1px 1px $lightyellow)
+  p
+    margin-bottom: 5px
 
 @mixin bucket($padding: 0)
   padding: $padding

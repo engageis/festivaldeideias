@@ -39,8 +39,8 @@ pt-BR:
     # Colaboration
     colaboration:
       moderation:
-        by_you: "Esta ideia é moderada por você"
-        can_edit: " . Você pode editá-la quando quiser clicando nos textos e aceitar as colaborações que outras pessoas enviam."
+        by_you: "Esta ideia foi criada e é moderada por você."
+        can_edit: "Você pode editá-la quando quiser clicando nos textos e aceitar as colaborações que outras pessoas enviam."
       new:
         start: "Colabore com esta ideia"
         about: "O que deseja colaborar nesta ideia?"
@@ -55,7 +55,7 @@ pt-BR:
       who_colaborated: "Quem já colaborou com esta ideia"
       no_colaborators_yet: "Ainda não há colaboradores nesta ideia, quem sabe você não é o primeiro?"
       zero_colaborators: "Ainda não há colaboradores nesta ideia."
-      know_more: "Saiba mais sobre colaborações"
+      know_more: "Entenda as colaborações"
       success: "Sua colaboração foi envidada! O dono da ideia precisa aceitá-la para que ela apareça."
       accepted: "Você aceitou a colaboração de %{user} e ela foi incorporada na ideia anterior"
       rejected: "A colaboração foi rejeitada"

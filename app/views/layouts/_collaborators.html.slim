@@ -10,7 +10,7 @@
         - unless current_user == @idea.user
           li.none= t('idea.colaboration.no_colaborators_yet')
         - else
-          li= t('idea.colaboration.zero_colaborators')
+          li.none= t('idea.colaboration.zero_colaborators')
     - else
       ul
         - @collaborators.each do |user|
@@ -20,10 +20,9 @@
 
   - if can?(:edit, @idea)
     h3 Você é o moderador
+    h4 Esta ideia foi criada e é moderada por você
     .youre_boss
       p
-        strong
-          = t('idea.colaboration.moderation.by_you')
         = t('idea.colaboration.moderation.can_edit')
-      = link_to t("idea.colaboration.know_more"), page_path("co-criacao"), :class => "view_more"
-      br
+      p
+        = link_to t("idea.colaboration.know_more"), page_path("co-criacao"), :class => "view_more"
