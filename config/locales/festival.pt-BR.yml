@@ -51,7 +51,7 @@ pt-BR:
         give_a_headline: "Se quiser, colabore no resumo da ideia:"
         choose_a_category: "Em que tema esta ideia se encaixa?"
       accept:
-        no_colaborations: "Nenhuma colaboração para aceite, ainda."
+        no_colaborations: "Não há colaborações para moderar no momento."
         some_colaborations: "Você possui %{number} colaborações para aceite!"
         what_do_you_want_html: "O que você deseja fazer com a colaboração de <strong>%{user}</strong>?"
       moderate:
