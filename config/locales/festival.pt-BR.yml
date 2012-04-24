@@ -25,7 +25,7 @@ pt-BR:
   idea:
     new:
       step_1: "1. Descreva"
-      step_2: "2. Refine"
+      step_2: "2. Nomeie e classifique"
       step_3: "3. Publique"
       start: "Inicie uma ideia"
       about: "O que é esta ideia?"
@@ -38,7 +38,9 @@ pt-BR:
 
     # Colaboration
     colaboration:
+      title: "Colaboradores"
       moderation:
+        title: "Você é o moderador"
         by_you: "Esta ideia foi criada e é moderada por você."
         can_edit: "Você pode editá-la quando quiser clicando nos textos e aceitar as colaborações que outras pessoas enviam."
       new:
@@ -52,6 +54,9 @@ pt-BR:
         no_colaborations: "Nenhuma colaboração para aceite, ainda."
         some_colaborations: "Você possui %{number} colaborações para aceite!"
         what_do_you_want_html: "O que você deseja fazer com a colaboração de <strong>%{user}</strong>?"
+      moderate:
+        text: "colaborou com esta ideia"
+        view: "ver colaboração"
       who_colaborated: "Quem já colaborou com esta ideia"
       no_colaborators_yet: "Ainda não há colaboradores nesta ideia, quem sabe você não é o primeiro?"
       zero_colaborators: "Ainda não há colaboradores nesta ideia."
