@@ -10,4 +10,5 @@ h4
           = link_to (image_tag profile.facebook_avatar, :alt => user.name, :title => user.name), profile.facebook_profile, :target => "_blank"
 
       .x_more
-        | + #{@users.size} pessoas
+        - if @users.size > 30
+          | + #{@users.size - 30} pessoas
