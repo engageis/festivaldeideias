@@ -6,10 +6,9 @@
   <!-- Google Plus -->
 
   <%
-      url = options[:url]
+      url = options[:url] || request.url
       # <nome da ideia> - Festival de Ideias 2012 <link da ideia> #festideias
-      twitter_format = "%s - Festival de Ideias 2012 %s #festideias"
-      twitter_text = @idea.respond_to?(:title) ? twitter_format % [@idea.title, request.url] : "Festival de Ideias"
+      twitter_text = @idea.respond_to?(:title) ? @idea.title : "Festival de Ideias"
   %>
 
   <!-- Twitter -->
@@ -17,7 +16,8 @@
     <a
       href="https://twitter.com/share"
       class="twitter-share-button"
-      data-url="<%= url || request.url %>"
+      data-url="<%= url %>"
+      data-hashtags="festideias"
       data-text="<%= twitter_text %>"
       data-lang="pt"
       data-size="<%= size %>"
