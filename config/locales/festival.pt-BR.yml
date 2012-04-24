@@ -21,6 +21,7 @@ pt-BR:
       subject: "Sua ideia recebeu uma colaboração!"
       body:
         header: "Olá %{name}!"
+
   # Main texts for idea (create, edit and show actions are here)
   idea:
     new:
@@ -65,6 +66,27 @@ pt-BR:
       accepted: "Você aceitou a colaboração de %{user} e ela foi incorporada na ideia anterior"
       rejected: "A colaboração foi rejeitada"
 
+    # Events
+    events:
+      title: "Eventos"
+      subtitle: "Reúna-se fora da internet!"
+      group: "Participe do Grupo"
+      event: "Crie e participe de eventos"
+    
+    # Community
+    community:
+      title: "Comunidade"
+      subtitle: "Quem já faz parte"
+
+    # Idea value
+    value:
+      title: "Custo de realização"
+      less: "Consegue realizar esta ideia com menos? "
+
+    # Internal menu
+    menu:
+        title: "Menu interno"
+        subtitle: "Navegue nas páginas internas"
     # Messages
     message:
       success: "Sua ideia foi criada com sucesso!"
@@ -79,8 +101,12 @@ pt-BR:
       header: "Ideias Populares"
       about: "Uma ideia popular é aquela que tem bastante interação por contribuição e comentários de usuários."
 
-    # É aqui mesmo, Natália...
+    # Filters
     filters:
+      title: "Navegue nas ideias"
+      by_stats: "Por estatísticas"
+      by_cat: "Por tema"
+
       popular:
         title: 'Mais populares'
         about: 'Uma ideia popular é a que tem maior número de comentários, colaborações e divulgação em redes sociais.'
@@ -95,7 +121,7 @@ pt-BR:
         about: "Selecionamos algumas ideias legais que estão rolando na plataforma! Quem sabe você não se interessa e começa colaborando com uma delas? <a href='%{url}' class='view_more'>Entenda as colaborações</a>"
       category:
         title: '%{category_name}'
-        about: "asiahse"
+        about: ""
 
   # Buttons & Boxes
   buttons:

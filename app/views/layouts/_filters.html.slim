@@ -1,7 +1,9 @@
 .navigation.filter
-  h3 Navegue nas ideias
+  h3
+    = t "idea.filters.title"
 
-  h4 Por estatísticas
+  h4
+    = t "idea.filters.by_stats"
 
   ul.by_statistics
     // Determina o link ativo
@@ -18,7 +20,9 @@
     li class=(path == latest_path ? 'selected' : '')
       = link_to t('idea.filters.modified.title'), latest_path, :class => "modified", :'data-title' => t('idea.filters.modified.title'), :'data-about' => t('idea.filters.modified.about')
 
-  h4 Por tema
+  h4
+    = t "idea.filters.by_cat"
+
   ul.categories_list
     //
     // TODO: Fix the category CSS badge. Use only the image_tag
