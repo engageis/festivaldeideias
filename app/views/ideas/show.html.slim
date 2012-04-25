@@ -28,8 +28,8 @@ header
             ul
               li
                 = collab.user.name
-                |  colaborou com esta ideia
-                = link_to "ver colaboração", collaboration_idea_path(@idea, collab: collab), :class => "view_more"
+                = t "idea.colaboration.moderate.text"
+                = link_to t("idea.colaboration.moderate.view"), collaboration_idea_path(@idea, collab: collab), :class => "view_more"
               / .buttons[style="float:right"]
               /   = link_to "Aceitar", accept_collaboration_idea_path(@idea, collab: collab)
               /   = link_to "Recusar", refuse_collaboration_idea_path(@idea, collab: collab)

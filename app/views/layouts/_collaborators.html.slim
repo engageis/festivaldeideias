@@ -1,5 +1,6 @@
 - if @idea
-  h3 Colaboradores
+  h3
+    = t('idea.colaboration.title')
   h4
     = t('idea.colaboration.who_colaborated')
     span= @collaborators.size if @collaborators.any?
@@ -7,10 +8,11 @@
   .community
     - if @idea.accepted_colaborations.size == 0
       ul
-        - unless current_user == @idea.user
-          li.none= t('idea.colaboration.no_colaborators_yet')
-        - else
-          li.none= t('idea.colaboration.zero_colaborators')
+        li.none
+          - unless current_user == @idea.user
+            = t('idea.colaboration.no_colaborators_yet')
+          - else
+            = t('idea.colaboration.zero_colaborators')
     - else
       ul
         - @collaborators.each do |user|
@@ -19,8 +21,10 @@
     .clear
 
   - if can?(:edit, @idea)
-    h3 Você é o moderador
-    h4 Esta ideia foi criada e é moderada por você
+    h3
+      = t('idea.colaboration.moderation.title')
+    h4
+      = t('idea.colaboration.moderation.by_you')
     .youre_boss
       p
         = t('idea.colaboration.moderation.can_edit')

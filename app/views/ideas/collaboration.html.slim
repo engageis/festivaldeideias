@@ -1,46 +1,45 @@
-#idea
-  header
-    - if @idea
-      = content_for :meta_tags do
-        meta[property="og:title" content=@idea.title]
-        meta[property="og:description" content=@idea.headline]
-        meta[property="og:url" content=category_idea_url(@idea.category,@idea)]
+header
+  - if @idea
+    = content_for :meta_tags do
+      meta[property="og:title" content=@idea.title]
+      meta[property="og:description" content=@idea.headline]
+      meta[property="og:url" content=category_idea_url(@idea.category,@idea)]
 
-      - if can?(:manage, @idea)
+    - if can?(:manage, @idea)
 
-        h3 Veja abaixo as diferenças entre a versão anterior e a sugerida
-        .collab
-          h4
-            = t "idea.colaboration.accept.what_do_you_want_html", user: @collab.user.name
-            .buttons[style="float:right"]
-              button[type="submit"]
-                = link_to "Aceitar", accept_collaboration_idea_path(@idea, collab: @collab)
-              button[type="cancel"]
-                = link_to "Recusar", refuse_collaboration_idea_path(@idea, collab: @collab)
+      h3 Veja abaixo as diferenças entre a versão anterior e a sugerida
+      .collab
+        h4
+          = t "idea.colaboration.accept.what_do_you_want_html", user: @collab.user.name
+          .buttons[style="float:right"]
+            button[type="submit"]
+              = link_to "Aceitar", accept_collaboration_idea_path(@idea, collab: @collab)
+            button[type="cancel"]
+              = link_to "Recusar", refuse_collaboration_idea_path(@idea, collab: @collab)
 
-      // Category badge
-      = image_tag @idea.category.badge, :alt => @idea.category.name, :title => @idea.category.name, :class => "badge"
+    // Category badge
+    = image_tag @idea.category.badge, :alt => @idea.category.name, :title => @idea.category.name, :class => "badge"
 
-      // Idea's title
-      h1
-        / = @idea.title
-        = raw Differ.diff_by_word(@collab.title, @idea.title)
-      // Statistics of this idea
-      section.idea_stats
-        span
-          | Moderada por &nbsp;
-          // User profile
-          - profile = @idea.user.services.first.facebook_profile
-          // User profile url
-          = link_to @idea.user.name, profile, :target => "_blank", :class => "user_info"
-          | &nbsp; &mdash; &nbsp;
+    // Idea's title
+    h1
+      / = @idea.title
+      = raw Differ.diff_by_word(@collab.title, @idea.title)
+    // Statistics of this idea
+    section.idea_stats
+      span
+        | Moderada por &nbsp;
+        // User profile
+        - profile = @idea.user.services.first.facebook_profile
+        // User profile url
+        = link_to @idea.user.name, profile, :target => "_blank", :class => "user_info"
+        | &nbsp; &mdash; &nbsp;
 
-          // Using rails helper for time ago
-          | Última alteração feita há&nbsp;
-          = time_ago_in_words(@idea.updated_at)
+        // Using rails helper for time ago
+        | Última alteração feita há&nbsp;
+        = time_ago_in_words(@idea.updated_at)
 
-  // Colaborar muda para Editar quando sou o dono da ideia
-  article
-    div
-      = raw Differ.diff_by_word(@collab.description_html, @idea.description_html)
-      / = @idea.description_html
+// Colaborar muda para Editar quando sou o dono da ideia
+article
+  div
+    = raw Differ.diff_by_word(@collab.description_html, @idea.description_html)
+    / = @idea.description_html

@@ -21,11 +21,12 @@ pt-BR:
       subject: "Sua ideia recebeu uma colaboração!"
       body:
         header: "Olá %{name}!"
+
   # Main texts for idea (create, edit and show actions are here)
   idea:
     new:
       step_1: "1. Descreva"
-      step_2: "2. Refine"
+      step_2: "2. Nomeie e classifique"
       step_3: "3. Publique"
       start: "Inicie uma ideia"
       about: "O que é esta ideia?"
@@ -38,7 +39,9 @@ pt-BR:
 
     # Colaboration
     colaboration:
+      title: "Colaboradores"
       moderation:
+        title: "Você é o moderador"
         by_you: "Esta ideia foi criada e é moderada por você."
         can_edit: "Você pode editá-la quando quiser clicando nos textos e aceitar as colaborações que outras pessoas enviam."
       new:
@@ -49,9 +52,12 @@ pt-BR:
         give_a_headline: "Se quiser, colabore no resumo da ideia:"
         choose_a_category: "Em que tema esta ideia se encaixa?"
       accept:
-        no_colaborations: "Nenhuma colaboração para aceite, ainda."
+        no_colaborations: "Não há colaborações para moderar no momento."
         some_colaborations: "Você possui %{number} colaborações para aceite!"
         what_do_you_want_html: "O que você deseja fazer com a colaboração de <strong>%{user}</strong>?"
+      moderate:
+        text: "colaborou com esta ideia"
+        view: "ver colaboração"
       who_colaborated: "Quem já colaborou com esta ideia"
       no_colaborators_yet: "Ainda não há colaboradores nesta ideia, quem sabe você não é o primeiro?"
       zero_colaborators: "Ainda não há colaboradores nesta ideia."
@@ -60,6 +66,27 @@ pt-BR:
       accepted: "Você aceitou a colaboração de %{user} e ela foi incorporada na ideia anterior"
       rejected: "A colaboração foi rejeitada"
 
+    # Events
+    events:
+      title: "Eventos"
+      subtitle: "Reúna-se fora da internet!"
+      group: "Participe do Grupo"
+      event: "Crie e participe de eventos"
+    
+    # Community
+    community:
+      title: "Comunidade"
+      subtitle: "Quem já faz parte"
+
+    # Idea value
+    value:
+      title: "Custo de realização"
+      less: "Consegue realizar esta ideia com menos? "
+
+    # Internal menu
+    menu:
+        title: "Menu interno"
+        subtitle: "Navegue nas páginas internas"
     # Messages
     message:
       success: "Sua ideia foi criada com sucesso!"
@@ -74,8 +101,12 @@ pt-BR:
       header: "Ideias Populares"
       about: "Uma ideia popular é aquela que tem bastante interação por contribuição e comentários de usuários."
 
-    # É aqui mesmo, Natália...
+    # Filters
     filters:
+      title: "Navegue nas ideias"
+      by_stats: "Por estatísticas"
+      by_cat: "Por tema"
+
       popular:
         title: 'Mais populares'
         about: 'Uma ideia popular é a que tem maior número de comentários, colaborações e divulgação em redes sociais.'
@@ -90,7 +121,7 @@ pt-BR:
         about: "Selecionamos algumas ideias legais que estão rolando na plataforma! Quem sabe você não se interessa e começa colaborando com uma delas? <a href='%{url}' class='view_more'>Entenda as colaborações</a>"
       category:
         title: '%{category_name}'
-        about: "asiahse"
+        about: ""
 
   # Buttons & Boxes
   buttons:
