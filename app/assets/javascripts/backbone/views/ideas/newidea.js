@@ -131,6 +131,10 @@ App.Ideas.NewIdea = App.BaseView.extend({
 
     showRefinement: function () {
         var box, descriptionText;
+
+        // Apply currency masks
+        $(".currency").maskMoney({ symbol: 'R$ ', showSymbol: true, thousands: '.', decimal: ',', symbolStay: true, allowNegative: true }).applyMask();
+
         if (!this.canGoToRefinement()) {
             return false;
         }

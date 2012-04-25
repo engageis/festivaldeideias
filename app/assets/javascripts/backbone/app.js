@@ -15,6 +15,8 @@ var App = window.App = {
 
   Common: {
     init: function () {
+      var notification;
+
       // Start JS router if it's not started yet
       if(!App.routes && _.isFunction(App.Router)){
         App.routes = new App.Router();
@@ -35,8 +37,19 @@ var App = window.App = {
       // Carrega os eventos do facebook e apende na barra lateral
       App.Common.startPjaxLinks();
 
-      if (App.Common.isLoggedIn())
-        var notification = new App.Common.Notifications({ el: $('.user_actions')[0] });
+      if (App.Common.isLoggedIn()) {
+        notification = new App.Common.Notifications({ el: $('.user_actions')[0] });
+      }
+
+      // Apply currency masks
+      $(".currency").maskMoney({
+        symbol: 'R$ ',
+        showSymbol: true,
+        thousands: '.',
+        decimal: ',',
+        symbolStay: true,
+        allowNegative: true
+      }).applyMask();
     },
 
     finish: function(){

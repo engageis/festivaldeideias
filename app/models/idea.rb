@@ -107,4 +107,16 @@ class Idea < ActiveRecord::Base
     total_count = JSON.parse(open(facebook_query_url + URI.encode(fql % path)).read).first["total_count"]
     self.update_attribute(:likes, total_count.to_i) if total_count
   end
+
+  # Remove R$ e pontuação do investimento mínimo. Tem o unmaskMoney,
+  # mas depende do Javascript e não sei se confio só nisso.
+  def minimum_investment=(text)
+    number = text.gsub(/\D+/, '')
+    # Se por algum motivo o texto vier curto demais
+    while number.length < 3
+      number = "0" + number
+    end
+    # NOTE: SEMPRE será inserido um ponto separador de decimais
+    super(number[0..-3] + '.' + number[-2..-1])
+  end
 end

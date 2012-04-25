@@ -31,6 +31,17 @@ class IdeasController < ApplicationController
       return redirect_to request.referer
     end
 
+    # TODO: Colocar isso no model da Ideia
+    # Removendo R$ e pontuação do investimento mínimo, eu sei
+    # que tem o unmaskMoney, mas não estava conseguindo fazer
+    # funcionar, e também não sei se confio só nisso.
+    number = params[:idea][:minimum_investment].gsub(/\D+/, '')
+    # Se por algum motivo não houver javascript
+    while number.length < 3
+      number = "0" + number
+    end
+    params[:idea][:minimum_investment] = number[0..-3] + '.' + number[-2..-1]
+
     @idea = Idea.new(params[:idea])
     @idea.user = current_user if current_user
     # Agora depois de criada uma ideia, ela é exibida
