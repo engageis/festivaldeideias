@@ -9,10 +9,13 @@ App.Ideas.Show = App.EditableView.extend({
       Backbone.history.navigate('');
     });
 
-    $(".currency textarea").live("focus", function () {
-      $(this).maskMoney({ symbol: 'R$ ', showSymbol: true, thousands: '.', decimal: ',', symbolStay: true, allowNegative: false }).applyMask();
+    $(document).bind("afterReveal.facebox", function () {
+      App.applyMoneyMask($('input.currency'));
     });
 
+    $(".currency textarea").live("focus", function () {
+      App.applyMoneyMask($(this));
+    });
   },
 
   bindRoutes: function () {

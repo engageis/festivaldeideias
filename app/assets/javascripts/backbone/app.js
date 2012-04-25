@@ -117,5 +117,10 @@ var App = window.App = {
         }
       }
     }),
+  },
+
+  applyMoneyMask: function (obj) {
+    obj.maskMoney({ symbol: 'R$ ', showSymbol: true, thousands: '.', decimal: ',', symbolStay: true, allowNegative: false }).applyMask();
   }
 };
+
