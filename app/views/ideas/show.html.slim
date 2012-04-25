@@ -62,6 +62,17 @@ article
     / = raw Differ.diff_by_word(@idea.title, collab.description_html)
     = @idea.description_html
 
+  /*h3=t('idea.new.minimum_investment')*/
+  div[
+  class=(ability_class + ' currency')
+  data-placeholder=t('jquery.editable.defaults.tooltip')
+  data-url=idea_path(@idea)
+  data-attribute="minimum_investment"
+  data-raw=@idea.minimum_investment
+  data-raw-attribute="formatted_minimum_investment"
+  data-maxlength="16"
+  ] = @idea.formatted_minimum_investment
+
   - if can?(:edit, @idea)
     //a.button.edit.right Editar ideia
     .clear

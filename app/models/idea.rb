@@ -65,6 +65,8 @@ class Idea < ActiveRecord::Base
       :description_html => description_html,
       :likes => likes,
       :colaborations => colaborations.count,
+      :minimum_investment => minimum_investment,
+      :formatted_minimum_investment => formatted_minimum_investment,
       :url => category_idea_path(category, self)
     }
   end
@@ -77,6 +79,10 @@ class Idea < ActiveRecord::Base
   # Convert the description text
   def description_html
     convert_html description
+  end
+
+  def formatted_minimum_investment
+    ActionController::Base.helpers.number_to_currency(minimum_investment)
   end
 
 
@@ -106,5 +112,22 @@ class Idea < ActiveRecord::Base
     path = category_idea_url(self.category, self)
     total_count = JSON.parse(open(facebook_query_url + URI.encode(fql % path)).read).first["total_count"]
     self.update_attribute(:likes, total_count.to_i) if total_count
+  end
+
+  # Remove R$ e pontuação do investimento mínimo. Tem o unmaskMoney,
+  # mas depende do Javascript e não sei se confio só nisso.
+  def minimum_investment=(text)
+    case text
+    when Float, Integer
+      super(text.to_f)
+    else
+      number = text.to_s.gsub(/\D+/, '')
+      # Se por algum motivo o texto vier curto demais
+      while number.length < 3
+        number = "0" + number
+      end
+      # NOTE: SEMPRE será inserido um ponto separador de decimais
+      super(number[0..-3] + '.' + number[-2..-1])
+    end
   end
 end
