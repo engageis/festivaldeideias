@@ -65,6 +65,8 @@ class Idea < ActiveRecord::Base
       :description_html => description_html,
       :likes => likes,
       :colaborations => colaborations.count,
+      :minimum_investment => minimum_investment,
+      :formatted_minimum_investment => formatted_minimum_investment,
       :url => category_idea_path(category, self)
     }
   end
@@ -77,6 +79,10 @@ class Idea < ActiveRecord::Base
   # Convert the description text
   def description_html
     convert_html description
+  end
+
+  def formatted_minimum_investment
+    ActionController::Base.helpers.number_to_currency(minimum_investment)
   end
 
 

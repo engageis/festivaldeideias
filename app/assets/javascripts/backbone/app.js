@@ -41,15 +41,6 @@ var App = window.App = {
         notification = new App.Common.Notifications({ el: $('.user_actions')[0] });
       }
 
-      // Apply currency masks
-      $(".currency").maskMoney({
-        symbol: 'R$ ',
-        showSymbol: true,
-        thousands: '.',
-        decimal: ',',
-        symbolStay: true,
-        allowNegative: true
-      }).applyMask();
     },
 
     finish: function(){
