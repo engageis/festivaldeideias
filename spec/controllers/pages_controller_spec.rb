@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe PagesController do
   before do
-    @page = create(:page)
+    @page = Page.make!
   end
 
   describe "GET #index" do

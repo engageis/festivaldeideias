@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Service do
   before do
-    @user = create(:user)
+    @user = User.make! 
   end
   describe "Validations/Associations" do
     it { should validate_presence_of :uid }
@@ -16,7 +16,7 @@ describe Service do
   describe "#find_from_hash" do
     it "Should find the provider and UID when it's already in database" do
       fb = FACEBOOK_HASH_DATA
-      service = create(:service, :provider => fb['provider'], :uid => fb['uid'], :user => @user)
+      service = Service.make!(:provider => fb['provider'], :uid => fb['uid'], :user => @user)
       Service.find_from_hash(fb).should_not be_nil
     end
 

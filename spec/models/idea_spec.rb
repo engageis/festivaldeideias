@@ -25,8 +25,8 @@ describe Idea do
 
     describe "#create_colaboration" do
       it "Should create a child idea in order to colaborate" do
-        @idea = create(:idea)
-        @user = create(:user)
+        @idea = Idea.make! 
+        @user = User.make!
         idea = {
           :title => "Test",
           :headline => "Test",
@@ -42,7 +42,7 @@ describe Idea do
 
     describe "#as_json" do
       it "Should return a given json output" do
-        @idea = create(:idea)
+        @idea = Idea.make!
         idea_json = {
           :id => @idea.id,
           :title => @idea.title,
@@ -63,7 +63,7 @@ describe Idea do
 
     describe "#to_param" do
       it "Should concatenate id and title" do
-        @idea = create(:idea)
+        @idea = Idea.make!
         @idea.to_param.should == "#{@idea.id}-#{@idea.title.parameterize}"
       end
     end
@@ -72,7 +72,7 @@ describe Idea do
     describe "#description_html" do
       it "Should convert the description to html" do
         string = "<p>This is a description</p>\n"
-        @idea = create(:idea, :description => "This is a description")
+        @idea = Idea.make!(:description => "This is a description")
         @idea.description_html.should == string
       end
     end
@@ -82,16 +82,16 @@ describe Idea do
         str = "This is a string with a link: http://google.com"
         str_html = "<p>This is a string with a link: <a href=\"http://google.com\" target=\"_blank\">http://google.com</a></p>\n"
 
-        @idea = create(:idea)
+        @idea = Idea.make!
         @idea.convert_html(str).should == str_html
       end
     end
 
     describe ".new_collaborations" do
       before do
-        @idea = create(:idea, :parent_id => nil, :user => create(:user, :notifications_read_at => Time.now))
+        @idea = Idea.make!(:parent_id => nil, :user => User.make!(:notifications_read_at => Time.now))
        # create(:idea, :parent_id => @idea.id, :created_at => Time.now - 1.day)
-        @collaboration = create(:idea, :parent_id => @idea.id)
+        @collaboration =  Idea.make!(:parent_id => @idea.id)
       end
       subject { Idea.new_collaborations(@idea.user) }
       it { should == [@collaboration] }
@@ -99,14 +99,14 @@ describe Idea do
 
     describe ".collaborations_status_changed" do
       before do
-        @idea = create(:idea, :parent_id => nil)
-        @user = create(:user, :notifications_read_at => Time.now)
+        @idea = Idea.make!(:parent_id => nil)
+        @user = User.make!(:notifications_read_at => Time.now)
 
         # The user shouldn't see this on notifications
-        create(:idea, :parent_id => @idea.id, :accepted => nil, :user => @user)
+        Idea.make!(:parent_id => @idea.id, :accepted => nil, :user => @user)
 
         # The user should see this
-        @collaboration = create(:idea, :parent_id => @idea.id, :accepted => true, :user => @user)
+        @collaboration = Idea.make!(:parent_id => @idea.id, :accepted => true, :user => @user)
       end
 
       subject { Idea.collaborations_status_changed(@user) }
@@ -117,9 +117,9 @@ describe Idea do
 
   describe ".collaborated_idea_changed" do
     before do
-      @user = create(:user, :notifications_read_at => Time.now)
-      @idea = create(:idea, :parent_id => nil)
-      @collaboration = create(:idea, :parent_id => @idea.id, :user => @user)
+      @user = User.make!(:notifications_read_at => Time.now)
+      @idea = Idea.make!(:parent_id => nil)
+      @collaboration = Idea.make!(:parent_id => @idea.id, :user => @user)
 
       # This collaboration parent was read by the user
       #create(:idea, :parent_id => create(:idea, :updated_at => Time.now - 1.day), :user => @user)

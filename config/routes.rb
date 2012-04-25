@@ -1,5 +1,3 @@
-# coding: utf-8
-
 FestivalDeIdeias::Application.routes.draw do
 
   # First role routes
@@ -19,48 +17,42 @@ FestivalDeIdeias::Application.routes.draw do
   end
   resources :ideas do
     member do
-      put "colaborate", :as => :colaborate
-      get "accept_collaboration", :as => :accept_collaboration
-      get "refuse_collaboration", :as => :refuse_collaboration
-      get "collaboration", :as => :collaboration
+      put "colaborate",                   :as => :colaborate
+      get "accept_collaboration",         :as => :accept_collaboration
+      get "refuse_collaboration",         :as => :refuse_collaboration
+      get "collaboration",                :as => :collaboration
     end
   end
   resources :non_facebook_users, :only => [:create]
 
-  # Scopes
-  # NOTE: Mudado a pedidos da Natália
   scope '/navegue-nas-ideias' do
-    get '/'        => redirect('/navegue-nas-ideias/popular'), :as => :scope_root
+    get '/'        => redirect('/navegue-nas-ideias/popular'),      :as => :scope_root
 
-    #get 'popular'  => "ideas#index", :defaults => { :popular  => true }, :as => :scope_popular
-    #get 'recent'   => "ideas#index", :defaults => { :recent   => true }, :as => :scope_recent
-    #get 'latest'   => "ideas#index", :defaults => { :latest   => true }, :as => :scope_latest
-    #get 'featured' => "ideas#index", :defaults => { :featured => true }, :as => :scope_featured
-
-    get 'popular'  => "ideas#popular", :as => :scope_popular
-    get 'recent'   => "ideas#recent", :as => :scope_recent
-    get 'latest'   => "ideas#modified", :as => :scope_latest
-    get 'featured' => "ideas#featured", :as => :scope_featured
+    get 'popular'  => "ideas#popular",    :as => :scope_popular
+    get 'recent'   => "ideas#recent",     :as => :scope_recent
+    get 'latest'   => "ideas#modified",   :as => :scope_latest
+    get 'featured' => "ideas#featured",   :as => :scope_featured
 
     # Match relations ideas vs categories
-    match ":idea_category_id/ideias", :to => "ideas#category", :as => :category_ideas
+    get ":idea_category_id/ideias",       :to => "ideas#category",  :as => :category_ideas
   end
   get '/ideias', :to => "ideas#index"
   scope '/ideias' do
-    # Coisa da Natália... "É 'semântico!!'"
-    match ":idea_category_id/ideia/:id", :to => "ideas#show",  :as => :category_idea
+    get ":idea_category_id/ideia/:id",    :to => "ideas#show",      :as => :category_idea
   end
 
-  get "/miv" => "miv#index" if Rails.env.development?
-  #root :to => redirect("/featured")
-  root :to => 'ideas#index', :defaults => { :recent => true }
+  root :to => 'ideas#index',              :defaults => { :recent => true }
 
 
   resources :pages, :only => [] do
     collection { post :sort }
   end
 
-  # Pages
-  # Tem que ficar no final
-  match '/:id', :to => 'pages#show', :as => :page
+  # Pages (have to be in the EOF)
+  get '/:id',                             :to => 'pages#show',      :as => :page
+
+
+  unless Rails.env.production?
+    get "/miv" => "miv#index" 
+  end
 end

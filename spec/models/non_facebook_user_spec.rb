@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe NonFacebookUser do
   before do
-    create :non_facebook_user
+    NonFacebookUser.make! 
   end
 
   describe "Validations" do
