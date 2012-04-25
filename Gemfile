@@ -51,11 +51,11 @@ end
 group :test do
   gem 'cucumber-rails'
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
   gem 'capybara'
   gem 'database_cleaner'
   gem "shoulda-matchers"
   gem 'rb-fsevent'
+  gem 'machinist', '>= 2.0.0.beta2'
 end
 
 # Gems used only for assets and not required

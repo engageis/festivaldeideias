@@ -6,8 +6,8 @@
 
 require 'cucumber/rails'
 require 'capybara/cucumber'
-World FactoryGirl::Syntax::Methods
 
+require "#{Rails.root}/spec/support/blueprints.rb"
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
 # order to ease the transition to Capybara we set the default here. If you'd
 # prefer to use XPath just remove this line and adjust any selectors in your
@@ -55,17 +55,3 @@ end
 # The :transaction strategy is faster, but might give you threading problems.
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
-
-OmniAuth.config.test_mode = true
-OmniAuth.config.mock_auth[:facebook] = {
-      "provider"=>"facebook",
-      "uid"=>"547955110",
-      "credentials"=>{"token"=>"fake_token"},
-      "info"=>{"nickname"=>nil,
-                    "email"=>"runeroniek@gmail.com",
-                    "first_name"=>"Luiz",
-                    "last_name"=>"Fonseca",
-                    "name"=>"Luiz Fonseca",
-                    "image"=>"http://graph.facebook.com/100000428222603/picture?type=square"
-      }
-}
