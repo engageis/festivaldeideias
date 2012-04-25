@@ -111,12 +111,17 @@ class Idea < ActiveRecord::Base
   # Remove R$ e pontuação do investimento mínimo. Tem o unmaskMoney,
   # mas depende do Javascript e não sei se confio só nisso.
   def minimum_investment=(text)
-    number = text.gsub(/\D+/, '')
-    # Se por algum motivo o texto vier curto demais
-    while number.length < 3
-      number = "0" + number
+    case text.class
+    when Float, Integer
+      super(text.to_f)
+    else
+      number = text.to_s.gsub(/\D+/, '')
+      # Se por algum motivo o texto vier curto demais
+      while number.length < 3
+        number = "0" + number
+      end
+      # NOTE: SEMPRE será inserido um ponto separador de decimais
+      super(number[0..-3] + '.' + number[-2..-1])
     end
-    # NOTE: SEMPRE será inserido um ponto separador de decimais
-    super(number[0..-3] + '.' + number[-2..-1])
   end
 end
