@@ -111,7 +111,7 @@ class Idea < ActiveRecord::Base
   # Remove R$ e pontuação do investimento mínimo. Tem o unmaskMoney,
   # mas depende do Javascript e não sei se confio só nisso.
   def minimum_investment=(text)
-    case text.class
+    case text
     when Float, Integer
       super(text.to_f)
     else
