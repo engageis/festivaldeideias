@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
       if i.accepted
         I18n.t("notifications.colaboration_accepted_html", link: category_idea_path(i.parent.category, i.parent.id), parent: i.parent.title)
       else
-        I18n.t("notifications.colaboration_refused_html", link: "google.com", parent: i.parent.title) 
+        I18n.t("notifications.colaboration_refused_html", link: category_colaboration_path(i.category, i.id), parent: i.parent.title) 
       end
     end +
     Idea.collaborated_idea_changed(self).map do |i|

@@ -38,7 +38,8 @@ FestivalDeIdeias::Application.routes.draw do
   end
   get '/ideias', :to => "ideas#index"
   scope '/ideias' do
-    get ":idea_category_id/ideia/:id",    :to => "ideas#show",      :as => :category_idea
+    get ":idea_category_id/ideia/:id",                  :to => "ideas#show",      :as => :category_idea
+    get ":idea_category_id/ideia/:id/ramify",           :to => "ideas#ramify",    :as => :category_colaboration
   end
 
   root :to => 'ideas#index',              :defaults => { :recent => true }

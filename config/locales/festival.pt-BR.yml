@@ -25,7 +25,7 @@ pt-BR:
   notifications:
     new_colaboration_html: "<a href='%{link}'><strong>%{name}</strong> quer colaborar com a sua ideia <strong>%{parent}</strong></a>"
     colaboration_accepted_html: "<a href='%{link}'>A sua colaboração para a ideia <strong>%{parent}</strong> foi aceita! Clique para ver como ficou a ideia final!</a>"
-    colaboration_refused_html: "A sua colaboração para a ideia <strong>%{parent}</strong> foi recusada. <a href='%{link}'><strong>Clique aqui se deseja criar uma nova ideia a partir desta colaboração</strong></a>"
+    colaboration_refused_html: "<a href='%{link}'>A sua colaboração para a ideia <strong>%{parent}</strong> foi recusada. <strong>Clique aqui se deseja criar uma nova ideia a partir desta colaboração</strong></a>"
     updated_idea_html: "<a href='%{link}'>A ideia <strong>%{parent}</strong> que você colaborou foi atualizada.</a>"
   # Main texts for idea (create, edit and show actions are here)
   idea:
