@@ -29,13 +29,17 @@ class User < ActiveRecord::Base
 
   def notifications
     Idea.new_collaborations(self).map do |i|
-      "<a href='#{category_idea_path(i.parent.category, i.parent.id)}'>#{i.user.name} quer colaborar com a sua ideia \"#{i.parent.title}\"</a>"
+      I18n.t("notifications.new_colaboration_html", link: category_idea_path(i.parent.category, i.parent.id), name: i.user.name, parent: i.parent.title)
     end +
     Idea.collaborations_status_changed(self).map do |i|
-      "<a href='#{category_idea_path(i.parent.category, i.parent.id)}'>A sua colaboração para a ideia \"#{i.parent.title}\" foi #{i.accepted ? "aceita" : "rejeitada"}.</a>"
+      if i.accepted
+        I18n.t("notifications.colaboration_accepted_html", link: category_idea_path(i.parent.category, i.parent.id), parent: i.parent.title)
+      else
+        I18n.t("notifications.colaboration_refused_html", link: "google.com", parent: i.parent.title) 
+      end
     end +
     Idea.collaborated_idea_changed(self).map do |i|
-      "<a href='#{category_idea_path(i.category, i.id)}'>A ideia \"#{i.title}\" a qual você colaborou foi atualizada.</a>"
+      I18n.t("notifications.updated_idea_html", link: category_idea_path(i.category, i.id), parent: i.title)
     end
   end
 end

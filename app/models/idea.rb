@@ -6,13 +6,14 @@ class Idea < ActiveRecord::Base
   include ActiveRecord::SpawnMethods
   include Rails.application.routes.url_helpers
 
-  validates_presence_of :title, :description, :category, :user
 
   belongs_to :user
   belongs_to :category, :class_name => "IdeaCategory", :foreign_key => :category_id
   belongs_to :parent  , :class_name => "Idea", :foreign_key => :parent_id
 
   has_many :colaborations, :class_name => "Idea", :foreign_key => :parent_id
+
+  validates_presence_of :title, :description, :category_id, :user_id
 
   # Scope for colaborations
   scope :not_accepted, where(:accepted => nil).order('created_at DESC')

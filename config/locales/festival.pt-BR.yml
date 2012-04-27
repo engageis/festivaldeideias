@@ -21,7 +21,12 @@ pt-BR:
       subject: "Sua ideia recebeu uma colaboração!"
       body:
         header: "Olá %{name}!"
-
+  
+  notifications:
+    new_colaboration_html: "<a href='%{link}'><strong>%{name}</strong> quer colaborar com a sua ideia <strong>%{parent}</strong></a>"
+    colaboration_accepted_html: "<a href='%{link}'>A sua colaboração para a ideia <strong>%{parent}</strong> foi aceita! Clique para ver como ficou a ideia final!</a>"
+    colaboration_refused_html: "A sua colaboração para a ideia <strong>%{parent}</strong> foi recusada. <a href='%{link}'><strong>Clique aqui se deseja criar uma nova ideia a partir desta colaboração</strong></a>"
+    updated_idea_html: "<a href='%{link}'>A ideia <strong>%{parent}</strong> que você colaborou foi atualizada.</a>"
   # Main texts for idea (create, edit and show actions are here)
   idea:
     new:
@@ -62,7 +67,7 @@ pt-BR:
       no_colaborators_yet: "Ainda não há colaboradores nesta ideia, quem sabe você não é o primeiro?"
       zero_colaborators: "Ainda não há colaboradores nesta ideia."
       know_more: "Entenda as colaborações"
-      success: "Sua colaboração foi envidada! O dono da ideia precisa aceitá-la para que ela apareça."
+      success: "Sua colaboração foi enviada! O dono da ideia precisa aceitá-la para que ela apareça."
       accepted: "Você aceitou a colaboração de %{user} e ela foi incorporada na ideia anterior"
       rejected: "A colaboração foi rejeitada"
 

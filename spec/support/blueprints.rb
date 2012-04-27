@@ -1,15 +1,16 @@
 require 'machinist/active_record'
 
-User.blueprint do
-  name { "name#{sn}" }
-  email { "email#{sn}@email.com" }
-  notifications_read_at { Time.now }
-end
-
 Service.blueprint do
   uid { "#{sn}" }
   provider { "facebook" }
   user
+end
+
+
+User.blueprint do
+  name { "name#{sn}" }
+  email { "email#{sn}@email.com" }
+  notifications_read_at { Time.now }
 end
 
 IdeaCategory.blueprint do
@@ -22,8 +23,10 @@ Idea.blueprint do
   title       { "Title #{sn}" }
   headline    { "Headline #{sn}" }
   description { "Description #{sn}" }
-  category
-  user 
+  category 
+  user
+  parent_id { nil }
+  accepted { nil }
 end
 
 Page.blueprint do 
