@@ -292,6 +292,7 @@ header.main
       position: relative
       padding: 10px 10px 9px 10px
       margin-right: -1px
+      +border-bottom-left-radius(3px)
       .no_notifications
         padding: 10px
         background: lighten(#666, 50%)
@@ -317,8 +318,13 @@ header.main
         padding: 0 3px
         +border-radius(2px)
 
-    li.logged_in
+
+    li.notifications, li.logged_in
       +background(linear-gradient(bottom,#373737,#464646 5px))
+      &:hover
+        +background(none)
+
+    li.logged_in
       +border-bottom-right-radius(3px)
       .name
         color: #FFF
@@ -331,7 +337,6 @@ header.main
         &:after
           content: ""
       &:hover
-        +background(none)
         border-bottom: 1px solid #FEFFFF
         a
         .user_menu
