@@ -1,8 +1,9 @@
 h3
-  = t "idea.value.title"
+  = t("idea.value.title")
+
 .idea_value
   span
-    | 25.000
+    = @idea.minimum_investment
   p 
     = t "idea.value.less"
-    = link_to t("idea.colaboration.new.start"), "#colaborate"
+    = link_to(t("idea.colaboration.new.start"), "#colaborate")
