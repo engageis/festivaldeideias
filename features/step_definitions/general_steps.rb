@@ -48,3 +48,109 @@ end
 When /^I click in the notifications bar$/ do
   page.execute_script("$('li.notifications').trigger('click')")
 end
+
+
+
+############## Admin Steps
+
+Given /^I'm an admin user$/ do
+  @user = AdminUser.make!
+end
+
+When /^I go to the admin index page$/ do
+  visit admin_dashboard_url
+end
+
+When /^I fill the admin login form with my information$/ do
+  within "#session_new" do
+    fill_in "admin_user_email", :with => @user.email
+    fill_in "admin_user_password", :with => "password" 
+  end
+  click_button "Login"
+end
+
+Then /^I should be in the "([^"]*)"$/ do |arg|
+  current_path.should == eval(arg)
+end
+
+
+## Random steps
+
+Given /^(\d+) category exist$/ do |count|
+  @categories = []
+  count.to_i.times do |f|
+    f = IdeaCategory.make!
+    @categories << f
+  end
+end
+
+And /^(\d+) ideas exist$/ do |count|
+  @ideas = []
+  @user = Service.make!.user
+
+  count.to_i.times do |f|
+    f = Idea.make!(:user => @user, category: @categories.first)
+    @ideas << f
+  end
+end
+
+When /^I visit the ideas index page$/ do
+  visit root_path
+end
+
+Then /^I should see a list with ideas$/ do
+ page.should have_content(@ideas.first.title)
+ page.should have_content(@ideas.last.title)
+end
+
+Then /^I click the idea title$/ do
+  click_link "#{@ideas.first.title}"
+end
+
+And /^I should see a list of categories$/ do
+  page.should have_content(@categories.first.name)
+  page.should have_content(@categories.last.name)
+end
+
+Then /^I follow the link "([^"]*)"$/ do |arg1|
+  page.should have_link(arg1)
+  click_link "#{arg1}"
+end
+
+And /^I should see the idea's title$/ do
+  page.should have_content(@ideas.first.title)
+end
+
+Then /^I should see the idea's description$/ do
+  page.should have_content(@ideas.first.description)
+end
+
+And /^I should see a link "([^"]*)"$/ do |arg1|
+  page.should have_link(arg1)
+end
+
+
+And /^(\d+) pages exist$/ do |count|
+  count.to_i.times { |counter|
+    Page.make!(:title => "Página #{counter}",   :body => "<p>Página #{counter}</p>")
+  }
+end
+
+Then /^I should see (\d+) links to pages$/ do |count|
+  count = count.to_i
+  page.should have_css('.page_links li a', :count => count)
+end
+
+
+Then /^I should see user options$/ do
+  page.should have_xpath("//div[@class='wrapper']/ul[@class='user_actions']")
+end
+
+Then /^I should see a list of notifications$/ do
+  page.should have_css('.user_actions .notifications ul.notifications')
+end
+
+Then /^I should see my profile image$/ do
+  page.should have_xpath("//ul[@class='user_actions']/li[@class='logged_in']/div[@class='user_menu']/img[@class='medium_profile_image']")
+end
+
