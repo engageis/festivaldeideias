@@ -94,7 +94,7 @@ class IdeasController < ApplicationController
                                description: @collab.description,
                                minimum_investment: @collab.minimum_investment)
     @collab.update_attribute :accepted, true
-    flash[:notice] = t 'idea.colaboration.accepted', :user => @collab.user
+    flash[:notice] = t 'idea.colaboration.accepted', :user => @collab.user.name
     return redirect_to category_idea_path(resource.category, resource)
   end
 
