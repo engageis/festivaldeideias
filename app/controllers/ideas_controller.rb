@@ -79,6 +79,14 @@ class IdeasController < ApplicationController
     @collab = resource.colaborations.find(params[:collab])
   end
 
+  def ramify
+    @idea = Idea.find(params[:id])
+    if Idea.ramify!(@idea)
+      flash[:notice] = t 'idea.ramify.success'
+      return redirect_to category_idea_path(@idea.category, @idea)
+    end
+  end
+
   def accept_collaboration
     @collab = resource.colaborations.find(params[:collab])
     resource.update_attributes(title: @collab.title,

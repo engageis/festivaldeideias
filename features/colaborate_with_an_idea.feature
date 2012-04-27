@@ -33,5 +33,8 @@ Feature: Colaborate with an idea
     When I visit the root path
     And I click in the notifications bar
     And I should see "A sua colaboração para a ideia Carona me foi recusada. Clique aqui se deseja criar uma nova ideia a partir desta colaboração"
+    And I click on the link "A sua colaboração para a ideia Carona me foi recusada. Clique aqui se deseja criar uma nova ideia a partir desta colaboração"
+    Then I should see "Sua colaboração agora é uma ideia! Divulgue-a e receba colaborações!" 
+
 
 

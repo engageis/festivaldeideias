@@ -25,7 +25,7 @@ pt-BR:
   notifications:
     new_colaboration_html: "<a href='%{link}'><strong>%{name}</strong> quer colaborar com a sua ideia <strong>%{parent}</strong></a>"
     colaboration_accepted_html: "<a href='%{link}'>A sua colaboração para a ideia <strong>%{parent}</strong> foi aceita! Clique para ver como ficou a ideia final!</a>"
-    colaboration_refused_html: "A sua colaboração para a ideia <strong>%{parent}</strong> foi recusada. <a href='%{link}'><strong>Clique aqui se deseja criar uma nova ideia a partir desta colaboração</strong></a>"
+    colaboration_refused_html: "<a href='%{link}'>A sua colaboração para a ideia <strong>%{parent}</strong> foi recusada. <strong>Clique aqui se deseja criar uma nova ideia a partir desta colaboração</strong></a>"
     updated_idea_html: "<a href='%{link}'>A ideia <strong>%{parent}</strong> que você colaborou foi atualizada.</a>"
   # Main texts for idea (create, edit and show actions are here)
   idea:
@@ -41,6 +41,11 @@ pt-BR:
       give_a_name: "Nomeie sua ideia:"
       give_a_headline: "Se quiser, resuma sua ideia em algumas palavras:"
       choose_a_category: "Em que tema sua ideia se encaixa?"
+    
+    # Ramify
+    ramify:
+      success: "Sua colaboração agora é uma ideia! Divulgue-a e receba colaborações!"
+      failure: "Ops, parece que ocorreu um problema ao transformar sua colaboração em ideia. :("
 
     # Colaboration
     colaboration:

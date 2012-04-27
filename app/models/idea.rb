@@ -38,6 +38,10 @@ class Idea < ActiveRecord::Base
           )', user.id]).order("updated_at DESC")
   }
 
+  def self.ramify!(idea)
+    idea.update_attributes! parent_id: nil, accepted: nil
+  end
+
   def rejected_colaborations
     self.colaborations.where(accepted: false)
   end

@@ -5,7 +5,9 @@ describe Idea do
 
     it { should validate_presence_of :title }
     it { should validate_presence_of :description }
-    it { should validate_presence_of :category }
+    it { should validate_presence_of :category_id }
+    it { should validate_presence_of :user_id }
+
 
     describe "#user" do
       it { should belong_to :user }
@@ -53,6 +55,8 @@ describe Idea do
           :description_html => @idea.description_html,
           :likes => @idea.likes,
           :colaborations => @idea.colaborations.count,
+          :minimum_investment => @idea.minimum_investment,
+          :formatted_minimum_investment => @idea.formatted_minimum_investment,
           :url => @idea.as_json[:url]
         }
         @idea.as_json.should == idea_json
@@ -127,5 +131,14 @@ describe Idea do
     subject { Idea.collaborated_idea_changed(@user) }
     it { should == [@idea] }
   end
+  
+  describe "#ramify!" do
+    before do
+      @idea = Idea.make!(parent_id: nil)
+      @colab = Idea.make!(parent_id: @idea.id, accepted: false)
+    end
+    subject { Idea.ramify!(@colab) } 
 
+    it { should == true }
+  end
 end

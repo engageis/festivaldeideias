@@ -21,6 +21,7 @@ FestivalDeIdeias::Application.routes.draw do
       get "accept_collaboration",         :as => :accept_collaboration
       get "refuse_collaboration",         :as => :refuse_collaboration
       get "collaboration",                :as => :collaboration
+      get "ramify",                       :as => :ramify
     end
   end
   resources :non_facebook_users, :only => [:create]
@@ -38,7 +39,7 @@ FestivalDeIdeias::Application.routes.draw do
   end
   get '/ideias', :to => "ideas#index"
   scope '/ideias' do
-    get ":idea_category_id/ideia/:id",    :to => "ideas#show",      :as => :category_idea
+    get ":idea_category_id/ideia/:id",                  :to => "ideas#show",      :as => :category_idea
   end
 
   root :to => 'ideas#index',              :defaults => { :recent => true }
