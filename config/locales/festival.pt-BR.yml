@@ -41,6 +41,11 @@ pt-BR:
       give_a_name: "Nomeie sua ideia:"
       give_a_headline: "Se quiser, resuma sua ideia em algumas palavras:"
       choose_a_category: "Em que tema sua ideia se encaixa?"
+    
+    # Ramify
+    ramify:
+      success: "Sua colaboração agora é uma ideia! Divulgue-a e receba colaborações!"
+      failure: "Ops, parece que ocorreu um problema ao transformar sua colaboração em ideia. :("
 
     # Colaboration
     colaboration:

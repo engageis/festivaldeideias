@@ -38,8 +38,7 @@ class Idea < ActiveRecord::Base
           )', user.id]).order("updated_at DESC")
   }
 
-  def self.ramify!(params = {})
-    idea = Idea.find(params[:id])
+  def self.ramify!(idea)
     idea.update_attributes! parent_id: nil, accepted: nil
   end
 
