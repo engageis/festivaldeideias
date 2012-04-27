@@ -9,11 +9,11 @@
 
       // Descrição da ideia
       #describe
-        h3 
-          = t('idea.colaboration.new.about')
-          br
-          br
-          = t('idea.colaboration.new.about_2')
+        .about_collabs
+          p
+            = t('idea.colaboration.new.about')
+          p
+            = t('idea.colaboration.new.about_2')
 
         = f.hidden_field :parent_id, :value => idea.id
 
