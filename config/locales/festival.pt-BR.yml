@@ -42,7 +42,8 @@ pt-BR:
       give_a_headline: "Se quiser, resuma sua ideia em algumas palavras:"
       choose_a_category: "Em que tema sua ideia se encaixa?"
       minimum_investment: "Investimento mínimo"
-      minimum_investment_desc: "Investimento mínimo é a quantia que esta ideia precisa para ser posta em prática. Não se preocupe se você não sabe o custo exato, esta é apenas uma estimativa, e outras pessoas serão estimuladas a te ajudar a baixar esse custo."
+      minimum_investment_desc: "Investimento mínimo é a quantia que esta ideia precisa para ser tornar real. Não se preocupe se você não sabe o custo exato, esta é apenas uma estimativa, e outras pessoas serão estimuladas a te ajudar a baixar esse custo."
+      minimum_investment_collab_desc: "Acha que pode realizar esta ideia por menos? Diga-nos quanto e defenda a quantia na descrição desta ideia."
     
     # Ramify
     ramify:
@@ -57,10 +58,11 @@ pt-BR:
         by_you: "Esta ideia foi criada e é moderada por você."
         can_edit: "Você pode editá-la quando quiser clicando nos textos e aceitar as colaborações que outras pessoas enviam."
       new:
-        start: "Colabore com esta ideia"
-        about: "O que deseja colaborar nesta ideia?"
-        give_a_description: "Colabore na descrição desta ideia"
-        give_a_name: "Colabore no titulo desta ideia"
+        start: "Colabore na ideia "
+        about: "Aqui você pode alterar todos os dados desta ideia, adicionar mais informações, necessidades, próximos passos e referências que podem ser úteis para torná-la real."
+        about_2: "Sinta-se à vontade para mexer no que quiser, o moderador da ideia poderá aceitar ou recusar a sua colaboração."
+        give_a_description: "Algo a adicionar? Aqui é o corpo da ideia, colabore alterando e/ou adicionando seus pontos:"
+        give_a_name: "Sabe de um título melhor? Colabore aqui:"
         give_a_headline: "Se quiser, colabore no resumo da ideia:"
         choose_a_category: "Em que tema esta ideia se encaixa?"
       accept:

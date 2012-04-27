@@ -1,13 +1,19 @@
 #colaborate.hidden
   = simple_form_for @idea, :url => colaborate_idea_path(@idea), :html => { :class => "new_idea" } do |f|
-    h2 = t('idea.colaboration.new.start')
+    h2 
+      = t('idea.colaboration.new.start')
+      strong = idea.title
     .steps
       // Natália: Tem que deixar este troço bonito!!
       // Não é pra isso que servem os "designs"?
 
       // Descrição da ideia
       #describe
-        h3 = t('idea.colaboration.new.about')
+        h3 
+          = t('idea.colaboration.new.about')
+          br
+          br
+          = t('idea.colaboration.new.about_2')
 
         = f.hidden_field :parent_id, :value => idea.id
 
@@ -20,15 +26,16 @@
           = f.text_area :description, :class => 'required', :value => idea.description
 
         p
-          = f.label :minimum_investment, t('idea.colaboration.new.minimum_investment')
+          = f.label :minimum_investment, t('idea.new.minimum_investment')
+          em = t('idea.new.minimum_investment_collab_desc')
           = f.text_field :minimum_investment, :class => 'currency', :value => idea.formatted_minimum_investment, :maxlength => 16
 
-      #refine
+      /*#refine
         .categories.required
           h4 = t('idea.colaboration.new.choose_a_category')
 
           // Getting categories from ideas_controller
-          - if @categories.size
+        /*  - if @categories.size
             ul
               - @categories.each do |category|
                 li
