@@ -81,7 +81,10 @@ class IdeasController < ApplicationController
 
   def accept_collaboration
     @collab = resource.colaborations.find(params[:collab])
-    resource.update_attributes title: @collab.title, headline: @collab.headline, description: @collab.description
+    resource.update_attributes(title: @collab.title,
+                               headline: @collab.headline,
+                               description: @collab.description,
+                               minimum_investment: @collab.minimum_investment)
     @collab.update_attribute :accepted, true
     flash[:notice] = t 'idea.colaboration.accepted', :user => @collab.user
     return redirect_to category_idea_path(resource.category, resource)

@@ -12,10 +12,10 @@ header
         h4
           = t "idea.colaboration.accept.what_do_you_want_html", user: @collab.user.name
           .buttons[style="float:right"]
-            button[type="submit"]
-              = link_to "Aceitar", accept_collaboration_idea_path(@idea, collab: @collab)
-            button[type="cancel"]
-              = link_to "Recusar", refuse_collaboration_idea_path(@idea, collab: @collab)
+            /*button type="submit"*/
+            = link_to("Aceitar", accept_collaboration_idea_path(@idea, collab: @collab), :class => 'submit_button')
+            /*button type="cancel"*/
+            = link_to("Recusar", refuse_collaboration_idea_path(@idea, collab: @collab), :class => 'cancel_button')
 
     // Category badge
     = image_tag @idea.category.badge, :alt => @idea.category.name, :title => @idea.category.name, :class => "badge"
@@ -42,4 +42,12 @@ header
 article
   div
     = raw Differ.diff_by_word(@collab.description_html, @idea.description_html)
-    / = @idea.description_html
+
+  // Menina Natália, deixa isto bonito!
+  - if @collab.minimum_investment != @idea.minimum_investment
+    div
+      h3=t('idea.new.minimum_investment')
+      p
+        span.current_value=@idea.formatted_minimum_investment
+        br
+        span.new_value=@collab.formatted_minimum_investment

@@ -86,4 +86,29 @@ button
     background:
       color: darken($lightgreen, 30%)
 
+a.submit_button, a.cancel_button
+  display: inline
+  vertical-align: baseline
+  font-family: "Helvetica Neue", sans-serif
+  font-size: 11px
+  margin: 0 5px
+  padding: 3px 5px
+  float: right
+  text-transform: uppercase
+  letter-spacing: 1px
+  border: none
+  color: #FFF
+  cursor: pointer
+  +border-radius(3px)
+
+a.submit_button
+  background-color: darken($lightgreen, 40%)
+  &:hover
+    background-color: darken($lightgreen, 30%)
+
+a.cancel_button
+  background-color: lighten($darkred, 20%)
+  &:hover
+    background-color: lighten($darkred, 30%)
+
 
