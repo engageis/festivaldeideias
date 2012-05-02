@@ -1,0 +1,12 @@
+.edit_idea {
+  label, input {
+    display: inline;
+  }
+
+  .categories {
+    label, input {
+      float: none;
+      width: auto;
+    }
+  }
+}

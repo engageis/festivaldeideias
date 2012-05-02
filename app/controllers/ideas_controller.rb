@@ -61,7 +61,11 @@ class IdeasController < ApplicationController
 
   def update
     update! do |format|
-      format.html
+      format.html do
+        # NOTE: Temos que garantir que a idea voltará para a rota correta
+        # TODO: Arrumar routes??
+        return redirect_to category_idea_path(@idea.category, @idea)
+      end
       format.json do
         render :json => @idea.to_json
       end
