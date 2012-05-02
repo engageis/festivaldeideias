@@ -42,6 +42,14 @@ header
 article
   div
     = raw Differ.diff_by_word(@collab.description_html, @idea.description_html)
+  ul.legend
+    li.added
+      span.green
+      | Conteúdo adicionado por #{@idea.user.name}
+    li.deleted
+      span.red
+      | Conteúdo deletado por #{@idea.user.name}
+
 
   // Menina Natália, deixa isto bonito!
   - if @collab.minimum_investment != @idea.minimum_investment
