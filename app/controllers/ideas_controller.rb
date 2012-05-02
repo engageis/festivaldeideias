@@ -12,10 +12,11 @@ class IdeasController < ApplicationController
 
   belongs_to :idea_category, :optional => true
 
-  respond_to :html, :except => [:update]
-  respond_to :json, :only => [:index, :update]
+  #respond_to :html, :except => [:update]
+  #respond_to :json, :only => [:index, :update]
+  respond_to :json, :only => [:index]
 
-  before_filter :load_collaborators, :only => [ :show, :collaboration ]
+  before_filter :load_collaborators, :only => [ :show, :edit, :collaboration ]
   before_filter :load_resources
 
   def show
@@ -60,6 +61,7 @@ class IdeasController < ApplicationController
 
   def update
     update! do |format|
+      format.html
       format.json do
         render :json => @idea.to_json
       end

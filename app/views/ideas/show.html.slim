@@ -36,57 +36,71 @@ header
     = image_tag @idea.category.badge, :alt => @idea.category.name, :title => @idea.category.name, :class => "badge"
 
     // Idea's title
-    h1[class=ability_class data-placeholder="#{t('jquery.editable.defaults.tooltip')}" data-type="text" data-raw=@idea.title data-attribute="title" data-maxlenght=70 data-singleline=true data-url=idea_path(@idea)]
-      = @idea.title
-      / = raw Differ.diff_by_word(@idea.title, collab.title)
+    /*h1[class=ability_class data-placeholder="#{t('jquery.editable.defaults.tooltip')}" data-type="text" data-raw=@idea.title data-attribute="title" data-maxlenght=70 data-singleline=true data-url=idea_path(@idea)]*/
+      /*= @idea.title*/
 
-    // Statistics of this idea
+    /*// Statistics of this idea*/
+    /*section.idea_stats*/
+      /*span*/
+        /*| Moderada por &nbsp;*/
+        /*// User profile*/
+        /*- profile = @idea.user.services.first.facebook_profile*/
+        /*// User profile url*/
+        /*= link_to @idea.user.name, profile, :target => "_blank", :class => "user_info"*/
+        /*| &nbsp; &mdash; &nbsp;*/
+
+        /*// Using rails helper for time ago*/
+        /*| Última alteração feita há&nbsp;*/
+        /*= time_ago_in_words(@idea.updated_at)*/
+
+    /*// Colaborar muda para Editar quando sou o dono da ideia*/
+    /*article*/
+      /*div[class=ability_class data-placeholder="#{t('jquery.editable.defaults.tooltip')}" data-url=idea_path(@idea) data-attribute="description" data-raw=@idea.description data-raw-attribute="description_html"]*/
+        /*/ = raw Differ.diff_by_word(@idea.title, collab.description_html)*/
+        /*= @idea.description_html*/
+
+      /*h3=t('idea.new.minimum_investment')*/
+      /*div[*/
+        /*class=(ability_class + ' currency')*/
+        /*data-placeholder=t('jquery.editable.defaults.tooltip')*/
+        /*data-url=idea_path(@idea)*/
+        /*data-attribute="minimum_investment"*/
+        /*data-raw=@idea.minimum_investment*/
+        /*data-raw-attribute="formatted_minimum_investment" data-maxlength="16"*/
+      /*] = @idea.formatted_minimum_investment*/
+
+    // Title
+    h1 =@idea.title
+
+    // Statistics
+    - profile = @idea.user.services.first.facebook_profile
     section.idea_stats
       span
-        | Moderada por &nbsp;
-        // User profile
-        - profile = @idea.user.services.first.facebook_profile
-        // User profile url
-        = link_to @idea.user.name, profile, :target => "_blank", :class => "user_info"
-        | &nbsp; &mdash; &nbsp;
+        | Moderada por #{link_to(@idea.user.name, profile, :target => '_blanck', :class => 'user_info')}
+        | &nbsp;&mdash;&nbsp;
+        | Última alteração feita há #{time_ago_in_words(@idea.updated_at)}
+    article
+      .field
+        = @idea.description_html
 
-        // Using rails helper for time ago
-        | Última alteração feita há&nbsp;
-        = time_ago_in_words(@idea.updated_at)
-
-// Colaborar muda para Editar quando sou o dono da ideia
-article
-  div[class=ability_class data-placeholder="#{t('jquery.editable.defaults.tooltip')}" data-url=idea_path(@idea) data-attribute="description" data-raw=@idea.description data-raw-attribute="description_html"]
-    / = raw Differ.diff_by_word(@idea.title, collab.description_html)
-    = @idea.description_html
-
-  h3=t('idea.new.minimum_investment')
-  div[
-    class=(ability_class + ' currency')
-    data-placeholder=t('jquery.editable.defaults.tooltip')
-    data-url=idea_path(@idea)
-    data-attribute="minimum_investment"
-    data-raw=@idea.minimum_investment
-    data-raw-attribute="formatted_minimum_investment" data-maxlength="16"
-  ] = @idea.formatted_minimum_investment
-    
-  - if can?(:edit, @idea)
-    //a.button.edit.right Editar ideia
-    .clear
-  -else
-    .collaborate
-      img[src="/assets/gostou.png"]
-      p
-        | Colabore com referências e mais informações para o desenvolvimento desta ideia. Ajude a elaborar as necessidades e próximos passos!
-      //p
-        | Ao clicar no botão abaixo, você poderá editá-la. Mas fique à vontade: o moderador da ideia sempre poderá aceitar ou recusar sua colaboração ;)
-      = link_to t("idea.colaboration.new.start"), "#colaborate", :class => "button contribute"
+    - if can?(:edit, @idea)
+      /*a.button.edit.right Editar ideia*/
+      = link_to "Editar ideia", edit_category_idea_path(@idea.category, @idea), :class => 'button edit right'
       .clear
+    -else
+      .collaborate
+        img[src="/assets/gostou.png"]
+        p
+          | Colabore com referências e mais informações para o desenvolvimento desta ideia. Ajude a elaborar as necessidades e próximos passos!
+        //p
+          | Ao clicar no botão abaixo, você poderá editá-la. Mas fique à vontade: o moderador da ideia sempre poderá aceitar ou recusar sua colaboração ;)
+        = link_to t("idea.colaboration.new.start"), "#colaborate", :class => "button contribute"
+        .clear
 
-section#comments
-  a name="comment"
-  h3 Comentários
+  section#comments
+    a name="comment"
+    h3 Comentários
 
-  .fb-comments data-href=category_idea_url(@idea.category,@idea) data-num-posts="10" data-width="690"
+    .fb-comments data-href=category_idea_url(@idea.category,@idea) data-num-posts="10" data-width="690"
 
-= render :partial => "colaboration", :locals => {:idea => @idea}
+  = render :partial => "colaboration", :locals => {:idea => @idea}
