@@ -80,7 +80,7 @@ form.new_idea
 
 //#describe
 
-#refine
+#refine, .edit_idea
   .categories
     overflow: auto
     label
@@ -104,26 +104,28 @@ form.new_idea
 
   .categories
     width: 570px
+    margin: 30px 0 20px 0
     h4
       font-size: 1.3em
     li
       float: left
       label
         margin-bottom: 10px
+        margin-right: 10px
         text-align: center
         padding: 10px
         +border-radius(4px)
-        border: 1px solid transparent
+        border: 1px solid #DDD
         cursor: pointer
         &:hover
-          background: #FFF
-          border: 1px solid #999
+          background: #EEE
+          border: 1px solid #D9D9D9
     input[type="radio"]
       display: none
 
     input:checked + label
-      background: $lightgreen !important
-      border: 1px solid #FFF
+      background: $yellow !important
+      border: 1px solid darken($yellow, 10%)
 
 #publish
   h3

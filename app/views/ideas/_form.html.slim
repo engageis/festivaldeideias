@@ -2,28 +2,35 @@
 
   // Title
   p
-    = f.label :title
+    = f.label :title, t('idea.edit.name')
     = f.text_field :title, :maxlength => 255
 
   // Description
   p
     = f.label :description, t("idea.edit.description")
+    br
+    em = t("idea.edit.description_2")
     = f.text_area :description
 
   // Category
-  p.categories
-    ul
-      - @categories.each do |category|
-        - category_id = category.id
-        li
-          = f.radio_button :category_id, category_id, :checked => (category == @idea.category)
-          = f.label "category_id_#{category_id}" do
-            = image_tag(category.badge, :size => '31x31', :alt => category.name, :title => category.name)
-            = category.name
+  .categories
+    h4 = t('idea.new.choose_a_category')
+    - if !@categories.nil? && @categories.size > 0
+      ul
+        - @categories.each do |category|
+          li
+            - id = category.id
+            = f.radio_button :category_id, id
+            label for="idea_category_id_#{id}"
+              = image_tag(category.badge, :size => '31x31', :alt => category.name, :title => category.name)
+              br
+              = category.name
 
   // Minimum Investment
   p
     = f.label :minimum_investment, t("idea.value.title")
+    br
+    em = t('idea.new.minimum_investment_desc')
     = f.text_field :minimum_investment, :maxlength => 16, :class => 'currency_mask'
 
   // Submit

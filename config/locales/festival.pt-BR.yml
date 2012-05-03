@@ -41,11 +41,13 @@ pt-BR:
       give_a_name: "Nomeie sua ideia:"
       give_a_headline: "Se quiser, resuma sua ideia em algumas palavras:"
       choose_a_category: "Em que tema sua ideia se encaixa?"
-      minimum_investment: "Investimento mínimo"
-      minimum_investment_desc: "Investimento mínimo é a quantia que esta ideia precisa para ser tornar real. Não se preocupe se você não sabe o custo exato, esta é apenas uma estimativa, e outras pessoas serão estimuladas a te ajudar a baixar esse custo."
+      minimum_investment: "Custo de realização"
+      minimum_investment_desc: "Custo de realização é a quantia que esta ideia precisa para se tornar real. Não se preocupe se você não sabe o custo exato, esta é apenas uma estimativa, e outras pessoas serão estimuladas a te ajudar a baixar esse custo."
       minimum_investment_collab_desc: "Acha que pode realizar esta ideia por menos? Diga-nos quanto e defenda a quantia na descrição desta ideia."
     edit:
-      description: "Descrição"
+      description: "O que é essa ideia?"
+      description_2: "Altere, melhore, adicione mais informações e até mesmo imagens! Seja criativo!"
+      name: "Renomeie esta ideia"
     
     # Ramify
     ramify:
