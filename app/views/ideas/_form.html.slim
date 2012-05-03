@@ -1,0 +1,31 @@
+= form_for(@idea) do |f|
+
+  // Title
+  p
+    = f.label :title
+    = f.text_field :title, :maxlength => 255
+
+  // Description
+  p
+    = f.label :description, t("idea.edit.description")
+    = f.text_area :description
+
+  // Category
+  p.categories
+    ul
+      - @categories.each do |category|
+        - category_id = category.id
+        li
+          = f.radio_button :category_id, category_id, :checked => (category == @idea.category)
+          = f.label "category_id_#{category_id}" do
+            = image_tag(category.badge, :size => '31x31', :alt => category.name, :title => category.name)
+            = category.name
+
+  // Minimum Investment
+  p
+    = f.label :minimum_investment, t("idea.value.title")
+    = f.text_field :minimum_investment, :maxlength => 16, :class => 'currency_mask'
+
+  // Submit
+  p.actions.right
+    = f.submit
