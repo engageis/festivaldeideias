@@ -123,7 +123,7 @@ class Idea < ActiveRecord::Base
   # mas depende do Javascript e não sei se confio só nisso.
   def minimum_investment=(text)
     case text
-    when Float, Integer
+    when Float, Integer, BigDecimal
       super(text.to_f)
     else
       number = text.to_s.gsub(/\D+/, '')
