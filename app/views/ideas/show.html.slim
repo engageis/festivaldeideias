@@ -14,60 +14,9 @@ header
       .edit_message= t('idea.message.edit')
 
     - if can?(:manage, @idea)
-      .collab
-        - if @idea.colaborations.not_accepted.empty?
-          h3#ideas-to-accept
-            = t "idea.colaboration.accept.no_colaborations"
-        - else
-          h3#ideas-to-accept
-            = t "idea.colaboration.accept.some_colaborations", number: @idea.colaborations.not_accepted.count
-
-          // Listing all colaborations that aren't accepted
-          / - collab = @idea.colaborations.not_accepted.first
-          - @idea.colaborations.not_accepted.each do |collab|
-            ul
-              li
-                = collab.user.name
-                | &nbsp;
-                = t "idea.colaboration.moderate.text"
-                = link_to t("idea.colaboration.moderate.view"), collaboration_idea_path(@idea, collab: collab), :class => "view_more"
-
+      = render "layouts/collaborations"
     // Category badge
     = image_tag @idea.category.badge, :alt => @idea.category.name, :title => @idea.category.name, :class => "badge"
-
-    // Idea's title
-    /*h1[class=ability_class data-placeholder="#{t('jquery.editable.defaults.tooltip')}" data-type="text" data-raw=@idea.title data-attribute="title" data-maxlenght=70 data-singleline=true data-url=idea_path(@idea)]*/
-      /*= @idea.title*/
-
-    /*// Statistics of this idea*/
-    /*section.idea_stats*/
-      /*span*/
-        /*| Moderada por &nbsp;*/
-        /*// User profile*/
-        /*- profile = @idea.user.services.first.facebook_profile*/
-        /*// User profile url*/
-        /*= link_to @idea.user.name, profile, :target => "_blank", :class => "user_info"*/
-        /*| &nbsp; &mdash; &nbsp;*/
-
-        /*// Using rails helper for time ago*/
-        /*| Última alteração feita há&nbsp;*/
-        /*= time_ago_in_words(@idea.updated_at)*/
-
-    /*// Colaborar muda para Editar quando sou o dono da ideia*/
-    /*article*/
-      /*div[class=ability_class data-placeholder="#{t('jquery.editable.defaults.tooltip')}" data-url=idea_path(@idea) data-attribute="description" data-raw=@idea.description data-raw-attribute="description_html"]*/
-        /*/ = raw Differ.diff_by_word(@idea.title, collab.description_html)*/
-        /*= @idea.description_html*/
-
-      /*h3=t('idea.new.minimum_investment')*/
-      /*div[*/
-        /*class=(ability_class + ' currency')*/
-        /*data-placeholder=t('jquery.editable.defaults.tooltip')*/
-        /*data-url=idea_path(@idea)*/
-        /*data-attribute="minimum_investment"*/
-        /*data-raw=@idea.minimum_investment*/
-        /*data-raw-attribute="formatted_minimum_investment" data-maxlength="16"*/
-      /*] = @idea.formatted_minimum_investment*/
 
     // Title
     h1 =@idea.title
