@@ -75,9 +75,10 @@
     text-align: center
     background:
       color: $lightyellow
-    border: 1px solid darken($lightyellow, 40%)
+    border: 1px solid $purple
     outline: 2px solid #FFF
     margin: 20px 0
+    +border-radius(3px)
 
   .collab
     margin: 0 0 20px 0
@@ -88,11 +89,27 @@
       font-size: 1.3em
       padding: 10px
       margin: 0
-      background: 
-        color: darken($lightyellow, 40%)
+      background: $purple
     ul
       li
-        padding: 10px
+        &.odd
+          background: lighten($lightyellow, 5%)
+        &.even
+        a
+          display: block
+          padding: 10px
+          font-weight: normal
+          &:hover
+            background:
+              color: rgba(255, 255, 255, 0.8)
+            color: $darkorange
+            &:after
+              content: "Clica para ver"
+              background: $orange
+              color: #FFF
+              padding: 5px 10px
+              margin: 0 10px 0 80px
+              +border-radius(15px)
     h4
       padding: 10px
       margin: 0
