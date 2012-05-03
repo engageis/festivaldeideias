@@ -72,7 +72,7 @@ pt-BR:
         some_colaborations: "Você possui %{number} colaborações para aceite!"
         what_do_you_want_html: "O que você deseja fazer com a colaboração de <strong>%{user}</strong>?"
       moderate:
-        text: "colaborou com esta ideia"
+        text: "colaborou com %{fields} nesta ideia"
         view: "ver colaboração"
       who_colaborated: "Quem já colaborou com esta ideia"
       no_colaborators_yet: "Ainda não há colaboradores nesta ideia, quem sabe você não é o primeiro?"

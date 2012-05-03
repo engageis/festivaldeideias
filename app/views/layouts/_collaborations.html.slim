@@ -14,4 +14,4 @@
           a href="#{collaboration_idea_path(@idea, collab: collab)}"
             = collab.user.name
             | &nbsp;
-            = t "idea.colaboration.moderate.text"
+            = t("idea.colaboration.moderate.text", :fields => idea_fields_changed(@idea, collab))
