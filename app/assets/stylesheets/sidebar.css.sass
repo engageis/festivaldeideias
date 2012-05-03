@@ -18,10 +18,6 @@ aside
   a, a:link, a:hover, a:visited, a:active
     text-decoration: none
     font-weight: 400
-  a
-    &:hover
-      color: lighten($darkorange, 5%)
-
   .button.start
     margin-top: 20px
 
@@ -204,3 +200,31 @@ aside
     text-align: center
     line-height: 1.3em
 
+
+.formatting_text
+  li
+    margin-bottom: 10px
+    padding-bottom: 10px
+    border-bottom: 1px solid #DDD
+    padding-left: 45px
+    color: #333
+    background:
+      image: url(asset_path("icons.png", "image"))
+      position: 0 -450px
+      repeat: no-repeat
+    +box-shadow(0 1px 0 #FFF)
+    &.media
+      background:
+        position: 0 -560px
+    &.linkwtext
+      background:
+        position: 0 -672px
+    &.bold
+      background:
+        position: 0 -802px
+    &.italic
+      background:
+        position: 0 -922px
+    &.bgnone
+      background: none
+      padding-left: 0
