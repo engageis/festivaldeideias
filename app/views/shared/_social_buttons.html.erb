@@ -26,7 +26,8 @@
   </div>
 
   <!-- Facebook -->
-  <% url = @idea.present? ? category_idea_url(@idea.category, @idea) : url %>
+  <% # url = @idea.present? ? category_idea_url(@idea.category, @idea) : url %>
+  <% url = @idea.present? ? @idea.facebook_url : url %>
   <div
     class="fb-like"
     style="display: inline-block"

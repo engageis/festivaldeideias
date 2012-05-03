@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120425081612) do
+ActiveRecord::Schema.define(:version => 20120503192916) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20120425081612) do
     t.integer  "category_id",                                                          :null => false
     t.boolean  "accepted"
     t.decimal  "minimum_investment", :precision => 10, :scale => 2, :default => 0.0,   :null => false
+    t.string   "facebook_url"
   end
 
   create_table "non_facebook_users", :force => true do |t|

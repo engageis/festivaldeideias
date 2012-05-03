@@ -6,6 +6,7 @@ class Idea < ActiveRecord::Base
   include ActiveRecord::SpawnMethods
   include Rails.application.routes.url_helpers
 
+  before_create :add_facebook_url
 
   belongs_to :user
   belongs_to :category, :class_name => "IdeaCategory", :foreign_key => :category_id
@@ -134,5 +135,11 @@ class Idea < ActiveRecord::Base
       # NOTE: SEMPRE será inserido um ponto separador de decimais
       super(number[0..-3] + '.' + number[-2..-1])
     end
+  end
+
+  private
+  def add_facebook_url
+    url = "http://festivaldeideias.org.br"
+    self.facebook_url = url + category_idea_path(self.category, self)
   end
 end
