@@ -2,4 +2,4 @@
   h1
     | Editando ideia: #{@idea.title}
   = render 'form'
-  = link_to "Cancelar a edição", category_idea_path(@idea.category, @idea)
+  = link_to "Cancelar a edição", category_idea_path(@idea.category, @idea), class: "cancel_edit"
