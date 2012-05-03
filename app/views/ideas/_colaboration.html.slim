@@ -28,12 +28,12 @@
           em = t('idea.new.minimum_investment_collab_desc')
           = f.text_field :minimum_investment, :class => 'currency', :value => idea.formatted_minimum_investment, :maxlength => 16
 
-      /*#refine
+      #refine
         .categories.required
           h4 = t('idea.colaboration.new.choose_a_category')
 
           // Getting categories from ideas_controller
-        /*  - if @categories.size
+          - if @categories.size
             ul
               - @categories.each do |category|
                 li
