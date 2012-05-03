@@ -1,21 +1,20 @@
 = form_for(@idea) do |f|
+  h1
+    | Editando ideia: #{@idea.title}
 
-  .field
+  p
     = f.label :title
-    br
     = f.text_field :title, :maxlength => 255
 
-  .field
-    = f.label :description
-    br
+  p
+    = f.label :description, t("idea.edit.description")
     = f.text_area :description
     
-  .field
-    = f.label :minimum_investment
-    br
+  p
+    = f.label :minimum_investment, t("idea.value.title")
     = f.text_field :minimum_investment, :maxlength => 16
 
-  .field.actions
+  p.actions.right
     = f.submit
     
   = link_to "Cancelar a edição", category_idea_path(@idea.category, @idea)

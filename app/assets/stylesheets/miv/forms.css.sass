@@ -7,7 +7,7 @@ form
     border: solid 1px #CCC
     outline: 0  
     font-size: 14px
-    width: 550px
+    width: 97%
     background: #FFFFFF  
     +box-shadow(rgba(0,0,0, 0.1) 0px 0px 8px)
     +background-image(linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px))
@@ -15,6 +15,10 @@ form
   input#redirect_url, input.button
     width: auto !important
     
+  input[type="submit"]
+    +btn
+    width: auto
+
   textarea   
     clear: both
     height: 300px  

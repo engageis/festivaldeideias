@@ -44,6 +44,8 @@ pt-BR:
       minimum_investment: "Investimento mínimo"
       minimum_investment_desc: "Investimento mínimo é a quantia que esta ideia precisa para ser tornar real. Não se preocupe se você não sabe o custo exato, esta é apenas uma estimativa, e outras pessoas serão estimuladas a te ajudar a baixar esse custo."
       minimum_investment_collab_desc: "Acha que pode realizar esta ideia por menos? Diga-nos quanto e defenda a quantia na descrição desta ideia."
+    edit:
+      description: "Descrição"
     
     # Ramify
     ramify:
