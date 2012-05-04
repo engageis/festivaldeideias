@@ -93,13 +93,21 @@ var App = window.App = {
     Notifications: Backbone.View.extend({
 
       events: {
-        'click li.notifications' : 'showNotes'
+        'click li.notifications' : 'showNotes',
+        'click a.collab-ramify' : 'confirmRamify'
       },
 
       initialize: function(){
         this.url = $(this.el).data('url');
         this.notes = this.$('.notes');
         this.counter = this.$('.count');
+      },
+      
+      confirmRamify: function(event){
+        var self = $(event.currentTarget);
+        var url = self.attr('data-href');
+        $('a#ramify_confirm').attr('href', url); 
+        $.facebox({ div: "#new_ramify" });
       },
 
       showNotes: function(){
