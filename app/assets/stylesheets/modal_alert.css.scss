@@ -1,0 +1,11 @@
+// Esta div deve ficar escondida
+#modal_alert {
+  display: none;
+}
+
+// É aqui Natália
+// A aparência do modal de alert
+.modal_alert {
+  $bg: #ffcc00;
+  @include background-image(linear-gradient(top, color-stops($bg, darken($bg, 10%))));
+}

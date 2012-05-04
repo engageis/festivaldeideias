@@ -115,4 +115,10 @@ ActiveRecord::Schema.define(:version => 20120503192916) do
     t.datetime "notifications_read_at"
   end
 
+  add_foreign_key "ideas", "idea_categories", :name => "ideas_category_id_fk", :column => "category_id"
+  add_foreign_key "ideas", "ideas", :name => "ideas_parent_id_fk", :column => "parent_id"
+  add_foreign_key "ideas", "users", :name => "ideas_user_id_fk"
+
+  add_foreign_key "services", "users", :name => "services_user_id_fk"
+
 end

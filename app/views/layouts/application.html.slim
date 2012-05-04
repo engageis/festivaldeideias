@@ -18,6 +18,10 @@ html
     - if alert or notice
       span.flash.message[class=(alert ? "alert" : "notice")]= alert or notice
 
+    - if flash[:modal_alert]
+      #modal_alert
+        = flash[:modal_alert]
+
     = render :partial => "layouts/login"
     header.main
       .wrapper

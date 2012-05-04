@@ -28,7 +28,7 @@ var App = window.App = {
         App.flashes.push(new App.Flash({el: this, timeout: 5000}));
       });
 
-      // Starting Facebox
+      // Starting Facebox and modal alerts
       App.Common.startFacebox();
 
       // Sempre executar
@@ -57,6 +57,11 @@ var App = window.App = {
         var href = this.href;
         $.facebox({ div: href });
       });
+
+      // Modal Alert
+      if ($('#modal_alert').length) {
+        jQuery.facebox({ div: '#modal_alert' }, 'modal_alert');
+      }
     },
 
     startPjaxLinks: function () {

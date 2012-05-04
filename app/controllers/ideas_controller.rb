@@ -75,7 +75,8 @@ class IdeasController < ApplicationController
   def colaborate
     if @idea
       @collab = Idea.create_colaboration(params[:idea].merge(:user_id => current_user.id))
-      flash[:alert] = t('idea.colaboration.success')
+      #flash[:alert] = t('idea.colaboration.success')
+      flash[:modal_alert] = t('idea.colaboration.success')
       redirect_to category_idea_path(@idea.category.id, @idea)
     end
   end
@@ -88,7 +89,7 @@ class IdeasController < ApplicationController
   def ramify
     @idea = Idea.find(params[:id])
     if Idea.ramify!(@idea)
-      flash[:notice] = t 'idea.ramify.success'
+      flash[:notice] = t('idea.ramify.success')
       return redirect_to category_idea_path(@idea.category, @idea)
     end
   end
