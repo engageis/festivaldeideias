@@ -76,7 +76,7 @@ class IdeasController < ApplicationController
     if @idea
       @collab = Idea.create_colaboration(params[:idea].merge(:user_id => current_user.id))
       #flash[:alert] = t('idea.colaboration.success')
-      flash[:modal_alert] = t('idea.colaboration.success')
+      flash[:modal_alert] = t('idea.colaboration.success').html_safe
       redirect_to category_idea_path(@idea.category.id, @idea)
     end
   end
@@ -89,7 +89,7 @@ class IdeasController < ApplicationController
   def ramify
     @idea = Idea.find(params[:id])
     if Idea.ramify!(@idea)
-      flash[:notice] = t('idea.ramify.success')
+      flash[:modal_alert] = t('idea.ramify.success').html_safe
       return redirect_to category_idea_path(@idea.category, @idea)
     end
   end
@@ -101,14 +101,14 @@ class IdeasController < ApplicationController
                                description: @collab.description,
                                minimum_investment: @collab.minimum_investment)
     @collab.update_attribute :accepted, true
-    flash[:notice] = t 'idea.colaboration.accepted', :user => @collab.user.name
+    flash[:modal_alert] = t('idea.colaboration.accepted', :user => @collab.user.name).html_safe
     return redirect_to category_idea_path(resource.category, resource)
   end
 
   def refuse_collaboration
     @collab = resource.colaborations.find(params[:collab])
     @collab.update_attribute :accepted, false
-    flash[:notice] = t('idea.colaboration.rejected')
+    flash[:modal_alert] = t('idea.colaboration.rejected', :user => @collab.user.name).html_safe
     return redirect_to category_idea_path(resource.category, resource)
   end
 

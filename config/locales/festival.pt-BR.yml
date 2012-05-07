@@ -51,7 +51,7 @@ pt-BR:
     
     # Ramify
     ramify:
-      success: "Sua colaboração agora é uma ideia! Divulgue-a e receba colaborações!"
+      success: "<h3>Ideia ramificada com sucesso!</h3> Você ramificou uma ideia e sua colaboração rejeitada já está incorporada nesta nova ideia! Que tal dar uma modificada e começar a divulgação?"
       failure: "Ops, parece que ocorreu um problema ao transformar sua colaboração em ideia. :("
 
     # Colaboration
@@ -80,9 +80,9 @@ pt-BR:
       no_colaborators_yet: "Ainda não há colaboradores nesta ideia, quem sabe você não é o primeiro?"
       zero_colaborators: "Ainda não há colaboradores nesta ideia."
       know_more: "Entenda as colaborações"
-      success: "Sua colaboração foi enviada! O dono da ideia precisa aceitá-la para que ela apareça."
-      accepted: "Você aceitou a colaboração de %{user} e ela foi incorporada na ideia anterior"
-      rejected: "A colaboração foi rejeitada"
+      success: "<h3>Sua colaboração foi enviada!</h3> Sua colaboração ainda não está visível, o moderador da ideia precisa aceitá-la para que ela seja incorporada."
+      accepted: "<h3>Colaboração aceita!</h3>Você aceitou a colaboração de %{user} e ela foi incorporada na ideia anterior."
+      rejected: "<h3>Colaboração rejeitada</h3> Você rejeitou a colaboração de %{user} e ela não poderá fazer parte da ideia. %{user} terá a oportunidade de clonar a sua ideia e desenvolvê-la como quiser."
 
     # Events
     events:
