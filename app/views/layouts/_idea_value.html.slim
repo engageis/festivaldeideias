@@ -4,6 +4,10 @@ h3
 .idea_value
   span
     = @idea.formatted_minimum_investment
-  p 
-    = t "idea.value.less"
-    = link_to(t("idea.colaboration.new.start"), "#colaborate")
+
+  - if can?(:edit, @idea)
+    p
+  - else
+    p 
+      = t "idea.value.less"
+      = link_to(t("idea.colaboration.new.start"), "#colaborate")
