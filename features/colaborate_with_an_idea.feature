@@ -34,9 +34,9 @@ Feature: Colaborate with an idea
     And I click in the notifications bar
     And I should see "A sua colaboração para a ideia Carona me foi recusada. Clique aqui se deseja criar uma nova ideia a partir desta colaboração"
     And I click on the link "A sua colaboração para a ideia Carona me foi recusada. Clique aqui se deseja criar uma nova ideia a partir desta colaboração"
-    And I should see "Tem certeza de que deseja ramificar esta ideia? Uma nova ideia será criada"
-    And I click on the link "Sim, desejo ramificar esta colaboração."
-    Then I should see "Sua colaboração agora é uma ideia! Divulgue-a e receba colaborações!" 
+    And I should see "Você está prestes a ramificar uma ideia"
+    And I click on the link "Ramificar"
+    Then I should see "Ideia ramificada com sucesso!" 
 
 
 
