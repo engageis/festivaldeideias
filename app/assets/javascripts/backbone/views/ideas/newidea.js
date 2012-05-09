@@ -236,13 +236,13 @@ App.Ideas.NewIdea = App.BaseView.extend({
 
     updateLinkColors: function () {
         var links = $('.popup .short_cuts li');
-        links.removeClass('blue_link');
-        links.eq(0).addClass('blue_link');
+        links.removeClass('active_link');
+        links.eq(0).addClass('active_link');
         if (this.canGoToRefinement()) {
-            links.eq(1).addClass('blue_link');
+            links.eq(1).addClass('active_link');
         }
         if (this.canGoToPublishing()) {
-            links.eq(2).addClass('blue_link');
+            links.eq(2).addClass('active_link');
         }
     },
 
