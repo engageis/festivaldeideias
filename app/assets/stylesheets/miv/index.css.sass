@@ -13,7 +13,7 @@
     @include border-radius(3px)
     @include box-shadow(0 4px 5px rgba(0, 0, 0, 0.5))
     display: none
-    background: #666
+    background: #000
     position: absolute
     top: 20px
     right: 0
@@ -33,12 +33,12 @@
         &:hover
           color: #FFF
           @include border-radius(0)
-          background: #999
+          background: #444
   &:hover
     .submenu
       display: block
     a
-      background: #666
+      background: #000
       color: #FFF
       @include box-shadow(0 4px 5px rgba(0, 0, 0, 0.5))
 
@@ -451,13 +451,13 @@ header.main
           margin-left: 20px
           +border-radius(3px)
         a:hover
-          background: #666
+          background: #000
           color: #FFF
       .selected
         a, a:link, a:visited
-          background: #EEE
+          background: #DDD
           color: #999
-          +box-shadow(-1px -1px 0 #DDD)
+          +box-shadow(-1px -1px 0 #BBB)
           &:hover
             cursor: default
 
