@@ -99,7 +99,7 @@ pt-BR:
     # Idea value
     value:
       title: "Custo de realização"
-      less: "Consegue realizar esta ideia com menos? "
+      less: "Você tem alguma sugestão ou pode contribuir para realizar esta ideia com menos? "
 
     # Internal menu
     menu:
