@@ -20,6 +20,10 @@ App.Ideas.NewIdea = App.BaseView.extend({
         this.store = new Store('store');
         this.lastPosition = 0;
         //this.loadIdeaFromStore();
+
+        $(document).bind('afterReveal.facebox', function () {
+          App.applyMoneyMask($('.popup .currency'));
+        });
     },
 
     events: {
@@ -132,12 +136,10 @@ App.Ideas.NewIdea = App.BaseView.extend({
     showRefinement: function () {
         var box, descriptionText;
 
-        // Apply currency masks
-        //$(".currency").maskMoney({ symbol: 'R$ ', showSymbol: true, thousands: '.', decimal: ',', symbolStay: true, allowNegative: false }).applyMask();
-
         if (!this.canGoToRefinement()) {
             return false;
         }
+
         box = $('.popup');
         descriptionText = box.find("#describe").addClass('hidden').find('#idea_description').val();
         box.find("#publish").addClass('hidden');

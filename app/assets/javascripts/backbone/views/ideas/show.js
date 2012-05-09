@@ -13,9 +13,9 @@ App.Ideas.Show = App.EditableView.extend({
       App.applyMoneyMask($('input.currency'));
     });
 
-    $(".currency textarea").live("focus", function () {
-      App.applyMoneyMask($(this));
-    });
+    //$(".currency textarea").live("focus", function () {
+      //App.applyMoneyMask($(this));
+    //});
   },
 
   bindRoutes: function () {
