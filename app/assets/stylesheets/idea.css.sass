@@ -92,8 +92,9 @@
       background: $purple
     ul
       li
+        position: relative
         &.odd
-          background: lighten($lightyellow, 5%)
+          background: lighten($lightyellow, 3%)
         &.even
         a
           display: block
@@ -103,13 +104,15 @@
             background:
               color: rgba(255, 255, 255, 0.8)
             color: $darkorange
-            &:after
-              content: "Clica para ver"
-              background: $orange
-              color: #FFF
-              padding: 5px 10px
-              margin: 0 10px 0 80px
-              +border-radius(15px)
+          &:after
+            content: "Clica para ver"
+            background: $orange
+            color: #FFF
+            padding: 5px 10px
+            position: absolute
+            top: 5px
+            right: 20px
+            +border-radius(15px)
     h4
       padding: 10px
       margin: 0
