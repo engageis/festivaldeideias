@@ -63,6 +63,9 @@ html
         aside
           = render :partial => "layouts/sidebar"
         #idea
+          - if current_page?(root_url)
+            = render :partial => "layouts/news_board"
+
           = yield
         .clear
 
