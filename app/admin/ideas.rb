@@ -57,7 +57,7 @@ ActiveAdmin.register Idea do
           idea.title
         end
         div do
-          em idea.description
+          em idea.description_html
         end
         strong "em #{idea.category.name} por #{idea.user.name}"
         hr
