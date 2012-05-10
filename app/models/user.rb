@@ -27,15 +27,15 @@ class User < ActiveRecord::Base
   end
 
   def notifications
-    Idea.new_collaborations(self).map do |i|
-      I18n.t("notifications.new_colaboration_html", link: category_idea_path(i.parent.category, i.parent.to_param), name: i.user.name, parent: i.parent.title)
-    end +
     Idea.collaborations_status_changed(self).map do |i|
       if i.accepted
         I18n.t("notifications.colaboration_accepted_html", link: category_idea_path(i.parent.category, i.parent.to_param), parent: i.parent.title)
       else
         I18n.t("notifications.colaboration_refused_html", link: ramify_idea_path(i), parent: i.parent.title) 
       end
+    end +
+    Idea.new_collaborations(self).map do |i|
+      I18n.t("notifications.new_colaboration_html", link: category_idea_path(i.parent.category, i.parent.to_param), name: i.user.name, parent: i.parent.title)
     end +
     Idea.collaborated_idea_changed(self).map do |i|
       I18n.t("notifications.updated_idea_html", link: category_idea_path(i.category, i.to_param), parent: i.title)
