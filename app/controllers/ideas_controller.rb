@@ -113,7 +113,7 @@ class IdeasController < ApplicationController
   end
 
   def index
-    load_headers(:name => 'recent', :url => page_path('co-criacao'))
+    load_headers(:name => 'featured', :url => page_path('co-criacao'))
   end
 
   def modified
@@ -171,8 +171,7 @@ class IdeasController < ApplicationController
     @collaborators = resource.accepted_colaborations.reduce({}){ |memo, c| memo[c.user_id] = c.user; memo }.values || []
   end
 
-  # Holy baby jesus! <o>
-  # Not anymore!!! :D
+
   def load_headers(options = {})
     name = options[:name] || action_name
     @ideas_title = I18n.translate("idea.filters.#{name}.title", options)

@@ -44,7 +44,7 @@ FestivalDeIdeias::Application.routes.draw do
     get ":idea_category_id/ideia/:id/edit", :to => "ideas#edit", :as => :edit_category_idea
   end
 
-  root :to => 'ideas#index',              :defaults => { :recent => true }
+  root :to => 'ideas#index',              :defaults => { :featured => true }
 
 
   resources :pages, :only => [] do
