@@ -18,8 +18,8 @@ App.FbEvents = App.BaseView.extend({
   },
 
   populateEventField: function (events) {
-      var ul, li, i, length, e, date, now;
-      now = new Date();
+      var ul, li, i, length, e, date;
+
       if (events.constructor !== Array) { return; }
       ul = $('<ul></ul>');
       length = events.length;
@@ -28,12 +28,6 @@ App.FbEvents = App.BaseView.extend({
           if (e.id) {
               // O formato do facebook é "2012-05-09T02:00:00"
               date = new Date(e.start_time.replace("T", " "));
-
-              // Se a data do evento já tiver passado, não exibi-lo.
-              if (date.valueOf() < now.valueOf()) {
-                  continue;
-              }
-
               li = "<li><a href='http://www.facebook.com/events/" + e.id + "' target='_blank'><div class='name'>" +
               e.name + "</div><div class='info'><span class='date'>" +
               this.formatDate(date) + "</span> <span class='date'>" + e.location + "</span></div></a></li>";
@@ -55,6 +49,8 @@ App.FbEvents = App.BaseView.extend({
     //query = "SELECT eid, name, start_time, location FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid=211024602327337) AND start_time > " + now + " ORDER BY start_time ASC LIMIT 10";
 
     FB.getLoginStatus(function (result) {
+      var now = String(parseInt(new Date() / 1000));
+
       if (result.status === "connected") {
         //FB.api({
           //method: 'fql.query',
@@ -76,6 +72,7 @@ App.FbEvents = App.BaseView.extend({
 
         //Usando a Graph API do Facebook 
         $.get("https://graph.facebook.com/219514234760244/events", {
+          'since': now,
           'access_token': FB.getAccessToken()
         }, function (data, textStatus) {
           console.log(data.data);
