@@ -60,79 +60,76 @@ var App = window.App = {
 
             // Modal Alert
             if ($('#modal_alert').length) {
-            jQuery.facebox({ div: '#modal_alert' }, 'modal_alert');
-        }
-    },
-
-    startPjaxLinks: function () {
-        var lis, pjaxLinks, container, ideasTitle, ideasAbout;
-        // Não executar no home.
-        if (window.location.pathname === '/') { return; }
-        // Área que será substituída, primeiro por uma imagem.
-        container = $('[data-pjax-container]');
-        lis = $('.navigation.filter li');
-        pjaxLinks = $('a', lis);
-        ideasTitle = $('h1.title');
-        ideasAbout = $('h2.info');
-        // Não dá para usar o container como parâmetro, porque
-        // a função abaixo espera por uma String.
-        pjaxLinks.pjax('[data-pjax-container]').click(function () {
-            var link = $(this);
-            // A imagem de "carregando"
-            container.html("<img class='loading-image' src='/loading.gif' />");
-            // Remove a seleção dos outros links
-            lis.removeClass('selected');
-            // Deixa o link atual selecionado
-            link.parents('li').addClass('selected');
-            ideasTitle.html(link.data('title'));
-            ideasAbout.html(link.data('about'));
-        });
-    },
-
-    isLoggedIn: function(){
-        return Boolean($('.user_actions .logged_in').length);
-    },
-
-    Notifications: Backbone.View.extend({
-
-        events: {
-            'click li.notifications' : 'showNotes',
-            'click a.collab-ramify' : 'confirmRamify'
-        },
-
-        initialize: function(){
-            this.url = $(this.el).data('url');
-            this.notes = this.$('.notes');
-            this.counter = this.$('.count');
-        },
-
-        confirmRamify: function(event){
-            var self = $(event.currentTarget);
-            var url = self.attr('data-href');
-            $('a#ramify_confirm').attr('href', url); 
-            $.facebox({ div: "#new_ramify" });
-        },
-
-        showNotes: function(){
-            var self = this;
-            self.notes.fadeToggle(200);
-            if (this.counter){
-                $.ajax({
-                    url: self.url,
-                    type: "PUT",
-                    data: "notifications_read_at",
-                    success: function(data){
-                        self.counter.remove();
-                    }
-                });
+                jQuery.facebox({ div: '#modal_alert' }, 'modal_alert');
             }
-        }
-}),
+        },
 
-  },
+        startPjaxLinks: function () {
+            var lis, pjaxLinks, container, ideasTitle, ideasAbout;
+            // Não executar no home.
+            if (window.location.pathname === '/') { return; }
+            // Área que será substituída, primeiro por uma imagem.
+            container = $('[data-pjax-container]');
+            lis = $('.navigation.filter li');
+            pjaxLinks = $('a', lis);
+            ideasTitle = $('h1.title');
+            ideasAbout = $('h2.info');
+            // Não dá para usar o container como parâmetro, porque
+            // a função abaixo espera por uma String.
+            pjaxLinks.pjax('[data-pjax-container]').click(function () {
+                var link = $(this);
+                // A imagem de "carregando"
+                container.html("<img class='loading-image' src='/loading.gif' />");
+                // Remove a seleção dos outros links
+                lis.removeClass('selected');
+                // Deixa o link atual selecionado
+                link.parents('li').addClass('selected');
+                ideasTitle.html(link.data('title'));
+                ideasAbout.html(link.data('about'));
+            });
+        },
 
-  applyMoneyMask: function (obj) {
-      obj.maskMoney({ symbol: 'R$ ', showSymbol: true, thousands: '.', decimal: ',', symbolStay: true, allowNegative: false }).applyMask();
-  }
+        isLoggedIn: function(){
+            return Boolean($('.user_actions .logged_in').length);
+        },
+
+        Notifications: Backbone.View.extend({
+
+            events: {
+                'click li.notifications' : 'showNotes',
+                'click a.collab-ramify' : 'confirmRamify'
+            },
+
+            initialize: function(){
+                this.url = $(this.el).data('url');
+                this.notes = this.$('.notes');
+                this.counter = this.$('.count');
+            },
+
+            confirmRamify: function(event){
+                var self = $(event.currentTarget);
+                var url = self.attr('data-href');
+                $('a#ramify_confirm').attr('href', url); 
+                $.facebox({ div: "#new_ramify" });
+            },
+
+            showNotes: function(){
+                var self = this;
+                self.notes.fadeToggle(200);
+                if (this.counter) {
+                    $.ajax({
+                        url: self.url,
+                        type: "PUT",
+                        data: "notifications_read_at",
+                        success: function(data) { self.counter.remove(); }
+                    });
+                }
+            }
+        }),
+    },
+
+    applyMoneyMask: function (obj) {
+        obj.maskMoney({ symbol: 'R$ ', showSymbol: true, thousands: '.', decimal: ',', symbolStay: true, allowNegative: false }).applyMask();
+    }
 };
 
