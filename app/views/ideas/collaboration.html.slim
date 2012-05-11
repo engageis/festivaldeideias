@@ -34,7 +34,7 @@ header
 // Colaborar muda para Editar quando sou o dono da ideia
 article
   div
-    = raw Differ.diff_by_word(@collab.description_html, @idea.description_html)
+    = raw Differ.diff(@collab.description_html, @idea.description_html)
   ul.legend
     li.added
       span.green
