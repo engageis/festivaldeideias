@@ -13,6 +13,8 @@
           ul.notifications
             - current_user.notifications[0..4].each do |n|
               li= n.html_safe
+          a.view_more[href="#"]
+            | ver todas as notificações
 
     li.logged_in
       = image_tag current_user.services.first.facebook_avatar, :alt => "Profile image", :title => current_user.name, :class => "thumb_profile_image"
