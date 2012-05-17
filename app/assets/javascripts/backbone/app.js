@@ -116,6 +116,7 @@ var App = window.App = {
             showNotes: function(){
                 var self = this;
                 self.notes.fadeToggle(200);
+                $('.notifications').toggleClass('active');
                 if (this.counter) {
                     $.ajax({
                         url: self.url,

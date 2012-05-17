@@ -291,11 +291,18 @@ header.main
         margin: 5px 0
         float: left
 
+    li.notifications, li.logged_in
+      &:hover
+        background-color: $darkorange
+    
     li.notifications
       position: relative
       padding: 10px 10px 9px 10px
       margin-right: -1px
+      background: #333
       +border-bottom-left-radius(3px)
+      &.active
+        background: $darkorange
       .no_notifications
         padding: 10px
         background: lighten(#666, 50%)
@@ -321,13 +328,49 @@ header.main
         padding: 0 3px
         +border-radius(2px)
 
-
-    li.notifications, li.logged_in
-      background-color: #000
-      &:hover
+      .notes
+        +grid(4)
+        display: none
+        position: absolute
+        margin-top: 35px
+        z-index: 10
+        right: 0
+        top: -2px
         background-color: $darkorange
+        margin-right: 0
+        padding-bottom: 0
+        .content
+          background: #FFF
+          margin: 5px
+          overflow: hidden
+        h4
+          float: left
+          text-transform: uppercase
+          font-size: 14px
+          text-align: left
+          margin: 10px
+        .view_more
+          margin: 10px
+        ul
+          li
+            padding: 0
+            a
+              border-top: 1px solid #D0D0D0
+              border-bottom: 1px solid #D0D0D0
+              padding: 10px
+              font-size: 0.9em
+              margin-top: -1px
+              float: left
+              display: block
+              line-height: 1.4em
+              color: #333
+              &:hover
+                background:
+                  color: #EEE
+                color: $darkorange
 
     li.logged_in
+      background-color: #000
       +border-bottom-right-radius(3px)
       .name
         color: #FFF
@@ -395,46 +438,7 @@ header.main
                   color: #444
                 color: #FFF
 
-    .notes
-      +grid(4)
-      display: none
-      position: absolute
-      margin-top: 35px
-      z-index: 10
-      right: 0
-      top: -2px
-      background-color: $darkorange
-      margin-right: 0
-      padding-bottom: 0
-      .content
-        background: #FFF
-        margin: 5px
-        overflow: hidden
-      h4
-        float: left
-        text-transform: uppercase
-        font-size: 14px
-        text-align: left
-        margin: 10px
-      .view_more
-        margin: 10px
-      ul
-        li
-          padding: 0
-          a
-            border-top: 1px solid #D0D0D0
-            border-bottom: 1px solid #D0D0D0
-            padding: 10px
-            font-size: 0.9em
-            margin-top: -1px
-            float: left
-            display: block
-            line-height: 1.4em
-            color: #333
-            &:hover
-              background:
-                color: #EEE
-              color: $darkorange
+
 
   .logo
     +grid(4)
