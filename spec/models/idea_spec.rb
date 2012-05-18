@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+include Rails.application.routes.url_helpers
 describe Idea do
   describe "Validations/Associations" do
 
@@ -156,6 +156,12 @@ describe Idea do
       @idea = Idea.make! minimum_investment: "5.101,25" 
       @idea.formatted_minimum_investment.should  == "R$ 5.101,00"
     end
+  end
 
+  describe "#set_facebook_url" do
+    it "Should generate a correct url for facebook comments and likes" do
+      @idea = Idea.make! title: "My Title"
+      @idea.facebook_url.should == category_idea_url(@idea.category, @idea, host: "http://festivaldeideias.org.br")
+    end
   end
 end

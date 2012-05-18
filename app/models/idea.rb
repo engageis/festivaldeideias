@@ -39,8 +39,8 @@ class Idea < ActiveRecord::Base
   
   # Callbacks
   
-  after_create :add_facebook_url
-  before_save :check_minimum_investment
+  after_create :set_facebook_url
+  before_create :check_minimum_investment
 
   def self.ramify!(idea)
     idea.update_attributes! parent_id: nil, accepted: nil
@@ -80,6 +80,9 @@ class Idea < ActiveRecord::Base
     }
   end
 
+  def external_url
+    self.facebook_url
+  end
   # This affects links
   def to_param
     "#{id}-#{title.parameterize}"
@@ -122,10 +125,8 @@ class Idea < ActiveRecord::Base
     self.update_attribute(:likes, total_count.to_i) if total_count
   end
 
-  private
-  def add_facebook_url
-    url = "http://festivaldeideias.org.br"
-    path = url + category_idea_path(self.category, self)
-    self.update_attribute(:facebook_url, path)
+  def set_facebook_url
+    url = category_idea_url(self.category, self, host: "http://festivaldeideias.org.br")
+    self.update_attribute(:facebook_url, url)
   end
 end
