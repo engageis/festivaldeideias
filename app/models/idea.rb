@@ -6,8 +6,6 @@ class Idea < ActiveRecord::Base
   include ActiveRecord::SpawnMethods
   include Rails.application.routes.url_helpers
 
-  before_create :add_facebook_url
-
   belongs_to :user
   belongs_to :category, :class_name => "IdeaCategory", :foreign_key => :category_id
   belongs_to :parent  , :class_name => "Idea", :foreign_key => :parent_id
@@ -38,6 +36,11 @@ class Idea < ActiveRecord::Base
               AND collaboration.user_id = ?
           )', user.id]).order("updated_at DESC")
   }
+  
+  # Callbacks
+  
+  after_create :add_facebook_url
+  before_save :check_minimum_investment
 
   def self.ramify!(idea)
     idea.update_attributes! parent_id: nil, accepted: nil
@@ -88,11 +91,13 @@ class Idea < ActiveRecord::Base
   end
 
   def formatted_minimum_investment
-    ActionController::Base.helpers.number_to_currency(minimum_investment)
+    ActionController::Base.helpers.number_to_currency(self.minimum_investment)
   end
 
+  def check_minimum_investment
+    self.minimum_investment = minimum_investment_before_type_cast.tr('R$.', '')
+  end
 
-  # Use AutoHtml gem to convert texts
   def convert_html(text)
     auto_html text do
       html_escape :map => {
@@ -109,38 +114,18 @@ class Idea < ActiveRecord::Base
     end
   end
 
-  # Atualiza o número de likes da ideia
   def update_facebook_likes
-    #default_url_options[:host] = 'festivaldeideias.org.br'
     facebook_query_url = 'https://api.facebook.com/method/fql.query?format=json&query=' 
     fql = "SELECT total_count FROM link_stat WHERE url='%s'"
-    #path = "http://festivaldeideias.org.br" + idea_path(self)
-    #path = category_idea_url(self.category, self)
     path = self.facebook_url
     total_count = JSON.parse(open(facebook_query_url + URI.encode(fql % path)).read).first["total_count"]
     self.update_attribute(:likes, total_count.to_i) if total_count
   end
 
-  # Remove R$ e pontuação do investimento mínimo. Tem o unmaskMoney,
-  # mas depende do Javascript e não sei se confio só nisso.
-  def minimum_investment=(text)
-    case text
-    when Float, Integer, BigDecimal
-      super(text.to_f)
-    else
-      number = text.to_s.gsub(/\D+/, '')
-      # Se por algum motivo o texto vier curto demais
-      while number.length < 3
-        number = "0" + number
-      end
-      # NOTE: SEMPRE será inserido um ponto separador de decimais
-      super(number[0..-3] + '.' + number[-2..-1])
-    end
-  end
-
   private
   def add_facebook_url
     url = "http://festivaldeideias.org.br"
-    self.facebook_url = url + category_idea_path(self.category, self)
+    path = url + category_idea_path(self.category, self)
+    self.update_attribute(:facebook_url, path)
   end
 end

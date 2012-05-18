@@ -3,6 +3,7 @@
 class IdeasController < ApplicationController
   load_and_authorize_resource
   skip_authorize_resource :only => [:featured, :popular, :modified, :recent, :category]
+
   inherit_resources
 
   has_scope :featured, :type => :boolean, :only => :index
@@ -12,41 +13,21 @@ class IdeasController < ApplicationController
 
   belongs_to :idea_category, :optional => true
 
-  #respond_to :html, :except => [:update]
-  #respond_to :json, :only => [:index, :update]
-  respond_to :json, :only => [:index]
-
   before_filter :load_collaborators, :only => [ :show, :edit, :collaboration ]
   before_filter :load_resources
 
-  def show
-    @idea = Idea.find(params[:id])
-    @idea.update_facebook_likes
-    show!
-  end
+  before_filter only: [:create] { @idea.user = current_user if current_user }
+  before_filter only: [:show] { @idea.update_facebook_likes }
+
+  respond_to :json, :only => [:index]
 
   def create
-    # O usuário deve aceitar os todos os termos clicando no checkbox
+    # User should accept the ToS
     unless params[:terms_acceptance] && params[:cc_license] && params[:share_license] && params[:change_license]
       flash[:alert] = "Os termos de devem ser aceitos"
       return redirect_to request.referer
     end
 
-    # TODO: Colocar isso no model da Ideia
-    # Removendo R$ e pontuação do investimento mínimo, eu sei
-    # que tem o unmaskMoney, mas não estava conseguindo fazer
-    # funcionar, e também não sei se confio só nisso.
-    number = params[:idea][:minimum_investment].gsub(/\D+/, '')
-    # Se por algum motivo não houver javascript
-    while number.length < 3
-      number = "0" + number
-    end
-    params[:idea][:minimum_investment] = number[0..-3] + '.' + number[-2..-1]
-
-    @idea = Idea.new(params[:idea])
-    @idea.user = current_user if current_user
-    # Agora depois de criada uma ideia, ela é exibida
-    #create!(:notice => t('idea.message.success'),:alert => t('idea.message.failure')) { request.referer }
     create! do |success, failure|
       success.html {
         flash[:notice] = t('idea.message.success')
@@ -62,8 +43,6 @@ class IdeasController < ApplicationController
   def update
     update! do |format|
       format.html do
-        # NOTE: Temos que garantir que a idea voltará para a rota correta
-        # TODO: Arrumar routes??
         return redirect_to category_idea_path(@idea.category, @idea)
       end
       format.json do
@@ -75,7 +54,6 @@ class IdeasController < ApplicationController
   def colaborate
     if @idea
       @collab = Idea.create_colaboration(params[:idea].merge(:user_id => current_user.id))
-      #flash[:alert] = t('idea.colaboration.success')
       flash[:modal_alert] = t('idea.colaboration.success').html_safe
       redirect_to category_idea_path(@idea.category.id, @idea)
     end
