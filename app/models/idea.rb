@@ -42,7 +42,6 @@ class Idea < ActiveRecord::Base
   # Callbacks
   
   after_create :set_facebook_url
-  #before_create :check_minimum_investment
 
   def self.ramify!(idea)
     idea.update_attributes! parent_id: nil, accepted: nil
