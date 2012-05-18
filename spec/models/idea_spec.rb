@@ -143,18 +143,18 @@ describe Idea do
 
   describe "#check_minimum_investment" do
     it "Should format minimum investment as currency" do 
-      @idea = Idea.make! minimum_investment: "5000"
+      @idea = Idea.make! minimum_investment: "5000,25"
       @idea.formatted_minimum_investment.should  == "R$ 5.000,00"
     end
 
     it "Should format minimum investiment corretly when receiving currency symbols" do
-      @idea = Idea.make! minimum_investment: "R$ 5.000,00" 
-      @idea.formatted_minimum_investment.should  == "R$ 5.000,00"
+      @idea = Idea.make! minimum_investment: "R$ 5.100,00" 
+      @idea.formatted_minimum_investment.should  == "R$ 5.100,00"
     end
 
     it "Should format minimum investiment corretly when receiving wrong format" do
-      @idea = Idea.make! minimum_investment: "5.000" 
-      @idea.formatted_minimum_investment.should  == "R$ 5.000,00"
+      @idea = Idea.make! minimum_investment: "5.101,25" 
+      @idea.formatted_minimum_investment.should  == "R$ 5.101,00"
     end
 
   end
