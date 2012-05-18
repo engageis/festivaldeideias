@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   protected
   def current_user
-    @current_user ||= User.find_by_id(session[:user_id], :include => :ideas)
+    @current_user ||= User.find_by_id(cookies[:user], :include => :ideas)
   end
 
   def is_signed_in?
@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 
   def current_user=(user)
     @current_user = user
-    session[:user_id] = user.id
+    cookies[:user] = { :value => user.id, :expires => 5.days.from_now }
   end
 
   def load_pages_for_the_links
