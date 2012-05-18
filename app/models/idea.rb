@@ -127,7 +127,7 @@ class Idea < ActiveRecord::Base
   end
 
   def set_facebook_url
-    url = category_idea_url(self.category, self, host: "http://festivaldeideias.org.br")
+    url = category_idea_url(self.category, self, host: "festivaldeideias.org.br")
     self.update_attribute(:facebook_url, url)
   end
 end
