@@ -1,11 +1,10 @@
 # coding: utf-8
 
 class IdeasController < ApplicationController
-  inherit_resources
-  actions :all, except: [:new, :destroy]
-  
   load_and_authorize_resource
   skip_authorize_resource :only => [:featured, :popular, :modified, :recent, :category]
+
+  inherit_resources
 
   has_scope :featured, :type => :boolean, :only => :index
   has_scope :popular, :type => :boolean
@@ -14,13 +13,13 @@ class IdeasController < ApplicationController
 
   belongs_to :idea_category, :optional => true
 
+  actions :all, except: [:new, :destroy]
+
   before_filter :load_collaborators, :only => [ :show, :edit, :collaboration ]
   before_filter :load_resources
 
   before_filter only: [:create] { @idea.user = current_user if current_user }
   before_filter only: [:show]   { @idea.update_facebook_likes }
-
-  respond_to :json, :only => [:index]
 
   def index
     load_headers(:name => 'recent', :url => page_path('co-criacao'))
@@ -133,13 +132,13 @@ class IdeasController < ApplicationController
     #querying only ideas, no collab.
     @ideas = end_of_association_chain.where(:parent_id => nil).includes(:user, :colaborations, :category)
 
-    @categories ||= IdeaCategory.order('created_at ASC')
-    @users ||= User.find(:all, :order => 'RANDOM()', :include => :services)
-    @ideas_count ||= Idea.where(:parent_id => nil).includes(:user, :category)
-    @collab_count ||=  Idea.where("parent_id IS NOT NULL").includes(:user, :category, :parent)
-    @ideas_latest ||= Idea.latest.includes(:user, :category)
+    @categories     ||= IdeaCategory.order('created_at ASC')
+    @users          ||= User.find(:all, :order => 'RANDOM()', :include => :services)
+    @ideas_count    ||= Idea.parent.includes(:user, :category)
+    @collab_count   ||= Idea.colaborations.includes(:user, :category, :parent)
+    @ideas_latest   ||= Idea.latest.includes(:user, :category)
     @ideas_featured ||= Idea.featured.includes(:user, :category)
-    @ideas_popular ||= Idea.popular.includes(:user, :category).shuffle
+    @ideas_popular  ||= Idea.popular.includes(:user, :category).shuffle
   end
 
   def current_ability
@@ -155,7 +154,6 @@ class IdeasController < ApplicationController
     name = options[:name] || action_name
     @ideas_title = I18n.translate("idea.filters.#{name}.title", options)
 
-    #if name != 'category'
     unless options[:category_name]
       @ideas_about = I18n.translate("idea.filters.#{name}.about", options)
     end

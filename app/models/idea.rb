@@ -15,13 +15,15 @@ class Idea < ActiveRecord::Base
   validates_presence_of :title, :description, :category_id, :user_id
 
   # Scope for colaborations
-  scope :not_accepted, where(:accepted => nil).order('created_at DESC')
-
-  scope :featured,  where(:featured => true, :parent_id => nil).order('position DESC')
-  scope :latest,    where(:parent_id => nil).order('updated_at DESC')
-  scope :recent,    where(:parent_id => nil).order('created_at DESC')
-  scope :popular,   select("DISTINCT ON (ideas.id) ideas.*").
-                    joins("INNER JOIN ideas b ON b.parent_id = ideas.id")
+  
+  scope :parent,        where(parent_id: nil).order('created_at DESC')
+  scope :colaborations, where("parent_id IS NOT NULL").order("created_at DESC")
+  scope :not_accepted,  where(:accepted => nil).order('created_at DESC')
+  scope :featured,      where(:featured => true, :parent_id => nil).order('position DESC')
+  scope :latest,        where(:parent_id => nil).order('updated_at DESC')
+  scope :recent,        where(:parent_id => nil).order('created_at DESC')
+  scope :popular,       select("DISTINCT ON (ideas.id) ideas.*").
+                          joins("INNER JOIN ideas b ON b.parent_id = ideas.id")
 
   scope :new_collaborations, ->(user) { where(['parent_id IN (?)', user.ideas.map(&:id)]).order("created_at DESC") }
 
@@ -40,7 +42,7 @@ class Idea < ActiveRecord::Base
   # Callbacks
   
   after_create :set_facebook_url
-  before_create :check_minimum_investment
+  #before_create :check_minimum_investment
 
   def self.ramify!(idea)
     idea.update_attributes! parent_id: nil, accepted: nil
