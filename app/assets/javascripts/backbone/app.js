@@ -27,10 +27,10 @@ var App = window.App = {
             $('.flash').each(function () {
                 App.flashes.push(new App.Flash({el: this, timeout: 5000}));
             });
-
             // Starting Facebox and modal alerts
             App.Common.startFacebox();
-
+            App.applyMaskMoney();
+            App.loadMaskOnFaceboxReveal();
             // Sempre executar
             App.Ideas.newIdea = new App.Ideas.NewIdea();
             App.fbEvents = new App.FbEvents();
@@ -41,6 +41,7 @@ var App = window.App = {
                 notification = new App.Common.Notifications({ el: $('.user_actions')[0] });
             }
 
+
         },
 
         finish: function(){
@@ -50,9 +51,6 @@ var App = window.App = {
         },
 
         startFacebox: function () {
-            // NOTE: Tive que modificar isto.
-            // É pra funcionar igual (só que melhor).
-            // Qualquer dúvida, me pergunte (Chico) por quê?
             $('*[rel=facebox]').click(function () {
                 var href = this.href;
                 $.facebox({ div: href });
@@ -129,8 +127,20 @@ var App = window.App = {
         }),
     },
 
-    applyMoneyMask: function (obj) {
-        obj.maskMoney({ symbol: 'R$ ', showSymbol: true, thousands: '.', decimal: ',', symbolStay: true, allowNegative: false }).applyMask();
+    applyMaskMoney: function(){
+      $('.currency').maskMoney({
+        showSymbol: true,
+        symbol:"R$",
+        decimal:".", 
+        thousands:"", 
+        precision: 2
+      }); 
+    },
+
+    loadMaskOnFaceboxReveal: function(){
+      $(document).bind('afterReveal.facebox', function(){
+        App.applyMaskMoney();
+      });
     }
 };
 

@@ -1,10 +1,11 @@
 # coding: utf-8
 
 class IdeasController < ApplicationController
+  inherit_resources
+  actions :all, except: [:new, :destroy]
+  
   load_and_authorize_resource
   skip_authorize_resource :only => [:featured, :popular, :modified, :recent, :category]
-
-  inherit_resources
 
   has_scope :featured, :type => :boolean, :only => :index
   has_scope :popular, :type => :boolean
@@ -17,9 +18,13 @@ class IdeasController < ApplicationController
   before_filter :load_resources
 
   before_filter only: [:create] { @idea.user = current_user if current_user }
-  before_filter only: [:show] { @idea.update_facebook_likes }
+  before_filter only: [:show]   { @idea.update_facebook_likes }
 
   respond_to :json, :only => [:index]
+
+  def index
+    load_headers(:name => 'recent', :url => page_path('co-criacao'))
+  end
 
   def create
     # User should accept the ToS
@@ -88,10 +93,6 @@ class IdeasController < ApplicationController
     @collab.update_attribute :accepted, false
     flash[:modal_alert] = t('idea.colaboration.rejected', :user => @collab.user.name).html_safe
     return redirect_to category_idea_path(resource.category, resource)
-  end
-
-  def index
-    load_headers(:name => 'recent', :url => page_path('co-criacao'))
   end
 
   def modified

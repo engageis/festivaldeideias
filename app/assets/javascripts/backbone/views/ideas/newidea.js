@@ -21,9 +21,6 @@ App.Ideas.NewIdea = App.BaseView.extend({
         this.lastPosition = 0;
         //this.loadIdeaFromStore();
 
-        $(document).bind('afterReveal.facebox', function () {
-          App.applyMoneyMask($('.popup .currency'));
-        });
     },
 
     events: {
