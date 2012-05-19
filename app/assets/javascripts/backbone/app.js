@@ -101,9 +101,17 @@ var App = window.App = {
             },
 
             initialize: function(){
+              var self = this;
                 this.url = $(this.el).data('url');
                 this.notes = this.$('.notes');
                 this.counter = this.$('.count');
+                $(document).click(function(e){
+                    if(!$.contains($('ul.user_actions')[0], e.target)){
+                        self.notes.fadeOut(200);
+                    }
+
+                  $('.notifications').toggleClass('active');
+                });
             },
 
             confirmRamify: function(event){
@@ -112,11 +120,10 @@ var App = window.App = {
                 $('a#ramify_confirm').attr('href', url); 
                 $.facebox({ div: "#new_ramify" });
             },
-
+            
             showNotes: function(){
                 var self = this;
                 self.notes.fadeToggle(200);
-                $('.notifications').toggleClass('active');
                 if (this.counter) {
                     $.ajax({
                         url: self.url,
@@ -126,6 +133,7 @@ var App = window.App = {
                     });
                 }
             }
+
         }),
     },
 
