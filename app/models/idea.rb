@@ -6,8 +6,6 @@ class Idea < ActiveRecord::Base
   include ActiveRecord::SpawnMethods
   include Rails.application.routes.url_helpers
 
-  before_create :add_facebook_url
-
   belongs_to :user
   belongs_to :category, :class_name => "IdeaCategory", :foreign_key => :category_id
   belongs_to :parent  , :class_name => "Idea", :foreign_key => :parent_id
@@ -17,13 +15,15 @@ class Idea < ActiveRecord::Base
   validates_presence_of :title, :description, :category_id, :user_id
 
   # Scope for colaborations
-  scope :not_accepted, where(:accepted => nil).order('created_at DESC')
-
-  scope :featured,  where(:featured => true, :parent_id => nil).order('position DESC')
-  scope :latest,    where(:parent_id => nil).order('updated_at DESC')
-  scope :recent,    where(:parent_id => nil).order('created_at DESC')
-  scope :popular,   select("DISTINCT ON (ideas.id) ideas.*").
-                    joins("INNER JOIN ideas b ON b.parent_id = ideas.id")
+  
+  scope :parent,        where(parent_id: nil).order('created_at DESC')
+  scope :colaborations, where("parent_id IS NOT NULL").order("created_at DESC")
+  scope :not_accepted,  where(:accepted => nil).order('created_at DESC')
+  scope :featured,      where(:featured => true, :parent_id => nil).order('position DESC')
+  scope :latest,        where(:parent_id => nil).order('updated_at DESC')
+  scope :recent,        where(:parent_id => nil).order('created_at DESC')
+  scope :popular,       select("DISTINCT ON (ideas.id) ideas.*").
+                          joins("INNER JOIN ideas b ON b.parent_id = ideas.id")
 
   scope :new_collaborations, ->(user) { where(['parent_id IN (?)', user.ideas.map(&:id)]).order("created_at DESC") }
 
@@ -38,6 +38,10 @@ class Idea < ActiveRecord::Base
               AND collaboration.user_id = ?
           )', user.id]).order("updated_at DESC")
   }
+  
+  # Callbacks
+  
+  after_create :set_facebook_url
 
   def self.ramify!(idea)
     idea.update_attributes! parent_id: nil, accepted: nil
@@ -77,6 +81,9 @@ class Idea < ActiveRecord::Base
     }
   end
 
+  def external_url
+    self.facebook_url
+  end
   # This affects links
   def to_param
     "#{id}-#{title.parameterize}"
@@ -88,11 +95,13 @@ class Idea < ActiveRecord::Base
   end
 
   def formatted_minimum_investment
-    ActionController::Base.helpers.number_to_currency(minimum_investment)
+    ActionController::Base.helpers.number_to_currency(self.minimum_investment)
   end
 
+  def check_minimum_investment
+    self.minimum_investment = minimum_investment_before_type_cast.tr('R$.', '')
+  end
 
-  # Use AutoHtml gem to convert texts
   def convert_html(text)
     auto_html text do
       html_escape :map => {
@@ -109,38 +118,16 @@ class Idea < ActiveRecord::Base
     end
   end
 
-  # Atualiza o número de likes da ideia
   def update_facebook_likes
-    #default_url_options[:host] = 'festivaldeideias.org.br'
     facebook_query_url = 'https://api.facebook.com/method/fql.query?format=json&query=' 
     fql = "SELECT total_count FROM link_stat WHERE url='%s'"
-    #path = "http://festivaldeideias.org.br" + idea_path(self)
-    #path = category_idea_url(self.category, self)
     path = self.facebook_url
     total_count = JSON.parse(open(facebook_query_url + URI.encode(fql % path)).read).first["total_count"]
     self.update_attribute(:likes, total_count.to_i) if total_count
   end
 
-  # Remove R$ e pontuação do investimento mínimo. Tem o unmaskMoney,
-  # mas depende do Javascript e não sei se confio só nisso.
-  def minimum_investment=(text)
-    case text
-    when Float, Integer, BigDecimal
-      super(text.to_f)
-    else
-      number = text.to_s.gsub(/\D+/, '')
-      # Se por algum motivo o texto vier curto demais
-      while number.length < 3
-        number = "0" + number
-      end
-      # NOTE: SEMPRE será inserido um ponto separador de decimais
-      super(number[0..-3] + '.' + number[-2..-1])
-    end
-  end
-
-  private
-  def add_facebook_url
-    url = "http://festivaldeideias.org.br"
-    self.facebook_url = url + category_idea_path(self.category, self)
+  def set_facebook_url
+    url = category_idea_url(self.category, self, host: "festivaldeideias.org.br")
+    self.update_attribute(:facebook_url, url)
   end
 end

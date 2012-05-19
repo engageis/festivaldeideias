@@ -27,7 +27,7 @@
       p
         = f.label :minimum_investment, t("idea.value.title")
         em = t('idea.new.minimum_investment_desc')
-        = f.text_field :minimum_investment, :class => 'currency', :maxlength => 16
+        = f.text_field :minimum_investment, :maxlength => 16, class: 'currency'
 
       .categories.required
         h4 = t('idea.new.choose_a_category')

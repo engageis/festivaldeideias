@@ -6,7 +6,7 @@
   <!-- Google Plus -->
 
   <%
-      url = options[:url] || request.url
+      url = @idea.present? ? @idea.external_url : (options[:url] || request.url)
       # <nome da ideia> - Festival de Ideias 2012 <link da ideia> #festideias
       twitter_text = @idea.respond_to?(:title) ? sprintf("%s - Festival de Ideais 2012", @idea.title) : "Festival de Ideias 2012"
   %>
@@ -26,8 +26,7 @@
   </div>
 
   <!-- Facebook -->
-  <% # url = @idea.present? ? category_idea_url(@idea.category, @idea) : url %>
-  <% url = @idea.present? ? @idea.facebook_url : url %>
+  <% url = @idea.present? ? @idea.external_url : url %>
   <div
     class="fb-like"
     style="display: inline-block"
@@ -51,8 +50,6 @@
         fjs.parentNode.insertBefore(js,fjs);
       }
     }(document, "script", "twitter-wjs"));
-
-    window.___gcfg = { lang: 'pt-BR' };
 
     (function () {
       var po = document.createElement('script');

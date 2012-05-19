@@ -7,10 +7,6 @@ App.Ideas.Show = App.EditableView.extend({
         $(document).bind('afterClose.facebox', function () {
             Backbone.history.navigate('');
         });
-
-        $(document).bind("afterReveal.facebox", function () {
-            App.applyMoneyMask($('input.currency'));
-        });
     },
 
     bindRoutes: function () {

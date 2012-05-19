@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+include Rails.application.routes.url_helpers
 describe Idea do
   describe "Validations/Associations" do
 
@@ -62,8 +62,6 @@ describe Idea do
         @idea.as_json.should == idea_json
       end
     end
-
-
 
     describe "#to_param" do
       it "Should concatenate id and title" do
@@ -140,5 +138,30 @@ describe Idea do
     subject { Idea.ramify!(@colab) } 
 
     it { should == true }
+  end
+
+
+  describe "#check_minimum_investment" do
+    it "Should format minimum investment as currency" do 
+      @idea = Idea.make! minimum_investment: "5000.25"
+      @idea.formatted_minimum_investment.should  == "R$ 5.000,25"
+    end
+
+    it "Should format minimum investiment corretly when receiving currency symbols" do
+      @idea = Idea.make! minimum_investment: "5100.00" 
+      @idea.formatted_minimum_investment.should  == "R$ 5.100,00"
+    end
+
+    it "Should format minimum investiment corretly when receiving wrong format" do
+      @idea = Idea.make! minimum_investment: "5101.25" 
+      @idea.formatted_minimum_investment.should  == "R$ 5.101,25"
+    end
+  end
+
+  describe "#set_facebook_url" do
+    it "Should generate a correct url for facebook comments and likes" do
+      @idea = Idea.make! title: "My Title"
+      @idea.facebook_url.should == category_idea_url(@idea.category, @idea, host: "http://festivaldeideias.org.br")
+    end
   end
 end
