@@ -1,4 +1,4 @@
-- if not is_signed_in?
+- unless is_signed_in?
   li.login
     a.name[href="#login" rel="facebox"]= t 'login.create_account'
   li.login
@@ -12,24 +12,17 @@
           h4 Notificações
           ul.notifications
             - current_user.notifications[0..4].each do |n|
-              li= n.html_safe
-          a.view_more[href="#"]
-            | ver todas as notificações
+              li= n.link.html_safe
+          = link_to t('notifications.view_more'), "#", class: :view_more
 
     li.logged_in
-      = image_tag current_user.services.first.facebook_avatar, :alt => "Profile image", :title => current_user.name, :class => "thumb_profile_image"
+      = image_tag current_user.avatar, :alt => "Profile image", :title => current_user.name, :class => "thumb_profile_image"
       a.name[href=""]
         = current_user.name
       .user_menu
         .content
-          = image_tag current_user.services.first.facebook_avatar, :alt => "Profile image", :title => current_user.name, :class => "medium_profile_image"
-          .score
-            - ideas = current_user.ideas.where(parent_id: nil)
-            - collab = current_user.colaborations
-            |#{ideas.size} ideia(s) própria(s), #{collab.size} ideias colaboradas.
+          = image_tag current_user.avatar, :alt => "Profile image", :title => current_user.name, :class => "medium_profile_image"
+          .score= t 'user.score_message', ideas: current_user.ideas.parent.size, colab: current_user.colaborations.size
           ul
-            //li
-              a href="" Meu perfil
             li
               a href="/logout/" Sair
-

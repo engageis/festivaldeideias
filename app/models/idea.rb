@@ -25,7 +25,7 @@ class Idea < ActiveRecord::Base
   scope :popular,       select("DISTINCT ON (ideas.id) ideas.*").
                           joins("INNER JOIN ideas b ON b.parent_id = ideas.id")
 
-  scope :new_collaborations, ->(user) { where(['parent_id IN (?)', user.ideas.map(&:id)]).order("created_at DESC") }
+  scope :new_collaborations, ->(user) { where(['parent_id IN (?)', user.ideas.map(&:id)]).order("created_at ASC") }
 
   scope :collaborations_status_changed, ->(user) { 
     where(['user_id = ? AND accepted IS NOT NULL AND parent_id IS NOT NULL', user.id]).order("updated_at DESC")

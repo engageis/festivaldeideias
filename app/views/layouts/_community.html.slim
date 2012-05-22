@@ -1,15 +1,10 @@
-h3
-  = t "idea.community.title"
-h4
-  = t "idea.community.subtitle"
+h3= t "idea.community.title"
+h4= t "idea.community.subtitle"
 .community
    ul
     - if @users.any?
       - @users[0..29].each do |user|
-        li
-          - profile = user.services.first
-          = link_to (image_tag profile.facebook_avatar, :alt => user.name, :title => user.name), profile.facebook_profile, :target => "_blank"
-
+        li= link_to (image_tag user.avatar, :alt => user.name, :title => user.name), user.profile, :target => "_blank"
       .x_more
         - if @users.size > 30
           | + #{@users.size - 30} pessoas
