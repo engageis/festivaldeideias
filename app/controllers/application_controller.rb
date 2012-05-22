@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
   def current_user=(user)
     @current_user = user
-    cookies[:user] = { :value => user.id, :expires => 5.days.from_now }
+    cookies[:user] = { :value => user.id, :expires => 15.days.from_now }
   end
 
   def load_pages_for_the_links
