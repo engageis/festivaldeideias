@@ -5,4 +5,8 @@ class UsersController < InheritedResources::Base
     current_user.update_attribute(:notifications_read_at, Time.now)
     return render nothing: true
   end
+  
+  def notifications
+    @users = User.all
+  end
 end

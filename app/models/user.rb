@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   end
   
   def notifications
-    self.all_notifications.sort! { |a,b| b.date <=> a.date }
+    self.all_notifications.sort { |a,b| b.date <=> a.date }
   end
 
   protected 
