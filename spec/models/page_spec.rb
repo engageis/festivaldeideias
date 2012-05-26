@@ -15,7 +15,7 @@ describe Page do
 
   describe "Slug verification" do
     it 'Should convert the page title to a friendly_id' do
-      number = rand 1..1000
+      number = rand(1000)
       page = Page.make!(:title => "Minha Página Especial #{number}", :body => '<p>Conteúdo</p>')
       page.slug.should == "minha-pagina-especial-#{number}"
     end
