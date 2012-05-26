@@ -7,6 +7,7 @@ gem 'rails', '3.2.3'
 # Database
 gem 'pg'
 gem 'foreigner'
+gem "audited-activerecord"
 
 # Differ tool
 gem 'differ'
