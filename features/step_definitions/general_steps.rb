@@ -24,14 +24,14 @@ end
 
 When /^I fill the form$/ do
   within ".new_idea" do
-    fill_in "Colabore no titulo desta ideia", with: "My collab"
-    fill_in "Colabore na descrição desta ideia", with: "My collab desc"
+    fill_in "Sabe de um título melhor? Colabore aqui:", with: "My collab"
+    fill_in "Algo a adicionar? Aqui é o corpo da ideia, colabore alterando e/ou adicionando seus pontos:", with: "My collab desc"
     fill_in "idea_minimum_investment", with: "500000"
   end
 end
 
 When /^I submit the form$/ do
-  click_button "Publicar!"
+  click_button "Enviar colaboração!"
 end
 
 Given /^I made a colaboration called "([^"]*)" in the idea "([^"]*)" and it was ([^"]*)$/ do |arg1, arg2, arg3|
@@ -46,7 +46,8 @@ Given /^I made a colaboration called "([^"]*)" in the idea "([^"]*)" and it was 
 end
 
 When /^I click in the notifications bar$/ do
-  page.execute_script("$('li.notifications').trigger('click')")
+  page.execute_script("$('li.notifications .notes').show()")
+  sleep(1)
 end
 
 
@@ -151,6 +152,6 @@ Then /^I should see a list of notifications$/ do
 end
 
 Then /^I should see my profile image$/ do
-  page.should have_xpath("//ul[@class='user_actions']/li[@class='logged_in']/div[@class='user_menu']/img[@class='medium_profile_image']")
+  page.should have_xpath("//img[@class='medium_profile_image']")
 end
 
