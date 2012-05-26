@@ -1,5 +1,7 @@
 Festival de Ideias
 ==================
+[![Build Status](https://secure.travis-ci.org/softa/festivaldeideias.png?branch=master)](http://travis-ci.org/softa/festivaldeideias)
+
 Setup
 -----
 
