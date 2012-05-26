@@ -18,6 +18,7 @@ gem 'has_scope'
 
 # Administration & dependencies
 gem 'activeadmin'
+gem "devise", "2.0.4"
 gem 'meta_search'
 
 # Tools
