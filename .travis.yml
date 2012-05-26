@@ -1,0 +1,16 @@
+language: ruby
+rvm:
+  - 1.9.2
+
+before_script:
+  - "cp config/database.sample.yml config/database.yml"
+  - "psql -c 'create role festival SUPERUSER LOGIN;' postgres"
+  - "psql -c 'create database festival_ideias_test;' -U seurio postgres"
+  - "sh -e /etc/init.d/xvfb start"
+
+# uncomment this line if your project needs to run something other than `rake`:
+script: "bundle exec rake db:migrate && bundle exec rspec spec && bundle exec cucumber
+
+branches:
+  only:
+    - master
