@@ -1,6 +1,7 @@
 require 'spec_helper'
-include Rails.application.routes.url_helpers
 describe Idea do
+
+  include Rails.application.routes.url_helpers
   describe "Validations/Associations" do
 
     it { should validate_presence_of :title }
@@ -161,7 +162,7 @@ describe Idea do
   describe "#set_facebook_url" do
     it "Should generate a correct url for facebook comments and likes" do
       @idea = Idea.make! title: "My Title"
-      @idea.facebook_url.should == category_idea_url(@idea.category, @idea, host: "http://festivaldeideias.org.br")
+      @idea.facebook_url.should == category_idea_url(@idea.category, @idea, host: "festivaldeideias.org.br")
     end
   end
 end
