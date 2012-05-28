@@ -294,8 +294,7 @@ header.main
     li.notifications, li.logged_in
       &:hover
         background-color: $darkorange
-      a.new
-        background-color: lighten($lightgreen, 5%)
+
     
     li.notifications
       position: relative
@@ -365,11 +364,14 @@ header.main
               float: left
               display: block
               line-height: 1.4em
-              color: #333
+              color: #999
+              &.new
+                color: #000
               &:hover
                 background:
                   color: #EEE
                 color: $darkorange
+
 
     li.logged_in
       background-color: #000
@@ -696,3 +698,35 @@ footer
 
 .star
   font-size: 80%
+
+
+#notifications
+  ul
+    border: 4px solid #D0D0D0
+    +border-radius(2px)
+    margin: 20px 50px
+    li
+      border-bottom: 1px solid #D0D0D0
+      line-height: 1.5em
+      &:last-child
+        border-bottom: 0
+      a
+        display: block
+        color: #333
+        font-weight: normal
+        padding: 15px 100px 15px 10px
+        position: relative
+        &:after
+          content: "clica para ver"
+          background: #999
+          color: #FFF
+          padding: 0 10px
+          position: absolute
+          top: 30%
+          right: 5px
+          +border-radius(15px)
+        &:hover
+          color: $darkorange
+          background: #EEE
+          &:after
+            background: $orange

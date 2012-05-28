@@ -1,5 +1,8 @@
-ol
-  li.notifications
-    ul.notifications
-      - current_user.notifications.each do |n|
-        li= n.link.html_safe 
+#notifications
+  h1
+    | Notificações
+  ol
+    li
+      ul
+        - current_user.notifications.each do |n|
+          li= n.link.html_safe 

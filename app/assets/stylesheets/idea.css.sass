@@ -73,8 +73,6 @@
   .edit_message, .collab
     padding: 20px 10px
     text-align: center
-    background:
-      color: $lightyellow
     border: 1px solid $purple
     outline: 2px solid #FFF
     margin: 20px 0
@@ -95,26 +93,28 @@
     ul
       li
         position: relative
-        &.odd
-          background: lighten($lightyellow, 3%)
-        &.even
+        border-bottom: 1px solid #D0D0D0
+        &:last-child
+          border: none
         a
           display: block
           padding: 10px
           font-weight: normal
-          &:hover
-            background:
-              color: rgba(255, 255, 255, 0.8)
-            color: $darkorange
+
           &:after
-            content: "Clica para ver"
-            background: $orange
+            content: "clica para ver"
+            background: #999
             color: #FFF
-            padding: 5px 10px
+            padding: 3px 5px
             position: absolute
             top: 5px
             right: 20px
             +border-radius(15px)
+          &:hover
+            background: #EEE
+            color: $darkorange
+            &:after
+              background: $orange
     h4
       padding: 10px
       margin: 0

@@ -25,7 +25,7 @@ pt-BR:
     score_message: "%{ideas} ideias próprias, %{colab} colaborações em ideias."
   notifications:
     new_colaboration_html: "<a href='%{link}' class='%{class}'><strong>%{name}</strong> quer colaborar com a sua ideia <strong>%{parent}</strong></a>"
-    colaboration_accepted_html: "<a href='%{link}' class='%{class}'>A sua colaboração para a ideia <strong>%{parent}</strong> foi aceita! Clique para ver como ficou a ideia final!</a>"
+    colaboration_accepted_html: "<a href='%{link}' class='%{class}'>A sua colaboração para a ideia <strong>%{parent}</strong> foi aceita! </a>"
     colaboration_refused_html: "<a href='#' data-href='%{link}' class='collab-ramify %{class}'>A sua colaboração para a ideia <strong>%{parent}</strong> foi recusada. <strong>Clique aqui se deseja criar uma nova ideia a partir desta colaboração</strong></a>"
     updated_idea_html: "<a href='%{link}' class='%{class}'>A ideia <strong>%{parent}</strong> que você colaborou foi atualizada.</a>"
     view_more: "Ver todas as notificações"
