@@ -22,7 +22,7 @@ Feature: Colaborate with an idea
     And I made a colaboration called "Carona.me updated title" in the idea "Carona me" and it was accepted
     When I visit the root path
     And I click in the notifications bar
-    Then I should see "A sua colaboração para a ideia Carona me foi aceita! Clique para ver como ficou a ideia final!"
+    Then I should see "A sua colaboração para a ideia Carona me foi aceita!"
 
   @omniauth_test @javascript 
   Scenario: My colaboration was rejected :(
