@@ -12,7 +12,7 @@ class Idea < ActiveRecord::Base
 
   has_many :colaborations, :class_name => "Idea", :foreign_key => :parent_id
 
-  validates_presence_of :title, :description, :category_id, :user_id
+  validates_presence_of :title, :description, :category_id, :user_id, :minimum_investment
 
   # Scope for colaborations
   
