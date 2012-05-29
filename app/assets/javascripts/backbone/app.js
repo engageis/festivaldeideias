@@ -107,8 +107,6 @@ var App = window.App = {
                     if(!$.contains($('ul.user_actions')[0], e.target)){
                         self.notes.fadeOut(200);
                     }
-
-                  $('.notifications').toggleClass('active');
                 });
             },
 
