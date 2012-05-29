@@ -13,7 +13,7 @@
           ul.notifications
             - current_user.notifications[0..4].each do |n|
               li= n.link.html_safe
-          = link_to t('notifications.view_more'), "#", class: :view_more
+          = link_to t('notifications.view_more'), notifications_url, class: :view_more
 
     li.logged_in
       = image_tag current_user.avatar, :alt => "Profile image", :title => current_user.name, :class => "thumb_profile_image"
