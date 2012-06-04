@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(:version => 20120526174024) do
     t.integer  "author_id"
     t.string   "author_type"
     t.text     "body"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "namespace"
   end
 
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(:version => 20120526174024) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                                            :null => false
-    t.datetime "updated_at",                                            :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
@@ -72,8 +72,8 @@ ActiveRecord::Schema.define(:version => 20120526174024) do
     t.text     "description",                   :null => false
     t.text     "badge"
     t.boolean  "active",      :default => true
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "ideas", :force => true do |t|
@@ -86,8 +86,8 @@ ActiveRecord::Schema.define(:version => 20120526174024) do
     t.boolean  "recommend",                                         :default => false, :null => false
     t.integer  "likes",                                             :default => 0,     :null => false
     t.integer  "position",                                          :default => 0,     :null => false
-    t.datetime "created_at",                                                           :null => false
-    t.datetime "updated_at",                                                           :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "category_id",                                                          :null => false
     t.boolean  "accepted"
     t.decimal  "minimum_investment", :precision => 10, :scale => 2, :default => 0.0,   :null => false
@@ -96,23 +96,23 @@ ActiveRecord::Schema.define(:version => 20120526174024) do
 
   create_table "non_facebook_users", :force => true do |t|
     t.string   "email",      :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "notifications", :force => true do |t|
     t.integer  "user_id"
     t.text     "message"
     t.boolean  "read"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "pages", :force => true do |t|
     t.string   "title",      :null => false
     t.text     "body",       :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "slug"
     t.integer  "position"
   end
@@ -124,22 +124,16 @@ ActiveRecord::Schema.define(:version => 20120526174024) do
     t.integer  "user_id",    :null => false
     t.text     "provider",   :null => false
     t.text     "uid",        :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
     t.text     "name",                  :null => false
     t.text     "email",                 :null => false
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.datetime "notifications_read_at"
   end
-
-  add_foreign_key "ideas", "idea_categories", :name => "ideas_category_id_fk", :column => "category_id"
-  add_foreign_key "ideas", "ideas", :name => "ideas_parent_id_fk", :column => "parent_id"
-  add_foreign_key "ideas", "users", :name => "ideas_user_id_fk"
-
-  add_foreign_key "services", "users", :name => "services_user_id_fk"
 
 end
