@@ -1,15 +1,42 @@
 #idea
   header
-    border-bottom: 1px solid #CCC
-    padding-bottom: 10px
+    background: #F3F3F3
+    overflow: hidden
+    border: 1px solid #DDD
+    margin: -10px -11px 10px -11px
+    padding: 10px
+    .badge
+      float: left
+      margin: 0 10px 0 0
+      padding: 10px 10px 10px 0
+      border-right: 1px solid #DDD
+      +box-shadow(1px 0 0 #FFF)
     h1
       width: auto
-      margin: 0 0 5px 0
+      font-family: "Helvetica-bold", Helvetica
+      font-size: 1.8em
+      margin: 0 0 5px
       line-height: 1.2em
     .idea_stats
-      color: #666
-      span
-        font-weight: lighter
+      ul
+        float: left
+        border: 1px solid #BBB
+        border-left: 0
+        background: #F8F8F8
+        margin-top: 8px
+        li
+          padding: 5px 15px
+          padding-left: 25px
+          float: left
+          border-left: 1px solid #BBB
+          background: 
+            image: url(asset_path("icons.png", "image"))
+            repeat: no-repeat
+            position: 5px -1207px
+          &:last-child
+            background:
+              position: 5px -1271px
+          
   .utils
     font-size: 0.9em
     overflow: hidden

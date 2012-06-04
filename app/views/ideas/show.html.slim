@@ -23,33 +23,36 @@ header
 
     // Statistics
     - profile = @idea.user.services.first.facebook_profile
-    section.idea_stats
-      span
-        | Moderada por #{link_to(@idea.user.name, profile, :target => '_blanck', :class => 'user_info')}
-        | &nbsp;&mdash;&nbsp;
-        | Última alteração feita há #{time_ago_in_words(@idea.updated_at)}
-    article
-      .field
-        = @idea.description_html
+    .idea_stats
+      ul
+        li
+          | #{link_to(@idea.user.name, profile, :target => '_blanck', :class => 'user_info')}
+        li
+          | Última alteração há #{time_ago_in_words(@idea.updated_at)}
+      a.button.cocreation href="#"
+        | Sala de cocriação
+article
+  .field
+    = @idea.description_html
 
-    - if can?(:edit, @idea)
-      /*a.button.edit.right Editar ideia*/
-      = link_to "Editar ideia", edit_category_idea_path(@idea.category, @idea), :class => 'button edit right'
-      .clear
-    -else
-      .collaborate
-        img[src="/assets/gostou.png"]
-        p
-          | Colabore com referências e mais informações para o desenvolvimento desta ideia. Ajude a elaborar as necessidades e próximos passos!
-        //p
-          | Ao clicar no botão abaixo, você poderá editá-la. Mas fique à vontade: o moderador da ideia sempre poderá aceitar ou recusar sua colaboração ;)
-        = link_to t("idea.colaboration.new.start"), "#colaborate", :class => "button contribute"
-        .clear
+- if can?(:edit, @idea)
+  /*a.button.edit.right Editar ideia*/
+  = link_to "Editar ideia", edit_category_idea_path(@idea.category, @idea), :class => 'button edit right'
+  .clear
+-else
+  .collaborate
+    img[src="/assets/gostou.png"]
+    p
+      | Colabore com referências e mais informações para o desenvolvimento desta ideia. Ajude a elaborar as necessidades e próximos passos!
+    //p
+      | Ao clicar no botão abaixo, você poderá editá-la. Mas fique à vontade: o moderador da ideia sempre poderá aceitar ou recusar sua colaboração ;)
+    = link_to t("idea.colaboration.new.start"), "#colaborate", :class => "button contribute"
+    .clear
 
-  section#comments
-    a name="comment"
-    h3 Comentários
+section#comments
+  a name="comment"
+  h3 Comentários
 
-    .fb-comments data-href=@idea.external_url data-num-posts="10" data-width="690"
+  .fb-comments data-href=@idea.external_url data-num-posts="10" data-width="690"
 
-  = render :partial => "colaboration", :locals => {:idea => @idea}
+= render :partial => "colaboration", :locals => {:idea => @idea}

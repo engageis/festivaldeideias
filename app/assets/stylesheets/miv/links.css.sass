@@ -22,6 +22,24 @@
 
 // * buttons
 .button
+  &.cocreation
+    background:
+      color: darken($orange, 10%)
+      image: url(asset_path("icons.png", "image"))
+      repeat: no-repeat
+      position: 5px -1336px
+    border: 1px solid darken($orange, 20%)
+    padding: 5px 10px
+    padding-left: 25px
+    font-weight: normal
+    margin-top: 8px
+    color: #FFF
+    float: right
+    &:hover
+      background:
+        color: $orange
+      border:
+        color: darken($orange, 10%)
   &.contribute
     +btn($darkorange, right, 1.2em)
     margin: 10px 0
