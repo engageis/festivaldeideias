@@ -111,12 +111,6 @@ class Idea < ActiveRecord::Base
 
   def convert_html(text)
     auto_html text do
-      html_escape :map => {
-        '&' => '&amp;',
-        '>' => '&gt;',
-        '<' => '&lt;',
-        '"' => '"'
-      }
       image
       youtube :width => 510, :height => 332
       vimeo :width => 510, :height => 332
