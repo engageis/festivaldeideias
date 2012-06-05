@@ -30,6 +30,7 @@ gem 'auto_html'
 gem 'friendly_id'
 gem 'tinymce-rails'
 gem 'koala'
+gem 'opentok'
 
 # Authentication + Authorization
 gem 'cancan'

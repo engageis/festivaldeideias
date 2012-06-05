@@ -1,0 +1,43 @@
+- if @idea
+  = content_for :javascripts do
+    = javascript_include_tag "http://staging.tokbox.com/v0.91/js/TB.min.js"
+
+
+  h1= @idea.title
+  h2 Sala de co-criação
+
+  javascript:
+    var apiKey      = "15793291";
+    var sessionId  = "#{@idea.tokbox_session}";
+    var token       = "#{@token}";
+
+    TB.setLogLevel(TB.DEBUG); 
+
+    var session = TB.initSession(sessionId);      
+    session.addEventListener('sessionConnected', sessionConnectedHandler);      
+    session.addEventListener('streamCreated', streamCreatedHandler);
+    session.connect(apiKey, token);
+
+    function sessionConnectedHandler(event) {
+      publisher = session.publish('cocreation');
+    }
+
+    function streamCreatedHandler(event) {
+      subscribeToStreams(event.streams);
+    }
+     
+    function subscribeToStreams(streams) {
+      for (var i = 0; i < streams.length; i++) {
+        if (streams[i].connection.connectionId == session.connection.connectionId) {
+          return;
+        }
+ 
+        var div = document.createElement('div');
+        div.setAttribute('id', 'stream' + streams[i].streamId);
+        document.body.appendChild(div);
+                           
+        session.subscribe(streams[i], div.id);
+      }
+    }
+
+  #cocreation

@@ -11,12 +11,8 @@
 #   - dist/**/*.js
 #
 src_files:
-  - public/javascripts/prototype.js
-  - public/javascripts/effects.js
-  - public/javascripts/controls.js
-  - public/javascripts/dragdrop.js
-  - public/javascripts/application.js
-  - public/javascripts/**/*.js
+  - spec/javascripts/support/application.js
+  - app/assets/javascripts/app/**/*.js
 
 # stylesheets
 #
@@ -25,9 +21,8 @@ src_files:
 #
 # EXAMPLE:
 #
-# stylesheets:
-#   - css/style.css
-#   - stylesheets/*.css
+stylesheets:
+ - stylesheets/**/*.css
 #
 stylesheets:
   - stylesheets/**/*.css

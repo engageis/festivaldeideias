@@ -10,23 +10,18 @@ header
     // Defining a class for editable fields based on cancan ability
     - ability_class = can?(:edit, @idea) ?  "editable" : "idea_detail"
 
-    //- if can?(:edit, @idea)
-      .edit_message= t('idea.message.edit')
-
     - if can?(:manage, @idea)
       = render "layouts/collaborations"
     // Category badge
     = image_tag @idea.category.badge, :alt => @idea.category.name, :title => @idea.category.name, :class => "badge"
 
     // Title
-    h1 =@idea.title
+    h1= @idea.title
 
     // Statistics
-    - profile = @idea.user.services.first.facebook_profile
     .idea_stats
       ul
-        li
-          | #{link_to(@idea.user.name, profile, :target => '_blanck', :class => 'user_info')}
+        li= link_to @idea.user.name, @idea.user.profile, :target => '_blank', :class => 'user_info'
         li
           | Última alteração há #{time_ago_in_words(@idea.updated_at)}
       a.button.cocreation href="#"
@@ -36,16 +31,12 @@ article
     = @idea.description_html
 
 - if can?(:edit, @idea)
-  /*a.button.edit.right Editar ideia*/
   = link_to "Editar ideia", edit_category_idea_path(@idea.category, @idea), :class => 'button edit right'
   .clear
--else
+- else
   .collaborate
-    img[src="/assets/gostou.png"]
-    p
-      | Colabore com referências e mais informações para o desenvolvimento desta ideia. Ajude a elaborar as necessidades e próximos passos!
-    //p
-      | Ao clicar no botão abaixo, você poderá editá-la. Mas fique à vontade: o moderador da ideia sempre poderá aceitar ou recusar sua colaboração ;)
+    = image_tag "gostou.png"
+    p Colabore com referências e mais informações para o desenvolvimento desta ideia. Ajude a elaborar as necessidades e próximos passos!
     = link_to t("idea.colaboration.new.start"), "#colaborate", :class => "button contribute"
     .clear
 

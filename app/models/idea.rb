@@ -48,6 +48,7 @@ class Idea < ActiveRecord::Base
   # Callbacks
   
   after_create :set_facebook_url
+  after_create :set_tokbox_settings
 
   def self.ramify!(idea)
     idea.update_attributes! parent_id: nil, accepted: nil
@@ -136,5 +137,10 @@ class Idea < ActiveRecord::Base
   def set_facebook_url
     url = category_idea_url(self.category, self, host: "festivaldeideias.org.br")
     self.update_attribute(:facebook_url, url)
+  end
+
+  def set_tokbox_settings
+    session = TOKBOX.create_session(self.external_url)
+    self.update_attribute(:tokbox_session, session.session_id)
   end
 end

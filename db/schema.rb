@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120526174024) do
+ActiveRecord::Schema.define(:version => 20120605030649) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(:version => 20120526174024) do
     t.boolean  "accepted"
     t.decimal  "minimum_investment", :precision => 10, :scale => 2, :default => 0.0,   :null => false
     t.string   "facebook_url"
+    t.string   "tokbox_session"
   end
 
   create_table "non_facebook_users", :force => true do |t|
@@ -135,11 +136,5 @@ ActiveRecord::Schema.define(:version => 20120526174024) do
     t.datetime "updated_at"
     t.datetime "notifications_read_at"
   end
-
-  add_foreign_key "ideas", "idea_categories", :name => "ideas_category_id_fk", :column => "category_id"
-  add_foreign_key "ideas", "ideas", :name => "ideas_parent_id_fk", :column => "parent_id"
-  add_foreign_key "ideas", "users", :name => "ideas_user_id_fk"
-
-  add_foreign_key "services", "users", :name => "services_user_id_fk"
 
 end

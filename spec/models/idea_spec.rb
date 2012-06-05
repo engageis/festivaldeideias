@@ -165,4 +165,11 @@ describe Idea do
       @idea.facebook_url.should == category_idea_url(@idea.category, @idea, host: "festivaldeideias.org.br")
     end
   end
+
+  describe "#set_tokbox_settings" do
+    it "Should save a session from tokbox in order to use its video chat features" do
+      @idea = Idea.make!
+      @idea.tokbox_session.should_not == nil
+    end
+  end
 end

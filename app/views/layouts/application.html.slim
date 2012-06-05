@@ -5,9 +5,10 @@ html
     = render :partial => "layouts/meta_tags_defaults"
     = favicon_link_tag "favicon.gif", :type => "image/gif"
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Droid+Serif", :application
-    script[src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"]
-
+    = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = csrf_meta_tags
+
+    = yield :javascripts
     = render :partial => "shared/google_analytics"
 
   - name = controller.controller_name

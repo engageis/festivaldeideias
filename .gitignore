@@ -26,3 +26,4 @@ public/uploads
 /.sass-cache
 .rvmrc
 logfile
+config/initializers/02-tokbox.rb
