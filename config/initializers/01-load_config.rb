@@ -9,8 +9,4 @@ unless Rails.env.production?
   ENV['FB_CALLBACK_URL'] = CONFIG['FB_CALLBACK_URL']
 end
 
-if Rails.env.production?
-  TOKBOX = OpenTok::OpenTokSDK.new ENV['TOKBOX_KEY'], ENV['TOKBOX_SECRET'], :api_url => 'https://api.opentok.com/hl'
-else
-  TOKBOX = OpenTok::OpenTokSDK.new key, secret
-end
+TOKBOX = OpenTok::OpenTokSDK.new key, secret
