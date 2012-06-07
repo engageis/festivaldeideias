@@ -31,6 +31,7 @@ gem 'friendly_id'
 gem 'tinymce-rails'
 gem 'koala'
 gem 'opentok'
+gem "private_pub"
 
 # Authentication + Authorization
 gem 'cancan'

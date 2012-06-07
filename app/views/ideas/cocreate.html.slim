@@ -2,13 +2,22 @@
   = content_for :javascripts do
     = javascript_include_tag "http://staging.tokbox.com/v0.91/js/TB.min.js"
 
-
   h1= @idea.title
-  h2 Sala de co-criação
+  h2 Sala de cocriação
+
+  #cocreation
+  #chat
+    = render @idea.messages.all
+
+  = form_for @idea.messages.build, remote: true do |f|
+    = f.text_field :text, id: "new_message"
+    = f.submit "Send"
+
+  = subscribe_to @idea.external_url
 
   javascript:
     var apiKey      = "15793291";
-    var sessionId  = "#{@idea.tokbox_session}";
+    var sessionId   = "#{@idea.tokbox_session}";
     var token       = "#{@token}";
 
     TB.setLogLevel(TB.DEBUG); 
@@ -40,4 +49,4 @@
       }
     }
 
-  #cocreation
+

@@ -50,4 +50,14 @@ describe IdeasController do
     it { should redirect_to category_idea_path(@idea.category.id, @idea)}
 
   end
+
+
+  describe "put #message" do
+    before do
+      @user = User.make!
+      @idea = Idea.make!
+      controller.stub(:current_user).and_return(@user)
+
+    end
+  end
 end

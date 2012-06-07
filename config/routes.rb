@@ -9,7 +9,11 @@ FestivalDeIdeias::Application.routes.draw do
   match '/logout',                  :to => 'sessions#destroy',                :as => :session_destroy
   match '/connect_with_facebook',   :to => 'sessions#connect_with_facebook',  :as => :connect_with_facebook
   match '/notifications',           :to => 'users#notifications',             :as => :notifications
-  # Resources
+
+  #Resources
+  
+  resources :messages, only: [:new, :index, :create]
+  
   resources :users do
     member do
       put 'update_notification', :as => :update_notification
@@ -22,6 +26,7 @@ FestivalDeIdeias::Application.routes.draw do
       get "refuse_collaboration",         :as => :refuse_collaboration
       get "collaboration",                :as => :collaboration
       get "ramify",                       :as => :ramify
+      post "message",                      :as => :message
     end
   end
   resources :non_facebook_users, :only => [:create]

@@ -13,4 +13,5 @@
 //= require libraries/etch
 //= require libraries/editable
 //= require backbone/app
+//= require private_pub
 //= require init

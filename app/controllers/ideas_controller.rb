@@ -63,10 +63,6 @@ class IdeasController < ApplicationController
     end
   end
 
-  def cocreate
-
-  end
-
   def colaborate
     if @idea
       @collab = Idea.create_colaboration(params[:idea].merge(:user_id => current_user.id))
@@ -137,6 +133,13 @@ class IdeasController < ApplicationController
     @ideas_about = @category.description
     load_headers(:category_name => @category.name)
     render :index
+  end
+
+  def cocreate
+  end
+
+  def message
+    @message = resource.messages.build!(params[:message])
   end
 
   protected

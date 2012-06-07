@@ -1,0 +1,4 @@
+<% publish_to params[:message][:url] do %>
+  $("#chat").append("<%= j render(@message) %>");
+  $("#new_message")[0].reset();
+<% end %>
