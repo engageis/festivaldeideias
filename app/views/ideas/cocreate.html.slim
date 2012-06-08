@@ -10,12 +10,16 @@
     h1= @idea.title
 
   #video
-    h2 #video
+    aside
+      h2 #video
+      p Convide pessoas para cocriar com você e inicie uma conversa por vídeo para discutir esta ideia.
     .videos
       #cocreation
         = @idea.set_tokbox_settings
   #chat
-    h2 #chat
+    aside
+      h2 #chat
+      p Compartilhe textos, mídias, links e documente o que está sendo discutido, assim é mais fácil de atualizar a ideia depois!
     .chatmsgs
       ul.msglist
         = render @idea.messages

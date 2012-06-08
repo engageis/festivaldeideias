@@ -15,11 +15,14 @@ body[data-action="Cocreate"][data-controller-name="Ideas"]
           position: 5px -1315px
 
       #video, #chat
-        h2
+        aside
           float: left
           +grid(2)
           padding: 20px 0
+          color: #999
           +alpha
+        p
+          clear: both
         .chatmsgs, .videos
           +grid(10)
           +omega
@@ -53,7 +56,7 @@ body[data-action="Cocreate"][data-controller-name="Ideas"]
             .usermsg
               width: 78.7%
         textarea
-          width: 395px
+          width: 685px
           margin-right: 10px
           height: 40px
           float: left
