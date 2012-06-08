@@ -21,8 +21,12 @@
       h2 #chat
       p Compartilhe textos, mídias, links e documente o que está sendo discutido, assim é mais fácil de atualizar a ideia depois!
     .chatmsgs
-      ul.msglist
-        = render @idea.messages
+      - if @idea.messages.empty?
+        .nomsg
+          | nenhuma mensagem :(
+      - else
+        ul.msglist
+          = render @idea.messages
       .writemsg
         = form_for @idea.messages.build, url: idea_messages_path(@idea), remote: true do |f|
           = f.text_area :text, id: "new_message"
