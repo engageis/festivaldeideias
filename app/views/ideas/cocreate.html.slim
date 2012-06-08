@@ -7,11 +7,12 @@
 
   #cocreation
   #chat
-    = render @idea.messages.all
+    = render @idea.messages
 
-  = form_for @idea.messages.build, remote: true do |f|
+  = form_for @idea.messages.build, url: idea_messages_path(@idea), remote: true do |f|
     = f.text_field :text, id: "new_message"
-    = f.submit "Send"
+    = f.hidden_field :idea_id, value: @idea.id
+    = f.submit
 
   = subscribe_to @idea.external_url
 

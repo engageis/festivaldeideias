@@ -6,6 +6,7 @@ class UserAbility
     can :read, :all
     can :cocreate, Idea
     can :create, Idea
+    can :create, Message
     can :colaborate, Idea do |idea|
       idea.user != user
     end

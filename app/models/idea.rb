@@ -11,15 +11,15 @@ class Idea < ActiveRecord::Base
   include AutoHtml
   include ActiveRecord::SpawnMethods
   include Rails.application.routes.url_helpers
-
   belongs_to :user
   belongs_to :category, :class_name => "IdeaCategory", :foreign_key => :category_id
   belongs_to :parent  , :class_name => "Idea", :foreign_key => :parent_id
 
   has_many :colaborations, :class_name => "Idea", :foreign_key => :parent_id
   has_many :messages
-  validates_presence_of :title, :description, :category_id, :user_id, :minimum_investment
 
+  validates_presence_of :title, :description, :category_id, :user_id, :minimum_investment
+  
   # Scope for colaborations
   
   scope :parent,        where(parent_id: nil).order('created_at DESC')

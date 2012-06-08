@@ -138,10 +138,6 @@ class IdeasController < ApplicationController
   def cocreate
   end
 
-  def message
-    @message = resource.messages.build!(params[:message])
-  end
-
   protected
   def load_resources
     #querying only ideas, no collab.
