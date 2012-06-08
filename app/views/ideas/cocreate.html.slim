@@ -2,10 +2,9 @@
   = content_for :javascripts do
     = javascript_include_tag "http://staging.tokbox.com/v0.91/js/TB.min.js"
 
-  .cocreation_room
-    | Você está na sala de cocriação
-
   header
+    .cocreation_room
+      | Você está na sala de cocriação
     = image_tag @idea.category.badge, :alt => @idea.category.name, :title => @idea.category.name, :class => "badge"
     // Title
     h1= @idea.title
