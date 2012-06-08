@@ -7,9 +7,9 @@
 
   #cocreation
   #chat
-    = render @idea.messages.all
+    = render Message.where(:idea_id => @idea.id)
 
-  = form_for @idea.messages.build, remote: true do |f|
+  = form_for Message.new, remote: true do |f|
     = f.text_field :text, id: "new_message"
     = f.submit "Send"
 
