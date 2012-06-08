@@ -1,1 +1,9 @@
-p= message.text
+li
+  .userinfo
+    strong
+      = message.user.name
+    em
+      = message.created_at
+  .usermsg
+    = message.text
+  .clear

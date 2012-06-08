@@ -2,4 +2,63 @@ body[data-action="Cocreate"][data-controller-name="Ideas"]
   #main
     aside
       display: none
+    #idea
+      +grid-container
+      .cocreation_room
+        +cocreation
+        float: none
+        margin: -10px -10px 10px
+        padding: 10px
+        padding-left: 25px
+        background:
+          position: 5px -1332px
+
+      #video, #chat
+        h2
+          float: left
+          +grid(2)
+          padding: 20px 0
+          +alpha
+        .chatmsgs, .videos
+          +grid(10)
+          +omega
+          border-left: 1px solid #EFEFEF
+          padding: 20px 0 20px 19px
+          margin-left: 10px
+      #video
+      #chat
+        clear: both
+        .msglist
+          margin-bottom: 10px
+          max-height: 400px
+          overflow-y: scroll
+        ul
+          background:
+            color: #F6F6F6
+          li
+            border-bottom: 1px solid #FFF
+            .userinfo, .usermsg
+              padding: 10px
+              float: left
+            .userinfo
+              width: 16%
+              border-right: 1px solid #FFF
+              background: #EFEFEF
+              em
+                display: block
+                color: #666
+                font-size: 0.8em
+                margin-top: 5px
+            .usermsg
+              width: 78.7%
+        textarea
+          width: 395px
+          margin-right: 10px
+          height: 40px
+          float: left
+        input[type="submit"]
+          float: left
+          background:
+            color: $orange
+          padding: 19px 10px
 

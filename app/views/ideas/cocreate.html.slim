@@ -2,17 +2,29 @@
   = content_for :javascripts do
     = javascript_include_tag "http://staging.tokbox.com/v0.91/js/TB.min.js"
 
-  h1= @idea.title
-  h2 Sala de cocriação
+  .cocreation_room
+    | Você está na sala de cocriação
 
-  #cocreation
+  header
+    = image_tag @idea.category.badge, :alt => @idea.category.name, :title => @idea.category.name, :class => "badge"
+    // Title
+    h1= @idea.title
+
+  #video
+    h2 #video
+    .videos
+      #cocreation
+        = @idea.set_tokbox_settings
   #chat
-    = render @idea.messages
-
-  = form_for @idea.messages.build, url: idea_messages_path(@idea), remote: true do |f|
-    = f.text_field :text, id: "new_message"
-    = f.hidden_field :idea_id, value: @idea.id
-    = f.submit
+    h2 #chat
+    .chatmsgs
+      ul.msglist
+        = render @idea.messages
+      .writemsg
+        = form_for @idea.messages.build, url: idea_messages_path(@idea), remote: true do |f|
+          = f.text_area :text, id: "new_message"
+          = f.hidden_field :idea_id, value: @idea.id
+          = f.submit value: "Enviar"
 
   = subscribe_to @idea.external_url
 

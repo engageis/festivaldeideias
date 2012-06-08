@@ -1,4 +1,20 @@
 // MIXINS
+
+@mixin cocreation
+  background:
+    color: darken($orange, 10%)
+    image: url(asset_path("icons.png", "image"))
+    repeat: no-repeat
+    position: 5px -1336px
+  border: 1px solid darken($orange, 20%)
+  padding: 5px 10px
+  padding-left: 25px
+  font-weight: normal
+  margin-top: 8px
+  color: #FFF
+  float: right
+
+
 @mixin btn($color: #333, $align: left, $size: 13px)
   padding: 8px 10px
   border: 1px solid $color
