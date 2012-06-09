@@ -3,7 +3,7 @@ li
     strong
       = message.user.name
     em
-      = message.created_at
+      = l(message.created_at, format: :short)
   .usermsg
     = message.text
   .clear

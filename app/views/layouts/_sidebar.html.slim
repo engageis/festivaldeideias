@@ -20,10 +20,12 @@
   /*= new_idea_button('button')*/
   = render "layouts/share_festival"
 
+- elsif path =~/^\/(ideias).*(\/cocreate)$/ 
+
 - elsif path =~ /^\/(ideias).*(\/edit)$/
   = render "layouts/format_text"
 
-- elsif path =~ /^\/(ideias)/ and !path =~ /^\/(ideias).*(\/cocreate)$/
+- elsif path =~ /^\/(ideias)/
   // SIDEBAR FOR IDEA PAGE
   = render "layouts/idea_value"
   = render "layouts/collaborators"

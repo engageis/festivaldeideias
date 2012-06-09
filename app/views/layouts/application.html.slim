@@ -83,7 +83,7 @@ html
       img src="http://mixpanel.com/site_media/images/partner/badge_blue.png" alt="Mobile and Web Analytics"
 
 
-
-
   = javascript_include_tag :application
   = render :partial => "layouts/plugin_defaults"
+  = yield :bottomscripts 
+

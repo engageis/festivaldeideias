@@ -1,6 +1,7 @@
 - if @idea
   = content_for :javascripts do
     = javascript_include_tag "http://staging.tokbox.com/v0.91/js/TB.min.js"
+    = javascript_include_tag "http://js.pusher.com/1.12/pusher.min.js"
 
   header
     .cocreation_room
@@ -15,13 +16,12 @@
       p Convide pessoas para cocriar com você e inicie uma conversa por vídeo para discutir esta ideia.
     .videos
       #cocreation
-        = @idea.set_tokbox_settings
-  #chat
+  #chat[data-channel=@idea.cocreation_channel data-tokbox-session=@idea.tokbox_session data-tokbox-token=@token]
     aside
       h2 #chat
       p Compartilhe textos, mídias, links e documente o que está sendo discutido, assim é mais fácil de atualizar a ideia depois!
     .chatmsgs
-      - if @idea.messages.empty?
+      - if @idea.messages.length.zero?
         .nomsg
           | nenhuma mensagem :(
       - else
@@ -29,44 +29,8 @@
           = render @idea.messages
       .writemsg
         = form_for @idea.messages.build, url: idea_messages_path(@idea), remote: true do |f|
-          = f.text_area :text, id: "new_message"
+          = f.text_area :text, id: "input_new_message"
           = f.hidden_field :idea_id, value: @idea.id
+          = f.hidden_field :user_id, value: current_user.id
           = f.submit value: "Enviar"
-
-  = subscribe_to @idea.external_url
-
-  javascript:
-    var apiKey      = "15793291";
-    var sessionId   = "#{@idea.tokbox_session}";
-    var token       = "#{@token}";
-
-    TB.setLogLevel(TB.DEBUG); 
-
-    var session = TB.initSession(sessionId);      
-    session.addEventListener('sessionConnected', sessionConnectedHandler);      
-    session.addEventListener('streamCreated', streamCreatedHandler);
-    session.connect(apiKey, token);
-
-    function sessionConnectedHandler(event) {
-      publisher = session.publish('cocreation');
-    }
-
-    function streamCreatedHandler(event) {
-      subscribeToStreams(event.streams);
-    }
-     
-    function subscribeToStreams(streams) {
-      for (var i = 0; i < streams.length; i++) {
-        if (streams[i].connection.connectionId == session.connection.connectionId) {
-          return;
-        }
- 
-        var div = document.createElement('div');
-        div.setAttribute('id', 'stream' + streams[i].streamId);
-        document.body.appendChild(div);
-                           
-        session.subscribe(streams[i], div.id);
-      }
-    }
-
 

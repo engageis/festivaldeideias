@@ -1,4 +1,5 @@
 require 'opentok'
+require 'pusher'
 key, secret = "15793291", "b6f90ff600f642f98b00d044161cbee6996045ed"
 
 
@@ -10,3 +11,6 @@ unless Rails.env.production?
 end
 
 TOKBOX = OpenTok::OpenTokSDK.new key, secret
+Pusher.app_id = '22022'
+Pusher.key    = '3e107fc25d5330b3338b'
+Pusher.secret = '2b7c5990aafe688f3080'

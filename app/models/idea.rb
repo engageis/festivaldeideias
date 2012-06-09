@@ -50,6 +50,10 @@ class Idea < ActiveRecord::Base
   after_create :set_facebook_url
   after_create :set_tokbox_settings
 
+  def cocreation_channel
+    "cocreation-#{self.id}"
+  end
+
   def self.ramify!(idea)
     idea.update_attributes! parent_id: nil, accepted: nil
   end

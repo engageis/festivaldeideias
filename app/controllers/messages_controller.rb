@@ -4,8 +4,6 @@ class MessagesController < ApplicationController
   belongs_to :idea
 
   def create
-    @message = Message.create(params[:message])
-    @message.user = current_user
-    @message.save
+    @message = Message.create!(params[:message])
   end
 end
