@@ -30,8 +30,12 @@ gem 'auto_html'
 gem 'friendly_id'
 gem 'tinymce-rails'
 gem 'koala'
+
+
+# Cocreation Room
 gem 'opentok'
-gem "private_pub"
+gem 'pusher'
+
 
 # Authentication + Authorization
 gem 'cancan'
