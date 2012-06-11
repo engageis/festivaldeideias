@@ -17,6 +17,9 @@ App.Ideas.Cocreate = App.BaseView.extend({
     this.tokboxSession    = this.chat.data('tokbox-session');
     this.tokboxToken      = this.chat.data('tokbox-token');
 
+    if (this.tokboxSession != undefined)
+      this.initializeTokBox();
+
     this.initializePusher();
   },
 
