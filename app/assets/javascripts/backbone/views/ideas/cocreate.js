@@ -4,6 +4,7 @@ App.Ideas.Cocreate = App.BaseView.extend({
     
     // General Settings
     this.chat             = this.$('#chat');
+    this.video            = this.$('#cocreation');
     this.channel          = this.chat.data('channel');
 
     // Pusher
@@ -68,7 +69,7 @@ App.Ideas.Cocreate = App.BaseView.extend({
 
         var div = document.createElement('div');
         div.setAttribute('id', 'stream' + streams[i].streamId);
-        document.body.appendChild(div);
+        this.video.append(div);
                            
         session.subscribe(streams[i], div.id);
       }
