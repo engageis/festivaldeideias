@@ -4,6 +4,7 @@ App.Ideas.Cocreate = App.BaseView.extend({
     
     // General Settings
     this.chat             = this.$('#chat');
+    this.video            = this.$('#cocreation');
     this.channel          = this.chat.data('channel');
 
     // Pusher
@@ -65,14 +66,14 @@ App.Ideas.Cocreate = App.BaseView.extend({
      
     function subscribeToStreams(streams) {
       for (var i = 0; i < streams.length; i++) {
-        if (streams[i].connection.connectionId == session.connection.connectionId) {
+
+        if (streams[i].connection.connectionId == session.connection.connectionId){
           return;
         }
 
         var div = document.createElement('div');
         div.setAttribute('id', 'stream' + streams[i].streamId);
-        document.body.appendChild(div);
-                           
+        $('#video .videos').append(div);
         session.subscribe(streams[i], div.id);
       }
     } 
