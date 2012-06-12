@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
-# Rãius
-gem 'rails', '3.2.3'
+# Framework
+gem 'rails', '>= 3.2.6'
 
 
 # Database
