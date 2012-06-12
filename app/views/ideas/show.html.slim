@@ -24,7 +24,7 @@ header
         li= link_to @idea.user.name, @idea.user.profile, :target => '_blank', :class => 'user_info'
         li
           | Última alteração há #{time_ago_in_words(@idea.updated_at)}
-      a.button.cocreation href="#"
+      a.button.cocreation href=cocreate_idea_path(@idea.category, @idea)
         | Sala de cocriação
 article
   .field
