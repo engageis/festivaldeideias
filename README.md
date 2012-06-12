@@ -1,6 +1,3 @@
-Festival de Ideias
-==================
-
 Project Status
 ------
 [![Build Status](https://secure.travis-ci.org/softa/festivaldeideias.png?branch=master)](http://travis-ci.org/softa/festivaldeideias)
@@ -13,16 +10,10 @@ Site
 
 O que é o Festival de Ideias?
 -----------------------------
+
 Formulado para fomentar soluções criativas frente aos problemas atuais da sociedade e para
 promover a inovação e o empreendedorismo, o FdI é uma rede de colaboração e troca de
 informações entre empreendedores, investidores e o público em geral.
-
-
-What is the Festival de Ideias?
--------------------------------
-Formulated to promote creative solutions to current problems facing society and to 
-promote innovation and entrepreneurship, FDI is a network of collaboration and exchange
-of information between entrepreneurs, investors and the public in general.
 
 
 FdI, o coração
@@ -34,16 +25,6 @@ O Festival foi construído utilizando o Framework [Ruby on Rails](http://rubyonr
 versão 3.2.3 (a mais recente) e com cobertura de testes automatizados utilizando [Rspec](http://rspec.info/) e [Cucumber](http://cukes.info/).
 Todo o código do Festival é [Copyleft Share-Alike](http://pt.wikipedia.org/wiki/Copyleft), o que quer dizer que você é livre para fazer o que bem entender com ele; 
 contato que mencione o original e que o seu trabalho também seja **Copyleft**.
-
-
-Fdi, the core
--------------
-
-The Ideas Festival 2012 has been redesigned to meet the growing demand for ideas and to face the challenge
-of being a platform that evolves organically and constantly. The Festival was built using the Ruby Framework [Ruby on Rails] (http://rubyonrails.org/)
-in version 3.2.3 (the latest) and covered with automated tests using [RSpec] (http://rspec.info/) and [Cucumber] (http://cukes.info/). 
-All of the Festival's code is licensed by [Copyleft Share-Alike](http://en.wikipedia.org/wiki/Copyleft) license, which means you are free to do whatever you want with it; 
-but you have to mention the original repository in your work and also respect the original **Copyleft** license (which means your app should be copyleft too).
 
 
 FdI, a comunidade
@@ -63,6 +44,44 @@ Confira o vídeo e participe da comunidade!
 Link: [O Festival de Ideias: Plataforma](http://www.youtube.com/embed/MX2ArQiavHU)
 
 
+Wiki
+----
+
+1. Como fazer um *fork* (copiar) o projeto pra minha máquina?
+2. Como instalar o projeto?
+3. Como criar o banco de dados?
+4. Como rodar localmente o projeto?
+5. Como escrever código com testes automatizados?
+6. Como fazer *__commit__* (enviar as modificações que você fez) no meu fork?
+7. Como fazer um *__Pull Request__* (enviar as suas modificações para o repositório do festival)?
+8. Como ajudar a melhorar a comunidade?
+
+
+
+
+
+
+
+------------------------------
+
+
+What is the Festival de Ideias?
+-------------------------------
+Formulated to promote creative solutions to current problems facing society and to 
+promote innovation and entrepreneurship, FDI is a network of collaboration and exchange
+of information between entrepreneurs, investors and the public in general.
+
+
+Fdi, the core
+-------------
+
+The Ideas Festival 2012 has been redesigned to meet the growing demand for ideas and to face the challenge
+of being a platform that evolves organically and constantly. The Festival was built using the Ruby Framework [Ruby on Rails] (http://rubyonrails.org/)
+in version 3.2.3 (the latest) and covered with automated tests using [RSpec] (http://rspec.info/) and [Cucumber] (http://cukes.info/). 
+All of the Festival's code is licensed by [Copyleft Share-Alike](http://en.wikipedia.org/wiki/Copyleft) license, which means you are free to do whatever you want with it; 
+but you have to mention the original repository in your work and also respect the original **Copyleft** license (which means your app should be copyleft too).
+
+
 Fdi, the community
 ------------------
 
@@ -77,19 +96,6 @@ report bugs or even give tips on how to improve the code) using the best CVS - [
 Check out the video and join the community!
 Link: [The FdI: Platform](http://www.youtube.com/embed/MX2ArQiavHU)
 
-
-
-Wiki
-----
-
-1. Como fazer um *fork* (copiar) o projeto pra minha máquina?
-2. Como instalar o projeto?
-3. Como criar o banco de dados?
-4. Como rodar localmente o projeto?
-5. Como escrever código com testes automatizados?
-6. Como fazer *__commit__* (enviar as modificações que você fez) no meu fork?
-7. Como fazer um *__Pull Request__* (enviar as suas modificações para o repositório do festival)?
-8. Como ajudar a melhorar a comunidade?
 
 Wiki
 ----
