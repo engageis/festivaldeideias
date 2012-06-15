@@ -135,6 +135,11 @@ class IdeasController < ApplicationController
     render :index
   end
 
+  def keyword
+    @ideas = []
+    render :index
+  end
+
   def cocreate
   end
 

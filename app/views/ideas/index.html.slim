@@ -9,6 +9,8 @@
   .ajax-container data-pjax-container=''
     ol.ideas_buckets
       - unless @ideas.nil?
+        - if @ideas.empty?
+          li.empty Nenhuma ideia encontrada
         - @ideas.each_with_index do |idea, pos|
           li.bucket class=cycle('odd', 'middle', 'even')
             header
