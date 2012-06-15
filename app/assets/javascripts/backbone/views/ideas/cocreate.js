@@ -11,14 +11,33 @@ App.Ideas.Cocreate = App.BaseView.extend({
     this.pusherKey        = "3e107fc25d5330b3338b";
     this.chatMsgList      = this.$('ul.msglist');
     this.chatInputField   = this.$('#input_new_message');
+    this.chatForm         = this.$('#new_message');
 
     // Tokbox
     this.tokboxKey        = "15793291";
     this.tokboxSession    = this.chat.data('tokbox-session');
     this.tokboxToken      = this.chat.data('tokbox-token');
 
+    $("#new_message .loading").hide();
+
     if (this.tokboxSession != undefined)
       this.initializeTokBox();
+
+    this.chatInputField.keydown(function(e){ 
+      if(e.keyCode == 13 && e.shiftKey != 1) { 
+        if($("#input_new_message").val().trim() != ""){
+          $("#new_message").submit();
+          $("#new_message .loading").slideDown(100);
+          $("#input_new_message").val("");
+          $("#input_new_message").attr("disabled", "disabled");
+        }
+        return false;
+      } 
+    });
+
+    this.chatForm.submit(function(){ 
+      if($("#input_new_message").val() == "") {return false} 
+    });
 
     this.initializePusher();
   },
@@ -31,7 +50,8 @@ App.Ideas.Cocreate = App.BaseView.extend({
   
 
     channel.bind('new-message', function(data){
-      self.chatInputField.val("");
+      $("#new_message .loading").slideUp(100);
+      $("#input_new_message").removeAttr("disabled");
       
       if (self.chatMsgList.length == 0) {
         var list = $("<ul/>").attr('class', 'msglist');

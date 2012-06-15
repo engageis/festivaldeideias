@@ -29,6 +29,7 @@
           = render @idea.messages
       .writemsg
         = form_for @idea.messages.build, url: idea_messages_path(@idea), remote: true do |f|
+          = image_tag("loading.gif", :class => "loading")
           = f.text_area :text, id: "input_new_message"
           = f.hidden_field :idea_id, value: @idea.id
           = f.hidden_field :user_id, value: current_user.id
