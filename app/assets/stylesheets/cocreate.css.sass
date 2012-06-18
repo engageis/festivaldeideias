@@ -2,18 +2,63 @@ body[data-action="Cocreate"][data-controller-name="Ideas"]
   #main
     aside
       display: none
+
+    .badge
+      padding: 10px 30px 10px 82px
+      margin: 0
+    h1
+      margin: 20px
+      float: left
+
+    .fb-like
+      width: 59px !important
+
+    object
+      width: 254px
+      padding: 3px
+
     #idea
       +grid-container
-      .cocreation_room
-        +cocreation
+      header
+        overflow: visible
         float: left
-        margin: 0
-        margin-right: 10px
-        padding: 2.8% 10px
-        padding-left: 25px
-        background:
-          position: 5px -1315px
-
+        width: 100%
+      .cocreation_room
+        background: #DDD
+        float: left
+        width: 99.8%
+        margin: -9px 10px 10px -9px
+        padding: 10px
+        height: 21px
+        p
+          +cocreation
+          +grid(3)
+          height: 21px
+          border: none
+          font-size: 1.15em
+          float: left
+          margin: -10px 10px 10px -20px
+          padding: 10px 20px
+          padding-left: 45px
+          background:
+            position: 20px -1330px
+        ul
+          float: left
+          padding: 3px
+          li
+            float: left
+            &:after
+              content: "\00b7"
+              padding: 0 10px
+            &:last-child
+              &:after
+                content: ""
+            a
+              font-weight: normal
+              color: #555
+              &:hover
+                color: #222
+                text-decoration: underline
       #video, #chat
         aside
           float: left
