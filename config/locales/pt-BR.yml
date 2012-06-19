@@ -239,4 +239,6 @@
 
       full_messages:
         format: "%{attribute} %{message}"
-
+  unauthorized:
+    cocreate:
+      idea: "Queremos saber quem você é! Depois te levamos para a sala de cocriação."
