@@ -155,3 +155,32 @@ Then /^I should see my profile image$/ do
   page.should have_xpath("//img[@class='medium_profile_image']")
 end
 
+Given /^there is an idea$/ do
+  @idea = Idea.make!
+end
+
+Given /^I'm in "(.*?)"$/ do |arg1|
+  if arg1 == "this idea page"
+    visit idea_path(@idea)
+  else
+    raise "I don't know #{arg1}"
+  end
+end
+
+When /^I click "(.*?)"$/ do |arg1|
+  click_link arg1
+end
+
+Then /^I should be in "(.*?)"$/ do |arg1|
+  if arg1 == "the login page"
+    current_path.should be_== new_session_path
+  elsif arg1 == "the idea's cocreate page"
+    current_path.should be_== cocreate_idea_path(@idea.category, @idea)
+  else
+    raise "I don't #{arg1}"
+  end
+end
+
+When /^I press "(.*?)"$/ do |arg1|
+  click_button arg1
+end

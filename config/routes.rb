@@ -5,6 +5,7 @@ FestivalDeIdeias::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   # Authentication
+  resources :sessions, :only => [:new]
   match '/auth/:provider/callback', :to => 'sessions#create',                 :as => :session_create
   match '/logout',                  :to => 'sessions#destroy',                :as => :session_destroy
   match '/connect_with_facebook',   :to => 'sessions#connect_with_facebook',  :as => :connect_with_facebook

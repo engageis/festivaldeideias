@@ -348,7 +348,7 @@ DEPENDENCIES
   pg
   pusher
   rack-pjax
-  rails (>= 3.2.3)
+  rails (>= 3.2.6)
   rails-backbone
   rb-fsevent
   rspec-rails
