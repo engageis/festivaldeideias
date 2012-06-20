@@ -1,8 +1,6 @@
 - unless is_signed_in?
   li.login
-    a.name[href="#login" rel="facebox"]= t 'login.create_account'
-  li.login
-    a.name[href="#login" rel="facebox"]= t 'login.do_login'
+    a.name[href="sessions/new"]= t 'login.do_login'
 - else
     li.notifications
       a.globe href="#"

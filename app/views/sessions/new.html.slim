@@ -25,27 +25,19 @@ h2 Faça login para participar e interagir...
         a.non_fb href='#fbh' Não quero usar o Facebook.
       .clear
 
-        #fbh.hidden
-          = form_for NonFacebookUser.new, :method => 'POST' do |f|
-            h2 Porque escolhemos o Facebook
-            p
-              | Para inscrever sua ideia no FdI 2012, é necessário que o usuário tenha um perfil no Facebook. É o melhor jeito de tornar a plataforma capilar e interconectada aos ambientes em que as pessoas já estão.
-            p
-              | Além disso, será muito mais rápido realizar a evolução desta plataforma, já que não precisaremos desenvolver ou manter uma aplicação de redes sociais. Assim nos manteremos mais focados nas funcionalidades de melhoria das ideias.
-            p.changed_opinion
-              a.button.facebook href="#fbl" Ok, mudei de idéia, quero usar o Facebook
-              /*= form_tag connect_with_facebook_url, :method => 'POST' do*/
-                /*= hidden_field_tag :redirect_url, request.url*/
-                /*= submit_tag 'Login com Facebook', :class => 'button facebook'*/
-            p Você realmente não quer usar o Facebook? Deixe o seu e-mail para sabermos.
-            p
-              = f.label :email, 'Seu endereço de e-mail'
-              = f.text_field :email, :maxlength => 255
-              = f.submit t('facebox.submit_email'), :class => 'button next'
-              
-            .button_pair
-              = link_to t('idea.new.prev_step'), '#login', :class => 'button prev'
+      #fbh.hidden
+        = form_for NonFacebookUser.new, :method => 'POST' do |f|
+          h2 Porque escolhemos o Facebook
+          p
+            | Para inscrever sua ideia no FdI 2012, é necessário que o usuário tenha um perfil no Facebook. É o melhor jeito de tornar a plataforma capilar e interconectada aos ambientes em que as pessoas já estão.
+          p
+            | Além disso, será muito mais rápido realizar a evolução desta plataforma, já que não precisaremos desenvolver ou manter uma aplicação de redes sociais. Assim nos manteremos mais focados nas funcionalidades de melhoria das ideias.
 
+          p Você realmente não quer usar o Facebook? Deixe o seu e-mail para sabermos.
+          p
+            = f.label :email, 'Seu endereço de e-mail'
+            = f.text_field :email, :maxlength => 255
+            = f.submit t('facebox.submit_email'), :class => 'button next'
 
     footer
       p 
