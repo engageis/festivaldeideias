@@ -1,6 +1,6 @@
 - if @idea
   = content_for :javascripts do
-    = javascript_include_tag "http://staging.tokbox.com/v0.91/js/TB.min.js"
+    = javascript_include_tag ENV['TOKBOX_JS_URL']
     = javascript_include_tag "http://js.pusher.com/1.12/pusher.min.js"
 
   header
