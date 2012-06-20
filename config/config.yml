@@ -2,6 +2,15 @@ development: &defaults
   FB_APP_ID: '130690353713201'
   FB_APP_SECRET: 'd05642357fb03910f2c7d6f0b6708e89'
   FB_CALLBACK_URL: 'http://localhost:3000/auth/facebook/callback'
-
+  TOKBOX_KEY: "15793291"
+  TOKBOX_SECRET: "b6f90ff600f642f98b00d044161cbee6996045ed"
+  PUSHER_KEY: "3e107fc25d5330b3338b"
+  PUSHER_SECRET: "2b7c5990aafe688f3080"
+  PUSHER_APP_ID: "2202"
+  TOKBOK_API_URL: "https://staging.tokbox.com/hl"
+  TOKBOX_JS_URL: "http://staging.tokbox.com/v0.91/js/TB.min.js"
 test: &development
   <<: *defaults  
+production:
+  TOKBOK_API_URL: "https://api.opentok.com/hl"
+  TOKBOX_JS_URL: "https://swww.tokbox.com/v0.91/js/TB.min.js"
