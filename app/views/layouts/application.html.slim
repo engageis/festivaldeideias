@@ -23,7 +23,7 @@ html
       #modal_alert
         = flash[:modal_alert]
 
-    = render :partial => "layouts/login"
+    //= render :partial => "layouts/login"
     header.main
       .wrapper
         ul.user_actions[data-url=(update_notification_user_url(current_user) if current_user)]

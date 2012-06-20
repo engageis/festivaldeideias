@@ -12,10 +12,9 @@ App.Ideas.NewIdea = App.BaseView.extend({
             ,"focusOnDescription"
             ,"clearAll"
             ,"setRedirectUrl"
-            ,"showFbh"
-            ,"showFbl"
             ,"validateFblForm"
             ,"checkRequiredFields"
+            ,"showFbl"
         );
         this.store = new Store('store');
         this.lastPosition = 0;
@@ -41,10 +40,8 @@ App.Ideas.NewIdea = App.BaseView.extend({
         "submit .popup form.new_idea": "checkForm",
         "click .popup img.close_image": "clearAll",
         "click a.start[href=#login]": "setRedirectUrl",
-        "click .popup #fbl a[href=#fbh]": "showFbh",
-        "click .popup #fbh a[href=#fbl]": "showFbl",
-        "click .popup #fbh a[href=#login]": "showFbl",
-        "click .popup #fbh input[type=submit]": "validateFblForm",
+        "click a.non_fb": "showFbl",
+        "click #fbh input[type=submit]": "validateFblForm",
         "click .popup .next": "checkRequiredFields",
         "click .terms_acceptance_link label": "toggleTermsCheckbox",
         "change .terms_acceptance_link input": "changePublishButton"
@@ -311,24 +308,13 @@ App.Ideas.NewIdea = App.BaseView.extend({
             field.val(value + '#continue_idea');
         }
     },
-
-    showFbh: function () {
-        var box;
-        box = $('.popup');
-        box.find('#fbl').addClass('hidden');
-        box.find('#fbh').removeClass('hidden');
-        return false;
-    },
-
     showFbl: function () {
-        var box;
-        box = $('.popup');
-        box.find('#fbh').addClass('hidden');
-        box.find('#fbl').removeClass('hidden');
-        return false;
+      $("#fbh").slideToggle("slow");
+      return false;
+      
     },
 
     validateFblForm: function () {
-        return (jQuery.trim($('.popup #fbh #non_facebook_user_email').val()).length > 0);
+        return (jQuery.trim($('#fbh #non_facebook_user_email').val()).length > 0);
     }
 });
