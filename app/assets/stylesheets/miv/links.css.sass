@@ -42,12 +42,20 @@
     +btn($darkred)
 
   &.facebook
-    +btn(#6B8BBA)
     background:
       image: url(asset_path("facebook.png", "image"))
       repeat: no-repeat
-      position: 10px
-    padding-left: 35px
+    padding: 32px 74px 24px 61px
+    display: block
+    span
+      color: #FFF
+      font-weight: normal
+      float: left
+      padding: 0 10px
+      font-size: 0.8em
+    &:hover
+      background:
+        position: 0 -67px
   &.prev
     +btn
     float: left

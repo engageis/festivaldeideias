@@ -2,7 +2,7 @@
 
 - path = request.path
 
-= new_idea_button('button') unless path =~ /^\/(ideias)/ or path =~ /(collaboration)/
+= new_idea_button('button') unless path =~ /^\/(ideias)/ or path =~ /(collaboration)/ or path =~ /(sessions)/
 
 - if path == root_path
   = render "layouts/filters"
@@ -24,6 +24,9 @@
 
 - elsif path =~ /^\/(ideias).*(\/edit)$/
   = render "layouts/format_text"
+
+- elsif path =~ /^\/(sessions)/
+  
 
 - elsif path =~ /^\/(ideias)/
   // SIDEBAR FOR IDEA PAGE
