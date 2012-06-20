@@ -6,10 +6,10 @@ class IdeasController < ApplicationController
 
   inherit_resources
 
-  has_scope :featured, :type => :boolean, :only => :index
-  has_scope :popular, :type => :boolean
-  has_scope :latest, :type => :boolean
-  has_scope :recent, :type => :boolean
+  has_scope :featured,  :type => :boolean, :only => :index
+  has_scope :popular,   :type => :boolean
+  has_scope :latest,    :type => :boolean
+  has_scope :recent,    :type => :boolean
 
   belongs_to :idea_category, :optional => true
 
@@ -19,13 +19,13 @@ class IdeasController < ApplicationController
   before_filter :load_resources
 
   before_filter only: [:create] { @idea.user = current_user if current_user }
-  before_filter only: [:show] { @idea.update_facebook_likes }
+  before_filter only: [:show]   { @idea.update_facebook_likes }
   before_filter only: [:cocreate] do
     if current_user 
       @token = 
         TOKBOX.generate_token session_id: @idea.tokbox_session, 
         role: OpenTok::RoleConstants::SUBSCRIBER, 
-        connection_data: "username=#{current_user.name},level=4"
+        connection_data: "username=#{current_user.name}"
     end
   end
 

@@ -145,9 +145,7 @@ class Idea < ActiveRecord::Base
 
   def set_tokbox_settings
    
-    session = TOKBOX.create_session(self.external_url, {
-      OpenTok::SessionPropertyConstants::P2P_PREFERENCE => "enabled" }
-    )
+    session = TOKBOX.create_session(self.external_url)
 
     self.update_attribute(:tokbox_session, session.session_id)
   end
