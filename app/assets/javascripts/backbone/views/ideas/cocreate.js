@@ -14,7 +14,7 @@ App.Ideas.Cocreate = App.BaseView.extend({
     this.chatForm         = this.$('#new_message');
 
     // Tokbox
-    this.tokboxKey        = this.chat.data('tokbok-key');
+    this.tokboxKey        = this.chat.data('tokbox-key');
     this.tokboxSession    = this.chat.data('tokbox-session');
     this.tokboxToken      = this.chat.data('tokbox-token');
 
