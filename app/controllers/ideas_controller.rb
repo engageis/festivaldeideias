@@ -24,7 +24,7 @@ class IdeasController < ApplicationController
     if current_user 
       @token = 
         TOKBOX.generate_token session_id: @idea.tokbox_session, 
-        role: OpenTok::RoleConstants::SUBSCRIBER, 
+        role: OpenTok::RoleConstants::PUBLISHER, 
         connection_data: "username=#{current_user.name}"
     end
   end
