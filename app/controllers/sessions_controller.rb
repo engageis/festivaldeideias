@@ -29,4 +29,7 @@ class SessionsController < ApplicationController
     session[:redirect_url] = params[:redirect_url]
     redirect_to '/auth/facebook'
   end
+
+  def new
+  end
 end

@@ -3,6 +3,11 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :is_signed_in?, :current_user_image
   before_filter :load_pages_for_the_links
+  before_filter :store_url
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to new_session_path, :alert => exception.message
+  end
 
   protected
   def current_user
@@ -20,5 +25,9 @@ class ApplicationController < ActionController::Base
 
   def load_pages_for_the_links
     @pages_for_links = Page.order('position, title ASC').select(['title', 'slug'])
+  end
+
+  def store_url
+    session[:redirect_url] = request.url if params[:controller] != "sessions"
   end
 end

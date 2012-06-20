@@ -5,15 +5,25 @@
 
   header
     .cocreation_room
-      | Você está na sala de cocriação
+      p
+        | Você está na sala de cocriação
+      ul
+        li
+          = link_to "saiba mais sobre cocriação", "/cocriacao", :target => "_blank"
+        li
+          = link_to "ver a ideia", category_idea_path(@idea.category, @idea), :target => "_blank"
+      
+    .clear
     = image_tag @idea.category.badge, :alt => @idea.category.name, :title => @idea.category.name, :class => "badge"
     // Title
     h1= @idea.title
+    = link_to "Ver a ideia", idea_path(@idea), :target => "_blank"
 
   #video
     aside
       h2 #video
       p Convide pessoas para cocriar com você e inicie uma conversa por vídeo para discutir esta ideia.
+      = social_buttons(page_path(@idea), :vertical)
     .videos
       #cocreation
   #chat[data-channel=@idea.cocreation_channel data-tokbox-session=@idea.tokbox_session data-tokbox-token=@token]
