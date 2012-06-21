@@ -73,8 +73,14 @@ App.Ideas.Cocreate = App.BaseView.extend({
 
     var session = TB.initSession(this.tokboxSession);      
     session.addEventListener('sessionConnected', sessionConnectedHandler);      
+    session.addEventListener('connectionCreated', connectionCreated);      
     session.addEventListener('streamCreated', streamCreatedHandler);
     session.connect(this.tokboxKey, this.tokboxToken);
+    
+    function connectionCreated(connections){
+      console.log(connections);
+
+    }
 
     function sessionConnectedHandler(event) {
       publisher = session.publish('cocreation');
@@ -87,14 +93,11 @@ App.Ideas.Cocreate = App.BaseView.extend({
     function subscribeToStreams(streams) {
       for (var i = 0; i < streams.length; i++) {
 
-        if (streams[i].connection.connectionId == session.connection.connectionId){
-          return;
-        }
-
-        var div = document.createElement('div');
-        div.setAttribute('id', 'stream' + streams[i].streamId);
-        $('#video .videos').append(div);
-        session.subscribe(streams[i], div.id);
+        if (streams[i].connection.connectionId != session.connection.connectionId){
+          var div = document.createElement('div');
+          div.setAttribute('id', 'stream' + streams[i].streamId);
+          $('#video .videos').append(div);
+          session.subscribe(streams[i], div.id);
       }
     } 
   }
