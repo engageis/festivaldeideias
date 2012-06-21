@@ -176,6 +176,9 @@ Then /^I should be in "(.*?)"$/ do |arg1|
     current_path.should be_== new_session_path
   elsif arg1 == "the idea's cocreate page"
     current_path.should be_== cocreate_idea_path(@idea.category, @idea)
+  elsif arg1 == "the ideas navigation by keyword page"
+    sleep(2)
+    current_path.should be_== scope_search_path
   else
     raise "I don't #{arg1}"
   end
@@ -194,14 +197,6 @@ Given /^I am in "(.*?)"$/ do |arg1|
 end
 
 When /^I fill the idea search form with "(.*?)"$/ do |arg1|
-  fill_in "search_for", :with => arg1
-  page.execute_script('$("form[action=\'/navegue-nas-ideias/keyword\']").submit();')
-end
-
-Then /^I should be in "(.*?)"$/ do |arg1|
-  if(arg1 == "the ideas navigation by keyword page")
-    current_path.should be_== scope_keyword_path
-  else
-    raise "I don't know '#{arg1}'"
-  end
+  fill_in "keyword", :with => arg1
+  find('input[name=keyword]').native.send_key(:enter)
 end
