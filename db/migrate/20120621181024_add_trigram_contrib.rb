@@ -1,6 +1,10 @@
 class AddTrigramContrib < ActiveRecord::Migration
-  def change
-    execute "CREATE extension pg_trgm"
-    execute "CREATE extension fuzzystrmatch"
+  def up 
+    execute "CREATE EXTENSION pg_trgm;"
+    execute "CREATE EXTENSION fuzzystrmatch;"
+  end
+  def down
+    execute "DROP EXTENSION pg_trgm;"
+    execute "DROP EXTENSION fuzzystrmatch;"
   end
 end
