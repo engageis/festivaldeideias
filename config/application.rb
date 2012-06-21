@@ -53,6 +53,8 @@ module FestivalDeIdeias
     # You shall not access my database when precompiling :<
     config.assets.initialize_on_precompile = false
 
+    config.active_record.schema_format = :sql
+
     # Fix for heroku
     if Rails.configuration.respond_to?(:sass)
       Rails.configuration.sass.tap do |config|

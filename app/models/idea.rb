@@ -11,6 +11,8 @@ class Idea < ActiveRecord::Base
   include AutoHtml
   include ActiveRecord::SpawnMethods
   include Rails.application.routes.url_helpers
+  include PgSearch
+
   belongs_to :user
   belongs_to :category, :class_name => "IdeaCategory", :foreign_key => :category_id
   belongs_to :parent  , :class_name => "Idea", :foreign_key => :parent_id
@@ -31,6 +33,10 @@ class Idea < ActiveRecord::Base
   scope :popular,       select("DISTINCT ON (ideas.id) ideas.*").
                           joins("INNER JOIN ideas b ON b.parent_id = ideas.id")
 
+
+  pg_search_scope :match_and_find_title, against: [:title], using: [:trigram]  
+  pg_search_scope :match_and_find_text, against: [:description], using: [:tsearch] 
+
   scope :new_collaborations, ->(user) { where(['parent_id IN (?)', user.ideas.map(&:id)]).order("created_at ASC") }
 
   scope :collaborations_status_changed, ->(user) { 
@@ -49,6 +55,10 @@ class Idea < ActiveRecord::Base
   
   after_create :set_facebook_url
   after_create :set_tokbox_settings
+
+  def self.match_and_find(arg)
+    (Idea.match_and_find_text(arg) + Idea.match_and_find_title).uniq
+  end
 
   def cocreation_channel
     "cocreation-#{self.id}"

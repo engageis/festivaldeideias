@@ -172,4 +172,22 @@ describe Idea do
       @idea.tokbox_session.should_not == nil
     end
   end
+
+
+  describe "#match_and_find" do
+    before do
+      @idea   = Idea.make!(title: "cat")
+      @idea_1 = Idea.make!(title: "ca")
+      @idea_2 = Idea.make!(title: "at")
+      @idea_3 = Idea.make!(title: "yzav")
+    end
+
+    subject { (Idea.match_and_find_text("cats") + Idea.match_and_find("cats")).uniq }
+    it "Should return a set of results based on trigrams" do
+      subject.should include(@idea)
+      subject.should include(@idea_1)
+      subject.should_not include(@idea_2)
+      subject.should_not include(@idea_3)
+    end
+  end
 end

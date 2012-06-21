@@ -43,6 +43,7 @@ FestivalDeIdeias::Application.routes.draw do
   get '/ideias', :to => "ideas#index"
 
   scope '/ideias' do
+    get "search/",                          :to => "ideas#search",          :as => :search_idea, :defaults => { :keyword => "a" }
     get ":idea_category_id/ideia/:id",      :to => "ideas#show",            :as => :category_idea
     get ":idea_category_id/ideia/:id/edit", :to => "ideas#edit",            :as => :edit_category_idea
     get ":idea_category_id/ideia/:id/cocreate", :to => "ideas#cocreate",        :as => :cocreate_idea

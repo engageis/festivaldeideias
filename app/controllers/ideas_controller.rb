@@ -138,6 +138,11 @@ class IdeasController < ApplicationController
   def cocreate
   end
 
+
+  def search
+    @ideas = Idea.match_and_find(params[:keyword])
+  end
+
   protected
   def load_resources
     #querying only ideas, no collab.
