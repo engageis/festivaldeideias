@@ -35,7 +35,7 @@ FestivalDeIdeias::Application.routes.draw do
     get 'recent'    => "ideas#recent",                          :as => :scope_recent
     get 'latest'    => "ideas#modified",                        :as => :scope_latest
     get 'featured'  => "ideas#featured",                        :as => :scope_featured
-    get 'keyword'   => "ideas#keyword",                         :as => :scope_keyword, defaults: { :keyword => " "}
+    get 'search'    => "ideas#search",                          :as => :scope_search
 
     # Match relations ideas vs categories
     get ":idea_category_id/ideias",       :to => "ideas#category",  :as => :category_ideas
