@@ -82,7 +82,9 @@ App.Ideas.Cocreate = App.BaseView.extend({
     }
 
     function sessionConnectedHandler(event) {
+      console.log(event.streams)
       publisher = session.publish('cocreation');
+      subscribeToStreams(event.streams);
     }
 
     function streamCreatedHandler(event) {
