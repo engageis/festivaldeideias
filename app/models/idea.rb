@@ -34,8 +34,7 @@ class Idea < ActiveRecord::Base
                           joins("INNER JOIN ideas b ON b.parent_id = ideas.id")
 
 
-  pg_search_scope :match_and_find_title, against: [:description], using: :trigram 
-  pg_search_scope :match_and_find_text, against: [:description], using: [:tsearch] 
+  pg_search_scope :match_and_find, against: [:title, :description], using: :tsearch 
 
   scope :new_collaborations, ->(user) { where(['parent_id IN (?)', user.ideas.map(&:id)]).order("created_at ASC") }
 
@@ -55,10 +54,6 @@ class Idea < ActiveRecord::Base
   
   after_create :set_facebook_url
   after_create :set_tokbox_settings
-
-  def self.match_and_find(arg)
-    (Idea.match_and_find_text(arg) + Idea.match_and_find_title(arg)).uniq
-  end
 
   def cocreation_channel
     "cocreation-#{self.id}"
