@@ -184,3 +184,24 @@ end
 When /^I press "(.*?)"$/ do |arg1|
   click_button arg1
 end
+
+Given /^I am in "(.*?)"$/ do |arg1|
+  if(arg1 == "the ideas navigation page")
+    visit scope_root_path
+  else
+    raise "I don't know '#{arg1}'"
+  end
+end
+
+When /^I fill the idea search form with "(.*?)"$/ do |arg1|
+  fill_in "search_for", :with => arg1
+  page.execute_script('$("form[action=\'/navegue-nas-ideias/keyword\']").submit();')
+end
+
+Then /^I should be in "(.*?)"$/ do |arg1|
+  if(arg1 == "the ideas navigation by keyword page")
+    current_path.should be_== scope_keyword_path
+  else
+    raise "I don't know '#{arg1}'"
+  end
+end

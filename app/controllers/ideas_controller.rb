@@ -135,12 +135,12 @@ class IdeasController < ApplicationController
     render :index
   end
 
-  def cocreate
+  def keyword
+    @ideas = Idea.match_and_find(params[:keyword])
+    render :index
   end
 
-
-  def search
-    @ideas = Idea.match_and_find(params[:keyword])
+  def cocreate
   end
 
   protected

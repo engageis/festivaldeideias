@@ -30,12 +30,12 @@ FestivalDeIdeias::Application.routes.draw do
   resources :non_facebook_users, :only => [:create]
 
   scope '/navegue-nas-ideias' do
-    get '/'        => redirect('/navegue-nas-ideias/popular'),      :as => :scope_root
-
-    get 'popular'  => "ideas#popular",    :as => :scope_popular
-    get 'recent'   => "ideas#recent",     :as => :scope_recent
-    get 'latest'   => "ideas#modified",   :as => :scope_latest
-    get 'featured' => "ideas#featured",   :as => :scope_featured
+    get '/'         => redirect('/navegue-nas-ideias/popular'), :as => :scope_root
+    get 'popular'   => "ideas#popular",                         :as => :scope_popular
+    get 'recent'    => "ideas#recent",                          :as => :scope_recent
+    get 'latest'    => "ideas#modified",                        :as => :scope_latest
+    get 'featured'  => "ideas#featured",                        :as => :scope_featured
+    get 'keyword'   => "ideas#keyword",                         :as => :scope_keyword, defaults: { :keyword => " "}
 
     # Match relations ideas vs categories
     get ":idea_category_id/ideias",       :to => "ideas#category",  :as => :category_ideas
@@ -43,7 +43,6 @@ FestivalDeIdeias::Application.routes.draw do
   get '/ideias', :to => "ideas#index"
 
   scope '/ideias' do
-    get "search/",                          :to => "ideas#search",          :as => :search_idea, :defaults => { :keyword => "a" }
     get ":idea_category_id/ideia/:id",      :to => "ideas#show",            :as => :category_idea
     get ":idea_category_id/ideia/:id/edit", :to => "ideas#edit",            :as => :edit_category_idea
     get ":idea_category_id/ideia/:id/cocreate", :to => "ideas#cocreate",        :as => :cocreate_idea
