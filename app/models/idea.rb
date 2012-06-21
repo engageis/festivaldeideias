@@ -57,7 +57,7 @@ class Idea < ActiveRecord::Base
   after_create :set_tokbox_settings
 
   def self.match_and_find(arg)
-    (Idea.match_and_find_text(arg) + Idea.match_and_find_title).uniq
+    (Idea.match_and_find_text(arg) + Idea.match_and_find_title(arg)).uniq
   end
 
   def cocreation_channel
