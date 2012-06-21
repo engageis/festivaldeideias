@@ -25,7 +25,7 @@
       = social_buttons(page_path(@idea), :vertical)
     .videos
       #cocreation
-  #chat[data-channel=@idea.cocreation_channel data-tokbox-session=@idea.tokbox_session data-tokbox-token=@token]
+  #chat[data-channel=@idea.cocreation_channel data-tokbox-session=@idea.tokbox_session data-tokbox-key=ENV['TOKBOX_KEY'] data-pusher-key=ENV['PUSHER_KEY'] data-tokbox-token=@token]
     aside
       h2 #chat
       p Compartilhe textos, mídias, links e documente o que está sendo discutido, assim é mais fácil de atualizar a ideia depois! 

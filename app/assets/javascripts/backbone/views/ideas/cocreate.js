@@ -8,13 +8,13 @@ App.Ideas.Cocreate = App.BaseView.extend({
     this.channel          = this.chat.data('channel');
 
     // Pusher
-    this.pusherKey        = "3e107fc25d5330b3338b";
+    this.pusherKey        = this.chat.data('pusher-key');
     this.chatMsgList      = this.$('ul.msglist');
     this.chatInputField   = this.$('#input_new_message');
     this.chatForm         = this.$('#new_message');
 
     // Tokbox
-    this.tokboxKey        = "15793291";
+    this.tokboxKey        = this.chat.data('tokbox-key');
     this.tokboxSession    = this.chat.data('tokbox-session');
     this.tokboxToken      = this.chat.data('tokbox-token');
 
