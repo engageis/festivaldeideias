@@ -20,6 +20,7 @@ gem 'has_scope'
 gem 'activeadmin'
 gem "devise", "2.0.4"
 gem 'meta_search'
+gem 'pg_search'
 
 # Tools
 gem 'simple_form'

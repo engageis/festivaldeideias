@@ -11,6 +11,8 @@ class Idea < ActiveRecord::Base
   include AutoHtml
   include ActiveRecord::SpawnMethods
   include Rails.application.routes.url_helpers
+  include PgSearch
+
   belongs_to :user
   belongs_to :category, :class_name => "IdeaCategory", :foreign_key => :category_id
   belongs_to :parent  , :class_name => "Idea", :foreign_key => :parent_id
@@ -30,6 +32,9 @@ class Idea < ActiveRecord::Base
   scope :recent,        where(:parent_id => nil).order('created_at DESC')
   scope :popular,       select("DISTINCT ON (ideas.id) ideas.*").
                           joins("INNER JOIN ideas b ON b.parent_id = ideas.id")
+
+
+  pg_search_scope :match_and_find, against: [:title, :description]
 
   scope :new_collaborations, ->(user) { where(['parent_id IN (?)', user.ideas.map(&:id)]).order("created_at ASC") }
 

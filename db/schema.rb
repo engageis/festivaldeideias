@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120605232831) do
+ActiveRecord::Schema.define(:version => 20120621182355) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -95,6 +95,11 @@ ActiveRecord::Schema.define(:version => 20120605232831) do
     t.string   "facebook_url"
     t.string   "tokbox_session"
   end
+
+  add_index "ideas", ["category_id"], :name => "category_id_idx"
+  add_index "ideas", ["parent_id"], :name => "parent_id_idx"
+  add_index "ideas", ["title"], :name => "title_idx"
+  add_index "ideas", ["user_id"], :name => "user_id_idx"
 
   create_table "messages", :force => true do |t|
     t.integer  "idea_id"

@@ -19,5 +19,4 @@ Feature: View user actions
     And 3 ideas exist
     When I visit the ideas index page
     Then I should see user options
-    And I should see "Crie uma conta"
     And I should see "Faça login"

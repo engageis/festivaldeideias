@@ -1,6 +1,6 @@
 - unless is_signed_in?
   li.login
-    a.name[href="sessions/new"]= t 'login.do_login'
+    = link_to t('login.do_login'), new_session_path, class: "name"
 - else
     li.notifications
       a.globe href="#"
