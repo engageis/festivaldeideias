@@ -34,7 +34,7 @@ class Idea < ActiveRecord::Base
                           joins("INNER JOIN ideas b ON b.parent_id = ideas.id")
 
 
-  pg_search_scope :match_and_find, against: [:title, :description], using: :tsearch 
+  pg_search_scope :match_and_find, against: [:title, :description]
 
   scope :new_collaborations, ->(user) { where(['parent_id IN (?)', user.ideas.map(&:id)]).order("created_at ASC") }
 

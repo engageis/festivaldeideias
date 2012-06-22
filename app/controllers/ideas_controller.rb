@@ -137,7 +137,7 @@ class IdeasController < ApplicationController
 
   def search 
     if params[:keyword]
-      @ideas = Idea.match_and_find(params[:keyword])
+      @ideas = Idea.parent.match_and_find(params[:keyword])
       @query = params[:keyword]
     end
   end
