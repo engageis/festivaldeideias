@@ -8,7 +8,7 @@ Given /^There is a category called "([^"]*)"$/ do |arg1|
 end
 
 Given /^There is a idea called "([^"]*)" that belongs to "([^"]*)"$/ do |arg1, arg2|
- Idea.make!(title: arg1, category: IdeaCategory.find_by_name(arg2), user: Service.make!.user)
+ Idea.make!(title: arg1, category: IdeaCategory.make!(name: arg2), user: Service.make!.user)
 end
 
 When /^I visit the root path$/ do
