@@ -1,0 +1,23 @@
+body[data-controller-name="Ideas"][data-action="Search"]
+  #search
+    ul
+      li
+        border: 1px solid lighten(gray, 45%)
+        overflow: hidden
+        +transition(background-color, .35s)
+        &:hover
+          background: lighten(gray, 45%)
+    .user
+      float: left
+      padding: .5em 1em .5em 
+    .idea
+      width: 85%
+      float: left
+      h3
+        padding-top: .3em
+        margin: 0
+      small
+        font-size: .8em
+        color: gray
+        margin: 0
+        padding: 0

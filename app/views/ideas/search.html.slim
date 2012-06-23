@@ -1,13 +1,20 @@
-h2 
-  | Resultado da sua busca por 
-  strong=@query
-ul
-  - unless @ideas.empty?
-    - @ideas.each do |idea|
-      // Style and info you want goes here
-      li= idea.title
-  - else 
-    span
-      | Nenhuma ideia encontrada.
+#search
+  h2 
+    | Resultado da sua busca por 
+    strong=@query
+  ul
+    - unless @ideas.empty?
+      - @ideas.each do |idea|
+        // Style and info you want goes here
+        li
+          .user= link_to image_tag(idea.user.avatar), idea.user.profile
+          .idea
+            h3= link_to idea.title, category_idea_path(idea.category, idea)
+            small
+              | Moderada por #{idea.user.name}
+            p= truncate(idea.description, length: 200)
+    - else 
+      span
+        | Nenhuma ideia encontrada.
 
 
