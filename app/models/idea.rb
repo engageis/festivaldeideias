@@ -21,18 +21,16 @@ class Idea < ActiveRecord::Base
   has_many :messages
 
   validates_presence_of :title, :description, :category_id, :user_id, :minimum_investment
-  
+
   # Scope for colaborations
-  
+
   scope :parent,        where(parent_id: nil).order('created_at DESC')
   scope :colaborations, where("parent_id IS NOT NULL").order("created_at DESC")
   scope :not_accepted,  where(:accepted => nil).order('created_at DESC')
   scope :featured,      where(:featured => true, :parent_id => nil).order('position DESC')
   scope :latest,        where(:parent_id => nil).order('updated_at DESC')
   scope :recent,        where(:parent_id => nil).order('created_at DESC')
-  scope :popular,       select("DISTINCT ON (ideas.id) ideas.*").
-                          joins("INNER JOIN ideas b ON b.parent_id = ideas.id")
-
+  scope :popular,       where(parent_id: nil).order('likes DESC')
 
   pg_search_scope :match_and_find, against: [:title, :description]
 
@@ -49,9 +47,9 @@ class Idea < ActiveRecord::Base
               AND collaboration.user_id = ?
           )', user.id]).order("updated_at DESC")
   }
-  
+
   # Callbacks
-  
+
   after_create :set_facebook_url
   after_create :set_tokbox_settings
 
@@ -149,9 +147,7 @@ class Idea < ActiveRecord::Base
   end
 
   def set_tokbox_settings
-   
     session = TOKBOX.create_session(self.external_url)
-
     self.update_attribute(:tokbox_session, session.session_id)
   end
 end
