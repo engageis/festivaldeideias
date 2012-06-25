@@ -2,7 +2,7 @@ class Idea < ActiveRecord::Base
 
   # Logs all changes on this model; who made it, what kind and associated models.
   # See https://github.com/collectiveidea/audited
-  # By default, whenever a user is created, updated or destroyed, a new audit is created.
+  # By default, whenever a idea is created, updated or destroyed, a new audit is created.
   audited
 
   require 'json'
