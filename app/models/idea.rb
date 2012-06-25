@@ -30,7 +30,8 @@ class Idea < ActiveRecord::Base
   scope :featured,      where(:featured => true, :parent_id => nil).order('position DESC')
   scope :latest,        where(:parent_id => nil).order('updated_at DESC')
   scope :recent,        where(:parent_id => nil).order('created_at DESC')
-  scope :popular,       where(parent_id: nil).order('likes DESC')
+  scope :popular,       select("DISTINCT ON (ideas.id) ideas.*").
+                        joins("INNER JOIN ideas b ON b.parent_id = ideas.id")
 
   pg_search_scope :match_and_find, against: [:title, :description]
 
