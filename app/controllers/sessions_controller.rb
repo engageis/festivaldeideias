@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   skip_authorization_check
 
   before_filter :only => [:new, :connect_with_facebook] do
-    session[:redirect_url] = params[:redirect_url]
+    session[:redirect_url] = request.referer
   end
 
 
