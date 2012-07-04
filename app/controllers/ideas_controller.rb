@@ -13,7 +13,7 @@ class IdeasController < ApplicationController
 
   belongs_to :idea_category, :optional => true
 
-  actions :all, except: [:new, :destroy]
+  actions :all, except: [:destroy]
 
   before_filter :load_collaborators, :only => [ :show, :edit, :collaboration ]
   before_filter :load_resources

@@ -179,8 +179,12 @@ Then /^I should be in "(.*?)"$/ do |arg1|
   elsif arg1 == "the ideas navigation by keyword page"
     sleep(2)
     current_path.should be_== scope_search_path
+  elsif arg1 == "the new idea page"
+    current_path.should be_== new_idea_path
+  elsif arg1 == "the idea's page"
+    current_path.should be_== category_idea_path(Idea.first.category.id, Idea.first)
   else
-    raise "I don't #{arg1}"
+    raise "I don't know #{arg1}"
   end
 end
 
@@ -191,6 +195,8 @@ end
 Given /^I am in "(.*?)"$/ do |arg1|
   if(arg1 == "the ideas navigation page")
     visit scope_root_path
+  elsif arg1 == "the homepage"
+    visit root_path
   else
     raise "I don't know '#{arg1}'"
   end
@@ -199,4 +205,16 @@ end
 When /^I fill the idea search form with "(.*?)"$/ do |arg1|
   fill_in "keyword", :with => arg1
   find('input[name=keyword]').native.send_key(:enter)
+end
+
+Given /^I fill in "(.*?)" with "(.*?)"$/ do |arg1, arg2|
+  fill_in arg1, :with => arg2
+end
+
+Given /^I choose "(.*?)"$/ do |arg1|
+  choose arg1
+end
+
+Given /^I check "(.*?)"$/ do |arg1|
+  check arg1
 end
