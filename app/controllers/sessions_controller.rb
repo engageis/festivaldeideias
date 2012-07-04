@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
 
   def create
     redirect_url = session[:redirect_url]
+    session[:redirect_url] = nil
     auth = request.env['omniauth.auth']
     session[:fb_token] = auth['credentials']['token']
 
