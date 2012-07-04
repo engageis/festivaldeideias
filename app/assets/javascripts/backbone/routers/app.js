@@ -1,11 +1,21 @@
 App.Router = Backbone.Router.extend({
 
-    routes: {
-        "colaborate" : "colaborate",
-        "continue_idea": "loadIdeaFromStore"
-    },
+  routes: {
+    "colaborate" : "colaborate",
+    "continue_idea": "loadIdeaFromStore",
+    "start" : "startNewIdea"
+  },
 
-    loadIdeaFromStore: function () {
-        App.Ideas.newIdea.openIdeaForm();
+  startNewIdea: function() {
+    if (App.Common.isLoggedIn()) {
+      App.Ideas.newIdea.openIdeaForm(); 
+      location.hash = '';
+    } else {
+      location.href = '/sessions/new?anchor=continue_idea'
     }
+  },
+
+  loadIdeaFromStore: function () {
+    App.Ideas.newIdea.openIdeaForm();
+  }
 });

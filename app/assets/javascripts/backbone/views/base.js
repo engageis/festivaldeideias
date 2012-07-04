@@ -8,7 +8,7 @@ App.BaseView = Backbone.View.extend({
       // Gotta use name because the STUPID facebox duplicates all elements
       // so IDs cannot be used. Please, do not use facebox.
       $('input[name=redirect_url]').val(location.href)
-      $.facebox({ div : "#login" })
+      location.href = "/sessions/new";
       return false;
     }
     return true;

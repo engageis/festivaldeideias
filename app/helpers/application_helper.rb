@@ -10,9 +10,9 @@ module ApplicationHelper
       css_class << ' start'
     end
     if current_user
-      link_to text, '#start', :rel => 'facebox', :class => css_class + ' start'
+      link_to text, '#start', :class => css_class + ' start'
     else
-      link_to text, '#login', :rel => 'facebox', :class => css_class, :'data-return-url' => '#continue_idea' 
+      link_to text, '#start', :class => css_class, :'data-return-url' => '#continue_idea' 
     end
   end
 
