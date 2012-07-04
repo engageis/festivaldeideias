@@ -11,7 +11,7 @@ App.Router = Backbone.Router.extend({
       App.Ideas.newIdea.openIdeaForm(); 
       location.hash = '';
     } else {
-      location.href = '/sessions/new?anchor=continue_idea'
+      location.href = '/sessions/new?redirect_url=' + location.href;
     }
   },
 
