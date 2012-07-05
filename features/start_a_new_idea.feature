@@ -6,7 +6,6 @@ Feature: start a new idea
   @omniauth_test
   Scenario: when I'm logged in
     Given I'm a logged user
-    And There is a category called "Mobilidade Urbana"
     And I click "Inicie uma ideia"
     Then I should be in "the new idea page"
     Given I fill in "Descreva como quiser, você terá como editar depois." with "O único parâmetro utilizado para o controle dos semáforos da cidade é o tempo..."
@@ -22,8 +21,7 @@ Feature: start a new idea
 
   @omniauth_test
   Scenario: when I'm not logged in
-    Given There is a category called "Mobilidade Urbana"
-    And I am in "the homepage"
+    Given I am in "the homepage"
     And I click "Inicie uma ideia"
     Then I should be in "the login page"
     Given I click "entre com sua conta do Facebook"

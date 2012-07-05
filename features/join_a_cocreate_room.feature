@@ -9,5 +9,5 @@ Feature: join a cocreate room
     And I'm in "this idea page"
     When I click "Sala de cocriação"
     Then I should be in "the login page"
-    When I click "Login com Facebook"
+    When I click "entre com sua conta do Facebook"
     Then I should be in "the idea's cocreate page"

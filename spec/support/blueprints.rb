@@ -1,6 +1,5 @@
 require 'machinist/active_record'
 
-
 AdminUser.blueprint do
   email { "email#{sn}@email.com" }
   password { "password" }
@@ -11,7 +10,6 @@ Service.blueprint do
   provider { "facebook" }
   user
 end
-
 
 User.blueprint do
   name { "name#{sn}" }
@@ -45,4 +43,3 @@ end
 NonFacebookUser.blueprint do 
   email { "email#{sn}@email.com" }
 end
-

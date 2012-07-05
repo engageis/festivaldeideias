@@ -10,5 +10,5 @@ Feature: Create a new page
     When I go to the admin index page
     And I fill the admin login form with my information
     Then I should be in the "admin_dashboard_path"
-    And I click on the link "Páginas"
+    And I click "Páginas"
     Then I should be in the "admin_pages_path"
