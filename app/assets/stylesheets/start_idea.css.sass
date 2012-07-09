@@ -16,133 +16,139 @@
   input[type="text"]
     width: 540px - 18px
 
-form.new_idea
-  width: 570px
-  .about_collabs
-    background: $yellow
-    color: #333
-    font-size: 1em
-    padding: 10px
-    margin-bottom: 30px
-    line-height: 1.4em
-    +border-radius(2px)
-    p:last-child
-      margin-bottom: 0
-  label
-    color: #222
-  em
-    color: #454545
-    font-weight: lighter
-  p 
-  .terms_acceptance_link
-    margin-left: 20px
-    clear: both
-    float: left
-    a
-      font-weight: normal
-      font-size: 0.8em
-    li
+body[data-action="New"][data-controller-name="Ideas"]
+  h2
+    margin-top: 18px
+  input#idea_title
+    width: 550px
+  input.currency
+    width: 135px
+  form.new_idea
+    .about_collabs
+      background: $yellow
+      color: #333
+      font-size: 1em
+      padding: 10px
+      margin-bottom: 30px
+      line-height: 1.4em
+      +border-radius(2px)
+      p:last-child
+        margin-bottom: 0
+    label
+      color: #222
+    em
+      color: #454545
+      font-weight: lighter
+    p 
+    .terms_acceptance_link
+      margin-left: 20px
       clear: both
       float: left
-      margin: 5px 0
-    input
-      width: 10px
-    input, label
-      float: left
-
-  .alert
-    background: red
-    
-  ul.short_cuts
-    margin-bottom: 20px
-    display: block
-    overflow: hidden
-    border-bottom: 1px solid #FFF
-    li
-      float: left
-      text-transform: uppercase
       a
         font-weight: normal
-        padding: 10px
-        display: block
-        color: $disabled_link
-        cursor: normal !important
-        +text-shadow(none)
-      &.active_link
-        a
-          cursor: pointer !important
-          color: $darkorange
-      &.active
-        background: #FFF
-        a
-          cursor: pointer !important
-          color: #333
+        font-size: 0.8em
+      li
+        clear: both
+        float: left
+        margin: 5px 0
+      input
+        width: 10px
+      input, label
+        float: left
 
-//#describe
-
-#refine, .edit_idea
-  .categories
-    overflow: auto
-    label
+    .alert
+      background: red
+      
+    ul.short_cuts
+      margin-bottom: 20px
       display: block
-      font-family: "Helvetica"
-      font-size: 13px
-  h4
-    font-family: "Gill Sans", sans-serif
-    font-weight: lighter
-  blockquote
-    color: #888
-    width: 530px
-    max-height: 50px
-    overflow: hidden
-    p
-      &:after
-        content: "..."
-    &:hover
-      color: #333
-      cursor: pointer
+      overflow: hidden
+      border-bottom: 1px solid #FFF
+      li
+        float: left
+        text-transform: uppercase
+        a
+          font-weight: normal
+          padding: 10px
+          display: block
+          color: $disabled_link
+          cursor: normal !important
+          +text-shadow(none)
+        &.active_link
+          a
+            cursor: pointer !important
+            color: $darkorange
+        &.active
+          background: #FFF
+          a
+            cursor: pointer !important
+            color: #333
 
-  .categories
-    width: 570px
-    margin: 30px 0 20px 0
-    h4
-      font-size: 1.3em
-    li
-      float: left
+  //#describe
+
+  #refine, .edit_idea
+    .categories
+      overflow: auto
       label
-        margin-bottom: 10px
-        margin-right: 10px
-        text-align: center
-        padding: 10px
-        +border-radius(4px)
-        border: 1px solid #DDD
-        cursor: pointer
-        &:hover
-          background: #EEE
-          border: 1px solid #D9D9D9
-    input[type="radio"]
-      display: none
-
-    input:checked + label
-      background: $yellow !important
-      border: 1px solid darken($yellow, 10%)
-
-#publish
-  h3
-    margin: 20px 0 5px 5px
-  em
-    color: #666
-    font-size: 12px
-    display: block
-    clear: both
-
-  .review
-    background: #FFF
-    padding: 10px
-    +border-radius(5px)
+        display: block
+        font-family: "Helvetica"
+        font-size: 13px
     h4
-      font-size: 1.2em
-  .what
-    width: 510px
+      font-family: "Gill Sans", sans-serif
+      font-weight: lighter
+    blockquote
+      color: #888
+      width: 530px
+      max-height: 50px
+      overflow: hidden
+      p
+        &:after
+          content: "..."
+      &:hover
+        color: #333
+        cursor: pointer
+
+    .categories
+      width: 570px
+      margin: 30px 0 20px 0
+      h4
+        font-size: 1.3em
+      li
+        float: left
+        label
+          margin-bottom: 10px
+          margin-right: 10px
+          text-align: center
+          padding: 10px
+          +border-radius(4px)
+          border: 1px solid #DDD
+          cursor: pointer
+          &:hover
+            background: #EEE
+            border: 1px solid #D9D9D9
+      input[type="radio"]
+        display: none
+
+      input:checked + label
+        background: $yellow !important
+        border: 1px solid darken($yellow, 10%)
+
+  #publish
+    h3
+      margin: 20px 0 5px 5px
+    em
+      color: #666
+      font-size: 12px
+      display: block
+      clear: both
+
+    .review
+      background: #FFF
+      padding: 10px
+      +border-radius(5px)
+      h4
+        font-size: 1.2em
+    .what
+      width: 510px
 
 
