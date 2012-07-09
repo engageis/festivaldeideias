@@ -2,18 +2,9 @@
 
 module ApplicationHelper
 
-  def new_idea_button(css_class = nil)
-    text = t('buttons.new_idea')
-    if css_class.nil?
-      css_class = 'start'
-    else
-      css_class << ' start'
-    end
-    if current_user
-      link_to text, '#start', :class => css_class + ' start'
-    else
-      link_to text, '#start', :class => css_class, :'data-return-url' => '#continue_idea' 
-    end
+
+  def new_idea_button(css_class = "")
+    link_to t('buttons.new_idea'), new_idea_path, :class => css_class + ' start'
   end
 
   # A url é o endereço que será 'curtido' no facebook e 'tweetado' no twitter

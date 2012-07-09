@@ -74,8 +74,6 @@ html
 
     = render :partial => "layouts/footer"
 
-    #start.hidden
-      = render :partial => "ideas/new_idea"
     #ramify.hidden= render :partial => "ideas/new_ramify"
   .hidden
     a href="http://flow.mixpanel.com/f/partner"
@@ -85,4 +83,3 @@ html
   = javascript_include_tag :application
   = render :partial => "layouts/plugin_defaults"
   = yield :bottomscripts 
-
