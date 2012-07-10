@@ -11,4 +11,11 @@ before_script:
 env:
   - DISPLAY=:99.0
 # uncomment this line if your project needs to run something other than `rake`:
-script: "bundle exec rake db:migrate && bundle exec rspec spec && bundle exec cucumber
+script: "bundle exec rake db:migrate && bundle exec rspec spec && bundle exec cucumber"
+
+notifications:
+  email:
+    recipients: 
+      - luiz@engage.is
+      - daniel@powertothecrowd.com
+  
