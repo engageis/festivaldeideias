@@ -47,7 +47,27 @@ When /^I click in the notifications bar$/ do
   sleep(1)
 end
 
+############## Institutional videos steps
 
+Given /^(\d+) visible institutional videos exist$/ do |count|
+  @institutional_videos = []
+  count.to_i.times do |i|
+    institutional_video = InstitutionalVideo.make! visible: true, video_url: "http://youtube.com/watch?v=#{i}"
+    @institutional_videos << institutional_video
+  end
+end
+
+Given /^no visible institutional video exists$/ do
+  InstitutionalVideo.make! visible: false
+end
+
+Then /^I should see the latest video$/ do
+  page.find("iframe")[:src].should == InstitutionalVideo.latest.embed_url
+end
+
+Then /^I should see the default video$/ do
+  page.find("iframe")[:src].should == "http://www.youtube.com/embed/d-laubHNtrI"
+end
 
 ############## Admin Steps
 

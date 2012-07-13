@@ -35,11 +35,16 @@ Idea.blueprint do
 end
 
 Page.blueprint do 
-  title     { "Title #{sn}"} 
+  title     { "Title #{sn}" }
   body      { "<p>body</p>" }
   position  { sn }
 end
 
 NonFacebookUser.blueprint do 
   email { "email#{sn}@email.com" }
+end
+
+InstitutionalVideo.blueprint do 
+  video_url { "http://www.youtube.com/watch?v=MX2ArQiavHU&feature=player_embedded" }
+  visible { true }
 end

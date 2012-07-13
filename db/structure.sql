@@ -4,22 +4,16 @@
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
+SET standard_conforming_strings = off;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
+SET escape_string_warning = off;
 
 --
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
+-- Name: plpgsql; Type: PROCEDURAL LANGUAGE; Schema: -; Owner: -
 --
 
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+CREATE OR REPLACE PROCEDURAL LANGUAGE plpgsql;
 
 
 SET search_path = public, pg_catalog;
@@ -46,10 +40,10 @@ CREATE TABLE active_admin_comments (
 
 
 --
--- Name: active_admin_comments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: admin_notes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE active_admin_comments_id_seq
+CREATE SEQUENCE admin_notes_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -58,10 +52,10 @@ CREATE SEQUENCE active_admin_comments_id_seq
 
 
 --
--- Name: active_admin_comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: admin_notes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE active_admin_comments_id_seq OWNED BY active_admin_comments.id;
+ALTER SEQUENCE admin_notes_id_seq OWNED BY active_admin_comments.id;
 
 
 --
@@ -198,7 +192,7 @@ CREATE TABLE ideas (
     updated_at timestamp without time zone,
     category_id integer NOT NULL,
     accepted boolean,
-    minimum_investment numeric(10,2) DEFAULT 0.0 NOT NULL,
+    minimum_investment numeric(10,2) DEFAULT 0.00 NOT NULL,
     facebook_url character varying(255),
     tokbox_session character varying(255)
 );
@@ -221,6 +215,38 @@ CREATE SEQUENCE ideas_id_seq
 --
 
 ALTER SEQUENCE ideas_id_seq OWNED BY ideas.id;
+
+
+--
+-- Name: institutional_videos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE institutional_videos (
+    id integer NOT NULL,
+    video_url character varying(255),
+    visible boolean DEFAULT false,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: institutional_videos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE institutional_videos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: institutional_videos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE institutional_videos_id_seq OWNED BY institutional_videos.id;
 
 
 --
@@ -433,85 +459,92 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY active_admin_comments ALTER COLUMN id SET DEFAULT nextval('active_admin_comments_id_seq'::regclass);
+ALTER TABLE active_admin_comments ALTER COLUMN id SET DEFAULT nextval('admin_notes_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY admin_users ALTER COLUMN id SET DEFAULT nextval('admin_users_id_seq'::regclass);
+ALTER TABLE admin_users ALTER COLUMN id SET DEFAULT nextval('admin_users_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY audits ALTER COLUMN id SET DEFAULT nextval('audits_id_seq'::regclass);
+ALTER TABLE audits ALTER COLUMN id SET DEFAULT nextval('audits_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY idea_categories ALTER COLUMN id SET DEFAULT nextval('idea_categories_id_seq'::regclass);
+ALTER TABLE idea_categories ALTER COLUMN id SET DEFAULT nextval('idea_categories_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY ideas ALTER COLUMN id SET DEFAULT nextval('ideas_id_seq'::regclass);
+ALTER TABLE ideas ALTER COLUMN id SET DEFAULT nextval('ideas_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY messages ALTER COLUMN id SET DEFAULT nextval('messages_id_seq'::regclass);
+ALTER TABLE institutional_videos ALTER COLUMN id SET DEFAULT nextval('institutional_videos_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY non_facebook_users ALTER COLUMN id SET DEFAULT nextval('non_facebook_users_id_seq'::regclass);
+ALTER TABLE messages ALTER COLUMN id SET DEFAULT nextval('messages_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY notifications ALTER COLUMN id SET DEFAULT nextval('notifications_id_seq'::regclass);
+ALTER TABLE non_facebook_users ALTER COLUMN id SET DEFAULT nextval('non_facebook_users_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY pages ALTER COLUMN id SET DEFAULT nextval('pages_id_seq'::regclass);
+ALTER TABLE notifications ALTER COLUMN id SET DEFAULT nextval('notifications_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY services ALTER COLUMN id SET DEFAULT nextval('services_id_seq'::regclass);
+ALTER TABLE pages ALTER COLUMN id SET DEFAULT nextval('pages_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+ALTER TABLE services ALTER COLUMN id SET DEFAULT nextval('services_id_seq'::regclass);
 
 
 --
--- Name: active_admin_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: admin_notes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY active_admin_comments
-    ADD CONSTRAINT active_admin_comments_pkey PRIMARY KEY (id);
+    ADD CONSTRAINT admin_notes_pkey PRIMARY KEY (id);
 
 
 --
@@ -544,6 +577,14 @@ ALTER TABLE ONLY idea_categories
 
 ALTER TABLE ONLY ideas
     ADD CONSTRAINT ideas_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: institutional_videos_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY institutional_videos
+    ADD CONSTRAINT institutional_videos_pkey PRIMARY KEY (id);
 
 
 --
@@ -707,6 +748,38 @@ CREATE INDEX user_index ON audits USING btree (user_id, user_type);
 
 
 --
+-- Name: ideas_category_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY ideas
+    ADD CONSTRAINT ideas_category_id_fk FOREIGN KEY (category_id) REFERENCES idea_categories(id);
+
+
+--
+-- Name: ideas_parent_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY ideas
+    ADD CONSTRAINT ideas_parent_id_fk FOREIGN KEY (parent_id) REFERENCES ideas(id);
+
+
+--
+-- Name: ideas_user_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY ideas
+    ADD CONSTRAINT ideas_user_id_fk FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
+-- Name: services_user_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY services
+    ADD CONSTRAINT services_user_id_fk FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -759,3 +832,5 @@ INSERT INTO schema_migrations (version) VALUES ('20120605030649');
 INSERT INTO schema_migrations (version) VALUES ('20120605232831');
 
 INSERT INTO schema_migrations (version) VALUES ('20120621182355');
+
+INSERT INTO schema_migrations (version) VALUES ('20120713153711');

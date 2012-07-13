@@ -9,3 +9,13 @@ Feature: View a selection of ideas
     When I visit the ideas index page
     Then I should see a list of categories
     And I should see a list with ideas
+
+  Scenario: View an institutional video
+    Given 3 visible institutional videos exist
+    When I visit the ideas index page
+    Then I should see the latest video
+
+  Scenario: No institutional videos registered
+    Given no visible institutional video exists
+    When I visit the ideas index page
+    Then I should see the default video
