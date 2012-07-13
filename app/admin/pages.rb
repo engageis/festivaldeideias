@@ -30,7 +30,7 @@ ActiveAdmin.register Page, { :sort_order => 'position, created_ad' } do |a|
       f.input :title
       f.input :body, :input_html => { :class => 'mceEditor' }
     end
-    f.actions
+    f.buttons
   end
 end
 
