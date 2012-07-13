@@ -5,7 +5,7 @@ Feature: Colaborate with an idea
 
   @omniauth_test @javascript
   Scenario: I want to colaborate 
-    Given there is a idea called "Carona me" that belongs to "Mobilidade Urbana"
+    Given there is an idea called "Carona me" that belongs to "Mobilidade Urbana"
     And I'm a logged user  
     And I click "Carona me"
     And I click "Colabore na ideia"
@@ -15,7 +15,7 @@ Feature: Colaborate with an idea
   
   @omniauth_test @javascript 
   Scenario: My colaboration was accepted
-    Given there is a idea called "Carona me" that belongs to "Mobilidade Urbana"
+    Given there is an idea called "Carona me" that belongs to "Mobilidade Urbana"
     And I'm a logged user  
     And I made a colaboration called "Carona.me updated title" in the idea "Carona me" and it was accepted
     And I am in "the homepage"
@@ -24,7 +24,7 @@ Feature: Colaborate with an idea
 
   @omniauth_test @javascript 
   Scenario: My colaboration was rejected :(
-    Given there is a idea called "Carona me" that belongs to "Mobilidade Urbana"
+    Given there is an idea called "Carona me" that belongs to "Mobilidade Urbana"
     And I'm a logged user  
     And I made a colaboration called "Carona.me updated title" in the idea "Carona me" and it was rejected
     And I am in "the homepage"

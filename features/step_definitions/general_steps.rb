@@ -3,8 +3,12 @@ Given /^I'm a logged user$/ do
   visit "/auth/facebook"
 end
 
-Given /^there is a idea called "([^"]*)" that belongs to "([^"]*)"$/ do |arg1, arg2|
+Given /^there is an idea called "([^"]*)" that belongs to "([^"]*)"$/ do |arg1, arg2|
   Idea.make!(title: arg1, category: IdeaCategory.find_by_name(arg2), user: Service.make!.user)
+end
+
+Given /^there is an idea called "([^"]*)" by "([^"]*)"$/ do |arg1, arg2|
+  idea = Idea.make!(title: arg1, category: IdeaCategory.find_by_name("Mobilidade Urbana"), user: User.make!(name: arg2))
 end
 
 And /^I click on the link "([^"]*)"$/ do |arg1|

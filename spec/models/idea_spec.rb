@@ -180,6 +180,7 @@ describe Idea do
       @idea_1 = Idea.make!(title: "ca", description: "ca")
       @idea_2 = Idea.make!(title: "at", description: "at")
       @idea_3 = Idea.make!(title: "yzv")
+      @idea_user = Idea.make!(title: "with user", user: User.make!(name: "Paul McCartney"))
     end
 
     subject { Idea.match_and_find("ca") }
@@ -188,6 +189,19 @@ describe Idea do
       subject.should include(@idea_1)
       subject.should_not include(@idea_2)
       subject.should_not include(@idea_3)
+      subject.should_not include(@idea_user)
     end
+
+    describe "By user" do
+      subject { Idea.match_and_find("McCartney") }
+      it "Should search by user name" do
+        subject.should_not include(@idea)
+        subject.should_not include(@idea_1)
+        subject.should_not include(@idea_2)
+        subject.should_not include(@idea_3)
+        subject.should include(@idea_user)
+      end
+    end
+
   end
 end
