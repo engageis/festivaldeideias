@@ -11,5 +11,8 @@ class UserAbility
       idea.user != user
     end
     can :manage, Idea, :user => user
+    can :notifications, User
+    can :update_notification, User
+
   end
 end
