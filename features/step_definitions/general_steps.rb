@@ -8,15 +8,53 @@ Given /^there is an idea called "([^"]*)" that belongs to "([^"]*)"$/ do |arg1, 
 end
 
 Given /^there is an idea called "([^"]*)" by "([^"]*)"$/ do |arg1, arg2|
-  idea = Idea.make!(title: arg1, category: IdeaCategory.find_by_name("Mobilidade Urbana"), user: User.make!(name: arg2))
+  user = User.find_by_name(arg2)
+  user = User.make!(name: arg2) unless user
+  idea = Idea.make!(title: arg1, category: IdeaCategory.find_by_name("Mobilidade Urbana"), user: user)
+end
+
+When /^I visit the "([^"]*)" idea page$/ do |arg1|
+  visit idea_path(Idea.find_by_title(arg1))
+end
+
+Given /^there is an user called "([^"]*)"$/ do |arg1|
+  User.make!(name: arg1)
+end
+
+Given /^there is an user called "([^"]*)", with email "([^"]*)"$/ do |arg1, arg2|
+  User.make!(name: arg1, email: arg2)
+end
+
+Given /^"([^"]*)" collaborated on the idea "([^"]*)"$/ do |arg1, arg2|
+  @original = Idea.find_by_title(arg2)
+  Idea.make!(parent: @original, category: @original.category, user: User.find_by_name(arg1), accepted: true)
+end
+
+Given /^I collaborated on the idea "([^"]*)"$/ do |arg1|
+  @original = Idea.find_by_title(arg1)
+  # TODO: find a better way to get the current_user. Didn't get how to do this
+  Idea.make!(parent: @original, category: @original.category, user: User.first, accepted: true)
+end
+
+Given /^I created an idea$/ do
+  Idea.make!(user: User.first)
+end
+
+When /^I visit the "([^"]*)" user page$/ do |arg1|
+  visit user_path(User.find_by_name(arg1))
 end
 
 And /^I click on the link "([^"]*)"$/ do |arg1|
   raise "asdasdas"
   click_link arg1
 end
+
 Then /^I should see "([^"]*)"$/ do |arg1|
   page.should have_content arg1 
+end
+
+Then /^I should not see "([^"]*)"$/ do |arg1|
+  page.should have_no_content arg1 
 end
 
 When /^I fill the form$/ do
@@ -147,6 +185,11 @@ And /^I should see a link "([^"]*)"$/ do |arg1|
   page.should have_link(arg1)
 end
 
+And /^I should see the title as "([^"]*)"$/ do |arg1|
+  within 'head title' do
+    page.should have_content(arg1)
+  end
+end
 
 And /^(\d+) pages exist$/ do |count|
   count.to_i.times { |counter|

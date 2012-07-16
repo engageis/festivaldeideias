@@ -1,0 +1,37 @@
+= content_for :title do
+  = @user.name
+
+header
+  h1= @user.name
+  - if can? :manage, @user
+    h3= @user.email
+  = link_to "Ir para o perfil no Facebook", @user.profile, :target => '_blank'
+article
+  h2
+    - if @user == current_user
+      | Ideias criadas por mim
+    - else
+      | Ideias criadas por #{@user.name}
+  ul
+    - unless @user.ideas.parent.empty?
+      = render partial: 'idea', collection: @user.ideas.parent
+    - else 
+      span
+        - if @user == current_user
+          | Você não criou nenhuma ideia ainda. Que tal começar #{ link_to "agora mesmo", new_idea_path }?
+        - else
+          | #{@user.name} não criou nenhuma ideia ainda.
+  h2
+    - if @user == current_user
+      | Ideias com as quais colaborei
+    - else
+      | Ideias com as quais #{@user.name} colaborou
+  ul
+    - unless @user.collaborations.empty?
+      = render partial: 'idea', collection: @user.collaborations
+    - else 
+      span
+        - if @user == current_user
+          | Você não colaborou com nenhuma ideia ainda. Que tal #{ link_to "navegar nas ideias", scope_root_path } e escolher uma para colaborar?
+        - else
+          | #{@user.name} não colaborou com nenhuma ideia ainda.

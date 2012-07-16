@@ -1,0 +1,5 @@
+li
+  .user= link_to image_tag(idea.user.avatar), user_path(idea.user)
+  .idea
+    h3= link_to idea.title, category_idea_path(idea.category, idea)
+    p= truncate(idea.description, length: 200)

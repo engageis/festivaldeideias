@@ -9,6 +9,7 @@ Feature: View a selection of ideas
     When I visit the ideas index page
     Then I should see a list of categories
     And I should see a list with ideas
+    And I should see the title as "Uma plataforma para unir ideias · Festival de Ideias 2012"
 
   Scenario: View an institutional video
     Given 3 visible institutional videos exist

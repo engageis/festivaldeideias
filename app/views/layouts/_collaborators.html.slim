@@ -11,7 +11,7 @@
     - else
       ul
         - @collaborators.each do |user|
-          li= link_to image_tag(user.avatar, :title => user.name), user.profile
+          li= link_to image_tag(user.avatar, :title => user.name), user_path(user)
     .clear
 
   - if can?(:edit, @idea)

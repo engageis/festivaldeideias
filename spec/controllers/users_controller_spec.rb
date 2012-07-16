@@ -2,6 +2,27 @@ require 'spec_helper'
 
 describe UsersController do
 
+  describe "GET #show" do
+    
+    context "with guest user" do
+      before do
+        @user = Service.make!.user
+        get :show, id: @user.id
+      end
+      its(:status) { should == 200 }
+    end
+
+    context "with logged user" do
+      before do
+        @user = Service.make!.user
+        controller.stub(:current_user).and_return(@user)
+        get :show, id: @user.id
+      end
+      its(:status) { should == 200 }
+    end
+    
+  end
+
   describe "GET #notifications" do
     
     context "with guest user" do
