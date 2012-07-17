@@ -1,5 +1,7 @@
 - unless params[:terms_acceptance] && params[:cc_license] && params[:share_license] && params[:change_license]
-  | Os termos de compromisso devem ser aceitos
+  | Os 
+  = link_to "termos de compromisso", "#publish"
+  |  devem ser aceitos
 = form_for(@idea, :class => 'new_idea') do |f|
   h2 = t('idea.new.start')
   #describe
