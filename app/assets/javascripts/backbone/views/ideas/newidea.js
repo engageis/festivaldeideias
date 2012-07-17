@@ -19,7 +19,6 @@ App.Ideas.NewIdea = App.BaseView.extend({
         this.store = new Store('store');
         this.lastPosition = 0;
         //this.loadIdeaFromStore();
-
     },
 
     events: {
@@ -43,7 +42,6 @@ App.Ideas.NewIdea = App.BaseView.extend({
         "click a.non_fb": "showFbl",
         "click #fbh input[type=submit]": "validateFblForm",
         "click .popup .next": "checkRequiredFields",
-        "click .terms_acceptance_link label": "toggleTermsCheckbox",
         "change .terms_acceptance_link input": "changePublishButton"
     },
 
@@ -55,16 +53,6 @@ App.Ideas.NewIdea = App.BaseView.extend({
             submit.removeClass('inactive');
         } else {
             submit.addClass('inactive');
-        }
-    },
-
-    toggleTermsCheckbox: function (e) {
-        var checkbox;
-        if (e.target.tagName === 'A') {
-            return;
-        } else {
-            checkbox = $(e.target).siblings('input');
-            checkbox.attr("checked", !checkbox.attr("checked"));
         }
     },
 

@@ -239,6 +239,17 @@
 
       full_messages:
         format: "%{attribute} %{message}"
+      models:
+        idea:
+          attributes:
+            description:
+              blank: "As pessoas querem entender a sua ideia, por isso é importante explicar o que está passando na sua cabeça"
+            title:
+              blank: "Um nome é muito importante, imagina se você não tivesse um nome!"
+            minimum_investment:
+              blank: "Pode chutar um valor..."
+            category_id:
+              blank: "Diga-nos, qual o tema da sua ideia?"
   unauthorized:
     cocreate:
       idea: "Queremos saber quem você é! Depois te levamos para a sala de cocriação."

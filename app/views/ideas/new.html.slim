@@ -1,1 +1,70 @@
-= render :partial => "new_idea"
+- unless params[:terms_acceptance] && params[:cc_license] && params[:share_license] && params[:change_license]
+  | Os termos de compromisso devem ser aceitos
+= form_for(@idea, :class => 'new_idea') do |f|
+  h2 = t('idea.new.start')
+  #describe
+    h3 = t('idea.new.about')
+    p
+      = f.label :description, t('idea.new.give_a_description')
+      = f.text_area :description, :class => 'required'
+      = @idea.errors[:description].join(", ")
+
+  #refine
+    p
+      = f.label :title, t('idea.new.give_a_name')
+      = f.text_field :title, :maxlength => 70, :class => 'required'
+      = @idea.errors[:title].join(", ")
+    p
+      = f.label :minimum_investment, t("idea.value.title")
+      em = t('idea.new.minimum_investment_desc')
+      = f.text_field :minimum_investment, :maxlength => 16, class: 'currency'
+      = @idea.errors[:minimum_investment].join(", ")
+    .categories.required
+      h4 = t('idea.new.choose_a_category')
+      - if !@categories.nil? && @categories.size > 0
+        ul
+          - @categories.each do |category|
+            li
+              - id = category.id
+              = f.radio_button :category_id, id, :id => category.name
+              label for=category.name
+                = image_tag(category.badge, :size => '31x31', :alt => category.name, :title => category.name)
+                br
+                = category.name
+      = @idea.errors[:category_id].join(", ")
+
+  #publish
+    em Você ainda conseguirá editar sua ideia depois que ela for publicada.
+    h3 Ao cadastrar minha ideia entendo que:
+    ul.terms_acceptance_link
+      li
+        input type="checkbox" name="cc_license" id="cc_license" checked=params[:cc_license]
+        label for="cc_license"
+          | Ela será licenciada em 
+          a href="http://creativecommons.org/licenses/by/3.0/deed.pt_BR" target="blank_" Creative Commons Atribuição 3.0 (CC BY 3.0)
+          |  <span class="star">*</span>
+      li
+        input type="checkbox" name="share_license" id="share_license" checked=params[:share_license]
+        label for="share_license"
+          | Qualquer pessoa poderá compartilhar minha ideia <span class="star">*</span>
+      li
+        input type="checkbox" name="change_license" id="change_license" checked=params[:change_license]
+        label for="change_license"
+          | Qualquer pessoa poderá copiar e modificar minha ideia <span class="star">*</span>
+      li
+        input type="checkbox" name="terms_acceptance" id="terms_acceptance" checked=params[:terms_acceptance]
+        label for="terms_acceptance"
+          | Eu li e estou de acordo com o 
+          a href="/regulamento" target="blank_" regulamento do Festival de Ideias
+          |  <span class="star">*</span>
+      li
+        em * Campos obrigatórios
+
+    .clear
+    .button_pair
+      - if current_user
+        = f.submit "Publicar!", :class => 'button next inactive'
+      - else
+        span Para publicar você deve estar logado:
+        .login_box
+          a[class="button facebook" href="/auth/facebook"] Login com Facebook
