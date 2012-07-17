@@ -1,4 +1,4 @@
-- unless params[:terms_acceptance] && params[:cc_license] && params[:share_license] && params[:change_license]
+- if params[:idea] && !(params[:terms_acceptance] && params[:cc_license] && params[:share_license] && params[:change_license])
   | Os 
   = link_to "termos de compromisso", "#publish"
   |  devem ser aceitos
