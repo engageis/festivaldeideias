@@ -49,3 +49,10 @@ Feature: start a new idea
     Then I should see "the description message error"
     And I should see "the title message error"
     And I should see "the category message error"
+
+  @omniauth_test
+    Scenario: when I don't really care for ToS's
+    Given I'm a logged user
+    And I am in "the new idea page"
+    When I press "Publicar!"
+    Then I should see "Os termos de compromisso devem ser aceitos"
