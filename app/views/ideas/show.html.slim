@@ -21,6 +21,9 @@ header
     // Title
     h1= @idea.title
 
+    - if @idea.original_parent
+      small== "Criada a partir da ideia #{ link_to @idea.original_parent.title, category_idea_path(@idea.original_parent.category, @idea.original_parent)}, de #{ link_to @idea.original_parent.user.name, user_path(@idea.original_parent.user) }"
+
     // Statistics
     .idea_stats
       ul

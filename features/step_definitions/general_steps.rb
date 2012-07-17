@@ -17,6 +17,10 @@ When /^I visit the "([^"]*)" idea page$/ do |arg1|
   visit idea_path(Idea.find_by_title(arg1))
 end
 
+When /^I visit the "([^"]*)" by "([^"]*)" idea page$/ do |arg1, arg2|
+  visit idea_path(User.find_by_name(arg2).ideas.find_by_title(arg1))
+end
+
 Given /^there is an user called "([^"]*)"$/ do |arg1|
   User.make!(name: arg1)
 end
@@ -30,6 +34,12 @@ Given /^"([^"]*)" collaborated on the idea "([^"]*)"$/ do |arg1, arg2|
   Idea.make!(parent: @original, category: @original.category, user: User.find_by_name(arg1), accepted: true)
 end
 
+Given /^"([^"]*)" ramified the idea "([^"]*)"$/ do |arg1, arg2|
+  @original = Idea.find_by_title(arg2)
+  @idea = Idea.make!(parent: @original, title: @original.title, category: @original.category, user: User.find_by_name(arg1), accepted: nil)
+  Idea.ramify!(@idea)
+end
+
 Given /^I collaborated on the idea "([^"]*)"$/ do |arg1|
   @original = Idea.find_by_title(arg1)
   # TODO: find a better way to get the current_user. Didn't get how to do this
@@ -37,11 +47,31 @@ Given /^I collaborated on the idea "([^"]*)"$/ do |arg1|
 end
 
 Given /^I created an idea$/ do
+  # TODO: find a better way to get the current_user. Didn't get how to do this
   Idea.make!(user: User.first)
 end
 
 When /^I visit the "([^"]*)" user page$/ do |arg1|
   visit user_path(User.find_by_name(arg1))
+end
+
+When /^I visit my profile$/ do
+  # TODO: find a better way to get the current_user. Didn't get how to do this
+  visit user_path(User.first)
+end
+
+Then /^I should see my name$/ do
+  # TODO: find a better way to get the current_user. Didn't get how to do this
+  page.should have_content User.first.name
+end
+
+Then /^I should see my email$/ do
+  # TODO: find a better way to get the current_user. Didn't get how to do this
+  page.should have_content User.first.email
+end
+
+Then /^show me the page$/ do
+  save_and_open_page
 end
 
 And /^I click on the link "([^"]*)"$/ do |arg1|

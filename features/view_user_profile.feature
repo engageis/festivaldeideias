@@ -45,3 +45,23 @@ Feature: View an user's profile
     And I should see "Ideias com as quais Paul McCartney colaborou"
     And I should not see "Paul McCartney não colaborou com nenhuma ideia ainda."
     And I should see "A Day in the Life"
+
+  Scenario: An user with 1 ramified idea
+    Given there is an user called "Paul McCartney", with email "paul@mccartney.com"
+    And there is an idea called "A Day in the Life" by "John Lennon"
+    And "Paul McCartney" ramified the idea "A Day in the Life"
+    When I visit the "Paul McCartney" user page
+    And I should see "A Day in the Life"
+    And I should see "Criada a partir da ideia A Day in the Life, de John Lennon"
+
+  @omniauth_test
+  Scenario: My profile without ideas created or collaborations
+    Given I'm a logged user
+    When I visit my profile
+    Then I should see my name
+    And I should see my email
+    And I should see a link "Ir para o perfil no Facebook"
+    And I should see "Ideias criadas por mim"
+    And I should see "Você não criou nenhuma ideia ainda. Que tal começar agora mesmo?"
+    And I should see "Ideias com as quais colaborei"
+    And I should see "Você não colaborou com nenhuma ideia ainda. Que tal navegar nas ideias e escolher uma para colaborar?"

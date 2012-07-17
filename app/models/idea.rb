@@ -15,7 +15,8 @@ class Idea < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :category, :class_name => "IdeaCategory", :foreign_key => :category_id
-  belongs_to :parent  , :class_name => "Idea", :foreign_key => :parent_id
+  belongs_to :parent, :class_name => "Idea", :foreign_key => :parent_id
+  belongs_to :original_parent, :class_name => "Idea", :foreign_key => :original_parent_id
 
   has_many :colaborations, :class_name => "Idea", :foreign_key => :parent_id
   has_many :messages
@@ -59,7 +60,7 @@ class Idea < ActiveRecord::Base
   end
 
   def self.ramify!(idea)
-    idea.update_attributes! parent_id: nil, accepted: nil
+    idea.update_attributes! parent_id: nil, accepted: nil, original_parent_id: idea.parent_id
   end
 
   def rejected_colaborations

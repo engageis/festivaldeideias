@@ -194,7 +194,8 @@ CREATE TABLE ideas (
     accepted boolean,
     minimum_investment numeric(10,2) DEFAULT 0.00 NOT NULL,
     facebook_url character varying(255),
-    tokbox_session character varying(255)
+    tokbox_session character varying(255),
+    original_parent_id integer
 );
 
 
@@ -834,3 +835,5 @@ INSERT INTO schema_migrations (version) VALUES ('20120605232831');
 INSERT INTO schema_migrations (version) VALUES ('20120621182355');
 
 INSERT INTO schema_migrations (version) VALUES ('20120713153711');
+
+INSERT INTO schema_migrations (version) VALUES ('20120717132948');

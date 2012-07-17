@@ -6,7 +6,7 @@ describe User do
     it { should validate_presence_of :name }
     it { should validate_presence_of :email }
     it { should have_many :ideas }
-    it { should have_many :colaborations }
+    it { should have_many :collaborations }
 
     describe "#services" do
       it { should have_many :services }
