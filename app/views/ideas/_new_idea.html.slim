@@ -12,8 +12,8 @@
       = f.text_field :title, :maxlength => 70, :class => 'required'
     p
       = f.label :minimum_investment, t("idea.value.title")
-      em = t('idea.new.minimum_investment_desc')
       = f.text_field :minimum_investment, :maxlength => 16, class: 'currency'
+      em = t('idea.new.minimum_investment_desc')
     .categories.required
       h4 = t('idea.new.choose_a_category')
       - if !@categories.nil? && @categories.size > 0
