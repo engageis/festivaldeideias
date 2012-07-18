@@ -19,7 +19,6 @@ App.Ideas.NewIdea = App.BaseView.extend({
         this.store = new Store('store');
         this.lastPosition = 0;
         //this.loadIdeaFromStore();
-
     },
 
     events: {

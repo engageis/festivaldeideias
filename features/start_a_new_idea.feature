@@ -36,3 +36,23 @@ Feature: start a new idea
     And I check "Eu li e estou de acordo com o regulamento do Festival de Ideias"
     When I press "Publicar!"
     Then I should be in "the idea's page"
+
+  @omniauth_test
+  Scenario: when I'm troll enough to submit the form empty
+    Given I'm a logged user
+    And I am in "the new idea page"
+    And I check "Ela será licenciada em Creative Commons Atribuição 3.0 (CC BY 3.0) *"
+    And I check "Qualquer pessoa poderá compartilhar minha ideia *"
+    And I check "Qualquer pessoa poderá copiar e modificar minha ideia *"
+    And I check "Eu li e estou de acordo com o regulamento do Festival de Ideias *"
+    When I press "Publicar!"
+    Then I should see "the description message error"
+    And I should see "the title message error"
+    And I should see "the category message error"
+
+  @omniauth_test
+    Scenario: when I don't really care for ToS's
+    Given I'm a logged user
+    And I am in "the new idea page"
+    When I press "Publicar!"
+    Then I should see "Os termos de compromisso devem ser aceitos"

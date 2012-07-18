@@ -80,7 +80,16 @@ And /^I click on the link "([^"]*)"$/ do |arg1|
 end
 
 Then /^I should see "([^"]*)"$/ do |arg1|
-  page.should have_content arg1 
+  case arg1
+  when "the description message error"
+    page.should have_content I18n.t('activerecord.errors.models.idea.attributes.description.blank')
+  when "the title message error"
+    page.should have_content I18n.t('activerecord.errors.models.idea.attributes.title.blank')
+  when "the category message error"
+    page.should have_content I18n.t('activerecord.errors.models.idea.attributes.category_id.blank')
+  else
+    page.should have_content arg1 
+  end
 end
 
 Then /^I should not see "([^"]*)"$/ do |arg1|
@@ -97,6 +106,7 @@ end
 
 When /^I submit the form$/ do
   click_button "Enviar colaboração!"
+  sleep(1)
 end
 
 Given /^I made a colaboration called "([^"]*)" in the idea "([^"]*)" and it was ([^"]*)$/ do |arg1, arg2, arg3|
@@ -273,7 +283,7 @@ Then /^I should be in "(.*?)"$/ do |arg1|
   when "the new idea page"
     current_path.should be_== new_idea_path
   when "the idea's page"
-    current_path.should be_== category_idea_path(Idea.first.category.id, Idea.first)
+    current_path.should be_== idea_path(Idea.first)
   else
     raise "I don't know #{arg1}"
   end
@@ -289,6 +299,8 @@ Given /^I am in "(.*?)"$/ do |arg1|
     visit scope_root_path
   when "the homepage"
     visit root_path
+  when "the new idea page"
+    visit new_idea_path
   else
     raise "I don't know '#{arg1}'"
   end

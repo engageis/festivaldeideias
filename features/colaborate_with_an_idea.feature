@@ -11,7 +11,7 @@ Feature: Colaborate with an idea
     And I click "Colabore na ideia"
     And I fill the form
     When I submit the form
-    Then I should see "Sua colaboração foi enviada! Sua colaboração ainda não está visível, o moderador da ideia precisa aceitá-la para que ela seja incorporada."
+    Then I should see "Sua colaboração ainda não está visível, o moderador da ideia precisa aceitá-la para que ela seja incorporada."
   
   @omniauth_test @javascript 
   Scenario: My colaboration was accepted

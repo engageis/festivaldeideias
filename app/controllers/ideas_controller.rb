@@ -19,7 +19,15 @@ class IdeasController < ApplicationController
   before_filter :load_resources
 
   before_filter only: [:create] { @idea.user = current_user if current_user }
+
+  before_filter only: [:create] do
+    unless params[:terms_acceptance] && params[:cc_license] && params[:share_license] && params[:change_license]
+      render new_idea_path and return
+    end
+  end
+
   before_filter only: [:show]   { @idea.update_facebook_likes }
+
   before_filter only: [:cocreate] do
     if current_user 
       @token = 
@@ -31,25 +39,6 @@ class IdeasController < ApplicationController
 
   def index
     load_headers(:name => 'recent', :url => page_path('co-criacao'))
-  end
-
-  def create
-    # User should accept the ToS
-    unless params[:terms_acceptance] && params[:cc_license] && params[:share_license] && params[:change_license]
-      flash[:alert] = "Os termos de devem ser aceitos"
-      return redirect_to request.referer
-    end
-
-    create! do |success, failure|
-      success.html {
-        flash[:notice] = t('idea.message.success')
-        return redirect_to category_idea_path(@idea.category_id, @idea)
-      }
-      failure.html {
-        flash[:alert] = t('idea.message.failure')
-        return redirect_to request.referer
-      }
-    end
   end
 
   def update
