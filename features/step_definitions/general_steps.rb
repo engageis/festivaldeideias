@@ -8,7 +8,7 @@ Given /^there is an idea called "([^"]*)" that belongs to "([^"]*)"$/ do |arg1, 
 end
 
 Given /^there is an idea called "([^"]*)" by "([^"]*)"$/ do |arg1, arg2|
-  idea = Idea.make!(title: arg1, category: IdeaCategory.find_by_name("Mobilidade Urbana"), user: User.make!(name: arg2))
+  idea = Idea.make!(title: arg1, category: IdeaCategory.find_by_name("Mobilidade Urbana"), user: Service.make!(user: User.make!(name: arg2)).user)
 end
 
 And /^I click on the link "([^"]*)"$/ do |arg1|
