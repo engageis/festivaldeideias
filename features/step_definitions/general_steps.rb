@@ -147,6 +147,39 @@ Then /^I should see the default video$/ do
   page.find("iframe")[:src].should == "http://www.youtube.com/embed/d-laubHNtrI"
 end
 
+############## Banners steps
+
+Given /^(\d+) visible banners exist$/ do |count|
+  @banners = []
+  count.to_i.times do |i|
+    banner = Banner.make! visible: true, title: "000#{i}"
+    @banners << banner
+  end
+end
+
+Given /^no visible banner exists$/ do
+  Banner.make! visible: false
+end
+
+Then /^I should see the latest banner$/ do
+  latest = Banner.latest
+  banner = page.find(".newsboard")
+  banner.find("img")[:src].should == latest.image_url
+  banner.find("h2").should have_content(latest.title)
+  banner.find("p").should have_content(latest.description)
+  banner.find(".right").should have_content(latest.link_text)
+  banner.find("a.click_here")[:href].should == latest.link_url
+end
+
+Then /^I should see the default banner$/ do
+  banner = page.find(".newsboard")
+  banner.find("img")[:src].should == "assets/pensar-junto.png"
+  banner.find("h2").should have_content("Vamos cocriar?")
+  banner.find("p").should have_content("Cocriação é uma forma presencial de criar ideias colaborativamente, todos sabem que duas cabeças pensam melhor do que uma, e é por isso que queremos muitas cabeças pensando nas ideias mais legais que estão por aqui!")
+  banner.find(".right").should have_content("Para saber mais e ver as datas das cocriações em SP")
+  banner.find("a")[:href].should == "/co-criacao"
+end
+
 ############## Admin Steps
 
 Given /^I'm an admin user$/ do

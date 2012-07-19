@@ -140,6 +140,42 @@ ALTER SEQUENCE audits_id_seq OWNED BY audits.id;
 
 
 --
+-- Name: banners; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE banners (
+    id integer NOT NULL,
+    title character varying(255) NOT NULL,
+    description character varying(255) NOT NULL,
+    link_text character varying(255) NOT NULL,
+    link_url character varying(255) NOT NULL,
+    image_url character varying(255) NOT NULL,
+    visible boolean DEFAULT false,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: banners_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE banners_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: banners_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE banners_id_seq OWNED BY banners.id;
+
+
+--
 -- Name: idea_categories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -481,6 +517,13 @@ ALTER TABLE audits ALTER COLUMN id SET DEFAULT nextval('audits_id_seq'::regclass
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE banners ALTER COLUMN id SET DEFAULT nextval('banners_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE idea_categories ALTER COLUMN id SET DEFAULT nextval('idea_categories_id_seq'::regclass);
 
 
@@ -562,6 +605,14 @@ ALTER TABLE ONLY admin_users
 
 ALTER TABLE ONLY audits
     ADD CONSTRAINT audits_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: banners_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY banners
+    ADD CONSTRAINT banners_pkey PRIMARY KEY (id);
 
 
 --
@@ -837,3 +888,5 @@ INSERT INTO schema_migrations (version) VALUES ('20120621182355');
 INSERT INTO schema_migrations (version) VALUES ('20120713153711');
 
 INSERT INTO schema_migrations (version) VALUES ('20120717132948');
+
+INSERT INTO schema_migrations (version) VALUES ('20120719224707');

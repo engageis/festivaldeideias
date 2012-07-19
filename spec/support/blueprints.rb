@@ -48,3 +48,12 @@ InstitutionalVideo.blueprint do
   video_url { "http://www.youtube.com/watch?v=MX2ArQiavHU&feature=player_embedded" }
   visible { true }
 end
+
+Banner.blueprint do 
+  title { "Title" }
+  description { "Description" }
+  link_text { "Link text" }
+  link_url { "http://festivaldeideias.org.br/co-criacao" }
+  image_url { "http://festivaldeideias.org.br/assets/pensar-junto.png" }
+  visible { true }
+end

@@ -20,3 +20,13 @@ Feature: View a selection of ideas
     Given no visible institutional video exists
     When I visit the ideas index page
     Then I should see the default video
+
+  Scenario: View a banner
+    Given 3 visible banners exist
+    When I visit the ideas index page
+    Then I should see the latest banner
+
+  Scenario: No banner registered
+    Given no visible banner exists
+    When I visit the ideas index page
+    Then I should see the default banner
