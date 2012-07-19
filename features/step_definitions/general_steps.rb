@@ -8,7 +8,9 @@ Given /^there is an idea called "([^"]*)" that belongs to "([^"]*)"$/ do |arg1, 
 end
 
 Given /^there is an idea called "([^"]*)" by "([^"]*)"$/ do |arg1, arg2|
-  idea = Idea.make!(title: arg1, category: IdeaCategory.find_by_name("Mobilidade Urbana"), user: Service.make!(user: User.make!(name: arg2)).user)
+  user = User.find_by_name(arg2)
+  user = User.make!(name: arg2) unless user
+  idea = Idea.make!(title: arg1, category: IdeaCategory.find_by_name("Mobilidade Urbana"), user: Service.make!(user: user).user)
 end
 
 When /^I visit the "([^"]*)" idea page$/ do |arg1|
@@ -70,7 +72,6 @@ end
 
 Then /^show me the page$/ do
   save_and_open_page
->>>>>>> 25d9d4637a00eebab6a3e3971d5f5656303a4f05
 end
 
 And /^I click on the link "([^"]*)"$/ do |arg1|
@@ -320,4 +321,8 @@ end
 
 Given /^I check "(.*?)"$/ do |arg1|
   check arg1
+end
+
+Given /^I uncheck "(.*?)"$/ do |arg1|
+  uncheck arg1
 end
