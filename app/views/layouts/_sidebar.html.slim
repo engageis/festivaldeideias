@@ -22,7 +22,7 @@
 
 - elsif path =~/^\/(ideias).*(\/cocreate)$/ 
 
-- elsif path =~ /^\/(ideias).*(\/edit)$/ or path =~ /(new)/
+- elsif controller.controller_name == "ideas" && %w{new edit create update}.include?(controller.action_name)
   = render "layouts/format_text"
 
 - elsif path =~ /^\/(sessions)/

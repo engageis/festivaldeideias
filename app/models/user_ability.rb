@@ -13,6 +13,7 @@ class UserAbility
     can :manage, Idea, :user => user
     can :notifications, User
     can :update_notification, User
+    can :manage, User, :id => user.id
 
   end
 end

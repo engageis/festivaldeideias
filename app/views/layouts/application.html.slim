@@ -1,7 +1,8 @@
 doctype 5
 html
   head
-    title Festival de Ideias 2012 - Uma plataforma para unir ideias
+    - @title = yield(:title)
+    title == "#{(@title.empty? ? 'Uma plataforma para unir ideias' : @title)} · Festival de Ideias 2012"
     = render :partial => "layouts/meta_tags_defaults"
     = favicon_link_tag "favicon.gif", :type => "image/gif"
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Droid+Serif|Gloria+Hallelujah", :application

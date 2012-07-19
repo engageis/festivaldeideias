@@ -1,3 +1,6 @@
+= content_for :title do
+  = @idea.title
+
 header
   - if @idea
     = content_for :meta_tags do
@@ -18,10 +21,13 @@ header
     // Title
     h1= @idea.title
 
+    - if @idea.original_parent
+      small== "Criada a partir da ideia #{ link_to @idea.original_parent.title, category_idea_path(@idea.original_parent.category, @idea.original_parent)}, de #{ link_to @idea.original_parent.user.name, user_path(@idea.original_parent.user) }"
+
     // Statistics
     .idea_stats
       ul
-        li= link_to @idea.user.name, @idea.user.profile, :target => '_blank', :class => 'user_info'
+        li= link_to @idea.user.name, user_path(@idea.user), :class => 'user_info'
         li
           | Última alteração há #{time_ago_in_words(@idea.updated_at)}
       a.button.cocreation href=cocreate_idea_path(@idea.category, @idea)

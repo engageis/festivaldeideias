@@ -18,6 +18,10 @@ describe Idea do
       it { should belong_to :parent }
     end
 
+    describe "#original_parent" do
+      it { should belong_to :original_parent }
+    end
+
     describe "#category" do
       it { should belong_to :category }
     end
@@ -135,10 +139,13 @@ describe Idea do
     before do
       @idea = Idea.make!(parent_id: nil)
       @colab = Idea.make!(parent_id: @idea.id, accepted: false)
+      Idea.ramify!(@colab)
+      @colab.reload
     end
-    subject { Idea.ramify!(@colab) } 
-
-    it { should == true }
+    subject { @colab }
+    its(:parent_id) { should be_nil }
+    its(:accepted) { should be_nil }
+    its(:original_parent_id) { should == @idea.id }
   end
 
 

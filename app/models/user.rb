@@ -12,11 +12,16 @@ class User < ActiveRecord::Base
   # User has many types of services (facebook, twitter and so on)
   has_many :services
   has_many :ideas
-  has_many :colaborations, :through => :ideas
+  has_many :collaborations, class_name: "Idea", conditions: "accepted AND parent_id IS NOT NULL"
   validates_presence_of :name, :email
   attr_accessible :name, :email
 
   before_create :updates_notifications_read_at
+
+  # This affects links
+  def to_param
+    "#{id}-#{name.parameterize}"
+  end
 
   def updates_notifications_read_at
     self.notifications_read_at = Time.now
@@ -28,10 +33,12 @@ class User < ActiveRecord::Base
   
   def avatar
     self.services.first.facebook_avatar
+  rescue
   end
 
   def profile
     self.services.first.facebook_profile
+  rescue
   end
 
   def new_notifications_count
