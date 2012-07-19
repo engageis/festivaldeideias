@@ -146,7 +146,7 @@ ALTER SEQUENCE audits_id_seq OWNED BY audits.id;
 CREATE TABLE banners (
     id integer NOT NULL,
     title character varying(255) NOT NULL,
-    description character varying(255) NOT NULL,
+    description text NOT NULL,
     link_text character varying(255) NOT NULL,
     link_url character varying(255) NOT NULL,
     image_url character varying(255) NOT NULL,
@@ -890,3 +890,5 @@ INSERT INTO schema_migrations (version) VALUES ('20120713153711');
 INSERT INTO schema_migrations (version) VALUES ('20120717132948');
 
 INSERT INTO schema_migrations (version) VALUES ('20120719224707');
+
+INSERT INTO schema_migrations (version) VALUES ('20120719233730');
