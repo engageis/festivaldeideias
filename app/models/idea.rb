@@ -34,7 +34,7 @@ class Idea < ActiveRecord::Base
   scope :popular,       select("DISTINCT ON (ideas.id) ideas.*").
                         joins("INNER JOIN ideas b ON b.parent_id = ideas.id")
 
-  pg_search_scope :match_and_find, against: [:title, :description], associated_against: {user: :name}
+  pg_search_scope :match_and_find, against: [:title, :description]
 
   scope :new_collaborations, ->(user) { where(['parent_id IN (?)', user.ideas.map(&:id)]).order("created_at ASC") }
 
