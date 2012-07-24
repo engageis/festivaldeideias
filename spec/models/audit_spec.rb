@@ -38,6 +38,24 @@ describe Audit do
       audit.text.should == I18n.t("audit.collaboration.sent", user: audit.user.name, user_path: user_path(audit.user), idea: parent.title, idea_path: category_idea_path(parent.category, parent))
     end
 
+    it "should display text when a collaboration is accepted" do
+      parent = Idea.make!
+      audit = Audit.make!(idea: Idea.make!(parent: parent), action: "update", audited_changes: { accepted: [nil, true] })
+      audit.text.should == I18n.t("audit.collaboration.accepted", user: parent.user.name, user_path: user_path(parent.user), collaborator: audit.user.name, collaborator_path: user_path(audit.user), idea: parent.title, idea_path: category_idea_path(parent.category, parent))
+    end
+
+    it "should display text when a collaboration is rejected" do
+      parent = Idea.make!
+      audit = Audit.make!(idea: Idea.make!(parent: parent), action: "update", audited_changes: { accepted: [nil, false] })
+      audit.text.should == I18n.t("audit.collaboration.rejected", user: parent.user.name, user_path: user_path(parent.user), collaborator: audit.user.name, collaborator_path: user_path(audit.user), idea: parent.title, idea_path: category_idea_path(parent.category, parent))
+    end
+
+    it "should display text when an idea is ramified" do
+      parent = Idea.make!
+      audit = Audit.make!(idea: Idea.make!(parent: parent), action: "update", audited_changes: { parent_id: [parent.id, nil], accepted: [false, nil], original_parent_id: [nil, parent.id] })
+      audit.text.should == I18n.t("audit.collaboration.ramified", user: parent.user.name, user_path: user_path(parent.user), collaborator: audit.user.name, collaborator_path: user_path(audit.user), idea: parent.title, idea_path: category_idea_path(parent.category, parent))
+    end
+
   end
   
 end

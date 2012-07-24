@@ -13,23 +13,38 @@ class Audit < ActiveRecord::Base
     end
     
     if likes_updated?
-      return I18n.t("audit.likes", idea: idea.title, idea_path: category_idea_path(idea.category, idea), likes: self.audited_changes[:likes].last)
+      return I18n.t("audit.likes", idea: idea.title, idea_path: category_idea_path(idea.category, idea), likes: self.audited_changes["likes"].last)
     end
 
     if collaboration_sent?
       return I18n.t("audit.collaboration.sent", user: user.name, user_path: user_path(user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent))
     end
     
+    if collaboration_accepted?
+      test_parent = self.parent
+      raise test_parent.user.inspect
+      # return I18n.t("audit.collaboration.accepted", user: self.parent.user.name, user_path: user_path(self.parent.user), collaborator: self.user.name, collaborator_path: user_path(self.user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent))
+    end
+    
+    if collaboration_rejected?
+      return I18n.t("audit.collaboration.rejected", user: self.parent.user.name, user_path: user_path(self.parent.user), collaborator: user.name, collaborator_path: user_path(user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent))
+    end
+    
+    if idea_ramified?
+      return I18n.t("audit.collaboration.ramified", user: self.parent.user.name, user_path: user_path(self.parent.user), collaborator: user.name, collaborator_path: user_path(user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent))
+    end
+    
   end
   
   def parent
-    return unless self.audited_changes[:parent_id]
-    if self.action == "create"
-      parent_id = self.audited_changes[:parent_id]
-    else
-      parent_id self.audited_changes[:parent_id].last
+    begin
+      parent_id = self.audited_changes["parent_id"].last
+    rescue
+      parent_id = self.audited_changes["parent_id"]
     end
-    Idea.find(parent_id)
+    parent_id = self.idea.parent_id unless parent_id.present?
+    parent_id = self.idea.original_parent_id unless parent_id.present?
+    Idea.find(parent_id) if parent_id.present?
   end
   
   private
@@ -38,20 +53,20 @@ class Audit < ActiveRecord::Base
     return false unless self.action == action
     if options.has_key?(:must_not_have_changed)
       options[:must_not_have_changed].each do |column|
-        return false if self.audited_changes.has_key?(column)
+        return false if self.audited_changes.has_key?(column.to_s)
       end
     end
     if options.has_key?(:must_have_changed)
       options[:must_have_changed].each do |column|
-        return false unless self.audited_changes.has_key?(column)
+        return false unless self.audited_changes.has_key?(column.to_s)
       end
     end
-    if options.has_key?(:must_have)
-      options[:must_have].each do |column, value|
-        if self.action == "create"
-          check_value = self.audited_changes[column]
-        else
-          check_value self.audited_changes[column].last
+    if options.has_key?(:must_have_changed_to)
+      options[:must_have_changed_to].each do |column, value|
+        begin
+          check_value = self.audited_changes[column.to_s].last
+        rescue
+          check_value = self.audited_changes[column.to_s]
         end
         if value == :not_nil
           return false if check_value == nil
@@ -66,7 +81,7 @@ class Audit < ActiveRecord::Base
   end
   
   def edited_by_creator?
-    check_conditions("update", must_not_have_changed: [:accepted, :likes])
+    check_conditions("update", must_not_have_changed: [:accepted, :parent_id, :likes, :tokbox_session])
   end
   
   def likes_updated?
@@ -74,7 +89,19 @@ class Audit < ActiveRecord::Base
   end
   
   def collaboration_sent?
-    check_conditions("create", must_have: { parent_id: :not_nil, accepted: :nil })
+    check_conditions("create", must_have_changed_to: { parent_id: :not_nil, accepted: :nil })
+  end
+  
+  def collaboration_accepted?
+    check_conditions("update", must_have_changed_to: { accepted: true })
+  end
+  
+  def collaboration_rejected?
+    check_conditions("update", must_have_changed_to: { accepted: false })
+  end
+  
+  def idea_ramified?
+    check_conditions("update", must_have_changed_to: { parent_id: nil, accepted: nil, original_parent_id: :not_nil })
   end
   
 end
