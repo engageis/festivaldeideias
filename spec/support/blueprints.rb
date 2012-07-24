@@ -57,3 +57,8 @@ Banner.blueprint do
   image_url { "http://festivaldeideias.org.br/assets/pensar-junto.png" }
   visible { true }
 end
+
+Audit.blueprint do
+  user { User.make! }
+  idea { Idea.make! }
+end

@@ -31,12 +31,11 @@ gem 'auto_html'
 gem 'friendly_id'
 gem 'tinymce-rails'
 gem 'koala'
-
+gem 'timeline_fu'
 
 # Cocreation Room
 gem 'opentok'
 gem 'pusher'
-
 
 # Authentication + Authorization
 gem 'cancan'

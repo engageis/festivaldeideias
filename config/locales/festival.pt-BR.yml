@@ -1,4 +1,10 @@
 pt-BR:
+  audit:
+    edit: "<a href='%{user_path}' class='user'>%{user}</a> editou a ideia <a href='%{idea_path}' class='idea'>%{idea}</a>"
+    likes: "A ideia <a href='%{idea_path}' class='idea'>%{idea}</a> já foi curtida por %{likes} pessoas"
+    collaboration:
+      sent: "<a href='%{user_path}' class='user'>%{user}</a> enviou uma colaboração para a ideia <a href='%{idea_path}' class='idea'>%{idea}</a>"
+      
   site:
     title: 'Festival de Ideias 2012 - Uma plataforma para unir ideias'
     description: 'O Festival de Ideias é uma rede de colaboração e troca de informações entre empreendedores, investidores e o público em geral.'
