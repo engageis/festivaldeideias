@@ -9,7 +9,6 @@ class Idea < ActiveRecord::Base
   require 'open-uri'
 
   include AutoHtml
-  include ActiveRecord::SpawnMethods
   include Rails.application.routes.url_helpers
   include PgSearch
 
