@@ -25,7 +25,7 @@ class Idea < ActiveRecord::Base
 
   # Scope for colaborations
 
-  scope :parent,        where(parent_id: nil).order('created_at DESC')
+  scope :no_collaborations,  where(parent_id: nil).order('created_at DESC')
   scope :colaborations, where("parent_id IS NOT NULL").order("created_at DESC")
   scope :not_accepted,  where(:accepted => nil).order('created_at DESC')
   scope :featured,      where(:featured => true, :parent_id => nil).order('position DESC')

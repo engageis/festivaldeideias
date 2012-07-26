@@ -12,7 +12,7 @@ gem "audited-activerecord"
 # Differ tool
 gem 'differ'
 
-# Improvements
+# Controller improvements 
 gem 'inherited_resources'
 gem 'has_scope'
 
@@ -60,7 +60,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', require: false
   gem 'capybara'
   gem 'database_cleaner'
   gem "shoulda-matchers"

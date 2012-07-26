@@ -16,9 +16,9 @@ class IdeasController < ApplicationController
   actions :all, except: [:destroy]
 
   before_filter :load_collaborators, :only => [ :show, :edit, :collaboration ]
-  before_filter :load_resources
-
   before_filter only: [:create] { @idea.user = current_user if current_user }
+
+  before_filter :load_resources
 
   before_filter only: [:create] do
     unless params[:terms_acceptance] && params[:cc_license] && params[:share_license] && params[:change_license]
@@ -27,7 +27,6 @@ class IdeasController < ApplicationController
   end
 
   before_filter only: [:show]   { @idea.update_facebook_likes }
-
   before_filter only: [:cocreate] do
     if current_user 
       @token = 
@@ -126,7 +125,7 @@ class IdeasController < ApplicationController
 
   def search 
     if params[:keyword]
-      @ideas = Idea.parent.match_and_find(params[:keyword])
+      @ideas = Idea.no_collaborations.match_and_find(params[:keyword])
       @query = params[:keyword]
     end
   end
@@ -137,11 +136,11 @@ class IdeasController < ApplicationController
   protected
   def load_resources
     #querying only ideas, no collab.
-    @ideas = end_of_association_chain.where(:parent_id => nil).includes(:user, :colaborations, :category)
+    @ideas = end_of_association_chain.no_collaborations.includes(:user, :colaborations, :category)
 
-    @categories     ||= IdeaCategory.order('created_at ASC')
+    @categories     ||= IdeaCategory.order('created_at')
     @users          ||= User.find(:all, :order => 'RANDOM()', :include => :services)
-    @ideas_count    ||= Idea.parent.includes(:user, :category)
+    @ideas_count    ||= Idea.no_collaborations.includes(:user, :category)
     @collab_count   ||= Idea.colaborations.includes(:user, :category, :parent)
     @ideas_latest   ||= Idea.latest.includes(:user, :category)
     @ideas_featured ||= Idea.featured.includes(:user, :category)
