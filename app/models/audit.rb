@@ -1,16 +1,18 @@
+# coding: utf-8
+
 class Audit < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :idea, foreign_key: :auditable_id
   serialize :audited_changes
   
-  scope :recent, order("created_at DESC").limit(100)
+  scope :recent, order("created_at DESC").limit(200)
   
   include Rails.application.routes.url_helpers
   include ActionView::Helpers::TextHelper
   
   def actual_user
-    return self.idea.user if self.idea and self.timeline_type == "likes_updated"
+    return self.idea.user if self.idea and ["likes_updated", "comments_updated"].include?(self.timeline_type)
     self.user or self.idea.user
   end
   
@@ -27,7 +29,11 @@ class Audit < ActiveRecord::Base
     end
     
     if likes_updated?
-      return I18n.t("audit.likes", idea: idea.title, idea_path: category_idea_path(idea.category, idea), likes: pluralize(self.audited_changes["likes"].last, "pessoa"))
+      return I18n.t("audit.likes", idea: self.idea.title, idea_path: category_idea_path(self.idea.category, self.idea), likes: pluralize(self.audited_changes["likes"].last, "pessoa"))
+    end
+
+    if comments_updated?
+      return I18n.t("audit.comments", idea: self.idea.title, idea_path: category_idea_path(self.idea.category, self.idea), comments: pluralize(self.audited_changes["comment_count"].last, "comentário"))
     end
 
     if collaboration_sent?
@@ -116,11 +122,15 @@ class Audit < ActiveRecord::Base
   end
   
   def edited_by_creator?
-    check_conditions("edited_by_creator", "update", must_not_have_changed: [:accepted, :parent_id, :original_parent_id, :likes, :tokbox_session])
+    check_conditions("edited_by_creator", "update", must_not_have_changed: [:accepted, :parent_id, :original_parent_id, :likes, :comment_count, :tokbox_session])
   end
   
   def likes_updated?
     check_conditions("likes_updated", "update", must_have_changed: [:likes])
+  end
+  
+  def comments_updated?
+    check_conditions("comments_updated", "update", must_have_changed: [:comment_count])
   end
   
   def collaboration_sent?

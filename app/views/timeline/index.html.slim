@@ -7,17 +7,24 @@ header
 article
   ul
     - @audits.each_with_index do |audit, index|
+      / Do not display repeated audits
+      - last_audit = (index > 0 ? @audits[index - 1] : nil)
+      - next if last_audit and last_audit.text == audit.text
       / Do not display edit audits that come imediately after the idea's creation. That's because we always generate one edit every time we create an idea
       - next_audit = @audits[index + 1]
-      - next if next_audit and next_audit.idea == audit.idea and next_audit.timeline_type = "idea_created" and audit.timeline_type = "edited_by_creator"
+      - next if next_audit and next_audit.idea == audit.idea and next_audit.timeline_type == "idea_created" and audit.timeline_type == "edited_by_creator"
       / Do not display edit audits that come imediately before a collaboration is accepted. That's because we always generate one edit every time a collaboration is accepted
-      - last_audit = (index > 0 ? @audits[index - 1] : nil)
-      - next if last_audit and last_audit.parent == audit.idea and last_audit.timeline_type = "collaboration_accepted" and audit.timeline_type = "edited_by_creator"
+      - next if last_audit and last_audit.parent == audit.idea and last_audit.timeline_type == "collaboration_accepted" and audit.timeline_type == "edited_by_creator"
       - if audit.timeline_type == "likes_updated"
         / Do not display likes audits on ideas that have been recently displayed
         - next if @recent_liked_ideas.include?(audit.idea)
         - @recent_liked_ideas << audit.idea
-        - @recent_liked_ideas.shift if @recent_liked_ideas.size > @recent_maximum_size
+        - @recent_liked_ideas.shift if @recent_liked_ideas.size > @maximum_ideas
+      - if audit.timeline_type == "comments_updated"
+        / Do not display comments audits on ideas that have been recently displayed
+        - next if @recent_commented_ideas.include?(audit.idea)
+        - @recent_commented_ideas << audit.idea
+        - @recent_commented_ideas.shift if @recent_commented_ideas.size > @maximum_ideas
       li
         .avatar= link_to image_tag(audit.actual_user.avatar), user_path(audit.actual_user)
         .audit

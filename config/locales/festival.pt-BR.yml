@@ -2,12 +2,13 @@ pt-BR:
   audit:
     create: "<a href='%{user_path}' class='user'>%{user}</a> iniciou uma nova ideia chamada <a href='%{idea_path}' class='idea'>%{idea}</a>"
     edit: "<a href='%{user_path}' class='user'>%{user}</a> editou a ideia <a href='%{idea_path}' class='idea'>%{idea}</a>"
-    likes: "A ideia <a href='%{idea_path}' class='idea'>%{idea}</a> já foi curtida por %{likes}"
     collaboration:
       sent: "<a href='%{user_path}' class='user'>%{user}</a> enviou uma colaboração para a ideia <a href='%{idea_path}' class='idea'>%{idea}</a>"
       accepted: "<a href='%{user_path}' class='user'>%{user}</a> aceitou a colaboração de <a href='%{collaborator_path}' class='user'>%{collaborator}</a> na ideia <a href='%{idea_path}' class='idea'>%{idea}</a>"
       rejected: "<a href='%{user_path}' class='user'>%{user}</a> recusou a colaboração de <a href='%{collaborator_path}' class='user'>%{collaborator}</a> na ideia <a href='%{idea_path}' class='idea'>%{idea}</a>"
       ramified: "<a href='%{collaborator_path}' class='user'>%{collaborator}</a> ramificou a idea <a href='%{idea_path}' class='idea'>%{idea}</a> de <a href='%{user_path}' class='user'>%{user}</a>"
+    likes: "A ideia <a href='%{idea_path}' class='idea'>%{idea}</a> já foi curtida por %{likes}"
+    comments: "A ideia <a href='%{idea_path}' class='idea'>%{idea}</a> recebeu um comentário e agora possui %{comments}"
   site:
     title: 'Festival de Ideias 2012 - Uma plataforma para unir ideias'
     description: 'O Festival de Ideias é uma rede de colaboração e troca de informações entre empreendedores, investidores e o público em geral.'

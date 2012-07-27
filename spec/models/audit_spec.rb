@@ -1,5 +1,6 @@
-require 'spec_helper'
+# coding: utf-8
 
+require 'spec_helper'
 
 describe Audit do
 
@@ -41,6 +42,14 @@ describe Audit do
       end
       its(:actual_user) { should == @idea.user }
     end
+    describe "with ideas's user, even when we have an user, for comments" do
+      subject do
+        @user = User.make!
+        @idea = Idea.make!
+        Audit.make!(user: @user, idea: @idea, timeline_type: "comments_updated")
+      end
+      its(:actual_user) { should == @idea.user }
+    end
   end
   
   describe ".text" do
@@ -56,12 +65,6 @@ describe Audit do
       audit = Audit.make!(action: "update", audited_changes: { "description" => ["old", "new"] })
       audit.text.should == I18n.t("audit.edit", user: audit.user.name, user_path: user_path(audit.user), idea: audit.idea.title, idea_path: category_idea_path(audit.idea.category, audit.idea))
       audit.timeline_type.should == "edited_by_creator"
-    end
-    
-    it "should display text when an idea's likes count was updated" do
-      audit = Audit.make!(action: "update", audited_changes: { "likes" => [10, 20] })
-      audit.text.should == I18n.t("audit.likes", idea: audit.idea.title, idea_path: category_idea_path(audit.idea.category, audit.idea), likes: pluralize(20, "pessoa"))
-      audit.timeline_type.should == "likes_updated"
     end
     
     it "should display text when a collaboration is sent" do
@@ -88,6 +91,18 @@ describe Audit do
       audit.timeline_type.should == "idea_ramified"
     end
 
+    it "should display text when an idea's likes count was updated" do
+      audit = Audit.make!(action: "update", audited_changes: { "likes" => [10, 20] })
+      audit.text.should == I18n.t("audit.likes", idea: audit.idea.title, idea_path: category_idea_path(audit.idea.category, audit.idea), likes: pluralize(20, "pessoa"))
+      audit.timeline_type.should == "likes_updated"
+    end
+    
+    it "should display text when an idea's comment count was updated" do
+      audit = Audit.make!(action: "update", audited_changes: { "comment_count" => [10, 20] })
+      audit.text.should == I18n.t("audit.comments", idea: audit.idea.title, idea_path: category_idea_path(audit.idea.category, audit.idea), comments: pluralize(20, "comentário"))
+      audit.timeline_type.should == "comments_updated"
+    end
+    
     it "should return nil if the idea was destroyed" do
       audit = Audit.make!(action: "destroy")
       audit.text.should == nil

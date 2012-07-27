@@ -131,10 +131,13 @@ class Idea < ActiveRecord::Base
   # of an idea
   def update_facebook_likes
     facebook_query_url = 'https://api.facebook.com/method/fql.query?format=json&query=' 
-    fql = "SELECT total_count FROM link_stat WHERE url='%s'"
+    fql = "SELECT total_count, commentsbox_count FROM link_stat WHERE url='%s'"
     path = self.facebook_url
-    total_count = JSON.parse(open(facebook_query_url + URI.encode(fql % path)).read).first["total_count"]
+    facebook_data = JSON.parse(open(facebook_query_url + URI.encode(fql % path)).read)
+    total_count = facebook_data.first["total_count"]
+    comment_count = facebook_data.first["commentsbox_count"]
     self.update_attribute(:likes, total_count.to_i) if total_count
+    self.update_attribute(:comment_count, comment_count.to_i) if comment_count
   end
 
   # When an idea is created, we set a default url for sharing likes e etc. 
