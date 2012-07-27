@@ -6,7 +6,7 @@ class Audit < ActiveRecord::Base
   belongs_to :idea, foreign_key: :auditable_id
   serialize :audited_changes
   
-  scope :recent, order("created_at DESC").limit(200)
+  scope :recent, order("created_at DESC").limit(70)
   
   include Rails.application.routes.url_helpers
   include ActionView::Helpers::TextHelper
