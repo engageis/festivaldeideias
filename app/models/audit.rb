@@ -64,7 +64,6 @@ class Audit < ActiveRecord::Base
   private
   
   def check_conditions(type, action, options = {})
-    return true if self.timeline_type == type
     return false unless self.action == action
     if options.has_key?(:must_not_have_changed)
       options[:must_not_have_changed].each do |column|

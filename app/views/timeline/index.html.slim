@@ -10,6 +10,9 @@ article
       / Do not display edit audits that come imediately after the idea's creation. That's because we always generate one edit every time we create an idea
       - next_audit = @audits[index + 1]
       - next if next_audit and next_audit.idea == audit.idea and next_audit.timeline_type = "idea_created" and audit.timeline_type = "edited_by_creator"
+      / Do not display edit audits that come imediately before a collaboration is accepted. That's because we always generate one edit every time a collaboration is accepted
+      - last_audit = (index > 0 ? @audits[index - 1] : nil)
+      - next if last_audit and last_audit.parent == audit.idea and last_audit.timeline_type = "collaboration_accepted" and audit.timeline_type = "edited_by_creator"
       - if audit.timeline_type == "likes_updated"
         / Do not display likes audits on ideas that have been recently displayed
         - next if @recent_liked_ideas.include?(audit.idea)
@@ -20,3 +23,4 @@ article
         .audit
           p== audit.text
           small= "Há #{time_ago_in_words(audit.created_at)}"
+          /pre= audit.to_yaml
