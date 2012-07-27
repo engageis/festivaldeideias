@@ -30,27 +30,27 @@ describe Audit do
     end
     
     it "should display text when an idea's likes count was updated" do
-      audit = Audit.make!(action: "update", audited_changes: { likes: [10, 20] })
+      audit = Audit.make!(action: "update", audited_changes: { "likes" => [10, 20] })
       audit.text.should == I18n.t("audit.likes", idea: audit.idea.title, idea_path: category_idea_path(audit.idea.category, audit.idea), likes: 20)
     end
     
     it "should display text when a collaboration is sent" do
-      audit = Audit.make!(action: "create", audited_changes: { parent_id: parent.id, accepted: nil })
+      audit = Audit.make!(action: "create", audited_changes: { "parent_id" => parent.id, "accepted" => nil })
       audit.text.should == I18n.t("audit.collaboration.sent", user: audit.user.name, user_path: user_path(audit.user), idea: parent.title, idea_path: category_idea_path(parent.category, parent))
     end
 
     it "should display text when a collaboration is accepted" do
-      audit = Audit.make!(idea: Idea.make!(parent: parent), action: "update", audited_changes: { accepted: [nil, true] })
+      audit = Audit.make!(idea: Idea.make!(parent: parent), action: "update", audited_changes: { "accepted" => [nil, true] })
       audit.text.should == I18n.t("audit.collaboration.accepted", user: parent.user.name, user_path: user_path(parent.user), collaborator: audit.user.name, collaborator_path: user_path(audit.user), idea: parent.title, idea_path: category_idea_path(parent.category, parent))
     end
 
     it "should display text when a collaboration is rejected" do
-      audit = Audit.make!(idea: Idea.make!(parent: parent), action: "update", audited_changes: { accepted: [nil, false] })
+      audit = Audit.make!(idea: Idea.make!(parent: parent), action: "update", audited_changes: { "accepted" => [nil, false] })
       audit.text.should == I18n.t("audit.collaboration.rejected", user: parent.user.name, user_path: user_path(parent.user), collaborator: audit.user.name, collaborator_path: user_path(audit.user), idea: parent.title, idea_path: category_idea_path(parent.category, parent))
     end
 
     it "should display text when an idea is ramified" do
-      audit = Audit.make!(idea: Idea.make!(parent: parent), action: "update", audited_changes: { parent_id: [parent.id, nil], accepted: [false, nil], original_parent_id: [nil, parent.id] })
+      audit = Audit.make!(idea: Idea.make!(parent: parent), action: "update", audited_changes: { "parent_id" => [parent.id, nil], "accepted" => [false, nil], "original_parent_id" => [nil, parent.id] })
       audit.text.should == I18n.t("audit.collaboration.ramified", user: parent.user.name, user_path: user_path(parent.user), collaborator: audit.user.name, collaborator_path: user_path(audit.user), idea: parent.title, idea_path: category_idea_path(parent.category, parent))
     end
 

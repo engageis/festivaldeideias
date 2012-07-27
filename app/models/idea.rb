@@ -24,14 +24,13 @@ class Idea < ActiveRecord::Base
 
   # Scope for colaborations
 
-  scope :no_collaborations,  where(parent_id: nil).order('created_at DESC')
+  scope :without_parent, where(parent_id: nil)
   scope :colaborations, where("parent_id IS NOT NULL").order("created_at DESC")
-  scope :not_accepted,  where(:accepted => nil).order('created_at DESC')
-  scope :featured,      where(:featured => true, :parent_id => nil).order('position DESC')
-  scope :latest,        where(:parent_id => nil).order('updated_at DESC')
-  scope :recent,        where(:parent_id => nil).order('created_at DESC')
-  scope :popular,       select("DISTINCT ON (ideas.id) ideas.*").
-                        joins("INNER JOIN ideas b ON b.parent_id = ideas.id")
+  scope :not_accepted, where(:accepted => nil).order('created_at DESC')
+  scope :featured, where(:featured => true, :parent_id => nil).order('position DESC')
+  scope :latest, where(:parent_id => nil).order('updated_at DESC')
+  scope :recent, where(:parent_id => nil).order('created_at DESC')
+  scope :popular, select("DISTINCT ON (ideas.id) ideas.*").joins("INNER JOIN ideas b ON b.parent_id = ideas.id").order("id")
 
   pg_search_scope :match_and_find, against: [:title, :description]
 

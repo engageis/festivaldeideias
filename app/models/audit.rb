@@ -21,9 +21,7 @@ class Audit < ActiveRecord::Base
     end
     
     if collaboration_accepted?
-      test_parent = self.parent
-      raise test_parent.user.inspect
-      # return I18n.t("audit.collaboration.accepted", user: self.parent.user.name, user_path: user_path(self.parent.user), collaborator: self.user.name, collaborator_path: user_path(self.user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent))
+      return I18n.t("audit.collaboration.accepted", user: self.parent.user.name, user_path: user_path(self.parent.user), collaborator: self.user.name, collaborator_path: user_path(self.user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent))
     end
     
     if collaboration_rejected?

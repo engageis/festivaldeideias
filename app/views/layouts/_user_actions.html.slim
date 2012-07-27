@@ -21,7 +21,7 @@
         .content
           = image_tag current_user.avatar, :alt => "Profile image", :title => current_user.name, :class => "medium_profile_image"
           .score
-            #{pluralize current_user.ideas.parent.size, "ideia própria", "ideias próprias"}, #{pluralize current_user.collaborations.size, "colaboração", "colaborações"} em ideias.
+            #{pluralize current_user.ideas.without_parent.size, "ideia própria", "ideias próprias"}, #{pluralize current_user.collaborations.size, "colaboração", "colaborações"} em ideias.
           ul
             li
               a href=user_path(current_user) Meu perfil

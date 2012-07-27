@@ -125,7 +125,7 @@ class IdeasController < ApplicationController
 
   def search 
     if params[:keyword]
-      @ideas = Idea.no_collaborations.match_and_find(params[:keyword])
+      @ideas = Idea.without_parent.match_and_find(params[:keyword])
       @query = params[:keyword]
     end
   end
@@ -136,11 +136,11 @@ class IdeasController < ApplicationController
   protected
   def load_resources
     #querying only ideas, no collab.
-    @ideas = end_of_association_chain.no_collaborations.includes(:user, :colaborations, :category)
+    @ideas = end_of_association_chain.without_parent.includes(:user, :colaborations, :category)
 
     @categories     ||= IdeaCategory.order('created_at')
     @users          ||= User.find(:all, :order => 'RANDOM()', :include => :services)
-    @ideas_count    ||= Idea.no_collaborations.includes(:user, :category)
+    @ideas_count    ||= Idea.without_parent.includes(:user, :category)
     @collab_count   ||= Idea.colaborations.includes(:user, :category, :parent)
     @ideas_latest   ||= Idea.latest.includes(:user, :category)
     @ideas_featured ||= Idea.featured.includes(:user, :category)

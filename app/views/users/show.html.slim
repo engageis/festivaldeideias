@@ -13,8 +13,8 @@ article
     - else
       | Ideias criadas por #{@user.name}
   ul
-    - unless @user.ideas.parent.empty?
-      = render partial: 'idea', collection: @user.ideas.parent
+    - unless @user.ideas.without_parent.empty?
+      = render partial: 'idea', collection: @user.ideas.without_parent
     - else 
       span
         - if @user == current_user

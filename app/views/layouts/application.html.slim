@@ -38,7 +38,7 @@ html
             li class=(path.include?(link_path) ? 'selected' : '')
               = link_to link_path do
                 | Navegue nas ideias
-            li
+            li class=(path.include?(new_idea_path) ? 'selected' : '')
               = new_idea_button
 
             li#more_info_links
