@@ -55,6 +55,8 @@ FestivalDeIdeias::Application.routes.draw do
     collection { post :sort }
   end
 
+  resources :timeline, :only => [:index]
+
   # Pages (have to be in the EOF)
   get '/:id',                             :to => 'pages#show',      :as => :page
 

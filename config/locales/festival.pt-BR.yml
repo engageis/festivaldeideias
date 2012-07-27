@@ -1,7 +1,8 @@
 pt-BR:
   audit:
+    create: "<a href='%{user_path}' class='user'>%{user}</a> iniciou uma nova ideia chamada <a href='%{idea_path}' class='idea'>%{idea}</a>"
     edit: "<a href='%{user_path}' class='user'>%{user}</a> editou a ideia <a href='%{idea_path}' class='idea'>%{idea}</a>"
-    likes: "A ideia <a href='%{idea_path}' class='idea'>%{idea}</a> já foi curtida por %{likes} pessoas"
+    likes: "A ideia <a href='%{idea_path}' class='idea'>%{idea}</a> já foi curtida por %{likes}"
     collaboration:
       sent: "<a href='%{user_path}' class='user'>%{user}</a> enviou uma colaboração para a ideia <a href='%{idea_path}' class='idea'>%{idea}</a>"
       accepted: "<a href='%{user_path}' class='user'>%{user}</a> aceitou a colaboração de <a href='%{collaborator_path}' class='user'>%{collaborator}</a> na ideia <a href='%{idea_path}' class='idea'>%{idea}</a>"

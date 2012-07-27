@@ -1,0 +1,24 @@
+body[data-controller-name="Timeline"][data-action="Index"]
+  article
+    ul
+      margin: 0
+      margin-bottom: 20px
+      li
+        border: 1px solid lighten(gray, 45%)
+        overflow: hidden
+        +transition(background-color, .35s)
+        &:hover
+          background: lighten(gray, 45%)
+    .avatar
+      float: left
+      padding: .5em
+    .audit
+      width: 85%
+      float: left
+      p
+        margin: 0
+      small
+        font-size: .8em
+        color: gray
+        margin: 0
+        padding: 0
