@@ -34,21 +34,26 @@ describe Audit do
       end
       its(:actual_user) { should == @idea.user }
     end
-    describe "with ideas's user, even when we have an user, for likes" do
-      subject do
-        @user = User.make!
-        @idea = Idea.make!
-        Audit.make!(user: @user, idea: @idea, timeline_type: "likes_updated")
+    ["likes_updated", "comments_updated"].each do |timeline_type|
+      describe "with ideas's user, even when we have an user, for #{timeline_type}" do
+        subject do
+          @user = User.make!
+          @idea = Idea.make!
+          Audit.make!(user: @user, idea: @idea, timeline_type: timeline_type)
+        end
+        its(:actual_user) { should == @idea.user }
       end
-      its(:actual_user) { should == @idea.user }
     end
-    describe "with ideas's user, even when we have an user, for comments" do
-      subject do
-        @user = User.make!
-        @idea = Idea.make!
-        Audit.make!(user: @user, idea: @idea, timeline_type: "comments_updated")
+    ["collaboration_accepted", "collaboration_rejected"].each do |timeline_type|
+      describe "with ideas's parent user, even when we have an user, for #{timeline_type}" do
+        subject do
+          @user = User.make!
+          @parent = Idea.make!
+          @idea = Idea.make!(parent: @parent)
+          Audit.make!(user: @user, idea: @idea, timeline_type: timeline_type)
+        end
+        its(:actual_user) { should == @idea.parent.user }
       end
-      its(:actual_user) { should == @idea.user }
     end
   end
   
@@ -75,13 +80,13 @@ describe Audit do
 
     it "should display text when a collaboration is accepted" do
       audit = Audit.make!(idea: Idea.make!(parent: parent), action: "update", audited_changes: { "accepted" => [nil, true] })
-      audit.text.should == I18n.t("audit.collaboration.accepted", user: parent.user.name, user_path: user_path(parent.user), collaborator: audit.actual_user.name, collaborator_path: user_path(audit.actual_user), idea: parent.title, idea_path: category_idea_path(parent.category, parent))
+      audit.text.should == I18n.t("audit.collaboration.accepted", user: parent.user.name, user_path: user_path(parent.user), collaborator: audit.idea.user.name, collaborator_path: user_path(audit.idea.user), idea: parent.title, idea_path: category_idea_path(parent.category, parent))
       audit.timeline_type.should == "collaboration_accepted"
     end
 
     it "should display text when a collaboration is rejected" do
       audit = Audit.make!(idea: Idea.make!(parent: parent), action: "update", audited_changes: { "accepted" => [nil, false] })
-      audit.text.should == I18n.t("audit.collaboration.rejected", user: parent.user.name, user_path: user_path(parent.user), collaborator: audit.user.name, collaborator_path: user_path(audit.user), idea: parent.title, idea_path: category_idea_path(parent.category, parent))
+      audit.text.should == I18n.t("audit.collaboration.rejected", user: parent.user.name, user_path: user_path(parent.user), collaborator: audit.idea.user.name, collaborator_path: user_path(audit.idea.user), idea: parent.title, idea_path: category_idea_path(parent.category, parent))
       audit.timeline_type.should == "collaboration_rejected"
     end
 
