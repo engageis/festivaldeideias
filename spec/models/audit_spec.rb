@@ -117,6 +117,11 @@ describe Audit do
       audit.text.should == nil
     end
     
+    it "should return nil if the comment_count changed to zero" do
+      audit = Audit.make!(action: "update", audited_changes: { "comment_count" => [10, 0] })
+      audit.text.should == nil
+    end
+    
   end
   
 end

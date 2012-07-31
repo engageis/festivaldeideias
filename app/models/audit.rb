@@ -130,7 +130,7 @@ class Audit < ActiveRecord::Base
   end
   
   def comments_updated?
-    check_conditions("comments_updated", "update", must_have_changed: [:comment_count])
+    check_conditions("comments_updated", "update", must_have_changed: [:comment_count], must_not_have_changed_to: {comment_count: 0})
   end
   
   def collaboration_sent?
