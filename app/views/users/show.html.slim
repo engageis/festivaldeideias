@@ -27,8 +27,8 @@ article
     - else
       | Ideias com as quais #{@user.name} colaborou
   ul
-    - unless @user.collaborations.empty?
-      = render partial: 'idea', collection: @user.collaborations.map(&:parent)
+    - unless @user.collaborated_ideas.empty?
+      = render partial: 'idea', collection: @user.collaborated_ideas
     - else 
       span
         - if @user == current_user
