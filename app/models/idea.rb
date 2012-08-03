@@ -153,4 +153,8 @@ class Idea < ActiveRecord::Base
     session = TOKBOX.create_session(self.external_url)
     self.update_attribute(:tokbox_session, session.session_id)
   end
+  
+  def after_audit
+  end
+  
 end
