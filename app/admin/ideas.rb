@@ -1,7 +1,25 @@
 # coding: utf-8
 ActiveAdmin.register Idea do
   menu :label => "Curação de ideias"
-  #
+  controller do
+    def scoped_collection
+      end_of_association_chain.without_parent
+    end
+  end
+
+  csv do
+
+    column("Moderador")               { |idea| idea.user.name }
+    column("Título")                  { |idea| idea.title }
+    column("Valor do investimento")   { |idea| idea.minimum_investment }
+    column("URL")                     { |idea| category_idea_url(idea.category, idea) }
+    column("Causa")                   { |idea| idea.category.name }
+    column("Número de colaboradores") { |idea| idea.colaborations.size }
+    column("Número de likes")         { |idea| idea.likes }
+    column("Ideia primária")          { |idea| idea.original_parent.nil? ? '' : idea.original.parent.title }
+
+  end
+
   # Initial Implementation of featured / position ajax submition
   #
   index do
