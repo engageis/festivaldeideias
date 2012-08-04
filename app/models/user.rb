@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
 
   before_create :updates_notifications_read_at
 
+  def collaborated_ideas
+    self.collaborations.select("DISTINCT parent_id").map(&:parent)
+  end
+  
   # This affects links
   def to_param
     "#{id}-#{name.parameterize}"
@@ -91,5 +95,6 @@ class User < ActiveRecord::Base
       s
     end
   end
+  
 end
 

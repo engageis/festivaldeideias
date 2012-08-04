@@ -13,6 +13,7 @@ class Audit < ActiveRecord::Base
   
   def actual_user
     return self.idea.user if self.idea and ["likes_updated", "comments_updated"].include?(self.timeline_type)
+    return self.idea.parent.user if self.idea and self.idea.parent and ["collaboration_accepted", "collaboration_rejected"].include?(self.timeline_type)
     self.user or self.idea.user
   end
   
@@ -41,11 +42,11 @@ class Audit < ActiveRecord::Base
     end
     
     if collaboration_accepted?
-      return I18n.t("audit.collaboration.accepted", user: self.parent.user.name, user_path: user_path(self.parent.user), collaborator: self.actual_user.name, collaborator_path: user_path(self.actual_user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent))
+      return I18n.t("audit.collaboration.accepted", user: self.actual_user.name, user_path: user_path(self.actual_user), collaborator: self.idea.user.name, collaborator_path: user_path(self.idea.user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent))
     end
     
     if collaboration_rejected?
-      return I18n.t("audit.collaboration.rejected", user: self.parent.user.name, user_path: user_path(self.parent.user), collaborator: self.actual_user.name, collaborator_path: user_path(self.actual_user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent))
+      return I18n.t("audit.collaboration.rejected", user: self.actual_user.name, user_path: user_path(self.actual_user), collaborator: self.idea.user.name, collaborator_path: user_path(self.idea.user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent))
     end
     
     if idea_ramified?
@@ -130,7 +131,7 @@ class Audit < ActiveRecord::Base
   end
   
   def comments_updated?
-    check_conditions("comments_updated", "update", must_have_changed: [:comment_count])
+    check_conditions("comments_updated", "update", must_have_changed: [:comment_count], must_not_have_changed_to: {comment_count: 0})
   end
   
   def collaboration_sent?

@@ -34,6 +34,14 @@ Given /^"([^"]*)" collaborated on the idea "([^"]*)"$/ do |arg1, arg2|
   Idea.make!(parent: @original, category: @original.category, user: User.find_by_name(arg1), accepted: true)
 end
 
+Given /^"([^"]*)" collaborated (\d+) times on the idea "([^"]*)"$/ do |user_name, number, idea_title|
+  @original = Idea.find_by_title(idea_title)
+  @user = User.find_by_name(user_name)
+  number.to_i.times do
+    Idea.make!(parent: @original, category: @original.category, user: @user, accepted: true)
+  end
+end
+
 Given /^"([^"]*)" ramified the idea "([^"]*)"$/ do |arg1, arg2|
   @original = Idea.find_by_title(arg2)
   @idea = Idea.make!(parent: @original, title: @original.title, category: @original.category, user: User.find_by_name(arg1), accepted: nil)
@@ -77,6 +85,10 @@ end
 And /^I click on the link "([^"]*)"$/ do |arg1|
   raise "asdasdas"
   click_link arg1
+end
+
+Then /^I should see "([^"]*)" only once$/ do |text|
+  page.text.scan(/(#{text})/).size.should == 1
 end
 
 Then /^I should see "([^"]*)"$/ do |arg1|

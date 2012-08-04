@@ -2,10 +2,12 @@
   = @user.name
 
 header
-  h1= @user.name
-  - if can? :manage, @user
-    h3= @user.email
-  = link_to "Ir para o perfil no Facebook", @user.profile, :target => '_blank'
+  .avatar= link_to image_tag(@user.avatar), user_path(@user)
+  .info
+    h1= @user.name
+    - if can? :manage, @user
+      h3= @user.email
+    = link_to "Ir para o perfil no Facebook", @user.profile, :target => '_blank'
 article
   h2
     - if @user == current_user
@@ -27,8 +29,8 @@ article
     - else
       | Ideias com as quais #{@user.name} colaborou
   ul
-    - unless @user.collaborations.empty?
-      = render partial: 'idea', collection: @user.collaborations.map(&:parent)
+    - unless @user.collaborated_ideas.empty?
+      = render partial: 'idea', collection: @user.collaborated_ideas
     - else 
       span
         - if @user == current_user

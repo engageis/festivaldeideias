@@ -54,6 +54,13 @@ Feature: View an user's profile
     And I should see "A Day in the Life"
     And I should see "Criada a partir da ideia A Day in the Life, de John Lennon"
 
+  Scenario: An user with no ideia created and 3 collaboration's on the same idea
+    Given there is an user called "Paul McCartney", with email "paul@mccartney.com"
+    And there is an idea called "A Day in the Life" by "John Lennon"
+    And "Paul McCartney" collaborated 3 times on the idea "A Day in the Life"
+    When I visit the "Paul McCartney" user page
+    Then I should see "A Day in the Life" only once
+
   @omniauth_test
   Scenario: My profile without ideas created or collaborations
     Given I'm a logged user
