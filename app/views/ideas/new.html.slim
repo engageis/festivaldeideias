@@ -1,6 +1,15 @@
 
 = form_for(@idea, :class => 'new_idea') do |f|
   h2 = t('idea.new.start')
+  .warning
+    - if Time.now > Time.parse('2012-08-03 23:59:59 -0300')
+      | Atenção: as ideias iniciadas a partir de agora não estarão mais inscritas para a edição de Agosto do Festival de Ideias, 
+      strong e sim para a edição de novembro
+      | . Pensando pelo lado positivo, você agora terá mais tempo para cocriar sua ideia! :D
+    - else
+      | Corra! :) as ideias iniciadas 
+      strong até hoje às 23:59:59 
+      | estarão inscritas para a edição de Agosto do Festival de Ideias. Mas não se preocupe: as ideias iniciadas depois disto também estarão inscritas, mas para a edição de Novembro.
   #describe
     h3 = t('idea.new.about')
     p
