@@ -155,6 +155,7 @@ class Idea < ActiveRecord::Base
   end
   
   def after_audit
+    Audit.pending.where(auditable_id: self.id).each { |pending_audit| pending_audit.set_timeline_and_notifications_data! }
   end
   
 end

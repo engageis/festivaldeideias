@@ -7,9 +7,11 @@ class Audit < ActiveRecord::Base
   belongs_to :actual_user, class_name: "User", foreign_key: :actual_user_id
   belongs_to :parent, class_name: "Idea", foreign_key: :parent_id
   serialize :audited_changes
+  serialize :notification_texts
   
-  scope :recent, where("timeline_type IS NOT NULL").order("created_at DESC").limit(100)
-  
+  scope :recent, where("timeline_type IS NOT NULL AND timeline_type <> 'ignore'").order("created_at DESC").limit(100)
+  scope :pending, where("timeline_type IS NULL")
+
   include Rails.application.routes.url_helpers
   include ActionView::Helpers::TextHelper
 
@@ -19,12 +21,12 @@ class Audit < ActiveRecord::Base
     self.timeline_type = generated_timeline_type
     self.actual_user_id = generated_actual_user_id
     self.parent_id = generated_parent_id
-    self.text, self.notification_text = generated_texts
+    self.text, self.notification_texts = generated_texts
     self.save
   end
   
   def generated_timeline_type
-    return unless self.idea
+    return "ignore" unless self.idea
     return "idea_created" if idea_created?
     return "edited_by_creator" if edited_by_creator?
     return "likes_updated" if likes_updated?
@@ -33,7 +35,7 @@ class Audit < ActiveRecord::Base
     return "collaboration_accepted" if collaboration_accepted?
     return "collaboration_rejected" if collaboration_rejected?
     return "idea_ramified" if idea_ramified?
-    nil
+    "ignore"
   end
   
   def generated_actual_user_id
@@ -64,50 +66,70 @@ class Audit < ActiveRecord::Base
 
     if idea_created?
       timeline_text = I18n.t("audit.create", user: self.actual_user.name, user_path: user_path(self.actual_user), idea: idea.title, idea_path: category_idea_path(idea.category, idea))
-      notification_text = nil
-      return [timeline_text, notification_text]
+      notification_texts = nil
+      return [timeline_text, notification_texts]
     end
     
     if edited_by_creator?
       timeline_text = I18n.t("audit.edit", user: self.actual_user.name, user_path: user_path(self.actual_user), idea: idea.title, idea_path: category_idea_path(idea.category, idea))
-      notification_text = nil
-      return [timeline_text, notification_text]
+      notification_texts = {
+        collaborators: I18n.t("audit.notification.edit.collaborators", user: self.actual_user.name, user_path: user_path(self.actual_user), idea: self.idea.title, idea_path: category_idea_path(self.idea.category, self.idea))
+      }
+      return [timeline_text, notification_texts]
     end
     
     if likes_updated?
       timeline_text = I18n.t("audit.likes", idea: self.idea.title, idea_path: category_idea_path(self.idea.category, self.idea), likes: pluralize(self.audited_changes["likes"].last, "pessoa"))
-      notification_text = nil
-      return [timeline_text, notification_text]
+      notification_texts = {
+        creator: I18n.t("audit.notification.likes.creator", idea: self.idea.title, idea_path: category_idea_path(self.idea.category, self.idea), likes: pluralize(self.audited_changes["likes"].last, "pessoa")),
+        collaborators: I18n.t("audit.notification.likes.collaborators", idea: self.idea.title, idea_path: category_idea_path(self.idea.category, self.idea), likes: pluralize(self.audited_changes["likes"].last, "pessoa"))
+      }
+      return [timeline_text, notification_texts]
     end
 
     if comments_updated?
       timeline_text = I18n.t("audit.comments", idea: self.idea.title, idea_path: category_idea_path(self.idea.category, self.idea), comments: pluralize(self.audited_changes["comment_count"].last, "comentário"))
-      notification_text = nil
-      return [timeline_text, notification_text]
+      notification_texts = {
+        creator: I18n.t("audit.notification.comments.creator", idea: self.idea.title, idea_path: category_idea_path(self.idea.category, self.idea), comments: pluralize(self.audited_changes["comment_count"].last, "comentário")),
+        collaborators: I18n.t("audit.notification.comments.collaborators", idea: self.idea.title, idea_path: category_idea_path(self.idea.category, self.idea), comments: pluralize(self.audited_changes["comment_count"].last, "comentário"))
+      }
+      return [timeline_text, notification_texts]
     end
 
     if collaboration_sent?
       timeline_text = I18n.t("audit.collaboration.sent", user: self.actual_user.name, user_path: user_path(self.actual_user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent))
-      notification_text = nil
-      return [timeline_text, notification_text]
+      notification_texts = {
+        creator: I18n.t("audit.notification.collaboration.sent.creator", user: self.actual_user.name, user_path: user_path(self.actual_user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent)),
+        collaborators: I18n.t("audit.notification.collaboration.sent.collaborators", user: self.actual_user.name, user_path: user_path(self.actual_user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent))
+      }
+      return [timeline_text, notification_texts]
     end
     
     if collaboration_accepted?
       timeline_text = I18n.t("audit.collaboration.accepted", user: self.actual_user.name, user_path: user_path(self.actual_user), collaborator: self.idea.user.name, collaborator_path: user_path(self.idea.user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent))
-      notification_text = nil
-      return [timeline_text, notification_text]
+      notification_texts = {
+        collaborators: I18n.t("audit.notification.collaboration.accepted.collaborators", user: self.actual_user.name, user_path: user_path(self.actual_user), collaborator: self.idea.user.name, collaborator_path: user_path(self.idea.user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent)),
+        accepted_collaborator: I18n.t("audit.notification.collaboration.accepted.accepted_collaborator", user: self.actual_user.name, user_path: user_path(self.actual_user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent))
+      }
+      return [timeline_text, notification_texts]
     end
     
     if collaboration_rejected?
       timeline_text = I18n.t("audit.collaboration.rejected", user: self.actual_user.name, user_path: user_path(self.actual_user), collaborator: self.idea.user.name, collaborator_path: user_path(self.idea.user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent))
-      notification_text = nil
-      return [timeline_text, notification_text]
+      notification_texts = {
+        collaborators: I18n.t("audit.notification.collaboration.rejected.collaborators", user: self.actual_user.name, user_path: user_path(self.actual_user), collaborator: self.idea.user.name, collaborator_path: user_path(self.idea.user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent)),
+        rejected_collaborator: I18n.t("audit.notification.collaboration.rejected.rejected_collaborator", user: self.actual_user.name, user_path: user_path(self.actual_user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent), ramify_path: ramify_idea_path(self.idea))
+      }
+      return [timeline_text, notification_texts]
     end
     
     if idea_ramified?
       timeline_text = I18n.t("audit.collaboration.ramified", user: self.parent.user.name, user_path: user_path(self.parent.user), collaborator: self.actual_user.name, collaborator_path: user_path(self.actual_user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent))
-      notification_text = nil
-      return [timeline_text, notification_text]
+      notification_texts = {
+        creator: I18n.t("audit.notification.collaboration.ramified.creator", collaborator: self.actual_user.name, collaborator_path: user_path(self.actual_user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent)),
+        collaborators: I18n.t("audit.notification.collaboration.ramified.collaborators", user: self.parent.user.name, user_path: user_path(self.parent.user), collaborator: self.actual_user.name, collaborator_path: user_path(self.actual_user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent))
+      }
+      return [timeline_text, notification_texts]
     end
     
     [nil, nil]
