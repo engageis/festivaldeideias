@@ -4,5 +4,5 @@
   ol
     li
       ul
-        - current_user.notifications.each do |n|
-          li= n.link.html_safe 
+        - current_user.notifications.each do |notification|
+          li= notification.notification_text(current_user).html_safe

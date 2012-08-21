@@ -15,6 +15,52 @@ class Audit < ActiveRecord::Base
   include Rails.application.routes.url_helpers
   include ActionView::Helpers::TextHelper
 
+  def self.notifications(user_to_notify)
+    where("
+      auditable_id IN
+        (SELECT id FROM ideas WHERE user_id = #{user_to_notify.id})
+      OR auditable_id IN
+        (SELECT parent_id FROM ideas WHERE parent_id IS NOT NULL AND user_id = #{user_to_notify.id})
+      OR auditable_id IN
+        (SELECT original_parent_id FROM ideas WHERE original_parent_id IS NOT NULL AND user_id = #{user_to_notify.id})
+      OR auditable_id IN
+        (SELECT id FROM ideas WHERE
+          parent_id IN (SELECT id FROM ideas WHERE user_id = #{user_to_notify.id})
+          OR original_parent_id IN (SELECT id FROM ideas WHERE user_id = #{user_to_notify.id})
+        )
+      OR auditable_id IN
+        (SELECT id FROM ideas WHERE
+          parent_id IN (SELECT parent_id FROM ideas WHERE parent_id IS NOT NULL AND user_id = #{user_to_notify.id})
+          OR original_parent_id IN (SELECT original_parent_id FROM ideas WHERE original_parent_id IS NOT NULL AND user_id = #{user_to_notify.id})
+        )
+    ").order("created_at DESC")
+  end
+
+  def notification_text(user_to_notify)
+    return unless self.timeline_type and self.idea and self.notification_texts
+    if self.timeline_type == "collaboration_sent"
+      if self.idea.user == user_to_notify
+        nil
+      elsif (self.idea.parent and self.idea.parent.user == user_to_notify) or (self.idea.original_parent and self.idea.original_parent.user == user_to_notify)
+        self.notification_texts[:creator]
+      else
+        self.notification_texts[:collaborators]
+      end
+    elsif self.timeline_type == "collaboration_accepted" or self.timeline_type == "collaboration_rejected"
+      if (self.idea.parent and self.idea.parent.user == user_to_notify) or (self.idea.original_parent and self.idea.original_parent.user == user_to_notify)
+        nil
+      elsif self.idea.user == user_to_notify
+        self.notification_texts[(self.timeline_type == "collaboration_accepted" ? "accepted_collaborator" : "rejected_collaborator").to_sym]
+      else
+        self.notification_texts[:collaborators]
+      end
+    elsif self.idea.user == user_to_notify
+      self.notification_texts[:creator]
+    else
+      self.notification_texts[:collaborators]
+    end
+  end
+
   # IMPORTANT NOTICE for developers: this method is called by migration StoreAuditsTimelineData.
   # If you remove it or change its behaviour, please edit the migration as well
   def set_timeline_and_notifications_data!

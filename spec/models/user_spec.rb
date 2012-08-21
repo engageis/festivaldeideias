@@ -37,6 +37,6 @@ describe User do
 
     end
     subject { @user.new_notifications_count }
-    it { should == 2 }
+    it { should == 3 }
   end
 end

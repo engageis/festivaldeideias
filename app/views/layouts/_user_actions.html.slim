@@ -9,8 +9,8 @@
         .content
           h4 Notificações
           ul.notifications
-            - current_user.notifications[0..4].each do |n|
-              li= n.link.html_safe
+            - current_user.notifications[0..4].each do |notification|
+              li== notification.notification_text(current_user)
           = link_to t('notifications.view_more'), notifications_url, class: :view_more
 
     li.logged_in
