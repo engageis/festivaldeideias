@@ -1,0 +1,26 @@
+- @count = 0
+- @maximum_ideas = 10
+- @recent_liked_ideas = []
+- @recent_commented_ideas = []
+- @audits = current_user.notifications
+- @audits.each_with_index do |audit, index|
+  / Break if reached max_notifications
+  - break if defined?(max_notifications) and @count >= max_notifications
+  / Do not display repeated audits
+  - last_audit = (index > 0 ? @audits[index - 1] : nil)
+  - next if last_audit and last_audit.text == audit.text
+  / Do not display edit audits that come imediately before a collaboration is accepted. That's because we always generate one edit every time a collaboration is accepted
+  - next if last_audit and last_audit.parent == audit.idea and last_audit.timeline_type == "collaboration_accepted" and audit.timeline_type == "edited_by_creator"
+  - if audit.timeline_type == "likes_updated"
+    / Do not display likes audits on ideas that have been recently displayed
+    - next if @recent_liked_ideas.include?(audit.idea)
+    - @recent_liked_ideas << audit.idea
+    - @recent_liked_ideas.shift if @recent_liked_ideas.size > @maximum_ideas
+  - if audit.timeline_type == "comments_updated"
+    / Do not display comments audits on ideas that have been recently displayed
+    - next if @recent_commented_ideas.include?(audit.idea)
+    - @recent_commented_ideas << audit.idea
+    - @recent_commented_ideas.shift if @recent_commented_ideas.size > @maximum_ideas
+  li class=(current_user.notifications_read_at < audit.created_at ? "new" : "old")
+    == audit.notification_text(current_user)
+  - @count += 1

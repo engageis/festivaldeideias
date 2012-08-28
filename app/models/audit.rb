@@ -32,6 +32,8 @@ class Audit < ActiveRecord::Base
         (SELECT id FROM ideas WHERE
           parent_id IN (SELECT parent_id FROM ideas WHERE parent_id IS NOT NULL AND user_id = #{user_to_notify.id})
           OR original_parent_id IN (SELECT original_parent_id FROM ideas WHERE original_parent_id IS NOT NULL AND user_id = #{user_to_notify.id})
+          OR parent_id IN (SELECT original_parent_id FROM ideas WHERE original_parent_id IS NOT NULL AND user_id = #{user_to_notify.id})
+          OR original_parent_id IN (SELECT parent_id FROM ideas WHERE parent_id IS NOT NULL AND user_id = #{user_to_notify.id})
         )
     ").order("created_at DESC")
   end
@@ -51,6 +53,14 @@ class Audit < ActiveRecord::Base
         nil
       elsif self.idea.user == user_to_notify
         self.notification_texts[(self.timeline_type == "collaboration_accepted" ? "accepted_collaborator" : "rejected_collaborator").to_sym]
+      else
+        self.notification_texts[:collaborators]
+      end
+    elsif self.timeline_type == "idea_ramified"
+      if self.idea.original_parent and self.idea.original_parent.user == user_to_notify
+        self.notification_texts[:creator]
+      elsif self.idea.user == user_to_notify
+        nil
       else
         self.notification_texts[:collaborators]
       end

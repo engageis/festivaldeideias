@@ -15,21 +15,22 @@ Feature: Colaborate with an idea
   
   @omniauth_test @javascript 
   Scenario: My colaboration was accepted
-    Given there is an idea called "Carona me" that belongs to "Mobilidade Urbana"
+    Given there is an idea called "Carona me" by "Hitchhiker"
     And I'm a logged user  
     And I made a colaboration called "Carona.me updated title" in the idea "Carona me" and it was accepted
     And I am in "the homepage"
     When I click in the notifications bar
-    Then I should see "A sua colaboração para a ideia Carona me foi aceita!"
+    Then I should see "Hitchhiker aceitou a sua colaboração na ideia Carona me"
 
   @omniauth_test @javascript 
   Scenario: My colaboration was rejected :(
-    Given there is an idea called "Carona me" that belongs to "Mobilidade Urbana"
+    Given there is an idea called "Carona me" by "Hitchhiker"
     And I'm a logged user  
     And I made a colaboration called "Carona.me updated title" in the idea "Carona me" and it was rejected
     And I am in "the homepage"
     And I click in the notifications bar
-    When I click "A sua colaboração para a ideia Carona me foi recusada. Clique aqui se deseja criar uma nova ideia a partir desta colaboração"
+    Then I should see "Hitchhiker recusou a sua colaboração na ideia Carona me. Clique aqui se deseja criar uma nova ideia a partir desta colaboração"
+    When I click "Clique aqui"
     Then I should see "Você está prestes a ramificar uma ideia"
     When I click "Ramificar"
     Then I should see "Ideia ramificada com sucesso!" 
