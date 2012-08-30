@@ -38,6 +38,13 @@ class Audit < ActiveRecord::Base
     ").order("created_at DESC")
   end
 
+  def users_to_notify
+    return unless self.idea
+    users = [self.idea.user] + self.idea.colaborations.map(&:user)
+    users += [self.idea.parent.user] + self.idea.parent.colaborations.map(&:user) if self.idea.parent
+    users.uniq
+  end
+
   def notification_text(user_to_notify)
     return unless self.timeline_type and self.idea and self.notification_texts
     if self.timeline_type == "collaboration_sent"
@@ -68,6 +75,28 @@ class Audit < ActiveRecord::Base
       self.notification_texts[:creator]
     else
       self.notification_texts[:collaborators]
+    end
+  end
+  
+  def notification_subject
+    return unless self.idea and self.timeline_type
+    case timeline_type
+    when "idea_created"
+      "Tem ideia nova no FdI"
+    when "edited_by_creator"
+      "Tem novidades na ideia #{self.idea.title}"
+    when "likes_updated"
+      "Tem gente curtindo a ideia #{self.idea.title}"
+    when "comments_updated"
+      "Novos comentários na ideia #{self.idea.title}"
+    when "collaboration_sent"
+      "Colaboração enviada para a ideia #{self.idea.parent.title}"
+    when "collaboration_accepted"
+      "Colaboração aceita na ideia #{self.idea.parent.title}"
+    when "collaboration_rejected"
+      "Colaboração recusada na ideia #{self.idea.parent.title}"
+    when "idea_ramified"
+      "A ideia #{self.idea.parent.title} foi ramificada"
     end
   end
 
@@ -250,7 +279,7 @@ class Audit < ActiveRecord::Base
   end
   
   def likes_updated?
-    check_conditions("update", must_have_changed: [:likes])
+    check_conditions("update", must_have_changed: [:likes], must_not_have_changed_to: {likes: 0})
   end
   
   def comments_updated?

@@ -73,7 +73,6 @@ class Idea < ActiveRecord::Base
     if params.has_key? :parent_id
       Idea.create(params)
       idea = Idea.where(parent_id: params[:parent_id])
-      # IdeaMailer.new_colaboration_notification(idea)
     end
   end
 
@@ -155,7 +154,14 @@ class Idea < ActiveRecord::Base
   end
   
   def after_audit
-    Audit.pending.where(auditable_id: self.id).each { |pending_audit| pending_audit.set_timeline_and_notifications_data! }
+    Audit.pending.where(auditable_id: self.id).each do |pending_audit|
+      pending_audit.set_timeline_and_notifications_data!
+      pending_audit.users_to_notify.each do |user_to_notify|
+        if pending_audit.notification_text(user_to_notify)
+          IdeaMailer.notification_email(pending_audit, user_to_notify).deliver
+        end
+      end
+    end
   end
   
 end

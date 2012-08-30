@@ -1,36 +1,36 @@
 pt-BR:
   audit:
-    create: "<a href='%{user_path}' class='user'>%{user}</a> iniciou uma nova ideia chamada <a href='%{idea_path}' class='idea'>%{idea}</a>"
-    edit: "<a href='%{user_path}' class='user'>%{user}</a> editou a ideia <a href='%{idea_path}' class='idea'>%{idea}</a>"
+    create: "<a href='%{user_path}' class='user'>%{user}</a> iniciou uma nova ideia chamada <a href='%{idea_path}' class='idea'>%{idea}</a>."
+    edit: "<a href='%{user_path}' class='user'>%{user}</a> editou a ideia <a href='%{idea_path}' class='idea'>%{idea}</a>."
     collaboration:
-      sent: "<a href='%{user_path}' class='user'>%{user}</a> enviou uma colaboração para a ideia <a href='%{idea_path}' class='idea'>%{idea}</a>"
-      accepted: "<a href='%{user_path}' class='user'>%{user}</a> aceitou a colaboração de <a href='%{collaborator_path}' class='user'>%{collaborator}</a> na ideia <a href='%{idea_path}' class='idea'>%{idea}</a>"
-      rejected: "<a href='%{user_path}' class='user'>%{user}</a> recusou a colaboração de <a href='%{collaborator_path}' class='user'>%{collaborator}</a> na ideia <a href='%{idea_path}' class='idea'>%{idea}</a>"
-      ramified: "<a href='%{collaborator_path}' class='user'>%{collaborator}</a> ramificou a idea <a href='%{idea_path}' class='idea'>%{idea}</a> de <a href='%{user_path}' class='user'>%{user}</a>"
-    likes: "A ideia <a href='%{idea_path}' class='idea'>%{idea}</a> já foi curtida por %{likes}"
-    comments: "A ideia <a href='%{idea_path}' class='idea'>%{idea}</a> recebeu um comentário e agora possui %{comments}"
+      sent: "<a href='%{user_path}' class='user'>%{user}</a> enviou uma colaboração para a ideia <a href='%{idea_path}' class='idea'>%{idea}</a>."
+      accepted: "<a href='%{user_path}' class='user'>%{user}</a> aceitou a colaboração de <a href='%{collaborator_path}' class='user'>%{collaborator}</a> na ideia <a href='%{idea_path}' class='idea'>%{idea}</a>."
+      rejected: "<a href='%{user_path}' class='user'>%{user}</a> recusou a colaboração de <a href='%{collaborator_path}' class='user'>%{collaborator}</a> na ideia <a href='%{idea_path}' class='idea'>%{idea}</a>."
+      ramified: "<a href='%{collaborator_path}' class='user'>%{collaborator}</a> ramificou a idea <a href='%{idea_path}' class='idea'>%{idea}</a> de <a href='%{user_path}' class='user'>%{user}</a>."
+    likes: "A ideia <a href='%{idea_path}' class='idea'>%{idea}</a> já foi curtida por %{likes}."
+    comments: "A ideia <a href='%{idea_path}' class='idea'>%{idea}</a> recebeu um comentário e agora possui %{comments}."
     notification:
       edit:
-        collaborators: "<a href='%{user_path}' class='user'>%{user}</a> editou a ideia <a href='%{idea_path}' class='idea'>%{idea}</a>, com a qual você colaborou"
+        collaborators: "<a href='%{user_path}' class='user'>%{user}</a> editou a ideia <a href='%{idea_path}' class='idea'>%{idea}</a>, com a qual você colaborou."
       likes:
-        creator: "A sua ideia <a href='%{idea_path}' class='idea'>%{idea}</a> já foi curtida por %{likes}"
-        collaborators: "A ideia <a href='%{idea_path}' class='idea'>%{idea}</a>, com a qual você colaborou, já foi curtida por %{likes}"
+        creator: "A sua ideia <a href='%{idea_path}' class='idea'>%{idea}</a> já foi curtida por %{likes}."
+        collaborators: "A ideia <a href='%{idea_path}' class='idea'>%{idea}</a>, com a qual você colaborou, já foi curtida por %{likes}."
       comments:
-        creator: "A sua ideia <a href='%{idea_path}' class='idea'>%{idea}</a> recebeu um comentário e agora possui %{comments}"
-        collaborators: "A ideia <a href='%{idea_path}' class='idea'>%{idea}</a>, com a qual você colaborou, recebeu um comentário e agora possui %{comments}"
+        creator: "A sua ideia <a href='%{idea_path}' class='idea'>%{idea}</a> recebeu um comentário e agora possui %{comments}."
+        collaborators: "A ideia <a href='%{idea_path}' class='idea'>%{idea}</a>, com a qual você colaborou, recebeu um comentário e agora possui %{comments}."
       collaboration:
         sent:
-          creator: "<a href='%{user_path}' class='user'>%{user}</a> enviou uma colaboração para a sua ideia <a href='%{idea_path}' class='idea'>%{idea}</a>"
-          collaborators: "<a href='%{user_path}' class='user'>%{user}</a> enviou uma colaboração para a ideia <a href='%{idea_path}' class='idea'>%{idea}</a>, com a qual você colaborou"
+          creator: "<a href='%{user_path}' class='user'>%{user}</a> enviou uma colaboração para a sua ideia <a href='%{idea_path}' class='idea'>%{idea}</a>."
+          collaborators: "<a href='%{user_path}' class='user'>%{user}</a> enviou uma colaboração para a ideia <a href='%{idea_path}' class='idea'>%{idea}</a>, com a qual você colaborou."
         accepted:
-          collaborators: "<a href='%{user_path}' class='user'>%{user}</a> aceitou a colaboração de <a href='%{collaborator_path}' class='user'>%{collaborator}</a> na ideia <a href='%{idea_path}' class='idea'>%{idea}</a>, com a qual você colaborou"
-          accepted_collaborator: "<a href='%{user_path}' class='user'>%{user}</a> aceitou a sua colaboração na ideia <a href='%{idea_path}' class='idea'>%{idea}</a>"
+          collaborators: "<a href='%{user_path}' class='user'>%{user}</a> aceitou a colaboração de <a href='%{collaborator_path}' class='user'>%{collaborator}</a> na ideia <a href='%{idea_path}' class='idea'>%{idea}</a>, com a qual você colaborou."
+          accepted_collaborator: "<a href='%{user_path}' class='user'>%{user}</a> aceitou a sua colaboração na ideia <a href='%{idea_path}' class='idea'>%{idea}</a>."
         rejected:
-          collaborators: "<a href='%{user_path}' class='user'>%{user}</a> recusou a colaboração de <a href='%{collaborator_path}' class='user'>%{collaborator}</a> na ideia <a href='%{idea_path}' class='idea'>%{idea}</a>, com a qual você colaborou"
-          rejected_collaborator: "<a href='%{user_path}' class='user'>%{user}</a> recusou a sua colaboração na ideia <a href='%{idea_path}' class='idea'>%{idea}</a>. <a href='#' data-href='%{ramify_path}' class='collab-ramify'>Clique aqui</a> se deseja criar uma nova ideia a partir desta colaboração"
+          collaborators: "<a href='%{user_path}' class='user'>%{user}</a> recusou a colaboração de <a href='%{collaborator_path}' class='user'>%{collaborator}</a> na ideia <a href='%{idea_path}' class='idea'>%{idea}</a>, com a qual você colaborou."
+          rejected_collaborator: "<a href='%{user_path}' class='user'>%{user}</a> recusou a sua colaboração na ideia <a href='%{idea_path}' class='idea'>%{idea}</a>. <a href='#' data-href='%{ramify_path}' class='collab-ramify'>Clique aqui</a> se deseja criar uma nova ideia a partir desta colaboração."
         ramified:
-          creator: "<a href='%{collaborator_path}' class='user'>%{collaborator}</a> ramificou a sua idea <a href='%{idea_path}' class='idea'>%{idea}</a>"
-          collaborators: "<a href='%{collaborator_path}' class='user'>%{collaborator}</a> ramificou a idea <a href='%{idea_path}' class='idea'>%{idea}</a> de <a href='%{user_path}' class='user'>%{user}</a>, com a qual você colaborou"
+          creator: "<a href='%{collaborator_path}' class='user'>%{collaborator}</a> ramificou a sua idea <a href='%{idea_path}' class='idea'>%{idea}</a>."
+          collaborators: "<a href='%{collaborator_path}' class='user'>%{collaborator}</a> ramificou a idea <a href='%{idea_path}' class='idea'>%{idea}</a> de <a href='%{user_path}' class='user'>%{user}</a>, com a qual você colaborou."
   site:
     title: 'Festival de Ideias 2012 - Uma plataforma para unir ideias'
     description: 'O Festival de Ideias é uma rede de colaboração e troca de informações entre empreendedores, investidores e o público em geral.'
@@ -48,11 +48,6 @@ pt-BR:
   non_facebook_user:
     create:
       success: "E-mail cadastrado com sucesso!"
-  mailer:
-    new_colaboration_notification:
-      subject: "Sua ideia recebeu uma colaboração!"
-      body:
-        header: "Olá %{name}!"
   user: 
     score_message: "%{ideas} ideias próprias, %{colab} colaborações em ideias."
   notifications:

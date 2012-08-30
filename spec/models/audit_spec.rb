@@ -209,5 +209,78 @@ describe Audit do
     end
   end
   
+  describe ".users_to_notify" do
+    before do
+      @original_parent = Idea.make!(parent: nil, original_parent: nil)
+      @ramified = Idea.make!(parent: nil, original_parent: @original_parent)
+      @ramified_1 = Idea.make!(parent: nil, original_parent: @original_parent)
+      @collaboration_1 = Idea.make!(parent: @ramified, accepted: true)
+      @collaboration_2 = Idea.make!(parent: @ramified, accepted: true)
+      @collaboration_3 = Idea.make!(user: @collaboration_1.user, parent: @ramified, accepted: true)
+    end
+    describe "activity in an original parent" do
+      subject { Audit.make!(idea: @original_parent) }
+      its(:users_to_notify) { should == [@original_parent.user] }
+    end
+    describe "activity in a ramified idea with collaborators" do
+      subject { Audit.make!(idea: @ramified) }
+      its(:users_to_notify) { should == [@ramified.user, @collaboration_1.user, @collaboration_2.user] }
+    end
+    describe "activity in a ramified idea with no collaborators" do
+      subject { Audit.make!(idea: @ramified_1) }
+      its(:users_to_notify) { should == [@ramified_1.user] }
+    end
+    describe "activity in a collaboration" do
+      subject { Audit.make!(idea: @collaboration_1) }
+      its(:users_to_notify) { should == [@collaboration_1.user, @ramified.user, @collaboration_2.user] }
+    end
+  end
   
+  describe ".notification_subject" do
+    describe "idea created" do
+      subject { @audit = Audit.make!(timeline_type: "idea_created") }
+      its(:notification_subject) { should == "Tem ideia nova no FdI" }
+    end
+    describe "edited by creator" do
+      subject { @audit = Audit.make!(timeline_type: "edited_by_creator") }
+      its(:notification_subject) { should == "Tem novidades na ideia #{@audit.idea.title}" }
+    end
+    describe "likes updated" do
+      subject { @audit = Audit.make!(timeline_type: "likes_updated") }
+      its(:notification_subject) { should == "Tem gente curtindo a ideia #{@audit.idea.title}" }
+    end
+    describe "comments updated" do
+      subject { @audit = Audit.make!(timeline_type: "comments_updated") }
+      its(:notification_subject) { should == "Novos comentários na ideia #{@audit.idea.title}" }
+    end
+    describe "collaboration sent" do
+      subject do
+        @idea = Idea.make!(parent: Idea.make!)
+        @audit = Audit.make!(idea: @idea, timeline_type: "collaboration_sent")
+      end
+      its(:notification_subject) { should == "Colaboração enviada para a ideia #{@audit.idea.parent.title}" }
+    end
+    describe "collaboration accepted" do
+      subject do
+        @idea = Idea.make!(parent: Idea.make!)
+        @audit = Audit.make!(idea: @idea, timeline_type: "collaboration_accepted")
+      end
+      its(:notification_subject) { should == "Colaboração aceita na ideia #{@audit.idea.parent.title}" }
+    end
+    describe "collaboration rejected" do
+      subject do
+        @idea = Idea.make!(parent: Idea.make!)
+        @audit = Audit.make!(idea: @idea, timeline_type: "collaboration_rejected")
+      end
+      its(:notification_subject) { should == "Colaboração recusada na ideia #{@audit.idea.parent.title}" }
+    end
+    describe "idea ramified" do
+      subject do
+        @idea = Idea.make!(parent: Idea.make!)
+        @audit = Audit.make!(idea: @idea, timeline_type: "idea_ramified")
+      end
+      its(:notification_subject) { should == "A ideia #{@audit.idea.parent.title} foi ramificada" }
+    end
+  end
+
 end
