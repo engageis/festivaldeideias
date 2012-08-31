@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   protected
   def current_user
     @current_user ||= User.find_by_id(cookies[:user], :include => :ideas)
+    #User.find(828)
   end
 
   def is_signed_in?

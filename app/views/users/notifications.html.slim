@@ -1,8 +1,6 @@
-#notifications.user_actions
+#notifications.user_actions[data-url=(update_notification_user_url(current_user) if current_user)]
   h1
     | Notificações
   ol
     li
-      ul
-        - current_user.notifications.each do |n|
-          li= n.link.html_safe 
+      ul= render partial: "shared/notifications"

@@ -321,23 +321,24 @@ header.main
         ul
           li
             padding: 0
+            border-top: 1px solid #D0D0D0
+            border-bottom: 1px solid #D0D0D0
+            padding: 10px
+            font-size: 0.9em
+            margin-top: -1px
+            float: left
+            display: block
+            line-height: 1.4em
+            color: #999
+            width: 270px
             a
-              border-top: 1px solid #D0D0D0
-              border-bottom: 1px solid #D0D0D0
-              padding: 10px
-              font-size: 0.9em
-              margin-top: -1px
-              float: left
-              display: block
-              line-height: 1.4em
-              color: #999
-              width: 270px
-              &.new
-                color: #000
-              &:hover
-                background:
-                  color: #EEE
-                color: $darkorange
+              font-weight: bold
+            &.new
+              color: #000
+            &:hover
+              background:
+                color: #EEE
+              color: $darkorange
 
 
     li.logged_in
@@ -680,23 +681,13 @@ footer
       line-height: 1.5em
       &:last-child
         border-bottom: 0
-      a
-        display: block
-        color: #333
-        font-weight: normal
-        padding: 15px 115px 15px 10px
-        position: relative
+      display: block
+      color: #333
+      font-weight: normal
+      padding: 15px 10px
+      position: relative
+      &:hover
+        color: $darkorange
+        background: #EEE
         &:after
-          content: "clica para ver"
-          background: #999
-          color: #FFF
-          padding: 0 10px
-          position: absolute
-          top: 30%
-          right: 5px
-          +border-radius(15px)
-        &:hover
-          color: $darkorange
-          background: #EEE
-          &:after
-            background: $orange
+          background: $orange
