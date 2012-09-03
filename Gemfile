@@ -60,7 +60,7 @@ group :development, :test do
 end
 
 group :test do
-  gem "selenium-webdriver", "~> 2.13.0"
+  #gem "selenium-webdriver", "2.21.2"
   gem 'cucumber-rails', require: false
   gem 'capybara'
   gem 'database_cleaner'
