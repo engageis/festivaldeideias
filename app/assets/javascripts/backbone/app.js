@@ -11,7 +11,8 @@ var App = window.App = {
     Users: {},
     Pages: {},
     Models: {
-        Idea: {}
+        Idea: {},
+        User: {}
     },
 
     Common: {

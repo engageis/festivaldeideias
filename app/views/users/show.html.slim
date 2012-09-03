@@ -7,6 +7,9 @@ header
     h1= @user.name
     - if can? :manage, @user
       h3= @user.email
+      .email_notifications
+        input#email_notifications type="checkbox" data-json=@user.to_json data-url=user_path(@user) checked=@user.email_notifications
+        label for="email_notifications" Desejo receber um email para cada notificação do Festival de Ideias
     = link_to "Ir para o perfil no Facebook", @user.profile, :target => '_blank'
 article
   h2
