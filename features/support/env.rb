@@ -6,15 +6,6 @@
 
 require 'cucumber/rails'
 require 'capybara/cucumber'
-
-# If you want to use a different mock framework than
-# RSpec-Mocks - just set configure that accordingly
-
-require 'rspec/core'
-RSpec.configure do |c|
- c.mock_framework = :rspec
-end
-
 require 'cucumber/rspec/doubles'
 
 require "#{Rails.root}/spec/support/blueprints.rb"
