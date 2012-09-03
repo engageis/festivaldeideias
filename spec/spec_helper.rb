@@ -46,6 +46,7 @@ RSpec.configure do |config|
   config.before(:each) do
     DatabaseCleaner.start
     TOKBOX.stub(:create_session).and_return(FakeTokboxSession.new)
+    Idea.any_instance.stub(:get_facebook_data).and_return([{"total_count" => 10, "commentsbox_count" => 2}])
   end
 
   config.after(:each) do

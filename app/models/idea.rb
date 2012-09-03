@@ -130,11 +130,16 @@ class Idea < ActiveRecord::Base
 
   # Hook to update likes count when someone visits the #show page
   # of an idea
+  
+  def get_facebook_data(url)
+    JSON.parse(open(url).read)
+  end
+  
   def update_facebook_likes
     facebook_query_url = 'https://api.facebook.com/method/fql.query?format=json&query=' 
     fql = "SELECT total_count, commentsbox_count FROM link_stat WHERE url='%s'"
     path = self.facebook_url
-    facebook_data = JSON.parse(open(facebook_query_url + URI.encode(fql % path)).read)
+    facebook_data = self.get_facebook_data(facebook_query_url + URI.encode(fql % path))
     total_count = facebook_data.first["total_count"]
     comment_count = facebook_data.first["commentsbox_count"]
     self.update_attribute(:likes, total_count.to_i) if total_count

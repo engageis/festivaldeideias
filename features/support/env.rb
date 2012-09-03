@@ -7,6 +7,16 @@
 require 'cucumber/rails'
 require 'capybara/cucumber'
 
+# If you want to use a different mock framework than
+# RSpec-Mocks - just set configure that accordingly
+
+require 'rspec/core'
+RSpec.configure do |c|
+ c.mock_framework = :rspec
+end
+
+require 'cucumber/rspec/doubles'
+
 require "#{Rails.root}/spec/support/blueprints.rb"
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
 # order to ease the transition to Capybara we set the default here. If you'd
