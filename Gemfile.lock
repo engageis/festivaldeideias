@@ -357,6 +357,7 @@ DEPENDENCIES
   rb-fsevent
   rspec-rails
   sass-rails
+  selenium-webdriver (= 2.21.2)
   shoulda-matchers
   simple_form
   slim

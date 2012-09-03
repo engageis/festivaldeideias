@@ -9,6 +9,12 @@ require 'database_cleaner'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+class FakeTokboxSession
+  def session_id
+    "foo bar"
+  end
+end
+
 RSpec.configure do |config|
   # == Mock Framework
   #
@@ -39,6 +45,7 @@ RSpec.configure do |config|
 
   config.before(:each) do
     DatabaseCleaner.start
+    TOKBOX.stub(:create_session).and_return(FakeTokboxSession.new)
   end
 
   config.after(:each) do
