@@ -49,7 +49,8 @@ gem 'rack-pjax'
 
 # Heroku
 gem 'thin'
-gem 'heroku'
+# Removing heroku gem in order to use the Toolbelt
+# gem 'heroku'
 
 group :development do
   gem 'taps'
