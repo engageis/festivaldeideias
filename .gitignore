@@ -28,3 +28,4 @@ public/uploads
 .rvmrc
 logfile
 config/initializers/02-tokbox.rb
+latest.dump

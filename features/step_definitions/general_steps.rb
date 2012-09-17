@@ -68,6 +68,10 @@ When /^I visit my profile$/ do
   visit user_path(User.first)
 end
 
+When /^I visit the timeline page$/ do
+  visit timeline_index_path
+end
+
 Then /^I should see my name$/ do
   # TODO: find a better way to get the current_user. Didn't get how to do this
   page.should have_content User.first.name

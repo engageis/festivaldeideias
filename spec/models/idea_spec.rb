@@ -8,31 +8,16 @@ describe Idea do
     it { should validate_presence_of :description }
     it { should validate_presence_of :category_id }
     it { should validate_presence_of :user_id }
-
-
-    describe "#user" do
-      it { should belong_to :user }
-    end
-
-    describe "#parent" do
-      it { should belong_to :parent }
-    end
-
-    describe "#original_parent" do
-      it { should belong_to :original_parent }
-    end
-
-    describe "#category" do
-      it { should belong_to :category }
-    end
-
-    describe "#colaborations" do
-      it { should have_many :colaborations }
-    end
+    it { should belong_to :user }
+    it { should belong_to :parent }
+    it { should belong_to :original_parent }
+    it { should belong_to :category }
+    it { should have_many(:colaborations).dependent(:destroy) }
+    it { should have_many(:ramifications).dependent(:restrict) }
 
     describe "#create_colaboration" do
       it "Should create a child idea in order to colaborate" do
-        @idea = Idea.make! 
+        @idea = Idea.make!
         @user = User.make!
         idea = {
           :title => "Test",
@@ -41,7 +26,6 @@ describe Idea do
           :category_id => @idea.category.id,
           :parent_id => @idea.id,
           :user_id => @user.id
-
         }
         Idea.create_colaboration(idea).should_not == nil
       end

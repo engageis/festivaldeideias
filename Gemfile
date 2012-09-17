@@ -49,7 +49,8 @@ gem 'rack-pjax'
 
 # Heroku
 gem 'thin'
-gem 'heroku'
+# Removing heroku gem in order to use the Toolbelt
+# gem 'heroku'
 
 group :development do
   gem 'taps'
@@ -60,7 +61,7 @@ group :development, :test do
 end
 
 group :test do
-  gem "selenium-webdriver", "2.21.2", require: false
+  gem "selenium-webdriver", "~>2.25", require: false
   gem 'cucumber-rails', require: false
   gem 'capybara'
   gem 'database_cleaner'

@@ -17,8 +17,9 @@ class Idea < ActiveRecord::Base
   belongs_to :parent, :class_name => "Idea", :foreign_key => :parent_id
   belongs_to :original_parent, :class_name => "Idea", :foreign_key => :original_parent_id
 
-  has_many :colaborations, :class_name => "Idea", :foreign_key => :parent_id
+  has_many :colaborations, class_name: "Idea", foreign_key: :parent_id, dependent: :destroy
   has_many :messages
+  has_many :ramifications, class_name: "Idea", foreign_key: :original_parent_id, dependent: :restrict
 
   validates_presence_of :title, :description, :category_id, :user_id, :minimum_investment
 
