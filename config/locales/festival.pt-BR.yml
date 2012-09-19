@@ -153,6 +153,7 @@ pt-BR:
       title: "Navegue nas ideias"
       by_stats: "Por estatísticas"
       by_cat: "Por tema"
+      by_keyword: "Por palavra-chave"
 
       popular:
         title: 'Mais populares'

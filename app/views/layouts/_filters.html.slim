@@ -3,7 +3,7 @@
     = t "idea.filters.title"
 
   .search
-    h4= "Por palavra-chave"
+    h4= t "idea.filters.by_keyword"
     = form_tag scope_search_path, :method => :get do
       = text_field_tag :keyword 
 
