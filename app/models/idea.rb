@@ -52,7 +52,7 @@ class Idea < ActiveRecord::Base
   # Callbacks
 
   after_create :set_facebook_url
-  after_create :set_tokbox_settings
+  #after_create :set_tokbox_settings
 
   attr_accessible :user_id, :parent_id, :title, :headline, :description, :featured, :recommend, :likes, :position, :category_id, :accepted, :minimum_investment, :facebook_url, :tokbox_session, :original_parent_id, :comment_count
 

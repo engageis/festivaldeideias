@@ -157,12 +157,12 @@ describe Idea do
     end
   end
 
-  describe "#set_tokbox_settings" do
-    it "Should save a session from tokbox in order to use its video chat features" do
-      @idea = Idea.make!
-      @idea.tokbox_session.should_not == nil
-    end
-  end
+  #describe "#set_tokbox_settings" do
+    #it "Should save a session from tokbox in order to use its video chat features" do
+      #@idea = Idea.make!
+      #@idea.tokbox_session.should_not == nil
+    #end
+  #end
 
 
   describe "#match_and_find" do
