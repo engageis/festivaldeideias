@@ -21,9 +21,9 @@ module ApplicationHelper
   end
 
 
-  def link_to_partner(name, url, image)
+  def link_to_partner(name, url, image, width=nil)
     link_to(url, :target => '_blank') do
-      image_tag("partners/#{image}", :alt => name, :title => name)
+      image_tag("partners/#{image}", :alt => name, :title => name, :width => width)
     end
   end
 
