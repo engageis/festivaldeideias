@@ -195,4 +195,18 @@ describe Idea do
     end
 
   end
+  
+  describe "#ip_for_geocoding" do
+    subject do
+      @idea = Idea.make!
+      @idea.update_attribute :likes, 10
+      @audits = Audit.where(auditable_id: @idea.id).order(:created_at)
+      @audits.shift.update_attribute :remote_address, nil
+      @audits.shift.update_attribute :remote_address, "1.1.1.1"
+      @audits.shift.update_attribute :remote_address, "2.2.2.2"
+      @idea
+    end
+    its(:ip_for_geocoding) { should == "1.1.1.1" }
+  end
+  
 end

@@ -5,6 +5,17 @@ class Idea < ActiveRecord::Base
   # By default, whenever an idea is created, updated or destroyed, a new audit is created.
   audited
 
+  geocoded_by :ip_for_geocoding do |idea, results|
+    if geo = results.first
+      idea.latitude = geo.latitude
+      idea.longitude = geo.longitude
+      idea.city = geo.city
+      idea.state = geo.state
+      idea.country = geo.country
+    end
+  end
+  after_validation :geocode
+
   require 'json'
   require 'open-uri'
 
@@ -170,6 +181,11 @@ class Idea < ActiveRecord::Base
         end
       end
     end
+  end
+  
+  def ip_for_geocoding
+    audit = Audit.where(auditable_id: self.id).where("remote_address IS NOT NULL").order(:created_at).first
+    audit.remote_address if audit
   end
   
 end

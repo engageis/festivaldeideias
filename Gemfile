@@ -12,6 +12,9 @@ gem "audited-activerecord"
 # Differ tool
 gem 'differ'
 
+# Geolocalization
+gem "geocoder"
+
 # Controller improvements 
 gem 'inherited_resources'
 gem 'has_scope'
