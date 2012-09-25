@@ -133,6 +133,10 @@ class IdeasController < ApplicationController
   def cocreate
   end
 
+  def map
+    
+  end
+
   protected
   def load_resources
     #querying only ideas, no collab.

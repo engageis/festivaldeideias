@@ -1,0 +1,8 @@
+#map_canvas style="width:100%; height:500px"
+
+- content_for :bottomscripts do
+	script
+		| $(document).ready(function(){ $('#map_canvas').gmap().bind('init', function(ev, map) {
+		- @ideas.each do |idea|
+			|	$('#map_canvas').gmap('addMarker', {'position': '#{idea.latitude},#{idea.longitude}', 'bounds': true}).click(function() {$('#map_canvas').gmap('openInfoWindow', {'content': '#{idea.title}'}, this);});
+		| });})
