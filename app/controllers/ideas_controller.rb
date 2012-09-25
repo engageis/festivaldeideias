@@ -38,6 +38,10 @@ class IdeasController < ApplicationController
 
   def index
     load_headers(:name => 'recent', :url => page_path('co-criacao'))
+    respond_to do |format|
+      format.html
+      format.json {render json: @ideas}
+    end
   end
 
   def update
@@ -134,7 +138,7 @@ class IdeasController < ApplicationController
   end
 
   def map
-    
+
   end
 
   protected

@@ -51,7 +51,6 @@ FestivalDeIdeias::Application.routes.draw do
 
   root :to => 'ideas#index',              :defaults => { :recent => true }
 
-
   resources :pages, :only => [] do
     collection { post :sort }
   end
