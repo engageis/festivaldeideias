@@ -104,7 +104,9 @@ class Idea < ActiveRecord::Base
       :colaborations => colaborations.count,
       :minimum_investment => minimum_investment,
       :formatted_minimum_investment => formatted_minimum_investment,
-      :url => category_idea_path(category, self)
+      :url => category_idea_path(category, self),
+      :latitude => latitude,
+      :longitude => longitude
     }
   end
 

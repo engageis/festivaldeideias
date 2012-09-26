@@ -40,7 +40,7 @@ class IdeasController < ApplicationController
     load_headers(:name => 'recent', :url => page_path('co-criacao'))
     respond_to do |format|
       format.html
-      format.json {render json: @ideas}
+      format.json { render json: @ideas}
     end
   end
 
