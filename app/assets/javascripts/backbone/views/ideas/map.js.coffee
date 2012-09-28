@@ -13,7 +13,7 @@ App.Ideas.Map = App.BaseView.extend
 			longitude = idea.get('longitude')
 			if longitude and latitude
 				that.map.gmap 'addMarker', 
-					{'position': latitude+','+longitude, 'bounds': true}
+					{'position': "#{latitude},#{longitude}", 'bounds': true}
 				.click ->
 					that.map.gmap('openInfoWindow', {'content': title}, this)
 
