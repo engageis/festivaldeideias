@@ -1,4 +1,4 @@
-App.Models.IdeaMap = Backbone.Model.extend({
+App.Models.IdeaPin = Backbone.Model.extend({
   defaults: {
     title: "",
     headline: "",
@@ -6,6 +6,6 @@ App.Models.IdeaMap = Backbone.Model.extend({
 });
 
 App.Models.IdeasMap = Backbone.Collection.extend({
-  model: App.Models.IdeaMap,
+  model: App.Models.IdeaPin,
   url: '/ideias.json'
 })

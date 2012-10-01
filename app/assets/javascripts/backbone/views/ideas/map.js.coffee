@@ -1,26 +1,44 @@
-App.Ideas.Map = App.BaseView.extend
-	
+App.Ideas.Map = ->
+	pins = new App.Models.IdeasMap
+	gMaps = new App.Ideas.GoogleMaps({collection: pins})
+	gMaps.render()
+
+
+App.Ideas.GoogleMaps = Backbone.View.extend
+	initialize: ->
+		_.bindAll this
+		@collection.on('reset', @addAll)
+		@map = $('#map_canvas')
+
+	addAll: ->
+		@collection.models.forEach (@addOne)
+
+	addOne: (idea) ->
+		pin = new App.Ideas.Pin({model: idea})
+		pin.render()
+
+	render: ->
+		that = this
+		@map.gmap().bind('init', (ev, map) -> that.collection.fetch())
+
+
+App.Ideas.Pin = Backbone.View.extend	
 	initialize: ->
 		_.bindAll this
 		@map = $('#map_canvas')
-		@initializeMap()
-
-	addMarkers: (ideas) ->
+		@model.on('change', @render)
+		@model.on('destroy', @remove)
+		
+	render: ->
 		that = this
-		ideas.map (idea) ->
-			title = idea.get('title')
-			latitude = idea.get('latitude')
-			longitude = idea.get('longitude')
-			if longitude and latitude
-				that.map.gmap 'addMarker', 
-					{'position': "#{latitude},#{longitude}", 'bounds': true}
-				.click ->
-					that.map.gmap('openInfoWindow', {'content': title}, this)
+		title = @model.get('title')
+		latitude = @model.get('latitude')
+		longitude = @model.get('longitude')
+		if longitude and latitude
+			that.map.gmap 'addMarker', 
+				{'position': "#{latitude},#{longitude}", 'bounds': true}
+			.click ->
+				that.map.gmap('openInfoWindow', {'content': title}, this)
 
-	initializeMap: ->
-		that = this
-		@map.gmap().bind('init', (ev, map) ->
-			ideas = new App.Models.IdeasMap()
-			ideas.fetch().complete ->
-				that.addMarkers(ideas)
-		)
+	remove: ->
+		console.log "Pin removed!"
