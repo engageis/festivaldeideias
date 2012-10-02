@@ -43,9 +43,9 @@ App.Ideas.Pin = Backbone.View.extend
 		$.ajax
 		  url: "/pin_show/#{@model.get('id')}"
 		  success: (data) ->
-		    $('#replaceHTML').html(data)
+		    $('#pinContent').html(data)
 
-		'<div id="replaceHTML" style="height:200px;width:200px">Loading...</div>'
+		'<div id="pinContent" class="infoWindow">Loading...</div>'
 
 	remove: ->
 		# console.log "Pin removed!"
