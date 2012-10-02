@@ -142,7 +142,10 @@ class IdeasController < ApplicationController
   end
 
   def map
-
+    @audits = Audit.recent.limit(10)
+    @maximum_ideas = 10
+    @recent_liked_ideas = []
+    @recent_commented_ideas = []
   end
 
   protected
