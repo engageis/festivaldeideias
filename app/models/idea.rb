@@ -93,20 +93,21 @@ class Idea < ActiveRecord::Base
   # Modify the json response
   def as_json(options={})
     {
-      :id => id,
-      :title => title,
-      :headline => headline,
-      :category => category,
-      :user => user.id,
-      :description => description,
-      :description_html => description_html,
-      :likes => likes,
-      :colaborations => colaborations.count,
-      :minimum_investment => minimum_investment,
-      :formatted_minimum_investment => formatted_minimum_investment,
-      :url => category_idea_path(category, self),
-      :latitude => latitude,
-      :longitude => longitude
+      id: id,
+      title: title,
+      headline: headline,
+      category: category,
+      user: user.id,
+      description: description,
+      description_html: description_html,
+      likes: likes,
+      colaborations: colaborations.count,
+      minimum_investment: minimum_investment,
+      formatted_minimum_investment: formatted_minimum_investment,
+      url: category_idea_path(category, self),
+      latitude: latitude,
+      longitude: longitude,
+      country: country
     }
   end
 

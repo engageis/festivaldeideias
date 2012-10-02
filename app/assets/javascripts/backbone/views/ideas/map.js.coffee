@@ -19,7 +19,8 @@ App.Ideas.GoogleMaps = Backbone.View.extend
 
 	render: ->
 		that = this
-		@map.gmap().bind('init', (ev, map) -> that.collection.fetch())
+		brazilLatLong = new google.maps.LatLng(-10.0, -55.0)
+		@map.gmap({'center': brazilLatLong}).bind('init', (ev, map) -> that.collection.fetch())
 
 
 App.Ideas.Pin = Backbone.View.extend	
@@ -31,9 +32,11 @@ App.Ideas.Pin = Backbone.View.extend
 		
 	render: ->
 		that = this
-		latitude = @model.get('latitude')
-		longitude = @model.get('longitude')
-		if longitude and latitude
+		country = @model.get 'country'
+		latitude = @spreadPin(@model.get 'latitude')
+		longitude = @spreadPin(@model.get 'longitude')
+		markerImg = @model.get("category").badge
+		if longitude and latitude and country == "Brazil"
 			that.map.gmap 'addMarker', 
 				{'position': "#{latitude},#{longitude}", 'bounds': true}
 			.click ->
@@ -45,7 +48,10 @@ App.Ideas.Pin = Backbone.View.extend
 		  success: (data) ->
 		    $('#pinContent').html(data)
 
-		'<div id="pinContent" class="infoWindow">Loading...</div>'
+		"<div id=\"pinContent\" class=\"infoWindow\">Loading...</div>"
+
+	spreadPin: (n) ->
+		if n? then n + (Math.random()*-.05) else null
 
 	remove: ->
 		# console.log "Pin removed!"

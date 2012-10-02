@@ -48,7 +48,8 @@ describe Idea do
           formatted_minimum_investment: @idea.formatted_minimum_investment,
           url: @idea.as_json[:url],
           latitude: @idea.as_json[:latitude],
-          longitude: @idea.as_json[:longitude]
+          longitude: @idea.as_json[:longitude],
+          country: @idea.as_json[:country]
         }
         @idea.as_json.should == idea_json
       end
