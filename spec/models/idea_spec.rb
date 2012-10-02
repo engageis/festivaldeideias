@@ -35,18 +35,20 @@ describe Idea do
       it "Should return a given json output" do
         @idea = Idea.make!
         idea_json = {
-          :id => @idea.id,
-          :title => @idea.title,
-          :headline => @idea.headline,
-          :category => @idea.category,
-          :user => @idea.user.id,
-          :description => @idea.description,
-          :description_html => @idea.description_html,
-          :likes => @idea.likes,
-          :colaborations => @idea.colaborations.count,
-          :minimum_investment => @idea.minimum_investment,
-          :formatted_minimum_investment => @idea.formatted_minimum_investment,
-          :url => @idea.as_json[:url]
+          id: @idea.id,
+          title: @idea.title,
+          headline: @idea.headline,
+          category: @idea.category,
+          user: @idea.user.id,
+          description: @idea.description,
+          description_html: @idea.description_html,
+          likes: @idea.likes,
+          colaborations: @idea.colaborations.count,
+          minimum_investment: @idea.minimum_investment,
+          formatted_minimum_investment: @idea.formatted_minimum_investment,
+          url: @idea.as_json[:url],
+          latitude: @idea.as_json[:latitude],
+          longitude: @idea.as_json[:longitude]
         }
         @idea.as_json.should == idea_json
       end
