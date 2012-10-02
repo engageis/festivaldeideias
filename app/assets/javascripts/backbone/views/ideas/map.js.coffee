@@ -45,7 +45,7 @@ App.Ideas.Pin = Backbone.View.extend
 		  success: (data) ->
 		    $('#replaceHTML').html(data)
 
-		'<div id="replaceHTML">Loading...</div>'
+		'<div id="replaceHTML" style="height:200px;width:200px">Loading...</div>'
 
 	remove: ->
 		# console.log "Pin removed!"
