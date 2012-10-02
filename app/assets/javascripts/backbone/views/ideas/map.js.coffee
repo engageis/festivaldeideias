@@ -36,7 +36,6 @@ App.Ideas.Pin = Backbone.View.extend
 		latitude = @spreadPin(@model.get 'latitude')
 		longitude = @spreadPin(@model.get 'longitude')
 		markerImg = @model.get("category").badge.replace(/\/badges\//g, "\/pins\/")
-		console.log markerImg
 
 		if longitude and latitude and country == "Brazil"
 			that.map.gmap 'addMarker', 
@@ -48,11 +47,7 @@ App.Ideas.Pin = Backbone.View.extend
 			.click ->	that.openInfo(this)
 
 	openInfo: (el) ->
-		 @map.gmap(
-		 	'openInfoWindow',
-		 	{'content':	@infowindowContent()},
-		 	el
-		 	)
+		 @map.gmap('openInfoWindow', {'content':	@infowindowContent()}, el)
 
 	infowindowContent: ->
 		$.ajax
