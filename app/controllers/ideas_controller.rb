@@ -2,7 +2,7 @@
 
 class IdeasController < ApplicationController
   load_and_authorize_resource
-  skip_authorize_resource :only => [:featured, :popular, :modified, :recent, :category]
+  skip_authorize_resource :only => [:featured, :popular, :modified, :recent, :category, :pin_show]
 
   inherit_resources
 
@@ -34,6 +34,10 @@ class IdeasController < ApplicationController
         role: OpenTok::RoleConstants::PUBLISHER, 
         connection_data: "username=#{current_user.name}"
     end
+  end
+
+  def pin_show
+    render layout: false
   end
 
   def index

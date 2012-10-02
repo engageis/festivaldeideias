@@ -31,14 +31,21 @@ App.Ideas.Pin = Backbone.View.extend
 		
 	render: ->
 		that = this
-		title = @model.get('title')
 		latitude = @model.get('latitude')
 		longitude = @model.get('longitude')
 		if longitude and latitude
 			that.map.gmap 'addMarker', 
 				{'position': "#{latitude},#{longitude}", 'bounds': true}
 			.click ->
-				that.map.gmap('openInfoWindow', {'content': title}, this)
+				that.map.gmap('openInfoWindow', {'content': that.infowindowContent()}, this)
+
+	infowindowContent: ->
+		$.ajax
+		  url: "/pin_show/#{@model.get('id')}"
+		  success: (data) ->
+		    $('#replaceHTML').html(data)
+
+		'<div id="replaceHTML">Loading...</div>'
 
 	remove: ->
-		console.log "Pin removed!"
+		# console.log "Pin removed!"

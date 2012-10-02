@@ -13,28 +13,5 @@
           li.empty Nenhuma ideia encontrada
         - @ideas.each_with_index do |idea, pos|
           li.bucket class=cycle('odd', 'middle', 'even')
-            header
-              h3
-                = link_to idea.title, category_idea_path(idea.category, idea), :class => "idea_title"
-              // Idea user
-              span.idea_user
-                = "Moderada por #{idea.user.name}"
-              .clear
-            .description
-              p.idea_headline
-                // Is Headline present? Ok, show it. If not, show me the description.
-                = truncate(idea.description, :length => 180, :separator => "...")
-
-            .category
-              // Category badge
-              = image_tag idea.category.badge, :size => "30x30", :alt => idea.category.name, :title => idea.category.name
-              span
-                = idea.category.name
-
-            // Collaboration & Popularity
-            ul.stats
-              li.likes
-                = idea.likes
-              li.collabs
-                = idea.accepted_colaborations.size
+            = render idea
 

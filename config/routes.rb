@@ -1,5 +1,7 @@
 FestivalDeIdeias::Application.routes.draw do
 
+  get '/pin_show/:id', to: "ideas#pin_show"
+
   # First role routes
   ActiveAdmin.routes(self)
   devise_for :admin_users, ActiveAdmin::Devise.config
