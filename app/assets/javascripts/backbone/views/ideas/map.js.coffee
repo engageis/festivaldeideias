@@ -12,6 +12,7 @@ App.Ideas.GoogleMaps = Backbone.View.extend
 
 	addAll: ->
 		@collection.models.forEach (@addOne)
+		@map.gmap('set', 'MarkerClusterer', new MarkerClusterer(@mapEl, @map.gmap('get', 'markers')))
 
 	addOne: (idea) ->
 		pin = new App.Ideas.Pin({model: idea})
@@ -20,7 +21,8 @@ App.Ideas.GoogleMaps = Backbone.View.extend
 	render: ->
 		that = this
 		brazilLatLong = new google.maps.LatLng(-10.0, -55.0)
-		@map.gmap({'center': brazilLatLong}).bind('init', (ev, map) -> that.collection.fetch())
+		@map.gmap({'center': brazilLatLong, 'zoom': 4}).bind('init', (ev, map) -> that.collection.fetch())
+		@mapEl = @map.gmap('get', 'map')
 
 
 App.Ideas.Pin = Backbone.View.extend	

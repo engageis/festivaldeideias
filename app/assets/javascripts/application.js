@@ -3,6 +3,7 @@
 //= require jquery_ujs
 //= require libraries/jquery.maskMoney
 //= require libraries/jquery.pjax
+//= require libraries/markerclusterer
 //= require libraries/jquery.ui.map
 //= require libraries/facebox
 //= require libraries/store
