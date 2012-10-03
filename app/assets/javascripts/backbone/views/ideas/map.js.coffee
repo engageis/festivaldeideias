@@ -11,7 +11,7 @@ App.Ideas.GoogleMaps = Backbone.View.extend
 		@map = $('#map_canvas')
 
 	addAll: ->
-		@collection.models.forEach (@addOne)
+		@addOne idea for idea in @collection.models
 		@map.gmap('set', 'MarkerClusterer', new MarkerClusterer(@mapEl, @map.gmap('get', 'markers')))
 
 	addOne: (idea) ->
@@ -21,7 +21,7 @@ App.Ideas.GoogleMaps = Backbone.View.extend
 	render: ->
 		that = this
 		brazilLatLong = new google.maps.LatLng(-10.0, -55.0)
-		@map.gmap({'center': brazilLatLong, 'zoom': 4}).bind('init', (ev, map) -> that.collection.fetch())
+		@map.gmap(center: brazilLatLong, zoom: 4).bind('init', (ev, map) -> that.collection.fetch())
 		@mapEl = @map.gmap('get', 'map')
 
 
@@ -39,17 +39,15 @@ App.Ideas.Pin = Backbone.View.extend
 		longitude = @spreadPin(@model.get 'longitude')
 		markerImg = @model.get("category").badge.replace(/\/badges\//g, "\/pins\/")
 
-		if longitude and latitude and country == "Brazil"
-			that.map.gmap 'addMarker', 
-				{
-					'position': "#{latitude},#{longitude}"
-					'bounds': 	true
-					'icon':			markerImg
-				}
+		if longitude and latitude and country is "Brazil"
+			that.map.gmap 'addMarker'
+					position: "#{latitude},#{longitude}"
+					bounds: 	true
+					icon:			markerImg
 			.click ->	that.openInfo(this)
 
 	openInfo: (el) ->
-		 @map.gmap('openInfoWindow', {'content':	@infowindowContent()}, el)
+		 @map.gmap('openInfoWindow', content:	@infowindowContent(), el)
 
 	infowindowContent: ->
 		$.ajax
