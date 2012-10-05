@@ -12,7 +12,34 @@ App.Ideas.GoogleMaps = Backbone.View.extend
 
 	addAll: ->
 		@addOne idea for idea in @collection.models
-		@map.gmap('set', 'MarkerClusterer', new MarkerClusterer(@mapEl, @map.gmap('get', 'markers')))
+		@map.gmap('set', 'MarkerClusterer',
+			new MarkerClusterer(@mapEl, @map.gmap('get', 'markers'), 
+				gridSize: 60
+				maxZoom: 12
+				styles:
+					[
+						url: 'assets/pins/small_pin_group.png'
+						width: 34
+						height: 49
+						anchor: [9,0]
+						textColor: '#333'
+						textsize: 24
+					,
+						url: 'assets/pins/medium_pin_group.png'
+						width: 34
+						height: 49
+						anchor: [9,0]
+						textColor: '#cc7732'
+						textsize: 24
+					,
+						url: 'assets/pins/big_pin_group.png'
+						width: 34
+						height: 49
+						anchor: [9,0]
+						textColor: '#bc3f43'
+						textsize: 24
+					]
+			))
 
 	addOne: (idea) ->
 		pin = new App.Ideas.Pin model: idea
