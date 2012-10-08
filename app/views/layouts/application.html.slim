@@ -35,17 +35,18 @@ html
         nav
           ul.actions
             - path = request.path
+            li class=(path.include?(map_ideas_path) ? 'selected' : '')
+              = link_to map_ideas_path do
+                | Mapa de ideias
             li class=(path.include?(timeline_index_path) ? 'selected' : '')
               = link_to timeline_index_path do
                 | Atividade recente
             li class=(path.include?(scope_root_path) ? 'selected' : '')
               = link_to scope_root_path do
                 | Navegue nas ideias
-            li class=(path.include?(new_idea_path) ? 'selected' : '')
-              = new_idea_button
-
+            
             li#more_info_links
-              a href="" id="more_info"
+              a href="#" id="more_info"
                 | Saiba mais
               ul.submenu
                 - @pages_for_links.each do |page|

@@ -2,7 +2,7 @@
 
 class IdeasController < ApplicationController
   load_and_authorize_resource
-  skip_authorize_resource :only => [:featured, :popular, :modified, :recent, :category, :pin_show]
+  skip_authorize_resource :only => [:featured, :popular, :modified, :recent, :category]
 
   inherit_resources
 
@@ -42,6 +42,10 @@ class IdeasController < ApplicationController
 
   def index
     load_headers(:name => 'recent', :url => page_path('co-criacao'))
+    @audits = Audit.recent.limit(10)
+    @maximum_ideas = 10
+    @recent_liked_ideas = []
+    @recent_commented_ideas = []
     respond_to do |format|
       format.html
       format.json { render json: @ideas}
@@ -101,26 +105,26 @@ class IdeasController < ApplicationController
   def modified
     @ideas = @ideas.latest
     load_headers
-    render :index
+    render :explore
   end
 
   def recent
     @ideas = @ideas.recent
     load_headers
-    render :index
+    render :explore
   end
 
   def popular
     @ideas = @ideas.popular.shuffle
     load_headers
-    render :index
+    render :explore
   end
 
   def featured
     #redirect_to :root
     @ideas = @ideas.featured
     load_headers(:url => page_path('co-criacao'))
-    render :index
+    render :explore
   end
 
   def category
@@ -128,7 +132,7 @@ class IdeasController < ApplicationController
     @ideas = @category.ideas
     @ideas_about = @category.description
     load_headers(:category_name => @category.name)
-    render :index
+    render :explore
   end
 
   def search 
@@ -142,10 +146,6 @@ class IdeasController < ApplicationController
   end
 
   def map
-    @audits = Audit.recent.limit(10)
-    @maximum_ideas = 10
-    @recent_liked_ideas = []
-    @recent_commented_ideas = []
   end
 
   protected

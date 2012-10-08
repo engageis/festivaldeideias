@@ -81,7 +81,7 @@ App.Ideas.Pin = Backbone.View.extend
 
 	infowindowContent: ->
 		$.ajax
-		  url: "/pin_show/#{@model.get('id')}"
+		  url: "/ideas/#{@model.get('id')}/pin_show"
 		  success: (data) ->
 		    $('#pinContent').html data
 

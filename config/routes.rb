@@ -1,7 +1,5 @@
 FestivalDeIdeias::Application.routes.draw do
 
-  get '/pin_show/:id', to: "ideas#pin_show"
-
   # First role routes
   ActiveAdmin.routes(self)
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -26,6 +24,10 @@ FestivalDeIdeias::Application.routes.draw do
       get "refuse_collaboration",         :as => :refuse_collaboration
       get "collaboration",                :as => :collaboration
       get "ramify",                       :as => :ramify
+      get "pin_show"
+    end
+    collection do
+      get "map"
     end
     resources :messages, only: [:new, :create, :index]
   end
@@ -43,7 +45,6 @@ FestivalDeIdeias::Application.routes.draw do
     get ":idea_category_id/ideias",       :to => "ideas#category",  :as => :category_ideas
   end
   get '/ideias', :to => "ideas#index"
-  get '/map', to: "ideas#map"
 
   scope '/ideias' do
     get ":idea_category_id/ideia/:id",      :to => "ideas#show",            :as => :category_idea
