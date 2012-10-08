@@ -16,6 +16,9 @@ FestivalDeIdeias::Application.routes.draw do
     member do
       put 'update_notification', :as => :update_notification
     end
+    collection do
+      post 'store_location'
+    end
   end
   resources :ideas do
     member do

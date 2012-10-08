@@ -1,7 +1,6 @@
 App.Ideas.Map = ->
 	pins = new App.Models.IdeasMap
 	gMaps = new App.Ideas.GoogleMaps collection: pins
-	gMaps.render()
 
 
 App.Ideas.GoogleMaps = Backbone.View.extend
@@ -9,6 +8,24 @@ App.Ideas.GoogleMaps = Backbone.View.extend
 		_.bindAll this
 		@collection.on 'reset', @addAll
 		@map = $('#map_canvas')
+		@getUserLocation()
+
+	getUserLocation: ->
+		navigator.geolocation.getCurrentPosition(@locationFound, @noLocation) if navigator.geolocation
+
+	locationFound: (position) ->
+		@latitude = position.coords.latitude
+		@longitude = position.coords.longitude
+		$.post "/users/store_location",
+			{
+				latitude: @latitude
+				longitude: @longitude
+			}
+
+		@render()
+
+	noLocation: ->
+		@render()
 
 	addAll: ->
 		@addOne idea for idea in @collection.models
@@ -42,22 +59,30 @@ App.Ideas.GoogleMaps = Backbone.View.extend
 			))
 
 	addOne: (idea) ->
-		pin = new App.Ideas.Pin model: idea
+		pin = new App.Ideas.Pin model: idea, bounds: @bounds
 		pin.render()
 
 	render: ->
-		brazilLatLong = new google.maps.LatLng -10.0, -55.0
+		if @latitude? and @longitude?
+			initLatLong = new google.maps.LatLng @latitude, @longitude
+			@bounds = false
+			zoom = 10
+		else
+			initLatLong = new google.maps.LatLng -10.0, -55.0
+			@bounds = true
+			zoom = 4
 		@map.gmap
-			center: brazilLatLong
-			zoom: 4
+			center: initLatLong
+			zoom: zoom
 		.bind 'init', (ev, map) =>
 			@collection.fetch()
 		@mapEl = @map.gmap 'get', 'map'
 
 
 App.Ideas.Pin = Backbone.View.extend
-	initialize: ->
+	initialize: (options) ->
 		_.bindAll this
+		@bounds = options.bounds
 		@map = $('#map_canvas')
 		@model.on 'change', @render
 		@model.on 'destroy', @remove
@@ -72,7 +97,7 @@ App.Ideas.Pin = Backbone.View.extend
 		if longitude and latitude and country is "Brazil"
 			that.map.gmap 'addMarker'
 					position: "#{latitude},#{longitude}"
-					bounds: 	true
+					bounds: 	that.bounds
 					icon:			markerImg
 			.click ->	that.openInfo this
 

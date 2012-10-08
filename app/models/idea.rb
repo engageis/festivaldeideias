@@ -90,6 +90,27 @@ class Idea < ActiveRecord::Base
     end
   end
 
+  # Display geolocation data methods
+  def display_latitude
+    self.user.latitude or self.latitude
+  end
+
+  def display_longitude
+    self.user.longitude or self.longitude
+  end
+
+  def display_city
+    self.user.city or self.city
+  end
+
+  def display_state
+    self.user.state or self.state
+  end
+
+  def display_country
+    self.user.country or self.country
+  end
+
   # Modify the json response
   def as_json(options={})
     {
@@ -105,9 +126,9 @@ class Idea < ActiveRecord::Base
       minimum_investment: minimum_investment,
       formatted_minimum_investment: formatted_minimum_investment,
       url: category_idea_path(category, self),
-      latitude: latitude,
-      longitude: longitude,
-      country: country
+      latitude: display_latitude,
+      longitude: display_longitude,
+      country: display_country
     }
   end
 

@@ -16,6 +16,14 @@ class UsersController < ApplicationController
   def notifications
   end
 
+  def store_location
+    return unless current_user
+    current_user.latitude = params[:latitude]
+    current_user.longitude = params[:longitude]
+    current_user.save
+    render text: "Ok"
+  end
+
   protected
 
   def current_ability

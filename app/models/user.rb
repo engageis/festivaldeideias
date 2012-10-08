@@ -12,6 +12,15 @@ class User < ActiveRecord::Base
 
   before_create :updates_notifications_read_at
 
+  reverse_geocoded_by :latitude, :longitude do |user, results|
+    if geo = results.first
+      user.city = geo.city
+      user.state = geo.state
+      user.country = geo.country
+    end
+  end
+  after_validation :reverse_geocode
+
   def collaborated_ideas
     self.collaborations.select("DISTINCT parent_id").map(&:parent)
   end

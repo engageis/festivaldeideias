@@ -211,5 +211,60 @@ describe Idea do
     end
     its(:ip_for_geocoding) { should == "1.1.1.1" }
   end
+
+  describe "#display_latitude" do
+    describe "the user has a latitude" do
+      subject { Idea.make!(latitude: 10, user: User.make!(latitude: 20)) }
+      its(:display_latitude) { should == 20 }
+    end
+    describe "the user doesn't have a latitude" do
+      subject { Idea.make!(latitude: 10, user: User.make!(latitude: nil)) }
+      its(:display_latitude) { should == 10 }
+    end
+  end
+  
+  describe "#display_longitude" do
+    describe "the user has a longitude" do
+      subject { Idea.make!(longitude: 10, user: User.make!(longitude: 20)) }
+      its(:display_longitude) { should == 20 }
+    end
+    describe "the user doesn't have a longitude" do
+      subject { Idea.make!(longitude: 10, user: User.make!(longitude: nil)) }
+      its(:display_longitude) { should == 10 }
+    end
+  end
+  
+  describe "#display_city" do
+    describe "the user has a city" do
+      subject { Idea.make!(city: "Porto Alegre", user: User.make!(city: "Canoas")) }
+      its(:display_city) { should == "Canoas" }
+    end
+    describe "the user doesn't have a city" do
+      subject { Idea.make!(city: "Porto Alegre", user: User.make!(city: nil)) }
+      its(:display_city) { should == "Porto Alegre" }
+    end
+  end
+  
+  describe "#display_state" do
+    describe "the user has a state" do
+      subject { Idea.make!(state: "RS", user: User.make!(state: "SC")) }
+      its(:display_state) { should == "SC" }
+    end
+    describe "the user doesn't have a state" do
+      subject { Idea.make!(state: "RS", user: User.make!(state: nil)) }
+      its(:display_state) { should == "RS" }
+    end
+  end
+  
+  describe "#display_country" do
+    describe "the user has a country" do
+      subject { Idea.make!(country: "Brazil", user: User.make!(country: "Uruguay")) }
+      its(:display_country) { should == "Uruguay" }
+    end
+    describe "the user doesn't have a country" do
+      subject { Idea.make!(country: "Brazil", user: User.make!(country: nil)) }
+      its(:display_country) { should == "Brazil" }
+    end
+  end
   
 end

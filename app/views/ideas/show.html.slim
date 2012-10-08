@@ -25,16 +25,16 @@ header
       .original_parent
         small== "Criada a partir da ideia #{ link_to @idea.original_parent.title, category_idea_path(@idea.original_parent.category, @idea.original_parent)}, de #{ link_to @idea.original_parent.user.name, user_path(@idea.original_parent.user) }"
 
-    - if @idea.city.present?
+    - if @idea.display_city.present?
       .location
         small
-          = @idea.city
-          - if @idea.state.present?
+          = @idea.display_city
+          - if @idea.display_state.present?
             | , 
-            = @idea.state
-          - if @idea.country.present? and @idea.country != "Brazil"
+            = @idea.display_state
+          - if @idea.display_country.present? and @idea.display_country != "Brazil"
             | , 
-            = @idea.country
+            = @idea.display_country
         
     // Statistics
     .idea_stats
