@@ -44,7 +44,7 @@ class Idea < ActiveRecord::Base
   scope :recent, where(:parent_id => nil).order('created_at DESC')
   scope :popular, select("DISTINCT ON (ideas.id) ideas.*").joins("INNER JOIN ideas b ON b.parent_id = ideas.id").order("id")
 
-  pg_search_scope :match_and_find, against: [:title, :description], associated_against: {user: :name}
+  pg_search_scope :match_and_find, against: [:title, :description, :city], associated_against: {user: :name}
 
   scope :new_collaborations, ->(user) { where(['parent_id IN (?)', user.ideas.map(&:id)]).order("created_at ASC") }
 
@@ -93,18 +93,21 @@ class Idea < ActiveRecord::Base
   # Modify the json response
   def as_json(options={})
     {
-      :id => id,
-      :title => title,
-      :headline => headline,
-      :category => category,
-      :user => user.id,
-      :description => description,
-      :description_html => description_html,
-      :likes => likes,
-      :colaborations => colaborations.count,
-      :minimum_investment => minimum_investment,
-      :formatted_minimum_investment => formatted_minimum_investment,
-      :url => category_idea_path(category, self)
+      id: id,
+      title: title,
+      headline: headline,
+      category: category,
+      user: user.id,
+      description: description,
+      description_html: description_html,
+      likes: likes,
+      colaborations: colaborations.count,
+      minimum_investment: minimum_investment,
+      formatted_minimum_investment: formatted_minimum_investment,
+      url: category_idea_path(category, self),
+      latitude: latitude,
+      longitude: longitude,
+      country: country
     }
   end
 

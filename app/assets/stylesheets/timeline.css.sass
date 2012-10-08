@@ -1,24 +1,25 @@
-body[data-controller-name="Timeline"][data-action="Index"]
-  article
-    ul
+article.timeline
+  ul
+    margin: 0
+    margin-bottom: 20px
+    li
+      border: 1px solid lighten(gray, 40%)
+      overflow: hidden
+      margin-bottom: 5px
+      +transition(background-color, .35s)
+      &:hover
+        background: lighten(gray, 45%)
+  .avatar
+    float: left
+    padding: .5em
+  .audit
+    width: 85%
+    float: left
+    margin: 5px 0 0 5px
+    p
       margin: 0
-      margin-bottom: 20px
-      li
-        border: 1px solid lighten(gray, 45%)
-        overflow: hidden
-        +transition(background-color, .35s)
-        &:hover
-          background: lighten(gray, 45%)
-    .avatar
-      float: left
-      padding: .5em
-    .audit
-      width: 85%
-      float: left
-      p
-        margin: 0
-      small
-        font-size: .8em
-        color: gray
-        margin: 0
-        padding: 0
+    small
+      font-size: .8em
+      color: gray
+      margin: 0
+      padding: 0

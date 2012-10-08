@@ -24,6 +24,10 @@ FestivalDeIdeias::Application.routes.draw do
       get "refuse_collaboration",         :as => :refuse_collaboration
       get "collaboration",                :as => :collaboration
       get "ramify",                       :as => :ramify
+      get "pin_show"
+    end
+    collection do
+      get "map"
     end
     resources :messages, only: [:new, :create, :index]
   end
@@ -49,7 +53,6 @@ FestivalDeIdeias::Application.routes.draw do
   end
 
   root :to => 'ideas#index',              :defaults => { :recent => true }
-
 
   resources :pages, :only => [] do
     collection { post :sort }
