@@ -113,7 +113,10 @@ App.Ideas.Pin = Backbone.View.extend
 		"<div id=\"pinContent\" class=\"infoWindow\">Loading...</div>"
 
 	spreadPin: (n) ->
-		if n? then n + (Math.random()*-.05) else null
+		if n? and "#{n}".length <= 7
+			n + (Math.random()*-.05)
+		else
+			n
 
 	remove: ->
 		# console.log "Pin removed!"
