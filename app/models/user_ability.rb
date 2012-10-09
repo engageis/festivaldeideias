@@ -7,6 +7,8 @@ class UserAbility
     can :cocreate, Idea
     can :create, Idea
     can :create, Message
+    can :map, Idea
+    can :pin_show, Idea
     can :colaborate, Idea do |idea|
       idea.user != user
     end
