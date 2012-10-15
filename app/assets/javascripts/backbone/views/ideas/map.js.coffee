@@ -66,14 +66,14 @@ App.Ideas.GoogleMaps = Backbone.View.extend
 		if @latitude? and @longitude?
 			initLatLong = new google.maps.LatLng @latitude, @longitude
 			@bounds = false
-			zoom = 10
+			# zoom = 4
 		else
 			initLatLong = new google.maps.LatLng -10.0, -55.0
 			@bounds = true
-			zoom = 4
+			# zoom = 4
 		@map.gmap
 			center: initLatLong
-			zoom: zoom
+			zoom: 4
 		.bind 'init', (ev, map) =>
 			@collection.fetch()
 		@mapEl = @map.gmap 'get', 'map'
