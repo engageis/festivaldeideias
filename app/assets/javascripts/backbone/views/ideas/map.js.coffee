@@ -31,6 +31,7 @@ App.Ideas.GoogleMaps = Backbone.View.extend
 		if @latitude? and @longitude?
 			@mapEl.panTo(new google.maps.LatLng @latitude, @longitude)
 			@mapEl.setZoom(5)
+			@bounds = false
 
 	addAll: ->
 		@addOne idea for idea in @collection.models
