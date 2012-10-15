@@ -8,6 +8,7 @@ App.Ideas.GoogleMaps = Backbone.View.extend
 		_.bindAll this
 		@collection.on 'reset', @addAll
 		@map = $('#map_canvas')
+		@render()
 		@getUserLocation()
 
 	getUserLocation: ->
@@ -21,14 +22,22 @@ App.Ideas.GoogleMaps = Backbone.View.extend
 				latitude: @latitude
 				longitude: @longitude
 			}
-
-		@render()
+		@centerMap()
 
 	noLocation: ->
-		@render()
+		# @render()
+
+	centerMap: ->
+		if @latitude? and @longitude?
+			@mapEl.panTo(new google.maps.LatLng @latitude, @longitude)
+			@mapEl.setZoom(5)
 
 	addAll: ->
 		@addOne idea for idea in @collection.models
+		@setClusters()
+		@centerMap()
+
+	setClusters: ->
 		@map.gmap('set', 'MarkerClusterer',
 			new MarkerClusterer(@mapEl, @map.gmap('get', 'markers'), 
 				gridSize: 60
@@ -63,14 +72,8 @@ App.Ideas.GoogleMaps = Backbone.View.extend
 		pin.render()
 
 	render: ->
-		if @latitude? and @longitude?
-			initLatLong = new google.maps.LatLng @latitude, @longitude
-			@bounds = false
-			# zoom = 4
-		else
-			initLatLong = new google.maps.LatLng -10.0, -55.0
-			@bounds = true
-			# zoom = 4
+		initLatLong = new google.maps.LatLng -10.0, -55.0
+		@bounds = true
 		@map.gmap
 			center: initLatLong
 			zoom: 4
