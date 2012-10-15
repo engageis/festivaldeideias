@@ -117,7 +117,7 @@ App.Ideas.Pin = Backbone.View.extend
 		"<div id=\"pinContent\" class=\"infoWindow\">Loading...</div>"
 
 	spreadPin: (n) ->
-		if n? and "#{n}".length <= 7
+		if n?
 			n + (Math.random()*-.05)
 		else
 			n
