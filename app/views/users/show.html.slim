@@ -4,7 +4,12 @@
 header
   .avatar= link_to image_tag(@user.avatar), user_path(@user)
   .info
-    h1= @user.name
+    h1
+      = @user.name
+      - if @user.city
+        small
+          = " - #{@user.city}"
+
     - if can? :manage, @user
       h3= @user.email
       .email_notifications
