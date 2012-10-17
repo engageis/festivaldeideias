@@ -4,6 +4,10 @@ App.Ideas.Map = ->
 
 
 App.Ideas.GoogleMaps = Backbone.View.extend
+	# el: '#map_canvas'
+  # events:
+  #   "click .comments a.reply": "reply"
+
 	initialize: ->
 		_.bindAll this
 		@collection.on 'reset', @addAll
@@ -29,8 +33,8 @@ App.Ideas.GoogleMaps = Backbone.View.extend
 
 	centerMap: ->
 		if @latitude? and @longitude?
-			@mapEl.panTo(new google.maps.LatLng @latitude, @longitude)
-			@mapEl.setZoom(5)
+			@el.panTo(new google.maps.LatLng @latitude, @longitude)
+			@el.setZoom(5)
 			@bounds = false
 
 	addAll: ->
@@ -40,7 +44,7 @@ App.Ideas.GoogleMaps = Backbone.View.extend
 
 	setClusters: ->
 		@map.gmap('set', 'MarkerClusterer',
-			new MarkerClusterer(@mapEl, @map.gmap('get', 'markers'), 
+			new MarkerClusterer(@el, @map.gmap('get', 'markers'), 
 				gridSize: 60
 				maxZoom: 12
 				styles:
@@ -80,7 +84,7 @@ App.Ideas.GoogleMaps = Backbone.View.extend
 			zoom: 4
 		.bind 'init', (ev, map) =>
 			@collection.fetch()
-		@mapEl = @map.gmap 'get', 'map'
+		@el = @map.gmap 'get', 'map'
 
 
 App.Ideas.Pin = Backbone.View.extend
