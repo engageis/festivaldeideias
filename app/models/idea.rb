@@ -128,6 +128,8 @@ class Idea < ActiveRecord::Base
       url: category_idea_path(category, self),
       latitude: display_latitude,
       longitude: display_longitude,
+      city: display_city,
+      state: display_state,
       country: display_country
     }
   end

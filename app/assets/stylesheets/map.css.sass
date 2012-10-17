@@ -1,0 +1,22 @@
+.map_actions
+  background: url(image_path("map_controls_bg.png")) no-repeat left center
+  +horizontal-list
+  padding: 10px 0 10px 27px
+
+  a.map_control
+    background-color: $darkgray
+    color: $orange
+    font-weight: lighter
+    text-transform: uppercase
+    padding: 6px
+    margin: 1px
+
+    &:hover, &.active
+      background-color: $orange
+      color: white
+
+#map_wrapper
+  +legacy-pie-clearfix
+
+#map_canvas
+  margin-bottom: 10px 0 20px

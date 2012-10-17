@@ -5,6 +5,7 @@
 //= require libraries/jquery.pjax
 //= require libraries/markerclusterer
 //= require libraries/jquery.ui.map
+//= require libraries/jquery.ui.map.services
 //= require libraries/facebox
 //= require libraries/store
 //= require underscore
