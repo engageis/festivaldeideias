@@ -6,40 +6,61 @@ App.Ideas.Map = ->
 App.Ideas.GoogleMaps = Backbone.View.extend
   el: '#map_wrapper'
   events:
-    "click .map_actions .city_control": "panMapToCity"
-    "click .map_actions .state_control": "panMapToState"
-    "click .map_actions .country_control": "panMapToCountry"
+    "click .map_actions .map_control": "mapControlClicked"
 
   initialize: ->
     _.bindAll this
     @collection.on 'reset', @addAll
     @map = $('#map_canvas')
     @render()
+
+  # Inserts the map into the HTML and fetches the ideas JSON
+  render: ->
+    @initLatLong = new google.maps.LatLng -15.5, -55.0
+    @geocoder = new google.maps.Geocoder()
+    @bounds = true
+    @map.gmap
+      center: @initLatLong
+      zoom: 4
+    .bind 'init', (ev, map) =>
+      @collection.fetch()
+
+  # Activated when collection is fetched.
+  addAll: ->
+    @addOne idea for idea in @collection.models
+    @mapEl = @map.gmap 'get', 'map'
+    @setClusters()
     @getUserLocation()
 
-  panMapToCity: ->
+  # Adds a Pin view to each idea in the Map
+  addOne: (idea) ->
+    pin = new App.Ideas.Pin model: idea, bounds: @bounds
+    pin.render()
+
+  mapControlClicked:(e)->
+    $el = $(e.target)
     $('.map_actions .map_control').removeClass "active"
-    $('.map_actions .city_control').addClass "active"
+    $el.addClass "active"
+    if $el.hasClass "city_control" then @panMapToCity()
+    else if $el.hasClass "state_control" then @panMapToState()
+    else if $el.hasClass "country_control" then @panMapToCountry()
+    false
+
+  panMapToCity: ->
     if @user_city and @user_state and @user_country
       @panMapToPoint "#{@user_city}, #{@user_state}, #{@user_country}"
     else
       @panMapToState()
-    false
 
   panMapToState: ->
-    $('.map_actions .map_control').removeClass "active"
-    $('.map_actions .state_control').addClass "active"
     if @user_state and @user_country
       @panMapToPoint "#{@user_state}, #{@user_country}"
-    false
 
   panMapToCountry: ->
-    $('.map_actions .map_control').removeClass "active"
-    $('.map_actions .country_control').addClass "active"
     @mapEl.panTo @initLatLong
     @mapEl.setZoom 4
-    false
 
+  # Queries a location with geocoder a pans the map to it
   panMapToPoint: (query) ->
     that = this
     $('#map_canvas').gmap 'search', { address: query }, (results, isFound) ->
@@ -47,18 +68,10 @@ App.Ideas.GoogleMaps = Backbone.View.extend
         that.mapEl.panTo results[0].geometry.location
         that.mapEl.fitBounds results[0].geometry.bounds
 
-  addAll: ->
-    @addOne idea for idea in @collection.models
-    @setClusters()
-    @centerMapOnUser()
-  
-  addOne: (idea) ->
-    pin = new App.Ideas.Pin model: idea, bounds: @bounds
-    pin.render()
-
   getUserLocation: ->
     navigator.geolocation.getCurrentPosition(@locationFound, @noLocation) if navigator.geolocation
 
+  # Stores some user variables
   locationFound: (position) ->
     @latitude = position.coords.latitude
     @longitude = position.coords.longitude
@@ -71,6 +84,7 @@ App.Ideas.GoogleMaps = Backbone.View.extend
       }
     @centerMapOnUser()
 
+  # Geocode users latitude and longitude to get its address
   geocodeUserCity: (latLng) ->
     @geocoder.geocode({latLng: latLng}, (results, status) =>
       for component in results[0].address_components
@@ -80,25 +94,18 @@ App.Ideas.GoogleMaps = Backbone.View.extend
           when "country" then @user_country = component.long_name
     )
 
+  # If user reject to show its location, then the Map controls disappear
   noLocation: ->
     $('#map_wrapper .map_actions').hide()
 
   centerMapOnUser: ->
     if @latitude? and @longitude?
-      @mapEl.panTo(new google.maps.LatLng @latitude, @longitude)
+      @clientPosition = new google.maps.LatLng @latitude, @longitude
+      @mapEl.panTo(@clientPosition)
       @mapEl.setZoom(5)
+      @map.gmap('addShape', 'Circle', { strokeColor: "#008595", strokeOpacity: 0.3, strokeWeight: 2, fillColor: "#008595", fillOpacity: 0.25, center: @clientPosition, radius: 2100 })
+      @map.gmap('addShape', 'Circle', { strokeColor: "#F6A032", strokeOpacity: 0.8, strokeWeight: 2, fillColor: "#F6A032", fillOpacity: 0.4, center: @clientPosition, radius: 80 })
       @bounds = false
-
-  render: ->
-    @initLatLong = new google.maps.LatLng -15.5, -55.0
-    @geocoder = new google.maps.Geocoder()
-    @bounds = true
-    @map.gmap
-      center: @initLatLong
-      zoom: 4
-    .bind 'init', (ev, map) =>
-      @collection.fetch()
-    @mapEl = @map.gmap 'get', 'map'
 
   setClusters: ->
     @map.gmap('set', 'MarkerClusterer',
@@ -150,6 +157,7 @@ App.Ideas.Pin = Backbone.View.extend
 
     "<div id=\"pinContent\" class=\"infoWindow\">Loading...</div>"
 
+  # Spreads the pins around the map, cause they were located by IP, so their location would be almost the same
   spreadPin: (n) ->
     if n?
       n + (Math.random()*-.05)

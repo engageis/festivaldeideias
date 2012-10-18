@@ -57,6 +57,7 @@ gem 'thin'
 
 group :development do
   gem 'taps'
+  gem 'quiet_assets'
 end
 
 group :development, :test do

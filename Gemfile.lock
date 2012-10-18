@@ -199,6 +199,8 @@ GEM
     pusher (0.9.4)
       multi_json (~> 1.0)
       signature (~> 0.1.2)
+    quiet_assets (1.0.1)
+      railties (~> 3.1)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -340,6 +342,7 @@ DEPENDENCIES
   pg
   pg_search
   pusher
+  quiet_assets
   rack-pjax
   rails (>= 3.2.6)
   rails-backbone
