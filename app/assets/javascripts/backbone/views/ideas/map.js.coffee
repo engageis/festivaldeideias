@@ -11,6 +11,7 @@ App.Ideas.GoogleMaps = Backbone.View.extend
   initialize: ->
     _.bindAll this
     @collection.on 'reset', @addAll
+    @geolocation_message = "Você precisa permitir que saibamos sua localização para usar esse botão."
     @map = $('#map_canvas')
     @render()
 
@@ -55,6 +56,8 @@ App.Ideas.GoogleMaps = Backbone.View.extend
   panMapToState: ->
     if @user_state and @user_country
       @panMapToPoint "#{@user_state}, #{@user_country}"
+    else
+      alert @geolocation_message
 
   panMapToCountry: ->
     @mapEl.panTo @initLatLong
@@ -69,7 +72,10 @@ App.Ideas.GoogleMaps = Backbone.View.extend
         that.mapEl.fitBounds results[0].geometry.bounds
 
   getUserLocation: ->
-    navigator.geolocation.getCurrentPosition(@locationFound, @noLocation) if navigator.geolocation
+    if navigator.geolocation
+      navigator.geolocation.getCurrentPosition(@locationFound, @noLocation)
+    else
+      @geolocation_message = "Seu browser não possui geolocalização :("
 
   # Stores some user variables
   locationFound: (position) ->
@@ -101,8 +107,8 @@ App.Ideas.GoogleMaps = Backbone.View.extend
   centerMapOnUser: ->
     if @latitude? and @longitude?
       @clientPosition = new google.maps.LatLng @latitude, @longitude
-      @mapEl.panTo(@clientPosition)
-      @mapEl.setZoom(5)
+      # @mapEl.panTo(@clientPosition)
+      # @mapEl.setZoom(5)
       @map.gmap('addShape', 'Circle', { strokeColor: "#008595", strokeOpacity: 0.3, strokeWeight: 2, fillColor: "#008595", fillOpacity: 0.25, center: @clientPosition, radius: 2100 })
       @map.gmap('addShape', 'Circle', { strokeColor: "#F6A032", strokeOpacity: 0.8, strokeWeight: 2, fillColor: "#F6A032", fillOpacity: 0.4, center: @clientPosition, radius: 80 })
       @bounds = false
