@@ -19,7 +19,10 @@ class User < ActiveRecord::Base
       user.country = geo.country
     end
   end
-  after_validation :reverse_geocode
+  def check_before_reverse_geocode
+    reverse_geocode if self.latitude and self.longitude
+  end
+  after_validation :check_before_reverse_geocode
 
   def collaborated_ideas
     self.collaborations.select("DISTINCT parent_id").map(&:parent)
