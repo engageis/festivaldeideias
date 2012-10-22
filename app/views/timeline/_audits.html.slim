@@ -28,3 +28,5 @@ article.timeline
           p== audit.text
           small= "Há #{time_ago_in_words(audit.created_at)}"
           /pre= audit.to_yaml
+  
+  = link_to "+ Ver mais atividades recentes", timeline_index_path, class: "right more" if request.path == root_path
