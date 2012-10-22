@@ -219,6 +219,29 @@ h2.info
     font-size: 13px
 
 
+// SEARCH AREA
+.floating_menu
+  position: absolute
+  top: 0
+  right: 0
+
+aside.search_container
+  float: right
+  padding: 0
+
+  input
+    height: 8px
+    float: right
+    margin-top: 5px
+    background: url(image_path("search_bg.png")) no-repeat 97% 50%
+    +box-shadow(0 1px 0 rgba(black,.25) inset)
+    +border-radius(4px)
+    +transition(all .3s)
+
+    &:focus
+      width: 120%
+
+
 // HEADER
 header.main
   margin-bottom: 20px
@@ -425,9 +448,10 @@ header.main
   nav
     min-width: 440px
     max-width: 650px
-    float: right
-    margin: 42px 0 0 0
-    clear: right
+    position: absolute
+    right: 0
+    top: 77px
+
     .actions
       li
         float: left

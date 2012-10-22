@@ -2,7 +2,7 @@
 
 - path = request.path
 
-= new_idea_button('button') unless path =~ /^\/(ideias)/ or path =~ /(collaboration)/ or path =~ /(sessions)/ or path =~ /(new)/
+= new_idea_button('button') unless path =~ /^\/(ideias)/ or path =~ /(collaboration)/ or path =~ /(sessions)/ or path =~ /(new)/ or path == root_path
 
 - if path == root_path
   = render "layouts/filters"

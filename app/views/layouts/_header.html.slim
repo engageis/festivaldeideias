@@ -3,6 +3,9 @@
   section.text_intro
     | Uma plataforma para unir ideias. Um festival para torná-las reais
 
+  = new_idea_button('button')
+
   section.video_intro
     .border
-      iframe width="517" height="293" src=(InstitutionalVideo.latest ? InstitutionalVideo.latest.embed_url : 'http://www.youtube.com/embed/d-laubHNtrI') frameborder="0" allowfullscreen
+      iframe width="368" height="207" src=(InstitutionalVideo.latest ? InstitutionalVideo.latest.embed_url : 'http://www.youtube.com/embed/d-laubHNtrI') frameborder="0" allowfullscreen
+      = link_to "+ vídeos", "http://www.youtube.com/user/festivaldeideias/", class: "more", target: "_blank"
