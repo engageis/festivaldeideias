@@ -1,5 +1,4 @@
 App.Ideas.Map = ->
-  window.latlng_array = []
   pins = new App.Models.IdeasMap
   gMaps = new App.Ideas.GoogleMaps collection: pins
 
@@ -11,6 +10,7 @@ App.Ideas.GoogleMaps = Backbone.View.extend
 
   initialize: ->
     _.bindAll this
+    @already_used_latlng = []
     @collection.on 'reset', @addAll
     @geolocation_message = "Você precisa permitir que saibamos sua localização para usar esse botão."
     @map = $('#map_canvas')
@@ -36,7 +36,7 @@ App.Ideas.GoogleMaps = Backbone.View.extend
 
   # Adds a Pin view to each idea in the Map
   addOne: (idea) ->
-    pin = new App.Ideas.Pin model: idea, bounds: @bounds
+    pin = new App.Ideas.Pin model: idea, bounds: @bounds, already_used_latlng: @already_used_latlng
     pin.render()
 
   mapControlClicked:(e)->
@@ -76,7 +76,7 @@ App.Ideas.GoogleMaps = Backbone.View.extend
     if navigator.geolocation
       navigator.geolocation.getCurrentPosition(@locationFound, @noLocation)
     else
-      @geolocation_message = "Seu browser não possui geolocalização :("
+      @geolocation_message = "Seu navegador não possui geolocalização :("
 
   # Stores some user variables
   locationFound: (position) ->
@@ -103,15 +103,13 @@ App.Ideas.GoogleMaps = Backbone.View.extend
 
   # If user reject to show its location, then the Map controls disappear
   noLocation: ->
-    $('#map_wrapper .map_actions').hide()
+    # $('#map_wrapper .map_actions').hide()
 
   centerMapOnUser: ->
     if @latitude? and @longitude?
       @clientPosition = new google.maps.LatLng @latitude, @longitude
-      # @mapEl.panTo(@clientPosition)
-      # @mapEl.setZoom(5)
       @map.gmap('addShape', 'Circle', { strokeColor: "#008595", strokeOpacity: 0.3, strokeWeight: 2, fillColor: "#008595", fillOpacity: 0.25, center: @clientPosition, radius: 2100 })
-      @map.gmap('addShape', 'Circle', { strokeColor: "#F6A032", strokeOpacity: 0.8, strokeWeight: 2, fillColor: "#F6A032", fillOpacity: 0.4, center: @clientPosition, radius: 80 })
+      # @map.gmap('addShape', 'Circle', { strokeColor: "#F6A032", strokeOpacity: 0.8, strokeWeight: 2, fillColor: "#F6A032", fillOpacity: 0.4, center: @clientPosition, radius: 80 })
       @bounds = false
 
   setClusters: ->
@@ -131,6 +129,7 @@ App.Ideas.Pin = Backbone.View.extend
   initialize: (options) ->
     _.bindAll this
     @bounds = options.bounds
+    @already_used_latlng = options.already_used_latlng
     @map = $('#map_canvas')
     @model.on 'change', @render
     # @model.on 'destroy', @remove
@@ -146,11 +145,11 @@ App.Ideas.Pin = Backbone.View.extend
 
     if longitude and latitude and country is "Brazil"
       
-      if _.contains(window.latlng_array, "#{latitude},#{longitude}")
+      if _.contains(@already_used_latlng, "#{latitude},#{longitude}")
         latitude = @spreadPin(@model.get 'latitude')
         longitude = @spreadPin(@model.get 'longitude')
       else
-        window.latlng_array.push "#{latitude},#{longitude}"
+        @already_used_latlng.push "#{latitude},#{longitude}"
 
       that.map.gmap 'addMarker'
           position: "#{latitude},#{longitude}"
