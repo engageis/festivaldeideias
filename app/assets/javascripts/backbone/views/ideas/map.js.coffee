@@ -1,4 +1,5 @@
 App.Ideas.Map = ->
+  window.latlng_array = []
   pins = new App.Models.IdeasMap
   gMaps = new App.Ideas.GoogleMaps collection: pins
 
@@ -139,11 +140,18 @@ App.Ideas.Pin = Backbone.View.extend
     city = @model.get 'city'
     state = @model.get 'state'
     country = @model.get 'country'
-    latitude = @spreadPin(@model.get 'latitude')
-    longitude = @spreadPin(@model.get 'longitude')
+    latitude = @model.get 'latitude'
+    longitude = @model.get 'longitude'
     markerImg = @model.get("category").badge.replace /\/badges\//g, "\/pins\/"
 
     if longitude and latitude and country is "Brazil"
+      
+      if _.contains(window.latlng_array, "#{latitude},#{longitude}")
+        latitude = @spreadPin(@model.get 'latitude')
+        longitude = @spreadPin(@model.get 'longitude')
+      else
+        window.latlng_array.push "#{latitude},#{longitude}"
+
       that.map.gmap 'addMarker'
           position: "#{latitude},#{longitude}"
           bounds:   that.bounds
