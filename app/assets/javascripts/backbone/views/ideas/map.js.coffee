@@ -89,7 +89,7 @@ App.Ideas.GoogleMaps = Backbone.View.extend
         latitude: @latitude
         longitude: @longitude
       }
-    @centerMapOnUser()
+    @setUserLocation()
 
   # Geocode users latitude and longitude to get its address
   geocodeUserCity: (latLng) ->
@@ -105,12 +105,18 @@ App.Ideas.GoogleMaps = Backbone.View.extend
   noLocation: ->
     # $('#map_wrapper .map_actions').hide()
 
-  centerMapOnUser: ->
+  setUserLocation: ->
     if @latitude? and @longitude?
+      that = @
       @clientPosition = new google.maps.LatLng @latitude, @longitude
-      @map.gmap('addShape', 'Circle', { strokeColor: "#008595", strokeOpacity: 0.3, strokeWeight: 2, fillColor: "#008595", fillOpacity: 0.25, center: @clientPosition, radius: 2100 })
-      # @map.gmap('addShape', 'Circle', { strokeColor: "#F6A032", strokeOpacity: 0.8, strokeWeight: 2, fillColor: "#F6A032", fillOpacity: 0.4, center: @clientPosition, radius: 80 })
+      @map.gmap('addShape', 'Circle', { strokeColor: "#008595", strokeOpacity: 0.2, strokeWeight: 2, fillColor: "#008595", fillOpacity: 0.15, center: @clientPosition, radius: 2100 })
       @bounds = false
+      
+      @map.gmap 'addMarker'
+        position: "#{@latitude},#{@longitude}"
+        bounds:   @bounds
+      .click ->
+        that.map.gmap 'openInfoWindow', {content: "<strong>Você está aqui</strong>"}, this
 
   setClusters: ->
     @map.gmap('set', 'MarkerClusterer',
@@ -136,11 +142,9 @@ App.Ideas.Pin = Backbone.View.extend
     
   render: ->
     that = this
-    city = @model.get 'city'
-    state = @model.get 'state'
-    country = @model.get 'country'
     latitude = @model.get 'latitude'
     longitude = @model.get 'longitude'
+    country = @model.get 'country'
     markerImg = @model.get("category").badge.replace /\/badges\//g, "\/pins\/"
 
     if longitude and latitude and country is "Brazil"
@@ -155,8 +159,6 @@ App.Ideas.Pin = Backbone.View.extend
           position: "#{latitude},#{longitude}"
           bounds:   that.bounds
           icon:     markerImg
-          city: city
-          state: state
       .click -> that.openInfo this
 
   openInfo: (el) ->
