@@ -257,6 +257,10 @@ And /^I should see a list of categories$/ do
   page.should have_content(@categories.last.name)
 end
 
+And /^I should see a list of blog posts$/ do
+  page.should have_content(Blog.fetch_last_posts.first.title)
+end
+
 Then /^I follow the link "([^"]*)"$/ do |arg1|
   page.should have_link(arg1)
   click_link "#{arg1}"
@@ -293,7 +297,7 @@ end
 
 
 Then /^I should see user options$/ do
-  page.should have_xpath("//div[@class='wrapper']/ul[@class='user_actions']")
+  page.should have_css(".floating_menu ul.user_actions")
 end
 
 Then /^I should see a list of notifications$/ do

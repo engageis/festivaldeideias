@@ -7,7 +7,7 @@ Feature: View a selection of ideas
     Given 3 category exist
     And 3 ideas exist
     When I visit the ideas index page
-    Then I should see a list of categories
+    Then I should see a list of blog posts
     And I should see a list with ideas
     And I should see the title as "Uma plataforma para unir ideias · Festival de Ideias 2012"
 

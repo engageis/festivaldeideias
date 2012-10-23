@@ -46,6 +46,8 @@ class IdeasController < ApplicationController
     @maximum_ideas = 10
     @recent_liked_ideas = []
     @recent_commented_ideas = []
+    feed = Blog.fetch_last_posts
+    @entries = feed.entries.first(3)
     respond_to do |format|
       format.html
       format.json { render json: @ideas}

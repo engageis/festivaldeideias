@@ -34,6 +34,7 @@ gem 'auto_html'
 gem 'friendly_id'
 gem 'tinymce-rails'
 gem 'koala'
+gem 'feedzirra'
 
 # Cocreation Room
 gem 'opentok'

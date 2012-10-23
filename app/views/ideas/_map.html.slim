@@ -5,7 +5,11 @@ h2.info Conheça as ideias que estão espalhadas por todo o Brasil
   ul.map_actions
     li
       a.city_control.map_control href="#" Sua cidade
+    li
       a.state_control.map_control href="#" Seu estado
+    li
       a.country_control.map_control.active href="#" Todo o Brasil
+    li.right
+      = link_to "+ Navegue nas ideias", scope_root_path
 
   #map_canvas style="width:100%; height:500px"

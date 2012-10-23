@@ -1,15 +1,13 @@
-h3 No Blog
-.blog_feeds
-  ul
-    li
-      a.first href="#"
-        | Inovações e debates para o desenvolvimento social marcam o #festideias
-        span.date 23/04/2011
-    li
-      a href="#"
-        | Inovações e debates para o desenvolvimento social marcam o #festideias
-        span.date 23/04/2011
-    li
-      a.last href="#"
-        | Inovações e debates para o desenvolvimento social marcam o #festideias
-        span.date 23/04/2011
+- if @entries
+  h3 No Blog
+  .blog_feeds
+    ul
+      - @entries.each do |entry|
+        li
+          = link_to entry.url do
+            = entry.title
+            span.author
+              | por 
+              = entry.author
+
+    = link_to "+ Veja mais posts no blog", "http://blog.festivaldeideias.org.br/", target: "_blank", class: "right more"

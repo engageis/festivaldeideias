@@ -5,8 +5,7 @@
 = new_idea_button('button') unless path =~ /^\/(ideias)/ or path =~ /(collaboration)/ or path =~ /(sessions)/ or path =~ /(new)/ or path == root_path
 
 - if path == root_path
-  = render "layouts/filters"
-  /*= new_idea_button('button')*/
+  = render "layouts/blog_feeds"
   = render "layouts/community"
   = render "layouts/events"
   = render "layouts/share_festival"
