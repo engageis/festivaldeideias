@@ -2,7 +2,7 @@
 = form_for(@idea, :class => 'new_idea') do |f|
   h2 = t('idea.new.start')
   .warning
-    - if Time.now > Time.parse('2012-08-03 23:59:59 -0300')
+    - if Time.now > Time.parse('2012-10-26 23:59:59 -0300')
       | Atenção: as ideias iniciadas a partir de agora não estarão mais inscritas para a edição de novembro do Festival de Ideias, 
       strong e sim para as edições de 2013
       | . Pensando pelo lado positivo, você agora terá mais tempo para cocriar sua ideia! :D
