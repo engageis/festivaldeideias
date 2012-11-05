@@ -51,19 +51,21 @@ article
 - if can?(:edit, @idea)
   = link_to "Editar ideia", edit_category_idea_path(@idea.category, @idea), :class => 'button edit right'
   .clear
-  .similar_ideas
-    h3.similar_title Ideias similares
-    ol.ideas_buckets
-      - @idea.similar_ideas.each do |similar_idea|
-        li.bucket class=cycle('odd', 'middle', 'even')
-          = render similar_idea
 
-- else
+.similar_ideas
+  h3.similar_title Ideias similares
+  ol.ideas_buckets
+    - @idea.similar_ideas.each do |similar_idea|
+      li.bucket class=cycle('odd', 'middle', 'even')
+        = render similar_idea
+
+- unless can?(:edit, @idea)
   .collaborate
     = image_tag "gostou.png"
     p Colabore com referências e mais informações para o desenvolvimento desta ideia. Ajude a elaborar as necessidades e próximos passos!
     = link_to t("idea.colaboration.new.start"), "#colaborate", :class => "button contribute"
     .clear
+
 
 section#comments
   a name="comment"
