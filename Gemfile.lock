@@ -266,7 +266,7 @@ GEM
       rspec (~> 2.10.0)
     ruby-hmac (0.4.0)
     rubyzip (0.9.9)
-    sass (3.1.19)
+    sass (3.2.2)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -364,6 +364,7 @@ DEPENDENCIES
   rails-backbone
   rb-fsevent
   rspec-rails
+  sass (~> 3.2.2)
   sass-rails
   selenium-webdriver (~> 2.25)
   shoulda-matchers

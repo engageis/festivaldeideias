@@ -8,11 +8,11 @@
   li
     float: none
   .submenu
-    Z-index: 999
+    z-index: 999
     @include border-radius(3px)
     @include box-shadow(0 4px 5px rgba(0, 0, 0, 0.5))
     display: none
-    background: #000
+    background: #222
     position: absolute
     top: 20px
     right: 0
@@ -37,7 +37,7 @@
     .submenu
       display: block
     a
-      background: #000
+      background: #222
       color: #FFF
       @include box-shadow(0 4px 5px rgba(0, 0, 0, 0.5))
 
@@ -256,7 +256,7 @@ header.main
     margin: 0 0 0 10px
     float: right
     +border-bottom-radius(3px)
-    background: #000
+    background: #222
     a
       font-weight: 400
       +text-shadow(none)
@@ -357,7 +357,7 @@ header.main
             a
               font-weight: bold
             &.new
-              color: #000
+              color: #222
             &:hover
               background:
                 color: #EEE
@@ -365,7 +365,7 @@ header.main
 
 
     li.logged_in
-      background-color: #000
+      background-color: #222
       +border-bottom-right-radius(3px)
       .name
         color: #FFF
@@ -458,12 +458,12 @@ header.main
         a, a:link, a:visited, a:active
           font-weight: lighter
           font-size: 1.3em
-          color: #000
+          color: #222
           padding: 5px
           margin-left: 20px
           +border-radius(3px)
         a:hover
-          background: #000
+          background: #222
           color: #FFF
       .selected
         a, a:link, a:visited
@@ -583,7 +583,7 @@ section#statistics
   overflow: hidden
   padding: 20px 0
   margin: 40px 0 0 0
-  background: #000
+  background: #222
   color: $lightyellow
   +border-radius(5px)
 

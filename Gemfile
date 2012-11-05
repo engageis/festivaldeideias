@@ -80,6 +80,7 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'sass', "~>3.2.2"
   gem 'compass-rails'
   gem 'coffee-rails'
   gem 'sass-rails'
