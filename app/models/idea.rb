@@ -44,7 +44,9 @@ class Idea < ActiveRecord::Base
   scope :recent, where(:parent_id => nil).order('created_at DESC')
   scope :popular, select("DISTINCT ON (ideas.id) ideas.*").joins("INNER JOIN ideas b ON b.parent_id = ideas.id").order("id")
 
-  pg_search_scope :match_and_find, against: [:title, :description, :city], associated_against: {user: :name}
+  pg_search_scope :match_and_find, against: [:title, :description, :city],
+                  associated_against: {user: :name},
+                  ignoring: :accents
 
   scope :new_collaborations, ->(user) { where(['parent_id IN (?)', user.ideas.map(&:id)]).order("created_at ASC") }
 
@@ -212,6 +214,10 @@ class Idea < ActiveRecord::Base
   def ip_for_geocoding
     audit = Audit.where(auditable_id: self.id).where("remote_address IS NOT NULL").order(:created_at).first
     audit.remote_address if audit
+  end
+
+  def similar_ideas
+    Idea.without_parent.order("similarity((title || ' ' || description), (SELECT title || ' ' || description FROM ideas WHERE id = #{self.id})) DESC").limit(4)
   end
   
 end
