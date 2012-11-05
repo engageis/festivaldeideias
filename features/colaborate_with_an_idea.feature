@@ -8,7 +8,7 @@ Feature: Colaborate with an idea
     Given there is an idea called "Carona me" that belongs to "Mobilidade Urbana"
     And I'm a logged user  
     And I click "Carona me"
-    And I click "Colabore na ideia"
+    And I click "Colabore com a ideia"
     And I fill the form
     When I submit the form
     Then I should see "Sua colaboração ainda não está visível, o moderador da ideia precisa aceitá-la para que ela seja incorporada."
