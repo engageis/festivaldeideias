@@ -91,12 +91,12 @@ pt-BR:
         by_you: "Esta ideia foi criada e é moderada por você."
         can_edit: "Você pode editá-la quando quiser clicando nos textos e aceitar as colaborações que outras pessoas enviam."
       new:
-        start: "Colabore na ideia "
+        start: "Colabore com a ideia "
         about: "Aqui você pode alterar todos os dados desta ideia, adicionar mais informações, necessidades, próximos passos e referências que podem ser úteis para torná-la real."
         about_2: "Sinta-se à vontade para mexer no que quiser, o moderador da ideia poderá aceitar ou recusar a sua colaboração."
         give_a_description: "Algo a adicionar? Aqui é o corpo da ideia, colabore alterando e/ou adicionando seus pontos:"
         give_a_name: "Sabe de um título melhor? Colabore aqui:"
-        give_a_headline: "Se quiser, colabore no resumo da ideia:"
+        give_a_headline: "Se quiser, colabore com o resumo da ideia:"
         choose_a_category: "Em que tema esta ideia se encaixa?"
       accept:
         no_colaborations: "Não há colaborações para moderar no momento."
