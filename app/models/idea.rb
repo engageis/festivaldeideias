@@ -217,7 +217,7 @@ class Idea < ActiveRecord::Base
   end
 
   def similar_ideas
-    Idea.without_parent.order("similarity((title || ' ' || description), (SELECT title || ' ' || description FROM ideas WHERE id = #{self.id})) DESC").limit(3)
+    Idea.without_parent.where("id <> #{self.id}").order("similarity((title || ' ' || description), (SELECT title || ' ' || description FROM ideas WHERE id = #{self.id})) DESC").limit(3)
   end
   
 end
