@@ -1,6 +1,6 @@
 // MIXINS
 
-@mixin cocreation
+= cocreation
   background:
     color: darken($orange, 10%)
     image: url(asset_path("icons.png", "image"))
@@ -15,49 +15,27 @@
   float: right
 
 
-@mixin btn($color: #333, $align: left, $size: 13px)
-  padding: 8px 10px
-  border: 1px solid $color
-  border: 1px solid rgba(0, 0, 0, 0.2)
+= btn($color: #333, $align: left, $size: 13px)
   float: $align
+  padding: 8px 10px
+  cursor: pointer
   font-size: $size
   font-weight: normal !important
   text-align: center
-  color: white !important
+  color: white
+  background-color: $color
+  border: 1px solid $color
+  border-color: rgba(0, 0, 0, 0.2)
   +border-radius(3px)
-  +transition(opacity 0.2s linear)
-  +box-shadow(0 1px rgba(255, 255, 255, 0.3) inset, 0 1px rgba(255, 255, 255, 0.5))
+  +box-shadow(0 1px rgba(white, 0.3) inset, 0 1px rgba(white, 0.5))
   +text-shadow(0 -1px rgba(0, 0, 0, 0.2))
-  display: block
-  background: 
-    color: $color
-  color: white !important
-  text-decoration: none
-  cursor: pointer
-  +background-image(none)
+
   &:hover
-    color: white !important
-    border: 1px solid rgba(0, 0, 0, 0.2)
-    +box-shadow(0 1px rgba(255, 255, 255, 0.4) inset, 0 1px rgba(255, 255, 255, 0.5))
-    background: 
-      color: lighten($color, 10%)
+    color: auto
+    border-color: rgba(0, 0, 0, 0.2)
+    +box-shadow(0 1px rgba(white, 0.4) inset, 0 1px rgba(white, 0.5), 0 1px 3px rgba(black, 0.4))
 
-@mixin hightlight
-  padding: 15px 20px
-  line-height: 1.3em
-  text-align: center
-  color: darken($yellow, 50%)
-  background: darken($yellow, 10%)
-  float: left
-  +border-radius(50px)
-  +text-shadow(0px 1px 1px $lightyellow)
-  p
-    margin-bottom: 5px
-
-@mixin bucket($padding: 0)
-  padding: $padding
-
-@mixin list_link     
+= list_link     
   border-top: 1px solid #CCC
   font-size: 1.1em
   padding: 10px

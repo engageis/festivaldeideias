@@ -4,42 +4,44 @@ form
     display: block
     padding: 9px  
     border: solid 1px #CCC
-    outline: 0  
+    outline: 0
     font-size: 14px
     width: 97%
-    background: #FFFFFF  
+    background: white
     +box-shadow(rgba(0,0,0, 0.1) 0px 0px 8px)
-    +background-image(linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px))
+    +legacy-background-image(linear-gradient(top, white, #eee 1px, white 25px), white, #eee)
         
   input#redirect_url, input.button
     width: auto !important
     
   input[type="submit"]
-    +btn
-    width: auto
+    +legacy-background-image(linear-gradient(top, #444, #666 1px, #444 25px), #444)
+    color: white
 
   textarea   
     clear: both
-    height: 300px  
-    line-height: 150%  
+    height: 300px
+    line-height: 150%
     &.limited
       height: 75px
     
   input:hover, textarea:hover,  
   input:focus, textarea:focus   
-    border-color: #AAA
-    +box-shadow(rgba(0, 0, 0, 0.15) 0px 0px 8px)
+    border-color: #aaa
+    +box-shadow(0px 0px 8px rgba(0, 0, 0, 0.15))
     
   label   
-    color: #666
-    font-weight: lighter
-    font-family: "Gill Sans", sans-serif
     font-size: 17px
     display: block
     margin-bottom: 5px
     cursor: pointer
     &[for="violence"], &[for="urban_mobility"], &[for="natural_disasters"]
       float: left
+
+  label, .char_counter
+    color: #666
+    font-weight: lighter
+    font-family: "Gill Sans", sans-serif
 
   .categories
     p, input, label
@@ -49,12 +51,7 @@ form
       text-align: center
       padding: 5px
       &:hover
-        background:
-          color: #FFF
-    input
+        background-color: white
 
   .char_counter
-    color: #666
-    font-weight: lighter
     float: right
-    font-family: "Gill Sans", sans-serif

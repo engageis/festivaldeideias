@@ -1,107 +1,53 @@
 @import compass/css3
 
-// Natália: Este é o submenu do "Saiba Mais"
+// Submenu do "Saiba Mais"
 #more_info_links
   position: relative
   a
-    @include border-bottom-radius(0)
+    +border-bottom-radius(0)
   li
     float: none
   .submenu
     z-index: 999
-    @include border-radius(3px)
-    @include box-shadow(0 4px 5px rgba(0, 0, 0, 0.5))
+    +border-radius(3px)
+    +box-shadow(0 4px 5px rgba(0, 0, 0, 0.5))
     display: none
     background: #222
     position: absolute
     top: 20px
     right: 0
     padding: 5px 0
-    .submenu-item
-      text-align: left
-      a
-        padding: 10px
-        display: block
-        white-space: nowrap
-        font-size: 14px
-        color: #CCC
-        background-color: transparent
-        margin: 0
-        line-height: 130%
-        @include box-shadow(none)
-        &:hover
-          color: #FFF
-          @include border-radius(0)
-          background: #444
+  .submenu-item
+    text-align: left
+    a
+      padding: 10px
+      display: block
+      white-space: nowrap
+      font-size: 14px
+      color: #CCC
+      background-color: transparent
+      margin: 0
+      line-height: 130%
+      +box-shadow(none)
+      &:hover
+        color: #FFF
+        +border-radius(0)
+        background: #444
+  
   &:hover
     .submenu
       display: block
     a
       background: #222
       color: #FFF
-      @include box-shadow(0 4px 5px rgba(0, 0, 0, 0.5))
+      +box-shadow(0 4px 5px rgba(0, 0, 0, 0.5))
 
 
 body
   background:
     color: #F1F1F1
     image: url(asset_path("bg.png", "image"))
-  color: #111
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
-  font-size: 13px
-  line-height: 14px
   overflow-x: hidden
-
-h1, h2, h3, h4, h5, h6
-  margin-bottom: 10px
-
-h1
-  font-size: 2.1em
-  line-height: 1.1em
-  margin-bottom: 5px
-h2
-  font-size: 1.9em
-  line-height: 1.6em
-h3
-  font-size: 1.3em
-  line-height: 1.2em
-h4
-  font-size: 1em
-  span
-    float: right
-h5
-  font-size: 1em
-
-strong, b
-  font-weight: bold
-
-em
-  font-style: italic
-
-p
-  font-size: 1.03em
-  line-height: 1.5em
-  margin-bottom: 20px
-
-ul
-  display: block
-  li
-    display: block
-
-
-a, a:link, a:hover, a:visited, a:active
-  text-decoration: none
-  color: $darkorange
-  font-weight: 700
-  font-family: "Helvetica", Arial, sans-serif
-a:hover
-  color: $orange
-
-blockquote
-  font-size: 14px
-  margin: 20px
-  line-height: 20px
-  font-style: italic
 
 article, .page_body
   ul, ol

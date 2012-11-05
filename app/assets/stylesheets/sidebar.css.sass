@@ -67,14 +67,22 @@ aside
         padding: 5px
 
   .youre_boss
-    +hightlight
+    padding: 15px 20px
+    line-height: 1.3em
+    text-align: center
+    color: darken($yellow, 50%)
+    background: darken($yellow, 10%)
+    float: left
     margin: 0 0 40px 0
+    +border-radius(50px)
+    +text-shadow(0px 1px 1px $lightyellow)
+    p
+      margin-bottom: 5px
 
   .community
-    +bucket()
     overflow: hidden
     .none
-      +hightlight
+      @extend .youre_boss
     .x_more
       clear: both
       text-align: right
@@ -95,7 +103,6 @@ aside
       float: right
 
   .share, .share_festival, .be_social
-    +bucket
     width: 198px
     float: left
   .be_social
@@ -128,7 +135,6 @@ aside
     font-weight: 700
 
 .blog_feeds, .events_feed
-  +bucket(0)
   +legacy-pie-clearfix
   h3
     padding: 10px
@@ -158,7 +164,6 @@ aside
   &.vertical
 
   &.horizontal
-    +bucket
     height: 21px
     padding: 11px
     .twitter-like, .fb-like

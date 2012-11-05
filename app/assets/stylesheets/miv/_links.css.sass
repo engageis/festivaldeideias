@@ -11,14 +11,16 @@
   float: right
 
 .click_here
-  background: #EEE
-  color: $darkorange !important
+  background: #efefef
+  color: $darkorange
   margin-left: 5px
   padding: 3px 10px
   +border-radius(50px)
-  font-weight: normal !important
+  +context(".newsboard")
+    font-weight: normal
   &:hover
     background: #FFF
+
 
 // * buttons
 .button
