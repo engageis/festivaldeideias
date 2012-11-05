@@ -129,6 +129,7 @@ aside
 
 .blog_feeds, .events_feed
   +bucket(0)
+  +legacy-pie-clearfix
   h3
     padding: 10px
   li
@@ -139,11 +140,9 @@ aside
       border-top: none
     &:last-child
       +border-bottom-radius(5px)
-    &:hover
-      background: 
-        color: #FFF
     a
       +list_link
+      padding: 10px 0
       border: none
       .author
         color: #999

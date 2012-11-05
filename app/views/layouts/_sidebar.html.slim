@@ -6,6 +6,10 @@
 
 - if path == root_path
   = render "layouts/blog_feeds"
+  .navigation
+    ul.by_statistics
+      li
+        = link_to "Navegue nas ideias", scope_root_path, class: "popular"
   = render "layouts/community"
   = render "layouts/events"
   = render "layouts/share_festival"
