@@ -1,6 +1,6 @@
 Project Status
 ------
-[![Build Status](https://secure.travis-ci.org/softa/festivaldeideias.png?branch=master)](http://travis-ci.org/softa/festivaldeideias)
+[![Build Status](https://secure.travis-ci.org/engageis/festivaldeideias.png?branch=master)](http://travis-ci.org/engageis/festivaldeideias)
 
 
 Site
