@@ -1,8 +1,8 @@
 class AddPgExtensionsToDatabase < ActiveRecord::Migration
   def up
-    execute "CREATE EXTENSION pg_trgm;"
-    execute "CREATE EXTENSION fuzzystrmatch;"
-    execute "CREATE EXTENSION unaccent;"
+    execute "CREATE EXTENSION IF NOT EXISTS pg_trgm;"
+    execute "CREATE EXTENSION IF NOT EXISTS fuzzystrmatch;"
+    execute "CREATE EXTENSION IF NOT EXISTS unaccent;"
   end
 
   def down
