@@ -117,7 +117,7 @@ class IdeasController < ApplicationController
   end
 
   def popular
-    @ideas = @ideas.popular.shuffle
+    @ideas = @ideas.popular
     load_headers
     render :explore
   end
