@@ -1,56 +1,46 @@
 // SIDEBAR FOR HOME AND FILTER PAGE
 
 - path = request.path
+- unless path =~/^\/(ideias).*(\/cocreate)$/ 
+  aside.sidebar
+    = new_idea_button('button') unless path =~ /^\/(ideias)/ or path =~ /(collaboration)/ or path =~ /(sessions)/ or path =~ /(new)/ or path == root_path
 
-= new_idea_button('button') unless path =~ /^\/(ideias)/ or path =~ /(collaboration)/ or path =~ /(sessions)/ or path =~ /(new)/ or path == root_path
+    - if path == root_path
+      = render "layouts/blog_feeds"
+      .navigation
+        ul.by_statistics
+          li
+            = link_to "Navegue nas ideias", scope_root_path, class: "popular"
+      = render "layouts/community"
+      = render "layouts/events"
+      = render "layouts/share_festival"
+      = render "layouts/social"
 
-- if path == root_path
-  = render "layouts/blog_feeds"
-  .navigation
-    ul.by_statistics
-      li
-        = link_to "Navegue nas ideias", scope_root_path, class: "popular"
-  = render "layouts/community"
-  = render "layouts/events"
-  = render "layouts/share_festival"
-  .clear
-  = render "layouts/social"
-  // = render "layouts/blog_feeds"
-  // = render "layouts/twitter_feeds"
+    - elsif path =~ /^\/(navegue-nas-ideias)/
+      = render "layouts/filters"
+      = render "layouts/share_festival"
 
-- elsif path =~ /^\/(navegue-nas-ideias)/
-  = render "layouts/filters"
-  /*= new_idea_button('button')*/
-  = render "layouts/share_festival"
+    - elsif controller.controller_name == "ideas" && %w{new edit create update}.include?(controller.action_name)
+      = render "layouts/format_text"
 
-- elsif path =~/^\/(ideias).*(\/cocreate)$/ 
+    - elsif path =~ /^\/(sessions)/
+      
+    - elsif path =~ /^\/(ideias)/
+      // SIDEBAR FOR IDEA PAGE
+      = render "layouts/idea_value"
+      = render "layouts/collaborators"
+      = render "layouts/share"
+      = render "layouts/events"
 
-- elsif controller.controller_name == "ideas" && %w{new edit create update}.include?(controller.action_name)
-  = render "layouts/format_text"
+    - elsif path =~ /(collaboration)/
+      = render "layouts/idea_value"
+      = render "layouts/collaborators"
+      = render "layouts/share"
+      = render "layouts/events"
 
-- elsif path =~ /^\/(sessions)/
-  
-- elsif path =~ /^\/(ideias)/
-  // SIDEBAR FOR IDEA PAGE
-  = render "layouts/idea_value"
-  = render "layouts/collaborators"
-  = render "layouts/share"
-  = render "layouts/events"
-
-- elsif path =~ /(collaboration)/
-  = render "layouts/idea_value"
-  = render "layouts/collaborators"
-  = render "layouts/share"
-  = render "layouts/events"
-
-- else
-  = render "layouts/internal_menu"
-  /*= new_idea_button('button')*/
-  = render "layouts/events"
-  = render "layouts/social"
-  = render "layouts/share_festival"
-  = render "layouts/community"
-  // = render "layouts/blog_feeds"
-  // = render "layouts/twitter_feeds"
-
-
+    - else
+      = render "layouts/internal_menu"
+      = render "layouts/events"
+      = render "layouts/social"
+      = render "layouts/share_festival"
+      = render "layouts/community"

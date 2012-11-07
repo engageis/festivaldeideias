@@ -12,7 +12,6 @@ h2 Faça login para participar e interagir...
         = link_to content_tag(:span, "entre com sua conta do Facebook"), "/auth/facebook", :class => "button facebook"
       .right
         .fb-login-button[data-show-faces="true" data-width="200" data-max-rows="1"]
-      .clear
 
     ul
       li.left
@@ -23,7 +22,6 @@ h2 Faça login para participar e interagir...
             | É rápido e fácil :)
       li.right
         a.non_fb href='#fbh' Não quero usar o Facebook.
-      .clear
 
       #fbh.hidden
         = form_for NonFacebookUser.new, :method => 'POST' do |f|

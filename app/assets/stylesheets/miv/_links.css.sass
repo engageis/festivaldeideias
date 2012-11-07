@@ -24,13 +24,6 @@
 
 // * buttons
 .button
-  &.cocreation
-    +cocreation
-    &:hover
-      background:
-        color: $orange
-      border:
-        color: darken($orange, 10%)
   &.contribute
     +btn($darkorange, right, 1.2em)
     margin: 10px 0
@@ -138,4 +131,16 @@ a.cancel_button
   &:hover
     background-color: lighten($darkred, 30%)
 
+.button.cocreation
+  background: darken($orange, 10%)  url(asset_path("icons.png", "image")) no-repeat 5px -1336px
+  color: #FFF
+  border: 1px solid darken($orange, 20%)
+  padding: 5px 10px
+  padding-left: 25px
+  font-weight: normal
+  margin-top: 8px
+  float: right
+  &:hover
+    background-color: $orange
+    border-color: darken($orange, 10%)
 

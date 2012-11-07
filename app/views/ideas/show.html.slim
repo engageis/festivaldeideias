@@ -50,7 +50,6 @@ article
 
 - if can?(:edit, @idea)
   = link_to "Editar ideia", edit_category_idea_path(@idea.category, @idea), :class => 'button edit right'
-  .clear
 
 .similar_ideas
   h3.similar_title Ideias similares
@@ -64,8 +63,6 @@ article
     = image_tag "gostou.png"
     p Colabore com referências e mais informações para o desenvolvimento desta ideia. Ajude a elaborar as necessidades e próximos passos!
     = link_to t("idea.colaboration.new.start"), "#colaborate", :class => "button contribute"
-    .clear
-
 
 section#comments
   a name="comment"

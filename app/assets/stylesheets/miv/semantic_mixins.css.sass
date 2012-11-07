@@ -1,21 +1,109 @@
 // This code isn't yet fully tested
 
+// CUSTOM HTML RESETS
+html
+  text-rendering: optimizeLegibility
+  -webkit-font-smoothing: antialiased
+
+= css-techniques
+  body
+    font-size: 1em
+    line-height: 1.4
+
+  hr
+    display: block
+    height: 1px
+    border: 0
+    border-top: 1px solid #ccc
+    margin: 1em 0
+    padding: 0
+  
+  // Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+  img
+    vertical-align: middle
+
+  // Remove default fieldset styles.
+  fieldset
+    border: 0
+    margin: 0
+    padding: 0
+  
+  // Allow only vertical resizing of textareas.
+  textarea
+    resize: vertical
+
 // USEFULL MIXINS
 
+// This mixin is simple yet awesome to use, it'll give semantics to your sass code.
+// Use it like so:
+// ul.nav_menu
+//  padding: 20px
+//  +context(footer) // or +context("footer .menu_section") as a string when it's a class or id or a plural css selector.
+//    background: green
+= context($selector)
+  #{$selector} &
+    @content
+
+// IMAGE MIXINS
 // Before using this mixin you should put the images in a folder called sprites
 // and then import'em like so: @import "sprites/*.png"
-= sprite-replace($name)
+= sprite-replace($name, $boilerplate: false)
   +sprites-sprite($name)
-  +hide-text
+  @if $boilerplate
+    +boilerplate-image-replace
+  @else
+    +hide-text
   display: block
   width: sprites-sprite-width($name)
   height: sprites-sprite-height($name)
 
+= image-replace($img, $boilerplate: false)
+  @if $boilerplate
+    +boilerplate-image-replace
+  @else
+    +hide-text
+  display: block
+  background-repeat: no-repeat
+  height: image-height($img)
+  width: image-width($img)
+  background-image: image-url($img)
+
+// Don't use this technique if you are stylizing an pseudo element (e.g. decorative-content)
+= boilerplate-image-replace
+  background-color: transparent
+  border: 0
+  overflow: hidden
+  +decorative-content(before, false)
+    width: 0
+    height: 100%
+  // IE 6/7 fallback
+  +ie6-hack
+    text-indent: -9999px
+
+= inline-icon($img, $gap:5px, $pos: left, $padding: 0)
+  background-image: image-url($img)
+  background-repeat: no-repeat
+  @if $pos == right
+    background-position: right top
+    text-align: right
+  @else
+    background-position: left top
+    text-align: left
+  line-height: image-height($img)
+  padding: $padding
+  padding-#{$pos}: image-width($img) + $gap
+
+
+// TEXT MIXIS
 // Use it to set the color, background and text-shadow of selected areas of page
-= selection
+= selection($no-shadow: true)
   ::selection
+    @if $no-shadow
+      text-shadow: none
     @content
   ::-moz-selection
+    @if $no-shadow
+      text-shadow: none
     @content
 
 // Set a color for the inputs placeholders. Compass doesn't have it =P
@@ -29,6 +117,20 @@
   &:input-placeholder
     color: $color
 
+@function relative-size($size,$context)
+  @return #{$size/$context}em
+
+= justify($characters-after: 1, $characters-before: 2)
+  hyphens: auto
+  text-align: justify
+  overflow-wrap: hyphenate
+  -webkit-hyphens: auto
+  -webkit-hyphenate-character: "\2010"
+  -webkit-hyphenate-limit-after: $characters-after
+  -webkit-hyphenate-limit-before: $characters-before
+  -moz-hyphens: auto
+
+// POSITIONING MIXINS
 // Call this mixin to place a decorative content around an element, e.g a tape holding a post it.
 // When using the default configurations, you just need to set the dimensions, position and a background
 = decorative-content($position: after, $absolute: true)
@@ -42,6 +144,17 @@
       position: absolute
     @content
 
+
+= absolute-centering($width: 0, $direction: left, $offset: 0)
+  #{$direction}: 50%
+  margin-#{$direction}: - ($width / 2) - $offset
+
+= move($distance, $direction: bottom)
+  position: relative
+  #{$direction}: - $distance
+
+
+// COLOR MIXINS
 // Use this mixin instead of default compass +background-image mixin.
 // Use the first argument is the same as you use in the compass mixin
 // The second and third arguments are colors (probably the colors that you use at the end and start of tha gradient),
@@ -54,16 +167,81 @@
     background-color: $color1
   +background-image($options)
 
-// This mixin is simple yet awesome to use, it'll give semantics to your sass code.
-// Use it like so:
-// ul.nav_menu
-//  padding: 20px
-//  +context(footer) // or +context("footer .menu_section") as a string when it's a class or id or a plural css selector.
-//    background: green
-= context($selector)
-  #{$selector} &
+= vertical-gradient($color1, $color2, $legacy-mix-color: true)
+  @if $legacy-mix-color
+    +legacy-background-image(linear-gradient(top bottom, $color1, $color2), $color1, $color2)
+  @else
+    +legacy-background-image(linear-gradient(top bottom, $color1, $color2), $color1)
+
+= horizontal-gradient($color1, $color2, $legacy-mix-color: true)
+  @if $legacy-mix-color
+    +legacy-background-image(linear-gradient(left right, $color1, $color2), $color1, $color2)
+  @else
+    +legacy-background-image(linear-gradient(left right, $color1, $color2), $color1)
+
+= rgba($property, $color, $alpha: 1)
+  #{$property}: $color
+  #{$property}: rgba($color, $alpha)
+
+// Accessibility
+= for-blind-people($can-focus: true)
+  border: 0
+  clip: rect(0 0 0 0)
+  height: 1px
+  margin: -1px
+  overflow: hidden
+  padding: 0
+  position: absolute
+  width: 1px
+  @if $can-focus
+    &:active, &:focus
+      clip: auto
+      height: auto
+      margin: 0
+      overflow: visible
+      position: static
+      width: auto
+
+// IE Hacks MIXINS
+= ie6
+  +context(".ie6")
     @content
 
+= ie6-hack
+  +context("* html")
+    @content
+
+= ie7
+  +context(".ie7")
+    @content
+
+= ie7-hack
+  +context("*+html")
+    @content
+
+= ie8
+  +context(".ie8")
+    @content
+
+= legacy-inline-block
+  display: inline-block
+  *display: inline
+  +has-layout
+
+= has-layout
+  zoom: 1
+
+
+// ANIMATION
+= keyframes($animation-name)
+  @-webkit-keyframes #{$animation-name}
+    @content
+  @-moz-keyframes #{$animation-name}
+    @content
+  @-o-keyframes #{$animation-name}
+    @content
+  @keyframes #{$animation-name}
+    @content
 
 // MEDIA QUERIES MIXINS
 // For the following mixins you can pass ipad, iphone, desktop, desktop-large, ipad-portrait, ipad-landscape, 
@@ -73,13 +251,21 @@
 $iphone-portrait: 320px
 $iphone-landscape: 480px
 $ipad-portrait: 768px
-$ipad-landscape: 1024px
+$ipad-landscape: 980px
 $desktop: 1224px
 $desktop-large: 1824px
 
 // Hides the element only in the device you choose
 = hide-on($device)
   +respond-to($device)
+    display: none
+
+= hide-below($device)
+  +apply-to(less-than, $device)
+    display: none
+
+= hide-above($device)
+  +apply-to(more-than, $device)
     display: none
 
 // Shows the element only in the device you choose
@@ -97,7 +283,7 @@ $desktop-large: 1824px
 = respond-to($device)
 
   @if $device == retina-display
-    @media only screen and (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 2)
+    @media only screen and (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5)
       @content
 
   @if $device == iphone
@@ -174,7 +360,7 @@ $desktop-large: 1824px
         @content
   @else
     @if $device == retina-display
-      @media only screen and (-webkit-max-device-pixel-ratio: 1.1), (-o-max-device-pixel-ratio: 1), (max-device-pixel-ratio: 1.1)
+      @media only screen and (-webkit-max-device-pixel-ratio: 1.1), (max--moz-device-pixel-ratio: 1.1), (-o-max-device-pixel-ratio: 1.1), (max-device-pixel-ratio: 1.1)
         @content
 
     @if $device == iphone

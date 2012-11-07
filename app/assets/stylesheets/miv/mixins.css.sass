@@ -1,20 +1,5 @@
 // MIXINS
 
-= cocreation
-  background:
-    color: darken($orange, 10%)
-    image: url(asset_path("icons.png", "image"))
-    repeat: no-repeat
-    position: 5px -1336px
-  border: 1px solid darken($orange, 20%)
-  padding: 5px 10px
-  padding-left: 25px
-  font-weight: normal
-  margin-top: 8px
-  color: #FFF
-  float: right
-
-
 = btn($color: #333, $align: left, $size: 13px)
   float: $align
   padding: 8px 10px
@@ -34,6 +19,9 @@
     color: auto
     border-color: rgba(0, 0, 0, 0.2)
     +box-shadow(0 1px rgba(white, 0.4) inset, 0 1px rgba(white, 0.5), 0 1px 3px rgba(black, 0.4))
+
+  &:active
+    +box-shadow(0 1px 4px rgba(black, 0.4) inset)
 
 = list_link     
   border-top: 1px solid #CCC
