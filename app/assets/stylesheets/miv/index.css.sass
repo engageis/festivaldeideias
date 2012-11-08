@@ -603,21 +603,18 @@ footer
     border-top: 1px solid #CCC
     border-bottom: 1px solid #CCC
     padding: 20px 0
+    h5
+      text-transform: uppercase
+      color: #666
     ul
       float: left
       margin-bottom: 60px
       &:last-child
         margin-bottom: 0
       li
-        text-transform: uppercase
-        color: #666
-        margin-right: 43px
+        margin-right: 44px
         &:first-child
           float: none
-
-        &.first
-          clear: left
-          margin-top: 10px
 
   .brought_by
     +grid(3)
@@ -627,6 +624,10 @@ footer
     +grid(12)
   .supporters
     +grid(12)
+
+    li:nth-child(4n+1)
+      margin-right: 0
+
   ul
     li
       float: left
