@@ -8,7 +8,7 @@ header
       meta[name="description" content=desc]
       meta[property="og:title" content=@idea.title]
       meta[property="og:description" content=desc]
-      meta[property="og:url" content=category_idea_url(@idea.category,@idea)]
+      meta[property="og:url" content=@idea.external_url]
 
     // Defining a class for editable fields based on cancan ability
     - ability_class = can?(:edit, @idea) ?  "editable" : "idea_detail"
