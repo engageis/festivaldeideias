@@ -63,11 +63,9 @@ class Idea < ActiveRecord::Base
   }
 
   # Callbacks
-
   after_create :set_facebook_url
-  #after_create :set_tokbox_settings
 
-  attr_accessible :user_id, :parent_id, :title, :headline, :description, :featured, :recommend, :likes, :position, :category_id, :accepted, :minimum_investment, :facebook_url, :tokbox_session, :original_parent_id, :comment_count
+  attr_accessible :user_id, :parent_id, :title, :headline, :description, :featured, :recommend, :likes, :position, :category_id, :accepted, :minimum_investment, :tokbox_session, :original_parent_id, :comment_count
 
   def cocreation_channel
     "cocreation-#{self.id}"
@@ -137,7 +135,7 @@ class Idea < ActiveRecord::Base
   end
 
   def external_url
-    self.facebook_url
+    "http://festivaldeideias.org.br/ideas/#{self.id}"
   end
 
   # This affects links
@@ -178,17 +176,13 @@ class Idea < ActiveRecord::Base
   def update_facebook_likes
     facebook_query_url = 'https://api.facebook.com/method/fql.query?format=json&query=' 
     fql = "SELECT total_count, commentsbox_count FROM link_stat WHERE url='%s'"
-    path = self.facebook_url
+    path = self.external_url
     facebook_data = self.get_facebook_data(facebook_query_url + URI.encode(fql % path))
     total_count = facebook_data.first["total_count"]
     comment_count = facebook_data.first["commentsbox_count"]
     self.update_attribute(:likes, total_count.to_i) if total_count
     self.update_attribute(:comment_count, comment_count.to_i) if comment_count
   end
-
-  # When an idea is created, we set a default url for sharing likes e etc. 
-  # Doing this, we avoid data losses (comments are URL-child, by this I mean:
-  # You change an url, your comments are gone.
 
   def set_facebook_url
     url = category_idea_url(self.category, self, host: "festivaldeideias.org.br")

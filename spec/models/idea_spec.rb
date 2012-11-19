@@ -155,20 +155,12 @@ describe Idea do
     end
   end
 
-  describe "#set_facebook_url" do
-    it "Should generate a correct url for facebook comments and likes" do
+  describe "#external_url" do
+    it "Should return a correct url for facebook comments and likes" do
       @idea = Idea.make! title: "My Title"
-      @idea.facebook_url.should == category_idea_url(@idea.category, @idea, host: "festivaldeideias.org.br")
+      @idea.external_url.should == "http://festivaldeideias.org.br/ideas/#{@idea.id}"
     end
   end
-
-  #describe "#set_tokbox_settings" do
-    #it "Should save a session from tokbox in order to use its video chat features" do
-      #@idea = Idea.make!
-      #@idea.tokbox_session.should_not == nil
-    #end
-  #end
-
 
   describe "#match_and_find" do
     before do
