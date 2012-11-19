@@ -52,7 +52,7 @@ article
   = link_to "Editar ideia", edit_category_idea_path(@idea.category, @idea), :class => 'button edit right'
 
 .similar_ideas
-  h3.similar_title Ideias similares
+  h3.similar_title Gostou desta ideia? Talvez você curta estas também =)
   ol.ideas_buckets
     - @idea.similar_ideas.each do |similar_idea|
       li.bucket class=cycle('odd', 'middle', 'even')
