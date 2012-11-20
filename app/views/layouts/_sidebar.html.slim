@@ -1,7 +1,7 @@
 // SIDEBAR FOR HOME AND FILTER PAGE
 
 - path = request.path
-- unless path =~/^\/(ideias).*(\/cocreate)$/ 
+- unless path =~/^\/(ideias).*(\/cocreate)$/ || path =~/^\/(sessions)/
   aside.sidebar
     = new_idea_button('button') unless path =~ /^\/(ideias)/ or path =~ /(collaboration)/ or path =~ /(sessions)/ or path =~ /(new)/ or path == root_path
 

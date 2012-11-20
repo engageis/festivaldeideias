@@ -20,6 +20,7 @@ body[data-action="New"][data-controller-name="Sessions"]
         background: #F2F2F2
         border: #CCC 4px solid
         padding: 30px 50px
+        +clearfix
       h3
         font-size: 1.9em
         margin-bottom: 0
@@ -60,6 +61,9 @@ body[data-action="New"][data-controller-name="Sessions"]
         padding: 10px
         border: 1px solid #DDD
         position: relative
+        display: none
+        &:target
+          display: block
         input[type="text"]
           width: 330px
           float: left

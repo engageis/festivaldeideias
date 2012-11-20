@@ -4,8 +4,6 @@
       h2 Entre com sua conta do Facebook
       
       .login_box
-        /*a[class="button facebook" href="/auth/facebook"] Login com Facebook*/
-        /*.fb-login-button[data-show-faces="true" data-width="200" data-max-rows="1"]*/
         = form_tag connect_with_facebook_url, :method => 'POST' do
           = hidden_field_tag :redirect_url, request.url
           = submit_tag 'Login com Facebook', :class => 'button facebook'

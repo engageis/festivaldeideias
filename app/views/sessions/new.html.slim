@@ -23,7 +23,7 @@ h2 Faça login para participar e interagir...
       li.right
         a.non_fb href='#fbh' Não quero usar o Facebook.
 
-      #fbh.hidden
+      #fbh
         = form_for NonFacebookUser.new, :method => 'POST' do |f|
           h2 Porque escolhemos o Facebook
           p
