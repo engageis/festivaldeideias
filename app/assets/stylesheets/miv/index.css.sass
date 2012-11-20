@@ -19,14 +19,14 @@ article, .page_body
   +legacy-pie-clearfix
   +grid-container
   margin: 0
-  +box-shadow(0 1px 2px rgba(0, 0, 0, 0.07))
   padding: 0
+  +box-shadow(0 1px 2px rgba(0, 0, 0, 0.07))
   background:
     color: #EAEAEA
     image: url(asset_path("main_bg.png", "image"))
-    repeat: y-repeat
+    repeat: repeat-y
 
-aside
+.sidebar
   +grid(3)
   padding: 0 10px
   margin: 0
@@ -36,8 +36,7 @@ aside
   +grid(9)
   padding: 10px
   margin: 0
-  background:
-    color: #FFF
+  background-color: #FFF
 
 
 // GENERAL CLASSES
@@ -49,16 +48,12 @@ aside
   float: none
   display: block
   clear: both
-  margin: 0 auto
 
 .right
   float: right !important
 
 .left
   float: left
-
-.clear
-  clear: both
 
 .last
   margin-right: 0 !important
@@ -122,7 +117,7 @@ h2.info
   top: 0
   right: 0
 
-aside.search_container
+.search_container
   float: right
   padding: 0
 
@@ -131,10 +126,11 @@ aside.search_container
     float: right
     margin-top: 5px
     background: white url(image_path("search_bg.png")) no-repeat 97% 50%
-    +box-shadow(0 1px 0 rgba(black,.25) inset)
-    +border-radius(4px)
-    +transition(all .3s)
+    +inset-input(4px)
+    +transition(width .3s)
 
+    &:hover, &:focus
+      border: 1px solid #999
     &:focus
       width: 120%
 
@@ -338,9 +334,9 @@ header.main
   margin-bottom: 20px
   position: relative
   left: -10px
-  img
-    float: left
-    width: 280px
+  
+  #logo
+    +image-replace("logotipo.png")
 
 // TOP MENU
 .top_menu
