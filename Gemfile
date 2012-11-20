@@ -86,4 +86,5 @@ group :assets do
   gem 'sass-rails'
   gem 'compass-960-plugin'
   gem 'uglifier'
+  gem 'semantic-mixins'
 end
