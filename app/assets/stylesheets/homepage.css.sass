@@ -4,43 +4,45 @@ body[data-action="Index"][data-controller-name="Ideas"]
 
   #introduction
     margin: 20px 0
-    padding: 10px 0
-    height: 275px
-    background:
-      image: url(asset_path("banner.png", "image"))
-      repeat: no-repeat
-    overflow: hidden
+    padding: 15px 0 5px
+    height: 260px
+    background-image: url(image_path("banner.png"))
+    +legacy-pie-clearfix
     clear: both
+    +border-radius(3px)
 
     .button.start
       position: absolute
-      bottom: 43px
+      bottom: 28px
       left: 395px
       padding: 13px
       font-size: 1.4em
-    section.text_intro,
-    section.video_intro
-      +grid(6)
+    
+  section.text_intro,
+  section.video_intro
+    +grid(6)
 
-    section.text_intro
-      display: none
-    section.video_intro
+  section.text_intro
+    display: none
+
+  section.video_intro
+    float: right
+
+    iframe
+      margin-bottom: -2px
+    .border
       float: right
-      iframe
-        margin-bottom: -2px
-      .border
-        float: right
-        background: #222
-        padding: 7px 5px
+      background: #222
+      padding: 7px 5px
 
-        a.more
-          display: block
-          text-align: right
-          padding: 6px 3px 0
-          color: white
-          font:
-            weight: lighter
-            size: 1.2em
+    a.more
+      display: block
+      text-align: right
+      padding: 6px 3px 0
+      color: white
+      font:
+        weight: 300
+        size: 1.2em
 
   .newsboard
     +clearfix
@@ -48,6 +50,7 @@ body[data-action="Index"][data-controller-name="Ideas"]
     padding: 10px 10px 20px 10px
     margin: 10px 0 20px
     +border-radius(3px)
+    
     img
       float: left
       margin: 35px 10px 0 0
@@ -56,8 +59,8 @@ body[data-action="Index"][data-controller-name="Ideas"]
       font-size: 1.3em
       color: #333
     span
+      padding-left: 18px
       background:
-        image: url(asset_path("arrows.png", "image"))
+        image: url(image_path("arrows.png"))
         repeat: no-repeat
         position: 0 -262px
-      padding-left: 18px
