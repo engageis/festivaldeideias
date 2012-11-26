@@ -24,6 +24,10 @@ var App = window.App = {
                 App.routes = new App.Router();
             }
 
+            $('#keyword').closest('form').on('submit', function(){
+                $('#keyword', this).addClass('searching');
+            });
+
             // Create existing flashes
             App.flashes = [];
             $('.flash').each(function () {

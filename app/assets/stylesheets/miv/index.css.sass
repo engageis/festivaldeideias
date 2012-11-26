@@ -122,8 +122,9 @@ h2.info
 .search_container
   float: right
   padding: 0
+  position: relative
 
-  input
+  input[type=text]
     height: 8px
     float: right
     margin-top: 5px
@@ -135,6 +136,21 @@ h2.info
       border: 1px solid #999
     &:focus
       width: 120%
+
+  input[type=submit]
+    position: absolute
+    right: 0
+    top: 5px
+    width: 30px
+    height: 27px
+    +opacity(0)
+    cursor: pointer
+
+  input.searching
+    border-color: #bbb
+    background:
+      image: url(image_path("loading.gif"))
+      color: #ddd
 
 
 // HEADER
