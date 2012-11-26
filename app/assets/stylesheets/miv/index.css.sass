@@ -77,15 +77,17 @@ article, .page_body
   display: block
   margin: 8px auto
   width: 960px
-  text-align: center
-  border-left: 1px solid white
-  border-right: 1px solid white
-  border-bottom: 1px solid white
-  text-shadow: 0 -1px 1px #333
+  text:
+    align: center
+    shadow: 0 -1px 1px #333
+  border:
+    left: 1px solid white
+    right: 1px solid white
+    bottom: 1px solid white
   +border-radius(8px)
   +box-shadow(1px 1px 5px lighten(#3C9, 40%))
   +clearfix
-  +background-image(linear-gradient(bottom, color-stops(#4CB053 47%, #7FC796 98%)))
+  +vertical-gradient(#4CB053, #7FC796)
 
 .hightlight
   padding: 10px
