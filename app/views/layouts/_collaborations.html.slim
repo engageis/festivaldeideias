@@ -1,18 +1,18 @@
-.collab
-  h3#ideas-to-accept
+- if can?(:manage, @idea)
+  .collab
     - if @idea.colaborations.not_accepted.empty?
-      = t "idea.colaboration.accept.no_colaborations"
-    - elsif @idea.collaborations.not_accepted.size == 1
-      = t "idea.colaboration.accept.one_colaboration"
+      h3#ideas-to-accept
+        = t "idea.colaboration.accept.no_colaborations"
     - else
-      = t "idea.colaboration.accept.some_colaborations", number: @idea.colaborations.not_accepted.count
+      h3#ideas-to-accept
+        = t "idea.colaboration.accept.has_collaborations", count: @idea.colaborations.not_accepted.count
 
-    // Listing all colaborations that aren't accepted
-    / - collab = @idea.colaborations.not_accepted.first
-    ul
-      - @idea.colaborations.not_accepted.each do |collab|
-        li class="#{cycle('odd', 'even')}"
-          a href="#{collaboration_idea_path(@idea, collab: collab)}"
-            = collab.user.name
-            | &nbsp;
-            = t("idea.colaboration.moderate.text", :fields => idea_fields_changed(@idea, collab))
+      // Listing all colaborations that aren't accepted
+      / - collab = @idea.colaborations.not_accepted.first
+      ul
+        - @idea.colaborations.not_accepted.each do |collab|
+          li class="#{cycle('odd', 'even')}"
+            a href="#{collaboration_idea_path(@idea, collab: collab)}"
+              = collab.user.name
+              | &nbsp;
+              = t("idea.colaboration.moderate.text", :fields => idea_fields_changed(@idea, collab))

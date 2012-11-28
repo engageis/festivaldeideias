@@ -13,8 +13,7 @@ header
     // Defining a class for editable fields based on cancan ability
     - ability_class = can?(:edit, @idea) ?  "editable" : "idea_detail"
 
-    - if can?(:manage, @idea)
-      = render "layouts/collaborations"
+    = render "layouts/collaborations"
     // Category badge
     = image_tag @idea.category.badge, :alt => @idea.category.name, :title => @idea.category.name, :class => "badge"
 
