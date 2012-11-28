@@ -1,9 +1,10 @@
 .collab
-  - if @idea.colaborations.not_accepted.empty?
-    h3#ideas-to-accept
+  h3#ideas-to-accept
+    - if @idea.colaborations.not_accepted.empty?
       = t "idea.colaboration.accept.no_colaborations"
-  - else
-    h3#ideas-to-accept
+    - elsif @idea.collaborations.not_accepted.size == 1
+      = t "idea.colaboration.accept.one_colaboration"
+    - else
       = t "idea.colaboration.accept.some_colaborations", number: @idea.colaborations.not_accepted.count
 
     // Listing all colaborations that aren't accepted

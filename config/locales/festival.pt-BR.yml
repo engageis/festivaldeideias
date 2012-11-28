@@ -100,7 +100,8 @@ pt-BR:
         choose_a_category: "Em que tema esta ideia se encaixa?"
       accept:
         no_colaborations: "Não há colaborações para moderar no momento."
-        some_colaborations: "Você possui %{number} colaborações para aceite!"
+        one_colaboration: "Você possui uma colaboração pendente!"
+        some_colaborations: "Você possui %{number} colaborações pendente!"
         what_do_you_want_html: "O que você deseja fazer com a colaboração de <strong>%{user}</strong>?"
       moderate:
         text: "colaborou com %{fields} nesta ideia"
