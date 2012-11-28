@@ -16,3 +16,8 @@
               = collab.user.name
               | &nbsp;
               = t("idea.colaboration.moderate.text", :fields => idea_fields_changed(@idea, collab))
+
+- elsif @current_user_collaborations.count > 0
+  .collab
+    h3#ideas-to-accept
+      = raw t "idea.colaboration.pending", owner_link: link_to(@idea.user.name, @idea.user)

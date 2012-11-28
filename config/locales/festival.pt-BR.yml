@@ -104,6 +104,7 @@ pt-BR:
           one: "Você possui uma colaboração pendente!"
           other: "Você possui %{count} colaborações pendente!"
         what_do_you_want_html: "O que você deseja fazer com a colaboração de <strong>%{user}</strong>?"
+      pending: "Você enviou uma colaboração para esta ideia. Agora é só esperar %{owner_link} aceitá-la :)"
       moderate:
         text: "colaborou com %{fields} nesta ideia"
         view: "ver colaboração"

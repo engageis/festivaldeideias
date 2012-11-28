@@ -15,7 +15,8 @@ class IdeasController < ApplicationController
 
   actions :all, except: [:destroy]
 
-  before_filter :load_collaborators, :only => [ :show, :edit, :collaboration ]
+  before_filter :load_collaborators, :only => [:show, :edit, :collaboration]
+  before_filter :load_current_user_collaborations, :only => [:show]
   before_filter only: [:create] { @idea.user = current_user if current_user }
 
   before_filter :load_resources
@@ -172,6 +173,13 @@ class IdeasController < ApplicationController
     @collaborators = resource.accepted_colaborations.reduce({}){ |memo, c| memo[c.user_id] = c.user; memo }.values || []
   end
 
+  def load_current_user_collaborations
+    if current_user
+      @current_user_collaborations = current_user.ideas.colaborations.not_accepted.where(parent_id: @idea.id)
+    else
+      @current_user_collaborations = []
+    end
+  end
 
   def load_headers(options = {})
     name = options[:name] || action_name
