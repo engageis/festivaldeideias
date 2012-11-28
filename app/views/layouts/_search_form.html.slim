@@ -1,4 +1,4 @@
 aside.search_container
   = form_tag scope_search_path, :method => :get do
-    = text_field_tag :keyword
+    = text_field_tag :keyword, nil, class: "searching"
     = submit_tag "Buscar"
