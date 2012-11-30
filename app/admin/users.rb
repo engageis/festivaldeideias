@@ -5,7 +5,7 @@ ActiveAdmin.register User do
   index do
     column :name
     column :email
-    # column :telephone
+    column :telephone
     column :city
     column :state
     default_actions
@@ -15,7 +15,7 @@ ActiveAdmin.register User do
     f.inputs do
       f.input :name, as: :string
       f.input :email, as: :string
-      # f.input :telephone, as: :string
+      f.input :telephone, as: :string
       f.input :city, as: :string
       f.input :state, as: :string
     end
@@ -26,7 +26,7 @@ ActiveAdmin.register User do
     attributes_table do
       row :name
       row :email
-      # row :telephone
+      row :telephone
       row :city
       row :state
       row :email_notifications do |user|
