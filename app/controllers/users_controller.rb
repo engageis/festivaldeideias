@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   load_and_authorize_resource
 
   inherit_resources
-  actions :show, :update
+  actions :show, :update, :edit
 
   respond_to :json, :html
   

@@ -17,6 +17,9 @@ header
         label for="email_notifications" Desejo receber um email para cada notificação do Festival de Ideias
     = link_to "Ir para o perfil no Facebook", @user.profile, :target => '_blank'
 article
+  - if can?(:edit, @user)
+    = link_to "Editar perfil", edit_user_path(@user), :class => 'button edit right'
+
   h2
     - if @user == current_user
       | Ideias criadas por mim
