@@ -1,0 +1,21 @@
+= content_for :title do
+  = t('.title', name: @user.name)
+
+header
+  .avatar= link_to image_tag(@user.avatar), user_path(@user)
+  .info
+    h1
+      = @user.name
+article
+  = form_for(@user) do |f|
+
+    p
+      = f.label :email, t('.edit_email')
+      = f.text_field :email
+
+    p
+      = f.label :telephone, t('.edit_telephone')
+      = f.text_field :telephone
+
+    p.actions.right
+      = f.submit t('.update')

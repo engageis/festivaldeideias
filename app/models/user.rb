@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :ideas
   has_many :collaborations, class_name: "Idea", conditions: "accepted AND parent_id IS NOT NULL"
   validates_presence_of :name, :email
-  attr_accessible :name, :email, :email_notifications
+  attr_accessible :name, :email, :email_notifications, :telephone
 
   before_create :updates_notifications_read_at
 

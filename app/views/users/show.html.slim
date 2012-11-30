@@ -12,6 +12,8 @@ header
 
     - if can? :manage, @user
       h3= @user.email
+      - if @user.telephone.present?
+        h3= "Telefone: #{@user.telephone}"
       .email_notifications
         input#email_notifications type="checkbox" data-json=@user.to_json data-url=user_path(@user) checked=@user.email_notifications
         label for="email_notifications" Desejo receber um email para cada notificação do Festival de Ideias

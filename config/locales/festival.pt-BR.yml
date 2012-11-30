@@ -56,6 +56,12 @@ pt-BR:
     colaboration_refused_html: "<a href='#' data-href='%{link}' class='collab-ramify %{class}'>A sua colaboração para a ideia <strong>%{parent}</strong> foi recusada. <strong>Clique aqui se deseja criar uma nova ideia a partir desta colaboração</strong></a>"
     updated_idea_html: "<a href='%{link}' class='%{class}'>A ideia <strong>%{parent}</strong> que você colaborou foi atualizada.</a>"
     view_more: "Ver todas as notificações"
+  users:
+    edit:
+      title: "Editar perfil: %{name}"
+      edit_email: "Editar email"
+      edit_telephone: "Editar telefone"
+      update: "Atualizar"
   # Main texts for idea (create, edit and show actions are here)
   idea:
     new:
