@@ -1,5 +1,5 @@
 # coding: utf-8
 ActiveAdmin.register NonFacebookUser do
-  menu :label => "Não-usuários do Facebook"
+  menu parent: "Usuários", priority: 2
 end
 
