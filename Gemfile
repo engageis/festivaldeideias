@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 # Framework
-gem 'rails', '>= 3.2.6'
+gem 'rails', '3.2.8'
 
 
 # Database
@@ -28,7 +28,6 @@ gem 'pg_search'
 # Tools
 gem 'simple_form'
 gem 'kaminari'
-gem 'carrierwave'
 gem 'fog'
 gem 'auto_html'
 gem 'friendly_id'
@@ -50,6 +49,12 @@ gem 'jquery-rails'
 gem 'slim'
 gem 'rails-backbone'
 gem 'rack-pjax'
+
+# Upload de imagem
+gem 'carrierwave'
+gem 'carrierwave-postgresql'
+gem 'postgresql_lo_streamer', git: 'git://github.com/diogob/postgresql_lo_streamer.git'
+gem 'rmagick'
 
 # Heroku
 gem 'thin'

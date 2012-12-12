@@ -7,6 +7,9 @@ ActiveAdmin.register IdeaCategory do
     column :badge do |s|
       image_tag s.badge, :size => "31x31"
     end
+    column :pin do |s|
+      image_tag s.pin
+    end
     column :name
     column "Criado em" do |s|
       s.created_at.strftime('%d/%m/%Y')
@@ -22,8 +25,9 @@ ActiveAdmin.register IdeaCategory do
       f.input :name, :as => :string
       f.input :description, :as => :string
     end
-    f.inputs "Badge" do
+    f.inputs "Imagens" do
       f.input :badge, :as => :file
+      f.input :pin, :as => :file
     end
     f.buttons
   end

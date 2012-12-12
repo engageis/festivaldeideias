@@ -63,6 +63,10 @@ FestivalDeIdeias::Application.routes.draw do
 
   resources :timeline, :only => [:index]
 
+  # Retrieve images from database
+  mount PostgresqlLoStreamer::Engine => "/ideacategory_badge"
+  mount PostgresqlLoStreamer::Engine => "/ideacategory_pin"
+
   # Pages (have to be in the EOF)
   get '/:id',                             :to => 'pages#show',      :as => :page
 
