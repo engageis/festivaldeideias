@@ -145,7 +145,7 @@ App.Ideas.Pin = Backbone.View.extend
     latitude = @model.get 'latitude'
     longitude = @model.get 'longitude'
     country = @model.get 'country'
-    markerImg = @model.get("category").badge.replace /\/badges\//g, "\/pins\/"
+    markerImg = @model.get("category").pin
 
     if longitude and latitude and country is "Brazil"
       

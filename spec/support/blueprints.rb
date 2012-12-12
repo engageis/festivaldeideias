@@ -1,5 +1,7 @@
 require 'machinist/active_record'
 
+images_path = Rails.root + 'spec/support/images'
+
 AdminUser.blueprint do
   email { "email#{sn}@email.com" }
   password { "password" }
@@ -20,7 +22,8 @@ end
 IdeaCategory.blueprint do
   name        { "Name #{sn}" }
   description { "Description #{sn}" }
-  badge       { "test" }
+  badge { File.open(File.join(images_path, "apps.png")) }
+  pin { File.open(File.join(images_path, "pins/apps.png")) }
 end
 
 Idea.blueprint do
