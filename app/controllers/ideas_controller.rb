@@ -49,6 +49,7 @@ class IdeasController < ApplicationController
     @recent_commented_ideas = []
     feed = Blog.fetch_last_posts
     @entries = feed.entries.first(3)
+    @ideas = Idea.recent.limit(9)
     respond_to do |format|
       format.html
       format.json { render json: @ideas}
