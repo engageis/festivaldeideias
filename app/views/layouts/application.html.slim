@@ -38,7 +38,7 @@ html
         nav.top_menu
           ul.actions
             - path = request.path
-            li class=(path.include?(map_ideas_path) ? 'selected' : '')
+            /li class=(path.include?(map_ideas_path) ? 'selected' : '')
               = link_to map_ideas_path do
                 | Mapa de ideias
             li class=(path.include?(timeline_index_path) ? 'selected' : '')

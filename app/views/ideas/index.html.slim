@@ -1,11 +1,14 @@
-h1.title Ideias recentes
-h2.info
-  | Quer ver mais ideias? 
-  = link_to t("idea.filters.title"), scope_root_path, class: "button start"
+section.recent_ideas
+  h1.title Ideias recentes
+  h2.info
+    | Quer ver mais ideias? 
+    = link_to t("idea.filters.title"), scope_root_path
 
-ol.ideas_buckets
-  - @ideas.each do |idea|
-    li.bucket class=cycle('odd', 'middle', 'even')
-      = render idea
+  ol.ideas_buckets
+    - @ideas.each do |idea|
+      li.bucket class=cycle('odd', 'middle', 'even')
+        = render idea
+
+  = link_to "+ " + t("idea.filters.title"), scope_root_path, class: "right more"
 
 = render "timeline/audits"
