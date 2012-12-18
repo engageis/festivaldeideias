@@ -1,0 +1,26 @@
+#collaborations
+  .collaboration-field
+    height: auto
+
+.topic
+  border: 2px solid lighten(gray, 20%)
+  padding: 20px
+  margin: 10px
+  position: relative
+
+  .answer
+    border: none
+    border-left: 6px solid lighten(gray, 40%)
+
+  .delete-comment-bt
+    position: absolute
+    top: 10px
+    right: 10px
+
+.collaboration-form
+  +clearfix
+
+  input
+    border-radius: 3px
+    font-size: 120%
+    @extend .button.start

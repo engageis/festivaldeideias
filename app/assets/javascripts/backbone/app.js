@@ -9,6 +9,7 @@ var App = window.App = {
     // Initializing the Object/Controller
     Ideas: {},
     Users: {},
+    Collaborations: {},
     Pages: {},
     Models: {
         Idea: {},

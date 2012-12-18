@@ -30,7 +30,9 @@ FestivalDeIdeias::Application.routes.draw do
     resources :messages, only: [:new, :create, :index]
   end
   resources :non_facebook_users, :only => [:create]
-
+  
+  resources :collaborations, :only => [:create, :show, :destroy]
+  
   scope '/navegue-nas-ideias' do
     get '/'         => redirect('/navegue-nas-ideias/popular'), :as => :scope_root
     get 'popular'   => "ideas#popular",                         :as => :scope_popular
