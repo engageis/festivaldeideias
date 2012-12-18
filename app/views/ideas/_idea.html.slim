@@ -3,7 +3,7 @@ header
     = link_to idea.title, category_idea_path(idea.category, idea), :class => "idea_title"
   // Idea user
   span.idea_user
-    = "Moderada por #{idea.user.name}"
+    = "Iniciada por #{idea.user.name}"
 .description
   p.idea_headline
     // Is Headline present? Ok, show it. If not, show me the description.

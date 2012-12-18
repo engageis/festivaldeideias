@@ -12,10 +12,3 @@
       ul
         - @idea.collaborators.map(&:user).each do |user|
           li= link_to image_tag(user.avatar, :title => user.name), user_path(user)
-
-  - if can?(:edit, @idea)
-    h3= t('idea.collaboration.moderation.title')
-    h4= t('idea.collaboration.moderation.by_you')
-    .youre_boss
-      p= t('idea.collaboration.moderation.can_edit')
-      p= link_to t("idea.collaboration.know_more"), page_path("co-criacao"), :class => "view_more"

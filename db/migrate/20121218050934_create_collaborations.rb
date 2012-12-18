@@ -5,7 +5,6 @@ class CreateCollaborations < ActiveRecord::Migration
       t.references :user
       t.integer :parent_id
       t.text :description
-      t.boolean :accepted, default: false
 
       t.timestamps
     end
