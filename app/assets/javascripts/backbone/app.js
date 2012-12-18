@@ -99,7 +99,7 @@ var App = window.App = {
         Notifications: Backbone.View.extend({
 
             events: {
-                'click li.notifications a.globe' : 'showNotes',
+                'click li.notifications a.globe' : 'showNotes'
             },
 
             initialize: function(){
