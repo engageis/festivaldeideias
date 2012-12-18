@@ -27,10 +27,13 @@ describe User do
       # The user read its notifications yesterday
       @user = User.make!(notifications_read_at: Time.now - 1.day)
 
-      # TODO 
       # Covers the case: "When the idea receives a new collaboration."
-      # Covers the case: "When collaboration status changes"
-
+      @idea = Idea.make!(user: @user)
+      Collaboration.make!(idea: @idea)
+      # Covers the case: "When an idea the user collaborated is edited"
+      @idea = Idea.make!
+      Collaboration.make!(idea: @idea, user: @user)
+      @idea.update_attribute :title, "New title"
     end
     subject { @user.new_notifications_count }
     it { should == 3 }

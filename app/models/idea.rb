@@ -27,6 +27,7 @@ class Idea < ActiveRecord::Base
   belongs_to :category, class_name: "IdeaCategory", foreign_key: :category_id
   has_many :messages
   has_many :collaborators, dependent: :destroy
+  has_many :collaborations, dependent: :destroy
 
   validates_presence_of :title, :description, :category_id, :user_id, :minimum_investment
 

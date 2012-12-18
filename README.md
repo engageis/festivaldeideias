@@ -19,7 +19,7 @@ informações entre empreendedores, investidores e o público em geral.
 FdI, o coração
 --------------
 
-O Festival de Ideias 2012 foi reformulado para atender a demanda crescente de ideias
+O Festival de Ideias 2013 foi reformulado para atender a demanda crescente de ideias
 e para enfrentar o desafio de ser uma plataforma que evoluísse de forma orgânica e constante.
 O Festival foi construído utilizando o Framework [Ruby on Rails](http://rubyonrails.com.br/) na 
 versão 3.2.3 (a mais recente) e com cobertura de testes automatizados utilizando [Rspec](http://rspec.info/) e [Cucumber](http://cukes.info/).
@@ -75,7 +75,7 @@ of information between entrepreneurs, investors and the public in general.
 Fdi, the core
 -------------
 
-The Ideas Festival 2012 has been redesigned to meet the growing demand for ideas and to face the challenge
+The Ideas Festival 2013 has been redesigned to meet the growing demand for ideas and to face the challenge
 of being a platform that evolves organically and constantly. The Festival was built using the Ruby Framework [Ruby on Rails] (http://rubyonrails.org/)
 in version 3.2.3 (the latest) and covered with automated tests using [RSpec] (http://rspec.info/) and [Cucumber] (http://cukes.info/). 
 All of the Festival's code is licensed by [Copyleft Share-Alike](http://en.wikipedia.org/wiki/Copyleft) license, which means you are free to do whatever you want with it; 

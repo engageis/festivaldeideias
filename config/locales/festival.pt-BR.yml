@@ -2,11 +2,7 @@ pt-BR:
   audit:
     create: "<a href='%{user_path}' class='user'>%{user}</a> iniciou uma nova ideia chamada <a href='%{idea_path}' class='idea'>%{idea}</a>."
     edit: "<a href='%{user_path}' class='user'>%{user}</a> editou a ideia <a href='%{idea_path}' class='idea'>%{idea}</a>."
-    collaboration:
-      sent: "<a href='%{user_path}' class='user'>%{user}</a> enviou uma colaboração para a ideia <a href='%{idea_path}' class='idea'>%{idea}</a>."
-      accepted: "<a href='%{user_path}' class='user'>%{user}</a> aceitou a colaboração de <a href='%{collaborator_path}' class='user'>%{collaborator}</a> na ideia <a href='%{idea_path}' class='idea'>%{idea}</a>."
-      rejected: "<a href='%{user_path}' class='user'>%{user}</a> recusou a colaboração de <a href='%{collaborator_path}' class='user'>%{collaborator}</a> na ideia <a href='%{idea_path}' class='idea'>%{idea}</a>."
-      ramified: "<a href='%{collaborator_path}' class='user'>%{collaborator}</a> ramificou a idea <a href='%{idea_path}' class='idea'>%{idea}</a> de <a href='%{user_path}' class='user'>%{user}</a>."
+    collaboration_created: "<a href='%{user_path}' class='user'>%{user}</a> enviou uma colaboração para a ideia <a href='%{idea_path}' class='idea'>%{idea}</a>."
     likes: "A ideia <a href='%{idea_path}' class='idea'>%{idea}</a> já foi curtida por %{likes}."
     comments: "A ideia <a href='%{idea_path}' class='idea'>%{idea}</a> recebeu um comentário e agora possui %{comments}."
     notification:
@@ -18,25 +14,15 @@ pt-BR:
       comments:
         creator: "A sua ideia <a href='%{idea_path}' class='idea'>%{idea}</a> recebeu um comentário e agora possui %{comments}."
         collaborators: "A ideia <a href='%{idea_path}' class='idea'>%{idea}</a>, com a qual você colaborou, recebeu um comentário e agora possui %{comments}."
-      collaboration:
-        sent:
-          creator: "<a href='%{user_path}' class='user'>%{user}</a> enviou uma colaboração para a sua ideia <a href='%{idea_path}' class='idea'>%{idea}</a>."
-          collaborators: "<a href='%{user_path}' class='user'>%{user}</a> enviou uma colaboração para a ideia <a href='%{idea_path}' class='idea'>%{idea}</a>, com a qual você colaborou."
-        accepted:
-          collaborators: "<a href='%{user_path}' class='user'>%{user}</a> aceitou a colaboração de <a href='%{collaborator_path}' class='user'>%{collaborator}</a> na ideia <a href='%{idea_path}' class='idea'>%{idea}</a>, com a qual você colaborou."
-          accepted_collaborator: "<a href='%{user_path}' class='user'>%{user}</a> aceitou a sua colaboração na ideia <a href='%{idea_path}' class='idea'>%{idea}</a>."
-        rejected:
-          collaborators: "<a href='%{user_path}' class='user'>%{user}</a> recusou a colaboração de <a href='%{collaborator_path}' class='user'>%{collaborator}</a> na ideia <a href='%{idea_path}' class='idea'>%{idea}</a>, com a qual você colaborou."
-          rejected_collaborator: "<a href='%{user_path}' class='user'>%{user}</a> recusou a sua colaboração na ideia <a href='%{idea_path}' class='idea'>%{idea}</a>. <a href='#' data-href='%{ramify_path}' class='collab-ramify'>Clique aqui</a> se deseja criar uma nova ideia a partir desta colaboração."
-        ramified:
-          creator: "<a href='%{collaborator_path}' class='user'>%{collaborator}</a> ramificou a sua idea <a href='%{idea_path}' class='idea'>%{idea}</a>."
-          collaborators: "<a href='%{collaborator_path}' class='user'>%{collaborator}</a> ramificou a idea <a href='%{idea_path}' class='idea'>%{idea}</a> de <a href='%{user_path}' class='user'>%{user}</a>, com a qual você colaborou."
+      collaboration_created:
+        creator: "<a href='%{user_path}' class='user'>%{user}</a> enviou uma colaboração para a sua ideia <a href='%{idea_path}' class='idea'>%{idea}</a>."
+        collaborators: "<a href='%{user_path}' class='user'>%{user}</a> enviou uma colaboração para a ideia <a href='%{idea_path}' class='idea'>%{idea}</a>, com a qual você colaborou."
   site:
-    title: 'Festival de Ideias 2012 - Uma plataforma para unir ideias'
+    title: 'Festival de Ideias 2013 - Uma plataforma para unir ideias'
     description: 'O Festival de Ideias é uma rede de colaboração e troca de informações entre empreendedores, investidores e o público em geral.'
     url: "http://festivaldeideias.org.br"
     keywords: 'colaboracao, festival, ideias, empreendedores, inovacao'
-    fb_title: 'Festival de Ideias 2012'
+    fb_title: 'Festival de Ideias 2013'
     fb_description: 'Formulado para fomentar soluções criativas frente aos problemas atuais da sociedade e para promover a inovação e o empreendedorismo, o FdI é uma rede de colaboração e troca de informações entre empreendedores, investidores e o público em geral.'
     fb_image: "http://i.imgur.com/jrx4k.png"
   login:

@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :services
   has_many :ideas
   has_many :collaborators
-  has_many :collaborated_ideas, through: :collaborators
+  has_many :collaborated_ideas, through: :collaborators, source: :idea
   validates_presence_of :name, :email
   attr_accessible :name, :email, :email_notifications, :telephone
 

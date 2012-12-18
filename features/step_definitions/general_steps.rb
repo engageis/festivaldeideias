@@ -31,27 +31,21 @@ end
 
 Given /^"([^"]*)" collaborated on the idea "([^"]*)"$/ do |arg1, arg2|
   @original = Idea.find_by_title(arg2)
-  Idea.make!(parent: @original, category: @original.category, user: User.find_by_name(arg1), accepted: true)
+  Collaboration.make!(idea: @original, user: User.find_by_name(arg1), description: "Foo bar")
 end
 
 Given /^"([^"]*)" collaborated (\d+) times on the idea "([^"]*)"$/ do |user_name, number, idea_title|
   @original = Idea.find_by_title(idea_title)
   @user = User.find_by_name(user_name)
   number.to_i.times do
-    Idea.make!(parent: @original, category: @original.category, user: @user, accepted: true)
+    Collaboration.make!(idea: @original, user: @user, description: "Foo bar")
   end
-end
-
-Given /^"([^"]*)" ramified the idea "([^"]*)"$/ do |arg1, arg2|
-  @original = Idea.find_by_title(arg2)
-  @idea = Idea.make!(parent: @original, title: @original.title, category: @original.category, user: User.find_by_name(arg1), accepted: nil)
-  Idea.ramify!(@idea)
 end
 
 Given /^I collaborated on the idea "([^"]*)"$/ do |arg1|
   @original = Idea.find_by_title(arg1)
   # TODO: find a better way to get the current_user. Didn't get how to do this
-  Idea.make!(parent: @original, category: @original.category, user: User.first, accepted: true)
+  Collaboration.make!(idea: @original, user: User.first, description: "Foo bar")
 end
 
 Given /^I created an idea$/ do
@@ -112,28 +106,9 @@ Then /^I should not see "([^"]*)"$/ do |arg1|
   page.should have_no_content arg1 
 end
 
-When /^I fill the form$/ do
-  within ".new_idea" do
-    fill_in "Sabe de um título melhor? Colabore aqui:", with: "My collab"
-    fill_in "Algo a adicionar? Aqui é o corpo da ideia, colabore alterando e/ou adicionando seus pontos:", with: "My collab desc"
-    fill_in "idea_minimum_investment", with: "500000"
-  end
-end
-
 When /^I submit the form$/ do
   click_button "Enviar colaboração!"
   sleep(1)
-end
-
-Given /^I made a collaboration called "([^"]*)" in the idea "([^"]*)" and it was ([^"]*)$/ do |arg1, arg2, arg3|
-  flag = nil
-  if arg3 == "accepted" 
-    flag = true
-  elsif arg3 == "rejected"
-    flag = false
-  end
-  @original = Idea.find_by_title(arg2)
-  @my_collaboration = Idea.make!(title: arg1, parent: @original, category: @original.category, user: User.find_by_name("Luiz Fonseca"), accepted: flag)
 end
 
 When /^I click in the notifications bar$/ do

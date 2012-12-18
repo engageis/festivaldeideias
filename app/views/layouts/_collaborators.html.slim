@@ -10,7 +10,7 @@
         li.none= current_user == @idea.user ? t('idea.collaboration.no_collaborators_yet') : t('idea.collaboration.zero_collaborators')
     - else
       ul
-        - @idea.collaborators.each do |user|
+        - @idea.collaborators.map(&:user).each do |user|
           li= link_to image_tag(user.avatar, :title => user.name), user_path(user)
 
   - if can?(:edit, @idea)

@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-describe Collaborator do
+describe Collaboration do
 
   describe "Validations/Associations" do
-    subject { Collaborator.make! }
     it { should belong_to :idea }
     it { should belong_to :user }
+    it { should belong_to :parent }
     it { should validate_presence_of :idea_id }
     it { should validate_presence_of :user_id }
-    it { should validate_uniqueness_of(:user_id).scoped_to(:idea_id) }
+    it { should validate_presence_of :description }
   end
 
 end

@@ -12,5 +12,5 @@ Feature: View the timeline
     Then I should see the title as "Atividade recente"
     And I should see "Paul McCartney iniciou uma nova ideia chamada Eleanor Rigby"
     And I should see "John Lennon iniciou uma nova ideia chamada A Day in the Life"
-    And I should see "John Lennon aceitou a colaboração de Paul McCartney na ideia A Day in the Life"
+    And I should see "Paul McCartney enviou uma colaboração para a ideia A Day in the Life"
     

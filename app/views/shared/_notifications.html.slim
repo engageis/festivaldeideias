@@ -9,8 +9,6 @@
   / Do not display repeated audits
   - last_audit = (index > 0 ? @audits[index - 1] : nil)
   - next if last_audit and last_audit.text == audit.text
-  / Do not display edit audits that come imediately before a collaboration is accepted. That's because we always generate one edit every time a collaboration is accepted
-  - next if last_audit and last_audit.parent == audit.idea and last_audit.timeline_type == "collaboration_accepted" and audit.timeline_type == "edited_by_creator"
   - if audit.timeline_type == "likes_updated"
     / Do not display likes audits on ideas that have been recently displayed
     - next if @recent_liked_ideas.include?(audit.idea)

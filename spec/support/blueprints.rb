@@ -64,3 +64,14 @@ Audit.blueprint do
   user { User.make! }
   idea { Idea.make! }
 end
+
+Collaboration.blueprint do
+  user { User.make! }
+  idea { Idea.make! }
+  description { "Foo bar" }
+end
+
+Collaborator.blueprint do
+  user { User.make! }
+  idea { Idea.make! }
+end

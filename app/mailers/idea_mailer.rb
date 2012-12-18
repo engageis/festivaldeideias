@@ -1,6 +1,6 @@
 # coding: utf-8
 class IdeaMailer < ActionMailer::Base
-  default from: "Festival de Ideias 2012 <fdi@festivaldeideias.org.br>"
+  default from: "Festival de Ideias 2013 <fdi@festivaldeideias.org.br>"
 
   def notification_email(audit, user)
     @audit = audit

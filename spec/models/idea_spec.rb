@@ -11,6 +11,7 @@ describe Idea do
     it { should belong_to :user }
     it { should belong_to :category }
     it { should have_many(:collaborators).dependent(:destroy) }
+    it { should have_many(:collaborations).dependent(:destroy) }
 
     describe "#as_json" do
       it "Should return a given json output" do

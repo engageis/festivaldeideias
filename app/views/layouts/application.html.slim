@@ -2,7 +2,7 @@ doctype 5
 html
   head
     - @title = yield(:title)
-    title == "#{(@title.empty? ? 'Uma plataforma para unir ideias' : @title)} · Festival de Ideias 2012"
+    title == "#{(@title.empty? ? 'Uma plataforma para unir ideias' : @title)} · Festival de Ideias 2013"
     = render :partial => "layouts/meta_tags_defaults"
     = favicon_link_tag "favicon.gif", :type => "image/gif"
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Droid+Serif|Gloria+Hallelujah", :application
@@ -34,7 +34,7 @@ html
           = render :partial => "layouts/search_form"
         .logo
           h1
-            = link_to "Festival de Ideias 2012", root_url, id: "logo"
+            = link_to "Festival de Ideias 2013", root_url, id: "logo"
         nav.top_menu
           ul.actions
             - path = request.path

@@ -7,8 +7,8 @@
 
   <%
       url = @idea.present? ? @idea.external_url : (options[:url] || request.url)
-      # <nome da ideia> - Festival de Ideias 2012 <link da ideia> #festideias
-      twitter_text = @idea.respond_to?(:title) ? sprintf("%s - Festival de Ideais 2012", @idea.title) : "Festival de Ideias 2012"
+      # <nome da ideia> - Festival de Ideias 2013 <link da ideia> #festideias
+      twitter_text = @idea.respond_to?(:title) ? sprintf("%s - Festival de Ideias 2013", @idea.title) : "Festival de Ideias 2013"
   %>
 
   <!-- Twitter -->

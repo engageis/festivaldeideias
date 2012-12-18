@@ -26,23 +26,8 @@ class Audit < ActiveRecord::Base
 
   def notification_text(user_to_notify)
     return unless self.timeline_type and self.idea and self.notification_texts
-    if self.timeline_type == "collaboration_sent"
-      if self.idea.user == user_to_notify
-        nil
-      # elsif (self.idea.parent and self.idea.parent.user == user_to_notify) or (self.idea.original_parent and self.idea.original_parent.user == user_to_notify)
-      #   self.notification_texts[:creator]
-      else
-        self.notification_texts[:collaborators]
-      end
-    elsif self.timeline_type == "collaboration_accepted" or self.timeline_type == "collaboration_rejected"
-      # if (self.idea.parent and self.idea.parent.user == user_to_notify) or (self.idea.original_parent and self.idea.original_parent.user == user_to_notify)
-      #   nil
-      # elsif self.idea.user == user_to_notify
-      #   self.notification_texts[(self.timeline_type == "collaboration_accepted" ? "accepted_collaborator" : "rejected_collaborator").to_sym]
-      # else
-      #   self.notification_texts[:collaborators]
-      # end
-    elsif self.idea.user == user_to_notify
+    return if self.timeline_type == "collaboration_created" and self.actual_user == user_to_notify
+    if self.idea.user == user_to_notify
       self.notification_texts[:creator]
     else
       self.notification_texts[:collaborators]
@@ -60,14 +45,8 @@ class Audit < ActiveRecord::Base
       "Tem gente curtindo a ideia #{self.idea.title}"
     when "comments_updated"
       "Novos comentários na ideia #{self.idea.title}"
-    when "collaboration_sent"
-      "Colaboração enviada para a ideia #{self.idea.parent.title}"
-    when "collaboration_accepted"
-      "Colaboração aceita na ideia #{self.idea.parent.title}"
-    when "collaboration_rejected"
-      "Colaboração recusada na ideia #{self.idea.parent.title}"
-    when "idea_ramified"
-      "A ideia #{self.idea.parent.title} foi ramificada"
+    when "collaboration_created"
+      "Colaboração enviada para a ideia #{self.idea.title}"
     end
   end
 
@@ -76,7 +55,6 @@ class Audit < ActiveRecord::Base
   def set_timeline_and_notifications_data!
     self.timeline_type = generated_timeline_type
     self.actual_user_id = generated_actual_user_id
-    self.parent_id = generated_parent_id
     self.text, self.notification_texts = generated_texts
     self.save
   end
@@ -87,31 +65,15 @@ class Audit < ActiveRecord::Base
     return "edited_by_creator" if edited_by_creator?
     return "likes_updated" if likes_updated?
     return "comments_updated" if comments_updated?
-    return "collaboration_sent" if collaboration_sent?
-    return "collaboration_accepted" if collaboration_accepted?
+    return "collaboration_created" if collaboration_created?
     "ignore"
   end
   
   def generated_actual_user_id
     return unless self.idea
     return self.idea.user_id if self.idea and ["likes_updated", "comments_updated"].include?(self.timeline_type)
-    # return self.idea.parent.user_id if self.idea and self.idea.parent and ["collaboration_accepted", "collaboration_rejected"].include?(self.timeline_type)
+    return self.idea.collaborations.last.user_id if self.timeline_type == "collaboration_created"
     self.user_id or self.idea.user_id
-  end
-  
-  def generated_parent_id
-    return unless self.idea
-    generated_parent_id = nil
-    if self.audited_changes
-      begin
-        generated_parent_id = self.audited_changes["parent_id"].last
-      rescue
-        generated_parent_id = self.audited_changes["parent_id"]
-      end
-    end
-    # generated_parent_id = self.idea.parent_id unless generated_parent_id.present?
-    # generated_parent_id = self.idea.original_parent_id unless generated_parent_id.present?
-    generated_parent_id
   end
   
   def generated_texts
@@ -119,13 +81,13 @@ class Audit < ActiveRecord::Base
     return [nil, nil] unless self.idea
 
     if idea_created?
-      timeline_text = I18n.t("audit.create", user: self.actual_user.name, user_path: user_path(self.actual_user), idea: idea.title, idea_path: category_idea_path(idea.category, idea))
+      timeline_text = I18n.t("audit.create", user: self.actual_user.name, user_path: user_path(self.actual_user), idea: self.idea.title, idea_path: category_idea_path(self.idea.category, self.idea))
       notification_texts = nil
       return [timeline_text, notification_texts]
     end
     
     if edited_by_creator?
-      timeline_text = I18n.t("audit.edit", user: self.actual_user.name, user_path: user_path(self.actual_user), idea: idea.title, idea_path: category_idea_path(idea.category, idea))
+      timeline_text = I18n.t("audit.edit", user: self.actual_user.name, user_path: user_path(self.actual_user), idea: self.idea.title, idea_path: category_idea_path(self.idea.category, self.idea))
       notification_texts = {
         collaborators: I18n.t("audit.notification.edit.collaborators", user: self.actual_user.name, user_path: user_path(self.actual_user), idea: self.idea.title, idea_path: category_idea_path(self.idea.category, self.idea))
       }
@@ -150,38 +112,11 @@ class Audit < ActiveRecord::Base
       return [timeline_text, notification_texts]
     end
 
-    if collaboration_sent?
-      timeline_text = I18n.t("audit.collaboration.sent", user: self.actual_user.name, user_path: user_path(self.actual_user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent))
+    if collaboration_created?
+      timeline_text = I18n.t("audit.collaboration_created", user: self.actual_user.name, user_path: user_path(self.actual_user), idea: self.idea.title, idea_path: category_idea_path(self.idea.category, self.idea))
       notification_texts = {
-        creator: I18n.t("audit.notification.collaboration.sent.creator", user: self.actual_user.name, user_path: user_path(self.actual_user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent)),
-        collaborators: I18n.t("audit.notification.collaboration.sent.collaborators", user: self.actual_user.name, user_path: user_path(self.actual_user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent))
-      }
-      return [timeline_text, notification_texts]
-    end
-    
-    if collaboration_accepted?
-      timeline_text = I18n.t("audit.collaboration.accepted", user: self.actual_user.name, user_path: user_path(self.actual_user), collaborator: self.idea.user.name, collaborator_path: user_path(self.idea.user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent))
-      notification_texts = {
-        collaborators: I18n.t("audit.notification.collaboration.accepted.collaborators", user: self.actual_user.name, user_path: user_path(self.actual_user), collaborator: self.idea.user.name, collaborator_path: user_path(self.idea.user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent)),
-        accepted_collaborator: I18n.t("audit.notification.collaboration.accepted.accepted_collaborator", user: self.actual_user.name, user_path: user_path(self.actual_user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent))
-      }
-      return [timeline_text, notification_texts]
-    end
-    
-    if collaboration_rejected?
-      timeline_text = I18n.t("audit.collaboration.rejected", user: self.actual_user.name, user_path: user_path(self.actual_user), collaborator: self.idea.user.name, collaborator_path: user_path(self.idea.user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent))
-      notification_texts = {
-        collaborators: I18n.t("audit.notification.collaboration.rejected.collaborators", user: self.actual_user.name, user_path: user_path(self.actual_user), collaborator: self.idea.user.name, collaborator_path: user_path(self.idea.user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent)),
-        rejected_collaborator: I18n.t("audit.notification.collaboration.rejected.rejected_collaborator", user: self.actual_user.name, user_path: user_path(self.actual_user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent), ramify_path: ramify_idea_path(self.idea))
-      }
-      return [timeline_text, notification_texts]
-    end
-    
-    if idea_ramified?
-      timeline_text = I18n.t("audit.collaboration.ramified", user: self.parent.user.name, user_path: user_path(self.parent.user), collaborator: self.actual_user.name, collaborator_path: user_path(self.actual_user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent))
-      notification_texts = {
-        creator: I18n.t("audit.notification.collaboration.ramified.creator", collaborator: self.actual_user.name, collaborator_path: user_path(self.actual_user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent)),
-        collaborators: I18n.t("audit.notification.collaboration.ramified.collaborators", user: self.parent.user.name, user_path: user_path(self.parent.user), collaborator: self.actual_user.name, collaborator_path: user_path(self.actual_user), idea: self.parent.title, idea_path: category_idea_path(self.parent.category, self.parent))
+        creator: I18n.t("audit.notification.collaboration_created.creator", user: self.actual_user.name, user_path: user_path(self.actual_user), idea: self.idea.title, idea_path: category_idea_path(self.idea.category, self.idea)),
+        collaborators: I18n.t("audit.notification.collaboration_created.collaborators", user: self.actual_user.name, user_path: user_path(self.actual_user), idea: self.idea.title, idea_path: category_idea_path(self.idea.category, self.idea))
       }
       return [timeline_text, notification_texts]
     end
@@ -240,11 +175,11 @@ class Audit < ActiveRecord::Base
   end
   
   def idea_created?
-    check_conditions("create", must_not_have_changed_to: { parent_id: :not_nil })
+    check_conditions("create")
   end
   
   def edited_by_creator?
-    check_conditions("update", must_not_have_changed: [:accepted, :parent_id, :original_parent_id, :likes, :comment_count, :tokbox_session])
+    check_conditions("update", must_not_have_changed: [:likes, :comment_count, :collaboration_count, :tokbox_session])
   end
   
   def likes_updated?
@@ -255,20 +190,8 @@ class Audit < ActiveRecord::Base
     check_conditions("update", must_have_changed: [:comment_count], must_not_have_changed_to: {comment_count: 0})
   end
   
-  def collaboration_sent?
-    check_conditions("create", must_have_changed_to: { parent_id: :not_nil, accepted: :nil })
-  end
-  
-  def collaboration_accepted?
-    check_conditions("update", must_have_changed_to: { accepted: true })
-  end
-  
-  def collaboration_rejected?
-    check_conditions("update", must_have_changed_to: { accepted: false })
-  end
-  
-  def idea_ramified?
-    check_conditions("update", must_have_changed_to: { parent_id: :nil, accepted: :nil, original_parent_id: :not_nil })
+  def collaboration_created?
+    check_conditions("update", must_have_changed: [:collaboration_count], must_not_have_changed_to: {collaboration_count: 0})
   end
   
 end
