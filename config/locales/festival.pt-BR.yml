@@ -78,35 +78,10 @@ pt-BR:
     # Collaboration
     collaboration:
       title: "Colaboradores"
-      moderation:
-        title: "Você é o moderador"
-        by_you: "Esta ideia foi criada e é moderada por você."
-        can_edit: "Você pode editá-la quando quiser clicando nos textos e aceitar as colaborações que outras pessoas enviam."
-      new:
-        start: "Colabore com a ideia "
-        about: "Aqui você pode alterar todos os dados desta ideia, adicionar mais informações, necessidades, próximos passos e referências que podem ser úteis para torná-la real."
-        about_2: "Sinta-se à vontade para mexer no que quiser, o moderador da ideia poderá aceitar ou recusar a sua colaboração."
-        give_a_description: "Algo a adicionar? Aqui é o corpo da ideia, colabore alterando e/ou adicionando seus pontos:"
-        give_a_name: "Sabe de um título melhor? Colabore aqui:"
-        give_a_headline: "Se quiser, colabore com o resumo da ideia:"
-        choose_a_category: "Em que tema esta ideia se encaixa?"
-      accept:
-        no_collaborations: "Não há colaborações para moderar no momento."
-        has_collaborations:
-          one: "Você possui uma colaboração pendente!"
-          other: "Você possui %{count} colaborações pendente!"
-        what_do_you_want_html: "O que você deseja fazer com a colaboração de <strong>%{user}</strong>?"
-      pending: "Você enviou uma colaboração para esta ideia. Agora é só esperar %{owner_link} aceitá-la :)"
-      moderate:
-        text: "colaborou com %{fields} nesta ideia"
-        view: "ver colaboração"
       who_collaborated: "Quem já colaborou com esta ideia"
       no_collaborators_yet: "Ainda não há colaboradores nesta ideia, quem sabe você não é o primeiro?"
       zero_collaborators: "Ainda não há colaboradores nesta ideia."
-      know_more: "Entenda as colaborações"
-      success: "<h3>Sua colaboração foi enviada!</h3> Sua colaboração ainda não está visível, o moderador da ideia precisa aceitá-la para que ela seja incorporada."
-      accepted: "<h3>Colaboração aceita!</h3>Você aceitou a colaboração de %{user} e ela foi incorporada na ideia anterior."
-      rejected: "<h3>Colaboração rejeitada</h3> Você rejeitou a colaboração de %{user} e ela não poderá fazer parte da ideia. %{user} terá a oportunidade de clonar a sua ideia e desenvolvê-la como quiser."
+      success: "<h3>Muito obrigado por sua colaboração!</h3>"
 
     # Events
     events:

@@ -56,6 +56,13 @@ article
   .collaborate
     = image_tag "gostou.png"
     p Colabore com referências e mais informações para o desenvolvimento desta ideia. Ajude a elaborar as necessidades e próximos passos!
+    
+section#collaborations
+  - unless @idea.collaborations.topics.empty?
+    = render partial: "collaboration", collection: @idea.collaborations.topics
+  - else
+    span Nenhuma colaboração enviada ainda. Que tal ser o primeiro e dar vida para esta ideia?
+  / TODO form new topic
 
 section#comments
   a name="comment"

@@ -9,7 +9,7 @@ ActiveAdmin.register Idea do
 
   csv do
 
-    column("Moderador")               { |idea| idea.user.name }
+    column("Iniciador")               { |idea| idea.user.name }
     column("Título")                  { |idea| idea.title }
     column("Valor do investimento")   { |idea| idea.minimum_investment }
     column("URL")                     { |idea| category_idea_url(idea.category, idea) }

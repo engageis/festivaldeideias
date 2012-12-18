@@ -11,7 +11,7 @@
           .idea
             h3= link_to idea.title, category_idea_path(idea.category, idea)
             small
-              | Moderada por #{idea.user.name}
+              | Iniciada por #{idea.user.name}
             p= truncate(idea.description, length: 200)
     - else 
       span

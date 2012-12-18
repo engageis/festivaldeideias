@@ -1,0 +1,5 @@
+.topic
+  .user= collaboration.user.name
+  p= collaboration.description
+  - if collaboration.is_topic?
+    .answers= render partial: "collaboration", collection: collaboration.answers
