@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
   # User has many types of services (facebook, twitter and so on)
   has_many :services
   has_many :ideas
-  has_many :collaborations, class_name: "Idea", conditions: "accepted AND parent_id IS NOT NULL"
+  has_many :collaborators
+  has_many :collaborated_ideas, through: :collaborators
   validates_presence_of :name, :email
   attr_accessible :name, :email, :email_notifications, :telephone
 
@@ -24,10 +25,6 @@ class User < ActiveRecord::Base
   end
   after_validation :check_before_reverse_geocode
 
-  def collaborated_ideas
-    self.collaborations.select("DISTINCT parent_id").map(&:parent)
-  end
-  
   # This affects links
   def to_param
     "#{id}-#{name.parameterize}"

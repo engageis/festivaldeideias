@@ -16,15 +16,6 @@ ActiveAdmin::Dashboards.build do
    end
   end
 
-
-  section "Colaborações Recentes" do
-   ul do
-     Idea.where(['parent_id IS NOT NULL']).recent(5).collect do |idea|
-       li link_to(idea.title, admin_idea_path(idea))
-     end
-   end
-  end
-  
   # == Render Partial Section
   # The block is rendered within the context of the view, so you can
   # easily render a partial rather than build content in ruby.

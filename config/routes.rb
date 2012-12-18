@@ -22,11 +22,6 @@ FestivalDeIdeias::Application.routes.draw do
   end
   resources :ideas do
     member do
-      put "colaborate",                   :as => :colaborate
-      get "accept_collaboration",         :as => :accept_collaboration
-      get "refuse_collaboration",         :as => :refuse_collaboration
-      get "collaboration",                :as => :collaboration
-      get "ramify",                       :as => :ramify
       get "pin_show"
     end
     collection do
@@ -69,7 +64,6 @@ FestivalDeIdeias::Application.routes.draw do
 
   # Pages (have to be in the EOF)
   get '/:id',                             :to => 'pages#show',      :as => :page
-
 
   unless Rails.env.production?
     get "/miv" => "miv#index" 

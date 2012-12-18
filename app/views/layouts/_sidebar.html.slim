@@ -3,7 +3,7 @@
 - path = request.path
 - unless path =~/^\/(ideias).*(\/cocreate)$/ || path =~/^\/(sessions)/
   aside.sidebar
-    = new_idea_button('button') unless path =~ /^\/(ideias)/ or path =~ /(collaboration)/ or path =~ /(sessions)/ or path =~ /(new)/ or path == root_path
+    = new_idea_button('button') unless path =~ /^\/(ideias)/ or path =~ /(sessions)/ or path =~ /(new)/ or path == root_path
 
     - if path == root_path
       = render "layouts/blog_feeds"
@@ -27,12 +27,6 @@
       
     - elsif path =~ /^\/(ideias)/
       // SIDEBAR FOR IDEA PAGE
-      = render "layouts/idea_value"
-      = render "layouts/collaborators"
-      = render "layouts/share"
-      = render "layouts/events"
-
-    - elsif path =~ /(collaboration)/
       = render "layouts/idea_value"
       = render "layouts/collaborators"
       = render "layouts/share"

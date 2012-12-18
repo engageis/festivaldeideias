@@ -1,6 +1,5 @@
 class IdeaCategory < ActiveRecord::Base
-	has_many :ideas, :dependent => :destroy, :foreign_key => :category_id, conditions: ['parent_id IS NULL']
-	has_many :colaborations, :dependent => :destroy, :foreign_key => :category_id, conditions: ['parent_id IS NOT NULL']
+	has_many :ideas, :dependent => :destroy, :foreign_key => :category_id
 
 	validates_presence_of :name
 

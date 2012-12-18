@@ -24,70 +24,28 @@ class Idea < ActiveRecord::Base
   include PgSearch
 
   belongs_to :user
-  belongs_to :category, :class_name => "IdeaCategory", :foreign_key => :category_id
-  belongs_to :parent, :class_name => "Idea", :foreign_key => :parent_id
-  belongs_to :original_parent, :class_name => "Idea", :foreign_key => :original_parent_id
-
-  has_many :colaborations, class_name: "Idea", foreign_key: :parent_id, dependent: :destroy
+  belongs_to :category, class_name: "IdeaCategory", foreign_key: :category_id
   has_many :messages
-  has_many :ramifications, class_name: "Idea", foreign_key: :original_parent_id, dependent: :restrict
+  has_many :collaborators, dependent: :destroy
 
   validates_presence_of :title, :description, :category_id, :user_id, :minimum_investment
 
-  # Scope for colaborations
-
-  scope :without_parent, where(parent_id: nil)
-  scope :colaborations, where("parent_id IS NOT NULL").order("created_at DESC")
-  scope :not_accepted, where(:accepted => nil).order('created_at DESC')
-  scope :featured, where(:featured => true, :parent_id => nil).order('position DESC')
-  scope :latest, where(:parent_id => nil).order('updated_at DESC')
-  scope :recent, where(:parent_id => nil).order('created_at DESC')
-  scope :popular, where(:parent_id => nil).order('likes DESC')
+  scope :featured, where(featured: true).order('position DESC')
+  scope :latest, order('updated_at DESC')
+  scope :recent, order('created_at DESC')
+  scope :popular, order('likes DESC')
 
   pg_search_scope :match_and_find, against: [:title, :description, :city],
                   associated_against: {user: :name},
                   ignoring: :accents
 
-  scope :new_collaborations, ->(user) { where(['parent_id IN (?)', user.ideas.map(&:id)]).order("created_at ASC") }
-
-  scope :collaborations_status_changed, ->(user) { 
-    where(['user_id = ? AND accepted IS NOT NULL AND parent_id IS NOT NULL', user.id]).order("updated_at DESC")
-  }
-
-  scope :collaborated_idea_changed, ->(user) {
-    where(['EXISTS(
-              SELECT true FROM ideas AS collaboration
-              WHERE collaboration.parent_id = ideas.id
-              AND collaboration.user_id = ?
-          )', user.id]).order("updated_at DESC")
-  }
-
   # Callbacks
   after_create :set_facebook_url
 
-  attr_accessible :user_id, :parent_id, :title, :headline, :description, :featured, :recommend, :likes, :position, :category_id, :accepted, :minimum_investment, :tokbox_session, :original_parent_id, :comment_count
+  attr_accessible :user_id, :title, :headline, :description, :featured, :recommend, :likes, :position, :category_id, :minimum_investment, :tokbox_session, :comment_count
 
   def cocreation_channel
     "cocreation-#{self.id}"
-  end
-
-  def self.ramify!(idea)
-    idea.update_attributes! parent_id: nil, accepted: nil, original_parent_id: idea.parent_id
-  end
-
-  def rejected_colaborations
-    self.colaborations.where(accepted: false)
-  end
-
-  def accepted_colaborations
-    self.colaborations.where(accepted: true)
-  end
-
-  def self.create_colaboration(params = {})
-    if params.has_key? :parent_id
-      Idea.create(params)
-      idea = Idea.where(parent_id: params[:parent_id])
-    end
   end
 
   # Display geolocation data methods
@@ -122,7 +80,7 @@ class Idea < ActiveRecord::Base
       description: description,
       description_html: description_html,
       likes: likes,
-      colaborations: colaborations.count,
+      collaborators: self.collaborators.count,
       minimum_investment: minimum_investment,
       formatted_minimum_investment: formatted_minimum_investment,
       url: category_idea_path(category, self),
@@ -211,7 +169,7 @@ class Idea < ActiveRecord::Base
   end
 
   def similar_ideas
-    Idea.without_parent.where("id <> #{self.id}").order("similarity((title || ' ' || description), (SELECT title || ' ' || description FROM ideas WHERE id = #{self.id})) DESC").limit(3)
+    Idea.where("id <> #{self.id}").order("similarity((title || ' ' || description), (SELECT title || ' ' || description FROM ideas WHERE id = #{self.id})) DESC").limit(3)
   end
   
 end

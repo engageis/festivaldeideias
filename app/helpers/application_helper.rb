@@ -27,18 +27,4 @@ module ApplicationHelper
     end
   end
 
-  def idea_fields_changed(original_idea, collaborated_idea)
-    attributes = {
-      :title => 'título',
-      :headline => 'resumo',
-      :description => 'descrição',
-      :category_id => 'categoria',
-      :minimum_investment => 'custo de realização'
-    }
-    fields = []
-    attributes.each_pair { |attr, text|
-      fields.push(text) if original_idea.send(attr) != collaborated_idea.send(attr)
-    }
-    return fields.join(", ")
-  end
 end 

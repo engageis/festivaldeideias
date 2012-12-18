@@ -33,7 +33,6 @@ Idea.blueprint do
   category { IdeaCategory.make! } 
   minimum_investment { "R$ 5.000,00" }
   user { Service.make!.user }
-  parent_id { nil }
   accepted { nil }
 end
 

@@ -100,7 +100,6 @@ var App = window.App = {
 
             events: {
                 'click li.notifications a.globe' : 'showNotes',
-                'click a.collab-ramify' : 'confirmRamify'
             },
 
             initialize: function(){
@@ -115,14 +114,6 @@ var App = window.App = {
                 });
             },
 
-            confirmRamify: function(event){
-                event.preventDefault();
-                var self = $(event.currentTarget);
-                var url = self.attr('data-href');
-                $('a#ramify_confirm').attr('href', url); 
-                $.facebox({ div: "#new_ramify" });
-            },
-            
             showNotes: function(event){
                 event.preventDefault();
                 var self = this;

@@ -9,9 +9,6 @@ class UserAbility
     can :create, Message
     can :map, Idea
     can :pin_show, Idea
-    can :colaborate, Idea do |idea|
-      idea.user != user
-    end
     can :manage, Idea, :user => user
     can :notifications, User
     can :update_notification, User

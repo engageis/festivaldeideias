@@ -3,7 +3,7 @@ ActiveAdmin.register Idea do
   menu :label => "Curação de ideias"
   controller do
     def scoped_collection
-      end_of_association_chain.without_parent
+      end_of_association_chain
     end
   end
 
@@ -14,9 +14,8 @@ ActiveAdmin.register Idea do
     column("Valor do investimento")   { |idea| idea.minimum_investment }
     column("URL")                     { |idea| category_idea_url(idea.category, idea) }
     column("Causa")                   { |idea| idea.category.name }
-    column("Número de colaboradores") { |idea| idea.colaborations.size }
+    column("Número de colaboradores") { |idea| idea.collaborators.size }
     column("Número de likes")         { |idea| idea.likes }
-    column("Ideia primária")          { |idea| idea.original_parent.nil? ? '' : idea.original.parent.title }
 
   end
 
@@ -27,12 +26,10 @@ ActiveAdmin.register Idea do
     # Testing the featured? implementation
     # This will change the boolean column to true or false (eg.: featured = true, so checkbox should be checked)
     column "Capa?", :sortable => :featured do |s|
-      if !s.parent_id
-        form do
-          check_box "idea",
-            :featured, :class => "form_idea", :data => {:url => admin_idea_url(s)},
-            :checked => (s.featured? ? "checked" : "false")
-        end
+      form do
+        check_box "idea",
+          :featured, :class => "form_idea", :data => {:url => admin_idea_url(s)},
+          :checked => (s.featured? ? "checked" : "false")
       end
     end
 
@@ -41,15 +38,13 @@ ActiveAdmin.register Idea do
     # This will make the order in the featured page (eg.: ORDER BY position DESC)
     #column "Posição", :sortable => :position do |s|
     column :position, :sortable => :position do |s|
-      if !s.parent_id
-        form do
-          select :class => "form_idea idea_position", :name => "idea[position]", "data-url" => admin_idea_url(s)  do
-            0.upto(8).each do |n|
-              if n == s.position
-                option "#{n}", :value => "#{n}", :selected => "selected"
-              else
-                option "#{n}", :value => "#{n}"
-              end
+      form do
+        select :class => "form_idea idea_position", :name => "idea[position]", "data-url" => admin_idea_url(s)  do
+          0.upto(8).each do |n|
+            if n == s.position
+              option "#{n}", :value => "#{n}", :selected => "selected"
+            else
+              option "#{n}", :value => "#{n}"
             end
           end
         end
@@ -61,11 +56,7 @@ ActiveAdmin.register Idea do
     column :id
     column :title do |idea|
       div :class => "idea_show" do
-        if idea.parent_id
-          strong "[colaboração] #{idea.title}"
-        else
-          idea.title
-        end
+        idea.title
       end
       div :class => "idea_hidden" do
         div :class => "category" do

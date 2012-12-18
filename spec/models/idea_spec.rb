@@ -9,27 +9,8 @@ describe Idea do
     it { should validate_presence_of :category_id }
     it { should validate_presence_of :user_id }
     it { should belong_to :user }
-    it { should belong_to :parent }
-    it { should belong_to :original_parent }
     it { should belong_to :category }
-    it { should have_many(:colaborations).dependent(:destroy) }
-    it { should have_many(:ramifications).dependent(:restrict) }
-
-    describe "#create_colaboration" do
-      it "Should create a child idea in order to colaborate" do
-        @idea = Idea.make!
-        @user = User.make!
-        idea = {
-          :title => "Test",
-          :headline => "Test",
-          :description => "Test",
-          :category_id => @idea.category.id,
-          :parent_id => @idea.id,
-          :user_id => @user.id
-        }
-        Idea.create_colaboration(idea).should_not == nil
-      end
-    end
+    it { should have_many(:collaborators).dependent(:destroy) }
 
     describe "#as_json" do
       it "Should return a given json output" do
@@ -43,7 +24,7 @@ describe Idea do
           description: @idea.description,
           description_html: @idea.description_html,
           likes: @idea.likes,
-          colaborations: @idea.colaborations.count,
+          collaborators: @idea.collaborators.count,
           minimum_investment: @idea.minimum_investment,
           formatted_minimum_investment: @idea.formatted_minimum_investment,
           url: @idea.as_json[:url],
@@ -83,60 +64,7 @@ describe Idea do
       end
     end
 
-    describe ".new_collaborations" do
-      before do
-        @idea = Idea.make!(:parent_id => nil, :user => User.make!(:notifications_read_at => Time.now))
-       # create(:idea, :parent_id => @idea.id, :created_at => Time.now - 1.day)
-        @collaboration =  Idea.make!(:parent_id => @idea.id)
-      end
-      subject { Idea.new_collaborations(@idea.user) }
-      it { should == [@collaboration] }
-    end
-
-    describe ".collaborations_status_changed" do
-      before do
-        @idea = Idea.make!(:parent_id => nil)
-        @user = User.make!(:notifications_read_at => Time.now)
-
-        # The user shouldn't see this on notifications
-        Idea.make!(:parent_id => @idea.id, :accepted => nil, :user => @user)
-
-        # The user should see this
-        @collaboration = Idea.make!(:parent_id => @idea.id, :accepted => true, :user => @user)
-      end
-
-      subject { Idea.collaborations_status_changed(@user) }
-      it { should == [@collaboration]}
-    end
   end
-
-
-  describe ".collaborated_idea_changed" do
-    before do
-      @user = User.make!(:notifications_read_at => Time.now)
-      @idea = Idea.make!(:parent_id => nil)
-      @collaboration = Idea.make!(:parent_id => @idea.id, :user => @user)
-
-      # This collaboration parent was read by the user
-      #create(:idea, :parent_id => create(:idea, :updated_at => Time.now - 1.day), :user => @user)
-    end
-    subject { Idea.collaborated_idea_changed(@user) }
-    it { should == [@idea] }
-  end
-  
-  describe "#ramify!" do
-    before do
-      @idea = Idea.make!(parent_id: nil)
-      @colab = Idea.make!(parent_id: @idea.id, accepted: false)
-      Idea.ramify!(@colab)
-      @colab.reload
-    end
-    subject { @colab }
-    its(:parent_id) { should be_nil }
-    its(:accepted) { should be_nil }
-    its(:original_parent_id) { should == @idea.id }
-  end
-
 
   describe "#check_minimum_investment" do
     it "Should format minimum investment as currency" do 

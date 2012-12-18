@@ -125,7 +125,7 @@ When /^I submit the form$/ do
   sleep(1)
 end
 
-Given /^I made a colaboration called "([^"]*)" in the idea "([^"]*)" and it was ([^"]*)$/ do |arg1, arg2, arg3|
+Given /^I made a collaboration called "([^"]*)" in the idea "([^"]*)" and it was ([^"]*)$/ do |arg1, arg2, arg3|
   flag = nil
   if arg3 == "accepted" 
     flag = true
@@ -133,7 +133,7 @@ Given /^I made a colaboration called "([^"]*)" in the idea "([^"]*)" and it was 
     flag = false
   end
   @original = Idea.find_by_title(arg2)
-  @my_colaboration = Idea.make!(title: arg1, parent: @original, category: @original.category, user: User.find_by_name("Luiz Fonseca"), accepted: flag)
+  @my_collaboration = Idea.make!(title: arg1, parent: @original, category: @original.category, user: User.find_by_name("Luiz Fonseca"), accepted: flag)
 end
 
 When /^I click in the notifications bar$/ do

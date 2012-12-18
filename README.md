@@ -86,7 +86,7 @@ Fdi, the community
 ------------------
 
 The FdI counts with the collaboration of some experienced developers and designers, but the growing demand (and expectation of users)
-is much more than the current team can provide. Therefore, the festival seeks for colaborators to reach that demand.
+is much more than the current team can provide. Therefore, the festival seeks for collaborators to reach that demand.
 The FdI is **open-source**. Participate in an open source project is the best way to learn how to work as a team and working with others's code, it is an
 exercise of community and integration. The community is more important than code itself, the community is the engine of innovation.
 

@@ -6,7 +6,8 @@ describe User do
     it { should validate_presence_of :name }
     it { should validate_presence_of :email }
     it { should have_many :ideas }
-    it { should have_many :collaborations }
+    it { should have_many :collaborators }
+    it { should have_many(:collaborated_ideas).through(:collaborators) }
 
     describe "#services" do
       it { should have_many :services }
@@ -26,14 +27,9 @@ describe User do
       # The user read its notifications yesterday
       @user = User.make!(notifications_read_at: Time.now - 1.day)
 
-      # The parent idea 
-      @idea = Idea.make!(parent_id: nil)
-
-      # Covers the case: "When the idea receives a new colaboration."
-      Idea.make!(parent_id: @idea.id)
-
-      # Covers the case: "When colaboration status changes"
-      Idea.make!(parent_id: @idea.id, user: @user, accepted: false)
+      # TODO 
+      # Covers the case: "When the idea receives a new collaboration."
+      # Covers the case: "When collaboration status changes"
 
     end
     subject { @user.new_notifications_count }

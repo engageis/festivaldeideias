@@ -1,6 +1,6 @@
 Feature: join a cocreate room
   In order to contribute to an idea
-  As a colaborator
+  As a collaborator
   I want to join a cocreate room
 
   @omniauth_test

@@ -2,6 +2,4 @@ li
   .user= link_to image_tag(idea.user.avatar), user_path(idea.user)
   .idea
     h3= link_to idea.title, category_idea_path(idea.category, idea)
-    - if idea.original_parent
-      small== "Criada a partir da ideia #{ link_to idea.original_parent.title, category_idea_path(idea.original_parent.category, idea.original_parent)}, de #{ link_to idea.original_parent.user.name, user_path(idea.original_parent.user) }"
     p= truncate(idea.description, length: 200)

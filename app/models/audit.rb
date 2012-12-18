@@ -5,7 +5,6 @@ class Audit < ActiveRecord::Base
   belongs_to :user
   belongs_to :idea, foreign_key: :auditable_id
   belongs_to :actual_user, class_name: "User", foreign_key: :actual_user_id
-  belongs_to :parent, class_name: "Idea", foreign_key: :parent_id
   serialize :audited_changes
   serialize :notification_texts
   
@@ -16,32 +15,12 @@ class Audit < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
 
   def self.notifications(user_to_notify)
-    where("
-      auditable_id IN
-        (SELECT id FROM ideas WHERE user_id = #{user_to_notify.id})
-      OR auditable_id IN
-        (SELECT parent_id FROM ideas WHERE parent_id IS NOT NULL AND user_id = #{user_to_notify.id})
-      OR auditable_id IN
-        (SELECT original_parent_id FROM ideas WHERE original_parent_id IS NOT NULL AND user_id = #{user_to_notify.id})
-      OR auditable_id IN
-        (SELECT id FROM ideas WHERE
-          parent_id IN (SELECT id FROM ideas WHERE user_id = #{user_to_notify.id})
-          OR original_parent_id IN (SELECT id FROM ideas WHERE user_id = #{user_to_notify.id})
-        )
-      OR auditable_id IN
-        (SELECT id FROM ideas WHERE
-          parent_id IN (SELECT parent_id FROM ideas WHERE parent_id IS NOT NULL AND user_id = #{user_to_notify.id})
-          OR original_parent_id IN (SELECT original_parent_id FROM ideas WHERE original_parent_id IS NOT NULL AND user_id = #{user_to_notify.id})
-          OR parent_id IN (SELECT original_parent_id FROM ideas WHERE original_parent_id IS NOT NULL AND user_id = #{user_to_notify.id})
-          OR original_parent_id IN (SELECT parent_id FROM ideas WHERE parent_id IS NOT NULL AND user_id = #{user_to_notify.id})
-        )
-    ").order("created_at DESC")
+    where("auditable_id IN (SELECT id FROM ideas WHERE user_id = #{user_to_notify.id}) OR auditable_id IN (SELECT idea_id FROM collaborators WHERE user_id = #{user_to_notify.id})").order("created_at DESC")
   end
 
   def users_to_notify
     return unless self.idea
-    users = [self.idea.user] + self.idea.colaborations.map(&:user)
-    users += [self.idea.parent.user] + self.idea.parent.colaborations.map(&:user) if self.idea.parent
+    users = [self.idea.user] + self.idea.collaborators.map(&:user)
     users.uniq
   end
 
@@ -50,27 +29,19 @@ class Audit < ActiveRecord::Base
     if self.timeline_type == "collaboration_sent"
       if self.idea.user == user_to_notify
         nil
-      elsif (self.idea.parent and self.idea.parent.user == user_to_notify) or (self.idea.original_parent and self.idea.original_parent.user == user_to_notify)
-        self.notification_texts[:creator]
+      # elsif (self.idea.parent and self.idea.parent.user == user_to_notify) or (self.idea.original_parent and self.idea.original_parent.user == user_to_notify)
+      #   self.notification_texts[:creator]
       else
         self.notification_texts[:collaborators]
       end
     elsif self.timeline_type == "collaboration_accepted" or self.timeline_type == "collaboration_rejected"
-      if (self.idea.parent and self.idea.parent.user == user_to_notify) or (self.idea.original_parent and self.idea.original_parent.user == user_to_notify)
-        nil
-      elsif self.idea.user == user_to_notify
-        self.notification_texts[(self.timeline_type == "collaboration_accepted" ? "accepted_collaborator" : "rejected_collaborator").to_sym]
-      else
-        self.notification_texts[:collaborators]
-      end
-    elsif self.timeline_type == "idea_ramified"
-      if self.idea.original_parent and self.idea.original_parent.user == user_to_notify
-        self.notification_texts[:creator]
-      elsif self.idea.user == user_to_notify
-        nil
-      else
-        self.notification_texts[:collaborators]
-      end
+      # if (self.idea.parent and self.idea.parent.user == user_to_notify) or (self.idea.original_parent and self.idea.original_parent.user == user_to_notify)
+      #   nil
+      # elsif self.idea.user == user_to_notify
+      #   self.notification_texts[(self.timeline_type == "collaboration_accepted" ? "accepted_collaborator" : "rejected_collaborator").to_sym]
+      # else
+      #   self.notification_texts[:collaborators]
+      # end
     elsif self.idea.user == user_to_notify
       self.notification_texts[:creator]
     else
@@ -118,15 +89,13 @@ class Audit < ActiveRecord::Base
     return "comments_updated" if comments_updated?
     return "collaboration_sent" if collaboration_sent?
     return "collaboration_accepted" if collaboration_accepted?
-    return "collaboration_rejected" if collaboration_rejected?
-    return "idea_ramified" if idea_ramified?
     "ignore"
   end
   
   def generated_actual_user_id
     return unless self.idea
     return self.idea.user_id if self.idea and ["likes_updated", "comments_updated"].include?(self.timeline_type)
-    return self.idea.parent.user_id if self.idea and self.idea.parent and ["collaboration_accepted", "collaboration_rejected"].include?(self.timeline_type)
+    # return self.idea.parent.user_id if self.idea and self.idea.parent and ["collaboration_accepted", "collaboration_rejected"].include?(self.timeline_type)
     self.user_id or self.idea.user_id
   end
   
@@ -140,8 +109,8 @@ class Audit < ActiveRecord::Base
         generated_parent_id = self.audited_changes["parent_id"]
       end
     end
-    generated_parent_id = self.idea.parent_id unless generated_parent_id.present?
-    generated_parent_id = self.idea.original_parent_id unless generated_parent_id.present?
+    # generated_parent_id = self.idea.parent_id unless generated_parent_id.present?
+    # generated_parent_id = self.idea.original_parent_id unless generated_parent_id.present?
     generated_parent_id
   end
   
