@@ -1,45 +1,77 @@
 #collaborations
   .collaboration-field
     height: auto
-    +inset-input
+    width: 96%
+    background: white
+    border: 2px solid lighten(gray, 20%)
 
 .topic
-  border: 2px solid lighten(gray, 20%)
-  padding: 20px
+  border: 1px solid lighten(gray, 20%)
+  padding: 10px 10px 20px
   margin: 10px
   position: relative
 
   .answer
     border: none
-    border-left: 6px solid lighten(gray, 40%)
+    padding-bottom: 0
+    border-left: 8px solid lighten(gray, 40%)
+
+    header
+      border-top: 1px solid lighten(gray, 40%)
+      border-right: 1px solid lighten(gray, 40%)
 
   .delete-comment-bt
     position: absolute
     top: 10px
     right: 10px
 
-.collaboration-form
-  +clearfix
-  padding: 10px
-
-  input
-    border-radius: 3px
+  .user
     font-size: 120%
-    @extend .button.start
+    position: relative
+    top: 3px
+
+  .avatar
+    float: left
+    margin-right: 10px
+
+  .time_ago
+    padding: 5px 15px 4px 25px
+    margin-top: 10px
+    border: 1px solid #dadada
+    background: url(asset_path("icons.png", "image")) no-repeat 5px -1271px
+    float: left
+
+.collaboration-form
+  +legacy-pie-clearfix
+  padding: 10px
 
 .cancel-button
   display: none
+  +move(28px, bottom)
+  left: -16px
 
 .topic
   .cancel-button
     display: block
 
-#new_collaboration
+form#new_collaboration
   +clearfix
   margin: 20px 0
 
+  input
+    border-radius: 3px
+    @extend .button.start
+
 .collaboration-body
+  padding-bottom: 20px
+
   .share
     position: absolute
-    top: 10px
-    right: 10px
+    top: 13px
+    right: -10px
+
+    .fb-like
+      +move(3px, top)
+
+  .answer-bt
+    +move(10px, top)
