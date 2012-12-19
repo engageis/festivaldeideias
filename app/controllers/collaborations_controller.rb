@@ -1,23 +1,16 @@
 # coding: utf-8
 class CollaborationsController < ApplicationController
-  def show
-    @collaboration = Collaboration.find(params[:id])
-  end
+  
+  inherit_resources
+
+  actions :show, :create
 
   def create
     @collaboration = Collaboration.new(params[:collaboration])
     @collaboration.user = current_user
-    if @collaboration.save
-      redirect_to idea_path(@collaboration.idea_id)
-    else
-      redirect_to idea_path(@collaboration.idea_id), notice: "Não foi possível publicar sua colaboração"
+    create! do |success, failure|
+      success.html { redirect_to category_idea_path(resource.idea.category, resource.idea), notice: "Sua colaboração foi enviada com sucesso :D" }
+      failure.html { redirect_to category_idea_path(resource.idea.category, resource.idea), alert: "Não foi possível publicar sua colaboração" }
     end
-  end
-
-  def destroy
-    @collaboration = Collaboration.find(params[:id])
-    idea = @collaboration.idea
-    @collaboration.destroy if @collaboration.user == current_user
-    redirect_to idea
   end
 end

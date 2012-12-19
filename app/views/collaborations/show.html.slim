@@ -2,4 +2,4 @@ section#collaborations
   = render @collaboration
   h3 Responda essa colaboração
   .collaboration-form
-    = render 'collaborations/form', idea_id: @collaboration.idea_id, parent_id: @collaboration.id, user: @collaboration.user
+    = render 'collaborations/form', idea_id: @collaboration.idea_id, parent_id: (@collaboration.parent_id or @collaboration.id), user: @collaboration.user

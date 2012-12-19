@@ -52,18 +52,14 @@ article
       li.bucket class=cycle('odd', 'middle', 'even')
         = render similar_idea
 
-- unless can?(:edit, @idea)
-  .collaborate
-    = image_tag "gostou.png"
-    p Colabore com referências e mais informações para o desenvolvimento desta ideia. Ajude a elaborar as necessidades e próximos passos!
+.collaborate
+  = image_tag "gostou.png"
+  p Colabore com referências e mais informações para o desenvolvimento desta ideia. Ajude a elaborar as necessidades e próximos passos!
     
 section#collaborations
+  = render 'collaborations/form', idea_id: @idea.id
   - if @idea.collaborations.topics.empty?
     h3 Nenhuma colaboração enviada ainda. Que tal ser o primeiro e dar vida para esta ideia?
-  - else
-    h3 Colabore com essa ideia =)
-  .collaboration-form
-    = render 'collaborations/form', idea_id: @idea.id
   = render partial: "collaborations/collaboration", collection: @idea.collaborations.topics
 
 section#comments
