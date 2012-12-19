@@ -5,6 +5,8 @@
   meta[property="og:description" content=desc]
   meta[property="og:url" content=collaboration_url(@collaboration)]
 
+= link_to "Ir para ideia", category_idea_path(@collaboration.idea.category, @collaboration.idea), class: "return-to-idea-link"
+
 section#collaborations
   = render @collaboration
   h3 Responda essa colaboração
