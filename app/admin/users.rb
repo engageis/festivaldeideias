@@ -24,7 +24,9 @@ ActiveAdmin.register User do
   
   show title: :name do |user|
     attributes_table do
-      row :name
+      row "Nome" do |u|
+        link_to u.name, u
+      end
       row :email
       row :telephone
       row :city
