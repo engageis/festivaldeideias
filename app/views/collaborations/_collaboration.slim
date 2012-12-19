@@ -5,6 +5,9 @@
     p= collaboration.description
     
     = link_to 'Responder', collaboration, class: 'answer-bt' unless collaboration.user != current_user || params[:controller] == 'collaborations'
+    .share
+      .fb-like data-href="#{collaboration_url(collaboration)}" data-send="false" data-layout="button_count" data-width="250" data-show-faces="true" data-font="lucida grande"
+      a.twitter-share-button href="https://twitter.com/share" data-url="#{collaboration_url(collaboration)}" data-via="#{collaboration.user.name}" data-text="#{truncate(collaboration.description, length: 100, separator: "...")}" Tweet
 
   - if collaboration.is_topic? && params[:controller] != 'collaborations'
     = render partial: "collaborations/collaboration", collection: collaboration.answers
