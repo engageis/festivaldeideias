@@ -1,6 +1,7 @@
 #collaborations
   .collaboration-field
     height: auto
+    +inset-input
 
 .topic
   border: 2px solid lighten(gray, 20%)
@@ -19,8 +20,16 @@
 
 .collaboration-form
   +clearfix
+  padding: 10px
 
   input
     border-radius: 3px
     font-size: 120%
     @extend .button.start
+
+.cancel-button
+  display: none
+
+.topic
+  .cancel-button
+    display: block

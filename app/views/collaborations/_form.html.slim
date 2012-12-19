@@ -1,9 +1,18 @@
-= simple_form_for(Collaboration.new) do |f|
-  - parent_id ||= nil
-  - user ||= nil
-  - parent_user = user.present? ? "@#{user.name}: " : nil
-  = f.hidden_field :idea_id, value: idea_id
-  = f.hidden_field :parent_id, value: parent_id
-  = f.input :description, label: "Escreva sua colaboração", required: false,
-    input_html: {rows: 4, class: "collaboration-field", value: parent_user}
-  = f.submit "Enviar", class: "button right"
+#form-wrapper
+  - if current_user
+    = simple_form_for(Collaboration.new) do |f|
+      - parent_id ||= nil
+      - user ||= nil
+      - parent_user = user.present? ? "@#{user.name}: " : nil
+      = f.hidden_field :idea_id, value: idea_id
+      = f.hidden_field :parent_id, value: parent_id
+      = f.input :description, label: "Escreva sua colaboração", required: false,
+        input_html: {rows: 4, class: "collaboration-field", value: parent_user}
+      = f.submit "Enviar", class: "button right"
+      = link_to "Cancelar", "#", class: "cancel-button right"
+
+  - else
+    span
+      | Você precisa 
+      = link_to "fazer login", new_session_path
+      |  para poder colaborar.
