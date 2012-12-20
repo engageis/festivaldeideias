@@ -119,7 +119,7 @@ class IdeasController < ApplicationController
     @categories ||= IdeaCategory.order('created_at')
     @users ||= User.find(:all, :order => 'RANDOM()', :include => :services)
     @ideas_count ||= Idea.includes(:user, :category)
-    @collaborators_count ||= Collaborator.count
+    @collaborators_count ||= Collaborator.all
     @ideas_latest ||= Idea.latest.includes(:user, :category)
     @ideas_featured ||= Idea.featured.includes(:user, :category)
     @ideas_popular ||= Idea.popular.includes(:user, :category).shuffle
