@@ -158,7 +158,7 @@ class Idea < ActiveRecord::Base
       pending_audit.set_timeline_and_notifications_data!
       pending_audit.users_to_notify.each do |user_to_notify|
         if user_to_notify.email_notifications and pending_audit.notification_text(user_to_notify)
-          #IdeaMailer.notification_email(pending_audit, user_to_notify).deliver
+          IdeaMailer.notification_email(pending_audit, user_to_notify).deliver
         end
       end
     end
