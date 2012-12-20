@@ -9,13 +9,19 @@ class Collaboration < ActiveRecord::Base
   scope :topics, where("parent_id IS NULL").includes(:answers)
   
   after_create :update_idea_and_collaborators
+  before_destroy :may_remove_collaborator
+
   def update_idea_and_collaborators
     self.idea.update_attribute :collaboration_count, self.idea.collaborations.count
     self.idea.collaborators.create user: self.user
   end
-  
+
   def is_topic?
     topic.nil?
   end
-  
+
+  private
+    def may_remove_collaborator
+      self.idea.collaborators.where(user_id: self.user.id).first.destroy unless self.idea.collaborations.where(user_id: self.user.id).size > 1
+    end
 end
