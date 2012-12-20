@@ -60,7 +60,7 @@ section#collaborations
   = render 'collaborations/form', idea_id: @idea.id
   - if @idea.collaborations.topics.empty?
     h3 Nenhuma colaboração enviada ainda. Que tal ser o primeiro e dar vida para esta ideia?
-  = render partial: "collaborations/collaboration", collection: @idea.collaborations.topics
+  = render partial: 'collaborations/collaboration', collection: @idea.collaborations, locals: { enable_answers: true }
 
 section#comments
   a name="comment"

@@ -3,12 +3,12 @@
   meta[name="description" content=desc]
   meta[property="og:title" content=@collaboration.user.name]
   meta[property="og:description" content=desc]
-  meta[property="og:url" content=collaboration_url(@collaboration)]
+  meta[property="og:url" content=collaboration_url(@collaboration, host: "festivaldeideias.org.br")]
 
 = link_to "Ir para ideia", category_idea_path(@collaboration.idea.category, @collaboration.idea), class: "return-to-idea-link"
 
 section#collaborations
-  = render @collaboration
+  = render partial: 'collaboration', object: @collaboration, locals: { enable_answers: false }
   h3 Responda essa colaboração
   .collaboration-form
     = render 'collaborations/form', idea_id: @collaboration.idea_id, parent_id: (@collaboration.parent_id or @collaboration.id), user: @collaboration.user

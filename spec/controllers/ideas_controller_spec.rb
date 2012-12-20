@@ -18,12 +18,4 @@ describe IdeasController do
     its(:status) { should == 200 }
   end
 
-  describe "put #message" do
-    before do
-      @user = User.make!
-      @idea = Idea.make!
-      controller.stub(:current_user).and_return(@user)
-
-    end
-  end
 end
