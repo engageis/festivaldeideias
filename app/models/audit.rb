@@ -179,7 +179,7 @@ class Audit < ActiveRecord::Base
   end
   
   def edited_by_creator?
-    check_conditions("update", must_not_have_changed: [:likes, :comment_count, :collaboration_count, :tokbox_session])
+    check_conditions("update", must_not_have_changed: [:likes, :comment_count, :collaboration_count, :tokbox_session, :migrated_comments])
   end
   
   def likes_updated?

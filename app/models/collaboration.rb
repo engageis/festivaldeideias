@@ -7,6 +7,7 @@ class Collaboration < ActiveRecord::Base
   attr_accessible :description, :parent_id, :idea_id, :user_id
   
   scope :topics, where("parent_id IS NULL").includes(:answers)
+  scope :recent, order("created_at DESC")
   
   after_create :update_idea_and_collaborators
   def update_idea_and_collaborators
