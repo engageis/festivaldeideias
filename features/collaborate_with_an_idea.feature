@@ -11,4 +11,4 @@ Feature: Collaborate with an idea
     And I click "Colabore com a ideia"
     And I fill the collaboration box
     When I submit the form
-    Then I should see "Muito obrigado por sua colaboração!"
+    Then I should see "Sua colaboração foi enviada com sucesso :D"

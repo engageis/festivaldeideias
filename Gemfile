@@ -74,7 +74,7 @@ end
 group :test do
   gem "selenium-webdriver", "~>2.25", require: false
   gem 'cucumber-rails', require: false
-  gem 'capybara'
+  gem 'capybara', '1.1.2'
   gem 'database_cleaner'
   gem "shoulda-matchers"
   gem 'rb-fsevent'

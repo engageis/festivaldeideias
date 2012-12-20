@@ -14,7 +14,8 @@ Given /^there is an idea called "([^"]*)" by "([^"]*)"$/ do |arg1, arg2|
 end
 
 When /^I visit the "([^"]*)" idea page$/ do |arg1|
-  visit idea_path(Idea.find_by_title(arg1))
+  idea = Idea.find_by_title(arg1)
+  visit category_idea_path(idea.category, idea)
 end
 
 When /^I visit the "([^"]*)" by "([^"]*)" idea page$/ do |arg1, arg2|
@@ -106,8 +107,13 @@ Then /^I should not see "([^"]*)"$/ do |arg1|
   page.should have_no_content arg1 
 end
 
+When /^I fill the collaboration box$/ do
+  fill_in "collaboration_description", :with => "Muito legal!"
+  sleep(1)
+end
+
 When /^I submit the form$/ do
-  click_button "Enviar colaboração!"
+  click_button "Enviar"
   sleep(1)
 end
 
@@ -186,7 +192,7 @@ When /^I fill the admin login form with my information$/ do
     fill_in "admin_user_email", :with => @user.email
     fill_in "admin_user_password", :with => "password" 
   end
-  click_button "Login"
+  click_button "Entrar"
 end
 
 Then /^I should be in the "([^"]*)"$/ do |arg|
@@ -289,7 +295,7 @@ end
 
 Given /^I'm in "(.*?)"$/ do |arg1|
   if arg1 == "this idea page"
-    visit idea_path(@idea)
+    visit category_idea_path(@idea.category, @idea)
   else
     raise "I don't know #{arg1}"
   end

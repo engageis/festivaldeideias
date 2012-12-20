@@ -158,7 +158,7 @@ class Idea < ActiveRecord::Base
       pending_audit.set_timeline_and_notifications_data!
       pending_audit.users_to_notify.each do |user_to_notify|
         if user_to_notify.email_notifications and pending_audit.notification_text(user_to_notify)
-          IdeaMailer.notification_email(pending_audit, user_to_notify).deliver
+          #IdeaMailer.notification_email(pending_audit, user_to_notify).deliver
         end
       end
     end
@@ -171,6 +171,63 @@ class Idea < ActiveRecord::Base
 
   def similar_ideas
     Idea.where("id <> #{self.id}").order("similarity((title || ' ' || description), (SELECT title || ' ' || description FROM ideas WHERE id = #{self.id})) DESC").limit(3)
+  end
+  
+  def migrate_comment!(uid, name, description, time, topic = nil)
+    service = Service.find_by_uid("#{uid}")
+    if service
+      user = service.user
+    else
+      user = User.create email: "#{uid}@festivaldeideias.org.br", name: name
+      service = Service.create user: user, provider: "facebook", uid: uid
+    end
+    collaboration = Collaboration.new
+    collaboration.idea = self
+    collaboration.user = user
+    collaboration.description = description.gsub(/@\[\d+:\d+\:([^\]]+)\]/, '@\1').gsub(/\n/, '<br/>')
+    collaboration.topic = topic
+    collaboration.created_at = time
+    collaboration.updated_at = time
+    if collaboration.save
+      collaboration
+    else
+      nil
+    end
+  end
+  
+  def migrate_comments!
+    return if self.migrated_comments
+    facebook_query_url = 'https://graph.facebook.com/fql?format=json&q='
+    fql = <<-FQL
+      {"idea_comments": "SELECT fromid, text, time, comments FROM comment WHERE fromid <> 0 AND object_id IN (SELECT comments_fbid FROM link_stat WHERE url ='%s')", "idea_comment_users": "SELECT id, name FROM profile WHERE id IN (SELECT fromid FROM #idea_comments) OR id IN (SELECT comments.data.from.id FROM #idea_comments)"}
+    FQL
+    url = facebook_query_url + URI.encode(fql % self.facebook_url)
+    facebook_data = self.get_facebook_data(url)["data"]
+    facebook_comments = facebook_data[0]["fql_result_set"]
+    facebook_users = Hash[*facebook_data[1]["fql_result_set"].map{ |user| [user["id"],  user["name"]] }.flatten]
+    facebook_comments.each do |facebook_comment|
+      uid = facebook_comment["fromid"]
+      name = facebook_users[uid]
+      description = facebook_comment["text"]
+      time = Time.at(facebook_comment["time"]) + 2.hours
+      topic = migrate_comment!(uid, name, description, time)
+      facebook_answers = facebook_comment["comments"]["data"] rescue []
+      facebook_answers.each do |facebook_answer|
+        uid = facebook_answer["from"]["id"]
+        name = facebook_users[uid]
+        description = facebook_answer["message"]
+        time = Time.at(facebook_answer["created_time"]) + 2.hours
+        migrate_comment!(uid, name, description, time, topic)
+      end
+    end
+    update_attribute :migrated_comments, true
+  end
+  
+  def self.migrate_all_comments!
+    where(migrated_comments: false).each do |idea|
+      puts "##{idea.id}"
+      idea.migrate_comments!
+    end
   end
   
 end

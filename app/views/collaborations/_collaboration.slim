@@ -3,14 +3,14 @@
     header
       .avatar= link_to image_tag(collaboration.user.avatar), user_path(collaboration.user)
       .user= link_to collaboration.user.name, collaboration.user
-      span.time_ago = "Publicada há #{time_ago_in_words(collaboration.updated_at)}"
+      span.time_ago = "Publicada há #{time_ago_in_words(collaboration.created_at)}"
     .share
       .fb-like data-href="#{collaboration_url(collaboration, host: "festivaldeideias.org.br")}" data-send="false" data-layout="button_count" data-width="150" data-show-faces="true" data-font="lucida grande"
       a.twitter-share-button href="https://twitter.com/share" data-url="#{collaboration_url(collaboration, host: "festivaldeideias.org.br")}" data-text="#{truncate(collaboration.description, length: 128, separator: "...")} #festideias" Tweet
     
-    p= collaboration.description
+    p== collaboration.description
     
     = link_to 'Responder', collaboration, class: 'answer-bt' if enable_answers
 
   - if collaboration.is_topic? && enable_answers
-    = render partial: "collaborations/collaboration", collection: collaboration.answers, locals: { enable_answers: enable_answers }
+    = render partial: "collaborations/collaboration", collection: collaboration.answers.recent, locals: { enable_answers: enable_answers }
