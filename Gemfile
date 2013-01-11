@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 # Framework
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
 
 
 # Database
